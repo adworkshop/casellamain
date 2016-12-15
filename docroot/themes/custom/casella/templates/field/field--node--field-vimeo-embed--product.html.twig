@@ -37,8 +37,9 @@
  */
 #}
 
-<ul{{ attributes.addClass('indLocations-associatedZipCodes') }}>
-  {% for item in items %}
-    {{ item.content }}
-  {% endfor %}
-</ul>
+<div class="indProduct-lowerContent-leftCol-video-container indProduct-lowerContent-leftCol-spacer">
+  <h2>Product Video:</h2>
+  <div class="videoContainer">
+    <iframe src="https://player.vimeo.com/video/{% for item in items %}{{ item.content }}{% endfor %}" width="640" height="355" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  </div>
+</div>

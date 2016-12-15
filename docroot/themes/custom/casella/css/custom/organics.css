@@ -122,7 +122,7 @@ Author URI: http://www.adworkshop.com
   }
   .mainOrganics-lowerContentRegion-indGrid-container a.colio-link:hover .mainOrganics-lowerContentRegion-indGrid-imgWrapper img {opacity:0.05;}
   
-  .mainOrganics-lowerContentRegion-indGrid-container.colio-active-item {opacity:.1;}
+  .mainOrganics-lowerContentRegion-indGrid-container.colio-active-item {opacity:.4;}
   .mainOrganics-lowerContentRegion-indGrid-container.colio-active-item a.colio-link {cursor:default;}
   .mainOrganics-lowerContentRegion-indGrid-container.colio-active-item a.colio-link:hover .mainOrganics-lowerContentRegion-indGrid-imgWrapper img  {opacity:1;}
   .mainOrganics-lowerContentRegion-indGrid-container.colio-active-item a.colio-link .mainOrganics-lowerContentRegion-indGrid-labelWrapper {display:none;}

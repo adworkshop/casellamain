@@ -134,41 +134,7 @@ Author URI: http://www.adworkshop.com
   /*Sidebar*/
   .sidebarProduct-message {color: #00263d; font-weight: 700;line-height: 1.7; font-size: 14px; margin:0 0 -30px; display:none;}
 
-/* ======================================================= */
-/*    PRODUCTS                                             */
-/* ======================================================= */	
-  .productGrid-filter-container {}
-  .productGrid-filter-container label {display:block; font-family: 'Gotham-Black'; text-transform:uppercase; font-size:12px; color: #00263d; font-weight:normal; margin:8px 0 0;}
-  .productGrid-filter-container label:first-of-type {margin:0;}
-  .productGrid-filter-container input[type="checkbox"] {margin-right: 3px;}
 
-  .productGrid-container {margin:60px 0 0;}
-  .productGrid-products-groupTitle {padding:25px; font-family: 'Gotham-Black'; font-size:20px; color:#fff; background:#76be43; position:relative;}
-  .productGrid-products-groupTitle-wrapper {padding: 0 40px 0 0;}
-  a.productGrid-products-top {position:absolute; right:20px; top:23px; font-size:12px; text-align:center; display:inline-block; text-transform:uppercase; color:#b9dba5;}
-  a.productGrid-products-top:hover {color:#FFF;}
-  .productGrid-products-top span {display:block; font-size:13px; margin:0 0 2px;}
-  
-  .productGrid-products-container {margin:40px 0 0 0;}
-  .productGrid-indProduct-container {display:block; width:100%; font-size:14px; padding:0;}
-  .productGrid-indProduct-wrapper {margin: 40px 0 0; padding: 50px 0 0; border-top: 1px solid #e3e3e3;}
-  .productGrid-indProduct-container:nth-child(1) .productGrid-indProduct-wrapper {margin: 0; padding: 0; border-top: 0;}
-  .productGrid-indProduct-wrapper a {display:inline-block;}
-  .productGrid-indProduct-title {display: table-cell; vertical-align: bottom; font-family: 'Gotham-Bold'; font-size:16px; text-transform:uppercase;}
-  .productGrid-indProduct-image {line-height:0; margin:20px 0 0;}
-  .productGrid-indProduct-image img {width:100%; max-width:100%; height:auto;}
-  .productGrid-indProduct-teaser {margin:20px 0 0; line-height:1.7; color: #606060;}
-  
-  .productGrid-indProduct-wrapper a .productGrid-indProduct-title {
-  color:#00263d; -webkit-transition: color .2s ease-in-out; -moz-transition: color .2s ease-in-out; -o-transition: color .2s ease-in-out; -ms-transition: color .2s ease-in-out; transition: color .2s ease-in-out;}
-  .productGrid-indProduct-wrapper a:hover .productGrid-indProduct-title {color:#76be43;}
-  .productGrid-indProduct-wrapper a .productGrid-indProduct-image {
-  -webkit-transition: all .2s ease-in-out; -moz-transition: all .2s ease-in-out; -o-transition: all .2s ease-in-out; -ms-transition: all .2s ease-in-out; transition: all .2s ease-in-out;
-  }
-  .productGrid-indProduct-wrapper a:hover .productGrid-indProduct-image {
-  -webkit-transform: scale(1.05); -moz-transform: scale(1.05); -ms-transform: scale(1.05); -o-transform: scale(1.05); transform: scale(1.05);
-  }
-  
 /* ======================================================= */
 /*    IND PRODUCTS                                         */
 /* ======================================================= */
@@ -284,15 +250,6 @@ Author URI: http://www.adworkshop.com
   .indProduct-lowerContent-leftCol-container h2 {font-size:24px;}
   }
   
-  @media all and (min-width: 768px) {
-  /*Product Listings*/
-  .productGrid-filter-container label {display:inline-block; margin:0 0 0 20px;}
-  .productGrid-products-container {font-size:0; margin:40px 0 0 -50px;}
-  .productGrid-products-groupTitle {font-size:24px;}
-  .productGrid-indProduct-container {display:inline-block; vertical-align:top; width:50%; padding:0 0 0 50px;}
-  .productGrid-indProduct-container:nth-child(2) .productGrid-indProduct-wrapper {margin: 0; padding: 0; border-top: 0;}
-  }
-  
   @media all and (min-width: 840px) {}
   
   @media all and (min-width: 960px) {
@@ -302,10 +259,6 @@ Author URI: http://www.adworkshop.com
   .mainEarthlife-upperContentRegion-hero {font-size:16px;}
   .mainEarthlife-breakSep-container {text-align:center; margin:60px 0;}
   .mainEarthlife-breakSep-icon {padding:0 15px; width:60px;}
-  
-  /*Product Listings*/
-  .productGrid-indProduct-container {width:33.3333%;}
-  .productGrid-indProduct-container:nth-child(3) .productGrid-indProduct-wrapper {margin: 0; padding: 0; border-top: 0;}
   }
   
   @media all and (min-width: 1024px) {
@@ -345,10 +298,6 @@ Author URI: http://www.adworkshop.com
   .mainEarthlife-featuredProducts-container {padding:0 0 80px;}
   .sidebarProduct-message {display:block;}
   
-  /*Product Listings*/
-  .productGrid-indProduct-container {width:50%;}
-  .productGrid-indProduct-container:nth-child(3) .productGrid-indProduct-wrapper {margin: 40px 0 0; padding: 50px 0 0; border-top: 1px solid #e3e3e3;}
-  
   /*Ind Product*/
   .indProduct-featuredContent-container {font-size:17px;}
   }
@@ -361,10 +310,6 @@ Author URI: http://www.adworkshop.com
   /*Main/Home*/
   .mainEarthlife-upperContentRegion-container h1 {font-size:64px;}
   .mainEarthlife-featuredProducts-txtContainer h2 {font-size: 20px;}
-  
-  /*Product Listings*/
-  .productGrid-indProduct-container {width:33.3333%;}
-  .productGrid-indProduct-container:nth-child(3) .productGrid-indProduct-wrapper {margin: 0; padding: 0; border-top: 0;} 
   }
       
   @media only screen and (max-width: 1199px)  {

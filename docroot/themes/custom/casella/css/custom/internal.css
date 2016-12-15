@@ -58,8 +58,7 @@ Author URI: http://www.adworkshop.com
   .internal-mainBody-generalTxt-container p+ol {margin-top: -10px;}
   h2+h3, h2+h4, h3+h4 {margin-top:30px !important;}
   
-  .internal-mainBody-generalTxt-container a {color: #0a253e; font-family: 'Gotham-Bold'; font-size:90%;}
-  .internal-mainBody-generalTxt-container a:after {content:'\f14c'; font-family:'FontAwesome'; display:inline-block; margin:0 0 0 3px; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-size:80%;}
+  .internal-mainBody-generalTxt-container a {color: #0a253e; font-family: 'Gotham-Bold';}
   .internal-mainBody-generalTxt-container a:hover {color: #4c9d2a;}
   
   /*Sidebar: Nav*/
@@ -352,6 +351,41 @@ Author URI: http://www.adworkshop.com
   .internal-indInteractivePanel-fullPromo-col-content-btn a:hover {border: 2px solid #0a253e; background:#FFF; color:#0a253e;}
   
 /* ======================================================= */
+/*    PRODUCTS                                             */
+/* ======================================================= */	
+  .productGrid-filter-container {}
+  .productGrid-filter-container label {display:block; font-family: 'Gotham-Black'; text-transform:uppercase; font-size:12px; color: #00263d; font-weight:normal; margin:8px 0 0;}
+  .productGrid-filter-container label:first-of-type {margin:0;}
+  .productGrid-filter-container input[type="checkbox"] {margin-right: 3px;}
+
+  .productGrid-container {margin:60px 0 0;}
+  .productGrid-products-groupTitle {padding:25px; font-family: 'Gotham-Black'; font-size:20px; color:#fff; background:#76be43; position:relative;}
+  .productGrid-products-groupTitle-wrapper {padding: 0 40px 0 0;}
+  a.productGrid-products-top {position:absolute; right:20px; top:23px; font-size:12px; text-align:center; display:inline-block; text-transform:uppercase; color:#b9dba5;}
+  a.productGrid-products-top:hover {color:#FFF;}
+  .productGrid-products-top span {display:block; font-size:13px; margin:0 0 2px;}
+  
+  .productGrid-products-container {margin:40px 0 0 0;}
+  .productGrid-indProduct-container {display:block; width:100%; font-size:14px; padding:0;}
+  .productGrid-indProduct-wrapper {margin: 40px 0 0; padding: 50px 0 0; border-top: 1px solid #e3e3e3;}
+  .productGrid-indProduct-container:nth-child(1) .productGrid-indProduct-wrapper {margin: 0; padding: 0; border-top: 0;}
+  .productGrid-indProduct-wrapper a {display:inline-block;}
+  .productGrid-indProduct-title {display: table-cell; vertical-align: bottom; font-family: 'Gotham-Bold'; font-size:16px; text-transform:uppercase;}
+  .productGrid-indProduct-image {line-height:0; margin:20px 0 0;}
+  .productGrid-indProduct-image img {width:100%; max-width:100%; height:auto;}
+  .productGrid-indProduct-teaser {margin:20px 0 0; line-height:1.7; color: #606060;}
+  
+  .productGrid-indProduct-wrapper a .productGrid-indProduct-title {
+  color:#00263d; -webkit-transition: color .2s ease-in-out; -moz-transition: color .2s ease-in-out; -o-transition: color .2s ease-in-out; -ms-transition: color .2s ease-in-out; transition: color .2s ease-in-out;}
+  .productGrid-indProduct-wrapper a:hover .productGrid-indProduct-title {color:#76be43;}
+  .productGrid-indProduct-wrapper a .productGrid-indProduct-image {
+  -webkit-transition: all .2s ease-in-out; -moz-transition: all .2s ease-in-out; -o-transition: all .2s ease-in-out; -ms-transition: all .2s ease-in-out; transition: all .2s ease-in-out;
+  }
+  .productGrid-indProduct-wrapper a:hover .productGrid-indProduct-image {
+  -webkit-transform: scale(1.05); -moz-transform: scale(1.05); -ms-transform: scale(1.05); -o-transform: scale(1.05); transform: scale(1.05);
+  }
+
+/* ======================================================= */
 /*    FULL WIDTH PROMO                                     */
 /* ======================================================= */
   .internal-fullWidthPromo-container {border-bottom: 1px solid #004a87;}
@@ -404,7 +438,7 @@ Author URI: http://www.adworkshop.com
   .internal-resourceSolution-upperContentCol-rightColContainer {display:block; margin: 50px 0 0;}
   
   .internal-resourceSolution-upperContentCol-rightColContainer h2 {color:#4c9d2a;}
-  .internal-resourceSolution-upperContentCol-rightColContainer ul {font-family: 'Source Sans Pro', sans-serif; font-size:14px; line-height: 1.6; margin: 0 0 0 15px; list-style: none;}
+  .internal-resourceSolution-upperContentCol-rightColContainer ul {font-family: 'Source Sans Pro', sans-serif; font-size:16px; line-height: 1.6; margin: 15px 0 0 15px !important; list-style: none;}
   .internal-resourceSolution-upperContentCol-rightColContainer li {margin:0 0 10px; position: relative;}
   .internal-resourceSolution-upperContentCol-rightColContainer li:before {content:'\f101'; font-family:'FontAwesome'; display:inline-block; position:absolute; top: 3px; left: -15px; font-size: 11px; color: #004a87;}
   .internal-resourceSolution-upperContentCol-rightColContainer li:after {content:''; display:block; width:30px; height:1px; border-top:1px solid #e2e2e2; margin:13px 0 10px;}
@@ -475,6 +509,59 @@ Author URI: http://www.adworkshop.com
   .no-touchevents .cutomerCare-btnRow-IndBtn-container a:hover .cutomerCare-btnRow-IndBtn-icon {color:#7abf23;}
   .no-touchevents .cutomerCare-btnRow-IndBtn-container a:hover .cutomerCare-btnRow-IndBtn-title,
   .no-touchevents .cutomerCare-btnRow-IndBtn-container a:hover .cutomerCare-btnRow-IndBtn-teaser {color:#FFF;}
+
+/* ======================================================= */
+/*    FEATURED PAGE LAYOUT: Your Home / Sm Business        */
+/* ======================================================= */ 
+	/*Btn-Row*/
+  .featured-btnRow-container {margin:0 0 50px 0;}
+	.featured-btnRow-container:after {content:''; display:block; height: 1px; border-bottom: 5px solid #e2e2e2; margin: 40px 0 70px 0;}
+  .featured-btnRow-IndBtn-container {display:block; width:100%; font-size:14px; margin:0 0 20px;}
+  .featured-btnRow-IndBtn-container:last-of-type {margin:0;}
+  .featured-btnRow-IndBtn-innerContainer {display:inline-block; width:100%; text-align:center;}
+  .featured-btnRow-IndBtn-wrapper {display:table; width:100%;}
+  
+  .featured-btnRow-IndBtn-innerWrapper,
+  .featured-btnRow-IndBtn-container a {
+  display:table-cell; vertical-align:middle; width:100%; padding:30px;  
+  webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;
+  -webkit-transition: all .2s ease-in-out; -moz-transition: all .2s ease-in-out; -o-transition: all .2s ease-in-out; -ms-transition: all .2s ease-in-out; transition: all .2s ease-in-out; 
+  }
+  .featured-btnRow-IndBtn-innerWrapper {background:#4c9d2a; border:2px solid #4c9d2a;}
+  .featured-btnRow-IndBtn-container a {background:#FFF; border:2px solid #e2e2e2;}
+  .featured-btnRow-IndBtn-container a .featured-btnRow-IndBtn-icon {font-size: 5vh; height: 50px; font-weight:normal; margin: 0 0 15px; color:#4c9d2a;}
+  .featured-btnRow-IndBtn-container a .featured-btnRow-IndBtn-title {font-family: 'Gotham-Bold'; font-weight: normal; font-size:17px; color:#0a253e; line-height:1.1;}
+  .featured-btnRow-IndBtn-innerWrapper .featured-btnRow-IndBtn-form {margin:15px 0 0;}
+  .no-touchevents .featured-btnRow-IndBtn-container a:hover {border:2px solid #0a253e; background:#0a253e;}
+  .no-touchevents .featured-btnRow-IndBtn-container a:hover .featured-btnRow-IndBtn-icon {color:#7abf23;}
+  .no-touchevents .featured-btnRow-IndBtn-container a:hover .featured-btnRow-IndBtn-title {color:#FFF;}
+
+	span.curbside:after,
+	span.dumpster:after,
+	span.quote:after,
+	span.contactUs:after {
+	font-family: 'casella-master';
+	display: block;
+	text-align: center;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	position: relative;
+	}
+
+	span.curbside:after {content: '\e90b';}
+	span.dumpster:after {content: '\e90a';}
+	span.quote:after {content: '\e909';}
+	span.contactUs:after {content: '\e90c';}
+
+	span.dumpster {font-size: 7vh; top: -7px; position: relative;}
+
+	.featured-page-generalTxt-container__yourHome {margin:0 0 50px}
   
 /* ======================================================= */
 /*    JOBS - MAIN                                          */
@@ -623,6 +710,25 @@ Author URI: http://www.adworkshop.com
   .indNews-submissionTag-wrapper span {margin:0 3px 0 0;}
   
 /* ======================================================= */
+/*    HIGHLIGHTS                                           */
+/* ======================================================= */ 
+  .highlights-indListing-container {display:block; width:100%; margin: 0 0 50px; padding: 0 0 50px; border-bottom: 3px solid #f4f4f4;}
+	.highlights-indListing-container:last-of-type {margin: 0; padding: 0; border-bottom: none;}
+  .highlights-indListing-colLeft-container {display:block; line-height:0; margin: 0 0 30px;}
+  .highlights-indListing-colRight-container {display:block;}
+  .highlights-indListing-colLeft-container img {width:100%; max-width:100%; height:auto;}
+  .highlights-indListing-title-container {font-family: 'Gotham-Black'; line-height: 1.3; color: #00263d; font-size: 18px;}
+  .highlights-indListing-teaser-container {margin: 10px 0 0; line-height:1.5;}
+	.highlights-indListing-teaser-container p:last-of-type {margin: 0;}
+  .highlights-indListing-btnContainer {margin:20px 0 0;}
+  .highlights-indListing-btnContainer a {
+  font-family: 'Gotham-Bold'; font-size:12px; color:#FFF; display:inline-block; background:#76be43; padding: 10px 20px 9px;
+  border: 2px solid #76be43; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;
+  }
+  .highlights-indListing-btnContainer a:hover {border: 2px solid #76be43; background:#FFF; color:#76be43;}
+  .highlights-indListing-btnContainer a:after {display:none;}
+
+/* ======================================================= */
 /*    PROVIDER SEARCH - MAIN                               */
 /* ======================================================= */ 
   /*Form*/
@@ -711,6 +817,7 @@ Author URI: http://www.adworkshop.com
   .indLocation-upperGrid-indElement-container {display:block; width:100%; font-size:14px; padding: 0; margin:0 0 50px;}
   .indLocation-upperGrid-indElement-label {color:#0a253e; font-family: 'Gotham-Bold'; font-size: 13px; text-transform:uppercase; margin: 0 0 10px; border-bottom: 1px solid #e4e4e4; padding: 0 0 8px;}
   .indLocation-upperGrid-indElement-blockContent {font-size: 15px; line-height:1.5;}
+	.indLocation-upperGrid-indElement-blockContent ul {list-style:disc; margin:5px 0 0 15px;}
   .indLocation-upperGrid-indElement-strong {color: #4c9d2a; font-family: 'Gotham-Bold';}
   .indLocation-upperGrid-indElement-strongHoliday {font-weight: 600; color: #004a87;}
   .indLocation-upperGrid-indElement-logo {line-height:0; max-width:300px;}
@@ -729,6 +836,25 @@ Author URI: http://www.adworkshop.com
   margin:15px 0 0; 
   }
   .indLocation-upperGrid-indElement-container a:hover {color: #004a87; background: #FFF; border:2px solid #004a87;}
+	
+	/*Conditional Block*/
+	.indLocation-upperGrid-indElement-container.indLocation--associated .indLocation-upperGrid-indElement-label {color: #4c9d2a;}
+	.indLocation-upperGrid-indElement-container.indLocation--associated .indLocation-upperGrid-indElement-blockContent ul {list-style:disc; margin:5px 0 0 15px;}
+	.indLocation-upperGrid-indElement-container.indLocation--associated .indLocation-upperGrid-indElement-blockContent ul li {margin: 0 0 10px;}
+	.indLocation-upperGrid-indElement-container.indLocation--associated .indLocation-upperGrid-indElement-blockContent ul li:last-of-type {margin: 0;}
+	.indLocation-upperGrid-indElement-container.indLocation--associated .indLocation-upperGrid-indElement-blockContent ul li span {display:block; font-style:italic; font-size: 14px;}
+	.indLocation-upperGrid-indElement-container a.list {
+	font-size: 14px;
+	color: #004a87;
+	background: none;
+	border:none;
+	padding: 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0; 
+	margin:0; 
+	}
+	.indLocation-upperGrid-indElement-container a.list:hover {color: #4c9d2a; background: none; border:none;}
   
   /*Second Tier CTA*/
   .indLocation-SecondTier-container {background: #4c9d2a; width:100%; border-top:2px solid #FFF;}
@@ -805,11 +931,65 @@ Author URI: http://www.adworkshop.com
   color: #FFF;
   border: 2px solid #FFF;
   }
+
+
+	/*************** NEW FRAME WORK ELEMENTS*/
+
+
+	/*Drop-Off*/
+	.indLocation-drop-off-time {padding: 40px 0; background: #7abf23; font-family: 'Gotham-Black'; color: #fff; font-size: 15px;}
+	.indLocation-drop-off-time__label {display: block; margin: 0 0 10px;}
+	.indLocation-drop-off-time ul {display:block}
+	.indLocation-drop-off-time ul li {display:block; margin: 5px 0 0;}
+	.indLocation-drop-off-time ul li:before {font-family:'FontAwesome'; content:'\f017'; display:inline-block; margin: 0 7px 0 0; color: #4c9d2a; font-size: 90%;}
+
+	/*Feed Body*/	
+	.indLocation-feed-body {
+	position: relative; width:100%; background:#FFF; padding: 50px 0 20px;
+	-moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	}
+
+	.indLocation-feed-body__items	{margin: 0 0 40px;}
+	.indLocation-feed-body__items:last-of-type	{margin: 0;}
+	.indLocation-feed-body__title-header {margin: 0 0 40px;}	
+	.indLocation-feed-body__title-header h2 {font-size: 18px; color: #0a253e;}
+	.indLocation-feed-body__title-header__description {font-family: 'Gotham-Book'; font-size: 14px; line-height: 1.4; margin: 10px 0 0;}
+	.indLocation-feed-body__title-header__description p:last-of-type {margin:0;}
+	.indLocation-feed-body__groups {font-size:0; margin: 0;}
+	.indLocation-feed-body__groups__ind-container {display:inline-block; vertical-align:top; width:100%; margin:0 0 30px; border-left: 4px solid #e4e4e4; padding: 0 0 0 15px;}
+	.indLocation-feed-body__groups__ind-container__title {font-family: 'Gotham-Bold'; color: #4c9d2a; font-size: 16px; margin: 0 0 7px;}
+	.indLocation-feed-body__groups__ind-container__description {font-family: 'Gotham-Book'; font-size: 13px; line-height: 1.4em;}
+	.indLocation-feed-body__groups__ind-container__description p:last-of-type {margin:0;}
+
+
+	.items-allowed .indLocation-feed-body__title-header h2:before,
+	.items-not-allowed .indLocation-feed-body__title-header h2:before {
+	font-family:'FontAwesome';
+	content:'\f00c';
+	display:inline-block;
+	margin: 0 10px 0 0;
+	visibility: baseline;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	}
+	.items-allowed .indLocation-feed-body__title-header h2:before {content:'\f00c'; color: #4c9d2a;}
+	.items-not-allowed .indLocation-feed-body__title-header h2:before {content:'\f00d'; color: #990000;}
+	
+
+.items-not-allowed .indLocation-feed-body__groups__ind-container__title {color: #990000;}
+
+	/*Global Statment*/
+	.indLocation-global-statment {width:100%; padding:30px 0; background:#0a253e; color:#FFF; font-family: 'Gotham-Bold'; font-weight: normal; font-size: 12px; line-height: 1.2rem;}
+	.indLocation-global-statment p:last-of-type {margin:0;}
+	.indLocation-global-statment span {margin:0 5px 0 0; color:#4c9d2a;}
+
   
 /* ======================================================= */
 /*    MEDIA QUERIES                                        */
 /* ======================================================= */	
-  @media all and (min-width: 480px) {}
+	@media all and (min-width: 480px) {
+	}
   
   @media all and (min-width: 600px) {
   /*Main Body*/
@@ -845,6 +1025,11 @@ Author URI: http://www.adworkshop.com
   
   /*Customer Care*/
   .cutomerCare-btnRow-IndBtn-container a .cutomerCare-btnRow-IndBtn-title {font-size:30px;}
+		
+	/*Featured Page Layout*/
+  .featured-btnRow-container {font-size:0; margin:0 0 50px -30px;}
+	.featured-btnRow-container:after {margin: 40px 0 70px 30px;}
+  .featured-btnRow-IndBtn-container {display:inline-block; width:50%; vertical-align:top; padding:0 0 0 30px; margin:0 0 30px;}
   
   /*Ind Job Listing*/
   .job-indListing-applyToggle {width:50%;}
@@ -866,6 +1051,9 @@ Author URI: http://www.adworkshop.com
   .news-indListing-title-container {font-size: 22px;}
   a.news-indListing-submissionTag-wrapper {display: inline-block; margin:0;}
   .indNews-submissionDate-wrapper, a.indNews-submissionTag-wrapper {display: inline-block; text-align:left; margin: 0;}
+		
+	/*Highlights*/
+  .highlights-indListing-title-container {font-size: 20px;}
   
   /*Provider Search - Main*/
   .providerSearch-searchForm-container {padding: 40px;}
@@ -877,10 +1065,8 @@ Author URI: http://www.adworkshop.com
   .providerSearch-searchForm-zip {display:table-cell; vertical-align:top;}
   
   /*Provider - Ind*/
-  .indLocation-upperGrid-indElement-container {display:inline-block; vertical-align:top; width:50%;}
-  .indLocation-upperGrid-indElement-container.indLocation--address {padding:0 25px 0 0;}
-  .indLocation-upperGrid-indElement-container.indLocation--bill {padding:0 0 0 25px;}
-  .indLocation-upperGrid-indElement-container.indLocation--holiday {width:100%;}
+	.indLocation-upperGrid-wrapper {margin: 0 -50px 0 0; width: auto;}
+	.indLocation-upperGrid-indElement-container {display:inline-block; vertical-align:top; width:50%; padding:0 50px 0 0;}
   .indLocation-SecondTier-indElement {width:50%;}
   .indLocation-SecondTier-indElement:nth-child(1),
   .indLocation-SecondTier-indElement:nth-child(3) {border-right:2px solid #FFF;}
@@ -891,6 +1077,7 @@ Author URI: http://www.adworkshop.com
   .indLocation-holidayPanel-title h2 {font-size:35px;}
   .indLocation-holidayPanel-title-location {font-size: 18px;}
   a.indLocation-holidayPanel-close {left: 50%; transform: translateX(-50%);}
+	.indLocation-feed-body__title-header h2 {font-size: 24px;}
   }
   
   @media all and (min-width: 768px) {
@@ -915,6 +1102,13 @@ Author URI: http://www.adworkshop.com
   .internal-indInteractivePanel-fullPromo-colWrapper {display: table; table-layout: fixed; width: 100%; margin: 20px 0 0;}
   .internal-indInteractivePanel-fullPromo-col-image-container {display: table-cell; width: 50%; padding: 0 30px 0 0; vertical-align: top;}
   .internal-indInteractivePanel-fullPromo-col-content-container {display: table-cell; vertical-align: top;}
+		
+	/*Product Listings*/
+	.productGrid-filter-container label {display:inline-block; margin:0 0 0 20px;}
+	.productGrid-products-container {font-size:0; margin:40px 0 0 -50px;}
+	.productGrid-products-groupTitle {font-size:24px;}
+	.productGrid-indProduct-container {display:inline-block; vertical-align:top; width:50%; padding:0 0 0 50px;}
+	.productGrid-indProduct-container:nth-child(2) .productGrid-indProduct-wrapper {margin: 0; padding: 0; border-top: 0;}
   
   /*Full Width Promo*/
   .internal-fullWidthPromo-imageContainer {display: table; height: 100%;}
@@ -941,6 +1135,11 @@ Author URI: http://www.adworkshop.com
   .news-indListing-container {display:table; table-layout:fixed;}
   .news-indListing-colLeft-container {display:table-cell; vertical-align:top; width:33.3333%; padding:0 50px 0 0; margin:0;}
   .news-indListing-colRight-container {display:table-cell; vertical-align:middle;}
+		
+	/*Highlights*/
+  .highlights-indListing-container {display:table; table-layout:fixed;}
+  .highlights-indListing-colLeft-container {display:table-cell; vertical-align:top; width:33.3333%; padding:0 50px 0 0; margin:0;}
+  .highlights-indListing-colRight-container {display:table-cell; vertical-align:middle;}
   
   /*Jobs*/
   .job-mainListings-container .footable .form-control.stateInput {margin:0;}
@@ -960,9 +1159,10 @@ Author URI: http://www.adworkshop.com
   .providerSearch-postSearch-container h2 span {display:inline-block; font-size:150%; margin:0;}
   
   /*Provider - Ind*/
-  .indLocation-holidayPanel-title h2 {font-size:40px;}
+  .indLocation-feed-body__title-header__description {font-size: 16px; line-height: 1.5;}
+		
+	.indLocation-holidayPanel-title h2 {font-size:40px;}
   .indLocation-holidayPanel-title-location {font-size: 20px;}
-  
   
   .indLocation-contactPanel-container {display:table; table-layout:fixed;}
   .indLocation-contactPanel-colLeft {display:table-cell; vertical-align:top; width:350px; border-right:1px solid #17426a; padding:0 50px 0 0; text-align:right;}
@@ -993,12 +1193,16 @@ Author URI: http://www.adworkshop.com
   .internalFeaturedMedia.large .internal-slider-caption-wrapper .rsABlock {background-color: #fff; border: none; padding: 40px;}
   .internalFeaturedMedia.inBodyContent .internal-slider-caption-wrapper .rsABlock {padding: 40px;}
   .internalFeaturedMedia.inBodyContent .internal-slider-caption-title {font-size: 18px; color: #0a253e;}
+		
+	/*Product Listings*/
+	.productGrid-indProduct-container {width:33.3333%;}
+	.productGrid-indProduct-container:nth-child(3) .productGrid-indProduct-wrapper {margin: 0; padding: 0; border-top: 0;}
   
   /*Full Width Promo*/
   .internal-fullWidthPromo-title {font-size:40px;}
   
   /*Customer Care*/
-  .cutomerCare-btnRow-IndBtn-container a .cutomerCare-btnRow-IndBtn-title {font-size:24px;} 
+  .cutomerCare-btnRow-IndBtn-container a .cutomerCare-btnRow-IndBtn-title {font-size:24px;}
   
   /*Provider - Ind*/
   .indLocation-SecondTier-indElement {width:25%;}
@@ -1009,10 +1213,18 @@ Author URI: http://www.adworkshop.com
   .indLocation-SecondTier-indElement:nth-child(2),
   .indLocation-SecondTier-indElement:nth-child(3),
   .indLocation-SecondTier-indElement:nth-child(4) {border-bottom:none;}
+	.indLocation-drop-off-time {font-size: 16px;}
+	.indLocation-drop-off-time ul li {display:inline-block; vertical-align: top; margin:0 20px 0 0;}
+	.indLocation-feed-body__groups {margin: 0 -50px 0 0;}
+	.indLocation-feed-body__groups__ind-container {width:50%; padding: 0 50px 0 0; border:none;}
+	.indLocation-feed-body__title-header h2 {font-size: 28px;}
   }
   
   @media all and (min-width: 1024px) {
-  /*Ind Job Listing*/
+  /*Featured Page Layout*/
+  .featured-btnRow-IndBtn-container {width:25%;}
+		
+	/*Ind Job Listing*/
   .job-indListing-framework-container {display:table; table-layout:fixed;}
   .job-indListing-framework-referenceContainer {display:table-cell; vertical-align:top; width:320px; padding:0 40px 0 0;}
   .job-indListing-framework-contentContainer {display:table-cell; vertical-align:top;}
@@ -1021,6 +1233,9 @@ Author URI: http://www.adworkshop.com
   
   /*News*/
   .news-indListing-title-container {font-size: 26px;}
+		
+	/*Highlights*/
+  .highlights-indListing-title-container {font-size: 24px; line-height: 1.2;}
   
   /*Provider - Ind*/
   .indLocations-associatedZipCodes li {width:33.3333%;}
@@ -1079,6 +1294,10 @@ Author URI: http://www.adworkshop.com
   .internal-indInteractivePanel-fullPromo-colWrapper {display: block; margin: 0;}
   .internal-indInteractivePanel-fullPromo-col-image-container {display: block; width: 100%; padding: 0;}
   .internal-indInteractivePanel-fullPromo-col-content-container {display: block;}
+		
+	/*Product Listings*/
+	.productGrid-indProduct-container {width:50%;}
+	.productGrid-indProduct-container:nth-child(3) .productGrid-indProduct-wrapper {margin: 40px 0 0; padding: 50px 0 0; border-top: 1px solid #e3e3e3;}
   
   /*Resource Solutions*/
   .internal-resourceSolution-upperContentCol-containter {display:block;}
@@ -1095,6 +1314,9 @@ Author URI: http://www.adworkshop.com
   
   /*Customer Care*/
   .cutomerCare-btnRow-IndBtn-innerWrapper .cutomerCare-btnRow-IndBtn-title {font-size:20px;}
+		
+	/*Featured Page Layout*/
+  .featured-btnRow-IndBtn-innerWrapper .featured-btnRow-IndBtn-title {font-size:20px;}
   
   /*Ind Job Listing*/
   .job-indListing-framework-container {display:block;}
@@ -1108,15 +1330,19 @@ Author URI: http://www.adworkshop.com
   
   /*Provider - Ind*/
   .indLocation-upperGrid-indElement-container {width:33.3333%;}
-  .indLocation-upperGrid-indElement-container.indLocation--address {padding: 0 50px 0 0}
-  .indLocation-upperGrid-indElement-container.indLocation--bill {padding: 0 50px 0 0}
-  .indLocation-upperGrid-indElement-container.indLocation--holiday {width:33.3333%; padding:0;}
+	.indLocation-upperGrid-wrapper.conditional-block .indLocation-upperGrid-indElement-container {width:25%;}
   .indLocations-associatedZipCodes li {width:50%;}
+	.indLocation-drop-off-time__label {display: inline-block; margin: 0 15px 0 0;}
+	.indLocation-drop-off-time ul {display:inline-block}
+	.indLocation-feed-body {padding: 80px 0 40px;}
+	.indLocation-feed-body__title-header h2 {font-size: 33px;}
+	.indLocation-upperGrid-container {padding: 80px 0 50px;}
   }
   
   @media all and (min-width: 1300px) {
   /*Provider - Ind*/
-  .contactUs-personalInformation-element.contactUs-lastName,
+	.indLocation-feed-body__groups__ind-container {width:33.3333%;}
+	.contactUs-personalInformation-element.contactUs-lastName,
   .contactUs-personalInformation-element.contactUs-firstName,
   .contactUs-personalInformation-element.contactUs-email {width:33.3333%;}  
   }
@@ -1151,6 +1377,9 @@ Author URI: http://www.adworkshop.com
   /*Customer Care*/
   .cutomerCare-btnRow-IndBtn-innerWrapper .cutomerCare-btnRow-IndBtn-title {font-size:24px;}
   .cutomerCare-btnRow-IndBtn-container a .cutomerCare-btnRow-IndBtn-title {font-size:30px;}
+		
+	/*Featured Page Layout*/
+  .featured-btnRow-IndBtn-container a .featured-btnRow-IndBtn-title {font-size:20px;}
   
   /*Ind Job Listing*/
   .job-indListing-framework-container {display:table; table-layout:fixed;}
@@ -1170,6 +1399,10 @@ Author URI: http://www.adworkshop.com
   /*Interactive Content*/  
   .indGalleryWrapper {width: 20%;}
   .indNestedTab-title {font-size:36px;}
+		
+	/*Product Listings*/
+	.productGrid-indProduct-container {width:33.3333%;}
+	.productGrid-indProduct-container:nth-child(3) .productGrid-indProduct-wrapper {margin: 0; padding: 0; border-top: 0;}
   
   /*Resource Solutions*/
   .internal-resourceSolution-indSubGridElement-title {font-family: 'Gotham-Bold'; font-size:18px; color:#0a253e; line-height:1.3;}
@@ -1178,7 +1411,7 @@ Author URI: http://www.adworkshop.com
   
   @media all and (min-width: 1800px) {
   /*Provider - Ind*/
-  .indLocations-associatedZipCodes li {width:25%;}   
+  .indLocations-associatedZipCodes li {width:25%;}
   }
       
   @media only screen and (max-width: 1199px) {}

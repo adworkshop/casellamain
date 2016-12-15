@@ -86,6 +86,12 @@
 <div class="globalWidth">
 
   {{ highlighted }}
+
+  {# drop a notification if this item is unpublished #}
+  {% if logged_in and not node.isPublished() %}
+    {% include theme_path ~ "/templates/includes/unpublished-notice.html.twig" %}
+  {% endif %}
+
   {{ help }}
 
   <div class="mainEarthlife-breakSep-container">
@@ -109,8 +115,6 @@
     <div class="mainEarthlife-featuredProducts-viewAll-triangle"><span class="fa fa-caret-down" aria-hidden="true"></span></div>
   </div>
 </div>
-
-{#{% for key in content|keys %}{{ kint(key) }}{% endfor %}#}
 
 <div class="internal-fullWidthPromo-container">
   <div class="internal-fullWidthPromo-imageContainer">

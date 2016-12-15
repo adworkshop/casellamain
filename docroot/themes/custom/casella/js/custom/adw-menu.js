@@ -56,6 +56,11 @@ function openChildClick(event) {
     return;
   }
 
+  $parent.siblings('li.over').each(function(index, element) {
+    jQuery(element).find('> ul').slideUp(200);
+    jQuery(element).removeClass('over');
+  });
+
   $parent.addClass('over');
   $targetUl.slideDown(200);
 }

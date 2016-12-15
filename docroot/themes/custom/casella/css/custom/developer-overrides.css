@@ -46,10 +46,6 @@
     margin: 5px 0 0 15px;
 }
 
-.landing-page #block-casella-local-tasks a {
-    color: #FFF;
-}
-
 form label.form-required {
     color: #4c9d2a;
 }
@@ -97,4 +93,67 @@ nav.footer-lowerNav-container ul {display: none;}
     nav.footer-lowerNav-container select {
         display: none;
     }
+}
+
+.locations-map #block-casella-local-tasks ul {
+    border-bottom: none;
+    padding: 0;
+}
+
+/* Locations search type update. */
+.locationMap-searchForm-container input[type="text"] {height: 60px; line-height: 60px; padding: 0 50px 0 20px; font-size: 16px; border: 2px solid #EEE;background-image: none}
+.locationMap-searchForm-container input[type="text"]:hover,
+.locationMap-searchForm-container input[type="text"]:focus,
+.locationMap-searchForm-container input[type="text"]:active {outline:none; background: #ffffff;}
+
+.locationMap-listView-indListing-container.office .locationMap-listView-indListing-marker:before {content:'\e906'; color:#2f559a;}
+
+/* Fixing a class spelling error - containter != container. */
+.internal-resourceSolution-upperContentCol-container {display:block; width:100%;}
+.internal-resourceSolution-subGridElement-container {background:#eff6fa; width:100%; padding:60px 0; margin: 0;}
+.internal-resourceSolution-indSubGridElement-container {display:inline-block; vertical-align:top; width:100%; padding:0; font-size:14px; text-align:center;}
+.internal-resourceSolution-indSubGridElement-container:nth-child(1) .internal-resourceSolution-indSubGridElement-wrapper {margin: 0; border-top: none; padding: 0;}
+@media all and (min-width: 600px) {
+    .internal-resourceSolution-indSubGridElement-container {width:50%; padding:0 0 0 50px;}
+    .internal-resourceSolution-indSubGridElement-container:nth-child(2) .internal-resourceSolution-indSubGridElement-wrapper {margin: 0; border-top: none; padding: 0;}
+}
+@media all and (min-width: 840px) {
+    .internal-resourceSolution-upperContentCol-container {display:table; table-layout:fixed;}
+}
+@media all and (min-width: 1200px) {
+    .internal-resourceSolution-upperContentCol-container {display:block;}
+    .internal-resourceSolution-subGridElement-container {padding:80px 0; margin: 50px 0 0;}
+    .internal-resourceSolution-indSubGridElement-container {width:25%;}
+}
+@media all and (min-width: 1400px) {
+    .internal-resourceSolution-upperContentCol-container {display: table; table-layout: fixed;}
+}
+
+/* Fix an issue with the differences between the zozo inits on mobile/desktop. */
+.locationsMap-panel.content-map {
+    position: relative !important; overflow: hidden; display: block;
+}
+@media all and (min-width: 1024px) {
+    .locationsMap-panel.content-map {
+        position: absolute !important;
+    }
+}
+
+/* replacing .featured-page-generalTxt-container__yourHome selector */
+.id_686 .internal-mainBody-generalTxt-container {margin:0 0 50px}
+
+/* Show kint debug output above the nav. */
+.kint {
+    z-index: 4001;
+    position: relative;
+}
+
+.panelControllers {
+    display: none;
+}
+
+/* Give the deeplink target a tags a margin top to compensate for the fixed header. */
+.deeplink_target {
+    top:-70px;
+    position: absolute;
 }

@@ -32,12 +32,10 @@
  */
 #}
 
-<div class="indLocation-upperGrid-indElement-label">Upcoming Holiday:</div>
-<div class="indLocation-upperGrid-indElement-blockContent">
+<div class="indLocation-upperGrid-indElement-blockContent holidayPreview">
   <div class="indLocation-upperGrid-indElement-strong">{{ fields.field_title.content }} ({{ fields.field_date.content }})</div>
   <ul class="indLocation-upperGrid-indElement-list">
     <li>There will be <{{ fields.field_service_schedule.element_type }}{{ fields.field_service_schedule.element_attributes }}>{{ fields.field_service_schedule.content }}</{{ fields.field_service_schedule.element_type }}> in your service.</li>
     <li>Customer Service will be <{{ fields.field_service_status.element_type }}{{ fields.field_service_status.element_attributes }}>{{ fields.field_service_status.content }}</{{ fields.field_service_status.element_type }}> on {{ fields.field_title.content }}.</li>
   </ul>
 </div>
-<a title="" class="holidayPanelTrigger"><i class="fa fa-calendar" aria-hidden="true"></i> Holiday Schedule</a>

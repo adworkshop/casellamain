@@ -39,24 +39,27 @@
   ]
 %}
 
-<div class="productGrid-products-groupTitle">
-  <div class="productGrid-products-groupTitle-wrapper">Products</div>
-</div>
 
-<div{{ attributes.addClass(classes) }}>
+{% if rows %}
+  <div class="productGrid-products-groupTitle">
+    <div class="productGrid-products-groupTitle-wrapper">Products</div>
+  </div>
 
-  {{ rows }}
-  {{ empty }}
-  {{ pager }}
+  <div{{ attributes.addClass(classes) }}>
 
-  {{ attachment_after }}
-  {{ more }}
+    {{ rows }}
+    {{ empty }}
+    {{ pager }}
 
-  {% if footer %}
-    <footer>
-      {{ footer }}
-    </footer>
-  {% endif %}
+    {{ attachment_after }}
+    {{ more }}
 
-  {{ feed_icons }}
-</div>
+    {% if footer %}
+      <footer>
+        {{ footer }}
+      </footer>
+    {% endif %}
+
+    {{ feed_icons }}
+  </div>
+{% endif %}

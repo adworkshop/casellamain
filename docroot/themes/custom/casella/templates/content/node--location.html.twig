@@ -19,10 +19,36 @@
     {% include "/" ~ theme_path ~ "/templates/includes/location-alert.html.twig" %}
   {% endif %}
 
+  {{ content.field_dropoff_hours }}
+
+  {% if content.field_acceptable_waste|render|trim or content.field_unacceptable_waste|render|trim %}
+    <div class="indLocation-feed-body">
+      <div class="globalWidth">
+        {{ content.field_acceptable_waste }}
+
+        {{ content.field_unacceptable_waste }}
+      </div>
+    </div>
+  {% endif %}
+
+  {% if 'Transfer' == serviceType %}
+    <div class="indLocation-global-statment">
+      <div class="globalWidth">
+        <p><span class="fa fa-flag" aria-hidden="true"></span> {{ chargesWarning }}</p>
+      </div>
+    </div>
+  {% endif %}
+
   <div class="indLocation-upperGrid-container">
     <div class="globalWidth">
 
       {{ highlighted }}
+
+      {# drop a notification if this item is unpublished #}
+      {% if logged_in and not node.isPublished() %}
+        {% include theme_path ~ "/templates/includes/unpublished-notice.html.twig" %}
+      {% endif %}
+
       {{ help }}
 
       <div class="indLocation-upperGrid-wrapper">
@@ -48,7 +74,7 @@
             <div>PO Box 1371</div>
             <div>Williston, VT 05495-1371</div>
           </div>
-          <a href="#" target="_blank;" title=""><i class="fa fa-credit-card" aria-hidden="true"></i> Pay Online</a>
+          <a href="https://secure3.i-doxs.net/casella/default.asp" target="_blank;" title=""><i class="fa fa-credit-card" aria-hidden="true"></i> Pay Online</a>
         </div>
         <!--END Bill-->
 
@@ -104,9 +130,8 @@
   <!--Second Tier CTA's-->
   <div class="indLocation-SecondTier-container">
     <div class="indLocation-SecondTier-wrapper">
-      <div class="indLocation-SecondTier-indElement"><a href="{{ serviceUrl }}" title="">Schedule a pick up</a></div>
-      <div class="indLocation-SecondTier-indElement"><a href="{{ serviceUrl }}" title="">Sign up for Service</a></div>
-      <div class="indLocation-SecondTier-indElement"><a href="{{ dumpsterUrl }}" title="">Rent a Dumpster</a></div>
+      <div class="indLocation-SecondTier-indElement"><a href="{{ serviceUrl }}" title="">Request a Quote</a></div>
+      <div class="indLocation-SecondTier-indElement"><a href="{{ faqUrl }}#faq_411_target" title="">Frequently Asked Questions</a></div>
       <div class="indLocation-SecondTier-indElement"><a href="javascript:void(0)" title="" class="indLocation-contactPanel-trigger">Contact Us</a></div>
     </div>
   </div>
@@ -168,7 +193,7 @@
   {% set longitude = content.field_longitude|render|striptags|trim %}
   {% if latitude and longitude %}
     <!--Map-->
-    <div class="indLocation-staticGoogleMap" style="height:400px; background:url(https://maps.googleapis.com/maps/api/staticmap?center={{ latitude ~ ',' ~ longitude }}&zoom=14&size=3980x712&key=AIzaSyAl0whz4aUUDJH4GIpbK2Rz65MbC6nE8io
+    <div class="indLocation-staticGoogleMap" style="height:400px; background:url(https://maps.googleapis.com/maps/api/staticmap?markers=size:small%7C{{ latitude ~ ',' ~ longitude }}&zoom=12&size=640x640&scale=2&key=AIzaSyAl0whz4aUUDJH4GIpbK2Rz65MbC6nE8io
   ) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
       {% if mapLink %}
         <a href="{{ mapLink }}" target="_blank" title="">
@@ -181,10 +206,9 @@
 
   <!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
 
-  {% set hasSidebar = node_content.views_block__hr_block_2 or content.field_sidebar_promotions|render|adw_strip_comments|trim %}
-
   <!--Main Body Region-->
-  <div class="internal-mainBody-container{% if hasSidebar %} withSidebar noSidebarNav{% endif %}">
+  {# The hr view block is lazy loaded, so we cant check if it exists yet. Assume a sidebar. #}
+  <div class="internal-mainBody-container withSidebar noSidebarNav">
     <div class="globalWidth">
 
       <!--Grid-->
@@ -193,14 +217,11 @@
         <!--Col - Content-->
         <div class="internal-mainBody-contentContainer">
 
-          {% if content.field_towns_cities|render|adw_strip_comments|trim %}
-            <div class="internal-mainBody-generalTxt-container">
+          {{ content.body }}
 
-              <h2>Towns/Cities this location services</h2>
-
-              {{ content.field_towns_cities }}
-
-            </div>
+          {% if 'Hauling' == serviceType %}
+            {# internal-mainBody-generalTxt-container class is a part of the locations block wrapper. #}
+            {{ node_content.views_block__locations_block_3__towns_on_location }}
           {% endif %}
 
         </div>
@@ -208,17 +229,15 @@
 
         <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
 
-        {% if hasSidebar %}
-          <!--Col - Sidebar-->
-          <div class="internal-mainBody-sidebarContainer">
+        <!--Col - Sidebar-->
+        <div class="internal-mainBody-sidebarContainer">
 
-            {{ node_content.views_block__hr_block_2 }}
+          {{ node_content.views_block__hr_block_2 }}
 
-            {{ content.field_sidebar_promotions }}
+          {{ content.field_sidebar_promotions }}
 
-          </div>
-          <!--END Col - Sidebar-->
-        {% endif %}
+        </div>
+        <!--END Col - Sidebar-->
 
       </div>
       <!--END Grid-->

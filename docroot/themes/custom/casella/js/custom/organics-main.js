@@ -25,10 +25,20 @@ jQuery(document).ready(function() {
       offset_top: 0,
       parent: ".sectionWrapper",
       spacer: ".sticky-spacer",
-      no_recalc: true
-    });
+    })
+      .on("sticky_kit:unstick", resizeStickySpacer);
   }
 });
+
+function resizeStickySpacer() {
+  var $img = jQuery('.sectionNav-logoContainer img'),
+    imgHeight = $img.height(),
+    imgWidth = $img.width(),
+    $container = jQuery('.sectionNav-logoContainer'),
+    imgPadding = parseInt($container.css('padding-top')) + parseInt($container.css('padding-bottom'));
+
+  jQuery('.sticky-spacer').css('height', (imgHeight / imgWidth * 375) + imgPadding + 'px');
+}
 
 function setupOrganicsResize() {
   var $organicMain = jQuery('.mainOrganics-upperContentRegion-leftCol-container img'),
@@ -66,7 +76,7 @@ function organicsResizeHandler(event) {
       jQuery("div.mainOrganics-upperContentRegion-rightCol-captionContainer").insertAfter("div.mainOrganics-upperContentRegion-rightCol-captionSpacer");
       jQuery("div.mainOrganics-upperContentRegion-leftCol-container").insertBefore("div.mainOrganics-upperContentRegion-rightCol-container");
       jQuery(".organics .searchFormPanelFormContainer").insertAfter(".organics .searchFormPanelTxtContainer");
-      jQuery(".organics .searchFormPanelFormContainer").insertAfter(".organics .searchFormPanelTxtContainer");
+      resizeStickySpacer();
     }
   }
 }

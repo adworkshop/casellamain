@@ -48,7 +48,11 @@
         <ul{{ attributes.addClass('adwMenu') }}>
         {% set liClassingGlobal = liClassingGlobal|merge(['tierMenu']) %}
       {% else %}
-        <ul class="subMenu">
+        {% set isActive = false %}
+        {% for item in items if item.in_active_trail %}
+          {% set isActive = true %}
+        {% endfor %}
+        <ul class="subMenu"{% if isActive %} style="display:block;"{% endif %}>
       {% endif %}
         {% for item in items %}
           {% set liClassingLocal = [] %}
@@ -58,8 +62,14 @@
             {% set liClassingLocal = liClassingLocal|merge(['last']) %}
           {% endif %}
 
-          {% if not item.below and menu_level == 1 %}
-            {% set liClassingLocal = liClassingLocal|merge(['empty']) %}
+          {% if item.below %}
+            {% for subitem in item.below if subitem.in_active_trail %}
+              {% set liClassingLocal = liClassingLocal|merge(['over']) %}
+            {% endfor %}
+          {% else %}
+            {% if menu_level == 1 %}
+              {% set liClassingLocal = liClassingLocal|merge(['empty']) %}
+            {% endif %}
           {% endif %}
 
           <li{{ item.attributes.addClass(liClassingGlobal, liClassingLocal) }}>

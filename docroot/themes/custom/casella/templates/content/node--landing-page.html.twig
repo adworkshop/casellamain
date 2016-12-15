@@ -78,7 +78,7 @@
       <div class="home-headerPanel-listContainer">
         <ul>
           {% for key in content.field_verticals_boxes['#items']|keys %}
-            <li><a href="{{ content.field_verticals_boxes[key]['#paragraph'].field_link[0].uri }}">{{ content.field_verticals_boxes[key]['#paragraph'].field_link[0].title }}</a></li>
+            <li>{{ link(content.field_verticals_boxes[key]['#paragraph'].field_link[0].title, content.field_verticals_boxes[key]['#paragraph'].field_link[0].uri) }}</li>
           {% endfor %}
         </ul>
       </div>
@@ -86,6 +86,12 @@
   </div>
 
   {{ highlighted }}
+
+  {# drop a notification if this item is unpublished #}
+  {% if logged_in and not node.isPublished() %}
+    {% include theme_path ~ "/templates/includes/unpublished-notice.html.twig" %}
+  {% endif %}
+
   {{ help }}
 
   {{ content.field_verticals_boxes }}

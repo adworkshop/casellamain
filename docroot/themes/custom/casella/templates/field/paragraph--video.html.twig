@@ -3,11 +3,21 @@
 {% embed "/" ~ theme_path ~ "/templates/includes/paragraph--zozo-tab.html.twig" %}
   {% block tabContent %}
     <div class="internal-indInteractivePanel-gridColLeft">
-      <!--Video-->
-      <div class="videoContainer">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ field_youtube_id_value }}?modestbranding=1&autohide=1&showinfo=0&rel=0" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <!--END Video-->
+      {% if field_vimeo_embed_value %}
+        <!--Video-->
+        <div class="videoContainer">
+          <iframe src="https://player.vimeo.com/video/{{ field_vimeo_embed_value }}" width="640" height="355" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+        <!--END Video-->
+      {% endif %}
+
+      {% if field_youtube_id_value %}
+        <!--Video-->
+        <div class="videoContainer">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ field_youtube_id_value }}?modestbranding=1&autohide=1&showinfo=0&rel=0" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <!--END Video-->
+      {% endif %}
     </div>
   {% endblock %}
 {% endembed %}

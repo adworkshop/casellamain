@@ -1,0 +1,217 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+ *   Only method names starting with "get", "has", or "is" and a few common
+ *   methods such as "id", "label", and "bundle" are available. For example:
+ *   - node.getCreatedTime() will return the node creation timestamp.
+ *   - node.hasField('field_example') returns TRUE if the node bundle includes
+ *     field_example. (This does not indicate the presence of a value in this
+ *     field.)
+ *   - node.isPublished() will return whether the node is published or not.
+ *   Calling other methods, such as node.delete(), will result in an exception.
+ *   See \Drupal\node\Entity\Node for a full list of public properties and
+ *   methods for the node object.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+
+{# Check if we need withSidebar or noSidebarNav wrapper classes here. #}
+{% set hasPromos = content.field_sidebar_promotions|render|adw_strip_comments|trim != '' %}
+{% set hasNav = sidebar_nav.mainnavigation|render|adw_strip_comments|trim != '' or sidebar_nav.footer|render|adw_strip_comments|trim != '' %}
+{% set wrapperClasses = '' %}
+{% if hasPromos or parentLogo or sidebar_nav %}
+  {% set wrapperClasses = ' withSidebar' %}
+
+  {% if not hasNav %}
+    {% set wrapperClasses = wrapperClasses ~ ' noSidebarNav' %}
+  {% endif %}
+{% endif %}
+
+{% block preTitleSection %}{% endblock %}
+
+{% block titleSection %}
+<div class="internal-headerPanel-container">
+  <div class="globalWidth">
+    {% block title %}
+      <h1>{{ title }}</h1>
+
+      {{ content.field_hero_text }}
+
+      {% block heroBreadcrumbs %}
+        {% if breadcrumbOverride %}
+          <div class="sectionMenu-breadCrumb-container cf{% if not subsection %} not-subsection{% endif %}">
+            <div class="globalWidth">
+              <div class="sectionMenu-breadCrumb-wrapper">
+                {{ breadcrumbOverride }}
+              </div>
+            </div>
+          </div>
+        {% else %}
+          <!--Breadcrumbs-->
+          {{ node_content.casella_breadcrumbs }}
+        {% endif %}
+      {% endblock %}
+    {% endblock %}
+  </div>
+</div>
+{% endblock %}
+
+{% block featuredMedia %}{% endblock %}
+
+<!--Main Body Region-->
+<div class="internal-mainBody-container{% block wrapperClasses %}{{ wrapperClasses }}{% endblock %}">
+  <div class="globalWidth">
+
+    {% block contentGrid %}
+      {% block layoutContainer %}
+
+        {{ node_upper_content }}
+
+        <!--Grid-->
+        <div class="internal-mainBody-layoutContainer{% if content.field_sidebar_promotions %} withSidebar{% endif %}">
+      {% endblock %}
+
+        {% block left_sidebar %}{% endblock %}
+
+        <!--Col - Content-->
+        <div class="internal-mainBody-contentContainer">
+
+          {% if not full_width %}
+            {{ content.field_slider_images }}
+          {% endif %}
+
+          {{ highlighted }}
+
+          {# drop a notification if this item is unpublished #}
+          {% if logged_in and not node.isPublished() %}
+            {% include theme_path ~ "/templates/includes/unpublished-notice.html.twig" %}
+          {% endif %}
+
+          {{ help }}
+
+          {{ content.field_upper_content }}
+
+
+          {% block bodyContent %}
+            <div class="internal-mainBody-generalTxt-container{% if twoCol %} twoCol{% endif %}">
+              {{ content.field_logo }}
+              {{ content.body }}
+
+              {{ node_middle_content }}
+
+              {% if postByCat %}
+                {{ postByCat }}
+              {% endif %}
+
+            </div>
+
+            {% if addThis %}
+              {% include "/" ~ theme_path ~ "/templates/includes/add-this.html.twig" %}
+            {% endif %}
+
+            {{ node_lower_content }}
+
+            {{ providerSearchResults }}
+
+          {% endblock %}
+        </div>
+
+        {% block right_sidebar %}
+          {% if hasPromos or parentLogo or hasNav %}
+            <!--Col - Sidebar-->
+            <div class="internal-mainBody-sidebarContainer">
+
+              {% if parentLogo %}
+                <div class="sidebar-sectionSpecific-logo">
+                  <a href="{{ parentLogoPath }}" title="">
+                    <img src="{{ parentLogo }}" alt="" />
+                  </a>
+                </div>
+              {% endif %}
+
+              {% if sidebar_nav.mainnavigation|render|adw_strip_comments|trim %}
+                {{ sidebar_nav.mainnavigation }}
+              {% else %}
+                {{ sidebar_nav.footer }}
+              {% endif %}
+
+              {{ content.field_sidebar_promotions }}
+
+            </div>
+            <!--END Col - Sidebar-->
+          {% endif %}
+        {% endblock %}
+      </div>
+      <!--END Grid-->
+    {% endblock %}
+
+  </div>
+</div>
+
+{% if full_width %}
+  {{ content.field_slider_images }}
+{% endif %}
+
+{% if tab_anchors|length %}
+  {% include "/" ~ theme_path ~ "/templates/includes/tab-panels.html.twig" %}
+{% endif %}
+
+{% block resourceSolutions %}{% endblock %}
+
+{{ content.field_full_width_promotion }}

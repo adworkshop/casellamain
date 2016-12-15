@@ -1,4 +1,4 @@
-{% extends theme_path ~ "/templates/content/node--subsection.html.twig" %}
+{% extends theme_path ~ "/templates/content/node--subsection--earthlife.html.twig" %}
 
 {% block title %}
   {{ parent() }}
@@ -24,6 +24,12 @@
     <div class="internal-mainBody-contentContainer">
 
       {{ highlighted }}
+
+      {# drop a notification if this item is unpublished #}
+      {% if logged_in and not node.isPublished() %}
+        {% include theme_path ~ "/templates/includes/unpublished-notice.html.twig" %}
+      {% endif %}
+
       {{ help }}
 
       <!--Featured Product Content-->
@@ -51,6 +57,7 @@
 
           <!--*****************************************************-->
 
+          {{ content.field_vimeo_embed }}
           {{ content.field_youtube_id }}
 
           <!--*****************************************************-->

@@ -1,4 +1,4 @@
-{% extends theme_path ~ "/templates/content/node--page.html.twig" %}
+{% extends theme_path ~ "/templates/content/node--page-default.html.twig" %}
 
 {% block contentGrid %}
   <div class="internal-mainBody-layoutContainer">
@@ -30,6 +30,12 @@
 
           <div class="job-indListing-framework-contentContainer">
             {{ highlighted }}
+
+            {# drop a notification if this item is unpublished #}
+            {% if logged_in and not node.isPublished() %}
+              {% include theme_path ~ "/templates/includes/unpublished-notice.html.twig" %}
+            {% endif %}
+
             {{ help }}
 
             {{ content.body }}

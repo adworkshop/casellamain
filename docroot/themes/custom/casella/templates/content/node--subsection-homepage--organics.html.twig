@@ -27,6 +27,12 @@
         </div>
 
         {{ highlighted }}
+
+        {# drop a notification if this item is unpublished #}
+        {% if logged_in and not node.isPublished() %}
+          {% include theme_path ~ "/templates/includes/unpublished-notice.html.twig" %}
+        {% endif %}
+
         {{ help }}
 
         {% if content.field_title|render|trim or content.field_promotion_description|render|trim or content.field_promotion_link|render|trim %}

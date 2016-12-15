@@ -90,6 +90,8 @@ function casella_theme_suggestions_field_alter(array &$suggestions, array $varia
     'field_earthlife_links',
     'field_earthlife_description',
     'field_earthlife_title',
+    'field_fa_icon_links',
+    'field_custom_icon_links'
   );
 
   if (in_array($variables['element']['#field_name'], $partiallyStrippedFields)) {
@@ -144,7 +146,7 @@ function casella_theme_suggestions_container_alter(array &$suggestions, array $v
       }
     }
     elseif ('locations' == $variables['element']['#name']) {
-      if ('block_1' == $variables['element']['#display_id']) {
+      if (in_array($variables['element']['#display_id'], array('block_1', 'block_4', 'block_5'))) {
         $suggestions[] = 'container__stripped';
       }
     }
@@ -184,7 +186,24 @@ function casella_theme_suggestions_menu_alter(array &$suggestions, array $variab
  * @param array $variables
  */
 function casella_theme_suggestions_block_alter(array &$suggestions, array $variables) {
-  if (in_array($variables['elements']['#id'], array('mainnavigation', 'footer', 'casella_content', 'views_block__information_posts_block_1', 'views_block__locations_block_1__holiday_list', 'exposedformlocationspage_1__find_provider', 'views_block__hr_block_1__job_search', 'views_block__hr_block_2'))) {
+  $toStrip = array(
+    'mainnavigation',
+    'mainnavigation_4',
+    'mainnavigation_5',
+    'footer',
+    'casella_content',
+    'views_block__information_posts_block_1',
+    'views_block__locations_block_1__holiday_list',
+    'exposedformlocationspage_1__find_provider',
+    'views_block__hr_block_1__job_search',
+    'views_block__hr_block_2',
+    'views_block__locations_block_4__locations_map_initial',
+    'views_block__locations_block_5__post_search',
+    'views_block__content_promotions_block_2',
+    'views_block__content_promotions_block_1'
+  );
+
+  if (in_array($variables['elements']['#id'], $toStrip)) {
     $suggestions[] = 'block__stripped';
   }
 }
@@ -211,91 +230,21 @@ function casella_theme_suggestions_node_alter(array &$suggestions, array $variab
   }
 
   $type = $variables['elements']['#node']->getType();
-  // If this is a testimonial or a full width promotion we don't need to worry about the rest of this.
-  if (in_array($type, array('full_width_promotion', 'testimonial'))) {
-    return;
+
+  if ('subsection_homepage' == $type) {
+    $suggestions[] = 'node__subsection_homepage__handler';
   }
-
-  // Need to pull the menu name to pull the params to get the current nodes parents.
-  // Check the menu parents to see if we need a sidebar logo.
-  $menu_tree = \Drupal::menuTree();
-  $menu_name = 'main';
-
-  // Build the typical default set of menu tree parameters.
-  $parameters = $menu_tree->getCurrentRouteMenuTreeParameters($menu_name);
-
-  // By default we are at the end of the active trail. If there are 0 or 1
-  // elements in the active trail then there is nothing to test.
-  $db = \Drupal\Core\Database\Database::getConnection();
-  if (count($parameters->activeTrail) > 1) {
-    // Now that we know there are parents check the db.
-    $parents = _casellaFindParentIds($parameters->activeTrail, $db);
+  elseif ('service' == $type) {
+    $suggestions[] = 'node__subsection__organics';
   }
-  else {
-    $parents = array();
-  }
-
-  $subsection = FALSE;
-  if ('product' == $type || 'product_category' == $type) {
-    $subsection[0]['value'] = 'earthlife';
-  }
-  elseif ('information_post' == $type || 'service' == $type) {
-    $subsection[0]['value'] = 'organics';
-  }
-  else {
-    if ($variables['elements']['#node']->hasField('field_subsection')) {
-      $subsection = $variables['elements']['#node']->get('field_subsection')->getValue();
-    }
-
-    // Check if this lives in a subsection but isnt marked.
-    if (!$subsection && count($parents)) {
-      $parentSubsection = _casellaFindParentsSection($parents, $db);
-      if ($parentSubsection) {
-        $subsection[0]['value'] = $parentSubsection;
-      }
-    }
-  }
-
-  $subsectionPath = '';
-  if ($subsection) {
-    $subsectionNidSelect = $db->select('node__field_subsection', 'subsection')
-      ->fields('subsection', array('entity_id'))
-      ->condition('bundle', 'subsection_homepage', '=')
-      ->condition('field_subsection_value', $subsection[0]['value']);
-
-    $data = $subsectionNidSelect->execute();
-    $results = $data->fetchAll(\PDO::FETCH_OBJ);
-
-    // Ensure we found something, and that we arent already on the homepage.
-    if ($results) {
-      $subsectionPath = \Drupal::service('path.alias_manager')->getAliasByPath('/node/' . $results[0]->entity_id);
-    }
-
-    if (!in_array($type, array('product', 'product_category'))) {
-      if ('subsection_homepage' == $type) {
-        $suggestions[] = 'node__subsection_homepage__' . $subsection[0]['value'];
-      }
-      // Information posts have their own node tpl.
-      elseif ('information_post' != $variables['elements']['#node']->getType()) {
-        $suggestions[] = 'node__subsection';
-        $suggestions[] = 'node__subsection__' . $subsection[0]['value'];
-      }
-    }
-  }
-
-  // Globals that need to be available in the page preprocess.
-  $staticVars = array(
-    'subsection' => $subsection,
-    'subsectionPath' => $subsectionPath,
-    'parents' => $parents,
-    'db' => $db,
-  );
-  drupal_static('casellaGlobals', $staticVars);
 
   // Node 26 is the main products page, and masquerades as a product to get the
   // correct sidebar.
   if (26 == $variables['elements']['#node']->id()) {
     $suggestions[] = 'node__products_landing_page';
+  }
+  elseif (2051 == $variables['elements']['#node']->id()) {
+    $suggestions[] = 'node__locations_map';
   }
 }
 
@@ -309,11 +258,6 @@ function casella_theme_suggestions_region_alter(array &$suggestions, array $vari
   if ('content' == $variables['elements']['#region']) {
     $suggestions[] = 'region__stripped';
   }
-
-  $casellaGlobals = &drupal_static('casellaGlobals');
-  if (isset($casellaGlobals['subsection'][0]['value'])) {
-    $suggestions[] = 'region__' . $variables['elements']['#region'] . '__' . $casellaGlobals['subsection'][0]['value'];
-  }
 }
 
 /**
@@ -323,12 +267,9 @@ function casella_theme_suggestions_region_alter(array &$suggestions, array $vari
  * @param array $variables
  */
 function casella_theme_suggestions_page_alter(array &$suggestions, array $variables) {
-  $suggestions[] = 'page__' . $variables['page']['#type'];
-
-  $casellaGlobals = &drupal_static('casellaGlobals');
-
-  if ($casellaGlobals['subsection']) {
-    $suggestions[] = 'page__subsection';
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $content_type = $node->bundle();
+    $suggestions[] = 'page__'.$content_type;
   }
 }
 
@@ -351,7 +292,12 @@ function casella_theme_suggestions_views_view_alter(array &$suggestions, array $
       }
     }
     elseif (in_array('views_view__locations', $variables['view']->display_handler->output['#theme'])) {
-      if (in_array($variables['view']->current_display, array('block_1'))) {
+      if (in_array($variables['view']->current_display, array('block_1', 'block_4'))) {
+        $suggestions[] = 'views_view__stripped';
+      }
+    }
+    elseif (in_array('views_view__content_promotions', $variables['view']->display_handler->output['#theme'])) {
+      if (in_array($variables['view']->current_display, array('block_1', 'block_2'))) {
         $suggestions[] = 'views_view__stripped';
       }
     }
@@ -378,6 +324,11 @@ function casella_theme_suggestions_views_view_unformatted_alter(array &$suggesti
     }
     elseif (in_array('views_view__information_posts', $variables['view']->display_handler->output['#theme'])) {
       if (in_array($variables['view']->current_display, array('block_1', 'block_2'))) {
+        $suggestions[] = 'views_view_unformatted__stripped';
+      }
+    }
+    elseif (in_array('views_view__locations', $variables['view']->display_handler->output['#theme'])) {
+      if (in_array($variables['view']->current_display, array('block_4'))) {
         $suggestions[] = 'views_view_unformatted__stripped';
       }
     }
@@ -629,6 +580,29 @@ function casella_preprocess_field(&$variables) {
     if ('field_alert_title' == $variables['element']['#field_name']) {
       $variables['attributes']['class'][] = 'customerCare-alert-indContainer-alertType';
     }
+
+    $acceptableWasteIntro = _casella_get_global('field_acceptable_waste_intro');
+    $variables['acceptableWasteIntro'] = $acceptableWasteIntro ? $acceptableWasteIntro[0]['value'] : '';
+
+    $unacceptableWasteIntro = _casella_get_global('field_unacceptable_waste_intro');
+    $variables['unacceptableWasteIntro'] = $unacceptableWasteIntro ? $unacceptableWasteIntro[0]['value'] : '';
+  }
+  elseif ('free_form' == $variables['element']['#bundle']) {
+    if ('field_free_form_content' == $variables['element']['#field_name']) {
+      $variables['attributes']['class'][] = 'internal-indInteractivePanel-freeForm-container';
+      $variables['attributes']['class'][] = 'internal-indInteractivePanel-freeForm-txt-container';
+    }
+    elseif ('field_image' == $variables['element']['#field_name']) {
+      $variables['attributes']['class'][] = 'internal-indInteractivePanel-freeForm-image-container';
+    }
+  }
+  elseif ('waste_category' == $variables['element']['#bundle']) {
+    if ('field_waste_category' == $variables['element']['#field_name']) {
+      $variables['attributes']['class'][] = 'indLocation-feed-body__groups__ind-container__title';
+    }
+    elseif ('field_waste_description' == $variables['element']['#field_name']) {
+      $variables['attributes']['class'][] = 'indLocation-feed-body__groups__ind-container__description';
+    }
   }
   else {
     switch ($variables['element']['#field_name']) {
@@ -707,10 +681,6 @@ function casella_preprocess_field(&$variables) {
       case 'field_source':
         $variables['attributes']['class'][] = 'internal-indInteractivePanel-indTestimonial-attribute';
         break;
-      case 'field_free_form_content':
-        $variables['attributes']['class'][] = 'internal-indInteractivePanel-freeForm-container';
-        $variables['attributes']['class'][] = 'internal-indInteractivePanel-freeForm-txt-container';
-        break;
       case 'field_logo':
         $variables['attributes']['class'][] = 'internal-mainBody-featuredLogo';
         break;
@@ -741,6 +711,12 @@ function casella_preprocess_field(&$variables) {
 
         $variables['faqLabels'] = $faqLabels;
         break;
+      case 'field_fa_icon_links':
+        // Intentional fallthrough.
+      case 'field_custom_icon_links':
+        $variables['attributes']['class'][] = 'featured-btnRow-container';
+        break;
+
     }
   }
 }
@@ -849,7 +825,9 @@ function casella_preprocess_paragraph(&$variables) {
       break;
     case 'video':
       $youtubeId = $variables['paragraph']->get('field_youtube_id')->getValue();
-      $variables['field_youtube_id_value'] = $youtubeId[0]['value'];
+      $variables['field_youtube_id_value'] = $youtubeId ? $youtubeId[0]['value'] : FALSE;
+      $vimeoId = $variables['paragraph']->get('field_vimeo_embed')->getValue();
+      $variables['field_vimeo_embed_value'] = $vimeoId ? $vimeoId[0]['value'] : FALSE;
       break;
     case 'solution_resource':
       $icon = $variables['paragraph']->get('field_icon')->getValue();
@@ -947,11 +925,27 @@ function casella_preprocess_paragraph(&$variables) {
       $variables['link_class'] = $class ? $class[0]['value'] : '';
       _casella_extract_link_bits($variables['paragraph']->get('field_icon_link')->get(0), $variables);
       break;
+    case 'fa_link_with_icon':
+      $class = $variables['paragraph']->get('field_fa_icon')->getValue();
+      $variables['link_class'] = $class ? 'fa ' . $class[0]['value'] : '';
+      _casella_extract_link_bits($variables['paragraph']->get('field_icon_link')->get(0), $variables);
+      $variables['attributes']['class'][] = 'featured-btnRow-IndBtn-container';
+      break;
+    case 'block_link_with_icon':
+      $class = $variables['paragraph']->get('field_custom_icon')->getValue();
+      $variables['link_class'] = $class ? $class[0]['value'] : '';
+      _casella_extract_link_bits($variables['paragraph']->get('field_custom_link')->get(0), $variables);
+      $variables['attributes']['class'][] = 'featured-btnRow-IndBtn-container';
+      break;
   }
 }
 
 function casella_preprocess_breadcrumb(&$variables) {
   $variables['theme_path'] = drupal_get_path('theme', 'casella');
+
+  // Check if this is a subsection.
+  $casellaGlobals = &drupal_static('casellaGlobals');
+  $variables['subsection'] = isset($casellaGlobals['subsection'][0]['value']);
 
   $linkSchema = array();
   foreach ($variables['links'] as $link) {
@@ -997,6 +991,9 @@ function casella_preprocess_views_view(&$variables) {
   elseif ('locations' == $variables['id']) {
     if ('page_1' == $variables['display_id']) {
       $variables['attributes']['class'][] = 'providerSearch-listings-container';
+    }
+    if ('block_5' == $variables['display_id']) {
+      $variables['attributes']['class'][] = 'locationMap-listView-container';
     }
   }
   elseif ('hr' == $variables['id']) {
@@ -1061,6 +1058,35 @@ function casella_preprocess_views_view_fields__product_categories__block_1(&$var
 }
 
 /**
+ * Implements template_preprocess_views_view_fields().
+ * @param $variables
+ */
+function casella_preprocess_views_view_fields__locations__block_5(&$variables) {
+  // Build the address output for the print and map link.
+  $street = $variables['row']->_entity->get('field_street_address')->getValue();
+  $city = $variables['row']->_entity->get('field_city')->getValue();
+  $state = $variables['row']->_entity->get('field_state')->getValue();
+  $zip = $variables['row']->_entity->get('field_zip')->getValue();
+
+  //25 Greens Hill Ln, Rutland VT 05701
+  $address = '';
+  $parts = array(array('value' => $street, 'seperator' => ', '), array('value' => $city, 'seperator' => ' '), array('value' => $state, 'seperator' => ' '), array('value' => $zip, 'seperator' => ''));
+  while ($part = array_pop($parts)) {
+    if (!$part['value'] || !$part['value'][0]['value']) {
+      continue;
+    }
+
+    if ($address != '') {
+      $address = $part['seperator'] . $address;
+    }
+
+    $address = $part['value'][0]['value'] . $address;
+  }
+  $variables['builtAddress'] = $address;
+  $variables['addressLink'] = $address != '' ? 'https://www.google.com/maps/place/' . str_replace(' ', '+', trim($address)) : FALSE;
+}
+
+/**
  * Implements template_preprocess_block().
  *
  * @param $variables
@@ -1086,6 +1112,9 @@ function casella_preprocess_block(&$variables) {
   }
   elseif ('products_on_cat' == $variables['elements']['#id']) {
     $variables['attributes']['class'][] = 'productGrid-container';
+  }
+  elseif ('views_block__locations_block_3__towns_on_location' == $variables['elements']['#id']) {
+    $variables['attributes']['class'][] = 'internal-mainBody-generalTxt-container';
   }
 }
 
@@ -1167,6 +1196,11 @@ function casella_preprocess_region(&$variables) {
   global $base_url;
   $variables['base_url'] = $base_url;
   $variables['theme_path'] = drupal_get_path('theme', 'casella');
+
+  if ('header' == $variables['region']) {
+    $casellaGlobals = &drupal_static('casellaGlobals');
+    $variables['subsectionName'] = isset($casellaGlobals['subsection'][0]['value']) ? $casellaGlobals['subsection'][0]['value'] : '';
+  }
 }
 
 /**
@@ -1252,6 +1286,9 @@ function casella_preprocess_node(&$variables) {
       'highlighted',
       'help',
       'node_content',
+      'node_upper_content',
+      'node_middle_content',
+      'node_lower_content',
       'sidebar_nav',
       'form_container',
     );
@@ -1378,15 +1415,38 @@ function casella_preprocess_node(&$variables) {
 
     // Get the urls for the Service form and Dumpster pages.
     $variables['serviceUrl'] = \Drupal::service('path.alias_manager')->getAliasByPath('/node/1946');
-    $variables['dumpsterUrl'] = \Drupal::service('path.alias_manager')->getAliasByPath('/node/446');
+    $variables['faqUrl'] = \Drupal::service('path.alias_manager')->getAliasByPath('/node/81');
+
+    // Check the service type - drives the towns and charges blocks.
+    $variables['serviceType'] = '';
+    $category = $variables['node']->get('field_location_category');
+    if ($category) {
+      $category = $category->getValue();
+
+      $variables['serviceType'] = $category[0]['value'];
+    }
+
+    $chargesWarning = _casella_get_global('field_charges_warning');
+    $variables['chargesWarning'] = $chargesWarning ? $chargesWarning[0]['value'] : '';
   }
   elseif ('job' == $type) {
     $location = $variables['node']->get('field_location')->getValue();
     // Get the city and state from the location.
-    $locationNode = \Drupal::entityTypeManager()->getStorage('node')->load($location[0]['target_id']);
 
-    $variables['locationCity'] = $locationNode->get('field_city')->getValue();
-    $variables['locationState'] = $locationNode->get('field_state')->getValue();
+    if ($location) {
+      $location = \Drupal::entityTypeManager()
+        ->getStorage('node')
+        ->load($location[0]['target_id']);
+    }
+
+    if ($location) {
+      $variables['locationCity'] = $location->get('field_city')->getValue();
+      $variables['locationState'] = $location->get('field_state')->getValue();
+    }
+    else {
+      $variables['locationCity'] = '';
+      $variables['locationState'] = '';
+    }
 
     $status = $variables['node']->get('field_job_status')->getValue();
     $variables['activeJob'] = $status[0]['target_id'] == 1;
@@ -1420,21 +1480,27 @@ function casella_preprocess_node(&$variables) {
   }
 
   $casellaGlobals = &drupal_static('casellaGlobals');
-  if (isset($casellaGlobals)) {
-    if ($casellaGlobals['subsection']) {
-      $variables['#attached']['library'][] = 'casella/jquery.sticky-kit';
-      if ('earthlife' == $casellaGlobals['subsection'][0]['value']) {
-        $variables['#attached']['library'][] = 'casella/earthlife';
+  if (!isset($casellaGlobals)) {
+    $casellaGlobals = _casella_get_globals($variables['node']);
+  }
+  $variables['subsection'] = FALSE;
+  if ($casellaGlobals['subsection']) {
 
-        $sidebar_intro = _casella_get_global('field_earthlife_sidebar_intro');
-        $variables['sidebar_intro'] = $sidebar_intro ? $sidebar_intro[0]['value'] : '';
-      }
-      elseif ('organics' == $casellaGlobals['subsection'][0]['value']) {
-        $variables['#attached']['library'][] = 'casella/organics';
-      }
+    $variables['subsection'] = TRUE;
+    $variables['subsectionName'] = $casellaGlobals['subsection'][0]['value'];
 
-      $variables['subsectionPath'] = $casellaGlobals['subsectionPath'];
+    $variables['#attached']['library'][] = 'casella/jquery.sticky-kit';
+    if ('earthlife' == $casellaGlobals['subsection'][0]['value']) {
+      $variables['#attached']['library'][] = 'casella/earthlife';
+
+      $sidebar_intro = _casella_get_global('field_earthlife_sidebar_intro');
+      $variables['sidebar_intro'] = $sidebar_intro ? $sidebar_intro[0]['value'] : '';
     }
+    elseif ('organics' == $casellaGlobals['subsection'][0]['value']) {
+      $variables['#attached']['library'][] = 'casella/organics';
+    }
+
+    $variables['subsectionPath'] = $casellaGlobals['subsectionPath'];
   }
 
   $variables['parentLogo'] = false;
@@ -1470,18 +1536,19 @@ function casella_preprocess_node(&$variables) {
 }
 
 function casella_preprocess_page(&$variables) {
-  // Need to pull the menu name to pull the params to get the current nodes parents.
-  // Check the menu parents to see if we need a sidebar logo.
-  $menu_tree = \Drupal::menuTree();
-  $menu_name = 'main';
-
   $variables['wrapperClass'] = '';
+  $variables['subsectionName'] = '';
+  $variables['theme_path'] = drupal_get_path('theme', 'casella');
 
   $casellaGlobals = &drupal_static('casellaGlobals');
-  if (isset($casellaGlobals)) {
-    if ($casellaGlobals['subsection']) {
-      $variables['wrapperClass'] = 'subsection ' . $casellaGlobals['subsection'][0]['value'];
-    }
+  if (!isset($casellaGlobals)) {
+    $node = \Drupal::routeMatch()->getParameter('node');
+    $casellaGlobals = _casella_get_globals($node);
+  }
+
+  if ($casellaGlobals['subsection']) {
+    $variables['wrapperClass'] = 'subsection ' . $casellaGlobals['subsection'][0]['value'];
+    $variables['subsectionName'] = $casellaGlobals['subsection'][0]['value'];
   }
 
   $variables['hasNode'] = isset($variables['node']);
@@ -1493,6 +1560,11 @@ function casella_preprocess_page(&$variables) {
  * @param $variables
  */
 function casella_preprocess_html(&$variables) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node) {
+    $variables['attributes']['class'][] = 'id_' . $node->id();
+  }
+
   if (isset($variables['node_type'])) {
     $variables['html_attributes']->addClass(str_replace('_', '-', $variables['node_type']));
     if ('landing_page' == $variables['node_type']) {
@@ -1525,7 +1597,6 @@ function casella_preprocess_html(&$variables) {
  * @return mixed
  */
 function _casella_get_global($fieldname, $link = FALSE) {
-  $casellaGlobals = &drupal_static('casellaGlobals');
   if (!isset($casellaGlobals['global_variable_node'])) {
     $casellaGlobals['global_variable_node'] = \Drupal::entityTypeManager()->getStorage('node')->load(1951);
   }
@@ -1541,7 +1612,78 @@ function _casella_get_global($fieldname, $link = FALSE) {
   return $casellaGlobals['global_variable_node']->get($fieldname)->getValue();
 }
 
+/**
+ * Generates and returns necessary global variables.
+ *
+ * @param object|bool $node
+ * @return array
+ */
+function _casella_get_globals($node = FALSE) {
+  // Need to pull the menu name to pull the params to get the current nodes parents.
+  // Check the menu parents to see if we need a sidebar logo.
+  $menu_tree = \Drupal::menuTree();
+  $menu_name = 'main';
 
+  // Build the typical default set of menu tree parameters.
+  $parameters = $menu_tree->getCurrentRouteMenuTreeParameters($menu_name);
+
+  // By default we are at the end of the active trail. If there are 0 or 1
+  // elements in the active trail then there is nothing to test.
+  $db = \Drupal\Core\Database\Database::getConnection();
+  if (count($parameters->activeTrail) > 1) {
+    // Now that we know there are parents check the db.
+    $parents = _casellaFindParentIds($parameters->activeTrail, $db);
+  }
+  else {
+    $parents = array();
+  }
+
+  $subsection = FALSE;
+  $type = $node ? $node->getType() : '';
+  if ('product' == $type || 'product_category' == $type) {
+    $subsection[0]['value'] = 'earthlife';
+  }
+  elseif ('information_post' == $type || 'service' == $type) {
+    $subsection[0]['value'] = 'organics';
+  }
+  else {
+    if ($node && $node->hasField('field_subsection')) {
+      $subsection = $node->get('field_subsection')->getValue();
+    }
+
+    // Check if this lives in a subsection but isnt marked.
+    if (!$subsection && count($parents)) {
+      $parentSubsection = _casellaFindParentsSection($parents, $db);
+      if ($parentSubsection) {
+        $subsection[0]['value'] = $parentSubsection;
+      }
+    }
+  }
+
+  $subsectionPath = '';
+  if ($subsection) {
+    $subsectionNidSelect = $db->select('node__field_subsection', 'subsection')
+      ->fields('subsection', array('entity_id'))
+      ->condition('bundle', 'subsection_homepage', '=')
+      ->condition('field_subsection_value', $subsection[0]['value']);
+
+    $data = $subsectionNidSelect->execute();
+    $results = $data->fetchAll(\PDO::FETCH_OBJ);
+
+    // Ensure we found something, and that we aren't already on the homepage.
+    if ($results) {
+      $subsectionPath = \Drupal::service('path.alias_manager')->getAliasByPath('/node/' . $results[0]->entity_id);
+    }
+  }
+
+  // assign the globals here.
+  return array(
+    'subsection' => $subsection,
+    'subsectionPath' => $subsectionPath,
+    'parents' => $parents,
+    'db' => $db,
+  );
+}
 
 /**
  * Helper function to check the node for parents and see if any of them have a logo.

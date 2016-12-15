@@ -135,10 +135,12 @@
             recalced = true;
           }
         }
+        /*
         if (!recalced && doc.height() !== last_scroll_height) {
           recalc();
           recalced = true;
         }
+        */
         scroll = win.scrollTop();
         if (last_pos != null) {
           delta = scroll - last_pos;

@@ -1,0 +1,18 @@
+{%
+set classes = [
+'paragraph',
+'paragraph--type--' ~ paragraph.bundle|clean_class,
+view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+]
+%}
+<div{{ attributes.addClass(classes) }}>
+  <div class="featured-btnRow-IndBtn-innerContainer">
+    <div class="featured-btnRow-IndBtn-wrapper">
+      <a href="{{ link_url }}" title="">
+        <div class="featured-btnRow-IndBtn-icon"><span class="{{ link_class }}" aria-hidden="true"></span></div>
+        <div class="featured-btnRow-IndBtn-title">{{ link_title }}</div>
+      </a>
+    </div>
+  </div>
+</div>
+

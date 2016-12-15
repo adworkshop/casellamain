@@ -25,7 +25,22 @@ jQuery(document).ready(function() {
   jQuery('.productGrid-filter-container input[type="checkbox"]').click(function(event){
     jQuery('#' + jQuery(event.currentTarget).val()).toggle();
   });
+
+  // Check the sidebar for emptyness.
+  checkSidebarContents();
 });
+
+function checkSidebarContents() {
+  var $sidebar = jQuery('.internal-mainBody-sidebarContainer');
+  if (!$sidebar.length) {
+    return;
+  }
+
+  if ('' == $sidebar.html().replace(/<!--((?!-->).)*-->/g, '').trim()) {
+    $sidebar.remove();
+    jQuery('.internal-mainBody-container').removeClass('withSidebar').removeClass('noSidebarNav');
+  }
+}
 
 function jobApplyToggleHandler(){
   jQuery(".job-indListing-formToggle-container").fadeToggle("slow");

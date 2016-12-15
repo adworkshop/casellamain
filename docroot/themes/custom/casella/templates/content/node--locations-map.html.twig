@@ -1,0 +1,148 @@
+{{ attach_library('casella/google_maps') }}
+{{ attach_library('casella/markerclusterer') }}
+{{ attach_library('casella/respond') }}
+{{ attach_library('casella/enquire') }}
+{{ attach_library('casella/ios-orientationchange-fix') }}
+
+{% block preTitleSection %}{% endblock %}
+
+{% block titleSection %}
+<div class="internal-headerPanel-container locations-map">
+  <div class="globalWidth">
+    {% block title %}
+      <h1>{{ title }}</h1>
+
+      {{ content.field_hero_text }}
+
+      {{ highlighted }}
+
+      {# drop a notification if this item is unpublished #}
+      {% if logged_in and not node.isPublished() %}
+        {% include theme_path ~ "/templates/includes/unpublished-notice.html.twig" %}
+      {% endif %}
+
+      {{ help }}
+
+      {% block heroBreadcrumbs %}
+        {% if breadcrumbOverride %}
+          <div class="sectionMenu-breadCrumb-container cf{% if not subsection %} not-subsection{% endif %}">
+            <div class="globalWidth">
+              <div class="sectionMenu-breadCrumb-wrapper">
+                {{ breadcrumbOverride }}
+              </div>
+            </div>
+          </div>
+        {% else %}
+          <!--Breadcrumbs-->
+          {{ node_content.casella_breadcrumbs }}
+        {% endif %}
+      {% endblock %}
+    {% endblock %}
+  </div>
+</div>
+{% endblock %}
+
+{% block featuredMedia %}{% endblock %}
+
+<!--Main Body Region-->
+<div>
+  <div>
+    <!--Visual Map & Search Container-->
+    <div class="locationMap-container">
+
+      <!--Map: Content Column - Left-->
+      <div class="locationMap-contentCol-container">
+        <div class="locationMap-contentCol-wrapper">
+
+          <!--Page Copy-->
+          <div class="locationMap-pageCopy-container">
+            {{ help }}
+
+            {{ content.field_upper_content }}
+
+            {% if addThis %}
+              {% include "/" ~ theme_path ~ "/templates/includes/add-this.html.twig" %}
+            {% endif %}
+          </div>
+          <!--Page Copy-->
+
+          <!--Search Form-->
+          <div class="locationMap-searchForm-container">
+            <div class="locationMap-searchForm-title">Find a facility near you...</div>
+            <div class="locationMap-searchForm-container">
+              {{ node_content.exposedformlocation_townspage_1__town_search }}
+              <span class="icon"><i class="fa fa-search"></i></span>
+            </div>
+          </div>
+          <!--END Search Form-->
+
+          <!--Map Location Toggles-->
+          <div class="locationMap-marker-accordion-container">
+            <a href="javascript:void(0)" class="locationMap-marker-accordion-toggle">Show Locations<span class="locationMap-marker-accordion-toggle-icon"><i class="fa fa-plus-circle"></i></span></a>
+            <div class="locationMap-marker-accordion-content">
+              <div class="locationMap-locationToggles-wrapper">
+
+                <div class="locationMap-key-location-container corporate">
+                  <input type="checkbox" id="corporate" class="checkbox-custom" name="corporate" value="Corporate" checked>
+                  <label for="corporate" class="label-custom"><div class="inner-lable-custom">Corporate</div></label>
+                </div>
+                <div class="locationMap-key-location-container hauling">
+                  <input type="checkbox" id="hauling" class="checkbox-custom" name="hauling" value="Hauling" checked>
+                  <label for="hauling" class="label-custom"><div class="inner-lable-custom">Hauling</div></label>
+                </div>
+                <div class="locationMap-key-location-container landfill">
+                  <input type="checkbox" id="landfill" class="checkbox-custom" name="landfill" value="Landfill" checked>
+                  <label for="landfill" class="label-custom"><div class="inner-lable-custom">Landfill</div></label>
+                </div>
+                <div class="locationMap-key-location-container organics">
+                  <input type="checkbox" id="organics" class="checkbox-custom" name="organics" value="Organics" checked>
+                  <label for="organics" class="label-custom"><div class="inner-lable-custom">Organics</div></label>
+                </div>
+                <div class="locationMap-key-location-container recycling">
+                  <input type="checkbox" id="recycling" class="checkbox-custom" name="recycling" value="Recycling" checked>
+                  <label for="recycling" class="label-custom"><div class="inner-lable-custom">Recycling</div></label>
+                </div>
+                <div class="locationMap-key-location-container transfer">
+                  <input type="checkbox" id="transfer" class="checkbox-custom" name="transfer" value="Transfer" checked>
+                  <label for="transfer" class="label-custom"><div class="inner-lable-custom">Transfer</div></label>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!--Map Location Toggles-->
+
+        </div>
+      </div>
+      <!--END Map: Content Column - Left-->
+
+      <!--*****************************************************-->
+
+      <!--Map: Google Map & Dynamic List Column - Right-->
+      <div class="locationMap-mapCol-container">
+          <div class="locationMap-mapSpacer"></div>
+
+          <!--Panel Toggles-->
+          <div class="panelControllers">
+            <button class="panelControlBtn active" data-rel="#content-map"><span class="fa fa-map-pin btnIconWrapper" aria-hidden="true"></span> View on Map</button>
+            <button class="panelControlBtn" data-rel="#content-list"><span class="fa fa-list-ul btnIconWrapper" aria-hidden="true"></span> View as List</button>
+          </div>
+
+          <!--Map View Panel-->
+          <div id="content-map" class="locationsMap-panel content-map active"></div>
+          <!--END Map View Panel-->
+
+          {{ node_middle_content }}
+
+      </div>
+      <!--END Map: Google Map & Dynamic List Column - Right-->
+
+    </div>
+    <!--END Visual Map & Search Container-->
+
+  </div>
+</div>
+
+{% block resourceSolutions %}{% endblock %}
+
+{{ content.field_full_width_promotion }}

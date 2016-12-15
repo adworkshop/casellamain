@@ -24,7 +24,10 @@ regions:
   help: 'Help'
   highlighted: 'Highlighted'
   header: 'Header'
-  node_content: 'Node Content'
+  node_content: 'Node Content to be placed'
+  node_upper_content: 'Node Content above body'
+  node_middle_content: 'Node Content in body'
+  node_lower_content: 'Node Content below body'
   form_container: 'Form Container'
 
 ckeditor_stylesheets:

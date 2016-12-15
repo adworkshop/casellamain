@@ -28,9 +28,7 @@
   
   a.mainMenuToggle:before {content: "\f0c9";}
   
-  a.mainMenuToggle.active {
-  margin:0 12px 0 0; color: #7abf23;
-  }
+  a.mainMenuToggle.active {color: #7abf23;}
   
   a.mainMenuToggle.active:before {content: "\f00d";}
   
@@ -197,7 +195,7 @@
   nav#sidebarMenu ul li .openChild .openChildInner:before {color: #aaa; top: 16px;}
   nav#sidebarMenu ul li .openChild:hover .openChildInner:before {color: #FFF;}
   
-  nav#sidebarMenu ul li ul li a {background:#004a87; color:#fff; border-top: 1px solid #0a599a; font-family: 'Lato', sans-serif; font-weight: 700; font-size:12px;}
+  nav#sidebarMenu ul li ul li a {background:#004a87; color:#fff; border-top: 1px solid #0a599a; font-family: 'Gotham-Bold'; font-weight: normal; font-size:12px;}
   nav#sidebarMenu ul li ul li a:hover {background: #0a253e; color:#FFF;}
   nav#sidebarMenu ul li ul li.over > .openChild {background: #0a253e;}
   nav#sidebarMenu ul li ul li .openChild:hover {background: #0a253e;}
@@ -287,6 +285,7 @@
   padding: 13px 45px 12px 10px;
   color: #FFF;
   border-top: 1px solid #184f81;
+	font-size: 12px;
   }
   
   nav#mainMenu ul.adwMenu > li > ul > li a:hover {
@@ -464,10 +463,10 @@
 	border-left: 1px solid #e4e4e4;
 	border-top: none;
 	background: #fff;
-	font-size: 13px;
+	font-size: 12px;
 	text-transform:none;
-	font-family: 'Lato', sans-serif;
-	font-weight: 700;
+	font-family: 'Gotham-Bold';
+	font-weight: normal;
 	}
 	nav#mainMenu ul.adwMenu > li > ul > li a:hover {
 	background:  #f4f4f4; 
@@ -530,13 +529,13 @@
 	color: #777;
 	border-bottom: 1px solid #e4e4e4;
 	border-right: 1px solid #e4e4e4;
-    border-left: 1px solid #e4e4e4;
+	border-left: 1px solid #e4e4e4;
 	border-top: none;
 	background: #fff;
 	font-size: 12px;
 	text-transform:none;
-	font-family: 'Lato', sans-serif;
-    font-weight: 700;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 700;
 	}
 	nav#sectionMenu ul.adwMenu > li > ul > li a:hover {
 	background:  #f4f4f4; 
@@ -563,20 +562,26 @@
 	position: relative; 
 	text-align: left;
 	border: none; 
-	background: #f3f3f3; 
+	background: #4c9d2a; 
+	top: 0;
 	}
 	nav#mainMenu ul.adwMenu > li.tierMenu> ul > li a {
-	padding: 13px 20px 13px 15px;
+	padding: 13px 45px 13px 15px;
 	}
 	nav#mainMenu ul.adwMenu > li.tierMenu.withSubs > ul.subMenu > li a {
 	padding: 10px 55px 10px 15px;
 	}	
 	nav#mainMenu ul.adwMenu > li > ul > li > ul > li a {
-	background: #f3f3f3;	
+	background: #4c9d2a;
+	border-top: 1px solid #6ac742;
+	border-bottom: none;
+	border-right: 1px solid #6ac742;
+	border-left: 1px solid #6ac742;
 	}
 	nav#mainMenu ul.adwMenu > li > ul > li > ul > li a:hover {
 	color: #fff;	
-	background: #ccc;	
+	background: #0a253e;
+	border-top: 1px solid #6ac742;
 	}
 	nav#mainMenu ul.adwMenu > li > ul > li > ul > li a:before {
 	color: #999;

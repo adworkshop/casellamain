@@ -15,7 +15,21 @@
 
 {% include "/" ~ theme_path ~ "/templates/includes/search-panel.html.twig" %}
 
-{% block largeNavReveal %}{% endblock %}
+{% if subsectionName != '' %}
+  <!--Larger Nav Reveal-->
+  <div id="collapsedNav" class="cf">
+    <div class="globalWidth">
+      <div class="collapsed-headerLogo">
+        {% if not is_front %}<a href="{{ base_url }}" title="home">{% endif %}
+          {% embed '/' ~ theme_path ~ "/templates/includes/casella-logo.html.twig" %}{% endembed %}
+        {% if not is_front %}</a>{% endif %}
+      </div>
+      <div class="collapsed-headerTrigger-wrapper"><a class="collapsed-headerTrigger mainMenuToggle"></a></div>
+    </div>
+  </div>
+  <!--END Larger Nav Reveal-->
+{% endif %}
+
 
 <!--NAVIGATION REGION-->
 <div{{ attributes|without('id') }} id="generalNav">
@@ -26,7 +40,7 @@
 
       <!--Bill Pay-->
       <div class="navGlobal-indCTABtn-Container billPay">
-        <a href="{{ bill_pay }}" title="" class="navGlobal-indCTABtn">
+        <a href="{{ bill_pay }}" title="" class="navGlobal-indCTABtn" target="_blank">
           <div class="navGlobal-indCTABtn-iconWrapper"><img src="/{{ theme_path }}/i/misc/payBill-icon.png" alt=""></div>
           <div class="navGlobal-indCTABtn-txtWrapper">Online <span>Bill Pay</span></div>
         </a>

@@ -6,7 +6,7 @@ googlefonts-droid:
     gpl-compatible: true
   css:
     base:
-      https://fonts.googleapis.com/css?family=Droid+Serif:400,400i|Source+Sans+Pro:400,400i,600,600i: {}
+      https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i|Source+Sans+Pro:400,400i,600,600i: {}
 
 custom-css:
   version: 1.x
@@ -33,10 +33,16 @@ custom-home:
   css:
     theme:
       css/custom/home.css: {}
-      css/lib/casella-master.css: {}
   dependencies:
     - core/jquery
     - core/modernizr
+    - casella/casella-master
+
+casella-master:
+  version: 1.x
+  css:
+      theme:
+        css/lib/casella-master.css: {}
 
 custom-internal:
   version: 1.x
@@ -58,6 +64,7 @@ earthlife:
       css/custom/earthlife.css: {}
   dependencies:
     - core/jquery
+    - casella/custom-internal
 
 organics:
   version: 1.x
@@ -68,12 +75,18 @@ organics:
       css/custom/organics.css: {}
   dependencies:
     - core/jquery
+    - casella/custom-internal
 
 locations:
   version: 1.x
+  js:
+    js/custom/locations.js: {}
   css:
     theme:
       css/custom/locations.css: {}
+  requirements:
+    - core/jquery
+    - casella/custom-internal
 
 faq:
   version: 1.x
@@ -104,7 +117,7 @@ jquery.scrollUp:
 jquery.colio:
   version: 1.5
   js:
-    js/libs/jquery.colio.min.js: {}
+    js/libs/jquery.colio.js: {}
   requirements:
     - core/jquery
 
@@ -112,6 +125,11 @@ respond:
   version: 1.4.2
   js:
     js/libs/respond.min.js: {}
+
+enquire:
+  version: 2.1.2
+  js:
+    plugins/enquire-v.2.1.2/dist/enquire.min.js: {}
 
 jquery.hoverdir:
   version: 1.1.2
@@ -210,3 +228,24 @@ royalslider:
       plugins/royalslider/royalslider.css: {}
       plugins/royalslider/skins/universal/rs-universal.css: {}
       plugins/royalslider/skins/default/rs-default.css: {}
+
+locations_map:
+  version: 1.0
+  js:
+    js/custom/locations_map.js: {}
+  dependencies:
+    - casella/locations
+
+google_maps:
+  version: 1.0
+  js:
+    https://maps.googleapis.com/maps/api/js?key=AIzaSyAl0whz4aUUDJH4GIpbK2Rz65MbC6nE8io&callback=initMap: {type: external, attributes: { defer: true, async: true, data-test: map-link } }
+  dependencies:
+    - casella/locations_map
+
+markerclusterer:
+  version: 3
+  js:
+    plugins/js-marker-clusterer/src/markerclusterer.js: {}
+  dependencies:
+    - casella/google_maps

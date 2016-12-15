@@ -1,0 +1,69 @@
+{#
+/**
+ * @file
+ * Theme override to display all the fields in a row.
+ *
+ * Available variables:
+ * - view: The view in use.
+ * - fields: A list of fields, each one contains:
+ *   - content: The output of the field.
+ *   - raw: The raw data for the field, if it exists. This is NOT output safe.
+ *   - class: The safe class ID to use.
+ *   - handler: The Views field handler controlling this field.
+ *   - inline: Whether or not the field should be inline.
+ *   - wrapper_element: An HTML element for a wrapper.
+ *   - wrapper_attributes: List of attributes for wrapper element.
+ *   - separator: An optional separator that may appear before a field.
+ *   - label: The field's label text.
+ *   - label_element: An HTML element for a label wrapper.
+ *   - label_attributes: List of attributes for label wrapper.
+ *   - label_suffix: Colon after the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ *   - has_label_colon: A boolean indicating whether to display a colon after
+ *     the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ * - row: The raw result from the query, with all data it fetched.
+ *
+ * @see template_preprocess_views_view_fields()
+ */
+#}
+
+{% set phone = fields.field_phone_number.content|render|striptags|trim %}
+
+<!--Ind List View Listing-->
+<div class="locationMap-listView-indListing-container {{ fields.field_location_category.content|render|striptags|lower }}">
+  <!--Associated Marker-->
+  <div class="locationMap-listView-indListing-marker-container">
+    <div class="locationMap-listView-indListing-marker"></div>
+    <div class="locationMap-listView-indListing-distance">{{ row.calc_distance|number_format(2, '.', ',') }} mi</div>
+  </div>
+  <!--END Associated Marker-->
+
+  <!--Ind List Content-->
+  <div class="locationMap-listView-indListing-content-container">
+    <div class="locationMap-listView-indListing-content-title">{{ fields.title.content }}</div>
+    {{ fields.body.content }}
+
+    {% if builtAddress or phone %}
+      <div class="locationMap-listView-indListing-content-meta">
+        {% if builtAddress %}
+          <div class="locationMap-listView-indListing-content-address"><span class="fa fa-map-marker btnIconWrapper" aria-hidden="true"></span>{{ builtAddress }}</div>
+        {% endif %}
+        {% if phone %}
+          <div class="locationMap-listView-indListing-content-phone"><span class="fa fa-phone btnIconWrapper" aria-hidden="true"></span>{{ phone }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="locationMap-listView-indListing-content-ctaContainer">
+      <a href="javascript:void(0);" title="" class="locationMap-listView-indListing-content-viewMap-btn panelControlBtn" data-guid="{{ fields.nid.content|striptags|trim }}"><span class="fa fa-map-pin btnIconWrapper" aria-hidden="true"></span> Find Location on Map</a>
+      {%  if addressLink %}
+        <a href="{{ addressLink }}" title="" class="locationMap-listView-indListing-content-driving-btn"><span class="fa fa-map btnIconWrapper" aria-hidden="true"></span> Get Driving Directions</a>
+      {% endif %}
+      <a href="{{ fields.path.content|render|striptags }}" title="" class="locationMap-listView-indListing-content-learnMore-btn"><span class="fa fa-tags btnIconWrapper" aria-hidden="true"></span> Learn More</a>
+    </div>
+  </div>
+  <!--Ind List Content-->
+</div>

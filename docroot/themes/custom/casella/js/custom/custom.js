@@ -1,21 +1,24 @@
 jQuery(document).ready(function() {
   "use strict";
 
-  var lowerNavContainer = jQuery(".footer-lowerNav-container");
+  var lowerNavContainer = jQuery(".footer-lowerNav-container"),
+    newSelect = jQuery("<select />");
   // Footer Navigation Convert to Select Box
-  jQuery("<select />").appendTo(lowerNavContainer);
   jQuery("<option />", {
     "selected": "selected",
     "value"   : "",
     "text"    : "QuickLinks..."
-  }).appendTo("select", lowerNavContainer);
-  jQuery("a", lowerNavContainer).each(function() {
-    var el = jQuery(this);
+  }).appendTo(newSelect);
+  jQuery("a", lowerNavContainer).each(function(index, element) {
+    var $el = jQuery(element);
     jQuery("<option />", {
-      "value"   : el.attr("href"),
-      "text"    : el.text()
-    }).appendTo("select", lowerNavContainer);
+      "value"   : $el.attr("href"),
+      "text"    : $el.text()
+    }).appendTo(newSelect);
   });
+
+  newSelect.appendTo(lowerNavContainer);
+
   jQuery("div.hpr-lowerNavBarWrapper select").change(function() {
     window.location = jQuery(this).find("option:selected").val();
   });
@@ -49,6 +52,20 @@ jQuery(document).ready(function() {
   jQuery('label.form-required').each(function(index, element){
     jQuery(element).html(jQuery(element).html().replace('*', '<span class="form-required">*</span>'));
   });
+
+  // make sure addThis picks up any hash changes from tab deep-linking
+  /*
+  jQuery(function(){
+      jQuery(window).hashchange(function(){
+          if(jQuery('div.addThis-container').length){
+              addthis.ost = 0;
+              addthis.update('share', 'url', window.location.href); // new url
+              addthis.update('share', 'title', window.document.title); // new title.
+              addthis.ready(); // this will re-render the buttons.
+          }
+      });
+  });
+  */
 });
 
 function initZozoTabs() {

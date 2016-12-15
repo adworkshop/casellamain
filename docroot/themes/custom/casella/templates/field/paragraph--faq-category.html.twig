@@ -7,6 +7,7 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 ]
 %}
 {% if content.field_questions|render|adw_strip_comments|trim %}
+  <a name="{{ faq_id }}_target" class="deeplink_target"></a>
   <ul id="{{ faq_id }}" {{ attributes.addClass(classes) }}>
     {{ content }}
   </ul>

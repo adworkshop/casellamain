@@ -25,10 +25,10 @@ Author URI: http://www.adworkshop.com
   .home-resourceGrid {display:none; width: 100%; position: relative; padding: 0; font-size:0; margin:80px 0 0; border-top:1px solid #FFF;}
   .home-resourceGrid .home-resourceGrid-indWrapper {display: inline-block; background: #fff; position: relative; width: 20%; line-height: 0;}
   .home-resourceGrid .home-resourceGrid-indWrapper a,
-  .home-resourceGrid .home-resourceGrid-indWrapper a img {display: block; position: relative;}
+  .home-resourceGrid .home-resourceGrid-indWrapper a img {display: block; position: relative; color:#fff;}
   .home-resourceGrid .home-resourceGrid-indWrapper a img {width:100%; max-width:100%;}
   .home-resourceGrid .home-resourceGrid-indWrapper a:hover img {opacity:1;}
-  .home-resourceGrid .home-resourceGrid-indWrapper a {overflow: hidden;}
+  .home-resourceGrid .home-resourceGrid-indWrapper a {overflow: hidden; color:#FFF;}
   .home-resourceGrid .home-resourceGrid-indWrapper a div.home-resourceGrid-indWrapper-innerContainer {
   position: absolute;
   background: #00263e;
@@ -220,7 +220,7 @@ Author URI: http://www.adworkshop.com
   .home-gridDisplay-leftCol-indContainer.customerCare .home-gridDisplay-leftCol-content-primaryText,
   .home-gridDisplay-leftCol-indContainer.customerCare .home-gridDisplay-leftCol-content-secondaryText {color:#FFF;}
   .home-gridDisplay-leftCol-indContainer.customerCare .home-gridDisplay-leftCol-content-ctaBtnContainer a {border: 2px solid #001a2a; color:#FFF; background:#001a2a;}
-  .home-gridDisplay-leftCol-indContainer.customerCare .home-gridDisplay-leftCol-content-ctaBtnContainer a:hover {border: 2px solid #FFF; background:#FFF; color:#001a2a;}
+  .home-gridDisplay-leftCol-indContainer.customerCare .home-gridDisplay-leftCol-content-ctaBtnContainer a:hover {border: 2px solid #FFF; background:#4c9d2a; color:#fff;}
   
   /*Slider*/
   .homeCarouselContainer {position:relative;}

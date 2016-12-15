@@ -1,3 +1,8 @@
-{% extends "page.html.twig" %}
-
-{% block infoRegions %}{% endblock %}
+{# Pages can be in subsections, check here #}
+{% if subsectionName != '' %}
+  {% include theme_path ~ "/templates/layout/page--subsection.html.twig" %}
+{% else %}
+  {% embed theme_path ~ "/templates/layout/page-default.html.twig" %}
+    {% block infoRegions %}{% endblock %}
+  {% endembed %}
+{% endif %}
