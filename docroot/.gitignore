@@ -1,4 +1,5 @@
 # This file contains default .gitignore rules. To use it, copy it to .gitignore,
+# and it will cause files like your settings.php and user-uploaded files to be
 # excluded from Git version control. This is a common strategy to avoid
 # accidentally including private information in public repositories and patch
 # files.
@@ -14,6 +15,7 @@
 vendor
 
 # Ignore configuration files that may contain sensitive information.
+sites/*/settings*.php
 sites/*/services*.yml
 
 # Ignore paths that contain user-generated content.
@@ -27,6 +29,7 @@ sites/simpletest
 # or delete the previous settings and uncomment the following ones, instead.
 
 # Ignore configuration files that may contain sensitive information.
+# */settings*.php
 
 # Ignore paths that contain user-generated content.
 # */files
