@@ -1,0 +1,45 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+
+<div id="{{ wrapperId }}" class="productGrid-container">
+  {% if title %}
+    <div class="productGrid-products-groupTitle">
+      <div class="productGrid-products-groupTitle-wrapper">{{ title }}</div>
+      <a href="javascript:void(0)" onclick="jQuery('html, body').animate({ scrollTop: jQuery('.internal-headerPanel-container').offset().top-50}, 500);" title="" class="productGrid-products-top">
+        <span class="fa fa-chevron-circle-up" aria-hidden="true"></span>top
+      </a>
+    </div>
+  {% endif %}
+  <div class="productGrid-products-container">
+    {% for row in rows %}
+      {%
+        set row_classes = [
+          default_row_class ? 'views-row',
+          'productGrid-indProduct-container',
+        ]
+      %}
+      <div{{ row.attributes.addClass(row_classes) }}>
+        <div class="productGrid-indProduct-wrapper">
+          {{ row.content }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

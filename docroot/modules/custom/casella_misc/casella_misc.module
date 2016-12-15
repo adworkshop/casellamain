@@ -1,0 +1,202 @@
+<?php
+
+/**
+ * Implements hook_form_alter().
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param $form_id
+ */
+function casella_misc_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  // kint($form_id);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function casella_misc_form_contact_message_job_application_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  $form['field_hiring_manager']['#attributes']['class'][] = 'hidden';
+
+  // This form pulls information from the node on which it is displayed.
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if (!$node) {
+    return;
+  }
+
+  $form['field_job_title']['widget'][0]['value']['#default_value'] = $node->getTitle();
+  $form['field_job_reference']['widget'][0]['value']['#default_value'] = 'JOB' . $node->id();
+
+  if ($node->hasField('field_hiring_managers')) {
+    $managers = $node->get('field_hiring_managers')->getValue();
+
+    $defaults = array();
+    foreach ($managers as $manager) {
+      if (isset($form['field_hiring_manager']['widget']['#options'][$manager['target_id']])) {
+        $defaults[$manager['target_id']] = $manager['target_id'];
+      }
+    }
+
+    $form['field_hiring_manager']['widget']['#default_value'] = $defaults;
+  }
+
+  $form['field_status']['#access'] = FALSE;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function casella_misc_form_node_subsection_homepage_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node) {
+    // Hide the subsection select.
+    $form['field_subsection']['#access'] = FALSE;
+
+    $suppress = array();
+    // Earthlife homepage
+    if (31 == $node->id()) {
+      $suppress = array('field_promotion_image', 'field_subtitle', 'field_description', 'field_link', 'field_icon', 'field_title', 'field_promotion_description', 'field_promotion_link');
+    }
+    elseif (116 == $node->id()) {
+      $suppress = array('field_earthlife_description', 'field_earthlife_image', 'field_earthlife_link', 'field_earthlife_links', 'field_earthlife_title');
+    }
+    foreach ($suppress as $target) {
+      $form[$target]['#access'] = FALSE;
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function casella_misc_form_node_page_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  $currentRoles = \Drupal::currentUser()->getRoles();
+
+  // Force the subsection for earthlife and organics users.
+  if (in_array('earthlife', $currentRoles)) {
+    $form['field_subsection']['widget']['#default_value'] = 'earthlife';
+    $form['field_post_category']['#access'] = FALSE;
+    $form['field_subsection']['#access'] = FALSE;
+  }
+  elseif (in_array('organics', $currentRoles)) {
+    $form['field_subsection']['widget']['#default_value'] = 'organics';
+    $form['field_subsection']['#access'] = FALSE;
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function casella_misc_form_node_page_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  $currentRoles = \Drupal::currentUser()->getRoles();
+
+  // Remove access to the subsection for earthlife and organics users.
+  if (in_array('earthlife', $currentRoles)) {
+    $form['field_post_category']['#access'] = FALSE;
+    $form['field_subsection']['#access'] = FALSE;
+  }
+  elseif (in_array('organics', $currentRoles)) {
+    $form['field_subsection']['#access'] = FALSE;
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function casella_misc_form_node_casella_globals_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  $currentUser = \Drupal::currentUser();
+  $currentRoles = $currentUser->getRoles();
+
+  // Full access.
+  if (array_intersect(array('client_admin', 'administrator'), $currentRoles)) {
+    return;
+  }
+  if ($currentUser->id() == 1) {
+    return;
+  }
+
+  foreach (array('field_customer_care', 'field_footer_statement', 'field_online_bill_pay', 'field_search_overlay_text', 'field_social_icon_links') as $key) {
+    $form[$key]['#access'] = FALSE;
+  }
+
+  if (!in_array('earthlife', $currentRoles)) {
+    $form['field_earthlife_sidebar_intro']['#access'] = FALSE;
+  }
+
+  if (!in_array('human_resources', $currentRoles)) {
+    $form['field_job_application_intro']['#access'] = FALSE;
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function casella_misc_form_node_faq_landing_page_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  field_purge_batch(500);
+  $currentUser = \Drupal::currentUser();
+  $currentRoles = $currentUser->getRoles();
+
+  // Full access.
+  if (array_intersect(array('client_admin', 'administrator'), $currentRoles)) {
+    return;
+  }
+  if ($currentUser->id() == 1) {
+    return;
+  }
+
+  if (in_array('customer_care', $currentRoles)) {
+    foreach (array('body', 'field_h1_override', 'field_hero_text', 'field_sidebar_promotions', 'field_upper_buttons') as $key) {
+      $form[$key]['#access'] = FALSE;
+    }
+  }
+}
+
+function casella_misc_entity_access(\Drupal\Core\Entity\EntityInterface $entity, $operation, \Drupal\Core\Session\AccountInterface $account) {
+  if ($account->isAnonymous()) {
+    return \Drupal\Core\Access\AccessResult::neutral();
+  }
+
+  if (in_array($entity->bundle(), array('page', 'subsection_homepage')) && in_array($operation, array('update', 'delete'))) {
+    $currentRoles = \Drupal::currentUser()->getRoles();
+    $earthlife = in_array('earthlife', $currentRoles);
+    $organics = in_array('organics', $currentRoles);
+    if (!$earthlife && !$organics) {
+      return \Drupal\Core\Access\AccessResult::neutral();
+    }
+
+    // This is an earthlife or organics user. No subsection = no access.
+    $subsection = $entity->get('field_subsection');
+    if (!$subsection) {
+      return \Drupal\Core\Access\AccessResult::forbidden();
+    }
+
+    // Second verse, etc.
+    $subsection = $subsection->getValue();
+    if (!$subsection || '' == $subsection[0]['value']) {
+      return \Drupal\Core\Access\AccessResult::forbidden();
+    }
+
+    if (($earthlife && 'earthlife' != $subsection[0]['value']) || $organics && 'organics' != $subsection[0]['value']) {
+      return \Drupal\Core\Access\AccessResult::forbidden();
+    }
+  }
+
+  // All else being equal return a neutral result.
+  return \Drupal\Core\Access\AccessResult::neutral();
+}

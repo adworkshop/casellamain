@@ -1,0 +1,97 @@
+{% extends theme_path ~ "/templates/content/node--subsection.html.twig" %}
+
+{% block title %}
+  {{ parent() }}
+{% endblock %}
+
+{% block featuredMedia %}
+  <!--Product Specific Image - Featured Pushed by Option to Top-->
+  <div class="indProduct-featuredImg-container{% if featuredImage == FALSE %} not-featured{% endif %}">
+    {{ content.field_image }}
+  </div>
+  <!--Product Specific Image - Featured Pushed by Option to Top-->
+{% endblock %}
+
+{% block contentGrid %}
+  {% set hasSidebar = true %}
+  <div class="internal-mainBody-layoutContainer{% if hasSidebar %} withProductSidebar{% endif %}">
+
+    {% include theme_path ~ "/templates/includes/product_sidebar.html.twig" %}
+
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+
+    <!--Col - Content-->
+    <div class="internal-mainBody-contentContainer">
+
+      {{ highlighted }}
+      {{ help }}
+
+      <!--Featured Product Content-->
+      {{ content.field_upper_content }}
+
+      <!--Lower Product Content-->
+      <div class="indProduct-lowerContent-container">
+
+        <div class="indProduct-lowerContent-leftCol-container">
+
+          <!--General Product Content-->
+          {{ content.body }}
+
+          <!--*****************************************************-->
+
+          {{ content.field_benefits }}
+
+          <!--*****************************************************-->
+
+          {{ content.field_recommendations }}
+
+          <!--*****************************************************-->
+
+          {{ content.field_best_practices }}
+
+          <!--*****************************************************-->
+
+          {{ content.field_youtube_id }}
+
+          <!--*****************************************************-->
+
+          {{ content.field_images }}
+
+        </div>
+
+
+        <!--Nested Aside-->
+        <div class="indProduct-lowerContent-rightCol-container">
+
+          {% if content.field_promotion_image|render|trim %}
+            <!--Product Specific Promo-->
+            <div class="indProduct-lowerContent-rightCol-imagePromo-container indProduct-nestedSidebar-controller">
+              {% if sidebarLink %}<a href="{{ sidebarLink }}" title="">{% endif %}
+                {{ content.field_promotion_image }}
+              {% if sidebarLink %}</a>{% endif %}
+            </div>
+            <!--END Product Specific Promo-->
+          {% endif %}
+
+          {{ content.field_downloads }}
+
+          {% if featuredImage == FALSE %}
+            <div class="indProduct-lowerContent-rightCol-image-spacer"></div>
+
+            <!--Product Specific Image-->
+            <div class="indProduct-lowerContent-rightCol-image-container">
+              <img src="{{ sidebar_image }}" alt="{{ sidebar_image_alt }}">
+            </div>
+            <!--Product Specific Image-->
+          {% endif %}
+
+        </div>
+        <!--END Nested Aside-->
+
+      </div>
+      <!--END Lower Product Content-->
+
+    </div>
+    <!--Col - Content-->
+  </div>
+{% endblock %}

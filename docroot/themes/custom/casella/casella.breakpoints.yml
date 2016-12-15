@@ -1,0 +1,48 @@
+casella.mobile:
+  label: mobile
+  mediaQuery: ''
+  weight: 0
+  multipliers:
+    - 1x
+casella.480:
+  label: 480-767
+  mediaQuery: 'all and (min-width: 480px) and (max-width: 767px)'
+  weight: 1
+  multipliers:
+    - 1x
+bartik.768:
+  label: 768-959
+  mediaQuery: 'all and (min-width: 768px) and (max-width: 959px)'
+  weight: 2
+  multipliers:
+    - 1x
+casella.960:
+  label: 960-1023
+  mediaQuery: 'all and (min-width: 960px) and (max-width: 1023px)'
+  weight: 3
+  multipliers:
+    - 1x
+bartik.1024:
+  label: 1024-1199
+  mediaQuery: 'all and (min-width: 1024px) and (max-width: 1199px)'
+  weight: 4
+  multipliers:
+    - 1x
+casella.1200:
+  label: 1200-1399
+  mediaQuery: 'all and (min-width: 1200px) and (max-width: 1399px)'
+  weight: 5
+  multipliers:
+    - 1x
+bartik.1400:
+  label: 1400-1799
+  mediaQuery: 'all and (min-width: 1400px) and (max-width: 1799px)'
+  weight: 6
+  multipliers:
+    - 1x
+casella.1800:
+  label: 1800+
+  mediaQuery: 'all and (min-width: 1800px)'
+  weight: 7
+  multipliers:
+    - 1x

@@ -1,0 +1,11 @@
+{% embed theme_path ~ "/templates/includes/subsection-header.html.twig" %}
+  {% block subsection_nav %}
+    {{ node_content.mainnavigation_3 }}
+  {% endblock %}
+
+  {% block subsectionLogo %}
+    <a href="{{ subsectionPath }}" title="">
+      <img src="/{{ theme_path }}/i/logos/CasellaOrganics-Logo.png" alt="">
+    </a>
+  {% endblock %}
+{% endembed %}

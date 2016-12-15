@@ -1,0 +1,23 @@
+{%
+set classes = [
+'paragraph',
+'paragraph--type--' ~ paragraph.bundle|clean_class,
+view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+'internal-indInteractivePanelContainer',
+]
+%}
+{% if content.field_promotion|render|adw_strip_comments|trim %}
+  {% set classes = classes|merge(['withPromo']) %}
+{% endif %}
+
+<div>
+  <div{{ attributes.addClass(classes) }}>
+    {{ content.field_tab_title }}
+    {{ content.field_tab_description }}
+
+    <div class="internal-indInteractivePanel-gridContainer">
+      {% block tabContent %}{% endblock %}
+      {{ content.field_promotion }}
+    </div>
+  </div>
+</div>

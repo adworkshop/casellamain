@@ -1,0 +1,7 @@
+name: Casella Miscellaneous Functions and Resources
+description: Custom functionality for casella.com in D8.
+package: Custom
+
+type: module
+core: 8.x
+project: 'casella_misc'

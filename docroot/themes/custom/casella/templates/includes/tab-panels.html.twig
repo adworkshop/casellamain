@@ -1,0 +1,22 @@
+{{ attach_library('casella/jquery.zozotabs') }}
+
+<!--Interactive Content-->
+<div class="internal-interActiveContent-container">
+
+  <!--Zozo Tabs-->
+  <div id="tabbed-nav">
+
+    <!-- Tab Navigation Menu -->
+    <ul>
+      {% for tab_anchor in tab_anchors %}
+        <li><a>{{ tab_anchor }}</a></li>
+      {% endfor %}
+    </ul>
+
+    <!--Slide Panel Container-->
+    <div>
+      {{ content.field_tabs }}
+    </div>
+
+  </div>
+</div>

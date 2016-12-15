@@ -1,0 +1,382 @@
+/* ======================================================= */
+/*                        ADWORKSHOP MENU                  */
+/* ======================================================= */
+
+  /* Mobile Navigation Toggle */
+  .mobileBtnWrapper {
+  position: absolute;
+  top: 17px;
+  right: 0;
+  line-height: 0;
+  }
+  
+  a.mainMenuToggle {
+  position: relative;
+  font-family: 'FontAwesome';	  
+  font-size: 24px;
+  line-height: 1;
+  font-weight: normal;
+  color: #999;
+  text-decoration: none;
+   -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  transition: all .5s ease;
+  content: "\f0c9";
+  }
+  
+  a.mainMenuToggle:before {content: "\f0c9";}
+  
+  a.mainMenuToggle.active {
+  margin:0 12px 0 0; color:#4c9d2f;
+  }
+  
+  a.mainMenuToggle.active:before {content: "\f00d";}
+  
+  a.mainMenuToggle:hover {
+  color: #bbb;
+  }  
+  
+  /* ADW Navigation */
+  nav#mainMenu { 
+  display: none; /* Hide Initially */
+  margin: 20px 0 0 0; /* Alter to match bottom padding of header container (or whatever spacing is desired) */
+  padding: 0;
+  text-align: left; 
+  }
+  
+  ul.adwMenu {
+  display: block;	 
+  font-size: 0; 
+  text-align: left;
+  }
+  
+  ul.adwMenu ul {
+  padding: 0;
+  }
+  
+  ul.adwMenu li {
+  display: block;	  
+  position: relative;
+  }
+  
+  /* -- Navigation Toggles*/
+  ul.adwMenu li .openChild {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 45px;
+  height: 100%;
+  font-family: 'FontAwesome';
+  font-size: 14px;
+  line-height: 1;
+  font-style: normal;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: top;
+  cursor: pointer;
+  }
+  
+  ul.adwMenu li .openChildInner:before {
+  display: block;	  
+  position: relative;
+  content: "\f054";
+  top: 17px;
+  color: #2E577A;
+  font-size:15px;
+  }
+  
+  ul.adwMenu li .openChild:hover {
+  background-color: #eee;
+  }
+  
+  ul.adwMenu li.over > .openChild {
+  background: #0d2d49;
+  }
+  
+  nav#mainMenu ul.adwMenu li.over > .openChild {
+  background: none;
+  }
+    
+  ul.adwMenu li.over > .openChild .openChildInner:before { 
+  content: "\f077"; 
+  color: #0082CA;
+  }
+  
+  nav#mainMenu ul.adwMenu li.over > .openChild .openChildInner:before {
+  color: #0082CA;
+  }
+  
+  /* -- 2nd Tier and Lower Overrides */
+  ul.adwMenu li ul li .openChild {
+  color: #aaa;
+  }
+  
+  ul.adwMenu li ul li .openChildInner:before {
+  top: 13px; 
+  /*color: #555;*/
+  color: #AAA;
+  }
+  
+  ul.adwMenu li ul li .openChild:hover {
+  background: #aaa;
+  }
+  
+  ul.adwMenu li ul li.over > .openChild {
+  background: #aaa;
+  }
+  
+  ul.adwMenu li ul li .openChild:hover .openChildInner:before {
+  color: #fff;
+  }
+  
+  ul.adwMenu li ul li.over > .openChild .openChildInner:before {
+  color: #fff; 
+  }
+  
+  /* -- Navigation Styles*/
+  ul.adwMenu li > a {
+  display: block;
+  padding: 15px 45px 15px 0;
+  text-rendering: auto;
+  /*font-size: 13px;*/
+  line-height: 1.3;
+  /*font-weight: 700;*/
+  color: #7e7e7e;
+  text-decoration: none;
+  border-top: 1px solid #ddd;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+  font-weight: normal;
+  font-size: 14px;
+  font-family: 'open_sans_condensedbold';
+  }
+  
+  nav#mainMenu ul.adwMenu li > a {
+  font-size: 11px;
+  font-family: 'museo_sans900', sans-serif;
+  text-transform: uppercase;
+  font-weight: normal;
+  color:#00263e;  
+  }
+  
+  nav#mainMenu ul.adwMenu li > a:hover {
+  color:#0082ca;  
+  }
+  
+  ul.adwMenu li > a:hover {
+  text-decoration: none;
+  color: #9E9355;
+  }
+  
+  ul.adwMenu > li > ul {
+  border-top: 0 !important;
+  }
+  
+  ul.adwMenu > li ul {
+  display: none;
+  background: #4c9d2f;
+  }
+  
+  ul.adwMenu > li > ul li {
+  display: block; 
+  position: relative;
+  width: 100%;
+  }
+  
+  ul.adwMenu > li > ul li a:before {	  
+  content: "\203A"; 
+  padding: 0 5px 0 0; 
+  font-size: 18px;
+  color: #76bd22; 
+  }
+  
+  nav#mainMenu ul.adwMenu > li > ul > li a {
+  display: block;	  
+  padding: 10px 45px 10px 10px;
+  color: #FFF;
+  border-top: 1px solid #76bd22;
+  }
+  
+  nav#mainMenu ul.adwMenu > li > ul > li a:hover {
+  color: #fff;
+  background: #006938;
+  }
+  
+  ul.adwMenu > li > ul > li li a {
+  /*border-top: 1px solid #bbb;*/
+  border-top: 1px solid #BDBDBD;
+  }
+  
+  ul.adwMenu > li > ul > li li li a {
+  padding-left: 20px;
+  }
+  
+  ul.adwMenu > li > ul > li > ul > li a {
+  /*background: #aaa; 
+  color: #fff;*/
+  background: #DBDBDB;
+  color: #505050;
+  }
+  
+  ul.adwMenu > li > ul > li > ul > li a:hover {
+  color: #fff;
+  background: #999; 
+  }
+  
+  ul.adwMenu > li > ul > li > ul > li a:before {
+  color: #fff;
+  }
+
+/* ======================================================= */
+/*                        MEDIA QUERIES                    */
+/* ======================================================= */
+  
+  @media only screen and (min-width: 600px) {}
+  
+  @media only screen and (min-width: 820px) {}
+  
+  @media only screen and (min-width: 1100px) {
+	  
+    /**************************************
+	*
+	* ADWORKSHOP MENU
+	* Our mobile to desktop navigation flip is being done at 1100px, but this can be altered to whatever breakpoint best matches the site's design, header elements, length of main navigation items, etc.
+	*
+	**************************************/	
+	/* Mobile Navigation Toggle */
+	.mobileBtnWrapper {
+	display: none;
+	}	
+	/* ADW Navigation */
+	nav#mainMenu { 
+	display: block !important; /* Show even if expanded and then hidden by .mainMenuToggle */
+	position: absolute; 
+	right: 0; 
+	bottom: 0;
+	overflow: visible !important; /* Show overflow even if expanded and then hidden by .mainMenuToggle */
+	}
+	
+	/* -- Navigation Styles*/
+	nav#mainMenu ul.adwMenu {
+	text-align: right;
+	}
+	nav#mainMenu ul.adwMenu li {
+	display: inline-block;
+	}
+	
+	nav#mainMenu ul.adwMenu li > a {
+	color:#7e7e7e;
+	margin: 0;	
+	border-top: none;
+	}
+	
+	nav#mainMenu ul.adwMenu li > a:hover {
+	color:#4959770;
+	}
+	
+	nav#mainMenu ul.adwMenu li.empty.last > a {padding:15px 0;}
+	
+	nav#mainMenu ul.adwMenu > li ul {
+	position: absolute;
+	text-align: left;
+	border-right: 2px solid #e4e4e4;
+	border-left: 2px solid #e4e4e4;
+	border-bottom: 1px solid #e4e4e4;
+	background: #fff;
+	top: 54px;
+	}
+	nav#mainMenu ul.adwMenu > li > ul > li a {
+	width: auto;
+	margin: 0;
+	white-space: nowrap;
+	color: #777;
+	border-bottom: 1px solid #e4e4e4;
+	border-top: none;
+	background: #fff;
+	}
+	nav#mainMenu ul.adwMenu > li > ul > li a:hover {
+	background: #f3f3f3; 
+	color: #004a88;
+	}
+	nav#mainMenu ul.adwMenu li .openChild:active {
+	background-color: #fff;
+	}
+	nav#mainMenu ul.adwMenu li.tierMenu > a {
+	margin: 0 5px 0 20px;
+	padding: 15px 40px 15px 0;
+	}
+	
+	nav#mainMenu ul.adwMenu li.tierMenu.empty > a {
+	margin: 0 -20px 0 20px;
+	}
+	
+	nav#mainMenu ul.adwMenu li.tierMenu.empty.last > a {margin: 0 0 0 20px;}
+	
+	nav#mainMenu ul.adwMenu li > a:hover {
+	background-color: none;
+	color:#4959770;
+	}
+	/* -- Navigation: If Tier 3 exposed on Desktop*/
+	nav#mainMenu ul.adwMenu > li ul li ul {
+	position: relative; 
+	text-align: left;
+	border: none; 
+	background: #f3f3f3; 
+	}
+	nav#mainMenu ul.adwMenu > li.tierMenu> ul > li a {
+	padding: 10px 20px 10px 15px;
+	}
+	nav#mainMenu ul.adwMenu > li.tierMenu.withSubs > ul.subMenu > li a {
+	padding: 10px 55px 10px 15px;
+	}	
+	nav#mainMenu ul.adwMenu > li > ul > li > ul > li a {
+	background: #f3f3f3;	
+	}
+	nav#mainMenu ul.adwMenu > li > ul > li > ul > li a:hover {
+	color: #fff;	
+	background: #ccc;	
+	}
+	nav#mainMenu ul.adwMenu > li > ul > li > ul > li a:before {
+	color: #999;
+	}
+	/* -- Navigation: Last Element Flip*/
+	nav#mainMenu ul.adwMenu > li.tierMenu.last ul {
+	right: 0;
+	}
+	
+	ul.adwMenu li .openChildInner:before {
+	content: "\f078";
+	top: 15px;
+	color: #76bd22;
+	font-size:13px;
+	}
+	
+	ul.adwMenu li .openChild:hover {
+	background:#F5F5F5;
+	}
+	
+	nav#mainMenu ul.adwMenu li.over > .openChild {
+	background:#F5F5F5;
+	}
+	
+	ul.adwMenu li .openChild {
+	width: 40px;
+	}
+	
+  nav#mainMenu ul.adwMenu li.tierMenu > a:hover {
+  color: #004a88;
+  }
+	
+  }
+  
+  @media only screen and (min-width: 1200px) {
+	nav#mainMenu { 
+	right: 0; 
+	}
+  }

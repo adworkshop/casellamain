@@ -1,0 +1,13 @@
+{% extends theme_path ~ "/templates/content/node--page.html.twig" %}
+
+{% block preTitleSection %}
+  {% embed theme_path ~ "/templates/includes/subsection-header.html.twig" %}{% endembed %}
+{% endblock %}
+
+{% block title %}
+  <div class="internal-headerPanel-wrapper">
+    {{ parent() }}
+  </div>
+{% endblock %}
+
+{% block heroBreadcrumbs %}{% endblock %}

@@ -1,0 +1,13 @@
+{{ attach_library('casella/jquery.fitvids') }}
+
+{% embed "/" ~ theme_path ~ "/templates/includes/paragraph--zozo-tab.html.twig" %}
+  {% block tabContent %}
+    <div class="internal-indInteractivePanel-gridColLeft">
+      <!--Video-->
+      <div class="videoContainer">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ field_youtube_id_value }}?modestbranding=1&autohide=1&showinfo=0&rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <!--END Video-->
+    </div>
+  {% endblock %}
+{% endembed %}

@@ -1,0 +1,26 @@
+<!--Search Panel-->
+<div id="searchFormModulePanel" class="searchFormPanelContainer">
+  <div class="searchFormPanelInnerContainer">
+    <div class="searchFormPanelWrapper">
+      <div class="searchFormPanelInnerWrapper">
+        <div class="searchFormPanelTxtContainer">
+          <div class="searchFormPanelTitle"><span class="reduce">Search:</span> <span class="highlightName">Casella</span> Resource Solutions</div>
+          {% if search_intro %}
+            <div class="searchFormPanelTeaser">{{ search_intro }}</div>
+          {% endif %}
+        </div>
+        <div class="searchFormPanelFormContainer">
+          <form method="get" action="" id="search">
+            <div class="searchFormPanelSearchField">
+              <input name="a" type="text" size="40" placeholder="search term" />
+            </div>
+            <div class="searchFormPanelButtonWrappers">
+              <button type="submit" class="searchSubmit">Submit</button>
+              <a href="javascript:void(0)" class="searchPanel_close" title="">Close Panel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

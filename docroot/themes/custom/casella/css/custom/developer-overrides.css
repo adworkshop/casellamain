@@ -1,0 +1,100 @@
+
+#toolbar-administration {
+    /* When closed there is no admin toolbar offset, allow it to overlay the header. */
+    z-index: 4001;
+}
+
+@media all and (min-width: 1200px) {
+    body.toolbar-tray-open.toolbar-vertical.toolbar-fixed #generalNav {
+        top: 39px;
+    }
+    body.toolbar-tray-open.toolbar-horizontal.toolbar-fixed #generalNav {
+        top: 79px;
+    }
+
+    /* Subsection overrides */
+    body.toolbar-tray-open.toolbar-horizontal.toolbar-fixed .earthlife #generalNav {
+        top: 0;
+    }
+}
+
+.homepage-slider-caption.empty, .internal-slider-caption.empty {
+    /* Need the important to override the inline styles applied by RS */
+    display:none !important;
+}
+
+.indProduct-lowerContent-rightCol-image-spacer, .indProduct-lowerContent-rightCol-image-container {
+    display: none;
+}
+
+@media all and (min-width: 1200px) {
+    .indProduct-featuredImg-container.not-featured {
+        display: none;
+    }
+
+    .indProduct-lowerContent-rightCol-image-spacer, .indProduct-lowerContent-rightCol-image-container {
+        display: block;
+    }
+}
+
+.subsection #generalNav {
+    display: none;
+}
+
+.indLocation-upperGrid-indElement-list {
+    list-style: disc;
+    margin: 5px 0 0 15px;
+}
+
+.landing-page #block-casella-local-tasks a {
+    color: #FFF;
+}
+
+form label.form-required {
+    color: #4c9d2a;
+}
+
+form.job-indListing-form .form-actions {
+    margin: 40px 0 0;
+}
+
+#contact-message-service-location-contact-form-form .form-actions input {
+    margin: 20px 0 0;
+}
+
+.noSidebarNav .internal-sidebarFullPromo-wrapper {padding: 0; border-top: none;}
+
+
+a.sectionMenuToggle:before {content: "\f0c9";}
+a.sectionMenuToggle.active:before {content: "\f00d";}
+a.sectionMenuToggle {
+    position: relative;
+    font-family: 'FontAwesome';
+    font-size: 24px;
+    line-height: 1;
+    font-weight: normal;
+    color: #0a253e;
+    text-decoration: none;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    transition: all .5s ease;
+    content: "\f0c9";
+}
+#sectionNav a.sectionMenuToggle {color: #76be43;}
+#sectionNav a.sectionMenuToggle.active {color: #FFF;}
+
+/* Recreating using the nav element instead of div. */
+nav.footer-lowerNav-container select {display: inline-block;}
+nav.footer-lowerNav-container ul {display: none;}
+@media all and (min-width: 768px) {
+    /*Footer*/
+    nav.footer-lowerNav-container ul {
+        display: block;
+    }
+
+    nav.footer-lowerNav-container select {
+        display: none;
+    }
+}

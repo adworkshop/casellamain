@@ -1,0 +1,212 @@
+googlefonts-droid:
+  version: 1.0
+  license:
+    name: google fonts
+    url: https://www.google.com/fonts#AboutPlace:about
+    gpl-compatible: true
+  css:
+    base:
+      https://fonts.googleapis.com/css?family=Droid+Serif:400,400i|Source+Sans+Pro:400,400i,600,600i: {}
+
+custom-css:
+  version: 1.x
+  css:
+    theme:
+      plugins/font-awesome-v.4.6.3/css/font-awesome.min.css: {}
+      css/custom/custom.css: {}
+      css/custom/developer-overrides.css: {}
+      css/custom/adw-menu.css: {}
+
+custom-js:
+  version: 1.x
+  js:
+    js/custom/custom.js: {}
+    js/custom/adw-menu.js: {}
+  dependencies:
+    - core/jquery
+    - core/modernizr
+
+custom-home:
+  version: 1.x
+  js:
+    js/custom/home.js: {}
+  css:
+    theme:
+      css/custom/home.css: {}
+      css/lib/casella-master.css: {}
+  dependencies:
+    - core/jquery
+    - core/modernizr
+
+custom-internal:
+  version: 1.x
+  js:
+    js/custom/internal.js: {}
+  css:
+    theme:
+      css/custom/internal.css: {}
+  dependencies:
+    - core/jquery
+    - core/modernizr
+
+earthlife:
+  version: 1.x
+  js:
+    js/custom/earthlife-main.js: {}
+  css:
+    theme:
+      css/custom/earthlife.css: {}
+  dependencies:
+    - core/jquery
+
+organics:
+  version: 1.x
+  js:
+    js/custom/organics-main.js: {}
+  css:
+    theme:
+      css/custom/organics.css: {}
+  dependencies:
+    - core/jquery
+
+locations:
+  version: 1.x
+  css:
+    theme:
+      css/custom/locations.css: {}
+
+faq:
+  version: 1.x
+  js:
+    js/custom/faq.js: {}
+  css:
+    theme:
+      css/custom/faq.css: {}
+
+jquery.sticky-kit:
+  version: 1.x
+  js:
+    plugins/sticky-kit/jquery.sticky-kit.js: {}
+  requirements:
+    - core/jquery
+
+jquery.scrollUp:
+  version: 2.1.1
+  js:
+    js/libs/jquery.scrollUp.min.js: {}
+  css:
+    theme:
+      css/lib/colio.css: {}
+      css/lib/colio-white/style.css: {}
+  requirements:
+    - core/jquery
+
+jquery.colio:
+  version: 1.5
+  js:
+    js/libs/jquery.colio.min.js: {}
+  requirements:
+    - core/jquery
+
+respond:
+  version: 1.4.2
+  js:
+    js/libs/respond.min.js: {}
+
+jquery.hoverdir:
+  version: 1.1.2
+  js:
+    plugins/hoverdir/jquery.hoverdir.js: {}
+  dependencies:
+    - core/jquery
+
+ios-orientationchange-fix:
+  version: 1.x
+  js:
+    js/libs/ios-orientationchange-fix.js: {}
+
+jquery.easing:
+  version: 1.3
+  js:
+    js/libs/jquery.easing.1.3.js: {}
+  dependencies:
+    - core/jquery
+
+jquery.fancybox:
+  version: 2.1.5
+  js:
+    plugins/fancybox-v.2.1.5/source/jquery.fancybox.js: {}
+    plugins/fancybox-v.2.1.5/source/helpers/jquery.fancybox-buttons.js: {}
+  css:
+    theme:
+      plugins/fancybox-v.2.1.5/source/jquery.fancybox.css: {}
+      plugins/fancybox-v.2.1.5/source/helpers/jquery.fancybox-buttons.css: {}
+  dependencies:
+    - core/jquery
+
+jquery.fitvids:
+  version: 1.1
+  js:
+   plugins/fitvids-v.1.1/jquery.fitvids.js: {}
+  dependencies:
+    - core/jquery
+
+jquery.footable:
+  version: 3.0.10
+  js:
+    plugins/footable-v.3/js/footable.core.min.js: {}
+  css:
+    theme:
+      plugins/footable-v.3/css/footable.core.standalone.css: {}
+  dependencies:
+    - core/jquery
+
+jquery.footableSorting:
+  version: 3.0.10
+  js:
+    plugins/footable-v.3/js/footable.sorting.min.js: {}
+  css:
+    theme:
+      plugins/footable-v.3/css/footable.sorting.min.css: {}
+  dependencies:
+    - casella/jquery.footable
+
+jquery.footableFiltering:
+  version: 3.0.10
+  js:
+    plugins/footable-v.3/js/footable.filtering.min.js: {}
+  css:
+    theme:
+      plugins/footable-v.3/css/footable.filtering.min.css: {}
+  dependencies:
+    - casella/jquery.footable
+
+jobsFootableInit:
+  version: 1.0
+  js:
+    js/custom/jobsFootable.js: {}
+  dependencies:
+    - casella/jquery.footableSorting
+    - casella/jquery.footableFiltering
+
+jquery.zozotabs:
+  version: 6.5
+  js:
+    plugins/zozo-tabs-v.6.5/js/zozo.tabs.min.js: {}
+  css:
+    theme:
+      plugins/zozo-tabs-v.6.5/css/zozo.tabs.min.css: {}
+      plugins/zozo-tabs-v.6.5/css/zozo.tabs.flat.min.css: {}
+  dependencies:
+    - core/jquery
+
+
+royalslider:
+  version: 9.5.7a
+  js:
+    plugins/royalslider/jquery.royalslider.min.js: {}
+  css:
+    theme:
+      plugins/royalslider/royalslider.css: {}
+      plugins/royalslider/skins/universal/rs-universal.css: {}
+      plugins/royalslider/skins/default/rs-default.css: {}

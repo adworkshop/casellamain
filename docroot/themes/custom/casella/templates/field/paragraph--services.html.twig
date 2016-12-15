@@ -1,0 +1,21 @@
+{{ attach_library('casella/jquery.fitvids') }}
+
+{% embed "/" ~ theme_path ~ "/templates/includes/paragraph--zozo-tab.html.twig" %}
+  {% block tabContent %}
+    <div class="internal-indInteractivePanel-gridColLeft">
+      <div class="nestedTabs-container">
+        <div class="nestedTabs-wrapper">
+
+          <ul>
+            {% for service_title in serviceTitles %}<li><a>{{ service_title.title }}</a></li>{% endfor %}
+          </ul>
+
+          <div>
+            {{ services_view }}
+          </div>
+
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+{% endembed %}

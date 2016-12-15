@@ -1,0 +1,31 @@
+name: Casella Waste Management
+type: theme
+description: A custom Drupal 8 theme developed by Adworkshop for casella.com
+base theme: stable
+core: 8.x
+screenshot: screenshot.png
+
+libraries-override:
+  core/modernizr:
+    js:
+      assets/vendor/modernizr/modernizr.min.js: js/libs/modernizr.min.js
+
+libraries:
+  - casella/googlefonts-droid
+  - casella/custom-css
+  - casella/custom-js
+  - casella/jquery.easing
+
+regions:
+  non_node_title: 'Non Node Title'
+  content: 'Content'
+  sidebar_nav: 'Sidebar Navigation'
+  footer: 'Footer'
+  help: 'Help'
+  highlighted: 'Highlighted'
+  header: 'Header'
+  node_content: 'Node Content'
+  form_container: 'Form Container'
+
+ckeditor_stylesheets:
+  - css/custom/editor.css

@@ -1,0 +1,34 @@
+{% extends theme_path ~ "/templates/content/node--page.html.twig" %}
+
+{% block bodyContent %}
+  <div class="internal-mainBody-generalTxt-container{% if twoCol == 'true' %} twoCol{% endif %}">
+    <div class="internal-resourceSolution-upperContentCol-container">
+
+      {% if content.body|render|trim or addThis %}
+        <!--Left Column-->
+        <div class="internal-resourceSolution-upperContentCol-leftColContainer">
+          {{ content.body }}
+
+          {% if addThis %}
+            {% include "/" ~ theme_path ~ "/templates/includes/add-this.html.twig" %}
+          {% endif %}
+        </div>
+        <!--END Left Column-->
+      {% endif %}
+
+      {% if content.field_secondary_content|render|trim %}
+      <!--Right Column-->
+        <div class="internal-resourceSolution-upperContentCol-rightColContainer">
+          {{ content.field_secondary_content }}
+        </div>
+        <!--END Right Column-->
+      {% endif %}
+
+    </div>
+
+  </div>
+{% endblock %}
+
+{% block resourceSolutions %}
+  {{ content.field_solution_resources }}
+{% endblock %}

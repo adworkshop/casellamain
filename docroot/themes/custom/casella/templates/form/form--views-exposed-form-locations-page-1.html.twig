@@ -1,0 +1,39 @@
+{#
+/**
+ * @file
+ * Theme override for a 'form' element.
+ *
+ * Available variables
+ * - attributes: A list of HTML attributes for the wrapper element.
+ * - children: The child elements of the form.
+ *
+ * @see template_preprocess_form()
+ */
+#}
+{% if searchMeta|length %}
+  <!--Search Meta-->
+  <div class="providerSearch-postSearch-container">
+    <h2>You are currently searching for: {% for param in searchMeta %}{% if loop.index != 1 %}, {% endif %}<span>{{ param|e }}</span>{% endfor %}</h2>
+    <div class="providerSearch-postSearch-toggleBtn-container"><a href="javascript:void(0)" onclick="jQuery('html, body').animate({ scrollTop: jQuery('.providerSearch-searchForm-container').offset().top - 50}, 1000);" title="">Update your search parameters</a></div>
+  </div>
+  <!--END Search Meta-->
+{% endif %}
+
+{{ providerSearchResults }}
+
+<div class="providerSearch-searchForm-container">
+  <form method="get" action="" id="location-mainSearch">
+    <div class="providerSearch-searchForm-wrapper">
+      <div class="providerSearch-searchForm-town">
+        <label>Town/City</label>
+        <input name="city" type="text" size="40" placeholder="" />
+      </div>
+      <div class="providerSearch-searchForm-spacer"><span>OR</span></div>
+      <div class="providerSearch-searchForm-zip">
+        <label>Zip Code</label>
+        <input name="zip_code" type="number" size="40" placeholder="" />
+      </div>
+    </div>
+    <button type="submit" class="providerSearch-searchForm-searchSubmit">Submit</button>
+  </form>
+</div>

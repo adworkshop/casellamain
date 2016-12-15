@@ -1,0 +1,92 @@
+{% embed theme_path ~ "/templates/includes/subsection-organics-header.html.twig" %}{% endembed %}
+
+{% block preTitleSection %}
+  <div class="mainOrganics-upperContentRegion-container">
+    <div class="mainOrganics-upperContentRegion-wrapper">
+
+      <!--Left Column: RoyalSlider-->
+      <div class="mainOrganics-upperContentRegion-leftCol-container">
+        {{ content.field_promotion_image }}
+        {# <img src="img/organics/home.jpg" alt=""> #}
+      </div>
+      <!--END Left Column: RoyalSlider-->
+
+      <!--*************************************************-->
+
+      <!--Right Column: Content & Caption-->
+      <div class="mainOrganics-upperContentRegion-rightCol-container">
+        {{ content.field_subtitle }}
+        <div class="mainOrganics-upperContentRegion-rightCol-contentContainer">
+          {{ content.field_description }}
+        </div>
+        <div class="mainOrganics-upperContentRegion-rightCol-btnContainer">
+          <a href="{{ link_url }}" title="">
+            {% if link_icon %}<span class="fa {{ link_icon }} btnIconWrapper" aria-hidden="true"></span>{% endif %}
+            {{ link_title }}
+          </a>
+        </div>
+
+        {{ highlighted }}
+        {{ help }}
+
+        {% if content.field_title|render|trim or content.field_promotion_description|render|trim or content.field_promotion_link|render|trim %}
+          <div class="mainOrganics-upperContentRegion-rightCol-captionSpacer"></div>
+
+          <div class="mainOrganics-upperContentRegion-rightCol-captionContainer">
+            {% if content.field_title|render|trim %}
+              <div class="mainOrganics-upperContentRegion-rightCol-captionContainer-title">{{ content.field_title }}</div>
+            {% endif %}
+
+            {% if content.field_promotion_description|render|trim %}
+              <div class="mainOrganics-upperContentRegion-rightCol-captionContainer-txt">{{ content.field_promotion_description }}</div>
+            {% endif %}
+
+            {% if content.field_promotion_link|render|trim %}
+              <div class="mainOrganics-upperContentRegion-rightCol-captionContainer-btn">{{ content.field_promotion_link }}</div>
+            {% endif %}
+
+            <div class="mainOrganics-upperContentRegion-rightCol-captionContainer-icon"><span class="fa fa-caret-left" aria-hidden="true"></span></div>
+          </div>
+        {% endif %}
+
+      </div>
+      <!--END Right Column: Content & Caption-->
+
+    </div>
+  </div>
+{% endblock %}
+
+{# ******************** #}
+
+{% block titleSection %}
+  <div class="mainOrganics-lowerContentRegion-container">
+
+    <!--Title Bar-->
+    <div class="mainOrganics-lowerContentRegion-titleBar-container">
+      <div class="globalWidth">
+        <h2>{{ title }}</h2>
+        <div class="mainOrganics-lowerContentRegion-hero-container">
+          {{ content.body }}
+        </div>
+      </div>
+    </div>
+
+    {# ******************** #}
+
+    {% block contentSection %}
+      <div class="mainOrganics-lowerContentRegion-grid-container">
+        <div class="globalWidth">
+          {{ organics_services_preview }}
+          {{ organics_services_full }}
+        </div>
+      </div>
+    {% endblock %}
+
+  </div>
+{% endblock %}
+
+{# ******************** #}
+
+{% block lowerContentSection %}
+  {{ content.field_full_width_promotion }}
+{% endblock %}

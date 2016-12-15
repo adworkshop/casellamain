@@ -1,0 +1,25 @@
+{% extends theme_path ~ "/templates/navigation/breadcrumb.html.twig" %}
+
+{% block breadcrumbs %}
+  <div class="sectionMenu-breadCrumb-container cf" role="navigation">
+    <div class="globalWidth">
+      <div class="sectionMenu-breadCrumb-wrapper">
+        <div class="internal-headerPanel-breadcrumbs">
+          <h2 class="visually-hidden">{{ 'Breadcrumb'|t }}</h2>
+          <ul>
+            <li><a href="/" title=""><span class="fa fa-home" aria-hidden="true"></span></a></li>
+            {% for item in breadcrumb %}
+              <li>
+                {% if item.url %}
+                  <a href="{{ item.url }}">{{ item.text }}</a>
+                {% else %}
+                  {{ item.text }}
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

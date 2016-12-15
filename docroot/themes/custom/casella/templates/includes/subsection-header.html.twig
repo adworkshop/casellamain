@@ -1,0 +1,47 @@
+<!--Section Navigation-->
+<div class="sticky-spacer">
+  <div id="sectionNav">
+    <div class="globalWidth">
+
+      <!--Section Logo-->
+      <div class="sectionNav-logoContainer">
+        {% block subsectionLogo %}
+          <a href="{{ subsectionPath }}" title="">
+            <img src="/{{ theme_path }}/i/logos/earthlife-Logo.png" alt="">
+          </a>
+        {% endblock %}
+      </div>
+      <!--END Section Logo-->
+
+      <!--Mobile Btn Set-->
+      <div class="mobileBtnWrapper">
+        <a href="#menu" class="sectionMenuToggle"></a>
+      </div>
+      <!--END Mobile Btn Set-->
+
+      {% block subsection_nav %}{% endblock %}
+
+    </div>
+  </div>
+</div>
+<!--END Section Navigation-->
+
+{% if breadcrumbOverride %}
+  <div class="sectionMenu-breadCrumb-container cf">
+    <div class="globalWidth">
+      <div class="sectionMenu-breadCrumb-wrapper">
+        {{ breadcrumbOverride }}
+      </div>
+    </div>
+  </div>
+{% else %}
+  {% if node_content.casella_breadcrumbs %}
+    <div class="sectionMenu-breadCrumb-container cf">
+      <div class="globalWidth">
+        <div class="sectionMenu-breadCrumb-wrapper">
+          {{ node_content.casella_breadcrumbs }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endif %}

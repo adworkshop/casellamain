@@ -1,0 +1,999 @@
+/*
+Website Name: Casella
+Description: CSS - Internal
+Version: 1.0
+Author: G.R.Sanford
+Author URL: http://www.adworkshop.com
+*/
+
+/* ======================================================= */
+/*    GENERAL                                              */
+/* ======================================================= */
+  #generalNav {border-bottom:2px solid #e4e4e4; background:#fff;}
+  .headerLogo img {opacity:1;}
+  .headerLogo a img:hover {opacity:.4;}
+  
+  .internalPageTitleContainer {background: #00263e; padding: 40px 0;}
+  .internalPageTitleContainer.wHeaderImage {border-bottom: 8px solid #001A2A;}
+  .internalPageTitleInnerContainer {display:table; width:100%; padding: 0 30px; margin:0 auto;}
+  .internalPageTitleIconContainer {display:block; vertical-align:middle; width:100px; line-height:0; margin:0 auto; padding: 0;}
+  .internalPageTitleIconContainer img {width:100%; max-width:100%;}
+  .internalPageTitleContentContainer {display:block; vertical-align:middle; text-align:center;}
+  .internalPageTitle {font-family: 'museo_sans900', sans-serif; font-size: 30px; font-weight: normal; color: #0082CA; margin:15px 0 10px; text-transform: uppercase;}
+  .internalPageTitleDescription {font-family: 'Source Sans Pro', sans-serif; font-size: 15px; line-height: 1.2; color: #e4e4e4;}
+  
+  /*Overrides*/
+  .collection {color:#76777b;}
+  .organics {color:#49a942;}
+  .landfills {color:#ff681d;}
+  .energy {color:#ffe900;}
+  .resources {color:#76bd22;}
+  .internalPageTitleContainer.people {padding: 20px 0 30px;}
+  .internalPageTitleContainer.people .internalPageTitleContentContainer {text-align:left;}
+  
+  .subPageTitleContainer {background: #00263e; margin: 0 0 40px;}
+  h2.subPageTitle {color: #0082CA; text-transform: uppercase; text-align: center; padding: 25px 0; font-size: 20px;}
+  
+  .internalPageTitleContainerNoColor {padding: 50px 0 0; color:#fff;}
+  .internalPageTitleNoColor {font-family: 'museo_sans900', sans-serif; font-size: 30px; font-weight: normal; color: #76bd22; text-transform: uppercase; display: inline-block; background: #FFF; padding: 0 15px; margin: 0 0 0 -20px; line-height: .85;}
+  .internalPageTitleDescriptionNoColor {font-family: 'Source Sans Pro', sans-serif; font-size: 15px; line-height: 1.4; color: #00263e; margin: 20px 0 0;}
+  
+  /*Txt Layout*/
+  .twoColumnContentContainer {}
+  .threeColumnContentContainer {}
+  .internalPageHeaderImageContainer {line-height:0; border-bottom: 6px solid #F2F2F2;}
+  .internalPageHeaderImageContainer img {width:100%; max-width:100%;}
+  
+/* ======================================================= */
+/*    SERVICES: MAIN                                       */
+/* ======================================================= */
+  #service-slider {position: relative; width:100% !important;}
+  .serviceUpperContainer {position:relative;}
+  .serviceContentContainer {z-index: 20; position: relative;}
+  .serviceContentInnerContainer {display:table;}
+  .serviceContentWrapper {display: block; padding: 40px 0;}
+  .serviceContentInnerWrapper {width: 100%;}
+  .serviceContentTitleContainer {}
+  .serviceContentTitleContainer h1 {font-family: 'museo_sans900', sans-serif; font-size: 50px; font-weight: normal; color: #76bd22; text-transform: uppercase; line-height: .88;}
+  .serviceContentSubTitle {font-family: 'Source Sans Pro', sans-serif; font-size: 20px; color: #003A63; text-transform: uppercase; line-height: 1.1; margin: 10px 0 0;}
+  .serviceContentTxtContainer {margin: 15px 0 0;}
+  .serviceContentFeaturedTxt {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.5; margin:0 0 20px;}
+  .serviceContentTxt {line-height: 1.7;}
+  
+  .indServiceContentLinkContainer {display:block; width:100%;}
+  .indServiceContentLinkContainerLeft, .indServiceContentLinkContainerCenter, .indServiceContentLinkContainerRight {display: block; width: 100%; border-bottom: 1px dotted #A8ED56; padding: 15px 0;}
+  .indServiceContentLinkContainerRight.hide {display:none;}
+  .indServiceContentLinkContainerCenter.last {border-bottom: none;}
+  .indServiceContentLinkInnerWrapper {
+  display:table; width:100%; font-family: 'museo_sans700', sans-serif; font-size: 14px; font-weight: normal; color: #00263e; text-transform: uppercase; position: relative;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  -ms-transition: none;
+  transition: none;
+  }
+  .indServiceContentLinkInnerWrapperLeft {display:table-cell; vertical-align:middle; width:28px; padding:0 8px 0 0; line-height:0;}
+  .indServiceContentLinkInnerWrapperRight {display:table-cell; vertical-align:middle; display: table-cell; vertical-align: middle;}
+  .indServiceContentLinkInnerWrapper img {width:100%; max-width:100%;}
+  
+  .indServiceContentLinkInnerWrapper:hover img {opacity:1;}
+  .indServiceContentLinkInnerWrapper.recycling:hover {color:#0082ca;}
+  .indServiceContentLinkInnerWrapper.collection:hover {color:#76777b;}
+  .indServiceContentLinkInnerWrapper.organics:hover {color:#4c9d2f;}
+  .indServiceContentLinkInnerWrapper.landfills:hover {color:#ffe900;}
+  .indServiceContentLinkInnerWrapper.energy:hover {color:#ff681d;}
+
+/* ======================================================= */
+/*    RECYCLE                                              */
+/* ======================================================= */
+  .recycleUpperContainer {width:100%; padding:0 30px; margin:40px auto;}
+  .recycleUpperContentContainer {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7;}
+  
+  /*Tabs*/
+  .recycleTabs {width:100%; margin: 40px auto; padding:0 30px;}
+  .recycleTabs .z-tabs > ul > li > a {font-family: 'museo_sans700', sans-serif !important;}
+  .recycleGraphicContainer {display:table; width:100%; padding: 40px 0 0;}
+  .recycleGraphicColumnLeft {display: block; vertical-align:top; padding:0;}
+  .recycleGraphicColumnLeft img {width:100%; max-width:100%;}
+  .recycleGraphicColumnRight {display: block; width: 100%; vertical-align: middle;}
+  .recycleGraphicInnerColumnRight {border-top: 3px dotted #E4E4E4; padding: 40px 0 0; margin: 40px 0 0; border-left: none;}
+  .recycleGraphicCallOutContainer {display:table; width:100%; margin: 0 0 30px; padding: 0 0 30px; border-bottom: 1px dotted #e4e4e4;}
+  .recycleGraphicCallOutContainer.last {margin: 0; padding: 0; border-bottom: none;}
+  .recycleGraphicCallOutNumberContainer {display:table-cell; vertical-align:top; width:70px;}
+  .recycleGraphicCallOutNumberWrapper {border-radius: 25px 25px 25px 25px; -moz-border-radius: 25px 25px 25px 25px; -webkit-border-radius: 25px 25px 25px 25px; width: 50px; height: 50px;}
+  .recycleGraphicCallOutNumber {display:table-cell; vertical-align:middle; text-align:center; width:50px; height:50px; font-family: 'museo_sans700', sans-serif; font-size: 18px; color:#FFF;}
+  .recycleGraphicCallOutContentContainer {display:table-cell; vertical-align:top; font-family: 'Source Sans Pro', sans-serif; font-size: 13px; font-weight: 400; color: #666;}
+  .recycleGraphicCallOutContentTitle {font-family: 'museo_sans700', sans-serif; font-size: 16px;}
+  .recycleGraphicCallOutContent {margin: 5px 0 0; line-height:1.5;}
+  .recycleGraphicCallOutNumberWrapper.drkBlue {background: #00263e;}
+  .recycleGraphicCallOutNumberWrapper.lightBlue {background: #0082ca;}
+  .recycleGraphicCallOutNumberWrapper.midBlue {background: #004a88;}
+  .recycleGraphicCallOutNumberWrapper.green {background: #4c9d2f;}
+  .recycleGraphicCallOutContentTitle.drkBlue {color: #00263e;}
+  .recycleGraphicCallOutContentTitle.lightBlue {color: #0082ca;}
+  .recycleGraphicCallOutContentTitle.midBlue {color: #004a88;}
+  .recycleGraphicCallOutContentTitle.green {color: #4c9d2f;}
+  
+  .recycleProjectImgContainer {line-height:0;}
+  .recycleProjectImgContainer img {width:100%; max-width:100%;}
+  .recycleProjectContentContainer {display:table; width:100%; font-family: 'Source Sans Pro', sans-serif; font-size: 13px; font-weight: 400; color: #666; margin: 30px 0 0;}
+  .recycleProjectDescriptionWrapper {display: block; width: 100%; padding: 0; text-align: left;}
+  .recycleProjectInnerDescriptionWrapper {padding: 0; border-bottom: 1px dotted #ccc; border-right: none; margin: 0 0 30px; line-height:1.7; font-style:italic;}
+  .recycleProjectContentWrapper {display: block; width: 100%; vertical-align:top;}
+  .recycleProjectInnerContentWrapper {display:table; width:100%;}
+  .recycleProjectInnerContentColumn1 {display: block; width: 100%; padding: 0; margin: 0 0 20px;}
+  .recycleProjectInnerContentColumn2 {display: block; width: 100%; padding: 0;}
+  .recycleProjectInnerContentTitle {font-family: 'museo_sans700', sans-serif; font-size: 15px; color: #00263e; margin:0 0 5px;}
+  .recycleProjectInnerContent {font-family: 'Droid Serif', serif; font-size: 14px; line-height: 1.7;}
+  
+  .recycleFocusContainer {display:table; width:100%;}
+  .recycleFocusColLeft {display:block; width:100%; vertical-align:top;}
+  .recycleFocusColRight {display:block; vertical-align:top; padding:0; margin:40px 0 0;}
+  .recycleFocusColRightWrapper {line-height:0; padding:0; border-bottom:1px dotted #e4e4e4;}
+  .recycleFocusColRightWrapper img {width:100%; max-width:100%;}
+  .recycleFocusColLeftWrapper {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7; color: #666;}
+  .recycleFocusColLeftTitle {font-family: 'museo_sans700', sans-serif; font-size: 21px; color: #00263e; margin: 0 0 10px; line-height:1.3;}
+  
+  /*Sustainable*/
+  .recycleSustainableContainer {font-family: 'Droid Serif', serif; font-size: 14px; line-height: 1.7;}
+  .recycleSustainableTitle {  font-family: 'museo_sans700', sans-serif; font-weight: normal; font-size: 17px; color: #00263e; margin: 0 0 8px; line-height: 1.3;}
+  
+  /*Image Grid*/
+  .recycleGrid {list-style: none; width: 100%; position: relative; padding: 0; font-size:0; margin:30px 0 0}
+  .recycleGrid li {display: inline-block; background: #fff; position: relative; width: 50%;}
+  .recycleGrid li a,
+  .recycleGrid li a img {display: block; position: relative;}
+  .recycleGrid li a img {width:100%; max-width:100%;}
+  .recycleGrid li a:hover img {opacity:1;}
+  .recycleGrid li a {overflow: hidden; cursor: default;}
+  .recycleGrid li a div.recycleInnerGrid {
+  position: absolute;
+  background: #00263e;
+  background: rgba(0,38,62,0.9);
+  width: 100%;
+  height: 100%;
+  font-family: 'museo_sans700', sans-serif;
+  font-size: 11px;
+  line-height:1.4;
+  font-weight: normal;
+  text-align:center;
+  padding:10px 20px;
+  }
+  .recycleGrid li a:hover div.recycleInnerGrid {color:#fff;}
+  .recycleGridWrapper {display:table; width:100%; height:100%;}
+  .recycleGridInnerWrapper {display:table-cell; vertical-align:middle;}
+  .recycleGridNumberContainer  { background:#0082ca; border-radius: 25px 25px 25px 25px; -moz-border-radius: 25px 25px 25px 25px; -webkit-border-radius: 25px 25px 25px 25px; width: 50px; height: 50px; margin:0 auto 10px;}
+  .recycleGridNumber {display: table-cell; vertical-align: middle; text-align: center; width: 50px; height: 52px; font-family: 'museo_sans900', sans-serif; font-size: 20px; color: #FFF;}
+  
+  /*Graph*/
+  .recycleGraphContainer {display:table; width:100%; margin:60px 0;}
+  .recycleGraphDescriptionContainer {display:block; vertical-align:middle; width:100%; text-align:left; padding: 0; line-height:1.7;}
+  .recycleGraphDescriptionInnerContainer {padding: 0; border-right: none; border-bottom: 1px dotted #e4e4e4;}
+  .recycleGraphDescriptionWrapper {font-size: 13px; line-height: 1.7; margin:10px 0 0;}
+  .recycleGraphImgContainer {display:block; vertical-align:top; width:100%; line-height:0; margin:40px 0 0;}
+  .recycleGraphImgContainer img {width:100%; max-width:100%;}
+
+/* ======================================================= */
+/*    COLLECTION                                           */
+/* ======================================================= */  
+  .AFCContainer {background: #F7F7F7; padding: 0 0 60px; border-top: 6px solid #f5f5f5;}
+  h2.AFCTitle {color: #76777b; text-transform: uppercase; text-align: center; font-size: 23px; margin: 0 0 60px; background: #00263a; padding: 30px;}
+  .indAFCContainer {display:table; width:100%; padding: 0 0 50px; margin: 0 0 50px; border-bottom: 3px dotted #ccc; font-size:0;}
+  .indAFCContainer.last {padding: 0; margin: 0; border-bottom: none;}
+  .indAFCCo1Wrapper {display:block; vertical-align:bottom; width:100%; padding: 0; text-align:center; margin:0 0 40px;}
+  .indAFCCo2Wrapper {display:block; vertical-align:bottom; width:100%; padding: 0; margin:0 0 30px;}
+  .indAFCCo3Wrapper {display:block; vertical-align:top; width:100%; padding: 0; color:#444; font-size: 15px; line-height: 1.4; margin:0 0 20px;}
+  .indAFCCo4Wrapper {display:block; vertical-align:top; width:100%; padding: 0; margin:0 0 20px;}
+  .indAFCCo1IconWrapper {line-height:0; max-width: 150px; margin: 0 auto;}
+  .indAFCCo1Title {font-family: 'museo_sans700', sans-serif; font-weight: normal; font-size: 16px; margin: 20px 0 0; color: #444;}
+  .indAFCCo2ImageWrapper {line-height:0; max-width: 280px; margin: 0 auto;}
+  .indAFCCo1IconWrapper img, .indAFCCo2ImageWrapper img {width:100%; max-width:100%;}
+  .indAFCCo4InnerWrapper {display:table; width:100%;}
+  .indAFCCo4InnerTextWrapper {display:table-cell; width:75%; vertical-align:middle; color: #444; font-size: 15px; line-height: 1.4;}
+  .indAFCCo4InnerImageWrapper {display:table-cell; vertical-align:top;}
+  .indAFCCo4InnerImageWrapper img {width:100%; max-width:100%;}
+  .indAFCCo4InnerTextWrapper span {display: block; font-family: 'museo_sans900', sans-serif; font-weight: normal; letter-spacing: -2px; line-height: 1;}
+  span.naturalGas {font-size: 38px; color: #0082ca;}
+  span.biodiesel {font-size: 38px; color: #49a942;}
+  span.improvements {font-size: 38px; color: #0065a4;}
+  .indAFCCo4InnerWrapper.naturalGas {text-align:right;}
+  .indAFCCo4InnerWrapper.naturalGas .indAFCCo4InnerImageWrapper {padding:0 0 0 15px;}
+  .indAFCCo4InnerWrapper.biodiesel {text-align:left;}
+  .indAFCCo4InnerWrapper.biodiesel .indAFCCo4InnerImageWrapper {padding:0 15px 0 0;}
+  .indAFCCo4InnerWrapper.improvements {text-align:right;}
+  .indAFCCo4InnerWrapper.improvements .indAFCCo4InnerImageWrapper {padding:0 0 0 15px; vertical-align:bottom;}
+  
+/* ======================================================= */
+/*    ORGANICS                                             */
+/* ======================================================= */ 
+  .organicsUpperContainer {width:100%; padding:0 30px; margin:40px auto;}
+  .organicsUpperContentContainer {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7;}
+  .organicsUpperContentInnerContainer {display:table; width:100%;}
+  .organicsUpperContentInnerContainerLeft {display:block; vertical-align:top; width:100%; text-align:left;}
+  .organicsUpperContentInnerContainerRight {display:block; vertical-align:top; padding: 35px 0 0; margin: 30px 0 0; border-top: 6px solid #EDEDED;}
+  .organicsUpperContentInnerContainerWrapper {padding:0; border-left:none;}
+  .indOrganicsUpperDescriptContainer {display:table; width:100%; padding: 0 0 30px; margin: 0 0 30px; border-bottom: 1px dotted #e4e4e4;}
+  .indOrganicsUpperDescriptContainer.last {padding: 0; margin: 0; border-bottom: none;}
+  .indOrganicsUpperDescriptContainerLeft {display:block; vertical-align:top; line-height:0; padding: 0; margin: 0 0 15px;}
+  .indOrganicsUpperDescriptContainerLeft img {width:100%; max-width:100%;}
+  .indOrganicsUpperDescriptContainerRight {display:block; vertical-align:middle; width:100%;}
+  .indOrganicsUpperDescriptTitle {font-family: 'museo_sans700', sans-serif; font-size: 16px; color: #00263e;}
+  .indOrganicsUpperDescriptTxt {font-family: 'Source Sans Pro', sans-serif; line-height: 1.4;}
+  
+  .earthlifeContainer {width:100%; background: #ECF8FF; padding:40px 0; border-top: 2px dotted #AFDB79; border-bottom: 2px dotted #AFDB79;}
+  .earthlifeInnerContainer {display:table; width:100%;}
+  .earthlifeInnerContainerLeft {display:none; vertical-align:middle; width:100%;}
+  .earthlifeInnerContainerLeftWrapper {
+  width:150px; margin:0 auto;
+  -webkit-transform: rotate(-8deg);
+  -moz-transform: rotate(-8deg);
+  -o-transform: rotate(-8deg);
+  -ms-transform: rotate(-8deg);
+  transform: rotate(-8deg);
+  }
+  .earthlifeInnerContainerLeftWrapper img {width:100%; max-width:100%;}
+  .earthlifeInnerContainerRight {display:block; vertical-align:middle; padding: 0;}
+  .earthlifeInnerContainerRightTitle {font-family: 'museo_sans700', sans-serif; font-size: 27px; font-weight: normal; margin: 0 0 15px; color: #003A63;}
+  .earthlifeInnerContainerRightTitle span {font-family: 'museo_sans900', sans-serif;  font-style:italic; padding:0 5px 0 0;}
+  .earthlifeInnerContainerRightTxt {font-size: 14px; line-height: 1.7;}
+  
+  .organicsLowerContainer {display:table; width:100%; padding:60px 0;}
+  .organicsLowerContainerLeft {display:block; vertical-align:top; width:100%; margin: 40px 0 0; padding: 40px 0 0; border-top: 6px solid #e4e4e4;}
+  .organicsLowerContainerRight {display:block; vertical-align:top; padding: 0;}
+  .organicsLowerInnerContainerRight {padding:0; border-left:none;}
+  .foodScrapTitle {font-family: 'museo_sans900', sans-serif; font-size: 30px; font-weight: normal; margin: 0 0 15px; color: #49a942;}
+  .upperFoodScrapDescriptContainer {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7;}
+  .lowerFoodScrapDescriptContainer {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7; margin: 40px 0 0;}
+  .indFoodScrapDescriptContainer {display: table; width: 100%; padding: 0 0 30px; margin: 0 0 30px; border-bottom: 1px dotted #e4e4e4;}
+  .indFoodScrapDescriptContainerLeft {display: block; vertical-align: top; line-height: 0; padding: 0; margin: 0 0 15px;}
+  .indFoodScrapDescriptContainerLeft img {width:100%; max-width:100%;}
+  .indFoodScrapDescriptContainerRight {display: block; vertical-align: middle; width: 100%;}
+  .organicsLowerContainerLeftTitle {font-family: 'museo_sans900', sans-serif; font-size: 24px; font-weight: normal; margin: 0 0 25px; text-align: center; color: #003A63;}
+  .organicsLowerContainerLeftIcon {line-height:0; max-width: 400px; margin: 0 auto;}
+  .organicsLowerContainerLeftIcon img {width:100%; max-width:100%;}
+  .organicsLowerContainerLeftIconDescript1 {font-family: 'museo_sans700', sans-serif; font-weight: normal; font-size: 12px; margin: 15px 0 30px; text-align: center; padding: 0 0 30px; border-bottom: 2px dotted #76bd22; line-height: 1.4;}
+  .organicsLowerContainerLeftIconDescript2 {font-family: 'museo_sans700', sans-serif; font-weight: normal; font-size: 12px; margin: 15px 0 0; text-align: center; line-height: 1.4;}
+
+/* ======================================================= */
+/*    ENERGY                                               */
+/* ======================================================= */ 
+  .energyUpperContainer {width: 100%; padding: 0 30px; margin: 40px auto;}
+  .energyUpperContentContainer {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7;}
+  .energyGridContainer {display:block; width:100%; font-size: 0;}
+  .indEnergyContainer {display: block; vertical-align:top; width:100%; padding:0;}
+  .indEnergyTitle {font-family: 'museo_sans700', sans-serif; font-size: 22px; font-weight: normal; color: #00263e; border-top: 1px solid #e4e4e4; margin: 30px 0 0; padding: 30px 0 0; line-height:1.1;}
+  .indEnergyTitle.first {border-top: none; margin: 0; padding: 0;}
+  .indEnergyInnerContainer {margin: 10px 0 0;}
+  .indEnergyInnerImgContainer {margin: 0 0 15px; line-height:0;}
+  .indEnergyInnerImgContainer img {width:100%; max-width:100%;}
+  .indEnergyInnerTxtContainer {font-size:13px;}
+  .energyCabotGridContainer {display: table; width: 100%; margin:40px 0;}
+  .energyCabotTxtContainer {display: block;}
+  h2.CabotTitle {color: #ffe900; text-transform: uppercase; text-align: center; font-size: 23px; background: #00263e; padding: 30px;}
+  .energyCabotTxt {font-size: 13px; line-height: 1.5; margin: 0 0 20px; font-family: 'Source Sans Pro', sans-serif;}
+  .energyCabotMessage {font-size: 13px; line-height: 1.5; font-family: 'Source Sans Pro', sans-serif; font-weight: 700; font-style: italic; color: #00263e;}
+  .energyCabotImgContainer {line-height:0; margin:40px 0 0;}
+  .energyCabotImgContainer img {width:100%; max-width:100%;}
+
+/* ======================================================= */
+/*    LANDFILLS                                            */
+/* ======================================================= */ 
+  .landfillUpperContainer {width: 100%; padding: 0 30px; margin: 40px auto;}
+  .landfillUpperContainer h2 {font-family: 'museo_sans700', sans-serif; font-size: 19px; font-weight: normal; margin: 0 0 15px; color: #003A63; line-height: 1.3;}
+  .landfillUpperTeaserTxt {font-family: 'Droid Serif', serif; font-size: 14px; line-height: 1.7; margin:0 0 40px;}
+  .landfillReasonsColContainer {display:table; width:100%;}
+  .landfillReasonsColLeft {display:block; vertical-align:top; width:100%; padding: 0;}
+  .landfillReasonsColRight {display:block; vertical-align:top; width:100%; padding: 0;}
+  .indLandfillReasonWrapper {display:table; width:100%; margin: 0 0 30px;}
+  .landfillGraphicCallOutNumberContainer {display: table-cell; vertical-align: top; width: 60px;}
+  .landfillGraphicCallOutNumberWrapper {border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px; width: 40px; height: 40px; background:#ff681d;}
+  .landfillGraphicCallOutNumber {display: table-cell; vertical-align: middle; text-align: center; width: 40px; height: 40px; font-family: 'museo_sans700', sans-serif; font-size: 15px; color: #FFF;}
+  .indLandfillReasonTitle {font-size: 15px; line-height: 1.3; margin: 0 0 5px; color: #003A63; font-family: 'museo_sans700', sans-serif;}
+  .indLandfillReasonTxt {display:table-cell; vertical-align:top; line-height:1.6}
+  .indLandfillCallOut {margin: 15px 0 0; font-style: italic; border-top: 1px dotted #e4e4e4; padding: 35px 0 0; font-family: 'Droid Serif', serif; font-size: 16px; line-height: 1.7; text-align: left;}
+  
+  /*Tabs*/
+  .landfillTabs {width: 100%; margin: 40px auto; padding: 0 30px;}
+  .landfillTabs .z-tabs > ul > li > a {font-family: 'museo_sans700', sans-serif !important;}
+  .landfillTabs .z-tabs.flat.flat-nephritis > ul.z-tabs-nav > li.z-active > a, .landfillTabs .z-tabs.flat.flat-nephritis > ul.z-tabs-mobile.z-state-closed > li a, .landfillTabs .z-tabs.flat.flat-nephritis > ul.z-tabs-mobile > li a {background: #ff681d !important;}
+  .landfillTabs .z-tabs.flat.flat-nephritis > ul, .landfillTabs .z-tabs.flat.flat-nephritis > .z-container {border-color: #ff681d !important;}
+  
+  /*Safe & Secure*/
+  .landfillSafeTitle {font-family: 'museo_sans700', sans-serif; font-size: 19px; font-weight: normal; margin: 20px 0 15px; color: #003A63; line-height: 1.3;}
+  .landfillSafeTeaser {font-family: 'Droid Serif', serif; font-size: 14px; line-height: 1.7; color:#666;}
+  .landfillSafeGridContainer {display:table; width:100%; font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7; margin: 30px 0 0; color:#666;}
+  .landfillSafeGridColLeft, .landfillSafeGridColRigh {display:block; vertical-align:top; width:100%; padding:0;}
+  ul.content.landfillBullets li {font-family: 'Source Sans Pro', sans-serif; color: #666; margin: 0 0 5px 2px;}
+  
+  /*Gas-Energy Graphic*/
+  .landfillGasEnergyContainer {}
+  .landfillGasEnergyTitle {display:none; font-family: 'museo_sans700', sans-serif; font-size: 36px; font-weight: normal; line-height: 1.3; color: #ff681d; padding: 30px;}
+  .landfillGasEnergyGraphicContainer {line-height:0; padding: 30px 0 0; padding: 0; position: relative;}
+  .landfillGasEnergyGraphicInnerContainer {position:absolute; bottom:10px; right:0; width: 58%; font-size: 13px; line-height: 1.3; color: #e4e4e4; font-family: 'museo_sans700', sans-serif;}
+  .landfillGasEnergyGraphicTxtWrapper {display:table; width:100%;}
+  .landfillGasEnergyGraphicTxtWrapperCol1 {display:table-cell; vertical-align:middle; width:60%; padding:30px 20px;}
+  .landfillGasEnergyGraphicTxtWrapperCol2 {display:table-cell; vertical-align:middle; width:40%; padding:30px 20px;}
+  .landfillGasEnergyGraphicTxtWrapperCol1Container {display:table; width:100%;}
+  .landfillGasEnergyGraphicTxtWrapperCol1Container2 {display:table-cell; vertical-align:top;}
+  .landfillGasEnergyGraphicTxtWrapperCol2 span {font-family: 'museo_sans900', sans-serif; display: block; color: #ff681d; line-height: 1; font-size: 35px;}
+  .landfillGasEnergyGraphicContainer img {width:100%; max-width:100%;}
+  .landfillGasEnergyGraphicTxtDesc {font-size:80%; text-align:right; margin:0 50px 0 0;}
+  
+  .landfillGasEnergyDescriptionContainer {display:table; width:100%;}
+  .landfillGasEnergyDescriptionCol1 {display:block; vertical-align:middle; width:100%; padding: 0 0 30px; font-size: 15px; line-height: 1.3; color: #666; font-family: 'museo_sans700', sans-serif;}
+  .landfillGasEnergyDescriptionCol2 {display:block; vertical-align:middle; width:100%; padding: 0 0 30px; font-size: 15px; line-height: 1.3; color: #666; font-family: 'museo_sans700', sans-serif;}
+  .landfillGasEnergyDescriptionCol3 {display:block; vertical-align:middle; width:100%; padding: 0 0 30px; font-size: 15px; line-height: 1.3; color: #666; font-family: 'museo_sans700', sans-serif;}
+  .landfillGasEnergyDescriptionCol1Wrapper, .landfillGasEnergyDescriptionCol2Wrapper {display:table; width:100%;}
+  .landfillGasEnergyDescriptionTextWrapper {display:table-cell; vertical-align:middle;}
+  .landfillGasEnergyDescriptionCol3 span {font-family: 'museo_sans900', sans-serif; color:#ff681d; line-height:1; font-size: 35px;}
+  
+  .landfillGasEnergyGraphicTxtWrapperCol1Container2.mobile {vertical-align: middle;  padding: 0 0 30px; font-size: 15px; line-height: 1.3; color: #666; font-family: 'museo_sans700', sans-serif;}
+  .landfillGasEnergyGraphicTxtWrapperCol1Container2Inner.mobile {width: 100%; padding: 0 0 30px; font-size: 15px; line-height: 1.3; color: #666; font-family: 'museo_sans700', sans-serif;}
+  .landfillGasEnergyGraphicTxtWrapperCol1Container2Inner.mobile span { font-family: 'museo_sans900', sans-serif; color: #ff681d; line-height: 1; font-size: 35px;}
+  
+  /*Zero Waste*/
+  .landfillZeroWasteTitle {font-family: 'museo_sans700', sans-serif; font-size: 19px; font-weight: normal; margin: 20px 0 15px; color: #003A63; line-height: 1.3;}
+  .landfillZeroWasteTeaser {font-family: 'Droid Serif', serif; font-size: 14px; line-height: 1.7; color:#666;}
+  .landfillZeroWasteGrid {display:table; width:100%; margin:50px 0 0;}
+  .landfillZeroWasteColLeft {display:block; vertical-align:top;}
+  .landfillZeroWasteColRight {display:block; vertical-align:top; width:100%; border-top: 3px solid #e4e4e4; padding: 50px 0 0; margin: 25px 0 0;}
+  .landfillZeroWasteInnerColRight {padding:0; border-left: none;}
+  .indMythContainer {display:table; width:100%; margin: 0 0 30px; padding: 0 0 5px; border-bottom: 1px dotted #e4e4e4;}
+  .indMythContainer.last {margin: 0; padding: 0; border-bottom: none;}
+  .indMythContentMythTitle {font-family: 'museo_sans700', sans-serif; font-size: 17px; font-weight: normal; color: #E25712; text-transform: uppercase;}
+  .indMythContentTitle {font-family: 'museo_sans700', sans-serif; font-size: 17px; line-height: 1.3; color: #003A63; margin: 0 0 5px;}
+  .indMythContentTxt {font-family: 'Source Sans Pro', sans-serif; color: #666; line-height: 1.5;}
+  .landfillZeroWasteGraphicWrapper {text-align:center; margin: 0 0 30px; padding: 0 0 30px; border-bottom: 1px dotted #e4e4e4;}
+  .landfillZeroWasteGraphicWrapper.last {margin: 0; padding: 0; border-bottom: none;}
+  .landfillZeroWasteGraphicTitle {font-family: 'museo_sans700', sans-serif; font-size: 14px; font-weight: normal; color: #003A63; line-height: 1.3; margin: 0 0 10px;}
+  .landfillZeroWasteGraphicNote {font-family: 'Source Sans Pro', sans-serif; color: #666; line-height: 1.5; font-size: 12px; margin: 5px 0 15px;}
+  .landfillZeroWasteGraphicContainer {line-height:0;}
+  .landfillZeroWasteGraphicContainer img {width:100%; max-width:100%;}
+  .landfillZeroWasteGraphicTeaser {font-family: 'museo_sans700', sans-serif; font-size: 12px; font-weight: normal; color: #003A63; line-height: 1.3; font-style: italic; margin: 15px 0 0;}
+  .landfillZeroWasteGraphicFig {font-family: 'Source Sans Pro', sans-serif; color: #666; line-height: 1.5; font-size: 12px; margin: 5px 0 0;}
+  
+/* ======================================================= */
+/*    RESOURCES                                            */
+/* ======================================================= */   
+  .resourcesUpperContainer {width: 100%; padding: 0 30px; margin: 30px auto;}
+  .resourcesUpperContentContainer {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7;}
+  .resourceGridContainer {display:table; width:100%;}
+  .resourceGridColLeftContainer, .resourceGridColRightContainer {display:block; width:100%; vertical-align:top; padding:0;}
+  .resourcesSolutionsContainer {padding: 0;}
+  .resourcesSolutionsTitle {font-family: 'museo_sans900', sans-serif; font-size: 23px; font-weight: normal;  color:#00263e; line-height: 1; margin: 40px 0 30px; border-bottom: 2px dotted #76bd22; padding: 0 0 20px;}
+  .indResourceContainer {display:table; width:100%; padding: 0 0 50px;}
+  .indResourceIconContainer {display:table-cell; vertical-align:top; width:75px; text-align:center; padding:0 20px 0 0;}
+  .indResourceIconContainer img {width:100%; max-width:100%;}
+  .indResourceTxtContainer {display:table-cell; vertical-align:top;}
+  .indResourceTitle {font-family: 'museo_sans700', sans-serif; font-size: 19px; font-weight: normal; color: #00263e; line-height: 1.2;}
+  .indResourceTxt {margin: 5px 0 0; font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.6;}
+  .resourcesActionTitleWrapper {}
+  .resourcesActionTitle {font-family: 'museo_sans900', sans-serif; font-size: 23px; font-weight: normal; color: #00263e; line-height: 1; margin:0 0 10px;}
+  .resourcesActionSubTitle {font-family: 'Source Sans Pro', sans-serif; font-size: 15px; line-height: 1.2;}
+  .indResourceTabContainer {display:table; width:100%; margin: 30px 0 0;}
+  .indResourceTabContainerCol1 {display:block; vertical-align:top; width:100%; padding:0; margin:0 0 30px; text-align: center;}
+  .indResourceTabContainerCol1 img {width:100%; max-width:100%;}
+  .indResourceTabContainerCol1 img.logo {max-width:250px;}
+  .indResourceTabContainerCol2 {display: block; vertical-align: top; font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7; color: #666;}
+  .indResourceTabContainerCol2Title {font-family: 'museo_sans700', sans-serif; font-size: 19px; font-weight: normal; color: #00263e; line-height: 1.2; margin: 0 0 10px;}
+  .resourcesQuote {font-style: italic; font-size: 16px; color: #4c9d2f; line-height: 1.8;}
+  .resourcesMeta {font-family: 'Source Sans Pro', sans-serif; font-size: 13px; font-weight: 700; margin: 10px 0 0; line-height: 1.3;}
+  .resourcesTab {width:100%; margin: 40px auto; padding:0 30px;}
+  .resourcesTab .z-tabs > ul > li > a {font-family: 'museo_sans700', sans-serif !important;}
+  .resourcesTab .z-tabs.flat.z-multiline > ul > li> a, .resourcesTab .z-tabs.flat.z-multiline > ul > li.z-active > a {font-weight: normal !important;}
+  .resourcesTab .z-tabs.flat.vertical > .z-container > .z-content > .z-content-inner {padding: 0 2em 0 0 !important;}
+  
+/* ======================================================= */
+/*    CARBON FOOTPRINT                                     */
+/* ======================================================= */   
+  .carbonUpperContainer {width: 100%; padding: 0 30px; margin: 30px auto;}
+  .carbonUpperContentContainer {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7;}
+  .carbonUpperGridContainer {display:table; width:100%;}
+  .carbonUpperGridContainer img {width:100%; max-width:100%;}
+  .carbonUpperGridCol1 {display:block; width:100%; vertical-align:top; margin: 0 0 40px; padding: 0 0 15px; border-bottom: 1px dotted #e4e4e4;}
+  .carbonUpperGridCol2 {display:block; vertical-align:top; border-left: none; padding: 0;}
+  .carbonUpperGridInnerCol2 {color: #00263e; font-size: 13px; line-height: 1.6; font-family: 'Source Sans Pro', sans-serif; font-weight: 600;}
+  .carbonUpperGridInnerImgWrapper {line-height:0; margin:0 0 30px;}
+  .carbonUpperGridInnerCol2Txt {}
+  
+  .electrictyProContainer {
+  background: rgb(179,227,241);
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2IzZTNmMSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top,  rgba(179,227,241,1) 0%, rgba(255,255,255,1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(179,227,241,1)), color-stop(100%,rgba(255,255,255,1)));
+  background: -webkit-linear-gradient(top,  rgba(179,227,241,1) 0%,rgba(255,255,255,1) 100%);
+  background: -o-linear-gradient(top,  rgba(179,227,241,1) 0%,rgba(255,255,255,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(179,227,241,1) 0%,rgba(255,255,255,1) 100%);
+  background: linear-gradient(to bottom,  rgba(179,227,241,1) 0%,rgba(255,255,255,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3e3f1', endColorstr='#ffffff',GradientType=0 );
+  }
+  .electrictyProContainer img {width:100%; max-width:100%;}
+  .electrictyProGridContainer {display:table; width:100%; padding:30px 0 0;}
+  .electrictyProGridCol1 {display:block; width:100%; vertical-align:bottom; font-family: 'Droid Serif', serif; font-size: 15px; line-height: 1.7; color: #26526E; text-align:left; padding:0;}
+  .electrictyProGridCol2 {display:block; vertical-align:top; margin: 40px auto 0;}
+  .electrictyProGridInnerCol1 {padding: 0; border-right: none;}
+  .electrictyProTitle {font-family: 'museo_sans900', sans-serif; font-weight: normal; font-size: 36px; color: #00263e; margin: 0 0 15px; line-height: 1;}
+  .electrictyProGridCol1 span {font-weight:700;}
+  .electrictyProTxt {font-size: 13px; line-height: 1.4; font-family: 'museo_sans700', sans-serif;}
+  .electrictyProGridInnerCol2 {display:table; width:100%;}
+  .electrictyProGridImgContainer {display:block; vertical-align:bottom; width:100%; line-height:0;}
+  .electrictyProGridImgContainer.top {margin:0 0 30px;}
+  .electrictyProBtmImg {line-height:0;}
+  
+  .carbonTabOutterContainer {margin: 0; z-index: 40; position: relative;}
+  .carbonTabs {width: 100%; margin: 40px auto; padding: 0 30px;}
+  .carbonTabs .z-tabs > ul > li > a {font-family: 'museo_sans700', sans-serif !important;}
+  
+  /*Tab: 2013 Greenhouse Gas Emissions*/
+  .carbonTabEmissionContainer {display:table; width:100%;}
+  .carbonTabEmissionCol1 {display:block; vertical-align:bottom; width:100%; padding:0; margin:0 0 30px; text-align:left;}
+  .carbonTabEmissionCol2 {display:block; vertical-align:bottom; line-height:0;}
+  .carbonTabEmissionTitle {font-family: 'museo_sans900', sans-serif; font-weight: normal; font-size: 24px; color: #00263e; margin: 0 0 5px; line-height: 1;}
+  .carbonTabEmissionSubTitle {font-family: 'museo_sans700', sans-serif; font-weight: normal; font-size: 14px; color: #0082ca; margin: 0 0 15px; line-height: 1;}
+  .carbonTabEmissionTxt {font-size: 15px; line-height: 1.5; color: #666; font-family: 'Source Sans Pro', sans-serif;}
+  .carbonTabEmissionCol2 img {width:100%; max-width:100%;}
+  
+  /*Tab: Reduction in Greenhouse Gas Per Ton*/
+  .carbonTabReductionContainer {display:table; width:100%;}
+  .carbonTabReductionCol1 {display:block; vertical-align:middle; width:100%; padding:0; margin:0 0 30px; text-align:left;}
+  .carbonTabReductionCol2 {display:block; vertical-align:middle; line-height:0;}
+  .carbonTabReductionTitle {font-family: 'museo_sans900', sans-serif; font-weight: normal; font-size: 24px; color: #00263e; margin: 0 0 5px; line-height: 1;}
+  .carbonTabReductionSubTitle {font-family: 'museo_sans700', sans-serif; font-weight: normal; font-size: 14px; color: #0082ca; margin: 0 0 15px; line-height: 1;}
+  .carbonTabReductionTxt {font-size: 15px; line-height: 1.5; color: #666; font-family: 'Source Sans Pro', sans-serif;}
+  .carbonTabReductionCol2 img {width:100%; max-width:100%;}
+  
+  /*Tab: Improvements*/
+  .improvementTabTitle {font-family: 'museo_sans700', sans-serif; font-size: 19px; font-weight: normal; margin: 0; color: #003A63; line-height: 1.3; margin:0 0 10px;}
+  .improvementTabSubTitle {font-family: 'Droid Serif', serif; font-size: 15px; line-height: 1.7; color: #666;margin:0 0 50px;}
+  .improvementGridContainer {display:table; width:100;}
+  .improvementGridCol1, .improvementGridCol2 {display:block; vertical-align:top; width:100%; padding:0;}
+  .indImprovementContainer {display:table; width:100%;}
+  .indImprovementCol1 {display:table-cell; vertical-align:top; width:20%; line-height:0; padding:0 20px 0 0;}
+  .indImprovementCol2 {display:table-cell; vertical-align:top;}
+  .indImprovementInnerWrapper {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7; color: #666; border-bottom: 1px dotted #e4e4e4; margin: 0 0 25px;}
+  .indImprovementInnerWrapper.lastCol1 {}
+  .indImprovementInnerWrapper.last {border-bottom: none; margin: 0;}
+  .indImprovementInnerTitle {font-family: 'museo_sans700', sans-serif; font-size: 19px; font-weight: normal; margin: 0 0 15px; color: #003A63; line-height: 1.3;}
+  .indImprovementInnerWrapper span {font-family: 'museo_sans700', sans-serif; font-size: 16px; font-weight: normal; color: #003A63;}
+  .indImprovementContainer img {width:100%; max-width:100%;}
+  
+/* ======================================================= */
+/*    OUR PEOPLE                                           */
+/* ======================================================= */   
+  .peopleHeaderImageContainer {line-height:0; padding:0; border-bottom: 2px solid #FFF;}
+  .peopleHeaderImageContainer img {width:100%; max-width:100%;}
+  .peopleUpperContainer {width: 100%; padding: 0 30px; margin: 40px auto 15px;}
+  .peopleUpperContentContainer {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7;}
+  .peopleUpperGridContainer {display:table; width:100%;}
+  .peopleUpperGridCol1 {display:block; vertical-align:top;}
+  .peopleUpperGridCol2 {display:block; vertical-align:top; width:100%; padding:0;}
+  .peopleUpperInnerGridCol2 {border-left:none; padding:0;}
+  .coreValuesContainer {width: 100%; /*background: #ECF8FF; padding: 60px 0; border-top: 2px dotted #AFDB79; border-bottom: 2px dotted #AFDB79;*/ padding: 60px 0 30px; border-top: 6px solid #e4e4e4;}
+  .coreValuesInnerContainer {display:table; width:100%;}
+  .coreValuesInnerCol1 {display:block; vertical-align:top; text-align:left; font-family: 'Droid Serif', serif; font-size: 14px; line-height: 1.7;}
+  .coreValuesInnerCol2 {display:block; vertical-align:top; width:100%; padding:0;}
+  .coreValuesInnerCol1Title {font-family: 'museo_sans900', sans-serif; font-size: 23px; font-weight: normal; margin: 0 0 10px; color: #00263e; line-height:1.1;}
+  .coreValuesInnerCol1Txt {}
+  .coreValuesInnerCol2Wrapper {border-left:none; padding:0; margin:30px 0 0;}
+  .indCoreValueOutterContainer {display:table; width:100%;}
+  .indCoreValueOutterCol1, .indCoreValueOutterCol2 {display:block; vertical-align:top; width:100%; padding:0;}
+  .indCoreValueContainer {}
+  .indCoreValueTitle {font-family: 'museo_sans900', sans-serif; font-size: 21px; font-weight: normal; margin: 0 0 5px; color: #76bd22; line-height: 1; text-transform: uppercase;}
+  .indCoreValueSubTitle {font-family: 'museo_sans700', sans-serif; font-size: 15px; font-weight: normal; margin: 0 0 10px; color: #00263e; line-height: 1.2;}
+  .indCoreValueTxt {line-height: 1.5; font-size: 14px; color: #555;}
+  .indCoreValueSep {width:20%; height:1px; /*border-top:1px dotted #AFDAF2;*/ margin:20px 0; border-top:1px solid #e4e4e4;}
+  
+  .peopleTabs {width: 100%; margin: 40px auto; padding: 0 30px;}
+  .peopleTabs .z-tabs > ul > li > a {font-family: 'museo_sans700', sans-serif !important;}
+  .peopleTabs .z-tabs.flat.z-multiline > ul > li> a, .peopleTabs .z-tabs.flat.z-multiline > ul > li.z-active > a {font-weight: normal !important;}
+  .internalTabContainer {margin:20px 0 0;}
+  
+  /*Tab: High Impact Leaders*/
+  .dhilTitleContainer {display:table; width:100%;}
+  .dhilTitleEmpty {display:none;}
+  .dhilTitleWrapper {display:block; vertical-align:top; width:100%; padding:0;}
+  .dhilTitle {font-family: 'museo_sans700', sans-serif; font-size: 23px; font-weight: normal; color: #00263e; line-height: 1.1; margin: 0 0 20px;}
+  .dhilGridContainer {display:table; width:100%;}
+  .dhilGridCol1 {display:block; vertical-align:top; line-height:0; margin:0 0 20px;}
+  .dhilGridCol2 {display:block; vertical-align:top; width:100%; padding: 0; font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7; color: #666;}
+  .dhilGridCol1 img {width:100%; max-width:100%;}
+  .dhilGridInnerCol2 {border-left:none; padding:0;}
+  .dhilGridSubTitle {font-family: 'museo_sans700', sans-serif; font-size: 18px; color: #00263e; line-height:1.1; margin:0 0 8px;}
+  
+  /*Tab: Health & Safety*/
+  .peopleHealthContainer {display:table; width:100%;}
+  .peopleHealthContainerCol1 {display:block; vertical-align:top;}
+  .peopleHealthContainerCol2 {display:block; vertical-align:top; width:100%; margin: 30px 0 0; padding: 40px 0 0; border-top: 1px dotted #e4e4e4;}
+  .peopleHealthInnerContainerCol2 {padding:0; border-left:none;}
+  .indCommitContainer {margin: 0 0 40px; padding: 0 0 30px; border-bottom: 1px dotted #e4e4e4;}
+  .indHealthContainer {}
+  .peopleHealthTitle {font-family: 'museo_sans700', sans-serif; font-size: 23px; font-weight: normal; color: #00263e; line-height: 1.1; margin:0 0 15px;}
+  .peopleHealthTxt {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7; color: #666;}
+  .peopleHealthNestedContainer {display:table; width:100%;}
+  .peopleHealthNestedimgContainer {display:block; vertical-align:top; width:100%; padding:0;}
+  .peopleHealthNestedTxtContainer {display:block; vertical-align:top;}
+  .peopleHealthNestedimgWrapper {margin:5px 0 15px; line-height:0;}
+  .peopleHealthNestedimgWrapper img {width:100%; max-width:100%;}
+  .healthChartContainer {margin: 20px 0 0;}
+  .healthChartTitle {font-family: 'museo_sans700', sans-serif; font-size: 15px; font-weight: normal; color: #00263e; line-height: 1.1;}
+  .healthChartDescription {line-height: 1.5; font-size: 12px; color: #666; margin:3px 0 0;}
+  .healthChartImgWrapper {line-height:0; margin:15px 0 0;}
+  .healthChartImgWrapper img {width:100%; max-width: 450px;}
+  
+  /*Tab: Community Engagement*/
+  .peopleCommunityTitle {font-family: 'museo_sans700', sans-serif; font-size: 23px; font-weight: normal; color: #00263e; line-height: 1.1; margin: 0 0 15px;}
+  .peopleCommunityTxt {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7; color:#666;}
+  
+  .partnershipGridCol1 {display:block; vertical-align:top; line-height: 1.5; background: #ECF8FF; padding: 30px; margin: 50px 0 0; border: 2px dotted #AFDB79; color: #444; font-family: 'Source Sans Pro', sans-serif; font-size: 13px;}
+  .partnershipGridCol1Title {font-family: 'museo_sans700', sans-serif; font-size: 18px; color: #00263e; line-height: 1.1; margin: 0 0 20px; padding: 0 0 20px; border-bottom: 1px dotted #AFDAF2;}
+  .partnershipGridCol1SubTitle {font-size: 16px; font-weight: 700; margin: 0 0 5px;}
+  .partnershipGridCol1SubTitle span {font-style:italic; color:#00263e;}
+  .partnershipGridCol1Quote {font-style: italic; font-family: 'Droid Serif', serif; font-size: 17px; line-height: 1.6; color: #4c9d2f;}
+  .partnershipGridCol1QuoteName {font-weight: 600; margin: 6px 0 0;}
+  .partnershipGridCol1QuotePosition {font-size: 11px; font-style: italic; margin: 0 0 0 5px;}
+  
+  /*Tab: Partnerships*/
+  .partnershipTitleContainer {display: block; width: 100%;}
+  .partnershipTitle {font-family: 'museo_sans700', sans-serif; font-size: 23px; font-weight: normal; color: #00263e; line-height: 1.1; margin: 0 0 8px;}
+  .partnershipSubTitle {padding:0; margin:0 0 50px; font-family: 'Source Sans Pro', sans-serif; font-size: 17px; line-height: 1.2; color: #76bd22;}
+  .partnershipGridWrapper {display: block; vertical-align: top; width: 100%; padding: 0; font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7; color: #666;}
+  .indPartnershipContainer {border-bottom: 3px solid #EFEFEF; margin: 0 0 30px; padding:0 0 30px}
+  .indPartnershipContainer.last {margin: 0; padding:0; border:none;}
+  .indPartnershipTitle {font-family: 'museo_sans700', sans-serif; font-size: 16px; font-weight: normal; margin: 0 0 15px; color: #00263e; line-height: 1.1;}
+  .indPartnershipInnerContainer {display:table; width:100%;}
+  .indPartnershipInnerContainer.last {margin: 0;}
+  .indPartnershipInnerCol1 {display:block; vertical-align:top; width:100%; padding:0; margin:0 0 15px; line-height:0;}
+  .indPartnershipInnerCol2 {display:block; vertical-align:top;}
+  .indPartnershipInnerCol1 img {width:100%; max-width:100%;}
+  
+/* ======================================================= */
+/*    SCORECARD                                            */
+/* ======================================================= */     
+  .stacktable.large-only {display: table;}
+  .stacktable.small-only {display: none;}
+  .stacktable {width: 100%;}
+  .st-head-row {padding-top: 1em;}
+  .st-head-row.st-head-row-main {font-size: 16px; padding-top: 0;}
+  .st-key {width: 49%; text-align: right; padding-right: 1%; font-weight:600;}
+  .st-val {width: 49%; padding-left: 1%;}
+  .scorecard th {text-align: left; padding: 15px 10px; font-family: 'museo_sans900', sans-serif; font-size:13px; color:#76bd22;}
+  .scorecard th span {font-family: 'Source Sans Pro', sans-serif; font-weight:600; font-size:90%;}
+  .scorecard td {vertical-align:top; padding: 15px 10px; font-family: 'Source Sans Pro', sans-serif; font-size:12px;}
+  .scorecard .table .st-key {font-weight: 600;}
+  .indScorecardTableWrapper {color:#666; line-height:1.3; font-family: 'Source Sans Pro', sans-serif; font-weight:400; margin:0 0 30px;}
+  .indScorecardTableWrapper.last {margin:0;}
+  .tableHeader {background-color:#00263e; color:#fff;}
+  .tableDescript {font-family: 'Source Sans Pro', sans-serif; font-size: 12px; margin: 20px 0 0; font-style: italic; color: #666;}
+  
+  /*Green Row*/
+  .stacktable .greenRow {background-color:#76bd22; color:#FFF; font-weight:600; border-top: 4px solid #4c9d2f;}
+  .stacktable .greenRow.next {border-top: 2px solid #95D34B;}
+  .stacktable .greenRow span.title {text-transform: uppercase; font-family: 'museo_sans700', sans-serif; line-height: 1.1; font-weight: normal;}
+  .stacktable.small-only .greenRow {background-color:#FFF; color:#666; font-weight:400; border-top: none;}
+  .stacktable.small-only .greenRow th.st-head-row {padding: 30px 0 8px;}
+  .stacktable.small-only .greenRow th.st-head-row span.title {background-color: #76bd22; color: #FFF; text-align: center; font-size: 14px; border-bottom: none; padding: 13px 10px 10px;}
+  
+  /*Grey Row*/
+  .stacktable .greyRow {background-color:#e4e4e4;}
+  .stacktable.small-only .greyRow {background-color:#FFF;}
+  
+  /*General*/
+  .stacktable.large-only th.center {text-align:center;}
+  .stacktable.large-only td {text-align:center;}
+  .stacktable.small-only td {padding: 6px 10px;}
+  .stacktable.large-only td.left {text-align:left;}
+  .stacktable.small-only .st-head-row.st-head-row-main {background-color: #00263e; text-align: center; padding: 15px 10px;}
+  .stacktable.small-only th.st-head-row {padding: 0 0 8px;}
+  .stacktable.small-only span.title {text-align: center; font-size: 15px; color: #00263e; padding: 30px 0 10px; border-bottom: 1px solid #B8CAD5; display: block;}
+  
+/* ======================================================= */
+/*    OPERATIONS                                           */
+/* ======================================================= */      
+  .mapImageContainer {position: relative; line-height:1;}
+  .mapImageContainer img {width:100%; max-width:100%;}
+  .mapContentContainer {position: absolute; top:30px; z-index:30; width:100%;}
+  .mapTitle {font-family: 'museo_sans900', sans-serif; font-size: 35px; font-weight: normal; color: #76bd22; margin: 0 0 20px; text-transform: uppercase; line-height: 1;}
+  .mapLayers {position: absolute; width: 100%;}
+  .internalPageTitleContainerNoColor.mapContent {padding:30px 0 0;}
+  
+  /*Key*/
+  .mapKey {padding: 15px; background: #fff; display: inline-block; line-height:1.5;}
+  .keyMobileContainer .mapKey {padding: 0; display: block; line-height:1.5; font-size:0; margin: 30px 0 0; border-bottom: 3px solid #e4e4e4; padding: 0 0 30px;}
+  .keyMobileContainer .mapToggles {font-size: 15px;}
+  .mapToggles {width: 100%; display: table;margin:0 0 8px; padding:0 0 8px; border-bottom:1px dotted #e4e4e4;}
+  .mapToggles.last3 {margin:0; padding:0; border-bottom:none;}
+  .mapLabel {font-size: 13px; font-family: 'museo_sans700', sans-serif; margin-left: 8px; line-height: 1; font-weight: normal; vertical-align: middle;}
+  .mapLabel.collectionLabel {color:#00263e;}
+  .mapLabel.recycleLabel {color:#0081c9;}
+  .mapLabel.organicLabel {color:#4d9c2d;}
+  .mapLabel.landfillLabel {color:#ff661b;}
+  .mapLabel.landfillGasLabel {color:#ffe900;}
+  .mapLabel.transferLabel {color:#8e4e81;}
+  
+  .mapTogglesInnerWrapper {display:table-cell; vertical-align:middle;}
+  .mapTogglesClickOutContainer {display:table-cell; vertical-align:middle; padding:0 0 0 10px;  text-align:right;}
+  .mapTogglesClickOutInnerContainer {padding: 0; border-left:none;}
+  .mapTogglesClickOutInnerContainer a {color:#AAA;}
+  .mapTogglesClickOutInnerContainer a:hover {color:#00263e;}
+  
+/* ======================================================= */
+/*   Media Queries                                         */
+/* ======================================================= */
+  @media only screen and (min-width: 600px) {
+  .internalPageTitleInnerContainer {padding:0 40px;}
+  .internalPageTitle {font-size: 50px;}
+  .internalPageTitle.resources {font-size: 40px;}
+  .internalPageTitleContainer.people {padding:40px 0;}
+  .internalPageTitleContainer.people .internalPageTitleContentContainer {text-align:center;}
+  h2.subPageTitle {padding: 30px 0; font-size: 30px;}
+  
+  .internalPageTitleNoColor {font-size: 40px;}
+  .internalPageTitleContainerNoColorBG {background:url('../i/general/spacer.png') repeat-x center 45%;}
+  
+  /*Services: Main*/
+  .indServiceContentLinkContainer {display:table;}
+  .indServiceContentLinkContainer.last {border-bottom:none;}
+  .indServiceContentLinkContainerLeft {display:table-cell; width:32%; vertical-align:middle; padding:5px 15px 5px 0; border-bottom:none;}
+  .indServiceContentLinkContainerCenter {display:table-cell; width:34%; vertical-align:middle; padding:5px 15px; border-bottom:none;}
+  .indServiceContentLinkContainerCenter.last {border-right:none;}
+  .indServiceContentLinkContainerRight, .indServiceContentLinkContainerRight.hide {display:table-cell; width:32%; vertical-align:middle; padding:5px 0 5px 15px; border-bottom:none;}
+  
+  /*Recycle*/
+  .recycleUpperContainer {padding:0 40px;}
+  .recycleUpperContentContainer {font-size: 14px;}
+  .recycleTabs {padding:0 40px;}
+  .recycleFocusColLeftWrapper {font-size: 14px;}
+  .recycleGraphDescriptionWrapper {font-size: 14px;}
+  .recycleGridImageContainer {width:33.3333333%; width: calc(100% / 3);}
+  .recycleGrid li {width:33.3333333%; width: calc(100% / 3);}
+  .recycleGrid li a div.recycleInnerGrid {font-size: 12px; padding:10px 25px;}
+  
+  /*Collection*/
+  .indAFCCo1Wrapper {display:inline-block; width:50%; padding: 0 25px 0 0; margin:0 0 40px;}
+  .indAFCCo2Wrapper {display:inline-block; width:50%; padding: 0 0 0 25px; margin:0 0 40px;}
+  .indAFCCo3Wrapper {display:inline-block; width:50%; padding: 0 25px 0 0; margin:0;}
+  .indAFCCo4Wrapper {display:inline-block; width:50%; padding: 0 0 0 25px; margin:0;}
+  .indAFCCo4InnerTextWrapper {vertical-align:top;}
+  span.naturalGas, span.biodiesel, span.improvements {font-size: 28px;}
+  
+  /*Organics*/
+  .organicsUpperContainer {padding:0 40px;}
+  .organicsUpperContentContainer, .upperFoodScrapDescriptContainer, .lowerFoodScrapDescriptContainer {font-size: 14px;}
+  .earthlifeInnerContainerRightTitle {font-size: 35px;}
+  
+  /*Energy*/
+  .energyUpperContainer {padding: 0 40px;}
+  .energyCabotTxt {font-size: 14px; line-height: 1.6;}
+  .energyCabotMessage {font-size: 14px; line-height: 1.6;}
+  .energyCabotGridContainer {margin:60px 0;}
+  
+  /*Landfills*/
+  .landfillUpperContainer {padding: 0 40px;}
+  .landfillUpperContainer h2 {font-size: 23px;}
+  .landfillUpperTeaserTxt {font-size: 15px;}
+  .landfillTabs {padding: 0 40px;}
+  .landfillSafeTitle {font-size: 27px;}
+  .landfillSafeTeaser {font-size: 17px;}
+  .landfillSafeGridContainer {font-size: 14px;}
+  .landfillZeroWasteTitle {font-size: 27px;}
+  .landfillZeroWasteTeaser {font-size: 15px;}
+  .indMythContentTitle {font-size: 18px;}
+  
+  /*Resources*/
+  .resourcesUpperContainer {padding: 0 40px;}
+  .resourcesUpperContentContainer {font-size: 14px;}
+  .resourcesTab {padding:0 40px;}
+  
+  /*Operations*/
+  .keyMobileContainer .mapToggles {display: inline-block; padding: 0 20px 8px 0; width: 50%;}
+  .keyMobileContainer .mapToggles.last2 {margin:0; padding:0; border-bottom:none;}
+  
+  /*Our People*/
+  .peopleUpperContainer {padding: 0 40px;}
+  .peopleUpperContentContainer {font-size: 14px;}
+  .indCoreValueOutterCol1 {display:table-cell; width:50%; padding:0 25px 0 0;}
+  .indCoreValueOutterCol2 {display:table-cell; width:50%; padding:0 0 0 25px;}
+  .indCoreValueSep.mobile {display:none;}
+  .peopleTabs {padding: 0 40px;}
+  .dhilGridCol2 {font-size: 14px;}
+  .peopleCommunityTxt {font-size: 14px;}
+  .partnershipSubTitle {font-size: 21px;}
+  
+  /*Carbon Footprint*/
+  .carbonUpperContainer {padding: 0 40px;}
+  .carbonUpperContentContainer {font-size: 14px;}
+  .electrictyProGridImgContainer {display:table-cell; vertical-align:bottom; width:50%; line-height:0;}
+  .electrictyProGridImgContainer.top {margin:0;}
+  .electrictyProGridCol1 {text-align:center;}
+  .improvementTabTitle {font-size: 23px;}
+  .indImprovementCol1 {width:15%;}
+  .carbonTabs {padding: 0 40px;}
+  
+  /*ScoreCard*/
+  .stacktable.small-only span.title {font-size: 18px;}
+  .stacktable.small-only .greenRow th.st-head-row span.title {font-size: 16px; padding: 15px 10px 10px;}
+  }
+  
+   @media only screen and (min-width: 700px) {
+  .threeColumnContentContainer {-webkit-columns: 2; -moz-columns: 2; columns: 2; -webkit-column-gap: 40px; -moz-column-gap: 40px; column-gap: 40px;}
+  
+  /*Organics*/
+  .indOrganicsUpperDescriptContainerLeft {display:table-cell; padding: 0 30px 0 0; margin:0;}
+  .indOrganicsUpperDescriptContainerRight {display:table-cell; width:60%;}
+  .indFoodScrapDescriptContainerLeft {display: table-cell; padding: 0 30px 0 0; margin: 0;}
+  .indFoodScrapDescriptContainerRight {display: table-cell; width: 60%;}
+  .earthlifeInnerContainerLeft {display:table-cell; width:150px;}
+  .earthlifeInnerContainerRight {display:table-cell; padding: 0 0 0 50px;}
+  
+  /*Landfills*/
+  .landfillZeroWasteGraphicWrapper {display: table-cell; vertical-align: top; width: 50%; padding: 0 30px; margin:0; border-bottom:none;}
+  
+  /*Resources*/
+  .resourcesSolutionsTitle {font-size: 33px; margin: 0 0 40px;}
+  .indResourceTabContainerCol1 {display:table-cell; width:25%; padding:0 30px 0 0; margin:0;}
+  .indResourceTabContainerCol2 {display: table-cell;}
+  .resourcesActionTitle {font-size: 33px;}
+  .resourcesActionSubTitle {font-size: 17px;}
+  
+  /*Operations*/
+  .mapTitle {font-size: 45px;}
+  .mapContentContainer {top:45px;}
+  .keyMobileContainer .mapToggles {width: 33.33333%;}
+  .keyMobileContainer .mapToggles.last {margin:0; padding:0; border-bottom:none;}
+  
+  /*Carbon Footprint*/
+  .carbonUpperGridInnerCol2 {display:table;}
+  .carbonUpperGridInnerImgWrapper {display: table-cell; width: 40%; padding: 0 30px 0 0; vertical-align: top; margin: 0;}
+  .carbonUpperGridInnerCol2Txt {display: table-cell; vertical-align: middle;}
+  
+  /*Our People*/
+  .dhilTitle {font-size: 25px;}
+  .peopleHealthNestedimgContainer {display:table-cell; width:40%; padding:0 30px 0 0;}
+  .peopleHealthNestedTxtContainer {display:table-cell;}
+  .partnershipTitle {font-size: 25px;}
+  .indPartnershipInnerCol1 {display:table-cell; width:25%; padding:5px 30px 0 0; margin:0;}
+  .indPartnershipInnerCol2 {display:table-cell;}
+  }
+  
+  @media only screen and (min-width: 820px) {
+  .internalPageTitleIconContainer {display:table-cell; width:180px; margin:0; padding: 0 30px 0 0;}
+  .internalPageTitleContentContainer {display:table-cell; text-align:left;}
+  .internalPageTitle {font-size: 70px; margin:0 0 5px;}
+  .internalPageTitleDescription {font-size: 17px;}
+  .internalPageTitleNoColor {font-size: 50px;}
+  .internalPageTitleDescriptionNoColor {font-size: 19px;}
+  
+  /*Recycle*/
+  .recycleGraphicColumnLeft {display: table-cell; padding:0 30px 0 0;}
+  .recycleGraphicColumnRight {display: table-cell; width:50%;}
+  .recycleGraphicInnerColumnRight {border-left:1px dotted #e4e4e4; border-top:none; padding:0 0 0 30px; margin:0;}
+  .recycleProjectDescriptionWrapper {display:table-cell; width:30%; text-align:right; padding:0 30px 0 0;}
+  .recycleProjectInnerDescriptionWrapper {padding:0 30px 0 0; margin:0; border-right:1px dotted #ccc; border-bottom:0;}
+  .recycleProjectContentWrapper {display:table-cell; width:70%;}
+  .recycleProjectInnerContentColumn1 {display:table-cell; width:50%; vertical-align:top; padding:0 20px 0 0; margin:0;}
+  .recycleProjectInnerContentColumn2 {display:table-cell; width:50%; vertical-align:top; padding:0 0 0 20px;}
+  .recycleFocusColLeft {display:table-cell; width:50%; vertical-align:top;}
+  .recycleFocusColRight {display:table-cell; vertical-align:top; padding:0 0 0 40px; margin:0;}
+  .recycleFocusColRightWrapper {padding:0 0 0 40px; border-left:1px dotted #e4e4e4; border-bottom:0;}
+  
+  /*Collection*/
+  span.naturalGas, span.biodiesel, span.improvements {font-size: 38px;}
+  h2.AFCTitle {font-size: 30px;}
+  .foodScrapTitle {font-size: 44px; margin: 0 0 25px;}
+  
+  /*Energy*/
+  .indEnergyContainer {display: inline-block; width:50%; padding:0 25px 0 0;}
+  .indEnergyContainer.odd {padding:0 0 0 25px;}
+  .indEnergyTitle.second {border-top: none; margin: 0; padding: 0;}
+  h2.CabotTitle {font-size: 30px;}
+  
+  /*Landfills*/
+  .landfillUpperContainer h2 {font-size: 27px;}
+  .indLandfillCallOut {font-size: 21px; text-align: center;}
+  .landfillGasEnergyDescriptionCol1 {display:table-cell; vertical-align:middle; width:33.3333%; padding: 0 30px 30px; font-size:13px;}
+  .landfillGasEnergyDescriptionCol2 {display:table-cell; vertical-align:middle; width:33.3333%; padding: 0 30px 30px; font-size:13px;}
+  .landfillGasEnergyDescriptionCol3 {display:table-cell; vertical-align:middle; width:33.3333%; padding: 0 30px 30px; font-size:13px;}
+  .landfillGasEnergyDescriptionCol3 span {display:block; font-size: 54px;}
+  .landfillGasEnergyGraphicInnerContainer {position:absolute; bottom:10px; right:0; width: 58%; font-size: 13px; line-height: 1.3; color: #e4e4e4; font-family: 'museo_sans700', sans-serif;}
+  .landfillGasEnergyGraphicTxtWrapperCol2 span {font-size: 35px;}
+  .landfillGasEnergyDescriptionCol3 span {font-size:35px;}
+  
+  /*Resources*/
+  .resourcesSolutionsContainer {padding: 0 0 30px;}
+  .resourceGridColLeftContainer {display:table-cell; width:50%; vertical-align:top; padding:0 30px 0 0;}
+  .resourceGridColRightContainer {display:table-cell; width:50%; vertical-align:top; padding:0 0 0 30px;}
+  
+  /*Carbon Footprint*/
+  .electrictyProGridCol2 {width: 80%;}
+  .improvementTabTitle {font-size: 27px;}
+  .improvementTabSubTitle {font-size: 17px;}
+  
+  /*Scorecard*/
+  .indScorecardTableWrapper {border: 2px solid #00263e;}
+  }
+  
+  @media only screen and (min-width: 960px) {
+  .internalPageTitle {font-size: 90px;}
+  .internalPageTitle.resources {font-size: 60px;}
+  .internalPageTitleDescription {font-size: 20px;}
+  .internalPageTitleNoColor {font-size: 80px;}
+  .internalPageTitleDescriptionNoColor {font-size: 23px;}
+  
+  /*Recycle*/
+  .recycleGraphDescriptionContainer {display:table-cell; width:40%; text-align:right; padding: 0 40px 0 0;}
+  .recycleGraphDescriptionInnerContainer {padding:0 40px 0 0; border-right:1px dotted #e4e4e4; border-bottom:none;}
+  .recycleGraphImgContainer {display:table-cell; width:60%; line-height:0; margin:0;}
+  
+  /*Collection*/
+  .indAFCCo1Wrapper {display:table-cell; vertical-align:middle; width:15%; padding: 0 30px 0 0; margin:0;}
+  .indAFCCo2Wrapper {display:table-cell; vertical-align:middle; width:15%; padding: 0 30px 0 0; margin:0;}
+  .indAFCCo3Wrapper {display:table-cell; vertical-align:middle; width:35%; padding: 0 30px 0 0;}
+  .indAFCCo4Wrapper {display:table-cell; vertical-align:middle; width:35%;}
+  .indAFCCo2ImageWrapper {max-width: 100%;}
+  span.naturalGas, span.biodiesel, span.improvements {font-size: 28px;}
+  
+  /*Energy*/
+  .energyCabotTxtContainer {display: table-cell; vertical-align: middle; width: 40%; padding: 0 25px 0 0;}
+  .energyCabotImgContainer {display: table-cell; vertical-align: top; padding: 0 0 0 25px;}
+  .energyCabotImgContainer {margin:0;}
+  
+  /*Landfills*/
+  .landfillReasonsColLeft {display:table-cell; vertical-align:top; width:50%; padding: 0 30px 0 0;}
+  .landfillReasonsColRight {display:table-cell; vertical-align:top; width:50%; padding: 0 0 0 30px;}
+  .landfillSafeGridColLeft {display:table-cell; width:50%; padding:0 40px 0 0;}
+  .landfillSafeGridColRight {display:table-cell; width:50%; padding:0 0 0 40px;}
+  
+  /*Resources*/
+  .resourcesActionTitleWrapper {border-bottom:2px dotted #76bd22; padding:0 0 30px;}
+  
+  /*Our People*/
+  .peopleUpperGridCol1 {display:table-cell; text-align:right;}
+  .peopleUpperGridCol2 {display:table-cell; width:60%; padding:0 0 0 30px;}
+  .peopleUpperInnerGridCol2 {border-left:1px dotted #e4e4e4; padding:0 0 0 30px;}
+  .dhilTitleEmpty {display:table-cell; vertical-align:top; width:35%;}
+  .dhilTitleWrapper {display:table-cell; width:65%; padding:0 0 0 30px;}
+  .dhilTitle {padding:0 0 0 30px;}
+  .dhilGridCol1 {display:table-cell; margin:0;}
+  .dhilGridCol2 {display:table-cell; width:65%;padding: 0 0 0 30px;}
+  .dhilGridInnerCol2 {border-left:1px dotted #e4e4e4; padding:0 0 0 30px;}
+  .peopleHealthContainerCol1 {display:table-cell; margin:0;}
+  .peopleHealthContainerCol2 {display:table-cell; width:40%; padding:0 0 0 40px; margin:0; border-top:none;}
+  .peopleHealthInnerContainerCol2 {padding:0 0 0 40px; border-left:1px dotted #e4e4e4;}
+  }
+  
+  @media only screen and (min-width: 1020px) {
+  /*Recycle*/  
+  .recycleFocusColLeft {width:60%;}
+  .recycleGrid li {width: 16.66666666%; width: calc(100% / 6);}
+  
+  /*Landfills*/
+  .landfillGasEnergyGraphicInnerContainer {bottom:40px;}
+  .landfillGasEnergyGraphicTxtWrapperCol2 span {font-size: 54px;}
+  
+  /*Carbon Footprint*/
+  .carbonUpperGridCol1 {display:table-cell; width:75%; padding:0 40px 0 0; margin: 0; border-bottom: none;}
+  .carbonUpperGridCol2 {display:table-cell; border-left: 1px dotted #e4e4e4; padding: 0 0 0 40px;}
+  .carbonTabEmissionCol1 {display:table-cell; width:35%; padding:0 0 0 30px; margin:0;}
+  .carbonTabEmissionCol2 {display:table-cell;}
+  .carbonTabReductionCol1 {display:table-cell; width:40%; padding:0 30px 0 0; margin:0; text-align:right;}
+  .carbonTabReductionCol2 {display:table-cell;}
+  .improvementGridCol1 {display:table-cell; width:50%; padding:0 20px 0 0;}
+  .improvementGridCol2 {display:table-cell; width:50%; padding:0 0 0 20px;}
+  .indImprovementInnerWrapper.lastCol1 {border-bottom: none; margin: 0;}
+  .carbonUpperGridInnerCol2 {display:block;}
+  .carbonUpperGridInnerImgWrapper {display:block; width: 100%; padding: 0; margin: 0 0 40px;}
+  .carbonUpperGridInnerCol2Txt {display:block;}
+  }
+  
+  @media only screen and (min-width: 1100px) {
+  .twoColumnContentContainer {-webkit-columns: 2; -moz-columns: 2; columns: 2; -webkit-column-gap: 40px; -moz-column-gap: 40px; column-gap: 40px;}
+  
+  .internalPageTitleContainer {padding: 160px 0 70px;}
+  .internalPageTitleInnerContainer {width:90%; max-width:1300px; padding:0;}
+  .internalPageTitle.resources {font-size: 70px;}
+  h2.subPageTitle {padding: 40px 0; font-size: 36px;}
+  .internalPageTitleContainerNoColor {padding: 170px 0 0;}
+  .threeColumnContentContainer {-webkit-columns: 3; -moz-columns: 3; columns: 3; -webkit-column-gap: 40px; -moz-column-gap: 40px; column-gap: 40px;}
+    
+  /*Services: Main*/
+  #service-slider {position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: auto; height: auto;}
+  .serviceContentInnerWrapper {width: 55%; padding:30px; background: #fff; background: rgba(255,255,255,.97);}
+  .serviceContentWrapper {display: table-cell; vertical-align: middle; padding: 140px 0 50px;}
+  
+  /*Recycle*/
+  .recycleUpperContainer {width:90%; max-width:1300px; padding:0; margin:60px auto;}
+  .recycleTabs {width:90%; max-width:1300px; margin: 80px auto 60px; padding:0;}
+  .recycleGridImageContainer .caption {font-size: 12px;}
+  
+  /*Collection*/
+  h2.AFCTitle {font-size: 36px;}
+  .indAFCCo1Wrapper {width:15%; padding: 0 50px 0 0;}
+  .indAFCCo2Wrapper {width:20%; padding: 0 50px 0 0;}
+  .indAFCCo3Wrapper {width:35%; padding: 0 50px 0 0;}
+  .indAFCCo4Wrapper { width:30%;}
+  span.naturalGas, span.biodiesel, span.improvements {font-size: 48px;}
+  
+  /*Organics*/
+  .organicsUpperContainer {width: 90%; max-width: 1300px; padding: 0; margin: 60px auto;}
+  .organicsUpperContentInnerContainerLeft {display:table-cell; vertical-align:top; width:35%; text-align:right;}
+  .organicsUpperContentInnerContainerRight {display:table-cell; vertical-align:top; padding:0 0 0 40px; margin:0; border-top:none;}
+  .organicsUpperContentInnerContainerWrapper {padding:0 0 0 40px; border-left:1px dotted #e4e4e4;}
+  .organicsLowerContainerLeft {display:table-cell; width:35%; margin: 0; padding: 0; border-top: none;}
+  .organicsLowerContainerRight {display:table-cell; padding: 0 0 0 40px;}
+  .organicsLowerInnerContainerRight {padding:0 0 0 40px; border-left:1px dotted #e4e4e4;}
+  .earthlifeInnerContainerRightTitle {font-size: 44px;}
+  
+  /*Energy*/
+  .energyUpperContainer {width: 90%; max-width: 1300px; padding: 0; margin: 60px auto;}
+  h2.CabotTitle {font-size: 36px;}
+  
+  /*Landfills*/
+  .landfillUpperContainer {width: 90%; max-width: 1300px; padding: 0; margin: 60px auto;}
+  .landfillTabs {width: 90%; max-width: 1300px; margin: 80px auto 60px; padding: 0;}
+  .landfillGasEnergyTitle {display:block;}
+  .landfillZeroWasteColLeft {display:table-cell;}
+  .landfillZeroWasteColRight {display:table-cell; width:40%; padding: 0 0 0 40px; border-top:none;}
+  .landfillZeroWasteInnerColRight {padding:0 0 0 40px; border-left: 1px dotted #e4e4e4;}
+  .landfillZeroWasteGraphicWrapper {display: block; width: 100%; margin: 0 0 30px; padding: 0 0 30px; border-bottom: 1px dotted #e4e4e4;}
+  
+  .landfillGasEnergyGraphicInnerContainer {bottom:60px; font-size: 15px;}
+  .landfillGasEnergyDescriptionCol1, .landfillGasEnergyDescriptionCol2, .landfillGasEnergyDescriptionCol3 {font-size:15px;}
+  .landfillGasEnergyDescriptionCol3 span {font-size:54px;}
+  
+  /*Resources*/
+  .resourcesUpperContainer {width: 90%; max-width: 1300px; padding: 0; margin:30px auto 60px;}
+  .resourcesTab {width:90%; max-width:1300px; margin: 40px auto 60px; padding:0;}
+  
+  /*Operations*/
+  .mapContentContainer {top:120px;}
+  .mapTitle {font-size: 60px;}
+  .mapTogglesClickOutContainer {padding:0 0 0 15px; width:40px;}
+  .mapTogglesClickOutInnerContainer {padding: 0 0 0 15px; border-left:1px dotted #ccc;}
+  
+  /*Carbon Footprint*/
+  .carbonUpperContainer {width: 90%; max-width: 1300px; padding: 0; margin: 30px auto 60px;}
+  .carbonTabs {width: 90%; max-width: 1300px; margin: 0 auto 30px; padding: 0;}
+  
+  /*Our People*/
+  .peopleHeaderImageContainer {padding:90px 0 0; border-bottom: 4px solid #FFF;}
+  .peopleUpperGridCol2 {width:65%;}
+  .peopleUpperContainer {width: 90%; max-width: 1300px; padding: 0; margin: 60px auto 35px;}
+  .coreValuesContainer {padding:60px 0 0;}
+  .coreValuesInnerCol1 {display:table-cell; text-align:right;}
+  .coreValuesInnerCol2 {display:table-cell; width:65%; padding:0 0 0 30px;}
+  .coreValuesInnerCol2Wrapper {/*border-left:1px dotted #AFDAF2;*/ padding:0 0 0 30px; margin:0; border-left:1px dotted #e4e4e4;}
+  .peopleTabs {width: 90%; max-width: 1300px; margin: 60px auto; padding: 0;}
+  }
+  
+  @media only screen and (min-width: 1200px) {
+  /*Carbon Footprint*/
+  .electrictyProGridCol1 {display:table-cell; width:33%; text-align:right; padding:0 30px 0 0;}
+  .electrictyProGridCol2 {display:table-cell; margin:0; width:auto;}
+  .electrictyProGridInnerCol1 {padding: 0 50px 0 0; border-right: 3px solid #DEF5FA;}
+  .electrictyProGridContainer {margin: -150px 0 0;}
+  }
+  
+  @media only screen and (min-width: 1300px) {
+  /*Services: Main*/
+  .serviceContentInnerWrapper {width: 45%;}
+  
+  /*Collection*/
+  span.naturalGas, span.biodiesel, span.improvements {font-size: 55px;}
+  
+  /*Organics*/
+  .organicsUpperContentInnerContainerLeft, .organicsLowerContainerLeft {width:25%;}
+  
+  /*Landfills*/
+  .landfillZeroWasteColRight {width:30%;}
+  }
+  
+  @media only screen and (max-width: 1099px)  {
+  /*Services: Main*/
+  .serviceUpperContainer, .serviceContentInnerContainer { min-height:1px !important;}
+  }
+  
+  
+  @media (max-width: 819px) {
+  .stacktable.large-only { display: none; }
+  .stacktable.small-only { display: table; }
+}

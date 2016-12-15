@@ -1,0 +1,17 @@
+<!--Col - Sidebar-->
+<div class="internal-mainBody-sidebarContainer">
+
+  {% if sidebar_intro %}
+    <!--Sidebar Product Navigation Message-->
+    <div class="sidebarProduct-message internal-sidebar-elementSpacer">
+      <div>{{ sidebar_intro }}</div>
+    </div>
+    <!--END Sidebar Product Navigation Message-->
+  {% endif %}
+
+  {{ node_content.views_block__products_block_4 }}
+
+  {{ content.field_sidebar_promotions }}
+
+</div>
+<!--END Col - Sidebar-->

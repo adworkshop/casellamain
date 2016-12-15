@@ -1,0 +1,1823 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the Casella Resource Solutions.
+ */
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for field templates;
+ *
+ * @param array $suggestions
+ * @param array $variables
+ */
+function casella_theme_suggestions_field_alter(array &$suggestions, array $variables) {
+  // Remove all wrappers from the field template.
+  // Verticals paragraph specific.
+  $verticalsStrippedFields = array(
+    'field_image',
+    'field_title',
+  );
+  if (in_array($variables['element']['#field_name'], $verticalsStrippedFields) && 'vertical' == $variables['element']['#bundle']) {
+    $suggestions[] = 'field__stripped';
+  }
+
+  // Sidebar promotion specific.
+  $sidebarPromoStrippedFields = array(
+    'field_image',
+    'field_title',
+    'body',
+  );
+  if (in_array($variables['element']['#field_name'], $sidebarPromoStrippedFields) && 'sidebar_promotion' == $variables['element']['#bundle']) {
+    $suggestions[] = 'field__stripped';
+  }
+
+  if ('page' == $variables['element']['#bundle']) {
+    if ('body' == $variables['element']['#field_name']) {
+      $suggestions[] = 'field__stripped';
+    }
+  }
+  elseif ('job' == $variables['element']['#bundle']) {
+    if ('field_location' == $variables['element']['#field_name']) {
+      $suggestions[] = 'field__stripped';
+    }
+  }
+
+  // Image with caption paragraph specific.
+  if ('field_image' == $variables['element']['#field_name'] && ('image_with_caption' == $variables['element']['#bundle'] || 'slider_image' == $variables['element']['#bundle'] || 'full_width_promotion' == $variables['element']['#bundle'])) {
+    $suggestions[] = 'field__stripped';
+  }
+
+  // Information post specific.
+  if ('information_post' == $variables['element']['#bundle']) {
+    if (in_array($variables['element']['#field_name'], array('field_date', 'field_category'))) {
+      $suggestions[] = 'field__stripped';
+    }
+  }
+
+  // Location specific.
+  if ('location' == $variables['element']['#bundle']) {
+    if (in_array($variables['element']['#field_name'], array('field_city', 'field_state', 'field_zip'))) {
+      $suggestions[] = 'field__stripped';
+    }
+  }
+
+  if ('towns_cities' == $variables['element']['#bundle']) {
+    $suggestions[] = 'field__stripped';
+  }
+
+  $genericStrippedFields = array(
+    'field_sidebar_promotions',
+    'field_tabs',
+    'field_promotion',
+    'field_promotion_image',
+    'field_upper_buttons',
+    'field_job_status',
+    'field_earthlife_image',
+    'field_services',
+  );
+  if (in_array($variables['element']['#field_name'], $genericStrippedFields)) {
+    $suggestions[] = 'field__stripped';
+  }
+
+
+  // Partially stripped fields allow classing on the wrapper.
+  $partiallyStrippedFields = array(
+    'field_verticals_boxes',
+    'field_large_promotions',
+    'field_gallery_images',
+    'field_testimonials',
+    'field_earthlife_links',
+    'field_earthlife_description',
+    'field_earthlife_title',
+  );
+
+  if (in_array($variables['element']['#field_name'], $partiallyStrippedFields)) {
+    $suggestions[] = 'field__partially_stripped';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for responsive image formatter.
+ *
+ * @param $suggestions
+ * @param $variables
+ */
+function casella_theme_suggestions_image_alter(array &$suggestions, array $variables) {
+  if (isset($variables['attributes']['originalField'])) {
+    $suggestions[] = $variables['theme_hook_original'] . '__' . $variables['attributes']['originalField'];
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for field templates;
+ *
+ * @param array $suggestions
+ * @param array $variables
+ */
+function casella_theme_suggestions_paragraph_alter(array &$suggestions, array $variables) {
+  if (in_array($variables['elements']['#paragraph']->bundle(), array('recommendation'))) {
+    $suggestions[] = 'paragraph__stripped';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for container templates;
+ * @param array $suggestions
+ * @param array $variables
+ */
+function casella_theme_suggestions_container_alter(array &$suggestions, array $variables) {
+  if ('view' == $variables['element']['#type']) {
+    if ('products' == $variables['element']['#name']) {
+      if (in_array($variables['element']['#display_id'], array('block_2', 'block_4', 'block_5'))) {
+        $suggestions[] = 'container__stripped';
+      }
+    }
+    elseif ('product_categories' == $variables['element']['#name']) {
+      if ('block_1' == $variables['element']['#display_id']) {
+        $suggestions[] = 'container__stripped';
+      }
+    }
+    elseif ('information_posts' == $variables['element']['#name']) {
+      if (in_array($variables['element']['#display_id'], array('block_1', 'block_2'))) {
+        $suggestions[] = 'container__stripped';
+      }
+    }
+    elseif ('locations' == $variables['element']['#name']) {
+      if ('block_1' == $variables['element']['#display_id']) {
+        $suggestions[] = 'container__stripped';
+      }
+    }
+    elseif ('hr' == $variables['element']['#name']) {
+      if ('block_1' == $variables['element']['#display_id'] || 'block_2' == $variables['element']['#display_id']) {
+        $suggestions[] = 'container__stripped';
+      }
+    }
+  }
+  else {
+    // Stripping the container from the location contact.
+    if (isset($variables['element']['#id'])) {
+      if (in_array($variables['element']['#id'], array('edit-field-name-wrapper', 'edit-field-first-name-wrapper', 'edit-field-last-name-wrapper', 'edit-field-email-wrapper', 'edit-field-purpose-wrapper', 'edit-field-source-wrapper'))) {
+        $suggestions[] = 'container__stripped';
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for menu templates;
+ * @param array $suggestions
+ * @param array $variables
+ */
+function casella_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
+  if (isset($variables['menu_block_configuration']) && 'footer' !=  $variables['menu_name']) {
+    $suggestions[] = 'menu__main__block';
+    if (isset($variables['menu_block_configuration']['suggestion'])) {
+      $suggestions[] = 'menu__' . $variables['menu_block_configuration']['suggestion'] . '__block';
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for block templates;
+ * @param array $suggestions
+ * @param array $variables
+ */
+function casella_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  if (in_array($variables['elements']['#id'], array('mainnavigation', 'footer', 'casella_content', 'views_block__information_posts_block_1', 'views_block__locations_block_1__holiday_list', 'exposedformlocationspage_1__find_provider', 'views_block__hr_block_1__job_search', 'views_block__hr_block_2'))) {
+    $suggestions[] = 'block__stripped';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for node templates;
+ *
+ * @param array $suggestions
+ * @param array $variables
+ */
+function casella_theme_suggestions_node_alter(array &$suggestions, array $variables) {
+  // Check the sidebar promotion fields. This gets a different template if it
+  // only has an image and link.
+  if ('sidebar_promotion' == $variables['elements']['#node']->bundle()) {
+    $title = $variables['elements']['#node']->get('field_title')->getValue();
+    $body = $variables['elements']['#node']->get('body')->getValue();
+    if ($title || $body) {
+      $suggestions[] = 'node__sidebar_promotion__sidebar_full';
+      return;
+    }
+
+    $suggestions[] = 'node__sidebar_promotion__sidebar_reduced';
+    return;
+  }
+
+  $type = $variables['elements']['#node']->getType();
+  // If this is a testimonial or a full width promotion we don't need to worry about the rest of this.
+  if (in_array($type, array('full_width_promotion', 'testimonial'))) {
+    return;
+  }
+
+  // Need to pull the menu name to pull the params to get the current nodes parents.
+  // Check the menu parents to see if we need a sidebar logo.
+  $menu_tree = \Drupal::menuTree();
+  $menu_name = 'main';
+
+  // Build the typical default set of menu tree parameters.
+  $parameters = $menu_tree->getCurrentRouteMenuTreeParameters($menu_name);
+
+  // By default we are at the end of the active trail. If there are 0 or 1
+  // elements in the active trail then there is nothing to test.
+  $db = \Drupal\Core\Database\Database::getConnection();
+  if (count($parameters->activeTrail) > 1) {
+    // Now that we know there are parents check the db.
+    $parents = _casellaFindParentIds($parameters->activeTrail, $db);
+  }
+  else {
+    $parents = array();
+  }
+
+  $subsection = FALSE;
+  if ('product' == $type || 'product_category' == $type) {
+    $subsection[0]['value'] = 'earthlife';
+  }
+  elseif ('information_post' == $type || 'service' == $type) {
+    $subsection[0]['value'] = 'organics';
+  }
+  else {
+    if ($variables['elements']['#node']->hasField('field_subsection')) {
+      $subsection = $variables['elements']['#node']->get('field_subsection')->getValue();
+    }
+
+    // Check if this lives in a subsection but isnt marked.
+    if (!$subsection && count($parents)) {
+      $parentSubsection = _casellaFindParentsSection($parents, $db);
+      if ($parentSubsection) {
+        $subsection[0]['value'] = $parentSubsection;
+      }
+    }
+  }
+
+  $subsectionPath = '';
+  if ($subsection) {
+    $subsectionNidSelect = $db->select('node__field_subsection', 'subsection')
+      ->fields('subsection', array('entity_id'))
+      ->condition('bundle', 'subsection_homepage', '=')
+      ->condition('field_subsection_value', $subsection[0]['value']);
+
+    $data = $subsectionNidSelect->execute();
+    $results = $data->fetchAll(\PDO::FETCH_OBJ);
+
+    // Ensure we found something, and that we arent already on the homepage.
+    if ($results) {
+      $subsectionPath = \Drupal::service('path.alias_manager')->getAliasByPath('/node/' . $results[0]->entity_id);
+    }
+
+    if (!in_array($type, array('product', 'product_category'))) {
+      if ('subsection_homepage' == $type) {
+        $suggestions[] = 'node__subsection_homepage__' . $subsection[0]['value'];
+      }
+      // Information posts have their own node tpl.
+      elseif ('information_post' != $variables['elements']['#node']->getType()) {
+        $suggestions[] = 'node__subsection';
+        $suggestions[] = 'node__subsection__' . $subsection[0]['value'];
+      }
+    }
+  }
+
+  // Globals that need to be available in the page preprocess.
+  $staticVars = array(
+    'subsection' => $subsection,
+    'subsectionPath' => $subsectionPath,
+    'parents' => $parents,
+    'db' => $db,
+  );
+  drupal_static('casellaGlobals', $staticVars);
+
+  // Node 26 is the main products page, and masquerades as a product to get the
+  // correct sidebar.
+  if (26 == $variables['elements']['#node']->id()) {
+    $suggestions[] = 'node__products_landing_page';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for region templates;
+ *
+ * @param array $suggestions
+ * @param array $variables
+ */
+function casella_theme_suggestions_region_alter(array &$suggestions, array $variables) {
+  if ('content' == $variables['elements']['#region']) {
+    $suggestions[] = 'region__stripped';
+  }
+
+  $casellaGlobals = &drupal_static('casellaGlobals');
+  if (isset($casellaGlobals['subsection'][0]['value'])) {
+    $suggestions[] = 'region__' . $variables['elements']['#region'] . '__' . $casellaGlobals['subsection'][0]['value'];
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for page templates;
+ *
+ * @param array $suggestions
+ * @param array $variables
+ */
+function casella_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  $suggestions[] = 'page__' . $variables['page']['#type'];
+
+  $casellaGlobals = &drupal_static('casellaGlobals');
+
+  if ($casellaGlobals['subsection']) {
+    $suggestions[] = 'page__subsection';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for views_view templates;
+ *
+ * @param array $suggestions
+ * @param array $variables
+ */
+function casella_theme_suggestions_views_view_alter(array &$suggestions, array $variables) {
+  if (isset($variables['view']->display_handler->output['#theme'])) {
+    if (in_array('views_view__organics', $variables['view']->display_handler->output['#theme'])) {
+      if (in_array($variables['view']->current_display, array('block_2', 'block_3'))) {
+        $suggestions[] = 'views_view__stripped';
+      }
+    }
+    elseif (in_array('views_view__products', $variables['view']->display_handler->output['#theme'])) {
+      if (in_array($variables['view']->current_display, array('block_2'))) {
+        $suggestions[] = 'views_view__stripped';
+      }
+    }
+    elseif (in_array('views_view__locations', $variables['view']->display_handler->output['#theme'])) {
+      if (in_array($variables['view']->current_display, array('block_1'))) {
+        $suggestions[] = 'views_view__stripped';
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for views_view_unformatted templates;
+ *
+ * @param array $suggestions
+ * @param array $variables
+ */
+function casella_theme_suggestions_views_view_unformatted_alter(array &$suggestions, array $variables) {
+  if (isset($variables['view']->display_handler->output['#theme'])) {
+    if (in_array('views_view__organics', $variables['view']->display_handler->output['#theme'])) {
+      if (in_array($variables['view']->current_display, array('block_1', 'block_2', 'block_3'))) {
+        $suggestions[] = 'views_view_unformatted__stripped';
+      }
+    }
+    elseif (in_array('views_view__product_categories', $variables['view']->display_handler->output['#theme'])) {
+      if ('block_2' == $variables['view']->current_display) {
+        $suggestions[] = 'views_view_unformatted__stripped';
+      }
+    }
+    elseif (in_array('views_view__information_posts', $variables['view']->display_handler->output['#theme'])) {
+      if (in_array($variables['view']->current_display, array('block_1', 'block_2'))) {
+        $suggestions[] = 'views_view_unformatted__stripped';
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for form templates;
+ *
+ * @param array $suggestions
+ * @param array $variables
+ */
+function casella_theme_suggestions_form_alter(array &$suggestions, array $variables) {
+  if (isset($variables['element']['#id'])) {
+    $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#id']);
+  }
+}
+
+/**
+ * Implements template_preprocess_form_element().
+ *
+ * @param $variables
+ */
+function casella_preprocess_form_element(&$variables) {
+  if (isset($variables['element']['#id'])) {
+    if ('edit-field-name-0-value' == $variables['element']['#id']) {
+      $variables['attributes']['class'][] = 'job-indListing-form-personalInfo-nameContainer';
+    }
+    if ('edit-field-job-email-0-value' == $variables['element']['#id']) {
+      $variables['attributes']['class'][] = 'job-indListing-form-personalInfo-subContainer';
+      $variables['attributes']['class'][] = 'left';
+    }
+    elseif ('edit-field-first-name-0-value' == $variables['element']['#id']) {
+      $variables['attributes']['class'][] = 'contactUs-personalInformation-element';
+      $variables['attributes']['class'][] = 'contactUs-firstName';
+    }
+    elseif ('edit-field-last-name-0-value' == $variables['element']['#id']) {
+      $variables['attributes']['class'][] = 'contactUs-personalInformation-element';
+      $variables['attributes']['class'][] = 'contactUs-lastName';
+    }
+    elseif ('edit-field-email-0-value' == $variables['element']['#id']) {
+      $variables['attributes']['class'][] = 'contactUs-personalInformation-element';
+      $variables['attributes']['class'][] = 'contactUs-email';
+    }
+    elseif (in_array($variables['element']['#id'], array('edit-field-purpose', 'edit-field-source'))) {
+      $variables['attributes']['class'][] = 'contactUs-inquiryInformation-element';
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_field().
+ *
+ * @param $variables
+ */
+function casella_preprocess_field(&$variables) {
+  $variables['theme_path'] = drupal_get_path('theme', 'casella');
+  if (in_array($variables['element']['#field_name'], array('field_business_desc', 'field_home_desc', 'field_org_desc'))) {
+    $variables['attributes']['class'][] = 'home-verticalPanel-content';
+  }
+
+  if ($variables['element']['#bundle'] == 'large_promotion') {
+    switch ($variables['element']['#field_name']) {
+      case 'field_secondary_title':
+        $variables['attributes']['class'][] = 'home-gridDisplay-leftCol-subTitle-lower';
+        break;
+      case 'field_upper_content':
+        $variables['attributes']['class'][] = 'home-gridDisplay-leftCol-content-primaryText';
+        break;
+      case 'field_lower_content':
+        $variables['attributes']['class'][] = 'home-gridDisplay-leftCol-content-secondaryText';
+        break;
+      case 'field_logo':
+        $variables['attributes']['class'][] = 'home-gridDisplay-leftCol-logoWrapper';
+        break;
+    }
+  }
+  elseif ($variables['element']['#bundle'] == 'image_with_caption' || $variables['element']['#bundle'] == 'slider_image') {
+    if ($variables['element']['#bundle'] == 'image_with_caption') {
+      $classSelector = 'homepage';
+    }
+    else {
+      $classSelector = 'internal';
+    }
+
+    switch ($variables['element']['#field_name']) {
+      case 'field_title':
+        $variables['attributes']['class'][] = $classSelector . '-slider-caption-title';
+        break;
+      case 'field_description':
+        $variables['attributes']['class'][] = $classSelector . '-slider-caption-body';
+        break;
+      case 'field_image':
+        foreach (array_keys($variables['items']) as $key) {
+          $variables['items'][$key]['content']['#item_attributes']['class'][] = 'rsImg';
+          if ($variables['element']['#bundle'] == 'image_with_caption') {
+            $variables['items'][$key]['content']['#item_attributes']['class'][] = 'rsMainSlideImage';
+          }
+        }
+        break;
+    }
+  }
+  elseif ($variables['element']['#bundle'] == 'full_width_promotion') {
+    switch ($variables['element']['#field_name']) {
+      case 'field_title':
+        $variables['attributes']['class'][] = 'internal-fullWidthPromo-title';
+        break;
+      case 'field_subtitle':
+        $variables['attributes']['class'][] = 'internal-fullWidthPromo-subHeader';
+        break;
+      case 'field_description':
+        $variables['attributes']['class'][] = 'internal-fullWidthPromo-teaser';
+        break;
+      case 'field_link':
+        $variables['attributes']['class'][] = 'internal-fullWidthPromo-Btn';
+        break;
+      case 'field_image':
+        foreach (array_keys($variables['items']) as $key) {
+          $variables['items'][$key]['content']['#item_attributes']['class'][] = 'background';
+        }
+        break;
+    }
+  }
+  elseif ('solution_resource' == $variables['element']['#bundle']) {
+    switch ($variables['element']['#field_name']) {
+      case 'field_section_title':
+        $variables['attributes']['class'][] = 'internal-resourceSolution-indSubGridElement-title';
+        break;
+      case 'field_section_text':
+        $variables['attributes']['class'][] = 'internal-resourceSolution-indSubGridElement-txt';
+        break;
+    }
+  }
+  elseif ('product' == $variables['element']['#bundle'] && 'field_images' != $variables['element']['#field_name']) {
+    switch ($variables['element']['#field_name']) {
+      case 'field_upper_content':
+        $variables['attributes']['class'][] = 'indProduct-featuredContent-container';
+        break;
+      case 'body':
+        $variables['attributes']['class'][] = 'indProduct-generalContent-container';
+        $variables['attributes']['class'][] = 'indProduct-lowerContent-leftCol-spacer';
+        break;
+      case 'field_best_practices':
+        $variables['attributes']['class'][] = 'indProduct-lowerContent-leftCol-bestPractices-wrapper';
+        break;
+      case 'field_recommendations':
+        $variables['attributes']['class'][] = 'indProduct-lowerContent-leftCol-recommendations-container';
+        $variables['attributes']['class'][] = 'indProduct-lowerContent-leftCol-spacer';
+
+        foreach (array_keys($variables['items']) as $key) {
+          $variables['items'][$key]['attributes']->addClass('indProduct-lowerContent-indRecommendations');
+        }
+        break;
+      case 'field_downloads':
+        $variables['attributes']['class'][] = 'indProduct-lowerContent-rightCol-downloads-innerContainer';
+
+        foreach ($variables['items'] as $key => $value) {
+          //$variables['items'][$key]['filesize'] =
+          $size = $value['content']['#file']->getSize();
+          if ($size < 1048576) {
+            $variables['items'][$key]['filesize'] = round($size / 1024, 1) . ' KB';
+          }
+          else {
+            $variables['items'][$key]['filesize'] = round($size / 1048576, 1) . ' MB';
+          }
+
+          $mime = $value['content']['#file']->getMimeType();
+          if ($mime == 'application/pdf') {
+            $variables['items'][$key]['filemime'] = 'fa-file-pdf-o';
+          }
+          else {
+            $variables['items'][$key]['filemime'] = 'fa-file-o';
+          }
+          $variables['items'][$key]['content']['item_attributes']['featured'] = 'inside';
+          $variables['items'][$key]['filedesc'] = $value['content']['#description'];
+          $variables['items'][$key]['fileuri'] = file_create_url($value['content']['#file']->getFileUri());
+          $variables['items'][$key]['filename'] = $value['content']['#file']->getFilename();
+
+          $variables['items'][$key]['attributes']->addClass('indProduct-lowerContent-rightCol-indDownload-container');
+        }
+
+        break;
+      case 'field_hero_text':
+        $variables['attributes']['class'][] = 'internal-headerPanel-hero';
+        break;
+      case 'field_image':
+        $featured = $variables['element']['#object']->get('field_feature_the_image')->getValue();
+
+        foreach ($variables['items'] as $key => $value) {
+          $variables['items'][$key]['content']['#item_attributes']['originalField'] = 'product__image_field';
+          $variables['items'][$key]['content']['#item_attributes']['featured'] = $featured[0]['value'] == '1';
+        }
+        break;
+    }
+  }
+  elseif ('recommendation' == $variables['element']['#bundle']) {
+    switch ($variables['element']['#field_name']) {
+      case 'field_section_title':
+        $variables['attributes']['class'][] = 'indProduct-lowerContent-indRecommendations-title';
+        break;
+    }
+  }
+  elseif ('upper_button' == $variables['element']['#bundle']) {
+    switch ($variables['element']['#field_name']) {
+      case 'field_title':
+        $variables['attributes']['class'][] = 'cutomerCare-btnRow-IndBtn-title';
+        break;
+      case 'field_short_description':
+        $variables['attributes']['class'][] = 'cutomerCare-btnRow-IndBtn-teaser';
+        break;
+    }
+  }
+  elseif ('faq_category' == $variables['element']['#bundle']) {
+    switch ($variables['element']['#field_name']) {
+      case 'field_category':
+        $variables['attributes']['class'][] = 'cd-faq-title';
+        break;
+    }
+  }
+  elseif ('faq_question' == $variables['element']['#bundle']) {
+    switch ($variables['element']['#field_name']) {
+      case 'field_question':
+        $variables['attributes']['class'][] = 'cd-faq-trigger';
+        break;
+      case 'field_answer':
+        $variables['attributes']['class'][] = 'cd-faq-content';
+        break;
+    }
+  }
+  elseif ('subsection_homepage' == $variables['element']['#bundle']) {
+    switch ($variables['element']['#field_name']) {
+      case 'field_earthlife_image':
+        foreach(array_keys($variables['items']) as $key) {
+          $variables['items'][$key]['content']['#item_attributes']['class'][] = 'background';
+        }
+        break;
+      case 'field_earthlife_links':
+        $variables['attributes']['class'][] = 'internal-fullWidthPromo-bubbleGrid';
+        break;
+      case 'field_earthlife_title':
+        $variables['attributes']['class'][] = 'internal-fullWidthPromo-title';
+        break;
+      case 'field_earthlife_description':
+        $variables['attributes']['class'][] = 'internal-fullWidthPromo-subHeader';
+        break;
+    }
+  }
+  elseif ('location' == $variables['element']['#bundle']) {
+    if ('field_alert_title' == $variables['element']['#field_name']) {
+      $variables['attributes']['class'][] = 'customerCare-alert-indContainer-alertType';
+    }
+  }
+  else {
+    switch ($variables['element']['#field_name']) {
+      case 'field_verticals_boxes':
+        $variables['attributes']['class'][] = 'home-resourceGrid';
+        break;
+      case 'field_large_promotions':
+        $variables['attributes']['class'][] = 'home-gridDisplay-leftCol-container';
+        break;
+      case 'field_gallery_images':
+        $variables['attributes']['class'][] = 'royalSlider';
+        $variables['attributes']['class'][] = 'heroSlider';
+        $variables['attributes']['class'][] = 'rsUni';
+        $variables['attributes']['id'] = 'home-slider';
+        break;
+      case 'field_hero_text':
+        $variables['attributes']['class'][] = 'internal-headerPanel-hero';
+        break;
+      case 'field_upper_content':
+        $variables['attributes']['class'][] = 'internal-mainBody-featuredContent-container';
+        break;
+      case 'field_slider_images':
+        $classArray = array(
+          'internalFeaturedMedia',
+          'cf',
+        );
+
+        $isFullWidth = TRUE;
+        if ($variables['element']['#object']->hasField('field_full_width')) {
+          $fullWidth = $variables['element']['#object']->get('field_full_width')->getValue();
+          $isFullWidth = (int) $fullWidth[0]['value'];
+        }
+
+        if ($isFullWidth) {
+          $classArray = array_merge($classArray, array('large', 'bottomPosition'));
+          $variables['inner_id'] = 'internal-slider';
+        }
+        else {
+          $classArray = array_merge($classArray, array('inBodyContent', 'topPosition'));
+          $variables['inner_id'] = 'content-slider';
+        }
+
+        if (!isset($variables['attributes']['class'])) {
+          $variables['attributes']['class'] = array();
+        }
+        $variables['attributes']['class'] = array_merge($variables['attributes']['class'], $classArray);
+
+        break;
+      case 'field_full_width_promotion':
+        $variables['attributes']['class'][] = 'internal-fullWidthPromo-container';
+        break;
+      case 'field_tab_description':
+        $variables['attributes']['class'][] = 'internal-indInteractivePanel-teaser';
+        break;
+      case 'field_images':
+        $style = Drupal\image\Entity\ImageStyle::load('max_1024');
+
+        foreach ($variables['items'] as $key => $item) {
+          $file = \Drupal\file\Entity\File::load($item['content']['#item']->get('target_id')->getValue());
+          if($file){
+            $image_uri = $file->getFileUri();
+          }
+          $variables['items'][$key]['url'] = $style->buildUrl($image_uri);
+          $variables['items'][$key]['title'] = $item['content']['#item']->get('title')->getValue();
+        }
+        break;
+      case 'field_testimonials':
+        $variables['attributes']['class'][] = 'internal-indInteractivePanel-testimonials-container';
+        break;
+      case 'field_quotation':
+        $variables['attributes']['class'][] = 'internal-indInteractivePanel-indTestimonial-quote';
+        break;
+      case 'field_attribution':
+        $variables['attributes']['class'][] = 'internal-indInteractivePanel-indTestimonial-name';
+        break;
+      case 'field_source':
+        $variables['attributes']['class'][] = 'internal-indInteractivePanel-indTestimonial-attribute';
+        break;
+      case 'field_free_form_content':
+        $variables['attributes']['class'][] = 'internal-indInteractivePanel-freeForm-container';
+        $variables['attributes']['class'][] = 'internal-indInteractivePanel-freeForm-txt-container';
+        break;
+      case 'field_logo':
+        $variables['attributes']['class'][] = 'internal-mainBody-featuredLogo';
+        break;
+      case 'field_solution_resources':
+        $variables['attributes']['class'][] = 'internal-resourceSolution-subGridElement-container';
+        break;
+      case 'field_faqs':
+        $variables['attributes']['class'][] = 'cd-faq-items';
+        $faqLabels = array();
+        foreach ($variables['items'] as $item) {
+          // Check if the category has a name.
+          $category = $item['content']['#paragraph']->get('field_category')->getValue();
+          if (!count($category)) {
+            continue;
+          }
+
+          // Do we have any questions?
+          $questions = $item['content']['#paragraph']->get('field_questions')->getValue();
+          if (!count($questions)) {
+            continue;
+          }
+
+          $faqLabels[] = array(
+            'id' => $item['content']['#paragraph']->id(),
+            'category' => $category[0]['value'],
+          );
+        }
+
+        $variables['faqLabels'] = $faqLabels;
+        break;
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_input__textfield().
+ *
+ * @param array $variables
+ */
+function casella_preprocess_input__textfield(&$variables) {
+  if ('edit-field-job-title-0-value' == $variables['attributes']['id']) {
+    $variables['attributes']['readonly'] = 'readonly';
+  }
+  elseif ('edit-field-job-reference-0-value' == $variables['attributes']['id']) {
+    $variables['attributes']['readonly'] = 'readonly';
+  }
+}
+
+/**
+ * Implements template_preprocess_image().
+ *
+ * @param $variables
+ */
+function casella_preprocess_image(&$variables) {
+  $sizes = array();
+
+  if (isset($variables['attributes']['originalField'])) {
+    $variables['attributes']['sizes'] = '100vw';
+    $variables['attributes']['class'] = 'rsImg';
+
+    if ('product__image_field' == $variables['attributes']['originalField']) {
+      if (!$variables['attributes']['featured']) {
+        $sizes = array(
+          array('style' => '1x1', 'width' => 1800, 'breakpoint' => 1200,),
+        );
+      }
+      else {
+        $sizes = array(
+          array('style' => '1800x810', 'width' => 1800, 'breakpoint' => 1280,),
+          array('style' => '1400x630', 'width' => 1400, 'breakpoint' => 1200,),
+        );
+      }
+      $sizes = array_merge($sizes, array(
+        array('style' => '1200x540', 'width' => 1200, 'breakpoint' => 1024,),
+        array('style' => '1024x461', 'width' => 1024, 'breakpoint' => 768,),
+        array('style' => '768x346', 'width' => 768, 'breakpoint' => 480,),
+        array('style' => '480x216', 'width' => 480, 'breakpoint' => 0,),
+      ));
+    }
+
+    unset($variables['attributes']['originalField']);
+  }
+
+  if (count($sizes)) {
+    $variables['srcset'] = array();
+    foreach ($sizes as $size) {
+      $style = Drupal\image\Entity\ImageStyle::load($size['style']);
+      $src = $style->buildUrl($variables['uri']);
+      $variables['srcset'][] = array('src' => $src, 'width' => $size['width'], 'breakpoint' => $size['breakpoint']);
+    }
+    $variables['attributes']['src'] = $src;
+  }
+}
+
+/**
+ * Implements template_preprocess_paragraph().
+ *
+ * @param $variables
+ */
+function casella_preprocess_paragraph(&$variables) {
+  $paragraphType = $variables['paragraph']->getType();
+  $variables['theme_path'] = drupal_get_path('theme', 'casella');
+
+  switch ($paragraphType) {
+    case 'vertical':
+      $variables['attributes']['class'][] = 'home-resourceGrid-indWrapper';
+      break;
+    case 'large_promotion':
+      $variables['attributes']['class'][] = 'home-gridDisplay-leftCol-indContainer';
+
+      // Get the link elements.
+      _casella_extract_link_bits($variables['paragraph']->get('field_link')->get(0), $variables);
+      $icon = $variables['paragraph']->get('field_icon')->getValue();
+      $variables['link_icon'] = $icon ? $icon[0]['value'] : FALSE;
+      break;
+    case 'image_with_caption':
+      $variables['attributes']['class'][] = 'gradient';
+      // Intentional fallthrough.
+    case 'slider_image':
+      $variables['attributes']['class'][] = 'rsContent';
+
+      _casella_extract_link_bits($variables['paragraph']->get('field_link')->get(0), $variables);
+
+      $title = $variables['paragraph']->get('field_title')->get(0);
+      $caption = $variables['paragraph']->get('field_description')->get(0);
+
+      if ($variables['link_title'] || $title || $caption) {
+        $variables['has_caption'] = TRUE;
+
+        $icon = $variables['paragraph']->get('field_icon')->getValue();
+        $variables['link_icon'] = $icon ? $icon[0]['value'] : FALSE;
+      }
+      else {
+        $variables['has_caption'] = FALSE;
+      }
+      break;
+    case 'video':
+      $youtubeId = $variables['paragraph']->get('field_youtube_id')->getValue();
+      $variables['field_youtube_id_value'] = $youtubeId[0]['value'];
+      break;
+    case 'solution_resource':
+      $icon = $variables['paragraph']->get('field_icon')->getValue();
+      $variables['icon'] = $icon[0]['value'];
+      break;
+    case 'products':
+      $items = array();
+      foreach ($variables['elements']['field_products']['#items'] as $item) {
+        $items[] = $item->target_id;
+      }
+
+      // $output = views_embed_view('products', 'block_1', implode('+', $items));
+      // Get the view machine id.
+      $view = \Drupal\views\Views::getView('products');
+      $view->setDisplay('block_1');
+      $view->setArguments(array(implode('+', $items)));
+
+      $variables['product_view'] = $view->render();
+
+      break;
+    case 'upper_button':
+      _casella_extract_link_bits($variables['paragraph']->get('field_link')->get(0), $variables);
+
+      $icon = $variables['paragraph']->get('field_icon')->getValue();
+      $variables['link_icon'] = $icon ? $icon[0]['value'] : FALSE;
+      break;
+    case 'faq_category':
+      $variables['faq_id'] = 'faq_' . $variables['paragraph']->id();
+      break;
+    case 'earthlink_link':
+      _casella_extract_link_bits($variables['paragraph']->get('field_link')->get(0), $variables);
+      break;
+    case 'services':
+      $services = $variables['paragraph']->get('field_services');
+      $serviceIds = array();
+      for ($i = 0; $i < $services->count(); $i++) {
+        $service = $services->get($i)->getValue();
+        $serviceIds[] = $service['target_id'];
+      }
+
+      $db = \Drupal\Core\Database\Database::getConnection();
+      $serviceResults = $db->select('node_field_data', 'node_field_data')
+        ->fields('node_field_data', array('title'))
+        ->condition('nid', $serviceIds, 'IN');
+      // Need to order by the delta of the field. Tis a bit convoluted...
+      $serviceResults->addExpression('FIND_IN_SET(nid,:serviceIds)', 'orderByField', array(':serviceIds' => implode(',', $serviceIds)));
+      $serviceResults->orderBy('orderByField', 'ASC');
+
+      $serviceResults = $serviceResults->execute();
+
+      $serviceTitles = $serviceResults->fetchAll(\PDO::FETCH_ASSOC);
+      $variables['serviceTitles'] = $serviceTitles;
+
+      // Give the organics view the current node to get the correct ordering of
+      // the requested services.
+      $nodeParam = \Drupal::routeMatch()->getParameter('node');
+      if (!is_string($nodeParam)) {
+        $nodeParam = $nodeParam->id();
+      }
+      if ($nodeParam) {
+        $view = \Drupal\views\Views::getView('organics');
+        $view->setDisplay('block_3');
+        $view->setArguments(array($nodeParam));
+
+        $variables['services_view'] = $view->render();
+      }
+      else {
+        $variables['services_view'] = '';
+      }
+
+      break;
+    case 'case_studies':
+      $caseStudies = $variables['paragraph']->get('field_case_studies');
+      $caseStudyIds = array();
+      for ($i = 0; $i < $caseStudies->count(); $i++) {
+        $caseStudy = $caseStudies->get($i)->getValue();
+        $caseStudyIds[] = $caseStudy['target_id'];
+      }
+
+      $view = \Drupal\views\Views::getView('case_studies');
+      $view->setDisplay('block_1');
+      $view->setArguments(array(implode('+', $caseStudyIds)));
+
+      $variables['caseStudiesView'] = $view->render();
+
+      break;
+    case 'organics_updates':
+      $view = \Drupal\views\Views::getView('information_posts');
+      $view->setDisplay('block_3');
+
+      $variables['organicsUpdatesView'] = $view->render();
+      break;
+    case 'link_with_icon':
+      $class = $variables['paragraph']->get('field_link_class')->getValue();
+      $variables['link_class'] = $class ? $class[0]['value'] : '';
+      _casella_extract_link_bits($variables['paragraph']->get('field_icon_link')->get(0), $variables);
+      break;
+  }
+}
+
+function casella_preprocess_breadcrumb(&$variables) {
+  $variables['theme_path'] = drupal_get_path('theme', 'casella');
+
+  $linkSchema = array();
+  foreach ($variables['links'] as $link) {
+    if (isset($link->schema)) {
+      $linkSchema[] = $link->schema;
+      unset($link->schema);
+    }
+  }
+
+  if (count($linkSchema)) {
+    $schema = array(
+      "@context" => "http://schema.org",
+      "@type" => "BreadcrumbList",
+      "itemListElement" => $linkSchema,
+    );
+    $variables['schema'] = json_encode((object) $schema);
+    return;
+  }
+
+  $variables['schema'] = false;
+}
+
+/**
+ * Implements template_preprocess_views_view().
+ * @param $variables
+ */
+function casella_preprocess_views_view(&$variables) {
+  if ('products' == $variables['id']) {
+    if ('block_1' == $variables['display_id']) {
+      $variables['attributes']['class'][] = 'internal-indInteractivePanel-products-container';
+    }
+  }
+  elseif('product_categories' == $variables['id']) {
+    if ('block_2' == $variables['display_id']) {
+      $variables['attributes']['class'][] = 'productGrid-filter-container';
+    }
+  }
+  elseif ('case_studies' == $variables['id']) {
+    if ('block_1' == $variables['display_id']) {
+      $variables['attributes']['class'][] = 'internal-indInteractivePanel-caseStudy-container';
+    }
+  }
+  elseif ('locations' == $variables['id']) {
+    if ('page_1' == $variables['display_id']) {
+      $variables['attributes']['class'][] = 'providerSearch-listings-container';
+    }
+  }
+  elseif ('hr' == $variables['id']) {
+    if ('block_1' == $variables['display_id']) {
+      $variables['attributes']['class'][] = 'job-mainListings-container';
+    }
+    elseif ('block_2' == $variables['display_id']) {
+      $variables['searchUrl'] = \Drupal::service('path.alias_manager')->getAliasByPath('/node/696');
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_views_view_unformatted().
+ * @param $variables
+ */
+function casella_preprocess_views_view_unformatted(&$variables) {
+  if ('products' == $variables['view']->id()) {
+    if ('block_2' == $variables['view']->current_display) {
+      if (isset($variables['title'])) {
+        $variables['wrapperId'] = _casella_make_machine_name((string)$variables['title']);
+      }
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_views_view_table().
+ * @param $variables
+ */
+function casella_preprocess_views_view_table(&$variables) {
+  if ('views_view_table__locations__block_1' == $variables['theme_hook_original']) {
+    $variables['attributes']['id'] = 'holidaySchedule';
+  }
+  elseif ('views_view_table__locations__page_1' == $variables['theme_hook_original']) {
+    $variables['attributes']['id'] = 'providerListings';
+  }
+  elseif ('hr' == $variables['view']->id() && 'block_1' == $variables['view']->current_display) {
+    $variables['attributes']['id'] = 'jobListings';
+    $variables['attributes']['class'][] = 'table';
+  }
+}
+
+/**
+ * Implements template_preprocess_views_view_fields().
+ * @param $variables
+ */
+function casella_preprocess_views_view_fields__product_categories__block_2(&$variables) {
+  $variables['inputValue'] = _casella_make_machine_name($variables['fields']['name']->content);
+}
+
+/**
+ * Implements template_preprocess_views_view_fields().
+ * @param $variables
+ */
+function casella_preprocess_views_view_fields__product_categories__block_1(&$variables) {
+  $view = \Drupal\views\Views::getView('products');
+  $view->setDisplay('block_3');
+  // Set Exposed filter argument
+  $view->setArguments([(int) strip_tags($variables['fields']['tid']->content->__toString())]);
+  $variables['extra_view_embed'] = $view->render();
+}
+
+/**
+ * Implements template_preprocess_block().
+ *
+ * @param $variables
+ */
+function casella_preprocess_block(&$variables) {
+  if ('casella_footer' == $variables['elements']['#id']) {
+    $variables['attributes']['class'][] = 'footer-lowerNav-container';
+  }
+  elseif ('casella_main_menu' == $variables['elements']['#id']) {
+    $variables['attributes']['class'][] = 'menuContainer';
+    $variables['attributes']['id'] = 'mainMenu';
+  }
+  elseif ('mainnavigation_2' == $variables['elements']['#id'] || 'mainnavigation_3' == $variables['elements']['#id']) {
+    $variables['attributes']['class'][] = 'menuContainer';
+    $variables['attributes']['id'] = 'sectionMenu';
+  }
+  elseif ('views_block__product_categories_block_1' == $variables['elements']['#id']) {
+    $variables['attributes']['class'][] = 'mainEarthlife-featuredProducts-container';
+  }
+  elseif ('views_block__products_block_4' == $variables['elements']['#id']) {
+    $variables['attributes']['class'][] = 'sidebarNav-wrapper';
+    $variables['attributes']['class'][] = 'internal-sidebar-elementSpacer';
+  }
+  elseif ('products_on_cat' == $variables['elements']['#id']) {
+    $variables['attributes']['class'][] = 'productGrid-container';
+  }
+}
+
+/**
+ * Implements template_preprocess_container().
+ *
+ * @param array $variables
+ */
+function casella_preprocess_container(&$variables) {
+  if (isset($variables['element']['#id'])) {
+    if ('edit-field-job-title-wrapper' == $variables['element']['#id']) {
+      $variables['attributes']['class'][] = 'job-indListing-form-titleReference-subContainer';
+      $variables['attributes']['class'][] = 'left';
+    }
+    elseif ('edit-field-job-reference-wrapper' == $variables['element']['#id']) {
+      $variables['attributes']['class'][] = 'job-indListing-form-titleReference-subContainer';
+      $variables['attributes']['class'][] = 'right';
+    }
+    elseif ('edit-field-phone-wrapper' == $variables['element']['#id']) {
+      $variables['attributes']['class'][] = 'job-indListing-form-personalInfo-subContainer';
+      $variables['attributes']['class'][] = 'right';
+    }
+    elseif ('edit-field-cover-letter-wrapper' == $variables['element']['#id']) {
+      $variables['attributes']['class'][] = 'job-indListing-form-applicationDetails-subContainer';
+      $variables['attributes']['class'][] = 'left';
+    }
+    elseif ('edit-field-resume-wrapper' == $variables['element']['#id']) {
+      $variables['attributes']['class'][] = 'job-indListing-form-applicationDetails-subContainer';
+      $variables['attributes']['class'][] = 'right';
+    }
+    elseif ('edit-field-sign-up-wrapper' == $variables['element']['#id']) {
+      $variables['attributes']['class'][] = 'contactUs-inquiryInformation-communications';
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_form().
+ *
+ * @param $variables
+ */
+function casella_preprocess_form(&$variables) {
+  // Find your Provider exposed form.
+  if (isset($variables['element']['#id'])) {
+    if ('views-exposed-form-locations-page-1' == $variables['element']['#id']) {
+      $hasCity = isset($_GET['city']) && $_GET['city'] != '';
+      $hasZip = isset($_GET['zip_code']) && $_GET['zip_code'] != '';
+
+      $variables['searchMeta'] = array();
+      $variables['providerSearchResults'] = '';
+      if ($hasCity || $hasZip) {
+        $view = \Drupal\views\Views::getView('locations');
+        $view->setDisplay('page_1');
+
+        $variables['providerSearchResults'] = $view->render();
+
+        // Check if there was already a submission.
+        $variables['searchMeta'] = array();
+        if (isset($_GET['city']) && $_GET['city'] != '') {
+          $variables['searchMeta'][] = $_GET['city'];
+        }
+        if (isset($_GET['zip_code']) && $_GET['zip_code'] != '') {
+          $variables['searchMeta'][] = $_GET['zip_code'];
+        }
+      }
+    }
+    elseif('contact-message-job-application-form' == $variables['element']['#id']) {
+      $variables['attributes']['class'][] = 'job-indListing-form';
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_region().
+ *
+ * @param $variables
+ */
+function casella_preprocess_region(&$variables) {
+  global $base_url;
+  $variables['base_url'] = $base_url;
+  $variables['theme_path'] = drupal_get_path('theme', 'casella');
+}
+
+/**
+ * Implements template_preprocess_region() for the footer region.
+ *
+ * @param $variables
+ */
+function casella_preprocess_region__footer(&$variables) {
+  $footer_statement = _casella_get_global('field_footer_statement');
+  $variables['footer_statement'] = $footer_statement ? $footer_statement[0]['value'] : '';
+
+  $social_links = _casella_get_global('field_social_icon_links');
+
+  if ($social_links) {
+    $social_entities = \Drupal::entityTypeManager()->getStorage('paragraph')->loadMultiple(array_map(function($elem){return $elem['target_id'];}, $social_links));
+
+    $view_builder = \Drupal::entityTypeManager()->getViewBuilder('paragraph');
+    $variables['social_links'] = $view_builder->viewMultiple($social_entities);
+  }
+  else {
+    $variables['social_links'] = '';
+  }
+}
+
+/**
+ * Implements template_preprocess_region() for the footer region.
+ *
+ * @param $variables
+ */
+function casella_preprocess_region__header(&$variables) {
+  $bill_pay = _casella_get_global('field_online_bill_pay', TRUE);
+  $variables['bill_pay'] = $bill_pay ? $bill_pay : '';
+
+  $customer_care = _casella_get_global('field_customer_care', TRUE);
+  $variables['customer_care'] = $customer_care ? $customer_care : '';
+
+  $search_intro = _casella_get_global('field_search_overlay_text');
+  $variables['search_intro'] = $search_intro ? $search_intro[0]['value'] : '';
+}
+
+function casella_preprocess_region__header__organics(&$variables) {
+  casella_preprocess_region__header($variables);
+}
+function casella_preprocess_region__header__earthlife(&$variables) {
+  casella_preprocess_region__header($variables);
+}
+
+/**
+ * Implements template_preprocess_node().
+ *
+ * @param $variables
+ */
+function casella_preprocess_node(&$variables) {
+  $variables['theme_path'] = drupal_get_path('theme', 'casella');
+
+  $variables['title'] = $variables['node']->getTitle();
+
+  $variables['wrapperClass'] = '';
+
+  if ($variables['node']->hasField('field_h1_override')) {
+    $h1 = $variables['node']->get('field_h1_override');
+    if ($h1) {
+      $h1 = $h1->getValue();
+      if (isset($h1[0]['value']) && $h1[0]['value'] != '') {
+        $variables['title'] = $h1[0]['value'];
+      }
+    }
+  }
+
+  $variables['addThis'] = FALSE;
+  if ($variables['node']->hasField('field_add_this')) {
+    $addThis = $variables['node']->get('field_add_this')->getValue();
+    if (isset($addThis[0]['value'])) {
+      $variables['addThis'] = (int) $addThis[0]['value'];
+    }
+  }
+
+  // Snag the tab titles for the tabs array.
+  $variables['tab_anchors'] = getTabPanelAnchors($variables);
+
+  if (!in_array($variables['node']->getType(), array('full_width_promotion', 'sidebar_promotion', 'testimonial'))) {
+    $pageLevel = array(
+      'highlighted',
+      'help',
+      'node_content',
+      'sidebar_nav',
+      'form_container',
+    );
+    _casella_add_regions_to_node($pageLevel, $variables);
+  }
+
+  $type = $variables['node']->getType();
+
+  if ('sidebar_promotion' == $type) {
+    _casella_extract_link_bits($variables['node']->get('field_link')->get(0), $variables);
+    $icon = $variables['node']->get('field_icon')->getValue();
+    $variables['link_icon'] = $icon ? $icon[0]['value'] : FALSE;
+
+    // If the referring item is a paragraph this is outputting in the zozo tabs.
+    if ('paragraph' == $variables['node']->_referringItem->getEntity()->getEntityTypeId()) {
+      $variables['attributes']['class'][] = 'internal-indInteractivePanel-gridColRight';
+
+      $variables['customClasses'] = array(
+        'wrapper' => 'internal-indInteractivePanel-gridColRight-fullPromo-wrapper',
+        'reducedWrapper' => 'internal-indInteractivePanel-gridColRight-wrapper',
+        'columnWrapper' => 'internal-indInteractivePanel-fullPromo-colWrapper',
+        'contentContainer' => 'internal-indInteractivePanel-fullPromo-col-content-container',
+        'contentButton' => 'internal-indInteractivePanel-fullPromo-col-content-btn',
+        'titleWrapper' => 'internal-indInteractivePanel-fullPromo-title',
+        'imageWrapper' => 'internal-indInteractivePanel-fullPromo-col-image-container',
+        'bodyWrapper' => 'internal-indInteractivePanel-fullPromo-col-content-wrapper',
+      );
+    }
+    // Otherwise it is truly a sidebar promotion.
+    else {
+      // ['node']->values['referringItem']->getParent()
+      $variables['attributes']['class'][] = 'internal-sidebarPromo-container';
+      $variables['attributes']['class'][] = 'internal-sidebar-elementSpacer';
+
+      $variables['customClasses'] = array(
+        'wrapper' => 'internal-sidebarFullPromo-wrapper',
+        'reducedWrapper' => '',
+        'columnWrapper' => 'internal-sidebarFullPromo-colWrapper',
+        'contentContainer' => 'internal-sidebarFullPromo-col-content-container',
+        'contentButton' => 'internal-sidebarFullPromo-col-content-btn',
+        'titleWrapper' => 'internal-sidebarFullPromo-title',
+        'imageWrapper' => 'internal-sidebarFullPromo-col-image-container',
+        'bodyWrapper' => 'internal-sidebarFullPromo-col-content-wrapper',
+      );
+    }
+  }
+  elseif ('full_width_promotion' == $type) {
+    $variables['attributes']['class'][] = 'internal-fullWidthPromo-imageContainer';
+  }
+  elseif ('product' == $type) {
+    $variables['wrapperClass'] = ' sectionWrapper';
+
+    $variables['sidebarLink'] = false;
+    $link = $variables['node']->get('field_promotion_link')->getValue();
+    if ($link) {
+      $variables['sidebarLink'] = $link[0]['uri'];
+    }
+
+    $featured = $variables['node']->get('field_feature_the_image')->getValue();
+    if ($featured[0]['value'] == '1') {
+      $variables['featuredImage'] = TRUE;
+    }
+    else {
+      $variables['featuredImage'] = FALSE;
+
+      // Snag all the image information here.
+      $image = $variables['node']->get('field_image')->get(0);
+      $imageFile = \Drupal\file\Entity\File::load($image->get('target_id')->getValue());
+
+      if($imageFile){
+        $image_uri = $imageFile->getFileUri();
+
+        $style = Drupal\image\Entity\ImageStyle::load('300x135');
+        $variables['sidebar_image'] = $style->buildUrl($image_uri);
+        $variables['sidebar_image_alt'] = $image->get('alt')->getValue();
+      }
+    }
+  }
+  elseif ('subsection_homepage' == $type) {
+    // Get the link elements.
+    _casella_extract_link_bits($variables['node']->get('field_link')->get(0), $variables);
+    $icon = $variables['node']->get('field_icon')->getValue();
+    $variables['link_icon'] = $icon ? $icon[0]['value'] : FALSE;
+
+    $view = \Drupal\views\Views::getView('organics');
+    $view->setDisplay('block_1');
+    $variables['organics_services_preview'] = $view->render();
+
+    $view = \Drupal\views\Views::getView('organics');
+    $view->setDisplay('block_2');
+    $full = $view->render();
+    $variables['organics_services_full'] = $full;
+
+    $subsection = $variables['node']->get('field_subsection')->getValue();
+    if ('organics' == $subsection[0]['value']) {
+      $variables['#attached']['library'][] = 'casella/jquery.colio';
+      $variables['#attached']['library'][] = 'casella/jquery.scrollUp';
+    }
+    elseif ('earthlife' == $subsection[0]['value']) {
+      _casella_extract_link_bits($variables['node']->get('field_earthlife_link')->get(0), $variables);
+    }
+  }
+  elseif ('location' == $type) {
+    $link = '';
+    foreach (array('field_street_address', 'field_city', 'field_state', 'field_zip') as $field) {
+      $value = $variables['node']->get($field)->getValue();
+      if ($value) {
+        if ($link != '') {
+          if ('field_zip' != $field) {
+            $link .= ',';
+          }
+          $link .= ' ';
+        }
+        $link .= $value[0]['value'];
+      }
+    }
+
+    if ('' != $link) {
+      $variables['mapLink'] = 'https://www.google.com/maps/place/' . str_replace(' ', '+', trim($link));
+    }
+    else {
+      $variables['mapLink'] = FALSE;
+    }
+
+    // Get the urls for the Service form and Dumpster pages.
+    $variables['serviceUrl'] = \Drupal::service('path.alias_manager')->getAliasByPath('/node/1946');
+    $variables['dumpsterUrl'] = \Drupal::service('path.alias_manager')->getAliasByPath('/node/446');
+  }
+  elseif ('job' == $type) {
+    $location = $variables['node']->get('field_location')->getValue();
+    // Get the city and state from the location.
+    $locationNode = \Drupal::entityTypeManager()->getStorage('node')->load($location[0]['target_id']);
+
+    $variables['locationCity'] = $locationNode->get('field_city')->getValue();
+    $variables['locationState'] = $locationNode->get('field_state')->getValue();
+
+    $status = $variables['node']->get('field_job_status')->getValue();
+    $variables['activeJob'] = $status[0]['target_id'] == 1;
+
+    $job_form_intro = _casella_get_global('field_job_application_intro');
+    $variables['application_intro'] = $job_form_intro ? $job_form_intro[0]['value'] : '';
+  }
+  elseif ('faq_landing_page' == $type) {
+    $variables['locationSearchPath'] = \Drupal::service('path.alias_manager')->getAliasByPath('/node/41');
+  }
+  elseif ('landing_page' == $type) {
+    _casella_extract_link_bits($variables['node']->get('field_small_business_link')->get(0), $variables);
+    $variables['location_search_action'] = $path_alias = \Drupal::service('path.alias_manager')->getAliasByPath('/node/41');
+  }
+
+  $variables['full_width'] = TRUE;
+  if ($variables['node']->hasField('field_full_width')) {
+    $fullWidth = $variables['node']->get('field_full_width')->getValue();
+    $variables['full_width'] = (int) $fullWidth[0]['value'];
+  }
+
+  $variables['twoCol'] = false;
+  if ($variables['node']->hasField('field_2_column')) {
+    $twoColumn = $variables['node']->get('field_2_column');
+    if ($twoColumn) {
+      $twoColumn = $twoColumn->getValue();
+      if ($twoColumn[0]['value'] == 1) {
+        $variables['twoCol'] = true;
+      }
+    }
+  }
+
+  $casellaGlobals = &drupal_static('casellaGlobals');
+  if (isset($casellaGlobals)) {
+    if ($casellaGlobals['subsection']) {
+      $variables['#attached']['library'][] = 'casella/jquery.sticky-kit';
+      if ('earthlife' == $casellaGlobals['subsection'][0]['value']) {
+        $variables['#attached']['library'][] = 'casella/earthlife';
+
+        $sidebar_intro = _casella_get_global('field_earthlife_sidebar_intro');
+        $variables['sidebar_intro'] = $sidebar_intro ? $sidebar_intro[0]['value'] : '';
+      }
+      elseif ('organics' == $casellaGlobals['subsection'][0]['value']) {
+        $variables['#attached']['library'][] = 'casella/organics';
+      }
+
+      $variables['subsectionPath'] = $casellaGlobals['subsectionPath'];
+    }
+  }
+
+  $variables['parentLogo'] = false;
+  if ($variables['node']->hasField('field_logo') && count($casellaGlobals['parents'])) {
+    // By default we are at the end of the active trail. If there are 0 or 1
+    // elements in the active trail then there is nothing to test.
+    $logo = _casellaFindParentsLogo($casellaGlobals['parents'], $casellaGlobals['db']);
+    if (count($logo)) {
+      $variables['parentLogo'] = $logo['logo'];
+      $variables['parentLogoPath'] = $logo['path'];
+    }
+  }
+
+  $variables['breadcrumbOverride'] = FALSE;
+
+  if ($variables['node']->hasField('field_breadcrumb_override')) {
+    $breadcrumbOverride = $variables['node']->get('field_breadcrumb_override')->getValue();
+    if ($breadcrumbOverride) {
+      $variables['breadcrumbOverride'] = $breadcrumbOverride[0]['value'];
+    }
+  }
+
+  $variables['postByCat'] = FALSE;
+  if ($variables['node']->hasField('field_post_category')) {
+    $postCat = $variables['node']->get('field_post_category')->getValue();
+    if ($postCat) {
+      $view = \Drupal\views\Views::getView('information_posts');
+      $view->setDisplay('block_2');
+      $view->setArguments(array($postCat[0]['target_id']));
+      $variables['postByCat'] = $view->render();
+    }
+  }
+}
+
+function casella_preprocess_page(&$variables) {
+  // Need to pull the menu name to pull the params to get the current nodes parents.
+  // Check the menu parents to see if we need a sidebar logo.
+  $menu_tree = \Drupal::menuTree();
+  $menu_name = 'main';
+
+  $variables['wrapperClass'] = '';
+
+  $casellaGlobals = &drupal_static('casellaGlobals');
+  if (isset($casellaGlobals)) {
+    if ($casellaGlobals['subsection']) {
+      $variables['wrapperClass'] = 'subsection ' . $casellaGlobals['subsection'][0]['value'];
+    }
+  }
+
+  $variables['hasNode'] = isset($variables['node']);
+}
+
+/**
+ * Implements template_preprocess_html().
+ *
+ * @param $variables
+ */
+function casella_preprocess_html(&$variables) {
+  if (isset($variables['node_type'])) {
+    $variables['html_attributes']->addClass(str_replace('_', '-', $variables['node_type']));
+    if ('landing_page' == $variables['node_type']) {
+      $variables['#attached']['library'][] = 'casella/custom-home';
+      $variables['#attached']['library'][] = 'casella/royalslider';
+      $variables['#attached']['library'][] = 'casella/jquery.hoverdir';
+    }
+    else {
+      $variables['#attached']['library'][] = 'casella/custom-internal';
+    }
+
+    if ('product' == $variables['node_type']) {
+      $variables['attributes']['class'][] = 'earthlife';
+      $variables['#attached']['library'][] = 'casella/earthlife';
+    }
+    elseif ('faq_landing_page' == $variables['node_type']) {
+      $variables['#attached']['library'][] = 'casella/faq';
+    }
+  }
+  else {
+    $variables['#attached']['library'][] = 'casella/custom-internal';
+  }
+}
+
+/**
+ * Helper function to get and return a global variable from the global element node.
+ *
+ * @param string $fieldname
+ * @param bool $link
+ * @return mixed
+ */
+function _casella_get_global($fieldname, $link = FALSE) {
+  $casellaGlobals = &drupal_static('casellaGlobals');
+  if (!isset($casellaGlobals['global_variable_node'])) {
+    $casellaGlobals['global_variable_node'] = \Drupal::entityTypeManager()->getStorage('node')->load(1951);
+  }
+
+  if (!$casellaGlobals['global_variable_node']->hasField($fieldname)) {
+    return false;
+  }
+
+  if ($link) {
+    return  $casellaGlobals['global_variable_node']->get($fieldname)->get(0)->getUrl();
+  }
+
+  return $casellaGlobals['global_variable_node']->get($fieldname)->getValue();
+}
+
+
+
+/**
+ * Helper function to check the node for parents and see if any of them have a logo.
+ * @param $activeTrail
+ * @param $db
+ * @return array()
+ */
+function _casellaFindParentsLogo($parents, $db) {
+  if (!count($parents)) {
+    return array();
+  }
+
+  foreach ($parents as $parent) {
+    $logoFid = _casellaFindParentLogo($parent, $db);
+    if ($logoFid != '') {
+      $path = _casellaLoadLogoPath($logoFid);
+      if ($path != '') {
+        $parentPath = \Drupal::service('path.alias_manager')->getAliasByPath('/node/' . $parent);
+        return array(
+          'path' => $parentPath,
+          'logo' => $path,
+        );
+      }
+    }
+  }
+
+  return array();
+}
+
+/**
+ * Helper function to check the node for parents and see if any of them have a logo.
+ *
+ * @param $parents
+ * @param $db
+ * @return bool
+ */
+function _casellaFindParentsSection($parents, $db) {
+  if (!count($parents)) {
+    return FALSE;
+  }
+
+  foreach ($parents as $parent) {
+    $subsection = _casellaFindParentSection($parent, $db);
+    if ($subsection != '') {
+      return $subsection;
+    }
+  }
+
+  return FALSE;
+}
+
+/**
+ * Helper function to check a node's for parent and see if it has a logo.
+ *
+ * @param $parentNid
+ * @param $db
+ * @return string
+ */
+function _casellaFindParentSection($parentNid, $db) {
+  $select = $db->select('node__field_subsection', 'field_subsection')
+    ->fields('field_subsection', array('field_subsection_value'))
+    ->condition('entity_id', $parentNid, '=')
+    ->condition('bundle', 'page', '=');
+
+  $data = $select->execute();
+  $results = $data->fetchAll(\PDO::FETCH_OBJ);
+  if (!count($results)) {
+    return '';
+  }
+
+  foreach ($results as $result) {
+    return $result->field_subsection_value;
+  }
+}
+
+/**
+ * Helper function to check the node for parents and see if any of them have a logo.
+ * @param $activeTrail
+ * @param $db
+ * @return array();
+ */
+function _casellaFindParentIds($activeTrail, $db) {
+  // Strip off the empty element at the end.
+  $keys = array_keys($activeTrail);
+  if (array_pop($keys) == '') {
+    array_pop($activeTrail);
+  }
+  // And current element.
+  array_shift($activeTrail);
+
+  if (!count($activeTrail)) {
+    return array();
+  }
+
+  $select = $db->select('menu_tree', 'menu_tree')
+    ->fields('menu_tree', array('route_param_key'))
+    ->condition('id', $activeTrail, 'IN')
+    ->condition('menu_name', 'main', '=')
+    ->orderBy('depth', 'DESC');
+
+  $data = $select->execute();
+  $results = $data->fetchAll(\PDO::FETCH_OBJ);
+  $parents = array();
+  foreach ($results as $result) {
+    if (substr($result->route_param_key, 0, 5) == 'node=') {
+      $parents[] = substr($result->route_param_key, 5);
+    }
+  }
+
+  return $parents;
+}
+
+/**
+ * Helper function to check a node's for parent and see if it has a logo.
+ * @param $currentRoute
+ */
+function _casellaFindParentLogo($parentNid, $db) {
+  $select = $db->select('node__field_logo', 'field_logo')
+    ->fields('field_logo', array('field_logo_target_id'))
+    ->condition('entity_id', $parentNid, '=')
+    ->condition('bundle', 'page', '=');
+
+  $data = $select->execute();
+  $results = $data->fetchAll(\PDO::FETCH_OBJ);
+  if (!count($results)) {
+    return '';
+  }
+
+  foreach ($results as $result) {
+    return $result->field_logo_target_id;
+  }
+}
+
+/**
+ * Loads the file by file ID and returns the uri or a blank screen.
+ *
+ * @param $logoFid
+ * @return string
+ */
+function _casellaLoadLogoPath($logoFid) {
+  $file = \Drupal\file\Entity\File::load($logoFid);
+  if (!$file) {
+    return '';
+  }
+
+  return _casellaThemeImage($file->getFileUri(), 'max_400');
+}
+
+/**
+ * @param $uri
+ * @param string $styleName
+ * @return \Drupal\Core\GeneratedUrl|string
+ */
+function _casellaThemeImage($uri, $styleName) {
+  $style = Drupal\image\Entity\ImageStyle::load($styleName);
+  return $style->buildUrl($uri);
+}
+
+/**
+ * Helper function to snag the tab titles from a set of tabs.
+ *
+ * @param $variables
+ * @return array();
+ */
+function getTabPanelAnchors($variables) {
+  $titles = array();
+  if (!$variables['node']->hasField('field_tabs')) {
+    return $titles;
+  }
+
+  $tabs = $variables['node']->get('field_tabs');
+  if (!$tabs || !$tabs->count()) {
+    return $titles;
+  }
+
+  $entities = $tabs->referencedEntities();
+  foreach ($entities as $entity) {
+    $title = getTabPanelAnchor($entity);
+    if ($title != '') {
+      $titles[] = $title;
+    }
+  }
+
+  return $titles;
+}
+
+/**
+ * Helper function to pull the tab anchor out of an entity.
+ *
+ * @param $entity
+ * @return string
+ */
+function getTabPanelAnchor($entity) {
+  $tab_anchor = $entity->get('field_tab_anchor');
+  if ($tab_anchor) {
+    $tab_anchor = $tab_anchor->getValue();
+    if ($tab_anchor[0]['value'] != '') {
+      return $tab_anchor[0]['value'];
+    }
+  }
+
+  if (!$entity->hasField('field_tab_title')) {
+    return '';
+  }
+
+  $title = $entity->get('field_tab_title');
+  if ($title) {
+    $title = $title->getValue();
+    if ($title[0]['value'] != '') {
+      return $title[0]['value'];
+    }
+  }
+
+  return '';
+}
+
+/**
+ * Helper function to add page level regions to the node templates.
+ *
+ * @param array $allowed_regions
+ * @param array $variables
+ */
+function _casella_add_regions_to_node($allowed_regions, &$variables) {
+  // Retrieve active theme
+  $theme = \Drupal::theme()->getActiveTheme()->getName();
+
+  // Retrieve theme regions
+  $available_regions = system_region_list($theme, 'REGIONS_ALL');
+
+  // Validate allowed regions with available regions
+  $regions = array_intersect(array_keys($available_regions), $allowed_regions);
+
+  // For each region
+  foreach ($regions as $key => $region) {
+
+    // Load region blocks
+    // This needs to be swapped out for the loadByProperties method on EntityStorageInterface.
+    $blocks = entity_load_multiple_by_properties('block', array('theme' => $theme, 'region' => $region));
+
+    // Sort ‘em
+    // uasort($blocks, 'Drupal\block\Entity\Block::sort');
+
+    // Capture viewable blocks and their settings to $build
+    $build = array();
+    foreach ($blocks as $key => $block) {
+      if ($block->access('view')) {
+        $build[$key] = entity_view($block, 'block');
+      }
+    }
+
+    // Add build to region
+    $variables[$region] = $build;
+  }
+}
+
+/**
+ * Helper function to extract link field titles and links.
+ *
+ * @param object $link
+ * @param array $variables
+ */
+function _casella_extract_link_bits($link, &$variables) {
+  if (!$link) {
+    $variables['link_title'] = FALSE;
+    $variables['link_url'] =  FALSE;
+    return;
+  }
+
+  $linkValues = $link->getValue();
+  $variables['link_title'] = $link ? $linkValues['title'] : FALSE;
+  $variables['link_url'] =  $link ? $link->getUrl() : FALSE;
+}
+
+/**
+ * Helper function to trim and reduce text to machine names.
+ */
+function _casella_make_machine_name($text) {
+  return preg_replace('/[^a-z0-9_]+/', '_', strtolower(trim(strip_tags($text))));
+}

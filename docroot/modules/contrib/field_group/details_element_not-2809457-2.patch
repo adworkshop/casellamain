@@ -1,0 +1,74 @@
+diff --git a/field_group.libraries.yml b/field_group.libraries.yml
+index 1f98186..2f9cbbd 100644
+--- a/field_group.libraries.yml
++++ b/field_group.libraries.yml
+@@ -58,6 +58,13 @@ formatter.horizontal_tabs:
+     - field_group/formatter.tabs
+     - core/drupal.collapse
+ 
++formatter.details:
++  version: VERSION
++  js:
++    formatters/details/details.js: {}
++  dependencies:
++    - field_group/core
++
+ element.horizontal_tabs:
+   version: VERSION
+   js:
+diff --git a/formatters/details/details.js b/formatters/details/details.js
+new file mode 100644
+index 0000000..0fda595
+--- /dev/null
++++ b/formatters/details/details.js
+@@ -0,0 +1,23 @@
++(function ($) {
++
++  'use strict';
++
++  Drupal.FieldGroup = Drupal.FieldGroup || {};
++  Drupal.FieldGroup.Effects = Drupal.FieldGroup.Effects || {};
++
++  /**
++   * This script adds the required and error classes to the details wrapper.
++   */
++  Drupal.behaviors.fieldGroupDetails = {
++    attach: function (context) {
++      $(context).find('.field-group-details').once('field-group-details').each(function () {
++        var $this = $(this);
++
++        if ($this.is('.required-fields') && $this.find('[required]').length > 0) {
++          $('summary', $this).first().addClass('form-required');
++        }
++      });
++    }
++  };
++
++})(jQuery);
+diff --git a/src/FieldGroupFormatterBase.php b/src/FieldGroupFormatterBase.php
+index c299119..647b495 100644
+--- a/src/FieldGroupFormatterBase.php
++++ b/src/FieldGroupFormatterBase.php
+@@ -163,6 +163,9 @@ abstract class FieldGroupFormatterBase extends PluginSettingsBase implements Fie
+       $classes = array_merge($classes, explode(' ', trim($this->getSetting('classes'))));
+     }
+ 
++    $typeClass = 'field-group-' . str_replace('_', '-', $this->getBaseId());
++    $classes = array_merge($classes, array('field-group', $typeClass));
++
+     return $classes;
+   }
+ 
+diff --git a/src/Plugin/field_group/FieldGroupFormatter/Details.php b/src/Plugin/field_group/FieldGroupFormatter/Details.php
+index e7c2a21..4d35136 100644
+--- a/src/Plugin/field_group/FieldGroupFormatter/Details.php
++++ b/src/Plugin/field_group/FieldGroupFormatter/Details.php
+@@ -47,6 +47,8 @@ class Details extends FieldGroupFormatterBase {
+         '#description' => $this->getSetting('description'),
+       );
+     }
++
++    $element['#attached']['library'][] = 'field_group/formatter.details';
+   }
+ 
+   /**

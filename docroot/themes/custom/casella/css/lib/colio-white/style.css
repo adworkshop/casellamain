@@ -1,0 +1,40 @@
+/* container */
+.colio-theme-white {/*margin-right: 30px; margin-left: 30px;*/ padding:0 .5%}
+.colio-theme-white .colio-container {background: #fff;}
+.colio-theme-white.colio-placement-before {margin-bottom: 0;}
+.colio-theme-white.colio-placement-before.colio-expanded {/*margin-bottom: 30px;*/ margin-bottom:.5%}
+
+/* colio close */
+.colio-theme-white .colio-close span {display: inline-block; width: 24px; height: 24px; text-indent: -9999px;}
+.colio-theme-white .colio-close span {background: url('images/controls.png') no-repeat -48px 0;}
+.colio-theme-white .colio-close:hover {opacity: 0.8;}
+
+/* colio navigation */
+.colio-theme-white .colio-navigation span {display: inline-block; width: 24px; height: 24px; text-indent: -9999px; }
+.colio-theme-white .colio-navigation a {
+float: left; padding: 5px; margin-right: 5px; background: #bbb;
+-webkit-transition: background .1s; -moz-transition: background .1s; -o-transition: background .1s; transition: background .1s;
+}
+.colio-theme-white .colio-navigation a:hover {background: #988840;}
+.colio-theme-white .colio-prev span {background: url('images/controls.png') no-repeat 0 0;}
+.colio-theme-white .colio-next span {background: url('images/controls.png') no-repeat -24px 0;}
+.colio-theme-white .colio-no-prev,
+.colio-theme-white .colio-no-next {background: #ccc!important;}
+
+/* content */
+.colio-theme-white .visit-link {display: inline-block; text-transform: uppercase; letter-spacing: 0.05em;}
+.colio-theme-white .visit-link:after {font-family:'FontAwesome'; content: "\f019"; position: relative; top: -1px; margin-left: 5px; font-weight:normal;}
+
+/* Retina
+================================================== */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+.colio-theme-white .colio-prev span {background: url('images/controls@2x.png') no-repeat 0 0; background-size: 72px 24px;}
+.colio-theme-white .colio-next span {background: url('images/controls@2x.png') no-repeat -24px 0; background-size: 72px 24px;}
+.colio-theme-white .colio-close span {background: url('images/controls@2x.png') no-repeat -48px 0; background-size: 72px 24px;}
+}
+
+/* Media queries
+================================================== */
+@media only screen and (max-width: 479px) {
+.colio-theme-white .colio-container {padding: 30px;}
+}

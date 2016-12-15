@@ -1,0 +1,23 @@
+{% extends theme_path ~ "/templates/content/node--subsection--organics.html.twig" %}
+
+{% block heroBreadcrumbs %}
+  <!--Submission Date & Tags-->
+  <div class="indNews-submissionDateTag-container">
+    <div class="indNews-submissionDate-wrapper">
+      <span class="fa fa-calendar" aria-hidden="true"></span> {{ content.field_date }}
+    </div>
+    {% if content.field_category|render|adw_strip_comments|trim %}
+      <a class="indNews-submissionTag-wrapper">
+        <span class="fa fa-tags" aria-hidden="true"></span> {{ content.field_category }}
+      </a>
+    {% endif %}
+  </div>
+  <!--END Submission Date & Tags-->
+{% endblock %}
+
+
+{% block bodyContent %}
+  {{ content.field_image }}
+
+  {{ parent() }}
+{% endblock %}

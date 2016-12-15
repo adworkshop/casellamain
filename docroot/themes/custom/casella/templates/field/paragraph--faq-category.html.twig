@@ -1,0 +1,13 @@
+{%
+set classes = [
+'paragraph',
+'paragraph--type--' ~ paragraph.bundle|clean_class,
+view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+'cd-faq-group',
+]
+%}
+{% if content.field_questions|render|adw_strip_comments|trim %}
+  <ul id="{{ faq_id }}" {{ attributes.addClass(classes) }}>
+    {{ content }}
+  </ul>
+{% endif %}

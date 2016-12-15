@@ -1,0 +1,56 @@
+{#
+/**
+ * @file
+ * Theme override to display a region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region div.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @see template_preprocess_region()
+ */
+#}
+
+<!--Global Footer-->
+<footer class="footer-container">
+
+  <!--Upper Region-->
+  <div class="globalWidth">
+    <div class="footer-upperRegion-container">
+
+      <!--Quote-->
+      <div class="footer-quote">{{ footer_statement }}</div>
+      <!--END Quote-->
+
+      {% if social_links %}
+        <div class="footer-socialContainer">
+          <ul>
+            {{ social_links }}
+          </ul>
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+  <!--END Upper Region-->
+
+  <!--Lower Region-->
+  <div  class="footer-lowerRegion-container">
+    <div class="globalWidth">
+
+      {% if content %}
+        <div{{ attributes }}>
+          {{ content }}
+        </div>
+      {% endif %}
+
+      <div class="footer-attribute">&copy; 1999-2016 Casella Waste Systems, Inc. All Rights Reserved.</div>
+
+    </div>
+  </div>
+  <!--END Lower Region-->
+
+</footer>
+<!--END Global Footer-->

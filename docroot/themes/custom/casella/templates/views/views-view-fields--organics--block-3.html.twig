@@ -1,0 +1,13 @@
+<div class="indNestedTab-container">
+  <h3 class="indNestedTab-title">{{ fields.field_teaser_title.content }}</h3>
+
+  <div class="indNestedTab-image">
+    {{ fields.field_teaser_image.content }}
+  </div>
+
+  <div class="indNestedTab-txt">
+    {{ fields.field_teaser.content }}
+  </div>
+
+  <div class="indNestedTab-btn"><a href="{{ fields.path.content|striptags }}" title=""><span class="fa fa-file-text btnIconWrapper" aria-hidden="true"></span> {{ fields.field_teaser_anchor.content|striptags }}</a></div>
+</div>

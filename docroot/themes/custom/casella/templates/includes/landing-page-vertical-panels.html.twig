@@ -1,0 +1,110 @@
+<!--Residental Block-->
+<div class="home-verticalPanel-indVertical-container resident">
+  <div  class="home-verticalPanel-indVertical-upperBorder"></div>
+  <div class="home-verticalPanel-indVertical-wrapper">
+    <!--Icon & Sep-->
+    <div class="home-verticalPanel-iconWrapper">
+      <div class="home-verticalPanel-iconWrapper-iconElement"><span class="icon-home" aria-hidden="true"></span></div>
+    </div>
+    <!--END Icon & Sep-->
+
+    <div class="home-verticalPanel-contentWrapper">
+      <h2><span>... for your </span>home</h2>
+      {{ content.field_home_desc }}
+      <!--Toggles-->
+      <div class="internal-ToggleContainer">
+        <!--Accordion Container-->
+        <div class="accordion-container">
+          <div class="accordion-toggle">Select a Service...<span class="toggle-icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></div>
+          <div class="accordion-content">
+            <!--Accordion Content-->
+            <div class="accordion-content-container">
+              {{ content.field_service_links }}
+
+              <!--Location Search Form-->
+              <div class="home-verticalPanel-locationSearch-container">
+                <form method="get" action="{{ location_search_action }}" id="location-search">
+                  <label class="locationSearchLabel">Find my local provider</label>
+                  <div class="locationSearchWrapper">
+                    <input name="city" type="text" size="40" class="locationSearchField" placeholder="town/city..." />
+                    <button type="submit" class="locationSearchSubmit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                  </div>
+                </form>
+              </div>
+              <!--END Location Search Form-->
+
+            </div>
+            <!--END Accordion Content-->
+          </div>
+        </div>
+        <!--END Accordion Container-->
+      </div>
+      <!--Toggles-->
+    </div>
+
+  </div>
+</div>
+<!--END Residental Block-->
+
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+
+<!--Small Business Block-->
+<div class="home-verticalPanel-indVertical-container smBusiness">
+  <div class="home-verticalPanel-indVertical-upperBorder"></div>
+  <div class="home-verticalPanel-indVertical-wrapper">
+    <!--Icon & Sep-->
+    <div class="home-verticalPanel-iconWrapper">
+      <div class="home-verticalPanel-iconWrapper-iconElement"><span class="icon-small-business" aria-hidden="true"></span></div>
+    </div>
+    <!--END Icon & Sep-->
+
+    <div class="home-verticalPanel-contentWrapper">
+      <h2><span>... for your </span>small business</h2>
+      {{ content.field_business_desc }}
+      <!--Btn-->
+      <div class="smallBusiness-btn-container">
+        <a href="{{ link_url }}" title=""><span class="smallBusiness-btn-upper">Learn about our</span> <span class="smallBusiness-btn-lower">Small Business Solutions</span></a>
+      </div>
+      <!--END Btn-->
+    </div>
+
+  </div>
+</div>
+<!--END Small Business Block-->
+
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+
+<!--Organization Block-->
+<div class="home-verticalPanel-indVertical-container organization">
+  <div class="home-verticalPanel-indVertical-upperBorder"></div>
+  <div class="home-verticalPanel-indVertical-wrapper">
+    <!--Icon & Sep-->
+    <div class="home-verticalPanel-iconWrapper">
+      <div class="home-verticalPanel-iconWrapper-iconElement"><span class="icon-industry" aria-hidden="true"></span></div>
+    </div>
+    <!--END Icon & Sep-->
+
+    <div class="home-verticalPanel-contentWrapper">
+      <h2><span>... for </span>organizations</h2>
+      {{ content.field_org_desc }}
+      <!--Toggles-->
+      <div class="internal-ToggleContainer">
+        <!--Accordion Container-->
+        <div class="accordion-container">
+          <div class="accordion-toggle">Select an Industry...<span class="toggle-icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></div>
+          <div class="accordion-content">
+            <!--Accordion Content-->
+            <div class="accordion-content-container">
+              {{ content.field_industry_links }}
+            </div>
+            <!--END Accordion Content-->
+          </div>
+        </div>
+        <!--END Accordion Container-->
+      </div>
+      <!--Toggles-->
+    </div>
+
+  </div>
+</div>
+<!--END Organization Block-->

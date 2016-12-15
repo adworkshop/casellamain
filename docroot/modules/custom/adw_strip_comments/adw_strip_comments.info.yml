@@ -1,0 +1,6 @@
+name: Adworkshop Strip Comments Twig Filter
+description: Adds a twig filter that strips out html comments.
+package: Custom
+
+type: module
+core: 8.x

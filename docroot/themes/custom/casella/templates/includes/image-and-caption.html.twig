@@ -1,0 +1,31 @@
+{{ attach_library('casella/royalslider') }}
+
+{%
+set classes = [
+'paragraph',
+'paragraph--type--' ~ paragraph.bundle|clean_class,
+view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+  {{ content.field_image }}
+  {# check for a caption title, desc, or link to output the caption - done in the theme file. #}
+  {% if has_caption %}
+    <div class="{{ class_target }}-slider-caption rsCaption rsABlock rsNoDrag">
+      {{ content.field_title }}
+      {{ content.field_description }}
+
+      {% if link_title and link_url %}
+        <div class="{{ class_target }}-slider-caption-btn">
+          <a href="{{ link_url }}" title="" class="{{ link_class }}">
+            {% if link_icon %}<span class="fa {{ link_icon|e }} btnIconWrapper" aria-hidden="true"></span>{% endif %}
+            {{ link_title|e }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  {% else %}
+    <div class="{{ class_target }}-slider-caption rsCaption rsABlock rsNoDrag empty"></div>
+  {% endif %}
+</div>

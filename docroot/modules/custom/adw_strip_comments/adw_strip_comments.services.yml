@@ -1,0 +1,6 @@
+services:
+  adw_strip_comments.twig_extension:
+    arguments: ['@renderer']
+    class: Drupal\adw_strip_comments\TwigExtension\StripComments
+    tags:
+      - { name: twig.extension }
