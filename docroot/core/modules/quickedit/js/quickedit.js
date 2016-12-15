@@ -374,6 +374,12 @@
     if (entityElement.length === 0) {
       var $lowestCommonParent = $(entityElementSelector).parents().has(fieldElement).first();
       entityElement = $lowestCommonParent.find(entityElementSelector);
+      // When the data-quickedit-entity-id attribute isn't rendered there is
+      // no way to reliably target the entity. Early-return if no target can
+      // be found.
+      if (entityElement.length === 0) {
+        return;
+      }
     }
     var entityInstanceID = entityElement
       .get(0)

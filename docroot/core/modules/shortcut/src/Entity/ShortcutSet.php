@@ -119,7 +119,7 @@ class ShortcutSet extends ConfigEntityBundleBase implements ShortcutSetInterface
     $shortcuts = \Drupal::entityManager()->getStorage('shortcut')->loadByProperties(array('shortcut_set' => $this->id()));
     // Suppress errors because Log::findCaller() will indirectly modify the
     // contents, triggering https://bugs.php.net/bug.php?id=50688.
-    @uasort($shortcuts, array('\Drupal\shortcut\Entity\Shortcut', 'sort'));
+    @uasort($shortcuts, ['\Drupal\shortcut\Entity\Shortcut', 'sort']);
     return $shortcuts;
   }
 
