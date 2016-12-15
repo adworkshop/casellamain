@@ -1,0 +1,23 @@
+uuid: a99e2bd3-15a1-49ba-8aab-37f9a8c43642
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.feeds_item
+    - taxonomy.vocabulary.towns_cities
+  module:
+    - feeds
+id: taxonomy_term.towns_cities.feeds_item
+field_name: feeds_item
+entity_type: taxonomy_term
+bundle: towns_cities
+label: 'Feeds item'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:feeds_feed'
+  handler_settings: {  }
+field_type: feeds_item

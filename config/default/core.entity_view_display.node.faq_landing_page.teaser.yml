@@ -1,0 +1,37 @@
+uuid: e9cb61df-7c61-4316-83e2-e50dcbf513f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.faq_landing_page.body
+    - field.field.node.faq_landing_page.field_faqs
+    - field.field.node.faq_landing_page.field_h1_override
+    - field.field.node.faq_landing_page.field_hero_text
+    - field.field.node.faq_landing_page.field_sidebar_promotions
+    - field.field.node.faq_landing_page.field_upper_buttons
+    - node.type.faq_landing_page
+  module:
+    - text
+    - user
+id: node.faq_landing_page.teaser
+targetEntityType: node
+bundle: faq_landing_page
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden:
+  field_faqs: true
+  field_h1_override: true
+  field_hero_text: true
+  field_sidebar_promotions: true
+  field_upper_buttons: true
+  langcode: true

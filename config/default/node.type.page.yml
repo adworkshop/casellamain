@@ -1,0 +1,21 @@
+uuid: ff4d1d47-ca6d-4151-b1d3-b332c4b8cf0d
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - footer
+      - main
+    parent: 'main:'
+_core:
+  default_config_hash: zhtPXoRcC6REiepM0k16zw__FDW5YOXDR6U2WlldTrs
+name: Page
+type: page
+description: 'Use <em>basic pages</em> for your static content, such as an ''About us'' page.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

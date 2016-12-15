@@ -1,0 +1,19 @@
+uuid: fb51f1b9-a948-4405-ac82-7dcdea65c959
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.job_application
+    - field.storage.contact_message.field_job_email
+id: contact_message.job_application.field_job_email
+field_name: field_job_email
+entity_type: contact_message
+bundle: job_application
+label: 'Email:*'
+description: 'Enter your valid email address.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

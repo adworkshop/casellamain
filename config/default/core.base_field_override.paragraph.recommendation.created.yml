@@ -1,0 +1,18 @@
+uuid: b16a212f-2729-4202-b2a1-f552b4ed82dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.recommendation
+id: paragraph.recommendation.created
+field_name: created
+entity_type: paragraph
+bundle: recommendation
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

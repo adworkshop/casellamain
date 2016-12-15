@@ -1,0 +1,44 @@
+uuid: 8575ccd8-5700-4175-8dcd-d8584b164b1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.job.body
+    - field.field.node.job.field_add_this
+    - field.field.node.job.field_date_posted
+    - field.field.node.job.field_h1_override
+    - field.field.node.job.field_hero_text
+    - field.field.node.job.field_hiring_managers
+    - field.field.node.job.field_job_categories
+    - field.field.node.job.field_job_status
+    - field.field.node.job.field_location
+    - node.type.job
+  module:
+    - text
+    - user
+id: node.job.teaser
+targetEntityType: node
+bundle: job
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden:
+  feeds_item: true
+  field_add_this: true
+  field_date_posted: true
+  field_h1_override: true
+  field_hero_text: true
+  field_hiring_managers: true
+  field_job_categories: true
+  field_job_status: true
+  field_location: true
+  langcode: true

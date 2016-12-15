@@ -1,0 +1,16 @@
+uuid: f86a7ab2-135e-4cf7-8448-ed5c70a762c9
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: 360x240
+label: 360x240
+effects:
+  4b00c053-ea2a-4c9a-b2b9-8424a58a7635:
+    uuid: 4b00c053-ea2a-4c9a-b2b9-8424a58a7635
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: '360'
+      height: '240'

@@ -1,0 +1,60 @@
+uuid: 793ccb48-3af3-4504-bf7b-7b3f66e59da4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.free_form.field_free_form_content
+    - field.field.paragraph.free_form.field_image
+    - field.field.paragraph.free_form.field_promotion
+    - field.field.paragraph.free_form.field_tab_anchor
+    - field.field.paragraph.free_form.field_tab_description
+    - field.field.paragraph.free_form.field_tab_title
+    - paragraphs.paragraphs_type.free_form
+    - responsive_image.styles.freeform_panel_header
+  module:
+    - responsive_image
+    - text
+id: paragraph.free_form.default
+targetEntityType: paragraph
+bundle: free_form
+mode: default
+content:
+  field_free_form_content:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_image:
+    weight: 5
+    label: hidden
+    settings:
+      responsive_image_style: freeform_panel_header
+      image_link: ''
+    third_party_settings: {  }
+    type: responsive_image
+  field_promotion:
+    weight: 4
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  field_tab_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_tab_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  created: true
+  field_tab_anchor: true
+  uid: true

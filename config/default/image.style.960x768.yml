@@ -1,0 +1,16 @@
+uuid: 90a52821-e1b4-44a7-b0cb-365f2a583102
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: 960x768
+label: 960x768
+effects:
+  8b69b87e-9544-4143-b7eb-9517df6718e1:
+    uuid: 8b69b87e-9544-4143-b7eb-9517df6718e1
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: '960'
+      height: '768'

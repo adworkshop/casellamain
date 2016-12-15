@@ -1,0 +1,45 @@
+uuid: 36bcb940-2bfb-4d7e-9b43-d0f5b6ecddc9
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_location_category
+field_name: field_location_category
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: Corporate
+      label: Corporate
+    -
+      value: Hauling
+      label: Hauling
+    -
+      value: Landfill
+      label: Landfill
+    -
+      value: Office
+      label: Office
+    -
+      value: Organics
+      label: Organics
+    -
+      value: Recycling
+      label: Recycling
+    -
+      value: Transfer
+      label: Transfer
+    -
+      value: Waste-to-energy
+      label: 'Waste to Energy'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

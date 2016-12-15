@@ -1,0 +1,39 @@
+uuid: 850a12f0-6c00-432a-b170-a5430408ae4d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.solution_resource.field_icon
+    - field.field.paragraph.solution_resource.field_section_text
+    - field.field.paragraph.solution_resource.field_section_title
+    - paragraphs.paragraphs_type.solution_resource
+id: paragraph.solution_resource.default
+targetEntityType: paragraph
+bundle: solution_resource
+mode: default
+content:
+  field_icon:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_section_text:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_section_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+hidden:
+  created: true
+  status: true
+  uid: true

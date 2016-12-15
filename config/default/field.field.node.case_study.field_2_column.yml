@@ -1,0 +1,23 @@
+uuid: 2a079cd0-e300-4380-88c9-5a90b152a5e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_2_column
+    - node.type.case_study
+id: node.case_study.field_2_column
+field_name: field_2_column
+entity_type: node
+bundle: case_study
+label: '2 Column Layout'
+description: 'Check this box to output the body content in a 2 column layout. This will not apply to smaller layouts as there is not enough real estate to go around.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Output the body in 2 columns'
+  off_label: 'Off'
+field_type: boolean

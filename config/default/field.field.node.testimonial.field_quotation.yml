@@ -1,0 +1,19 @@
+uuid: 311759db-a192-4a44-93a4-c97b3f88e933
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_quotation
+    - node.type.testimonial
+id: node.testimonial.field_quotation
+field_name: field_quotation
+entity_type: node
+bundle: testimonial
+label: Quotation
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

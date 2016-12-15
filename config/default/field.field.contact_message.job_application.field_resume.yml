@@ -1,0 +1,27 @@
+uuid: ff5c466b-9fa5-4ff4-aeab-47a8959a17a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.job_application
+    - field.storage.contact_message.field_resume
+  module:
+    - file
+id: contact_message.job_application.field_resume
+field_name: field_resume
+entity_type: contact_message
+bundle: job_application
+label: 'Resume:*'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'doc docx pdf'
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

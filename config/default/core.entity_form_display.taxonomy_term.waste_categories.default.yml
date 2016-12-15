@@ -1,0 +1,30 @@
+uuid: f0d848dd-76bf-463b-a58f-6fd1e88717df
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.waste_categories.field_description
+    - taxonomy.vocabulary.waste_categories
+id: taxonomy_term.waste_categories.default
+targetEntityType: taxonomy_term
+bundle: waste_categories
+mode: default
+content:
+  field_description:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+  name:
+    type: string_textfield
+    weight: -5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  path: true

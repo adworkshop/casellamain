@@ -1,0 +1,18 @@
+uuid: a82e44e7-ca4d-4b37-8bd3-63817a489577
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Organics Update'
+type: information_post
+description: 'An information post to be displayed in the organics section. All updates will output on the main updates page while categorized outputs can be assigned to pages.'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

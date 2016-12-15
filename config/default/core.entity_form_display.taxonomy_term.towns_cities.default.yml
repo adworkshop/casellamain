@@ -1,0 +1,71 @@
+uuid: e7a91661-f381-4d76-98f9-704665a96bfc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.towns_cities.feeds_item
+    - field.field.taxonomy_term.towns_cities.field_city
+    - field.field.taxonomy_term.towns_cities.field_latitude
+    - field.field.taxonomy_term.towns_cities.field_longitude
+    - field.field.taxonomy_term.towns_cities.field_service_location
+    - field.field.taxonomy_term.towns_cities.field_state
+    - field.field.taxonomy_term.towns_cities.field_zip_code
+    - taxonomy.vocabulary.towns_cities
+id: taxonomy_term.towns_cities.default
+targetEntityType: taxonomy_term
+bundle: towns_cities
+mode: default
+content:
+  field_city:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_latitude:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_longitude:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_service_location:
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_state:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+  field_zip_code:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  name:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  feeds_item: true
+  langcode: true
+  path: true

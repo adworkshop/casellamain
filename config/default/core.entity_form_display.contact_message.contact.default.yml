@@ -1,0 +1,88 @@
+uuid: db62535e-4ea9-4ced-88f0-3943c652475c
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.contact
+    - field.field.contact_message.contact.field_con_email
+    - field.field.contact_message.contact.field_con_first_name
+    - field.field.contact_message.contact.field_con_last_name
+    - field.field.contact_message.contact.field_con_message
+    - field.field.contact_message.contact.field_con_source
+    - field.field.contact_message.contact.field_con_subject
+    - field.field.contact_message.contact.field_enews_optin
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_personal_information:
+      children:
+        - field_con_first_name
+        - field_con_last_name
+        - field_con_email
+      parent_name: ''
+      weight: 7
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        required_fields: false
+        description: ''
+      label: 'Personal Information'
+id: contact_message.contact.default
+targetEntityType: contact_message
+bundle: contact
+mode: default
+content:
+  field_con_email:
+    weight: 10
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+  field_con_first_name:
+    weight: 8
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_con_last_name:
+    weight: 9
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_con_message:
+    weight: 13
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+  field_con_source:
+    weight: 12
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_con_subject:
+    weight: 11
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_enews_optin:
+    weight: 14
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+hidden:
+  copy: true
+  langcode: true
+  mail: true
+  message: true
+  name: true
+  preview: true
+  subject: true

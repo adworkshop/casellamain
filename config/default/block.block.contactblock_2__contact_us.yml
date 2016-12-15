@@ -1,0 +1,27 @@
+uuid: 7efa887f-b43b-4b59-92e4-fedb25bdea37
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact_block
+    - system
+  theme:
+    - casella
+id: contactblock_2__contact_us
+theme: casella
+region: node_lower_content
+weight: -18
+provider: null
+plugin: contact_block
+settings:
+  id: contact_block
+  label: 'Contact Us Contact block'
+  provider: contact_block
+  label_display: '0'
+  contact_form: contact
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/676
+    negate: false
+    context_mapping: {  }

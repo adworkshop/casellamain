@@ -1,0 +1,19 @@
+uuid: e0c4e5ba-412d-41da-b22f-5670c4a7a13c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tab_anchor
+    - paragraphs.paragraphs_type.image_gallery
+id: paragraph.image_gallery.field_tab_anchor
+field_name: field_tab_anchor
+entity_type: paragraph
+bundle: image_gallery
+label: 'Tab Anchor'
+description: 'The label of the option used to select this content from the tabs on large screens or the dropdown on mobile.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,39 @@
+uuid: b17e1a10-b4ef-42fd-afb6-a05f3136cd65
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.earthlink_link.field_image
+    - field.field.paragraph.earthlink_link.field_link
+    - image.style.400x400
+    - paragraphs.paragraphs_type.earthlink_link
+  module:
+    - image
+    - link
+id: paragraph.earthlink_link.default
+targetEntityType: paragraph
+bundle: earthlink_link
+mode: default
+content:
+  field_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: 400x400
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_link:
+    weight: 1
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link_separate
+hidden:
+  created: true
+  uid: true

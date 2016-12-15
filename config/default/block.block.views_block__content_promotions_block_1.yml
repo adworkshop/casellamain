@@ -1,0 +1,30 @@
+uuid: 78ffd330-67af-4264-a027-97cf4d680e80
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.content_promotions
+  module:
+    - system
+    - views
+  theme:
+    - casella
+id: views_block__content_promotions_block_1
+theme: casella
+region: node_middle_content
+weight: -19
+provider: null
+plugin: 'views_block:content_promotions-block_1'
+settings:
+  id: 'views_block:content_promotions-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/3426
+    negate: false
+    context_mapping: {  }

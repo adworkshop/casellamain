@@ -1,0 +1,22 @@
+uuid: 5ef97f2d-044a-46eb-abdf-e25caf8f47df
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.upper_button
+id: paragraph.upper_button.status
+field_name: status
+entity_type: paragraph
+bundle: upper_button
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

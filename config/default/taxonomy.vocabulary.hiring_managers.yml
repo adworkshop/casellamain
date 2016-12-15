@@ -1,0 +1,9 @@
+uuid: f4e38b20-80c6-442b-b016-41ed60229027
+langcode: en
+status: true
+dependencies: {  }
+name: 'Hiring Managers'
+vid: hiring_managers
+description: ''
+hierarchy: 0
+weight: 0

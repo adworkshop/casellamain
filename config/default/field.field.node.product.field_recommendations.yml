@@ -1,0 +1,63 @@
+uuid: a49691ec-e1cf-47cb-a8e0-7cf2c1459547
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_recommendations
+    - node.type.product
+    - paragraphs.paragraphs_type.recommendation
+  module:
+    - entity_reference_revisions
+id: node.product.field_recommendations
+field_name: field_recommendations
+entity_type: node
+bundle: product
+label: Recommendations
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      recommendation: recommendation
+    target_bundles_drag_drop:
+      case_studies:
+        weight: 12
+        enabled: false
+      free_form:
+        weight: 13
+        enabled: false
+      image_gallery:
+        weight: 14
+        enabled: false
+      image_with_caption:
+        weight: 15
+        enabled: false
+      large_promotion:
+        weight: 16
+        enabled: false
+      products:
+        weight: 17
+        enabled: false
+      slider_image:
+        weight: 18
+        enabled: false
+      recommendation:
+        enabled: true
+        weight: 19
+      solution_resource:
+        weight: 19
+        enabled: false
+      testimonials:
+        weight: 20
+        enabled: false
+      vertical:
+        weight: 21
+        enabled: false
+      video:
+        weight: 22
+        enabled: false
+field_type: entity_reference_revisions

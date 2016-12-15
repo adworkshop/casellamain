@@ -1,0 +1,27 @@
+uuid: f97aefde-0266-4368-977d-1ff9109d0b97
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_downloads
+    - node.type.product
+  module:
+    - file
+id: node.product.field_downloads
+field_name: field_downloads
+entity_type: node
+bundle: product
+label: Downloads
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'doc docx pdf'
+  max_filesize: ''
+  description_field: true
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

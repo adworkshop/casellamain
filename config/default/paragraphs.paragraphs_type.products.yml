@@ -1,0 +1,6 @@
+uuid: 033ef373-bf3e-4e76-92f4-e0978e9ee9d4
+langcode: en
+status: true
+dependencies: {  }
+id: products
+label: Products

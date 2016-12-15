@@ -1,0 +1,19 @@
+uuid: 1c95eeaf-471b-44d1-88de-4cf4ca17c82a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_title
+    - node.type.sidebar_promotion
+id: node.sidebar_promotion.field_title
+field_name: field_title
+entity_type: node
+bundle: sidebar_promotion
+label: 'Front End Title'
+description: 'The title is optional, the admin title is not. The title is output on the front end, while the admin title is for management purposes only and will not be output on the front end. Give the promotion an admin title that makes it easier to find when assigning it to pages.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,21 @@
+uuid: a90d12b9-ead4-49f0-94da-4d7011c5166f
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.contact
+    - field.storage.contact_message.field_con_subject
+  module:
+    - options
+id: contact_message.contact.field_con_subject
+field_name: field_con_subject
+entity_type: contact_message
+bundle: contact
+label: 'What can we help you with?:'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,69 @@
+uuid: af7a62de-f198-4964-872e-6e566e6d02c8
+langcode: en
+status: true
+dependencies:
+  module:
+    - casella_feeds
+label: Towns
+id: towns
+description: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'public://feeds'
+parser: casella_towns
+parser_configuration: {  }
+processor: 'entity:taxonomy_term'
+processor_configuration:
+  update_existing: 2
+  expire: -1
+  skip_hash_check: true
+  values:
+    vid: towns_cities
+  owner_id: 0
+  authorize: false
+mappings:
+  -
+    target: name
+    map:
+      value: title
+    unique: {  }
+  -
+    target: field_zip_code
+    map:
+      value: zip
+    unique: {  }
+  -
+    target: field_service_location
+    map:
+      target_id: servicelocation
+    settings:
+      reference_by: title
+      autocreate: false
+  -
+    target: field_state
+    map:
+      value: state
+  -
+    target: field_city
+    map:
+      value: city
+    unique: {  }
+  -
+    target: feeds_item
+    map:
+      url: ''
+      guid: guid
+    unique:
+      guid: '1'
+  -
+    target: field_latitude
+    map:
+      value: lat
+    unique: {  }
+  -
+    target: field_longitude
+    map:
+      value: lng
+    unique: {  }

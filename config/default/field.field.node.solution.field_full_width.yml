@@ -1,0 +1,23 @@
+uuid: 47f47925-ce8b-494d-adb6-abe55aafb6dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_full_width
+    - node.type.solution
+id: node.solution.field_full_width
+field_name: field_full_width
+entity_type: node
+bundle: solution
+label: 'Full Width Slider'
+description: 'Un check this box to inset the photo slider above the body content. '
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'Full Width Slider'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,18 @@
+uuid: 5246bd33-3532-4e43-9c8e-577664e2b5cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.job_status
+id: taxonomy_term.job_status.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: job_status
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

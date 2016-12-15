@@ -1,0 +1,17 @@
+uuid: d1162057-a87d-48ab-9b70-82c639b4cc69
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Casella Globals'
+type: casella_globals
+description: 'Global variables used in various locations around the site not suited to other content types.'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

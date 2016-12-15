@@ -1,0 +1,99 @@
+uuid: 19f44f8b-1243-4e44-8ba3-65f252be40a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_acceptable_waste
+    - node.type.location
+    - paragraphs.paragraphs_type.waste_category
+  module:
+    - entity_reference_revisions
+id: node.location.field_acceptable_waste
+field_name: field_acceptable_waste
+entity_type: node
+bundle: location
+label: 'Waste Categories accepted'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      waste_category: waste_category
+    target_bundles_drag_drop:
+      block_link_with_icon:
+        weight: 25
+        enabled: false
+      case_studies:
+        weight: 26
+        enabled: false
+      earthlink_link:
+        weight: 27
+        enabled: false
+      fa_link_with_icon:
+        weight: 28
+        enabled: false
+      faq_category:
+        weight: 29
+        enabled: false
+      faq_question:
+        weight: 30
+        enabled: false
+      free_form:
+        weight: 31
+        enabled: false
+      holiday:
+        weight: 32
+        enabled: false
+      image_gallery:
+        weight: 33
+        enabled: false
+      image_with_caption:
+        weight: 34
+        enabled: false
+      large_promotion:
+        weight: 35
+        enabled: false
+      link_with_icon:
+        weight: 36
+        enabled: false
+      organics_updates:
+        weight: 37
+        enabled: false
+      products:
+        weight: 38
+        enabled: false
+      recommendation:
+        weight: 39
+        enabled: false
+      services:
+        weight: 40
+        enabled: false
+      slider_image:
+        weight: 41
+        enabled: false
+      social_link:
+        weight: 42
+        enabled: false
+      solution_resource:
+        weight: 43
+        enabled: false
+      testimonials:
+        weight: 44
+        enabled: false
+      upper_button:
+        weight: 45
+        enabled: false
+      vertical:
+        weight: 46
+        enabled: false
+      video:
+        weight: 47
+        enabled: false
+      waste_category:
+        enabled: true
+        weight: 48
+field_type: entity_reference_revisions

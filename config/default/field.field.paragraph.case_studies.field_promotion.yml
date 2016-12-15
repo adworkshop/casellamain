@@ -1,0 +1,28 @@
+uuid: ae1aa054-1e63-40d9-8fca-e2c6a2ab6b97
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_promotion
+    - node.type.sidebar_promotion
+    - paragraphs.paragraphs_type.case_studies
+id: paragraph.case_studies.field_promotion
+field_name: field_promotion
+entity_type: paragraph
+bundle: case_studies
+label: Promotion
+description: 'Start typing the title of a piece of content to select it.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      sidebar_promotion: sidebar_promotion
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

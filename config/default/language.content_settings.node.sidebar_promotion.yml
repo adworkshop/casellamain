@@ -1,0 +1,16 @@
+uuid: 1a718947-c318-4859-bd91-ff92cd525ebe
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.sidebar_promotion
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.sidebar_promotion
+target_entity_type_id: node
+target_bundle: sidebar_promotion
+default_langcode: site_default
+language_alterable: false

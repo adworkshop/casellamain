@@ -1,0 +1,18 @@
+uuid: 91d71c2e-aa99-4b61-aea7-7995cad9496c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.sidebar_promotion
+id: node.sidebar_promotion.changed
+field_name: changed
+entity_type: node
+bundle: sidebar_promotion
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

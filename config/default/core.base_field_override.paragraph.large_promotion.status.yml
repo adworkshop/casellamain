@@ -1,0 +1,22 @@
+uuid: fe9a75f8-8e75-42d0-ae4a-d44a3385d49b
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.large_promotion
+id: paragraph.large_promotion.status
+field_name: status
+entity_type: paragraph
+bundle: large_promotion
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

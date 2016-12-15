@@ -1,0 +1,19 @@
+uuid: 828952ef-d662-4352-8a36-5f1268cda1e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_breadcrumb_override
+    - node.type.service
+id: node.service.field_breadcrumb_override
+field_name: field_breadcrumb_override
+entity_type: node
+bundle: service
+label: 'Breadcrumb Override'
+description: 'Text entered here will output in the breadcrumb section below the title. If left empty the default breadcrumbs built from the page''s location in the menu will output instead.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

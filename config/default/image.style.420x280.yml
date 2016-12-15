@@ -1,0 +1,16 @@
+uuid: 2c7fc70e-59a2-4132-ad44-dc2d2491bb4a
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: 420x280
+label: 420x280
+effects:
+  32196272-28b8-4ae2-b908-5a89f2ca4b56:
+    uuid: 32196272-28b8-4ae2-b908-5a89f2ca4b56
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: '420'
+      height: '280'

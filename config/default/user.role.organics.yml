@@ -1,0 +1,37 @@
+uuid: 6d961144-fe61-46a0-b320-f51251787d1f
+langcode: en
+status: true
+dependencies: {  }
+id: organics
+label: Organics
+weight: 4
+is_admin: null
+permissions:
+  0: 'translate landing_page node'
+  1: 'translate service node'
+  2: 'translate information_post node'
+  3: 'translate subsection_homepage node'
+  4: 'create service content'
+  5: 'delete any service content'
+  6: 'edit any service content'
+  7: 'revert service revisions'
+  8: 'view service revisions'
+  9: 'create information_post content'
+  10: 'delete any information_post content'
+  11: 'edit any information_post content'
+  12: 'revert information_post revisions'
+  13: 'view information_post revisions'
+  14: 'edit any subsection_homepage content'
+  15: 'revert subsection_homepage revisions'
+  16: 'view subsection_homepage revisions'
+  17: 'delete terms in post_categories'
+  18: 'edit terms in post_categories'
+  19: 'add terms in post_categories'
+  20: 'reorder terms in post_categories'
+  33: 'publish any node type information_post'
+  34: 'unpublish any node type information_post'
+  35: 'publish any node type service'
+  36: 'unpublish any node type service'
+  37: 'administer redirects'
+  38: 'create url aliases'
+  39: 'administer menu'

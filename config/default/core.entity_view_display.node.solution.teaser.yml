@@ -1,0 +1,51 @@
+uuid: 206a6d15-55af-4c77-992e-9b9a34f51cf2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.solution.body
+    - field.field.node.solution.feeds_item
+    - field.field.node.solution.field_add_this
+    - field.field.node.solution.field_full_width
+    - field.field.node.solution.field_full_width_promotion
+    - field.field.node.solution.field_h1_override
+    - field.field.node.solution.field_hero_text
+    - field.field.node.solution.field_secondary_content
+    - field.field.node.solution.field_sidebar_promotions
+    - field.field.node.solution.field_slider_images
+    - field.field.node.solution.field_solution_resources
+    - field.field.node.solution.field_tabs
+    - field.field.node.solution.field_upper_content
+    - node.type.solution
+  module:
+    - text
+    - user
+id: node.solution.teaser
+targetEntityType: node
+bundle: solution
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden:
+  feeds_item: true
+  field_add_this: true
+  field_full_width: true
+  field_full_width_promotion: true
+  field_h1_override: true
+  field_hero_text: true
+  field_secondary_content: true
+  field_sidebar_promotions: true
+  field_slider_images: true
+  field_solution_resources: true
+  field_tabs: true
+  field_upper_content: true
+  langcode: true

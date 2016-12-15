@@ -1,0 +1,8 @@
+uuid: 73c98a7b-84e9-4dbe-b673-5a176a4f46eb
+langcode: en
+status: true
+dependencies: {  }
+id: location_date
+label: 'Location Date'
+locked: false
+pattern: 'F j, Y (l)'

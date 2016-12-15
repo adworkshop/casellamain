@@ -1,0 +1,19 @@
+uuid: 85d5e1e8-1082-4e4b-9784-c7c0ef04a085
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.service_request
+    - field.storage.contact_message.field_service_zip
+id: contact_message.service_request.field_service_zip
+field_name: field_service_zip
+entity_type: contact_message
+bundle: service_request
+label: 'Zip: *'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

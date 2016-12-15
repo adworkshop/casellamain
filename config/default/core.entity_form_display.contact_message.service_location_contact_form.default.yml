@@ -1,0 +1,137 @@
+uuid: e8064be1-e7bd-4ff3-9429-7a3e52e9dc65
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.service_location_contact_form
+    - field.field.contact_message.service_location_contact_form.field_email
+    - field.field.contact_message.service_location_contact_form.field_first_name
+    - field.field.contact_message.service_location_contact_form.field_last_name
+    - field.field.contact_message.service_location_contact_form.field_message
+    - field.field.contact_message.service_location_contact_form.field_purpose
+    - field.field.contact_message.service_location_contact_form.field_sign_up
+    - field.field.contact_message.service_location_contact_form.field_source
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_personal_information:
+      children:
+        - group_personal_info_wrapper
+      parent_name: ''
+      weight: 0
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: contactUs-personalInformation
+        required_fields: true
+        description: ''
+      label: 'Personal Information'
+    group_personal_info_wrapper:
+      children:
+        - field_first_name
+        - field_last_name
+        - field_email
+      parent_name: group_personal_information
+      weight: 20
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: contactUs-personalInformation-element-wrapper
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: true
+      label: 'Personal Information Wrapper'
+    group_inquiry:
+      children:
+        - group_inquiry_wrapper
+        - field_message
+        - field_sign_up
+      parent_name: ''
+      weight: 1
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: contactUs-inquiryInformation
+        required_fields: true
+        description: ''
+      label: Inquiry
+    group_inquiry_wrapper:
+      children:
+        - field_purpose
+        - field_source
+      parent_name: group_inquiry
+      weight: 20
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: contactUs-inquiryInformation-element-wrapper
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: true
+      label: 'inquiry wrapper'
+id: contact_message.service_location_contact_form.default
+targetEntityType: contact_message
+bundle: service_location_contact_form
+mode: default
+content:
+  field_email:
+    weight: 23
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+  field_first_name:
+    weight: 21
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_last_name:
+    weight: 22
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_message:
+    weight: 21
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+  field_purpose:
+    weight: 21
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_sign_up:
+    weight: 22
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+  field_source:
+    weight: 22
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+hidden:
+  copy: true
+  langcode: true
+  mail: true
+  message: true
+  name: true
+  preview: true
+  subject: true

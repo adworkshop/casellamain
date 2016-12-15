@@ -1,0 +1,6 @@
+uuid: 0c513b82-6ead-46f0-ac52-33188ef6e51a
+langcode: en
+status: true
+dependencies: {  }
+id: large_promotion
+label: 'Large Promotion'

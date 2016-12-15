@@ -1,0 +1,19 @@
+uuid: f2bbc093-b223-4dd9-a4b4-a6e3f01703d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.market_leads
+    - field.storage.contact_message.field_ml_first_name
+id: contact_message.market_leads.field_ml_first_name
+field_name: field_ml_first_name
+entity_type: contact_message
+bundle: market_leads
+label: 'First Name:*'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,20 @@
+uuid: 2f82c2ec-d15f-43be-a11d-d14844b751e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.full_width_promotion
+  module:
+    - path
+id: node.full_width_promotion.path
+field_name: path
+entity_type: node
+bundle: full_width_promotion
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

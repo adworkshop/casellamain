@@ -1,0 +1,20 @@
+uuid: 80bc60dc-63a7-49df-acca-2627e334b383
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.full_width_promotion
+id: node.full_width_promotion.uid
+field_name: uid
+entity_type: node
+bundle: full_width_promotion
+label: 'Authored by'
+description: 'The username of the content author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getCurrentUserId'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

@@ -1,0 +1,19 @@
+uuid: 9b1f5264-1105-4c4b-ab4d-1b40c028ae52
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_business_desc
+    - node.type.landing_page
+id: node.landing_page.field_business_desc
+field_name: field_business_desc
+entity_type: node
+bundle: landing_page
+label: 'Business Description'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

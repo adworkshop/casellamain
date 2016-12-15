@@ -1,0 +1,22 @@
+uuid: fcfb1f24-0272-4f67-8f83-1ace43673880
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - casella
+_core:
+  default_config_hash: oXUb3JZR2WW5VOdw4HrhRicCsq51mCgLfRyvheG68ck
+id: casella_breadcrumbs
+theme: casella
+region: node_content
+weight: -11
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }

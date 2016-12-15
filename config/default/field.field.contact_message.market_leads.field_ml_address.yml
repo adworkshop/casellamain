@@ -1,0 +1,19 @@
+uuid: 934ff0c9-962b-42d4-970b-574e0d22deb2
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.market_leads
+    - field.storage.contact_message.field_ml_address
+id: contact_message.market_leads.field_ml_address
+field_name: field_ml_address
+entity_type: contact_message
+bundle: market_leads
+label: 'Address:*'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

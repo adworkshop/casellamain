@@ -1,0 +1,61 @@
+uuid: 45fff2ab-66e1-4231-8692-f54be8c7ec0a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.service.body
+    - field.field.node.service.feeds_item
+    - field.field.node.service.field_2_column
+    - field.field.node.service.field_add_this
+    - field.field.node.service.field_breadcrumb_override
+    - field.field.node.service.field_full_width
+    - field.field.node.service.field_full_width_promotion
+    - field.field.node.service.field_h1_override
+    - field.field.node.service.field_hero_text
+    - field.field.node.service.field_logo
+    - field.field.node.service.field_sidebar_promotions
+    - field.field.node.service.field_slider_images
+    - field.field.node.service.field_tabs
+    - field.field.node.service.field_teaser
+    - field.field.node.service.field_teaser_anchor
+    - field.field.node.service.field_teaser_image
+    - field.field.node.service.field_teaser_title
+    - field.field.node.service.field_upper_content
+    - node.type.service
+  module:
+    - text
+    - user
+id: node.service.teaser
+targetEntityType: node
+bundle: service
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden:
+  feeds_item: true
+  field_2_column: true
+  field_add_this: true
+  field_breadcrumb_override: true
+  field_full_width: true
+  field_full_width_promotion: true
+  field_h1_override: true
+  field_hero_text: true
+  field_logo: true
+  field_sidebar_promotions: true
+  field_slider_images: true
+  field_tabs: true
+  field_teaser: true
+  field_teaser_anchor: true
+  field_teaser_image: true
+  field_teaser_title: true
+  field_upper_content: true
+  langcode: true

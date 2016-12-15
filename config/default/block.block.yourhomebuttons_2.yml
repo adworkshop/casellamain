@@ -1,0 +1,31 @@
+uuid: 7c044291-4e92-4a76-9272-247d5ba07a02
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:custom_icon_links:87c1254b-3e35-44d0-aa11-eee1b585fb08'
+  module:
+    - block_content
+    - system
+  theme:
+    - casella
+id: yourhomebuttons_2
+theme: casella
+region: node_upper_content
+weight: 0
+provider: null
+plugin: 'block_content:87c1254b-3e35-44d0-aa11-eee1b585fb08'
+settings:
+  id: 'block_content:87c1254b-3e35-44d0-aa11-eee1b585fb08'
+  label: 'Your Home Buttons'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/686
+    negate: false
+    context_mapping: {  }

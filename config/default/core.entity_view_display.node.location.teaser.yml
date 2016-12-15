@@ -1,0 +1,57 @@
+uuid: badf6115-ab40-45c8-bdb0-39c32a4f68e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.location.body
+    - field.field.node.location.feeds_item
+    - field.field.node.location.field_alert_content
+    - field.field.node.location.field_alert_title
+    - field.field.node.location.field_city
+    - field.field.node.location.field_holiday_schedule
+    - field.field.node.location.field_latitude
+    - field.field.node.location.field_location_category
+    - field.field.node.location.field_longitude
+    - field.field.node.location.field_phone_number
+    - field.field.node.location.field_places_id
+    - field.field.node.location.field_schedule_title
+    - field.field.node.location.field_sidebar_promotions
+    - field.field.node.location.field_state
+    - field.field.node.location.field_street_address
+    - field.field.node.location.field_zip
+    - node.type.location
+  module:
+    - text
+    - user
+id: node.location.teaser
+targetEntityType: node
+bundle: location
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden:
+  feeds_item: true
+  field_alert_content: true
+  field_alert_title: true
+  field_city: true
+  field_holiday_schedule: true
+  field_latitude: true
+  field_location_category: true
+  field_longitude: true
+  field_phone_number: true
+  field_places_id: true
+  field_schedule_title: true
+  field_sidebar_promotions: true
+  field_state: true
+  field_street_address: true
+  field_zip: true
+  langcode: true

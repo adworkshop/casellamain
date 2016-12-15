@@ -1,0 +1,20 @@
+uuid: c67ae83a-690a-447c-a1c8-c20714df55b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.sidebar_promotion
+  module:
+    - path
+id: node.sidebar_promotion.path
+field_name: path
+entity_type: node
+bundle: sidebar_promotion
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

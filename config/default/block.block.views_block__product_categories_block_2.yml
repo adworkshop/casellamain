@@ -1,0 +1,30 @@
+uuid: a467d7b5-d6ad-491a-a41f-1f3afb6da610
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.product_categories
+  module:
+    - system
+    - views
+  theme:
+    - casella
+id: views_block__product_categories_block_2
+theme: casella
+region: node_lower_content
+weight: -10
+provider: null
+plugin: 'views_block:product_categories-block_2'
+settings:
+  id: 'views_block:product_categories-block_2'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/26
+    negate: false
+    context_mapping: {  }

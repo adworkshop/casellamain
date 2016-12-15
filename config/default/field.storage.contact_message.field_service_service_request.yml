@@ -1,0 +1,39 @@
+uuid: adac96f7-27ab-439a-adda-2b36fedfcae1
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+    - options
+id: contact_message.field_service_service_request
+field_name: field_service_service_request
+entity_type: contact_message
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: new_residential_request
+      label: 'I need to request new Residential Service'
+    -
+      value: new_commercial_request
+      label: 'I need to request new Commercial Service'
+    -
+      value: small_job_request
+      label: 'I am cleaning out a basement, garage or am doing a small remodeling job and need a dumpster'
+    -
+      value: multiple_location_request
+      label: 'I have multiple locations that need service'
+    -
+      value: special_item_request
+      label: 'I have a special item that needs to get picked up'
+    -
+      value: new_service_request
+      label: 'I have a new service request'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

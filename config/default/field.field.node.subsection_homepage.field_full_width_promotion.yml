@@ -1,0 +1,28 @@
+uuid: 458d5321-75f5-4a7b-aea4-a00c676bf9a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_full_width_promotion
+    - node.type.full_width_promotion
+    - node.type.subsection_homepage
+id: node.subsection_homepage.field_full_width_promotion
+field_name: field_full_width_promotion
+entity_type: node
+bundle: subsection_homepage
+label: 'Full Width Promotion'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      full_width_promotion: full_width_promotion
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

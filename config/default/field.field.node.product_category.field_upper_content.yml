@@ -1,0 +1,19 @@
+uuid: f49c8d86-5841-472b-b2da-b109027b295d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_upper_content
+    - node.type.product_category
+id: node.product_category.field_upper_content
+field_name: field_upper_content
+entity_type: node
+bundle: product_category
+label: 'Upper Content'
+description: 'Content to be displayed above the body content with a slightly more prominent style.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

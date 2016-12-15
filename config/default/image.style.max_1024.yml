@@ -1,0 +1,15 @@
+uuid: fa0a8c41-7c07-4f3b-8069-9cbc596f6283
+langcode: en
+status: true
+dependencies: {  }
+name: max_1024
+label: 'max 1024'
+effects:
+  eaf7ae75-0c40-4ccd-bfed-da17d827883d:
+    uuid: eaf7ae75-0c40-4ccd-bfed-da17d827883d
+    id: image_scale
+    weight: 1
+    data:
+      width: 1024
+      height: null
+      upscale: false

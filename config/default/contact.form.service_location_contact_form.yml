@@ -1,0 +1,21 @@
+uuid: 83fd6b87-92a3-47b2-90ba-3f7c5fc79a76
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact_storage
+third_party_settings:
+  contact_storage:
+    redirect_uri: ''
+    submit_text: Submit
+    show_preview: false
+    disabled_form_message: 'This contact form has been disabled.'
+    maximum_submissions_user: 0
+id: service_location_contact_form
+label: 'Service Location Contact Form'
+recipients:
+  - test@example.com
+reply: ''
+weight: 0
+message: 'Your message has been sent.'
+redirect: ''

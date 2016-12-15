@@ -1,0 +1,21 @@
+uuid: 2e898a73-1d41-4df4-81eb-e935dc6034ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.service_location_contact_form
+    - field.storage.contact_message.field_purpose
+  module:
+    - options
+id: contact_message.service_location_contact_form.field_purpose
+field_name: field_purpose
+entity_type: contact_message
+bundle: service_location_contact_form
+label: 'What can we help you with?:'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

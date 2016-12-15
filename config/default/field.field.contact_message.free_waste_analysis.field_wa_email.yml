@@ -1,0 +1,19 @@
+uuid: f29e1a5b-e73e-41d2-820f-8fe814a2e47e
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.free_waste_analysis
+    - field.storage.contact_message.field_wa_email
+id: contact_message.free_waste_analysis.field_wa_email
+field_name: field_wa_email
+entity_type: contact_message
+bundle: free_waste_analysis
+label: 'Email:*'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

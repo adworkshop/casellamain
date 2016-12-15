@@ -1,0 +1,19 @@
+uuid: a89cf24b-e048-4329-9f9a-35f577ed3d11
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_customer_care
+field_name: field_customer_care
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

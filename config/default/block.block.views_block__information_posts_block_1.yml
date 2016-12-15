@@ -1,0 +1,30 @@
+uuid: 1957f01f-640c-4b69-a541-33a0ef054011
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.information_posts
+  module:
+    - system
+    - views
+  theme:
+    - casella
+id: views_block__information_posts_block_1
+theme: casella
+region: node_middle_content
+weight: -21
+provider: null
+plugin: 'views_block:information_posts-block_1'
+settings:
+  id: 'views_block:information_posts-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: '5'
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/36
+    negate: false
+    context_mapping: {  }

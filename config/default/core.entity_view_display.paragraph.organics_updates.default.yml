@@ -1,0 +1,31 @@
+uuid: 927429e3-ee7b-4958-9fb1-d7e00d5f7c36
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.organics_updates.field_tab_anchor
+    - field.field.paragraph.organics_updates.field_tab_description
+    - field.field.paragraph.organics_updates.field_tab_title
+    - paragraphs.paragraphs_type.organics_updates
+id: paragraph.organics_updates.default
+targetEntityType: paragraph
+bundle: organics_updates
+mode: default
+content:
+  field_tab_description:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_tab_title:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  created: true
+  field_tab_anchor: true
+  uid: true

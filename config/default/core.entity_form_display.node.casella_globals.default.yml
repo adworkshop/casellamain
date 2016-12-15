@@ -1,0 +1,161 @@
+uuid: 9a811bfd-2a2d-4f31-b69f-0058cb98c832
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.casella_globals.feeds_item
+    - field.field.node.casella_globals.field_acceptable_waste_intro
+    - field.field.node.casella_globals.field_charges_warning
+    - field.field.node.casella_globals.field_customer_care
+    - field.field.node.casella_globals.field_earthlife_sidebar_intro
+    - field.field.node.casella_globals.field_footer_statement
+    - field.field.node.casella_globals.field_job_application_intro
+    - field.field.node.casella_globals.field_online_bill_pay
+    - field.field.node.casella_globals.field_search_overlay_text
+    - field.field.node.casella_globals.field_social_icon_links
+    - field.field.node.casella_globals.field_unacceptable_waste_intro
+    - node.type.casella_globals
+  module:
+    - field_group
+    - link
+    - paragraphs
+third_party_settings:
+  field_group:
+    group_header_nav_elements:
+      children:
+        - field_online_bill_pay
+        - field_customer_care
+      parent_name: ''
+      weight: 2
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        required_fields: true
+        description: ''
+      label: 'Header Nav Elements'
+    group_footer_elements:
+      children:
+        - field_footer_statement
+        - field_social_icon_links
+      parent_name: ''
+      weight: 3
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        required_fields: true
+        description: ''
+      label: 'Footer Elements'
+    group_service_location_elements:
+      children:
+        - field_acceptable_waste_intro
+        - field_unacceptable_waste_intro
+        - field_charges_warning
+      parent_name: ''
+      weight: 4
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        required_fields: true
+        description: ''
+      label: 'Service Location Elements'
+id: node.casella_globals.default
+targetEntityType: node
+bundle: casella_globals
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+  field_acceptable_waste_intro:
+    weight: 8
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_charges_warning:
+    weight: 10
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_customer_care:
+    weight: 9
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  field_earthlife_sidebar_intro:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_footer_statement:
+    weight: 5
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+  field_job_application_intro:
+    weight: 7
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+  field_online_bill_pay:
+    weight: 8
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  field_search_overlay_text:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_social_icon_links:
+    type: entity_reference_paragraphs
+    weight: 6
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+  field_unacceptable_waste_intro:
+    weight: 9
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  uid:
+    type: entity_reference_autocomplete
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  feeds_item: true
+  langcode: true
+  path: true
+  promote: true
+  sticky: true
+  title: true

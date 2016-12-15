@@ -1,0 +1,18 @@
+uuid: b5b2ffdd-3a10-468d-a19b-80d409965c6b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.full_width_promotion
+id: node.full_width_promotion.title
+field_name: title
+entity_type: node
+bundle: full_width_promotion
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,30 @@
+uuid: e125a5e2-c4cd-4ecc-a795-05b83f1eb67f
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.hr
+  module:
+    - system
+    - views
+  theme:
+    - casella
+id: views_block__hr_block_1__job_search
+theme: casella
+region: node_lower_content
+weight: -5
+provider: null
+plugin: 'views_block:hr-block_1'
+settings:
+  id: 'views_block:hr-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/696
+    negate: false
+    context_mapping: {  }

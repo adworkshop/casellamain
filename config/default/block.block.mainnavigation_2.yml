@@ -1,0 +1,27 @@
+uuid: 5d932534-ca9f-4d5c-9236-9bfaf306cc67
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - menu_block
+  theme:
+    - casella
+id: mainnavigation_2
+theme: casella
+region: node_content
+weight: -12
+provider: null
+plugin: 'menu_block:main'
+settings:
+  id: 'menu_block:main'
+  label: 'Earthlife Navigation'
+  provider: menu_block
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand: 1
+  parent: 'main:menu_link_content:38b0cc25-e1b3-46d8-a5a2-aa18458cfca4'
+  suggestion: main
+visibility: {  }

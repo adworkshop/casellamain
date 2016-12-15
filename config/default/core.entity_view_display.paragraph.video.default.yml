@@ -1,0 +1,56 @@
+uuid: 84c36657-3b38-4368-b15f-8a3453ba88d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.video.field_promotion
+    - field.field.paragraph.video.field_tab_anchor
+    - field.field.paragraph.video.field_tab_description
+    - field.field.paragraph.video.field_tab_title
+    - field.field.paragraph.video.field_vimeo_embed
+    - field.field.paragraph.video.field_youtube_id
+    - paragraphs.paragraphs_type.video
+id: paragraph.video.default
+targetEntityType: paragraph
+bundle: video
+mode: default
+content:
+  field_promotion:
+    weight: 4
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  field_tab_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_tab_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_vimeo_embed:
+    weight: 5
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_youtube_id:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  created: true
+  field_tab_anchor: true
+  uid: true

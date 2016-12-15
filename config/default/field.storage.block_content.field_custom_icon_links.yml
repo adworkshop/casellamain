@@ -1,0 +1,21 @@
+uuid: 627d8f20-e480-4a26-9155-9cb195c31e56
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - entity_reference_revisions
+    - paragraphs
+id: block_content.field_custom_icon_links
+field_name: field_custom_icon_links
+entity_type: block_content
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

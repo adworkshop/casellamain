@@ -1,0 +1,99 @@
+uuid: 455da2d1-32ca-466e-ae43-a031e564a630
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.landing_page.field_business_desc
+    - field.field.node.landing_page.field_gallery_images
+    - field.field.node.landing_page.field_home_desc
+    - field.field.node.landing_page.field_industry_links
+    - field.field.node.landing_page.field_large_promotions
+    - field.field.node.landing_page.field_org_desc
+    - field.field.node.landing_page.field_service_links
+    - field.field.node.landing_page.field_small_business_link
+    - field.field.node.landing_page.field_verticals_boxes
+    - node.type.landing_page
+  module:
+    - entity_reference_revisions
+    - link
+    - user
+id: node.landing_page.default
+targetEntityType: node
+bundle: landing_page
+mode: default
+content:
+  field_business_desc:
+    weight: 103
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_gallery_images:
+    type: entity_reference_revisions_entity_view
+    weight: 107
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+  field_home_desc:
+    weight: 104
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_industry_links:
+    type: entity_reference_revisions_entity_view
+    weight: 109
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+  field_large_promotions:
+    type: entity_reference_revisions_entity_view
+    weight: 106
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+  field_org_desc:
+    weight: 105
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_service_links:
+    type: entity_reference_revisions_entity_view
+    weight: 108
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+  field_small_business_link:
+    weight: 110
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link_separate
+  field_verticals_boxes:
+    type: entity_reference_revisions_entity_view
+    weight: 101
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

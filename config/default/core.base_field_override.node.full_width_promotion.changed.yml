@@ -1,0 +1,18 @@
+uuid: c8e1b457-3f66-4269-8771-e0cc8723124e
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.full_width_promotion
+id: node.full_width_promotion.changed
+field_name: changed
+entity_type: node
+bundle: full_width_promotion
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

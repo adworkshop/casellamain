@@ -1,0 +1,19 @@
+uuid: 3be62405-e639-4c1c-853d-bfa8016bd7cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_source
+    - node.type.testimonial
+id: node.testimonial.field_source
+field_name: field_source
+entity_type: node
+bundle: testimonial
+label: Source
+description: 'The origin of the quotation.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

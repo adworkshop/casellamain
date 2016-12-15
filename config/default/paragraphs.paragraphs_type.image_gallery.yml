@@ -1,0 +1,6 @@
+uuid: 2efe2a00-71c5-4a76-8df7-bc5d07a7ee80
+langcode: en
+status: true
+dependencies: {  }
+id: image_gallery
+label: 'Image Gallery'

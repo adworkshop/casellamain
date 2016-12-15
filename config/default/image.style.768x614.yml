@@ -1,0 +1,16 @@
+uuid: deb0d478-5ca8-4c64-93fd-5e75d50906d0
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: 768x614
+label: 768x614
+effects:
+  91878094-f381-464b-987f-34288b729430:
+    uuid: 91878094-f381-464b-987f-34288b729430
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: '768'
+      height: '614'

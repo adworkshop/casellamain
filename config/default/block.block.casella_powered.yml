@@ -1,0 +1,22 @@
+uuid: 953fcc18-5165-496f-88e7-7333f8cce2de
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - casella
+_core:
+  default_config_hash: jQQUUWN2Uxr5qZtc9zcJKBCxpKY8orN1u2HPqYYRQDI
+id: casella_powered
+theme: casella
+region: '-1'
+weight: -13
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  provider: system
+  label_display: '0'
+visibility: {  }

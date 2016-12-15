@@ -1,0 +1,32 @@
+uuid: be3a16bb-1c76-4500-9696-e77a79f75a1c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.casella_globals.field_customer_care
+    - field.field.node.casella_globals.field_earthlife_sidebar_intro
+    - field.field.node.casella_globals.field_footer_statement
+    - field.field.node.casella_globals.field_job_application_intro
+    - field.field.node.casella_globals.field_online_bill_pay
+    - field.field.node.casella_globals.field_search_overlay_text
+    - field.field.node.casella_globals.field_social_icon_links
+    - node.type.casella_globals
+  module:
+    - user
+id: node.casella_globals.teaser
+targetEntityType: node
+bundle: casella_globals
+mode: teaser
+content:
+  links:
+    weight: 100
+hidden:
+  field_customer_care: true
+  field_earthlife_sidebar_intro: true
+  field_footer_statement: true
+  field_job_application_intro: true
+  field_online_bill_pay: true
+  field_search_overlay_text: true
+  field_social_icon_links: true
+  langcode: true

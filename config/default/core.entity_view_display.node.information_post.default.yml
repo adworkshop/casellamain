@@ -1,0 +1,95 @@
+uuid: cf2c34f5-8c0d-4b54-8f79-14f1f693948e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.information_post.body
+    - field.field.node.information_post.feeds_item
+    - field.field.node.information_post.field_add_this
+    - field.field.node.information_post.field_category
+    - field.field.node.information_post.field_date
+    - field.field.node.information_post.field_h1_override
+    - field.field.node.information_post.field_hero_text
+    - field.field.node.information_post.field_image
+    - field.field.node.information_post.field_sidebar_promotions
+    - field.field.node.information_post.field_teaser
+    - field.field.node.information_post.field_teaser_image
+    - node.type.information_post
+  module:
+    - datetime
+    - image
+    - text
+    - user
+id: node.information_post.default
+targetEntityType: node
+bundle: information_post
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+  field_add_this:
+    weight: 8
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+  field_category:
+    weight: 6
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_date:
+    weight: 7
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: post_date
+    third_party_settings: {  }
+    type: datetime_default
+  field_h1_override:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_hero_text:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_image:
+    weight: 4
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_sidebar_promotions:
+    weight: 9
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  feeds_item: true
+  field_teaser: true
+  field_teaser_image: true
+  langcode: true

@@ -1,0 +1,18 @@
+uuid: 7b73f4a8-b8da-4ca5-97fd-b2387f178d54
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Earthlife Product'
+type: product
+description: 'Earthlife products. Products marked as featured will output on the Earthlife homepage underneath their assigned tags. Products will output in the product sidebar nav beneath their assigned product category.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

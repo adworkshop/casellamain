@@ -1,0 +1,22 @@
+uuid: ccb4a885-841d-4de4-9591-e03611f0a73c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.casella_globals
+id: node.casella_globals.promote
+field_name: promote
+entity_type: node
+bundle: casella_globals
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,21 @@
+uuid: 16954e9b-749d-44dc-aec5-a8b8c050872b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_location_category
+    - node.type.location
+  module:
+    - options
+id: node.location.field_location_category
+field_name: field_location_category
+entity_type: node
+bundle: location
+label: 'Location Category'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,53 @@
+uuid: 6976de66-4bfa-432c-93d6-2a67aa001139
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.case_study.body
+    - field.field.node.case_study.feeds_item
+    - field.field.node.case_study.field_2_column
+    - field.field.node.case_study.field_add_this
+    - field.field.node.case_study.field_full_width
+    - field.field.node.case_study.field_full_width_promotion
+    - field.field.node.case_study.field_h1_override
+    - field.field.node.case_study.field_hero_text
+    - field.field.node.case_study.field_sidebar_promotions
+    - field.field.node.case_study.field_slider_images
+    - field.field.node.case_study.field_tabs
+    - field.field.node.case_study.field_teaser
+    - field.field.node.case_study.field_teaser_image
+    - field.field.node.case_study.field_upper_content
+    - node.type.case_study
+  module:
+    - text
+    - user
+id: node.case_study.teaser
+targetEntityType: node
+bundle: case_study
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden:
+  feeds_item: true
+  field_2_column: true
+  field_add_this: true
+  field_full_width: true
+  field_full_width_promotion: true
+  field_h1_override: true
+  field_hero_text: true
+  field_sidebar_promotions: true
+  field_slider_images: true
+  field_tabs: true
+  field_teaser: true
+  field_teaser_image: true
+  field_upper_content: true
+  langcode: true

@@ -1,0 +1,20 @@
+uuid: 427be4ec-2ec2-463f-80fc-ef88f34df2a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.case_study
+id: node.case_study.menu_link
+field_name: menu_link
+entity_type: node
+bundle: case_study
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

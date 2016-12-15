@@ -1,0 +1,28 @@
+uuid: 551d5e93-962e-41eb-8cfb-fdc3030608be
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sidebar_promotions
+    - node.type.service
+    - node.type.sidebar_promotion
+id: node.service.field_sidebar_promotions
+field_name: field_sidebar_promotions
+entity_type: node
+bundle: service
+label: 'Sidebar Promotions'
+description: 'Limited to the top two published promotions selected. Start typing the title of a piece of content to select it.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      sidebar_promotion: sidebar_promotion
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

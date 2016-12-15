@@ -1,0 +1,28 @@
+uuid: 2b568386-bc1e-4655-8aa6-f66ff3ccfe2e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_product_category
+    - node.type.product
+    - node.type.product_category
+id: node.product.field_product_category
+field_name: field_product_category
+entity_type: node
+bundle: product
+label: 'Product Category'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      product_category: product_category
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

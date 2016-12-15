@@ -1,0 +1,19 @@
+uuid: c61aa3bb-6ee9-4824-aa3a-4708b44bf86d
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.service_request
+    - field.storage.contact_message.field_service_email
+id: contact_message.service_request.field_service_email
+field_name: field_service_email
+entity_type: contact_message
+bundle: service_request
+label: 'Email: *'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

@@ -1,0 +1,6 @@
+uuid: 2861a57f-f261-447e-b871-659db4b9e3d6
+langcode: en
+status: true
+dependencies: {  }
+id: solution_resource
+label: 'Solution Resource'

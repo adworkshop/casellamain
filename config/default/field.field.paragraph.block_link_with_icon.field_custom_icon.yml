@@ -1,0 +1,19 @@
+uuid: b48c84b1-8de5-4357-a6e6-69910f0e564e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_custom_icon
+    - paragraphs.paragraphs_type.block_link_with_icon
+id: paragraph.block_link_with_icon.field_custom_icon
+field_name: field_custom_icon
+entity_type: paragraph
+bundle: block_link_with_icon
+label: 'Custom Icon'
+description: 'These links use custom icons referenced by specific classes. Please do not update this field without first verifying that the class change is correct.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

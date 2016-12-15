@@ -1,0 +1,19 @@
+uuid: b97b9d8d-b96b-4cd7-9e82-b01d522fa309
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.market_leads
+    - field.storage.contact_message.field_ml_zip
+id: contact_message.market_leads.field_ml_zip
+field_name: field_ml_zip
+entity_type: contact_message
+bundle: market_leads
+label: 'Zip:*'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

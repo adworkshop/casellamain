@@ -1,0 +1,122 @@
+uuid: c8a3597f-e7ab-480c-9801-2b523e40a6a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.case_study.body
+    - field.field.node.case_study.feeds_item
+    - field.field.node.case_study.field_2_column
+    - field.field.node.case_study.field_add_this
+    - field.field.node.case_study.field_full_width
+    - field.field.node.case_study.field_full_width_promotion
+    - field.field.node.case_study.field_h1_override
+    - field.field.node.case_study.field_hero_text
+    - field.field.node.case_study.field_sidebar_promotions
+    - field.field.node.case_study.field_slider_images
+    - field.field.node.case_study.field_tabs
+    - field.field.node.case_study.field_teaser
+    - field.field.node.case_study.field_teaser_image
+    - field.field.node.case_study.field_upper_content
+    - node.type.case_study
+  module:
+    - entity_reference_revisions
+    - text
+    - user
+id: node.case_study.default
+targetEntityType: node
+bundle: case_study
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  field_2_column:
+    weight: 103
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+  field_add_this:
+    weight: 102
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+  field_full_width:
+    weight: 106
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+  field_full_width_promotion:
+    weight: 105
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  field_h1_override:
+    weight: 107
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_hero_text:
+    weight: 104
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_sidebar_promotions:
+    weight: 108
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  field_slider_images:
+    weight: 109
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+  field_tabs:
+    weight: 110
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+  field_upper_content:
+    weight: 111
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  feeds_item: true
+  field_teaser: true
+  field_teaser_image: true
+  langcode: true

@@ -1,0 +1,21 @@
+uuid: e36ecda7-7233-4613-b446-1b5828d52cdf
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact_block
+  theme:
+    - casella
+id: contactblock
+theme: casella
+region: form_container
+weight: -14
+provider: null
+plugin: contact_block
+settings:
+  id: contact_block
+  label: 'Job Application Contact block'
+  provider: contact_block
+  label_display: '0'
+  contact_form: job_application
+visibility: {  }

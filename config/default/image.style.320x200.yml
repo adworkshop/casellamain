@@ -1,0 +1,16 @@
+uuid: c3f18f85-036f-4b74-a71d-4b13df83f4e5
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: 320x200
+label: 320x200
+effects:
+  3c91b9ef-e29a-4892-a00f-cfcc80b33f7a:
+    uuid: 3c91b9ef-e29a-4892-a00f-cfcc80b33f7a
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: '320'
+      height: '200'

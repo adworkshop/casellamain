@@ -1,0 +1,49 @@
+uuid: ae10f71e-28aa-4855-9f9e-7e0656047f3f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.upper_button.field_icon
+    - field.field.paragraph.upper_button.field_link
+    - field.field.paragraph.upper_button.field_short_description
+    - field.field.paragraph.upper_button.field_title
+    - paragraphs.paragraphs_type.upper_button
+  module:
+    - link
+id: paragraph.upper_button.default
+targetEntityType: paragraph
+bundle: upper_button
+mode: default
+content:
+  field_icon:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_link:
+    weight: 3
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  field_short_description:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+hidden:
+  created: true
+  status: true
+  uid: true

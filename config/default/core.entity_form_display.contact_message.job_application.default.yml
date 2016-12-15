@@ -1,0 +1,180 @@
+uuid: 3e452e4f-251e-4160-98b9-b20f0a7d0777
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.job_application
+    - field.field.contact_message.job_application.field_cover_letter
+    - field.field.contact_message.job_application.field_hiring_manager
+    - field.field.contact_message.job_application.field_job_email
+    - field.field.contact_message.job_application.field_job_reference
+    - field.field.contact_message.job_application.field_job_title
+    - field.field.contact_message.job_application.field_name
+    - field.field.contact_message.job_application.field_phone
+    - field.field.contact_message.job_application.field_resume
+    - field.field.contact_message.job_application.field_status
+  module:
+    - field_group
+    - file
+third_party_settings:
+  field_group:
+    group_personal_information:
+      children:
+        - field_name
+        - group_con
+      parent_name: ''
+      weight: 1
+      format_type: html_element
+      format_settings:
+        label: 'Personal Information'
+        element: fieldset
+        show_label: true
+        label_element: legend
+        attributes: ''
+        effect: none
+        speed: fast
+        id: ''
+        classes: job-indListing-form-personalInfo-container
+      label: 'Personal Information'
+    group_application_details:
+      children:
+        - group_application_details_wrappe
+      parent_name: ''
+      weight: 2
+      format_type: html_element
+      format_settings:
+        label: 'Application Details'
+        element: fieldset
+        show_label: true
+        label_element: legend
+        attributes: ''
+        effect: none
+        speed: fast
+        id: ''
+        classes: job-indListing-form-applicationDetails-container
+      label: 'Application Details'
+    group_title_wrapper:
+      children:
+        - field_job_title
+        - field_job_reference
+      parent_name: ''
+      weight: 0
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: job-indListing-form-titleReference-container
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: true
+      label: 'Title Wrapper'
+    group_con:
+      children:
+        - field_job_email
+        - field_email
+        - field_phone
+      parent_name: group_personal_information
+      weight: 4
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: job-indListing-form-personalInfo-contactContainer
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: true
+      label: 'Contact Container'
+    group_application_details_wrappe:
+      children:
+        - field_cover_letter
+        - field_resume
+      parent_name: group_application_details
+      weight: 20
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: job-indListing-form-applicationDetails-wrapper
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: true
+      label: 'Application Details Wrapper'
+id: contact_message.job_application.default
+targetEntityType: contact_message
+bundle: job_application
+mode: default
+content:
+  field_cover_letter:
+    weight: 21
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: file_generic
+  field_hiring_manager:
+    type: options_buttons
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  field_job_email:
+    weight: 24
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+  field_job_reference:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_job_title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_name:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_phone:
+    weight: 26
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_resume:
+    weight: 22
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: file_generic
+  field_status:
+    weight: 23
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+hidden:
+  copy: true
+  langcode: true
+  mail: true
+  message: true
+  name: true
+  preview: true
+  subject: true

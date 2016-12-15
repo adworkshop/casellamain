@@ -1,0 +1,6 @@
+uuid: 7ca0d081-5e8d-4119-acff-b73384fd94e1
+langcode: en
+status: true
+dependencies: {  }
+id: fa_link_with_icon
+label: 'FA Link with Icon'

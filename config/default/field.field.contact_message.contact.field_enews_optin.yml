@@ -1,0 +1,23 @@
+uuid: 69b5a9ab-a868-474c-aa44-d12a420badd1
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.contact
+    - field.storage.contact_message.field_enews_optin
+id: contact_message.contact.field_enews_optin
+field_name: field_enews_optin
+entity_type: contact_message
+bundle: contact
+label: 'I would like to receive communications from Casella'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

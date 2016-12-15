@@ -1,0 +1,62 @@
+uuid: df2f8669-dadb-4724-a57f-5a60d7c02ec7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.slider_image.field_description
+    - field.field.paragraph.slider_image.field_icon
+    - field.field.paragraph.slider_image.field_image
+    - field.field.paragraph.slider_image.field_link
+    - field.field.paragraph.slider_image.field_title
+    - paragraphs.paragraphs_type.slider_image
+    - responsive_image.styles.internal_slider
+  module:
+    - link
+    - responsive_image
+id: paragraph.slider_image.default
+targetEntityType: paragraph
+bundle: slider_image
+mode: default
+content:
+  field_description:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_icon:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_image:
+    weight: 3
+    label: hidden
+    settings:
+      responsive_image_style: internal_slider
+      image_link: ''
+    third_party_settings: {  }
+    type: responsive_image
+  field_link:
+    weight: 4
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+  field_title:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  created: true
+  uid: true

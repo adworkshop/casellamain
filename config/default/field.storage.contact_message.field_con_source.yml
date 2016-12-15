@@ -1,0 +1,48 @@
+uuid: 592b8a8c-9f9a-451e-967a-afc767c1a08c
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+    - options
+id: contact_message.field_con_source
+field_name: field_con_source
+entity_type: contact_message
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: search
+      label: 'Search Engine'
+    -
+      value: friend
+      label: Friend/Family
+    -
+      value: tv
+      label: TV
+    -
+      value: radio
+      label: Radio
+    -
+      value: print
+      label: 'Print Advertisement'
+    -
+      value: mailer
+      label: Mailer
+    -
+      value: facebook
+      label: Facebook
+    -
+      value: twitter
+      label: Twitter
+    -
+      value: our_website
+      label: 'Our website'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,9 @@
+uuid: e1c9b413-e20b-4047-8c58-b010b59e94cc
+langcode: en
+status: true
+dependencies: {  }
+name: 'Organics Update Categories'
+vid: post_categories
+description: ''
+hierarchy: 0
+weight: 0

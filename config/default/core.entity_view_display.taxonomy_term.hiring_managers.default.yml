@@ -1,0 +1,28 @@
+uuid: d99bb4a3-8cb7-4568-a794-315d9ec3bf13
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.hiring_managers.field_email_address
+    - taxonomy.vocabulary.hiring_managers
+  module:
+    - text
+id: taxonomy_term.hiring_managers.default
+targetEntityType: taxonomy_term
+bundle: hiring_managers
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  field_email_address:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+hidden:
+  langcode: true

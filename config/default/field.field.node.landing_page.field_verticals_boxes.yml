@@ -1,0 +1,33 @@
+uuid: 7c8ba2f1-edaf-4397-aa1f-e7dd9725925d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_verticals_boxes
+    - node.type.landing_page
+    - paragraphs.paragraphs_type.vertical
+  module:
+    - entity_reference_revisions
+id: node.landing_page.field_verticals_boxes
+field_name: field_verticals_boxes
+entity_type: node
+bundle: landing_page
+label: Verticals
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      vertical: vertical
+    target_bundles_drag_drop:
+      large_promotion:
+        weight: 3
+        enabled: false
+      vertical:
+        enabled: true
+        weight: 4
+field_type: entity_reference_revisions

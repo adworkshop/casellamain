@@ -1,0 +1,145 @@
+uuid: b0fcedce-8882-4847-933e-324af47268f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.market_leads
+    - field.field.contact_message.market_leads.field_enews_optin
+    - field.field.contact_message.market_leads.field_ml_address
+    - field.field.contact_message.market_leads.field_ml_challenge
+    - field.field.contact_message.market_leads.field_ml_city
+    - field.field.contact_message.market_leads.field_ml_company
+    - field.field.contact_message.market_leads.field_ml_email
+    - field.field.contact_message.market_leads.field_ml_first_name
+    - field.field.contact_message.market_leads.field_ml_industry
+    - field.field.contact_message.market_leads.field_ml_last_name
+    - field.field.contact_message.market_leads.field_ml_other
+    - field.field.contact_message.market_leads.field_ml_phone
+    - field.field.contact_message.market_leads.field_ml_state
+    - field.field.contact_message.market_leads.field_ml_zip
+  module:
+    - options
+id: contact_message.market_leads.default
+targetEntityType: contact_message
+bundle: market_leads
+mode: default
+content:
+  field_enews_optin:
+    weight: 15
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+  field_ml_address:
+    weight: 8
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_ml_challenge:
+    weight: 14
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_ml_city:
+    weight: 9
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_ml_company:
+    weight: 5
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_ml_email:
+    weight: 6
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_ml_first_name:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_ml_industry:
+    weight: 12
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_ml_last_name:
+    weight: 4
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_ml_other:
+    weight: 13
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_ml_phone:
+    weight: 7
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_ml_state:
+    weight: 10
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  field_ml_zip:
+    weight: 11
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  mail:
+    weight: -2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  message:
+    type: string
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  name:
+    weight: -3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  subject:
+    weight: -1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  langcode: true

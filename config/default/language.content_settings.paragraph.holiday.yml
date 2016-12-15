@@ -1,0 +1,16 @@
+uuid: 41c137e8-65d0-4ecb-a8dd-7403a348e31b
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.holiday
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+id: paragraph.holiday
+target_entity_type_id: paragraph
+target_bundle: holiday
+default_langcode: site_default
+language_alterable: false

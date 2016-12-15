@@ -1,0 +1,107 @@
+uuid: 95a64a8d-e26e-4a88-83c2-460263fa570f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.casella_globals.feeds_item
+    - field.field.node.casella_globals.field_acceptable_waste_intro
+    - field.field.node.casella_globals.field_charges_warning
+    - field.field.node.casella_globals.field_customer_care
+    - field.field.node.casella_globals.field_earthlife_sidebar_intro
+    - field.field.node.casella_globals.field_footer_statement
+    - field.field.node.casella_globals.field_job_application_intro
+    - field.field.node.casella_globals.field_online_bill_pay
+    - field.field.node.casella_globals.field_search_overlay_text
+    - field.field.node.casella_globals.field_social_icon_links
+    - field.field.node.casella_globals.field_unacceptable_waste_intro
+    - node.type.casella_globals
+  module:
+    - entity_reference_revisions
+    - link
+    - user
+id: node.casella_globals.default
+targetEntityType: node
+bundle: casella_globals
+mode: default
+content:
+  field_acceptable_waste_intro:
+    weight: 108
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_charges_warning:
+    weight: 110
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_customer_care:
+    weight: 102
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link_separate
+  field_earthlife_sidebar_intro:
+    weight: 106
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_footer_statement:
+    weight: 103
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_job_application_intro:
+    weight: 107
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_online_bill_pay:
+    weight: 101
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link_separate
+  field_search_overlay_text:
+    weight: 105
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_social_icon_links:
+    type: entity_reference_revisions_entity_view
+    weight: 104
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+  field_unacceptable_waste_intro:
+    weight: 109
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  feeds_item: true
+  langcode: true
+  links: true

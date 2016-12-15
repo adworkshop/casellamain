@@ -1,0 +1,19 @@
+uuid: a7661e1f-f361-427c-9695-f5f056e7c5f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.free_waste_analysis
+    - field.storage.contact_message.field_wa_name
+id: contact_message.free_waste_analysis.field_wa_name
+field_name: field_wa_name
+entity_type: contact_message
+bundle: free_waste_analysis
+label: 'Name:*'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,38 @@
+uuid: 3970f9a8-fa41-4376-997a-a268bddd1dcf
+langcode: en
+status: true
+dependencies: {  }
+id: earthlife
+label: Earthlife
+weight: 5
+is_admin: null
+permissions:
+  0: 'translate product node'
+  1: 'translate product_category node'
+  2: 'translate landing_page node'
+  3: 'translate subsection_homepage node'
+  4: 'create product content'
+  5: 'delete any product content'
+  6: 'edit any product content'
+  7: 'revert product revisions'
+  8: 'view product revisions'
+  9: 'create product_category content'
+  10: 'delete any product_category content'
+  11: 'edit any product_category content'
+  12: 'revert product_category revisions'
+  13: 'view product_category revisions'
+  14: 'edit any subsection_homepage content'
+  15: 'revert subsection_homepage revisions'
+  16: 'view subsection_homepage revisions'
+  17: 'delete terms in product_tags'
+  18: 'edit terms in product_tags'
+  19: 'add terms in product_tags'
+  20: 'reorder terms in product_tags'
+  33: 'publish any node type product'
+  34: 'unpublish any node type product'
+  35: 'publish any node type product_category'
+  36: 'unpublish any node type product_category'
+  37: 'administer redirects'
+  38: 'edit any casella_globals content'
+  39: 'create url aliases'
+  40: 'administer menu'

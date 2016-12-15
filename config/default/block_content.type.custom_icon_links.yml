@@ -1,0 +1,8 @@
+uuid: 0f1288c2-adfe-464f-b274-77c870930a4d
+langcode: en
+status: true
+dependencies: {  }
+id: custom_icon_links
+label: 'Custom Icon Links'
+revision: 0
+description: ''

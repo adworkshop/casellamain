@@ -1,0 +1,81 @@
+uuid: 09a951ef-4e4c-4428-a3d0-2c5732869d1d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.job.body
+    - field.field.node.job.field_add_this
+    - field.field.node.job.field_date_posted
+    - field.field.node.job.field_h1_override
+    - field.field.node.job.field_hero_text
+    - field.field.node.job.field_hiring_managers
+    - field.field.node.job.field_job_categories
+    - field.field.node.job.field_job_status
+    - field.field.node.job.field_location
+    - node.type.job
+  module:
+    - text
+    - user
+id: node.job.default
+targetEntityType: node
+bundle: job
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  field_add_this:
+    weight: 104
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+  field_h1_override:
+    weight: 102
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_hero_text:
+    weight: 103
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_job_categories:
+    weight: 107
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_job_status:
+    weight: 105
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_location:
+    weight: 106
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  feeds_item: true
+  field_date_posted: true
+  field_hiring_managers: true
+  langcode: true

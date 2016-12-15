@@ -1,0 +1,57 @@
+uuid: 0bf7e11c-cb20-4d04-b659-29be22df8354
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_slider_images
+    - node.type.case_study
+    - paragraphs.paragraphs_type.slider_image
+  module:
+    - entity_reference_revisions
+id: node.case_study.field_slider_images
+field_name: field_slider_images
+entity_type: node
+bundle: case_study
+label: 'Slider Images'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      slider_image: slider_image
+    target_bundles_drag_drop:
+      case_studies:
+        weight: 11
+        enabled: false
+      free_form:
+        weight: 12
+        enabled: false
+      image_gallery:
+        weight: 13
+        enabled: false
+      image_with_caption:
+        weight: 14
+        enabled: false
+      large_promotion:
+        weight: 15
+        enabled: false
+      products:
+        weight: 16
+        enabled: false
+      slider_image:
+        enabled: true
+        weight: 17
+      testimonials:
+        weight: 18
+        enabled: false
+      vertical:
+        weight: 19
+        enabled: false
+      video:
+        weight: 20
+        enabled: false
+field_type: entity_reference_revisions

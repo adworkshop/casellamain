@@ -1,0 +1,153 @@
+uuid: f8b55d1b-ad63-4941-8568-4ffa7eccd6d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.market_leads
+    - field.field.contact_message.market_leads.field_enews_optin
+    - field.field.contact_message.market_leads.field_ml_address
+    - field.field.contact_message.market_leads.field_ml_challenge
+    - field.field.contact_message.market_leads.field_ml_city
+    - field.field.contact_message.market_leads.field_ml_company
+    - field.field.contact_message.market_leads.field_ml_email
+    - field.field.contact_message.market_leads.field_ml_first_name
+    - field.field.contact_message.market_leads.field_ml_industry
+    - field.field.contact_message.market_leads.field_ml_last_name
+    - field.field.contact_message.market_leads.field_ml_other
+    - field.field.contact_message.market_leads.field_ml_phone
+    - field.field.contact_message.market_leads.field_ml_state
+    - field.field.contact_message.market_leads.field_ml_zip
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_personal_information:
+      children:
+        - field_ml_first_name
+        - field_ml_last_name
+        - field_ml_company
+        - field_ml_email
+        - field_ml_phone
+      parent_name: ''
+      weight: 0
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        required_fields: true
+        description: ''
+      label: 'Personal Information'
+    group_contact_information:
+      children:
+        - field_ml_address
+        - field_ml_city
+        - field_ml_state
+        - field_ml_zip
+      parent_name: ''
+      weight: 1
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        required_fields: true
+        description: ''
+      label: 'Contact Information'
+id: contact_message.market_leads.default
+targetEntityType: contact_message
+bundle: market_leads
+mode: default
+content:
+  field_enews_optin:
+    weight: 9
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+  field_ml_address:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_ml_challenge:
+    weight: 8
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+  field_ml_city:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_ml_company:
+    weight: 10
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_ml_email:
+    weight: 11
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+  field_ml_first_name:
+    weight: 8
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_ml_industry:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+  field_ml_last_name:
+    weight: 9
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_ml_other:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_ml_phone:
+    weight: 12
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_ml_state:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_ml_zip:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+hidden:
+  copy: true
+  langcode: true
+  mail: true
+  message: true
+  name: true
+  preview: true
+  subject: true

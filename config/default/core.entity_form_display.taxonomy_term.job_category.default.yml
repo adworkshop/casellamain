@@ -1,0 +1,22 @@
+uuid: 37f26572-8a07-473b-91d0-a2d61326cbdc
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.job_category
+id: taxonomy_term.job_category.default
+targetEntityType: taxonomy_term
+bundle: job_category
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  path: true

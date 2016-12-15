@@ -1,0 +1,108 @@
+uuid: 160fdc91-19ac-4331-bf91-55173546625c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.job.body
+    - field.field.node.job.field_add_this
+    - field.field.node.job.field_date_posted
+    - field.field.node.job.field_h1_override
+    - field.field.node.job.field_hero_text
+    - field.field.node.job.field_hiring_managers
+    - field.field.node.job.field_job_categories
+    - field.field.node.job.field_job_status
+    - field.field.node.job.field_location
+    - node.type.job
+  module:
+    - datetime
+    - path
+    - text
+id: node.job.default
+targetEntityType: node
+bundle: job
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 3
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 9
+    settings: {  }
+    third_party_settings: {  }
+  field_add_this:
+    weight: 4
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+  field_date_posted:
+    weight: 28
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+  field_h1_override:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_hero_text:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+  field_hiring_managers:
+    weight: 27
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+  field_job_categories:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+  field_job_status:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_location:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  path:
+    type: path
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 8
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  feeds_item: true
+  langcode: true
+  promote: true
+  sticky: true
+  translation: true

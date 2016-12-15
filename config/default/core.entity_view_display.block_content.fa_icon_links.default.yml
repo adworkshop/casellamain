@@ -1,0 +1,24 @@
+uuid: 447e488d-b274-440e-af4b-e263306fb387
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.fa_icon_links
+    - field.field.block_content.fa_icon_links.field_fa_icon_links
+  module:
+    - entity_reference_revisions
+id: block_content.fa_icon_links.default
+targetEntityType: block_content
+bundle: fa_icon_links
+mode: default
+content:
+  field_fa_icon_links:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true

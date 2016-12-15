@@ -1,0 +1,18 @@
+uuid: 4a0ce63c-9b04-40dc-b478-3c7aa29e16ba
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Subsection Homepage'
+type: subsection_homepage
+description: 'Akin to a page but with fields specific to the special needs of the subsection homepages.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

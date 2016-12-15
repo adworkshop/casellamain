@@ -1,0 +1,19 @@
+uuid: 37196bb6-4441-4fff-8b66-508efa4109ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_footer_statement
+    - node.type.casella_globals
+id: node.casella_globals.field_footer_statement
+field_name: field_footer_statement
+entity_type: node
+bundle: casella_globals
+label: 'Footer Statement'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,24 @@
+uuid: 4365b9f7-c5dd-443a-ac60-52d093f4e094
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.testimonial.field_attribution
+    - field.field.node.testimonial.field_quotation
+    - field.field.node.testimonial.field_source
+    - node.type.testimonial
+  module:
+    - user
+id: node.testimonial.teaser
+targetEntityType: node
+bundle: testimonial
+mode: teaser
+content:
+  links:
+    weight: 100
+hidden:
+  field_attribution: true
+  field_quotation: true
+  field_source: true
+  langcode: true

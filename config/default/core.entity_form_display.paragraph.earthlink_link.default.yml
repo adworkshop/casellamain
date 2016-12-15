@@ -1,0 +1,35 @@
+uuid: e4010e0f-7904-44d7-8085-c90d55922740
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.earthlink_link.field_image
+    - field.field.paragraph.earthlink_link.field_link
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.earthlink_link
+  module:
+    - image
+    - link
+id: paragraph.earthlink_link.default
+targetEntityType: paragraph
+bundle: earthlink_link
+mode: default
+content:
+  field_image:
+    weight: 0
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+  field_link:
+    weight: 1
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+hidden:
+  created: true
+  status: true
+  uid: true

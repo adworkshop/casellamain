@@ -1,0 +1,9 @@
+uuid: ade1015e-cbb2-445e-bb28-addf7c49ea98
+langcode: en
+status: true
+dependencies: {  }
+name: 'Content Promotion Tags'
+vid: content_promotion_tags
+description: 'Use to categorize content promotions for page assignment'
+hierarchy: 0
+weight: 0

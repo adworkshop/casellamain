@@ -1,0 +1,14 @@
+uuid: fe9d8081-d702-4824-8a7c-ed56a4116dca
+langcode: en
+status: true
+dependencies: {  }
+name: 1x1
+label: 1x1
+effects:
+  303358bc-32f0-4629-af43-588a7b36d4ab:
+    uuid: 303358bc-32f0-4629-af43-588a7b36d4ab
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1
+      height: 1

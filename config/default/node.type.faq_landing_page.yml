@@ -1,0 +1,18 @@
+uuid: b4f133cb-5566-4a31-bdca-01fb4b445656
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'FAQ Landing Page'
+type: faq_landing_page
+description: 'Question and Answer landing page.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

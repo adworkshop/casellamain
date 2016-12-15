@@ -1,0 +1,47 @@
+uuid: bfc7b6a8-9e3f-4d8b-834c-0b5b37284247
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.products.field_products
+    - field.field.paragraph.products.field_promotion
+    - field.field.paragraph.products.field_tab_anchor
+    - field.field.paragraph.products.field_tab_description
+    - field.field.paragraph.products.field_tab_title
+    - paragraphs.paragraphs_type.products
+id: paragraph.products.default
+targetEntityType: paragraph
+bundle: products
+mode: default
+content:
+  field_products:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: entity_reference_entity_id
+  field_promotion:
+    weight: 4
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  field_tab_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_tab_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  created: true
+  field_tab_anchor: true
+  uid: true

@@ -1,0 +1,32 @@
+uuid: 3f455725-61c3-4dea-8c07-d930cd9f992f
+langcode: en
+status: true
+dependencies:
+  config:
+    - feeds.feed_type.towns
+id: feeds_feed.towns.default
+targetEntityType: feeds_feed
+bundle: towns
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

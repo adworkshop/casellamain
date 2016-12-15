@@ -1,0 +1,33 @@
+uuid: 10462f06-85af-49ba-aa0f-81b97413e168
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.link_with_icon.field_icon_link
+    - field.field.paragraph.link_with_icon.field_link_class
+    - paragraphs.paragraphs_type.link_with_icon
+  module:
+    - link
+id: paragraph.link_with_icon.default
+targetEntityType: paragraph
+bundle: link_with_icon
+mode: default
+content:
+  field_icon_link:
+    weight: 1
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  field_link_class:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -1,0 +1,20 @@
+uuid: 1055a3ac-3671-487a-a509-6c51f1c94076
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.sidebar_promotion
+id: node.sidebar_promotion.uid
+field_name: uid
+entity_type: node
+bundle: sidebar_promotion
+label: 'Authored by'
+description: 'The username of the content author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getCurrentUserId'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference
