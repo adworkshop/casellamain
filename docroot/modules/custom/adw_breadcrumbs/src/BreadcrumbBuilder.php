@@ -105,14 +105,23 @@ class BreadcrumbBuilder extends PathBasedBreadcrumbBuilder {
     $currentPluginId = $menuLink->getPluginId();
 
     // Build the typical default set of menu tree parameters.
-    $menu_name = 'main';
+    $menu_name = $menuLink->getMenuName();
     $parameters = $menuTree->getCurrentRouteMenuTreeParameters($menu_name);
     $trailIds = $parameters->activeTrail;
 
+    $db = \Drupal\Core\Database\Database::getConnection();
+
     foreach (array_reverse($trailIds) as $key => $value) {
       if ($value && $value !== $currentPluginId) {
-        $urlObject = $menuLinkManager->createInstance($value)->getUrlObject();
-        $title =  $menuLinkManager->createInstance($value)->getTitle();
+        $instance = $menuLinkManager->createInstance($value);
+        $urlObject = $instance->getUrlObject();
+        $title =  $instance->getTitle();
+
+        // If this is a subsection homepage we need to reset the breadcrumbs.
+        $nodeType = $this->getType($urlObject, $db);
+        if ('subsection_homepage' == $nodeType) {
+          $breadcrumbs = new Breadcrumb();
+        }
 
         $schemaElement = (object) array(
           "@type" => "ListItem",
@@ -130,5 +139,34 @@ class BreadcrumbBuilder extends PathBasedBreadcrumbBuilder {
         $breadcrumbs->addLink($link);
       }
     }
+  }
+
+  /**
+   * Gets the type from a urlObject if it exists.
+   * @param $urlObject
+   * @param $db
+   * @return string
+   */
+  private function getType($urlObject, $db) {
+    $routeParameters = $urlObject->getRouteParameters();
+    if (!isset($routeParameters['node'])) {
+      return '';
+    }
+
+    $nodeType = $serviceResults = $db->select('node', 'node');
+    $nodeType->fields('node', array('type'));
+    $nodeType->condition('nid', $routeParameters['node'], '=');
+    $nodeType = $nodeType->execute();
+
+    if (!$nodeType) {
+      return '';
+    }
+
+    $nodeTypeAssoc = $nodeType->fetchAll(\PDO::FETCH_ASSOC);
+    if (!isset($nodeTypeAssoc[0]['type'])) {
+      return '';
+    }
+
+    return $nodeTypeAssoc[0]['type'];
   }
 }

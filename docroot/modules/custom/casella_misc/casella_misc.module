@@ -7,7 +7,120 @@
  * @param $form_id
  */
 function casella_misc_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-  // kint($form_id);
+  $theme = \Drupal::theme()->getActiveTheme()->getName();
+  if ('casella' != $theme) {
+    $form['#attached']['library'][] = 'casella_misc/admin-required-tabs';
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function casella_misc_form_node_location_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  _casella_misc_location_form_update($form, $form_state);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function casella_misc_form_node_location_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  _casella_misc_location_form_update($form, $form_state);
+}
+
+/**
+ * Custom function to bind AJAX handler to waste category fields.
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function _casella_misc_location_form_update(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  foreach (array('field_acceptable_waste', 'field_unacceptable_waste') as $field) {
+    if ($form[$field]['widget']['#max_delta'] !== -1) {
+      for ($i = 0; $i <= $form[$field]['widget']['#max_delta']; $i++) {
+        $form[$field]['widget'][$i]['subform']['field_waste_category']['widget']['#ajax'] = array(
+          'callback' => '_casella_misc_location_form_ajax_handler',
+          'event' => 'change',
+          'effect' => 'fade',
+          'progress' => array(
+            'type' => 'throbber',
+            'message' => NULL,
+          ),
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Custom AJAX handler for waste category onchange event.
+ *
+ * @param array $form
+ * @param \Drupal\Core\Form\FormState $form_state
+ * @return \Drupal\Core\Ajax\AjaxResponse
+ */
+function _casella_misc_location_form_ajax_handler(array &$form, \Drupal\Core\Form\FormState $form_state) {
+  $ajax_response = new \Drupal\Core\Ajax\AjaxResponse();
+
+  // The triggering element can be found in triggering_element.
+  // We need the delta to make sure we update the correct description.
+  $triggering_element = $form_state->getTriggeringElement();
+  // The field and delta can be pulled out of the parents tree.
+  $field = $triggering_element['#field_parents'][0];
+  $delta = $triggering_element['#field_parents'][1];
+  // And the value lives in the default value.
+  $selected_value = $triggering_element['#default_value'][0];
+
+  if ($selected_value == '_none') {
+    return $ajax_response;
+  }
+
+  // Snag the term.
+  $term = \Drupal\taxonomy\Entity\Term::load($selected_value);
+
+  // $desc = $term ? $term->getDescription() : '';
+  $desc = $term->get('field_description');
+  if ($desc) {
+    $desc = $desc->getValue();
+    $desc = $desc[0]['value'];
+  }
+  // If the term is bad we nix the description.
+  else {
+    $desc = '';
+  }
+
+  $ajax_response->addCommand(new \Drupal\Core\Ajax\InvokeCommand('[name="' . $field . '[' . $delta . '][subform][field_waste_description][0][value]"]', 'val', array($desc)));
+
+  return $ajax_response;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function casella_misc_form_taxonomy_term_waste_categories_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  // $desc = $form['description']['widget']['#description']->create('The default description of this Waste Category that will display when this term is assigned to a location.');
+  // $form['description']['widget'][0]['#description'] = $desc;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function casella_misc_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  if ("views-exposed-form-location-towns-page-1" == $form['#id']) {
+    $form['name']['#attributes']['placeholder'] = 'Search...';
+    $form['#action'] = '';
+  }
 }
 
 /**
@@ -77,17 +190,39 @@ function casella_misc_form_node_subsection_homepage_edit_form_alter(&$form, \Dru
  * @param \Drupal\Core\Form\FormStateInterface $form_state
  */
 function casella_misc_form_node_page_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
-  $currentRoles = \Drupal::currentUser()->getRoles();
+  $currentUser = \Drupal::currentUser();
+  $currentRoles = $currentUser->getRoles();
+
+  // Full access.
+  if (array_intersect(array('client_admin', 'administrator'), $currentRoles)) {
+    return;
+  }
+  if ($currentUser->id() == 1) {
+    return;
+  }
+
+  // Check if this is is an organics user, and earthlife user, or both.
+  $isEarthlife = in_array('earthlife', $currentRoles);
+  $isOrganics = in_array('organics', $currentRoles);
+
+  // Both but not an admin.
+  if ($isEarthlife && $isOrganics) {
+    $form['field_subsection']['widget']['#required'] = TRUE;
+    return;
+  }
 
   // Force the subsection for earthlife and organics users.
-  if (in_array('earthlife', $currentRoles)) {
+  if ($isEarthlife) {
     $form['field_subsection']['widget']['#default_value'] = 'earthlife';
     $form['field_post_category']['#access'] = FALSE;
     $form['field_subsection']['#access'] = FALSE;
+    return;
   }
-  elseif (in_array('organics', $currentRoles)) {
+
+  if (in_array('organics', $currentRoles)) {
     $form['field_subsection']['widget']['#default_value'] = 'organics';
     $form['field_subsection']['#access'] = FALSE;
+    return;
   }
 }
 
@@ -98,15 +233,45 @@ function casella_misc_form_node_page_form_alter(&$form, \Drupal\Core\Form\FormSt
  * @param \Drupal\Core\Form\FormStateInterface $form_state
  */
 function casella_misc_form_node_page_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
-  $currentRoles = \Drupal::currentUser()->getRoles();
+  // Remove a bunch of fields from the Our Locations page.
+  $nodeParam = \Drupal::routeMatch()->getParameter('node');
+  if (2051 == $nodeParam->id()) {
+    foreach (array('body', 'field_2_column', 'field_full_width', 'field_logo', 'field_post_category', 'field_sidebar_promotions', 'field_slider_images', 'field_subsection', 'field_tabs') as $suppressionTarget) {
+      $form[$suppressionTarget]['#access'] = FALSE;
+    }
+  }
+
+  $currentUser = \Drupal::currentUser();
+  $currentRoles = $currentUser->getRoles();
+
+  // Full access.
+  if (array_intersect(array('client_admin', 'administrator'), $currentRoles)) {
+    return;
+  }
+  if ($currentUser->id() == 1) {
+    return;
+  }
+
+  // Check if this is is an organics user, and earthlife user, or both.
+  $isEarthlife = in_array('earthlife', $currentRoles);
+  $isOrganics = in_array('organics', $currentRoles);
+
+  // Both but not an admin.
+  if ($isEarthlife && $isOrganics) {
+    $form['field_subsection']['widget']['#required'] = TRUE;
+    return;
+  }
 
   // Remove access to the subsection for earthlife and organics users.
-  if (in_array('earthlife', $currentRoles)) {
+  if ($isEarthlife) {
     $form['field_post_category']['#access'] = FALSE;
     $form['field_subsection']['#access'] = FALSE;
+    return;
   }
-  elseif (in_array('organics', $currentRoles)) {
+
+  if ($isOrganics) {
     $form['field_subsection']['#access'] = FALSE;
+    return;
   }
 }
 
@@ -128,7 +293,18 @@ function casella_misc_form_node_casella_globals_edit_form_alter(&$form, \Drupal\
     return;
   }
 
-  foreach (array('field_customer_care', 'field_footer_statement', 'field_online_bill_pay', 'field_search_overlay_text', 'field_social_icon_links') as $key) {
+  $adminOnly = array(
+    'field_customer_care',
+    'field_footer_statement',
+    'field_online_bill_pay',
+    'field_search_overlay_text',
+    'field_social_icon_links',
+    'field_acceptable_waste_intro',
+    'field_unacceptable_waste_intro',
+    'field_charges_warning',
+  );
+
+  foreach ($adminOnly as $key) {
     $form[$key]['#access'] = FALSE;
   }
 
@@ -148,7 +324,6 @@ function casella_misc_form_node_casella_globals_edit_form_alter(&$form, \Drupal\
  * @param \Drupal\Core\Form\FormStateInterface $form_state
  */
 function casella_misc_form_node_faq_landing_page_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
-  field_purge_batch(500);
   $currentUser = \Drupal::currentUser();
   $currentRoles = $currentUser->getRoles();
 
@@ -172,6 +347,16 @@ function casella_misc_entity_access(\Drupal\Core\Entity\EntityInterface $entity,
     return \Drupal\Core\Access\AccessResult::neutral();
   }
 
+  // If this is an unpublished node check if the user can edit. If so grant view access.
+  if ('view' == $operation && 'node' == $entity->getEntityTypeId() && !$entity->isPublished()) {
+    $access = node_node_access($entity, 'update', $account);
+
+    if ($access) {
+      return \Drupal\Core\Access\AccessResult::allowed();
+    }
+  }
+
+  // Subsection access overrides.
   if (in_array($entity->bundle(), array('page', 'subsection_homepage')) && in_array($operation, array('update', 'delete'))) {
     $currentRoles = \Drupal::currentUser()->getRoles();
     $earthlife = in_array('earthlife', $currentRoles);
@@ -192,11 +377,24 @@ function casella_misc_entity_access(\Drupal\Core\Entity\EntityInterface $entity,
       return \Drupal\Core\Access\AccessResult::forbidden();
     }
 
-    if (($earthlife && 'earthlife' != $subsection[0]['value']) || $organics && 'organics' != $subsection[0]['value']) {
+    if (!($earthlife && 'earthlife' == $subsection[0]['value']) && !($organics && 'organics' == $subsection[0]['value'])) {
       return \Drupal\Core\Access\AccessResult::forbidden();
     }
   }
 
   // All else being equal return a neutral result.
   return \Drupal\Core\Access\AccessResult::neutral();
+}
+
+/**
+ * Implements hook_block_build_alter() for views_block__locations_block_5.
+ * @param array $build
+ * @param \Drupal\Core\Block\BlockPluginInterface $block
+ */
+function casella_misc_block_build_views_block_alter(array &$build, \Drupal\Core\Block\BlockPluginInterface $block) {
+  $config = $block->getConfiguration();
+  if (isset($config['id']) && 'views_block:locations-block_5' == $config['id']) {
+    // No caching for searches...
+    $build['#cache']['max-age'] = 0;
+  }
 }

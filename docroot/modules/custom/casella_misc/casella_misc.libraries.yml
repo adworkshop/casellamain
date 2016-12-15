@@ -1,0 +1,6 @@
+admin-required-tabs:
+  version: 1.x
+  js:
+    js/admin_required_tabs.js: {}
+  dependencies:
+    - core/jquery
