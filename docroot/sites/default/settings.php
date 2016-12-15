@@ -718,8 +718,6 @@ if (file_exists(__DIR__ . '/settings.local.php')) {
 // Remove for prod.
 // $settings['cache']['bins']['render'] = 'cache.backend.null';
 // $settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
-$settings['cache']['bins']['render'] = 'cache.backend.database';
-$settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.database';
 
 
 // On Acquia Cloud, this include file configures Drupal to use the correct
@@ -746,4 +744,15 @@ if (isset($_SERVER['DEVDESKTOP_DRUPAL_SETTINGS_DIR']) && file_exists($_SERVER['D
 // (Drupal 5 or 6) or $databases (Drupal 7 or 8) as described in comments above.
 if (file_exists('/var/www/site-php')) {
   require('/var/www/site-php/casella/casella-settings.inc');
+
+  if (empty($settings['memcache']['servers'])) {
+    $settings['memcache']['servers'] = $conf['memcache_servers'];
+    $settings['memcache']['key_prefix'] = $conf['memcache_key_prefix'];
+    $settings['memcache']['bins'] = ['default' => 'default'];
+  }
+
+  // Use memcache for cache_discovery
+  $settings['cache']['bins']['discovery'] = 'cache.backend.memcache';
+  // Use memcache as the default bin
+  $settings['cache']['default'] = 'cache.backend.memcache';
 }
