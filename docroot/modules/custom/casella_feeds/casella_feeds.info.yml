@@ -1,0 +1,7 @@
+name: Casella Feeds
+description: Defines custom XML feed types.
+package: Custom
+
+type: module
+core: 8.x
+project: 'casella_feeds'
