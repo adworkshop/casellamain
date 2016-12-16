@@ -155,6 +155,59 @@ function casella_misc_form_contact_message_job_application_form_alter(&$form, \D
   }
 
   $form['field_status']['#access'] = FALSE;
+
+  foreach (array_keys($form['actions']) as $action) {
+    if ($action != 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+      $form['actions'][$action]['#submit'][] = '_casella_misc_form_contact_message_job_application_form_submit';
+    }
+  }
+}
+
+function _casella_misc_form_contact_message_job_application_form_submit($form, \Drupal\Core\Form\FormState $form_state) {
+  $values = $form_state->getValues();
+
+  // Make sure we stay on the job itself.
+  // Pull the nid from the job reference field.
+  $jobRef = $values['field_job_reference'][0]['value'];
+  $jobRef = str_replace('JOB', '', $jobRef);
+  $url = \Drupal\Core\Url::fromRoute('entity.node.canonical', array('node' => $jobRef));
+  $form_state->setRedirectUrl($url);
+
+  $taxonomyStorage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+
+  // Send out an email to the hiring managers - if they exist.
+  $mailManager = \Drupal::service('plugin.manager.mail');
+  foreach ($values['field_hiring_manager'] as $hiringManager) {
+    if ('' != $hiringManager['target_id']) {
+      $manager = $taxonomyStorage->load($hiringManager['target_id']);
+      if (!$manager) {
+        continue;
+      }
+
+      $email = $manager->get('field_email_address');
+      if (!$email) {
+        continue;
+      }
+
+      $email = $email->getValue();
+
+      $mailManager->mail('casella_misc', 'hiring_manager_alert', $email[0]['value'], $manager->language(), array('targetName' => $manager->getName(), 'jobPosting' => $values['field_job_title'][0]['value']));
+    }
+  }
+}
+
+/**
+ * Implements hook_mail().
+ *
+ */
+function casella_misc_mail($key, &$message, $params) {
+  switch($key) {
+    case 'hiring_manager_alert':
+      $message['subject'] = new \Drupal\Core\StringTranslation\TranslatableMarkup('New job application');
+      $message['body'][] = new \Drupal\Core\StringTranslation\TranslatableMarkup("Dear @targetName", array('@targetName' => $params['targetName']));
+      $message['body'][] = new \Drupal\Core\StringTranslation\TranslatableMarkup("An applicant has submitted a new job application to the @jobPosting posting.", array('@jobPosting' => $params['jobPosting']));
+      break;
+  }
 }
 
 /**
