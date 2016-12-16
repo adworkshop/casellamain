@@ -225,6 +225,50 @@ function casella_misc_mail($key, &$message, $params) {
  * @param $form
  * @param \Drupal\Core\Form\FormStateInterface $form_state
  */
+function casella_misc_form_contact_message_service_location_contact_form_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  $form['field_location_title']['#type'] = 'hidden';
+  $form['field_location_id']['#type'] = 'hidden';
+
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if (!$node) {
+    return;
+  }
+
+  $form['field_location_title']['widget'][0]['value']['#default_value'] = $node->getTitle();
+  $form['field_location_id']['widget'][0]['value']['#default_value'] = $node->id();
+
+  foreach (array_keys($form['actions']) as $action) {
+    if ($action != 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+      $form['actions'][$action]['#submit'][] = '_casella_misc_form_contact_message_service_location_contact_form_form_submit';
+    }
+  }
+}
+
+/**
+ * Custom submit function for the location contact form.
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormState $form_state
+ */
+function _casella_misc_form_contact_message_service_location_contact_form_form_submit($form, \Drupal\Core\Form\FormState $form_state) {
+  $values = $form_state->getValues();
+
+  // Make sure we stay on the location itself.
+  $locationRef = $values['field_location_id'][0]['value'];
+  if ('' == $locationRef) {
+    return;
+  }
+
+  $url = \Drupal\Core\Url::fromRoute('entity.node.canonical', array('node' => $locationRef));
+  $form_state->setRedirectUrl($url);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
 function casella_misc_form_node_subsection_homepage_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
   $node = \Drupal::routeMatch()->getParameter('node');
   if ($node) {
