@@ -1,0 +1,12 @@
+adw_search.robots_edit:
+  title: 'Edit robots.txt File'
+  description: 'Edit the text that appears in the robots.txt file.'
+  parent: system.admin_config_search
+  route_name: adw_search.robots_edit
+  weight: 100
+adw_search.sitemap_txt_config:
+  title: 'Edit sitemap.txt Settings'
+  description: 'Edit settings involved in the generation of the sitemap.txt file'
+  parent: system.admin_config_search
+  route_name: adw_search.sitemap_txt_config
+  weight: 100

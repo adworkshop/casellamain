@@ -1,0 +1,93 @@
+<?php
+
+use Drupal\node\NodeInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+
+/**
+ * Implements hook_preprocess_sitemap().
+ *
+ * @param array $variables
+ */
+function adw_search_preprocess_sitemap(&$variables) {
+  //yeah, it's a string replace and strip_tags, but the sitemap module didn't put that part in a theme function
+  if(isset($variables['sitemap_items']['front']['content']['#markup'])){
+    $variables['sitemap_items']['front']['content']['#markup'] = strip_tags(str_replace('Front page of ','',$variables['sitemap_items']['front']['content']['#markup']),'<a>');
+  }
+}
+
+/**
+ * Implements hook_entity_view_alter().
+ *
+ * @param $build
+ * @param EntityInterface $entity
+ * @param EntityViewDisplayInterface $display
+ */
+function adw_search_entity_view_alter(&$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
+  // This hook only fires after a cache clear. You have been warned!
+  // Short circuit if this isn't a full node view.
+  if ($entity Instanceof NodeInterface && $build['#view_mode'] !== 'full') {
+    return;
+  }
+
+  _adw_search_filter_head_links($build);
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ *
+ * @param array $attachments
+ */
+function adw_search_page_attachments_alter(array &$attachments) {
+  _adw_search_filter_head_links($attachments);
+}
+
+/**
+ * Helper function to prune the html_head_link array and force the canonical.
+ *
+ * @param array $attachments
+ */
+function _adw_search_filter_head_links(&$attachments) {
+  // Short circuit if the head_link doesn't exist
+  if (!isset($attachments['#attached']['html_head_link'])) {
+    return;
+  }
+
+  // Array of keys to unset.
+  $headLinksToRemove = array(
+    'shortlink',
+    'delete-form',
+    'edit-form',
+    'version-history',
+    'revision',
+    // Only here if devel is enabled.
+    'devel-render',
+    'devel-load',
+  );
+
+  // No matter what we will need the canonical url.
+  global $base_url;
+  $canonicalHeadLink = $base_url . \Drupal::request()->getRequestUri();
+
+  // Unset loop.
+  foreach ($attachments['#attached']['html_head_link'] as $linkKey => $linkValue) {
+    if (isset($linkValue[0]['rel']) && in_array($linkValue[0]['rel'], $headLinksToRemove)) {
+      unset($attachments['#attached']['html_head_link'][$linkKey]);
+    }
+    elseif($linkValue[0]['rel'] == 'canonical') {
+      $attachments['#attached']['html_head_link'][$linkKey][0]['href'] = $canonicalHeadLink;
+      $canonicalHeadLink = FALSE;
+    }
+  }
+
+  // If we didn't find the canonical add it here.
+  if ($canonicalHeadLink !== FALSE) {
+    $build['#attached']['html_head_link'][] = array(
+      array(
+        'rel' => 'canonical',
+        'href' => $canonicalHeadLink
+      ),
+      TRUE,
+    );
+  }
+}

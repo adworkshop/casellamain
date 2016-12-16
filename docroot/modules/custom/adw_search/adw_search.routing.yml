@@ -1,0 +1,31 @@
+adw_search.robots:
+  path: '/robots.txt'
+  defaults:
+    _controller: '\Drupal\adw_search\Controller\RobotsController::content'
+    _title: 'Robots File'
+  requirements:
+    _permission: 'access content'
+
+adw_search.robots_edit:
+  path: '/admin/config/edit-robots'
+  defaults:
+    _form: '\Drupal\adw_search\Form\RobotsEditForm'
+    _title: 'Edit robots.txt'
+  requirements:
+    _permission: 'edit robots'
+
+adw_search.sitemap_txt_config:
+  path: '/admin/config/edit-sitemap-txt'
+  defaults:
+    _form: '\Drupal\adw_search\Form\SitemapTxtConfig'
+    _title: 'Edit sitemap.txt Configuration'
+  requirements:
+    _permission: 'configure sitmaptxt'
+
+adw_search.sitemap_txt:
+  path: '/sitemap.txt'
+  defaults:
+    _controller: '\Drupal\adw_search\Controller\SitemapTxtController::content'
+    _title: 'sitemap.txt'
+  requirements:
+    _permission: 'access content'

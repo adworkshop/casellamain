@@ -1,0 +1,8 @@
+edit robots:
+  title: 'Edit the site robots.txt file'
+  description: 'Allow user to edit the site robots.txt file.'
+  restrict access: FALSE
+configure sitmaptxt:
+  title: 'Edit settings for sitemap.txt'
+  description: 'Allow user to change configuration for sitemap.txt generation.'
+  restrict access: FALSE
