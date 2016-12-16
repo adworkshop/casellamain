@@ -1,0 +1,24 @@
+id: adw_search
+robots_file_contents: "User-agent: *\n# CSS, JS, Images\nAllow: /core/*.css$\nAllow: /core/*.css?\nAllow: /core/*.js$\nAllow: /core/*.js?\nAllow: /core/*.gif\nAllow: /core/*.jpg\nAllow: /core/*.jpeg\nAllow: /core/*.png\nAllow: /core/*.svg\nAllow: /profiles/*.css$\nAllow: /profiles/*.css?\nAllow: /profiles/*.js$\nAllow: /profiles/*.js?\nAllow: /profiles/*.gif\nAllow: /profiles/*.jpg\nAllow: /profiles/*.jpeg\nAllow: /profiles/*.png\nAllow: /profiles/*.svg\n# Directories\nDisallow: /core/\nDisallow: /profiles/\n# Files\nDisallow: /README.txt\nDisallow: /web.config\n# Paths (clean URLs)\nDisallow: /admin/\nDisallow: /comment/reply/\nDisallow: /filter/tips/\nDisallow: /node/add/\nDisallow: /search/\nDisallow: /user/register/\nDisallow: /user/password/\nDisallow: /user/login/\nDisallow: /user/logout/\n# Paths (no clean URLs)\nDisallow: /index.php/admin/\nDisallow: /index.php/comment/reply/\nDisallow: /index.php/filter/tips/\nDisallow: /index.php/node/add/\nDisallow: /index.php/search/\nDisallow: /index.php/user/password/\nDisallow: /index.php/user/register/\nDisallow: /index.php/user/login/\nDisallow: /index.php/user/logout/\n"
+sitemap_txt_content_types:
+  faq_landing_page: faq_landing_page
+  information_post: information_post
+  job: job
+  landing_page: landing_page
+  location: location
+  page: page
+  product: product
+  product_category: product_category
+  service: service
+  solution: solution
+  subsection_homepage: subsection_homepage
+  casella_globals: 0
+  case_study: 0
+  content_promotions: 0
+  full_width_promotion: 0
+  sidebar_promotion: 0
+  testimonial: 0
+sitemap_txt_additional_pages: ''
+sitemap_txt_omit_pages: ''
+_core:
+  default_config_hash: V9SuK-B72SJ904P5AR1ZH0feHOnKCxc4zrbKZ_lLyV0
