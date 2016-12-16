@@ -163,6 +163,12 @@ function casella_misc_form_contact_message_job_application_form_alter(&$form, \D
   }
 }
 
+/**
+ * Custom submit function for the job application contact form.
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormState $form_state
+ */
 function _casella_misc_form_contact_message_job_application_form_submit($form, \Drupal\Core\Form\FormState $form_state) {
   $values = $form_state->getValues();
 
@@ -199,6 +205,9 @@ function _casella_misc_form_contact_message_job_application_form_submit($form, \
 /**
  * Implements hook_mail().
  *
+ * @param string $key
+ * @param array $message
+ * @param array $params
  */
 function casella_misc_mail($key, &$message, $params) {
   switch($key) {
