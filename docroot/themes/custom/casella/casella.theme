@@ -1428,6 +1428,19 @@ function casella_preprocess_node(&$variables) {
 
     $chargesWarning = _casella_get_global('field_charges_warning');
     $variables['chargesWarning'] = $chargesWarning ? $chargesWarning[0]['value'] : '';
+
+    $variables['alertEnd'] = FALSE;
+    $alertEnd = $variables['node']->get('field_alert_end_date');
+    if ($alertEnd) {
+      $alertEnd = $alertEnd->getValue();
+
+      $alertEndVal = new DateTime($alertEnd[0]['value'], new DateTimeZone('UTC'));
+      $alertEndVal->setTimezone(new DateTimeZone('America/New_York'));
+
+      // Leave this as a DateTime object. Twig's date() function generates one
+      // anyways.
+      $variables['alertEnd'] = $alertEndVal;
+    }
   }
   elseif ('job' == $type) {
     $location = $variables['node']->get('field_location')->getValue();

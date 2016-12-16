@@ -15,8 +15,10 @@
 {% endblock %}
 
 {% block bodySection %}
-  {% if content.field_alert_title|render|adw_strip_comments|trim or content.field_alert_content|render|adw_strip_comments|trim %}
-    {% include "/" ~ theme_path ~ "/templates/includes/location-alert.html.twig" %}
+  {% if not alertEnd or date(alertEnd) > date() %}
+    {% if content.field_alert_title|render|adw_strip_comments|trim or content.field_alert_content|render|adw_strip_comments|trim %}
+      {% include "/" ~ theme_path ~ "/templates/includes/location-alert.html.twig" %}
+    {% endif %}
   {% endif %}
 
   {{ content.field_dropoff_hours }}
