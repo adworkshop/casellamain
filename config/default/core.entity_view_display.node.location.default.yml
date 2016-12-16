@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.location.feeds_item
     - field.field.node.location.field_acceptable_waste
     - field.field.node.location.field_alert_content
+    - field.field.node.location.field_alert_end_date
     - field.field.node.location.field_alert_title
     - field.field.node.location.field_city
     - field.field.node.location.field_dropoff_hours
@@ -15,7 +16,6 @@ dependencies:
     - field.field.node.location.field_location_category
     - field.field.node.location.field_longitude
     - field.field.node.location.field_phone_number
-    - field.field.node.location.field_places_id
     - field.field.node.location.field_schedule_title
     - field.field.node.location.field_sidebar_promotions
     - field.field.node.location.field_state
@@ -150,6 +150,6 @@ content:
     third_party_settings: {  }
 hidden:
   feeds_item: true
+  field_alert_end_date: true
   field_holiday_schedule: true
-  field_places_id: true
   langcode: true
