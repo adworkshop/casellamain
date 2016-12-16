@@ -12,7 +12,8 @@
 # core
 
 # Core's dependencies are managed with Composer.
-vendor
+# Allowing vendor to be revisioned to avoid needing composer on Acquia Cloud.
+#vendor
 
 # Ignore configuration files that may contain sensitive information.
 sites/*/settings*.php
