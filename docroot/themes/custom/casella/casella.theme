@@ -1434,12 +1434,14 @@ function casella_preprocess_node(&$variables) {
     if ($alertEnd) {
       $alertEnd = $alertEnd->getValue();
 
-      $alertEndVal = new DateTime($alertEnd[0]['value'], new DateTimeZone('UTC'));
-      $alertEndVal->setTimezone(new DateTimeZone('America/New_York'));
+      if (isset($alertEnd[0]['value'])) {
+        $alertEndVal = new DateTime($alertEnd[0]['value'], new DateTimeZone('UTC'));
+        $alertEndVal->setTimezone(new DateTimeZone('America/New_York'));
 
-      // Leave this as a DateTime object. Twig's date() function generates one
-      // anyways.
-      $variables['alertEnd'] = $alertEndVal;
+        // Leave this as a DateTime object. Twig's date() function generates one
+        // anyways.
+        $variables['alertEnd'] = $alertEndVal;
+      }
     }
   }
   elseif ('job' == $type) {
