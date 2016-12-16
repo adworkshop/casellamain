@@ -17,5 +17,5 @@ recipients:
   - test@example.com
 reply: ''
 weight: 0
-message: 'Your message has been sent.'
+message: 'Thank you for getting in touch. We will get back to you as soon as possible.'
 redirect: ''

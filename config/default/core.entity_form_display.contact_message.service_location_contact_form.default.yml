@@ -7,6 +7,8 @@ dependencies:
     - field.field.contact_message.service_location_contact_form.field_email
     - field.field.contact_message.service_location_contact_form.field_first_name
     - field.field.contact_message.service_location_contact_form.field_last_name
+    - field.field.contact_message.service_location_contact_form.field_location_id
+    - field.field.contact_message.service_location_contact_form.field_location_title
     - field.field.contact_message.service_location_contact_form.field_message
     - field.field.contact_message.service_location_contact_form.field_purpose
     - field.field.contact_message.service_location_contact_form.field_sign_up
@@ -104,6 +106,20 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+  field_location_id:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_location_title:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_message:
     weight: 21
     settings:
