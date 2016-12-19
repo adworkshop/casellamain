@@ -4,10 +4,23 @@ status: true
 dependencies:
   config:
     - field.storage.node.body
+    - field.storage.node.field_h1_override
+    - field.storage.node.field_hero_text
+    - field.storage.node.field_job_categories
+    - field.storage.node.field_job_status
+    - field.storage.node.field_location
+    - field.storage.node.field_business_desc
+    - field.storage.node.field_home_desc
+    - field.storage.node.field_org_desc
+    - field.storage.node.field_location_category
+    - field.storage.node.field_upper_content
+    - field.storage.node.field_product_category
+    - field.storage.node.field_product_tags
     - search_api.server.acquia_search_server
   module:
-    - search_api
+    - taxonomy
     - node
+    - search_api
 _core:
   default_config_hash: '-ggwZpvT2-Ey1fqPkREitA6TGI_m5dTHD9vZm9FrlSQ'
 id: acquia_search_index
@@ -28,6 +41,112 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: title
     type: text
+  field_h1_override:
+    label: 'H1 Override'
+    datasource_id: 'entity:node'
+    property_path: field_h1_override
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_h1_override
+  field_hero_text:
+    label: 'Hero Text'
+    datasource_id: 'entity:node'
+    property_path: field_hero_text
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_hero_text
+  name:
+    label: 'Job Categories » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_job_categories:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_job_categories
+      module:
+        - taxonomy
+  name_1:
+    label: 'Job Status » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_job_status:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_job_status
+      module:
+        - taxonomy
+  title_1:
+    label: 'Location/Company » Content » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_location:entity:title'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_location
+      module:
+        - node
+  field_business_desc:
+    label: 'Business Description'
+    datasource_id: 'entity:node'
+    property_path: field_business_desc
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_business_desc
+  field_home_desc:
+    label: 'Home Description'
+    datasource_id: 'entity:node'
+    property_path: field_home_desc
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_home_desc
+  field_org_desc:
+    label: 'Organization Description'
+    datasource_id: 'entity:node'
+    property_path: field_org_desc
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_org_desc
+  field_location_category:
+    label: 'Location Category'
+    datasource_id: 'entity:node'
+    property_path: field_location_category
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_location_category
+  field_upper_content:
+    label: 'Upper Content'
+    datasource_id: 'entity:node'
+    property_path: field_upper_content
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_upper_content
+  title_2:
+    label: 'Product Category » Content » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_product_category:entity:title'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_product_category
+      module:
+        - node
+  name_2:
+    label: 'Product Tags » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_product_tags:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_product_tags
+      module:
+        - taxonomy
 processor_settings:
   add_url:
     plugin_id: add_url
@@ -53,7 +172,13 @@ datasource_settings:
     settings:
       bundles:
         default: true
-        selected: {  }
+        selected:
+          - case_study
+          - casella_globals
+          - content_promotions
+          - full_width_promotion
+          - sidebar_promotion
+          - testimonial
       languages:
         default: true
         selected: {  }
