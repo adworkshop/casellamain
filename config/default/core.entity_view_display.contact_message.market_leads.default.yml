@@ -6,7 +6,6 @@ dependencies:
     - contact.form.market_leads
     - field.field.contact_message.market_leads.field_enews_optin
     - field.field.contact_message.market_leads.field_ml_address
-    - field.field.contact_message.market_leads.field_ml_challenge
     - field.field.contact_message.market_leads.field_ml_city
     - field.field.contact_message.market_leads.field_ml_company
     - field.field.contact_message.market_leads.field_ml_email
@@ -40,12 +39,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-  field_ml_challenge:
-    weight: 14
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: basic_string
   field_ml_city:
     weight: 9
     label: above
