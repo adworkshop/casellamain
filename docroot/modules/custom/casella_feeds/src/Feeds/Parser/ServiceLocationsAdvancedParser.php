@@ -63,7 +63,7 @@ class ServiceLocationsAdvancedParser extends PluginBase implements ParserInterfa
       $item->set('serviceReference', $this->casella_feeds_get_xml_element_value($location, 'DivRef'));
       $item->set('phone', $this->casella_feeds_get_xml_element_value($location, 'Cust'));
 
-      // $result->addItem($item);
+      $result->addItem($item);
     }
 
     return $result;
