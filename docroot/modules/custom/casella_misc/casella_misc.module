@@ -524,3 +524,13 @@ function casella_misc_form_contact_message_market_leads_form_alter(&$form, $form
 function casella_misc_form_contact_message_contact_form_alter(&$form, $form_state) {
   $form['message']['widget'][0]['value']['#title'] = new \Drupal\Core\StringTranslation\TranslatableMarkup('How can we help?:');
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function casella_misc_form_contact_message_service_request_form_alter(&$form, $form_state) {
+  $form['message']['widget'][0]['value']['#title'] = new \Drupal\Core\StringTranslation\TranslatableMarkup('Briefly describe your question or request: *');
+}

@@ -13,7 +13,6 @@ dependencies:
     - field.field.contact_message.service_request.field_service_last_name
     - field.field.contact_message.service_request.field_service_phone
     - field.field.contact_message.service_request.field_service_promotional_code
-    - field.field.contact_message.service_request.field_service_question_request
     - field.field.contact_message.service_request.field_service_service_request
     - field.field.contact_message.service_request.field_service_source
     - field.field.contact_message.service_request.field_service_state
@@ -89,12 +88,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-  field_service_question_request:
-    weight: 13
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: basic_string
   field_service_service_request:
     weight: 10
     label: above
