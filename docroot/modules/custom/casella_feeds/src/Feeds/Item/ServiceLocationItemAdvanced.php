@@ -22,4 +22,5 @@ class ServiceLocationItemAdvanced extends BaseItem {
   protected $towns;
   protected $hours;
   protected $serviceReference;
+  protected $phone;
 }

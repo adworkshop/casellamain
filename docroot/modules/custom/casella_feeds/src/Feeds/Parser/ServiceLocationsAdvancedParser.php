@@ -2,11 +2,10 @@
 
 namespace Drupal\casella_feeds\Feeds\Parser;
 
-use Drupal\casella_feeds\Feeds\Item\ServiceLocationItem;
+use Drupal\casella_feeds\Feeds\Item\ServiceLocationItemAdvanced;
 use Drupal\feeds\Component\XmlParserTrait;
 use Drupal\feeds\Exception\EmptyFeedException;
 use Drupal\feeds\FeedInterface;
-use Drupal\casella_feeds\Feeds\Item\TownsItem;
 use Drupal\feeds\Plugin\Type\Parser\ParserInterface;
 use Drupal\feeds\Plugin\Type\PluginBase;
 use Drupal\feeds\Result\FetcherResultInterface;
@@ -42,27 +41,46 @@ class ServiceLocationsAdvancedParser extends PluginBase implements ParserInterfa
     $result = new ParserResult();
 
     foreach ($xml->location as $location) {
-      $item = new ServiceLocationItem();
+      $item = new ServiceLocationItemAdvanced();
 
       $item->set('guid', $this->casella_feeds_get_xml_element_value($location, 'ID'));
       $item->set('title', $this->casella_feeds_get_xml_element_value($location, 'Title'));
       $item->set('type', $this->casella_feeds_get_xml_element_value($location, 'Type'));
+
       $item->set('street', $this->casella_feeds_get_xml_element_value($location, 'Street'));
       $item->set('city', $this->casella_feeds_get_xml_element_value($location, 'City'));
       $item->set('state', $this->casella_feeds_get_xml_element_value($location, 'State'));
       $item->set('zip', $this->casella_feeds_get_xml_element_value($location, 'Zip'));
       $item->set('lat', $this->casella_feeds_get_xml_element_value($location, 'Lat'));
       $item->set('lng', $this->casella_feeds_get_xml_element_value($location, 'Lon'));
+
       $item->set('published', 'On' == $this->casella_feeds_get_xml_element_value($location, 'PubStat'));
 
-      $item->set('towns', $this->casella_feeds_get_towns($location, 'Town'));
-      $item->set('hours', $this->casella_feeds_get_xml_element_value($location, 'Hours'));
+      // Need to handle the towns, there can be a bunch.
+      // $item->set('towns', $this->casella_feeds_get_towns($location, 'Town'));
+      // Need to handle the hours, they need to be split.
+      $item->set('hours', $this->parseHours($this->casella_feeds_get_xml_element_value($location, 'Hours')));
       $item->set('serviceReference', $this->casella_feeds_get_xml_element_value($location, 'DivRef'));
+      $item->set('phone', $this->casella_feeds_get_xml_element_value($location, 'Cust'));
 
       // $result->addItem($item);
     }
 
     return $result;
+  }
+
+  /**
+   * Pull the hours apart at the seams.
+   *
+   * @param string $hours
+   * @return string
+   */
+  private function parseHours($hours) {
+    if (!$hours || '' == $hours) {
+      return '';
+    }
+
+    return preg_replace('/([AP]M)([A-Z])/', "$1\r\n$2", $hours);
   }
 
   private function casella_feeds_get_xml_element_value($xmlElement, $attribute) {
@@ -131,6 +149,9 @@ class ServiceLocationsAdvancedParser extends PluginBase implements ParserInterfa
       'serviceReference' => [
         'label' => $this->t('Service Title Reference'),
       ],
+      'phone' => [
+        'label' => $this->t('Phone Number'),
+      ]
     ];
   }
 }
