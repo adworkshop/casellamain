@@ -62,3 +62,4 @@ permissions:
   85: 'unpublish any node type testimonial'
   86: 'edit any page content'
   87: 'restful get casellalocationmarkers'
+  88: 'bypass mollom protection'

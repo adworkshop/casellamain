@@ -171,3 +171,4 @@ permissions:
   165: 'delete content_promotions revisions'
   166: 'edit any content_promotions content'
   167: 'revert content_promotions revisions'
+  168: 'access mollom statistics'
