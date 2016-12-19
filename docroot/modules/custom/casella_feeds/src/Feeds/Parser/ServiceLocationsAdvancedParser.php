@@ -45,7 +45,15 @@ class ServiceLocationsAdvancedParser extends PluginBase implements ParserInterfa
 
       $item->set('guid', $this->casella_feeds_get_xml_element_value($location, 'ID'));
       $item->set('title', $this->casella_feeds_get_xml_element_value($location, 'Title'));
-      $item->set('type', $this->casella_feeds_get_xml_element_value($location, 'Type'));
+
+      $type = $this->casella_feeds_get_xml_element_value($location, 'Type');
+      if ('Office' == $type) {
+        $type = 'Corporate';
+      }
+      elseif ('Drop-off' == $type) {
+        $type = 'Transfer';
+      }
+      $item->set('type', $type);
 
       $item->set('street', $this->casella_feeds_get_xml_element_value($location, 'Street'));
       $item->set('city', $this->casella_feeds_get_xml_element_value($location, 'City'));
