@@ -7,7 +7,6 @@ dependencies:
     - field.field.contact_message.contact.field_con_email
     - field.field.contact_message.contact.field_con_first_name
     - field.field.contact_message.contact.field_con_last_name
-    - field.field.contact_message.contact.field_con_message
     - field.field.contact_message.contact.field_con_source
     - field.field.contact_message.contact.field_con_subject
     - field.field.contact_message.contact.field_enews_optin
@@ -38,12 +37,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-  field_con_message:
-    weight: 6
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: basic_string
   field_con_source:
     weight: 5
     label: above
