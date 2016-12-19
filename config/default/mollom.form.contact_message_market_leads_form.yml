@@ -1,0 +1,20 @@
+langcode: en
+id: contact_message_market_leads_form
+uuid: 054455fc-081e-498a-86dc-12d851554691
+label: 'Let&#039;s Talk form'
+mode: '2'
+enabled_fields:
+  - message
+checks:
+  - spam
+strictness: normal
+unsure: captcha
+discard: '1'
+moderation: null
+mapping:
+  post_title: subject
+  author_name: name
+  author_mail: mail
+module: contact
+entity: contact_message
+bundle: market_leads

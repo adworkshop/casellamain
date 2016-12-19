@@ -1,0 +1,20 @@
+langcode: en
+id: contact_message_service_location_contact_form_form
+uuid: d122e49e-9e48-4d2f-8edc-b3b525b74918
+label: 'Service Location Contact Form form'
+mode: '2'
+enabled_fields:
+  - message
+checks:
+  - spam
+strictness: normal
+unsure: captcha
+discard: '1'
+moderation: null
+mapping:
+  post_title: subject
+  author_name: name
+  author_mail: mail
+module: contact
+entity: contact_message
+bundle: service_location_contact_form

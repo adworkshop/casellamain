@@ -1,0 +1,20 @@
+langcode: en
+id: contact_message_service_request_form
+uuid: 797a19cd-8e17-41d0-9b7c-cb35f6759a60
+label: 'I Need Service form'
+mode: '2'
+enabled_fields:
+  - message
+checks:
+  - spam
+strictness: normal
+unsure: captcha
+discard: '1'
+moderation: null
+mapping:
+  post_title: subject
+  author_name: name
+  author_mail: mail
+module: contact
+entity: contact_message
+bundle: service_request
