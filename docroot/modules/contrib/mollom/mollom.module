@@ -281,7 +281,8 @@ function contact_mollom_form_info($form_id) {
   }
 
   if (strpos($form_id, 'contact_message') === 0) {
-    $bundle = str_replace('_form', '', str_replace('contact_message_', '', $form_id));
+    $bundle = preg_replace('/^contact_message_|_form$/', '', $form_id);
+    dsm($bundle);
     $contact_form = ContactForm::load($bundle);
     if ($contact_form) {
       $form_info = [
