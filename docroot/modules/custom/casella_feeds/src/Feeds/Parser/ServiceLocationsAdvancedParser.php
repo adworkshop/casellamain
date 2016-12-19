@@ -66,6 +66,8 @@ class ServiceLocationsAdvancedParser extends PluginBase implements ParserInterfa
 
       // Need to handle the towns, there can be a bunch.
       // $item->set('towns', $this->casella_feeds_get_towns($location, 'Town'));
+      $towns = $this->getTowns($location);
+
       // Need to handle the hours, they need to be split.
       $item->set('hours', $this->parseHours($this->casella_feeds_get_xml_element_value($location, 'Hours')));
       $item->set('serviceReference', $this->casella_feeds_get_xml_element_value($location, 'DivRef'));
@@ -75,6 +77,22 @@ class ServiceLocationsAdvancedParser extends PluginBase implements ParserInterfa
     }
 
     return $result;
+  }
+
+  /**
+   * @param $location
+   * @return array
+   */
+  function getTowns($location) {
+    $towns = [];
+    foreach ($location as $key => $value) {
+      if ('Town' == $key) {
+        $towns[] = preg_replace('/\s\(.*\)$/', '', (string) $value);
+      }
+    }
+    dsm($towns);
+
+    return $towns;
   }
 
   /**
