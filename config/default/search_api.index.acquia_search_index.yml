@@ -147,6 +147,27 @@ field_settings:
         - field.storage.node.field_product_tags
       module:
         - taxonomy
+  status:
+    label: null
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    indexed_locked: true
+    type_locked: true
+  uid:
+    label: null
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    indexed_locked: true
+    type_locked: true
+  node_grants:
+    label: 'Node access information'
+    property_path: search_api_node_grants
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
 processor_settings:
   add_url:
     plugin_id: add_url
@@ -157,6 +178,97 @@ processor_settings:
   rendered_item:
     plugin_id: rendered_item
     settings: {  }
+  content_access:
+    plugin_id: content_access
+    settings:
+      weights:
+        preprocess_query: -10
+  html_filter:
+    plugin_id: html_filter
+    settings:
+      fields:
+        - body
+        - field_hero_text
+        - field_business_desc
+        - field_home_desc
+        - field_org_desc
+        - field_upper_content
+      title: false
+      alt: false
+      tags:
+        h1: 5
+        h2: 3
+        h3: 2
+        strong: 2
+        b: 2
+        em: 1
+        u: 1
+      weights:
+        preprocess_index: -10
+        preprocess_query: -10
+  ignorecase:
+    plugin_id: ignorecase
+    settings:
+      fields:
+        - body
+        - title
+        - field_h1_override
+        - field_hero_text
+        - name
+        - name_1
+        - title_1
+        - field_business_desc
+        - field_home_desc
+        - field_org_desc
+        - field_location_category
+        - field_upper_content
+        - title_2
+        - name_2
+      weights:
+        preprocess_index: -10
+        preprocess_query: -10
+  node_status:
+    plugin_id: node_status
+    settings: {  }
+  tokenizer:
+    plugin_id: tokenizer
+    settings:
+      fields:
+        - body
+        - title
+        - field_h1_override
+        - field_hero_text
+        - field_business_desc
+        - field_home_desc
+        - field_org_desc
+        - field_upper_content
+      spaces: ''
+      overlap_cjk: 1
+      minimum_word_size: '3'
+      weights:
+        preprocess_index: -6
+        preprocess_query: -6
+  transliteration:
+    plugin_id: transliteration
+    settings:
+      fields:
+        - body
+        - title
+        - field_h1_override
+        - field_hero_text
+        - name
+        - name_1
+        - title_1
+        - field_business_desc
+        - field_home_desc
+        - field_org_desc
+        - field_location_category
+        - field_upper_content
+        - title_2
+        - name_2
+      weights:
+        preprocess_index: -10
+        preprocess_query: -10
 options:
   index_directly: false
   cron_limit: 50
