@@ -21,7 +21,15 @@
     {% endif %}
   {% endif %}
 
-  {{ content.field_dropoff_hours }}
+  {% if content.field_dropoff_hours|render|striptags|trim or content.field_open_to|render|striptags|trim %}
+    <div class="indLocation-drop-off-time">
+      <div class="globalWidth">
+        {{ content.field_dropoff_hours }}
+
+        {{ content.field_open_to }}
+      </div>
+    </div>
+  {% endif %}
 
   {% if content.field_acceptable_waste|render|trim or content.field_unacceptable_waste|render|trim %}
     <div class="indLocation-feed-body">

@@ -38,10 +38,8 @@
 #}
 
 {% for item in items %}
-  <div class="indLocation-drop-off-time">
-    <div class="globalWidth">
-      <div class="indLocation-drop-off-time__label">Drop-off Hours:</div>
-      {{ item.content }}
-    </div>
-  </div>
+  {% if item.content %}
+    <div class="indLocation-drop-off-time__label">Drop-off Hours:</div>
+    {{ item.content }}
+  {% endif %}
 {% endfor %}
