@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.location.field_latitude
     - field.field.node.location.field_location_category
     - field.field.node.location.field_longitude
+    - field.field.node.location.field_open_to
     - field.field.node.location.field_phone_number
     - field.field.node.location.field_schedule_title
     - field.field.node.location.field_sidebar_promotions
@@ -96,6 +97,13 @@ content:
     type: list_key
   field_longitude:
     weight: 7
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_open_to:
+    weight: 19
     label: hidden
     settings:
       link_to_entity: false

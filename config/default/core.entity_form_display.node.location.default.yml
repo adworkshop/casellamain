@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.location.field_latitude
     - field.field.node.location.field_location_category
     - field.field.node.location.field_longitude
+    - field.field.node.location.field_open_to
     - field.field.node.location.field_phone_number
     - field.field.node.location.field_schedule_title
     - field.field.node.location.field_sidebar_promotions
@@ -42,7 +43,7 @@ third_party_settings:
         - field_longitude
         - field_phone_number
       parent_name: ''
-      weight: 7
+      weight: 8
       format_type: details
       format_settings:
         label: 'Location Address and Contact Info'
@@ -56,7 +57,7 @@ third_party_settings:
         - field_schedule_title
         - field_holiday_schedule
       parent_name: ''
-      weight: 4
+      weight: 5
       format_type: details
       format_settings:
         id: ''
@@ -83,7 +84,7 @@ third_party_settings:
         - field_acceptable_waste
         - field_unacceptable_waste
       parent_name: ''
-      weight: 8
+      weight: 9
       format_type: details
       format_settings:
         id: ''
@@ -98,7 +99,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 5
+    weight: 6
     settings:
       rows: 9
       summary_rows: 3
@@ -106,7 +107,7 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 11
+    weight: 12
     settings: {  }
     third_party_settings: {  }
   field_acceptable_waste:
@@ -139,7 +140,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_assoc_hauling:
-    weight: 30
+    weight: 15
     settings:
       match_operator: CONTAINS
       size: 60
@@ -189,6 +190,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+  field_open_to:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
   field_phone_number:
     weight: 9
     settings:
@@ -204,7 +212,7 @@ content:
     third_party_settings: {  }
     type: string_textfield
   field_sidebar_promotions:
-    weight: 13
+    weight: 14
     settings:
       match_operator: CONTAINS
       size: 60
@@ -244,12 +252,12 @@ content:
     type: string_textfield
   langcode:
     type: language_select
-    weight: 6
+    weight: 7
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 9
+    weight: 10
     settings: {  }
     third_party_settings: {  }
   title:
@@ -260,12 +268,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 12
+    weight: 13
     settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 10
+    weight: 11
     settings:
       match_operator: CONTAINS
       size: 60
