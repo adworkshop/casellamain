@@ -503,7 +503,10 @@ function casella_misc_block_build_views_block_alter(array &$build, \Drupal\Core\
   $config = $block->getConfiguration();
   if (isset($config['id']) && 'views_block:locations-block_5' == $config['id']) {
     // No caching for searches...
-    $build['#cache']['max-age'] = 0;
+    // $build['#cache']['max-age'] = 0;
+
+    // Add the name query argument as a cache context.
+    $build['#cache']['contexts'][] = 'url.query_args:name';
   }
 }
 
