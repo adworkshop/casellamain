@@ -10,12 +10,14 @@ dependencies:
     - image.style.800x500
     - node.type.service
     - paragraphs.paragraphs_type.services
+    - responsive_image.styles.organics_service_tabs
     - system.menu.admin
   module:
     - draggableviews
     - image
     - node
     - paragraphs
+    - responsive_image
     - user
 id: organics
 label: Organics
@@ -1219,9 +1221,9 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: target_id
-          type: image
+          type: responsive_image
           settings:
-            image_style: ''
+            responsive_image_style: organics_service_tabs
             image_link: ''
           group_column: ''
           group_columns: {  }
