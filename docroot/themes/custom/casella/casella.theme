@@ -875,6 +875,7 @@ function casella_preprocess_paragraph(&$variables) {
         ->condition('nid', $serviceIds, 'IN');
       // Need to order by the delta of the field. Tis a bit convoluted...
       $serviceResults->addExpression('FIND_IN_SET(nid,:serviceIds)', 'orderByField', array(':serviceIds' => implode(',', $serviceIds)));
+      $serviceResults->condition('status', '1', '=');
       $serviceResults->orderBy('orderByField', 'ASC');
 
       $serviceResults = $serviceResults->execute();
