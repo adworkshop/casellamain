@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.location.field_alert_content
     - field.field.node.location.field_alert_end_date
     - field.field.node.location.field_alert_title
+    - field.field.node.location.field_assoc_hauling
     - field.field.node.location.field_city
     - field.field.node.location.field_dropoff_hours
     - field.field.node.location.field_holiday_schedule
@@ -137,6 +138,14 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_assoc_hauling:
+    weight: 30
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
   field_city:
     weight: 4
     settings:

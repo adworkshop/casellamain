@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.location.field_alert_content
     - field.field.node.location.field_alert_end_date
     - field.field.node.location.field_alert_title
+    - field.field.node.location.field_assoc_hauling
     - field.field.node.location.field_city
     - field.field.node.location.field_dropoff_hours
     - field.field.node.location.field_holiday_schedule
@@ -60,6 +61,13 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
+  field_assoc_hauling:
+    weight: 18
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
   field_city:
     weight: 3
     label: hidden

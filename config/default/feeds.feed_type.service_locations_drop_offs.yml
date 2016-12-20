@@ -85,3 +85,10 @@ mappings:
     target: field_location_category
     map:
       value: type
+  -
+    target: field_assoc_hauling
+    map:
+      target_id: serviceReference
+    settings:
+      reference_by: title
+      autocreate: 0
