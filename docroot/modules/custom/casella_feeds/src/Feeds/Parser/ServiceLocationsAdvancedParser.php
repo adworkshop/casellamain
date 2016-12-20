@@ -40,11 +40,16 @@ class ServiceLocationsAdvancedParser extends PluginBase implements ParserInterfa
     $this->stopXmlErrorHandling();
     $result = new ParserResult();
 
+    $nodeStorage = \Drupal::entityTypeManager()->getStorage('node');
+
     foreach ($xml->location as $location) {
       $item = new ServiceLocationItemAdvanced();
 
-      $item->set('guid', $this->casella_feeds_get_xml_element_value($location, 'ID'));
-      $item->set('title', $this->casella_feeds_get_xml_element_value($location, 'Title'));
+      $guid = $this->casella_feeds_get_xml_element_value($location, 'ID');
+      $item->set('guid', $guid);
+
+      $title = $this->casella_feeds_get_xml_element_value($location, 'Title');
+      $item->set('title', $title);
 
       $type = $this->casella_feeds_get_xml_element_value($location, 'Type');
       if ('Office' == $type) {
@@ -64,9 +69,21 @@ class ServiceLocationsAdvancedParser extends PluginBase implements ParserInterfa
 
       $item->set('published', 'On' == $this->casella_feeds_get_xml_element_value($location, 'PubStat'));
 
-      // Need to handle the towns, there can be a bunch.
-      // $item->set('towns', $this->casella_feeds_get_towns($location, 'Town'));
-      $towns = $this->getTowns($location);
+      // Try to pull an existing node object. It won't exist on the first pass.
+      // Check the type as well.
+      $nodeObj = $nodeStorage->loadByProperties([
+        'type' => 'location',
+        'title' => $title,
+        'field_location_category' => $type
+      ]);
+
+      // If this isnt our first rodeo we can assign the towns.
+      if ($nodeObj) {
+        $nodeObj = array_pop($nodeObj);
+
+        // Need to handle the towns, there can be a bunch.
+        $towns = $this->getTowns($location, $nodeObj->id());
+      }
 
       // Need to handle the hours, they need to be split.
       $item->set('hours', $this->parseHours($this->casella_feeds_get_xml_element_value($location, 'Hours')));
@@ -81,18 +98,46 @@ class ServiceLocationsAdvancedParser extends PluginBase implements ParserInterfa
 
   /**
    * @param $location
-   * @return array
+   * @param $nid
    */
-  function getTowns($location) {
-    $towns = [];
+  function getTowns($location, $nid) {
+    $taxonomyStorage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+
     foreach ($location as $key => $value) {
       if ('Town' == $key) {
-        $towns[] = preg_replace('/\s\(.*\)$/', '', (string) $value);
+        $town = preg_replace('/\s\(.*\)$/', '', (string) $value);
+        // Load the town by name.
+        $townObj = $taxonomyStorage->loadByProperties(['name' => $town]);
+        if (!$townObj) {
+          continue;
+        }
+
+        // We are only going to use the first town returned, even if theres more
+        // than one.
+        $townObj = array_pop($townObj);
+
+        $curServLoc = $townObj->get('field_service_location');
+        if (!$curServLoc) {
+          continue;
+        }
+
+        $curServLocVals = $curServLoc->getValue();
+
+        // Parse the existing targets to see if this is already included.
+        $existingTargets = array_map(function($a){return $a['target_id'];}, $curServLocVals);
+
+        if (in_array($nid, $existingTargets)) {
+          continue;
+        }
+
+        // Update the values on the field TypedDataInterface.
+        $curServLocVals[] = ['target_id' => $nid];
+        $curServLoc->setValue($curServLocVals);
+
+        // Save the term with the new value.
+        $townObj->save();
       }
     }
-    dsm($towns);
-
-    return $towns;
   }
 
   /**
