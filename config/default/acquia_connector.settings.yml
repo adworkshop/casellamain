@@ -1,7 +1,7 @@
 cloud_migration: {  }
-identifier: QRVW-114217
-key: 1aadbdb45818ed85b76cc48904295dc5
-subscription_name: 'Casella Refresh'
+identifier: AJQZ-141300
+key: 92ff6fe3314712dbb73d828602753b3e
+subscription_name: Casella
 debug: false
 cron_interval: 30
 cron_interval_override: 0
@@ -13,9 +13,12 @@ spi:
   server: 'https://nspi.acquia.com'
   ssl_override: false
   ssl_verify: true
-  def_vars: {  }
+  def_vars:
+    preprocess_css:
+      optional: 0
+      description: ''
   def_waived_vars: {  }
-  def_timestamp: 0
+  def_timestamp: 1374783288
   new_optional_data: 1
   admin_priv: 1
   send_node_user: 1
@@ -44,6 +47,9 @@ spi:
     variables: {  }
     time: 0
   cron_interval: 28800
+  site_name: Casella
+  site_machine_name: casella
+  site_uuid: 515158f1-2bbb-4c24-aa5f-05bac8854c89
 mapping:
   acquia_spi_send_node_user:
     - acquia_connector.settings
@@ -179,14 +185,14 @@ _core:
   default_config_hash: 0N5wlMbQX42onI1paJeEDU2Ap_eNZdcCVM1IPHFRHKM
 subscription_data:
   active: true
-  href: 'https://insight.acquia.com/node/uuid/4a42986b-2294-4f83-8e51-a244362abf53/dashboard'
-  uuid: 4a42986b-2294-4f83-8e51-a244362abf53
-  subscription_name: 'Casella Refresh'
+  href: 'https://insight.acquia.com/node/uuid/b1cf2220-a4c7-48b1-81d4-c846c26189dd/dashboard'
+  uuid: b1cf2220-a4c7-48b1-81d4-c846c26189dd
+  subscription_name: Casella
   expiration_date:
-    value: '2017-04-25T00:00:00'
+    value: '2017-12-08T00:00:00'
   product:
     view: 'Acquia Network'
-  derived_key_salt: 0970e3fb8220f53b04a7ca6df2a912f9
+  derived_key_salt: debc03e4fbde895fa990a1a5e2ad5417
   update_service: '1'
   search_service_enabled: 1
   rpc_version: '3'
@@ -206,6 +212,6 @@ subscription_data:
     search_service_enabled: 1
     search_cores:
       -
-        balancer: useast1-c68.acquia-search.com
-        core_id: QRVW-114217
-    search_service_colony: useast1-c68.acquia-search.com
+        balancer: useast1-c26.acquia-search.com
+        core_id: AJQZ-141300
+    search_service_colony: useast1-c26.acquia-search.com
