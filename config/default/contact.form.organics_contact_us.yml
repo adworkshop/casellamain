@@ -1,0 +1,20 @@
+uuid: 8b936c82-cad4-4989-970b-1467bf4a287b
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact_storage
+third_party_settings:
+  contact_storage:
+    submit_text: 'Send it'
+    show_preview: true
+    disabled_form_message: 'This contact form has been disabled.'
+    maximum_submissions_user: 0
+id: organics_contact_us
+label: 'Contact Us'
+recipients:
+  - test@example.com
+reply: ''
+weight: 0
+message: ''
+redirect: ''

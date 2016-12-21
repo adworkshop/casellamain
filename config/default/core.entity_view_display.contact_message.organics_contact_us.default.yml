@@ -1,0 +1,112 @@
+uuid: 762d0dd5-c333-4e6d-b706-36611a97cffe
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.organics_contact_us
+    - field.field.contact_message.organics_contact_us.field_company
+    - field.field.contact_message.organics_contact_us.field_contact_method
+    - field.field.contact_message.organics_contact_us.field_enews_optin
+    - field.field.contact_message.organics_contact_us.field_ml_email
+    - field.field.contact_message.organics_contact_us.field_ml_first_name
+    - field.field.contact_message.organics_contact_us.field_ml_last_name
+    - field.field.contact_message.organics_contact_us.field_ml_phone
+    - field.field.contact_message.organics_contact_us.field_nature_of_inquiry
+    - field.field.contact_message.organics_contact_us.field_title
+  module:
+    - options
+id: contact_message.organics_contact_us.default
+targetEntityType: contact_message
+bundle: organics_contact_us
+mode: default
+content:
+  field_company:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_contact_method:
+    weight: 8
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  field_enews_optin:
+    weight: 9
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+  field_ml_email:
+    weight: 6
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_ml_first_name:
+    weight: 4
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_ml_last_name:
+    weight: 5
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_ml_phone:
+    weight: 7
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_nature_of_inquiry:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  field_title:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  mail:
+    weight: -2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  message:
+    type: string
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  name:
+    weight: -3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  subject:
+    weight: -1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  langcode: true

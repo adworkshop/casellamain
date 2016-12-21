@@ -1,0 +1,90 @@
+uuid: fa914ec0-ea6a-4266-9391-aa33c6ca2b80
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.organics_contact_us
+    - field.field.contact_message.organics_contact_us.field_company
+    - field.field.contact_message.organics_contact_us.field_contact_method
+    - field.field.contact_message.organics_contact_us.field_enews_optin
+    - field.field.contact_message.organics_contact_us.field_ml_email
+    - field.field.contact_message.organics_contact_us.field_ml_first_name
+    - field.field.contact_message.organics_contact_us.field_ml_last_name
+    - field.field.contact_message.organics_contact_us.field_ml_phone
+    - field.field.contact_message.organics_contact_us.field_nature_of_inquiry
+    - field.field.contact_message.organics_contact_us.field_title
+id: contact_message.organics_contact_us.default
+targetEntityType: contact_message
+bundle: organics_contact_us
+mode: default
+content:
+  field_company:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_contact_method:
+    weight: 11
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+  field_enews_optin:
+    weight: 12
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+  field_ml_email:
+    weight: 8
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+  field_ml_first_name:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_ml_last_name:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_ml_phone:
+    weight: 9
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_nature_of_inquiry:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_title:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  message:
+    type: string_textarea
+    weight: 10
+    settings:
+      rows: 12
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  copy: true
+  langcode: true
+  mail: true
+  name: true
+  preview: true
+  subject: true
