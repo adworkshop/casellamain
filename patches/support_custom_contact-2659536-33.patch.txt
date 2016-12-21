@@ -1,0 +1,115 @@
+diff --git a/mollom.module b/mollom.module
+index 3c0db07..df4d7f8 100644
+--- a/mollom.module
++++ b/mollom.module
+@@ -2,6 +2,7 @@
+ 
+ use Drupal\comment\CommentInterface;
+ use Drupal\Component\Utility\Unicode;
++use Drupal\contact\Entity\ContactForm;
+ use Drupal\Core\Url;
+ use Drupal\Core\Form\FormStateInterface;
+ use Drupal\Core\Entity\EntityInterface;
+@@ -236,12 +237,24 @@ function comment_mollom_entity_report_access(CommentInterface $entity = NULL) {
+  * Implements hook_mollom_form_list().
+  */
+ function contact_mollom_form_list() {
+-  $forms['contact_message_feedback_form'] = array(
+-    'title' => t('Site-wide contact form'),
+-  );
+   $forms['contact_message_personal_form'] = array(
+     'title' => t('User contact form'),
+   );
++
++  /** @var ContactForm[] $contact_forms */
++  $contact_forms = ContactForm::loadMultiple();
++  foreach ($contact_forms as $contact_form) {
++    if ($contact_form->id() == 'feedback') {
++      continue;
++    }
++    $form_id = 'contact_message_' . $contact_form->id() . '_form';
++    $forms[$form_id] = [
++      'title' => t('@name form', array('@name' => $contact_form->label())),
++      'entity' => 'contact_message',
++      'bundle' => $contact_form->id(),
++      'report access' => array('administer contact forms'),
++    ];
++  }
+   return $forms;
+ }
+ 
+@@ -250,10 +263,10 @@ function contact_mollom_form_list() {
+  */
+ function contact_mollom_form_info($form_id) {
+   switch ($form_id) {
+-    case 'contact_message_feedback_form':
++    case 'contact_message_personal_form':
+       $form_info = array(
+         'mode' => FormInterface::MOLLOM_MODE_ANALYSIS,
+-        'bypass access' => array('administer contact forms'),
++        'bypass access' => array('administer users'),
+         'elements' => array(
+           'subject' => t('Subject'),
+           'message' => t('Message'),
+@@ -265,22 +278,29 @@ function contact_mollom_form_info($form_id) {
+         ),
+       );
+       return $form_info;
++  }
+ 
+-    case 'contact_message_personal_form':
+-      $form_info = array(
++  // Contact forms created in the interface
++  if (strpos($form_id, 'contact_message') === 0) {
++    $bundle = preg_replace('/^contact_message_|_form$/', '', $form_id);
++    $contact_form = ContactForm::load($bundle);
++    if ($contact_form) {
++      $form_info = [
+         'mode' => FormInterface::MOLLOM_MODE_ANALYSIS,
+-        'bypass access' => array('administer users'),
++        'bypass access' => ['administer contact forms'],
+         'elements' => array(
+           'subject' => t('Subject'),
+           'message' => t('Message'),
+         ),
+-        'mapping' => array(
++        'mapping' => [
+           'post_title' => 'subject',
+           'author_name' => 'name',
+           'author_mail' => 'mail',
+-        ),
+-      );
++        ],
++      ];
++      FormController::addProtectableFields($form_info, 'contact_message', $contact_form->id());
+       return $form_info;
++    }
+   }
+ }
+ 
+diff --git a/src/Controller/FormController.php b/src/Controller/FormController.php
+index 4c5f393..7f14101 100644
+--- a/src/Controller/FormController.php
++++ b/src/Controller/FormController.php
+@@ -449,7 +449,9 @@ class FormController extends ControllerBase {
+     if (!$entity_info = \Drupal::entityManager()->getDefinition($entity_type)) {
+       return;
+     }
+-    $form_info['mapping']['post_id'] = $entity_info->getKeys()['id'];
++    if (!empty($entity_info->getKeys()['id'])) {
++      $form_info['mapping']['post_id'] = $entity_info->getKeys()['id'];
++    }
+     $title = isset($form_info['mapping']['post_title']) ? $form_info['mapping']['post_title'] : '';
+     $title_parts = explode('][', $title);
+     $base_title = reset($title_parts);
+@@ -833,6 +835,10 @@ class FormController extends ControllerBase {
+     }
+     /* @var $form_object \Drupal\Core\Entity\EntityFormInterface */
+     $entity_id = $form_object->getEntity()->id();
++    // Don't try to save log data on enties without ids.
++    if (!$entity_id) {
++      return;
++    }
+     $data = (object) $mollom;
+     $data->id = $entity_id;
+     $data->moderate = $mollom['require_moderation'] ? 1 : 0;

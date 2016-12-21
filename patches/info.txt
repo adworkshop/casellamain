@@ -1,0 +1,14 @@
+Applied a core patch to get rid of a recurring error with the shortcuts module:
+https://www.drupal.org/node/2567035
+https://www.drupal.org/files/issues/2567035-7.patch
+
+Quickedit js patch
+https://www.drupal.org/files/issues/drupalbehaviorerror-2314185-18.patch
+
+Applied a patch to views autocomplete filter to fix a js error
+https://www.drupal.org/node/2824023
+https://www.drupal.org/files/issues/uncaught_typeerror-2824023-4.patch
+
+Mollom - applied patch that shows additional contact forms
+https://www.drupal.org/node/2659536
+https://www.drupal.org/files/issues/support_custom_contact-2659536-33.patch

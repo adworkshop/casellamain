@@ -1,0 +1,17 @@
+diff --git a/src/Controller/ViewsAutocompleteFiltersController.php b/src/Controller/ViewsAutocompleteFiltersController.php
+index 9b0d2b7..399f207 100644
+--- a/src/Controller/ViewsAutocompleteFiltersController.php
++++ b/src/Controller/ViewsAutocompleteFiltersController.php
+@@ -239,7 +239,11 @@ class ViewsAutocompleteFiltersController implements ContainerInjectionInterface
+       $matches = array_unique($matches, SORT_REGULAR);
+     }
+ 
+-    return new JsonResponse($matches);
++    // The Autocomplete js expects the JSON structure returned by this
++    // JsonResponse to be an array. JsonResponse calls json_encode which returns
++    // an object when it receives an array with non sequential keys. Ensure the
++    // keys are sequential before returning.
++    return new JsonResponse(array_values($matches));
+   }
+ 
+ }

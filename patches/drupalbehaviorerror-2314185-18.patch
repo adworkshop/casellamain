@@ -1,0 +1,17 @@
+diff --git a/core/modules/quickedit/js/quickedit.js b/core/modules/quickedit/js/quickedit.js
+index 40bdd3e..94ee63f 100644
+--- a/core/modules/quickedit/js/quickedit.js
++++ b/core/modules/quickedit/js/quickedit.js
+@@ -374,6 +374,12 @@
+     if (entityElement.length === 0) {
+       var $lowestCommonParent = $(entityElementSelector).parents().has(fieldElement).first();
+       entityElement = $lowestCommonParent.find(entityElementSelector);
++      // When the data-quickedit-entity-id attribute isn't rendered there is
++      // no way to reliably target the entity. Early-return if no target can
++      // be found.
++      if (entityElement.length === 0) {
++        return;
++      }
+     }
+     var entityInstanceID = entityElement
+       .get(0)
