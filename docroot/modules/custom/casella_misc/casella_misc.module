@@ -550,6 +550,16 @@ function casella_misc_token_info_alter(&$data) {
     'name' => new \Drupal\Core\StringTranslation\TranslatableMarkup('Product Category URL'),
     'description' => new \Drupal\Core\StringTranslation\TranslatableMarkup("The url of the node's product category"),
   ];
+
+  $data['tokens']['node']['organics_updates-path'] = [
+    'name' => new \Drupal\Core\StringTranslation\TranslatableMarkup('Organics Updates URL'),
+    'description' => new \Drupal\Core\StringTranslation\TranslatableMarkup("The url of the Organics Updates homepage"),
+  ];
+
+  $data['tokens']['node']['job_search-path'] = [
+    'name' => new \Drupal\Core\StringTranslation\TranslatableMarkup('Job Search URL'),
+    'description' => new \Drupal\Core\StringTranslation\TranslatableMarkup("The url of the Job Search"),
+  ];
 }
 
 /**
@@ -578,10 +588,13 @@ function casella_misc_tokens($type, $tokens, array $data, array $options, \Drupa
             break;
           }
 
-          $path = \Drupal::service('path.alias_manager')->getAliasByPath('/node/' . $product_cat[0]['target_id']);
-          $path = preg_replace('{^/}', '', $path);
-          dsm($path);
-          $replacements[$original] = $path;
+          $replacements[$original] = preg_replace('{^/}', '', \Drupal::service('path.alias_manager')->getAliasByPath('/node/' . $product_cat[0]['target_id']));
+          break;
+        case 'organics_updates-path':
+          $replacements[$original] = preg_replace('{^/}', '', \Drupal::service('path.alias_manager')->getAliasByPath('/node/36'));
+          break;
+        case 'job_search-path':
+          $replacements[$original] = preg_replace('{^/}', '', \Drupal::service('path.alias_manager')->getAliasByPath('/node/696'));
           break;
       }
     }
