@@ -175,9 +175,6 @@ processor_settings:
   aggregated_field:
     plugin_id: aggregated_field
     settings: {  }
-  rendered_item:
-    plugin_id: rendered_item
-    settings: {  }
   content_access:
     plugin_id: content_access
     settings:
@@ -229,6 +226,9 @@ processor_settings:
         preprocess_query: -10
   node_status:
     plugin_id: node_status
+    settings: {  }
+  rendered_item:
+    plugin_id: rendered_item
     settings: {  }
   tokenizer:
     plugin_id: tokenizer
