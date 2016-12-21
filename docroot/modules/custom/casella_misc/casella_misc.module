@@ -539,3 +539,53 @@ function casella_misc_form_contact_message_contact_form_alter(&$form, $form_stat
 function casella_misc_form_contact_message_service_request_form_alter(&$form, $form_state) {
   $form['message']['widget'][0]['value']['#title'] = new \Drupal\Core\StringTranslation\TranslatableMarkup('Briefly describe your question or request: *');
 }
+
+/**
+ * Implements hook_token_info_alter().
+ *
+ * @param $data
+ */
+function casella_misc_token_info_alter(&$data) {
+  $data['tokens']['node']['product_category-path'] = [
+    'name' => new \Drupal\Core\StringTranslation\TranslatableMarkup('Product Category URL'),
+    'description' => new \Drupal\Core\StringTranslation\TranslatableMarkup("The url of the node's product category"),
+  ];
+}
+
+/**
+ * Implements hook_tokens().
+ * @param $type
+ * @param $tokens
+ * @param array $data
+ * @param array $options
+ * @param \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata
+ * @return array
+ */
+function casella_misc_tokens($type, $tokens, array $data, array $options, \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata) {
+  $replacements = array();
+
+  if ($type == 'node' && !empty($data['node'])) {
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'product_category-path':
+          $product_cat = $data['node']->get('field_product_category');
+          if (!$product_cat) {
+            break;
+          }
+
+          $product_cat = $product_cat->getValue();
+          if (!$product_cat) {
+            break;
+          }
+
+          $path = \Drupal::service('path.alias_manager')->getAliasByPath('/node/' . $product_cat[0]['target_id']);
+          $path = preg_replace('{^/}', '', $path);
+          dsm($path);
+          $replacements[$original] = $path;
+          break;
+      }
+    }
+  }
+
+  return $replacements;
+}
