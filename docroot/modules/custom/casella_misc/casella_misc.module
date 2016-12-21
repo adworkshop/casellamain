@@ -541,6 +541,13 @@ function casella_misc_form_contact_message_service_request_form_alter(&$form, $f
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function casella_misc_form_contact_message_organics_contact_us_form_alter(&$form, $form_state) {
+  $form['field_nature_of_inquiry']['widget']['#options']['_none'] = '- Select -';
+}
+
+/**
  * Implements hook_token_info_alter().
  *
  * @param $data
