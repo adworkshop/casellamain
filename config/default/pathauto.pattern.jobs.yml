@@ -1,0 +1,14 @@
+uuid: 5b297f0a-4dca-487f-abda-6f13e6c46924
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: jobs
+label: Jobs
+type: 'canonical_entities:node'
+pattern: '[node:job_search-path]/[node:title]'
+selection_criteria: {  }
+selection_logic: and
+weight: 0
+relationships: {  }
