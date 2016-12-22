@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.job.body
+    - field.field.node.job.feeds_item
     - field.field.node.job.field_add_this
     - field.field.node.job.field_date_posted
     - field.field.node.job.field_h1_override
@@ -12,8 +13,10 @@ dependencies:
     - field.field.node.job.field_job_categories
     - field.field.node.job.field_job_status
     - field.field.node.job.field_location
+    - field.field.node.job.field_meta_tag
     - node.type.job
   module:
+    - metatag
     - text
     - user
 id: node.job.default
@@ -70,6 +73,12 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+  field_meta_tag:
+    weight: 108
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
   links:
     weight: 100
     settings: {  }

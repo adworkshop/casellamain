@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.landing_page.field_home_desc
     - field.field.node.landing_page.field_industry_links
     - field.field.node.landing_page.field_large_promotions
+    - field.field.node.landing_page.field_meta_tag
     - field.field.node.landing_page.field_org_desc
     - field.field.node.landing_page.field_service_links
     - field.field.node.landing_page.field_small_business_link
@@ -16,6 +17,7 @@ dependencies:
   module:
     - entity_reference_revisions
     - link
+    - metatag
     - user
 id: node.landing_page.default
 targetEntityType: node
@@ -58,6 +60,12 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+  field_meta_tag:
+    weight: 111
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
   field_org_desc:
     weight: 105
     label: hidden

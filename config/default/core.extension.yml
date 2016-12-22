@@ -52,6 +52,7 @@ module:
   memcache: 0
   menu_block: 0
   menu_ui: 0
+  metatag: 0
   mollom: 0
   node: 0
   options: 0

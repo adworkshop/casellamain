@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.subsection_homepage.field_h1_override
     - field.field.node.subsection_homepage.field_icon
     - field.field.node.subsection_homepage.field_link
+    - field.field.node.subsection_homepage.field_meta_tag
     - field.field.node.subsection_homepage.field_promotion_description
     - field.field.node.subsection_homepage.field_promotion_image
     - field.field.node.subsection_homepage.field_promotion_link
@@ -27,6 +28,7 @@ dependencies:
     - field_group
     - image
     - link
+    - metatag
     - paragraphs
     - path
     - text
@@ -163,6 +165,11 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+  field_meta_tag:
+    weight: 28
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
   field_promotion_description:
     weight: 19
     settings:

@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.product.field_hero_text
     - field.field.node.product.field_image
     - field.field.node.product.field_images
+    - field.field.node.product.field_meta_tag
     - field.field.node.product.field_product_category
     - field.field.node.product.field_product_tags
     - field.field.node.product.field_promotion_image
@@ -32,6 +33,7 @@ dependencies:
     - file
     - image
     - link
+    - metatag
     - text
     - user
 id: node.product.default
@@ -127,6 +129,12 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+  field_meta_tag:
+    weight: 131
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
   field_product_category:
     weight: 127
     label: above

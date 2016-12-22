@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.service.field_h1_override
     - field.field.node.service.field_hero_text
     - field.field.node.service.field_logo
+    - field.field.node.service.field_meta_tag
     - field.field.node.service.field_sidebar_promotions
     - field.field.node.service.field_slider_images
     - field.field.node.service.field_tabs
@@ -26,6 +27,7 @@ dependencies:
   module:
     - field_group
     - image
+    - metatag
     - paragraphs
     - path
     - text
@@ -171,6 +173,11 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+  field_meta_tag:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
   field_sidebar_promotions:
     weight: 8
     settings:

@@ -47,9 +47,9 @@ spi:
     variables: {  }
     time: 0
   cron_interval: 28800
-  site_name: Casella
-  site_machine_name: casella
-  site_uuid: 515158f1-2bbb-4c24-aa5f-05bac8854c89
+  site_name: 'Casella: prod'
+  site_machine_name: b1cf2220_a4c7_48b1_81d4_c846c26189dd__casella
+  site_uuid: df86b380-66ac-4bd8-9e69-e083b8bf8365
 mapping:
   acquia_spi_send_node_user:
     - acquia_connector.settings

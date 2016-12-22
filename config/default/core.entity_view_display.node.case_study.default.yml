@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.case_study.field_full_width_promotion
     - field.field.node.case_study.field_h1_override
     - field.field.node.case_study.field_hero_text
+    - field.field.node.case_study.field_meta_tag
     - field.field.node.case_study.field_sidebar_promotions
     - field.field.node.case_study.field_slider_images
     - field.field.node.case_study.field_tabs
@@ -20,6 +21,7 @@ dependencies:
     - node.type.case_study
   module:
     - entity_reference_revisions
+    - metatag
     - text
     - user
 id: node.case_study.default
@@ -81,6 +83,12 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+  field_meta_tag:
+    weight: 112
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
   field_sidebar_promotions:
     weight: 108
     label: hidden

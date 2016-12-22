@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.job.body
+    - field.field.node.job.feeds_item
     - field.field.node.job.field_add_this
     - field.field.node.job.field_date_posted
     - field.field.node.job.field_h1_override
@@ -12,9 +13,11 @@ dependencies:
     - field.field.node.job.field_job_categories
     - field.field.node.job.field_job_status
     - field.field.node.job.field_location
+    - field.field.node.job.field_meta_tag
     - node.type.job
   module:
     - datetime
+    - metatag
     - path
     - text
 id: node.job.default
@@ -80,6 +83,11 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+  field_meta_tag:
+    weight: 29
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
   path:
     type: path
     weight: 10

@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.product_category.field_full_width_promotion
     - field.field.node.product_category.field_h1_override
     - field.field.node.product_category.field_hero_text
+    - field.field.node.product_category.field_meta_tag
     - field.field.node.product_category.field_sidebar_promotions
     - field.field.node.product_category.field_slider_images
     - field.field.node.product_category.field_tabs
@@ -19,6 +20,7 @@ dependencies:
     - node.type.product_category
   module:
     - entity_reference_revisions
+    - metatag
     - text
     - user
 id: node.product_category.default
@@ -87,6 +89,12 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+  field_meta_tag:
+    weight: 113
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
   field_sidebar_promotions:
     weight: 109
     label: hidden

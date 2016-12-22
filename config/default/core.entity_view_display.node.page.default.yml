@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.page.field_h1_override
     - field.field.node.page.field_hero_text
     - field.field.node.page.field_logo
+    - field.field.node.page.field_meta_tags
     - field.field.node.page.field_post_category
     - field.field.node.page.field_sidebar_promotions
     - field.field.node.page.field_slider_images
@@ -23,6 +24,7 @@ dependencies:
     - responsive_image.styles.inline_logo
   module:
     - entity_reference_revisions
+    - metatag
     - responsive_image
     - text
     - user
@@ -102,6 +104,12 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: responsive_image
+  field_meta_tags:
+    weight: 118
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
   field_post_category:
     weight: 116
     label: hidden

@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.location.field_latitude
     - field.field.node.location.field_location_category
     - field.field.node.location.field_longitude
+    - field.field.node.location.field_meta_tag
     - field.field.node.location.field_open_to
     - field.field.node.location.field_phone_number
     - field.field.node.location.field_schedule_title
@@ -27,6 +28,7 @@ dependencies:
     - node.type.location
   module:
     - entity_reference_revisions
+    - metatag
     - options
     - text
     - user
@@ -102,6 +104,12 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+  field_meta_tag:
+    weight: 20
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
   field_open_to:
     weight: 19
     label: hidden

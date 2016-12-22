@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.information_post.field_h1_override
     - field.field.node.information_post.field_hero_text
     - field.field.node.information_post.field_image
+    - field.field.node.information_post.field_meta_tag
     - field.field.node.information_post.field_sidebar_promotions
     - field.field.node.information_post.field_teaser
     - field.field.node.information_post.field_teaser_image
@@ -20,6 +21,7 @@ dependencies:
     - datetime
     - field_group
     - image
+    - metatag
     - path
     - text
 third_party_settings:
@@ -92,6 +94,11 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+  field_meta_tag:
+    weight: 27
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
   field_sidebar_promotions:
     weight: 26
     settings:
