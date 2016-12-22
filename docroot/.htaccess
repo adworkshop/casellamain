@@ -131,6 +131,12 @@ AddEncoding gzip svgz
   # Rewrite install.php during installation to see if mod_rewrite is working
   RewriteRule ^core/install.php core/install.php?rewrite=ok [QSA,L]
 
+  #Adworkshop custom redirects
+  # Redirect nodes that arent supposed to be page level.
+  RewriteRule ^no-access/ / [L,QSA,R=301]
+
+  #Launch list redirects
+
   # Pass all requests not referring directly to files in the filesystem to
   # index.php.
   RewriteCond %{REQUEST_FILENAME} !-f
