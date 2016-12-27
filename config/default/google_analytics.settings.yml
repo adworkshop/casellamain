@@ -1,9 +1,9 @@
-account: ''
+account: UA-5572590-12
 domain_mode: 0
 cross_domains: ''
 visibility:
   request_path_mode: 0
-  request_path_pages: "/admin\n/admin/*\n/batch\n/node/add*\n/node/*/*\n/user/*/*"
+  request_path_pages: "/admin\r\n/admin/*\r\n/batch\r\n/node/add*\r\n/node/*/*\r\n/user/*/*"
   user_role_mode: 0
   user_role_roles: {  }
   user_account_mode: 0
@@ -17,7 +17,7 @@ track:
   urlfragments: false
   userid: false
   messages: {  }
-  site_search: false
+  site_search: true
   adsense: false
   displayfeatures: false
 privacy:
