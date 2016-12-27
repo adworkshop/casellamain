@@ -1,9 +1,11 @@
 <?php
 /**
  * Implements hook_views_query_alter().
+ *
+ * @param Drupal\views\ViewExecutable $view
+ * @param Drupal\views\Plugin\views\query\QueryPluginBase  $query
  */
-
-function casella_misc_views_query_alter(Drupal\views\ViewExecutable $view, Drupal\views\Plugin\views\query\Sql $query) {
+function casella_misc_views_query_alter(Drupal\views\ViewExecutable $view, Drupal\views\Plugin\views\query\QueryPluginBase $query) {
   if ('locations' == $view->id()) {
     if ('block_5' == $view->getDisplay()->display['id']) {
       // Kill the view if there is no search.
@@ -33,7 +35,7 @@ function casella_misc_views_query_alter(Drupal\views\ViewExecutable $view, Drupa
 
       // First, do a quick and dirty 100 mile square cuttoff.
       // Note: 69 is the number of miles in 1 degree of latitude, 49.7 is the
-      // approximation for 1 degree of longitude in the adirondack area.
+      // approximation for 1 degree of longitude in the northeast.
       $query->addWhereExpression(0, 'ABS((node__field_longitude.field_longitude_value - :lonVal) * 69) < 100 ', array(':latVal' => $townCoordResults[0]['field_latitude_value']));
       $query->addWhereExpression(0, 'ABS((node__field_latitude.field_latitude_value - :latVal) * 49.7) < 100 ', array(':lonVal' => $townCoordResults[0]['field_longitude_value']));
 
