@@ -6,9 +6,7 @@
       <div class="nestedTabs-container">
         <div class="nestedTabs-wrapper">
 
-          <ul>
-            {% for service_title in serviceTitles %}<li><a>{{ service_title.title }}</a></li>{% endfor %}
-          </ul>
+          {{ services_title_view }}
 
           <div>
             {{ services_view }}

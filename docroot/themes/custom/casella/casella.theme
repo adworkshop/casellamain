@@ -283,7 +283,7 @@ function casella_theme_suggestions_page_alter(array &$suggestions, array $variab
 function casella_theme_suggestions_views_view_alter(array &$suggestions, array $variables) {
   if (isset($variables['view']->display_handler->output['#theme'])) {
     if (in_array('views_view__organics', $variables['view']->display_handler->output['#theme'])) {
-      if (in_array($variables['view']->current_display, array('block_2', 'block_3'))) {
+      if (in_array($variables['view']->current_display, array('block_2', 'block_3', 'block_4'))) {
         $suggestions[] = 'views_view__stripped';
       }
     }
@@ -869,20 +869,6 @@ function casella_preprocess_paragraph(&$variables) {
         $serviceIds[] = $service['target_id'];
       }
 
-      $db = \Drupal\Core\Database\Database::getConnection();
-      $serviceResults = $db->select('node_field_data', 'node_field_data')
-        ->fields('node_field_data', array('title'))
-        ->condition('nid', $serviceIds, 'IN');
-      // Need to order by the delta of the field. Tis a bit convoluted...
-      $serviceResults->addExpression('FIND_IN_SET(nid,:serviceIds)', 'orderByField', array(':serviceIds' => implode(',', $serviceIds)));
-      $serviceResults->condition('status', '1', '=');
-      $serviceResults->orderBy('orderByField', 'ASC');
-
-      $serviceResults = $serviceResults->execute();
-
-      $serviceTitles = $serviceResults->fetchAll(\PDO::FETCH_ASSOC);
-      $variables['serviceTitles'] = $serviceTitles;
-
       // Give the organics view the current node to get the correct ordering of
       // the requested services.
       $nodeParam = \Drupal::routeMatch()->getParameter('node');
@@ -895,9 +881,16 @@ function casella_preprocess_paragraph(&$variables) {
         $view->setArguments(array($nodeParam));
 
         $variables['services_view'] = $view->render();
+
+        $view = \Drupal\views\Views::getView('organics');
+        $view->setDisplay('block_4');
+        $view->setArguments(array($nodeParam));
+
+        $variables['services_title_view'] = $view->render();
       }
       else {
         $variables['services_view'] = '';
+        $variables['services_title_view'] = '';
       }
 
       break;
