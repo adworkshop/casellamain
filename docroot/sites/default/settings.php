@@ -732,16 +732,13 @@ if (isset($_SERVER['DEVDESKTOP_DRUPAL_SETTINGS_DIR']) && file_exists($_SERVER['D
 if (file_exists('/var/www/site-php')) {
   require('/var/www/site-php/casella/casella-settings.inc');
 
-  if (empty($settings['memcache']['servers'])) {
-    $settings['memcache']['servers'] = $conf['memcache_servers'];
-    $settings['memcache']['key_prefix'] = $conf['memcache_key_prefix'];
-    $settings['memcache']['bins'] = ['default' => 'default'];
-  }
-
   // Use memcache for cache_discovery
   $settings['cache']['bins']['discovery'] = 'cache.backend.memcache';
   // Use memcache as the default bin
   $settings['cache']['default'] = 'cache.backend.memcache';
+
+  $settings['cache']['bins']['bootstrap'] = 'cache.backend.memcache';
+  $settings['cache']['bins']['config'] = 'cache.backend.memcache';
 }
 
 /**
