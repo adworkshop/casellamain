@@ -167,7 +167,7 @@ class ServiceLocationsAdvancedParser extends PluginBase implements ParserInterfa
       return '';
     }
 
-    kint($xmlElement->$attribute);
+    // kint($xmlElement->$attribute);
   }
 
   /**
