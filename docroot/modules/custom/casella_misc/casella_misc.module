@@ -11,6 +11,29 @@ function casella_misc_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $f
   if ('casella' != $theme) {
     $form['#attached']['library'][] = 'casella_misc/admin-required-tabs';
   }
+
+  // Temporary code to run one time entity updates.
+  $manager = \Drupal::entityDefinitionUpdateManager();
+
+  $field_city_town_def = $manager->getFieldStorageDefinition('field_city_town', 'node');
+  if ($field_city_town_def) {
+    \Drupal::entityDefinitionUpdateManager()->uninstallFieldStorageDefinition($field_city_town_def);
+  }
+
+  $feeds_item_def = $manager->getFieldStorageDefinition('feeds_item', 'node');
+  if ($feeds_item_def) {
+    \Drupal::entityDefinitionUpdateManager()->updateFieldStorageDefinition($feeds_item_def);
+  }
+
+  $field_upper_content_def = $manager->getFieldStorageDefinition('field_upper_content', 'node');
+  if ($field_upper_content_def) {
+    \Drupal::entityDefinitionUpdateManager()->updateFieldStorageDefinition($field_upper_content_def);
+  }
+
+  $tax_feeds_item_def = $manager->getFieldStorageDefinition('feeds_item', 'taxonomy_term');
+  if ($tax_feeds_item_def) {
+    \Drupal::entityDefinitionUpdateManager()->updateFieldStorageDefinition($tax_feeds_item_def);
+  }
 }
 
 /**
