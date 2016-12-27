@@ -733,12 +733,12 @@ if (file_exists('/var/www/site-php')) {
   require('/var/www/site-php/casella/casella-settings.inc');
 
   // Use memcache for cache_discovery
-  $settings['cache']['bins']['discovery'] = 'cache.backend.memcache';
+  // $settings['cache']['bins']['discovery'] = 'cache.backend.memcache';
   // Use memcache as the default bin
-  $settings['cache']['default'] = 'cache.backend.memcache';
+  // $settings['cache']['default'] = 'cache.backend.memcache';
 
-  $settings['cache']['bins']['bootstrap'] = 'cache.backend.memcache';
-  $settings['cache']['bins']['config'] = 'cache.backend.memcache';
+  // $settings['cache']['bins']['bootstrap'] = 'cache.backend.memcache';
+  // $settings['cache']['bins']['config'] = 'cache.backend.memcache';
 }
 
 /**
