@@ -24,7 +24,6 @@ module:
   crop: 0
   ctools: 0
   datetime: 0
-  devel: 0
   diff: 0
   draggableviews: 0
   dynamic_page_cache: 0
@@ -44,7 +43,6 @@ module:
   image: 0
   imce: 0
   inline_entity_form: 0
-  kint: 0
   language: 0
   link: 0
   link_attributes: 0
