@@ -1,6 +1,6 @@
 uuid: 97ede69d-f1d7-4067-b3a7-570a6a015f74
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - aggregator

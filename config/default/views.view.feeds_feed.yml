@@ -8,6 +8,7 @@ dependencies:
     - feeds
     - system
     - user
+    - views_autocomplete_filters
 _core:
   default_config_hash: lbyvO_dzuO9rR9Byk3qrhfrKsf6L2ux_Nc6XSgATpZg
 id: feeds_feed
@@ -27,10 +28,9 @@ display:
     provider: views
     display_options:
       access:
-        type: none
-        options: {  }
-        provider: views
-        dependencies: {  }
+        type: perm
+        options:
+          perm: 'access feed overview'
       cache:
         type: none
         options: {  }
@@ -764,6 +764,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user.permissions
       cacheable: false
       max-age: 0
       tags: {  }
@@ -793,6 +794,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user.permissions
       cacheable: false
       max-age: 0
       tags: {  }

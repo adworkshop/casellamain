@@ -1,6 +1,6 @@
 uuid: 4d3e291d-b3dd-415a-9bd9-5db5321c7434
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - core.entity_view_mode.aggregator_feed.summary

@@ -14,6 +14,7 @@ dependencies:
     - contact
     - options
     - user
+    - views_autocomplete_filters
 id: applications
 label: Applications
 module: views
@@ -30,8 +31,9 @@ display:
     position: 0
     display_options:
       access:
-        type: none
-        options: {  }
+        type: perm
+        options:
+          perm: 'edit any job content'
       cache:
         type: tag
         options: {  }
@@ -732,6 +734,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user.permissions
       tags:
         - 'config:field.storage.contact_message.field_email'
         - 'config:field.storage.contact_message.field_job_reference'
