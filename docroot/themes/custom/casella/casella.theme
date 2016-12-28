@@ -1356,7 +1356,7 @@ function casella_preprocess_node(&$variables) {
       if($imageFile){
         $image_uri = $imageFile->getFileUri();
 
-        $style = Drupal\image\Entity\ImageStyle::load('300x135');
+        $style = Drupal\image\Entity\ImageStyle::load('300x');
         $variables['sidebar_image'] = $style->buildUrl($image_uri);
         $variables['sidebar_image_alt'] = $image->get('alt')->getValue();
       }
