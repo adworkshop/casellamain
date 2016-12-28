@@ -7,7 +7,7 @@ dependencies:
     - field.field.node.content_promotions.field_link
     - field.field.node.content_promotions.field_promotion_category
     - field.field.node.content_promotions.field_promotion_image
-    - image.style.240x160
+    - image.style.400x400
     - node.type.content_promotions
   module:
     - image
@@ -40,7 +40,7 @@ content:
     weight: 0
     label: hidden
     settings:
-      image_style: 240x160
+      image_style: 400x400
       image_link: ''
     third_party_settings: {  }
     type: image
