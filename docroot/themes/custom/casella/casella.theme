@@ -1409,7 +1409,7 @@ function casella_preprocess_node(&$variables) {
     }
 
     // Get the urls for the Service form and Dumpster pages.
-    $variables['serviceUrl'] = \Drupal::service('path.alias_manager')->getAliasByPath('/node/1946');
+    $variables['serviceUrl'] = \Drupal::service('path.alias_manager')->getAliasByPath('/node/676');
     $variables['faqUrl'] = \Drupal::service('path.alias_manager')->getAliasByPath('/node/81');
 
     // Check the service type - drives the towns and charges blocks.
