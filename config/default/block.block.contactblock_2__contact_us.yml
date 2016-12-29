@@ -2,6 +2,8 @@ uuid: 7efa887f-b43b-4b59-92e4-fedb25bdea37
 langcode: en
 status: true
 dependencies:
+  config:
+    - contact.form.service_request
   module:
     - contact_block
     - system
@@ -18,7 +20,7 @@ settings:
   label: 'Contact Us Contact block'
   provider: contact_block
   label_display: '0'
-  contact_form: contact
+  contact_form: service_request
 visibility:
   request_path:
     id: request_path
