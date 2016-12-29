@@ -12,7 +12,7 @@ third_party_settings:
     disabled_form_message: 'This contact form has been disabled.'
     maximum_submissions_user: 0
 id: market_leads
-label: 'Let''s Talk'
+label: 'Drive Toward Zero Waste'
 recipients:
   - marketing@casella.com
   - drupal@adworkshop.com

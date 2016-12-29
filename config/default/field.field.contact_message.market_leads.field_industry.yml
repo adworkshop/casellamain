@@ -1,0 +1,21 @@
+uuid: 21a8423c-c969-4b11-94d0-f3f08f6a00ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.market_leads
+    - field.storage.contact_message.field_industry
+  module:
+    - options
+id: contact_message.market_leads.field_industry
+field_name: field_industry
+entity_type: contact_message
+bundle: market_leads
+label: 'What Industry(s) are you in?:'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
