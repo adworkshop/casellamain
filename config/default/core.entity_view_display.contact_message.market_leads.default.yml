@@ -5,26 +5,44 @@ dependencies:
   config:
     - contact.form.market_leads
     - field.field.contact_message.market_leads.field_enews_optin
+    - field.field.contact_message.market_leads.field_industry
     - field.field.contact_message.market_leads.field_ml_address
     - field.field.contact_message.market_leads.field_ml_city
     - field.field.contact_message.market_leads.field_ml_company
     - field.field.contact_message.market_leads.field_ml_email
     - field.field.contact_message.market_leads.field_ml_first_name
-    - field.field.contact_message.market_leads.field_ml_industry
     - field.field.contact_message.market_leads.field_ml_last_name
     - field.field.contact_message.market_leads.field_ml_other
     - field.field.contact_message.market_leads.field_ml_phone
     - field.field.contact_message.market_leads.field_ml_state
     - field.field.contact_message.market_leads.field_ml_zip
   module:
+    - field_group
     - options
+third_party_settings:
+  field_group:
+    group_intro:
+      children: {  }
+      parent_name: ''
+      weight: 0
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: ''
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+      label: intro
 id: contact_message.market_leads.default
 targetEntityType: contact_message
 bundle: market_leads
 mode: default
 content:
   field_enews_optin:
-    weight: 15
+    weight: 16
     label: above
     settings:
       format: default
@@ -32,103 +50,101 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+  field_industry:
+    weight: 17
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
   field_ml_address:
-    weight: 8
+    weight: 10
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
   field_ml_city:
-    weight: 9
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-  field_ml_company:
-    weight: 5
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-  field_ml_email:
-    weight: 6
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: basic_string
-  field_ml_first_name:
-    weight: 3
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-  field_ml_industry:
-    weight: 12
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-  field_ml_last_name:
-    weight: 4
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-  field_ml_other:
-    weight: 13
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-  field_ml_phone:
-    weight: 7
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-  field_ml_state:
-    weight: 10
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-  field_ml_zip:
     weight: 11
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+  field_ml_company:
+    weight: 7
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_ml_email:
+    weight: 8
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_ml_first_name:
+    weight: 5
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_ml_last_name:
+    weight: 6
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_ml_other:
+    weight: 15
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_ml_phone:
+    weight: 9
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_ml_state:
+    weight: 12
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  field_ml_zip:
+    weight: 13
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
   mail:
-    weight: -2
+    weight: 2
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
   message:
-    type: string
-    weight: 0
+    type: basic_string
+    weight: 4
     label: above
-    settings:
-      link_to_entity: false
+    settings: {  }
     third_party_settings: {  }
   name:
-    weight: -3
+    weight: 1
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
   subject:
-    weight: -1
+    weight: 3
     label: above
     settings:
       link_to_entity: false

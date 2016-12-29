@@ -5,12 +5,12 @@ dependencies:
   config:
     - contact.form.market_leads
     - field.field.contact_message.market_leads.field_enews_optin
+    - field.field.contact_message.market_leads.field_industry
     - field.field.contact_message.market_leads.field_ml_address
     - field.field.contact_message.market_leads.field_ml_city
     - field.field.contact_message.market_leads.field_ml_company
     - field.field.contact_message.market_leads.field_ml_email
     - field.field.contact_message.market_leads.field_ml_first_name
-    - field.field.contact_message.market_leads.field_ml_industry
     - field.field.contact_message.market_leads.field_ml_last_name
     - field.field.contact_message.market_leads.field_ml_other
     - field.field.contact_message.market_leads.field_ml_phone
@@ -62,6 +62,11 @@ content:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+  field_industry:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
   field_ml_address:
     weight: 2
     settings:
@@ -97,11 +102,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-  field_ml_industry:
-    weight: 2
-    settings: {  }
-    third_party_settings: {  }
-    type: options_buttons
   field_ml_last_name:
     weight: 9
     settings:
@@ -110,7 +110,7 @@ content:
     third_party_settings: {  }
     type: string_textfield
   field_ml_other:
-    weight: 3
+    weight: 4
     settings:
       size: 60
       placeholder: ''
