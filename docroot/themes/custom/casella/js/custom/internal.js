@@ -28,6 +28,10 @@ jQuery(document).ready(function() {
 
   // Check the sidebar for emptyness.
   checkSidebarContents();
+
+  if (jQuery('#edit-field-service-service-request').length) {
+    checkServiceRequestPreset();
+  }
 });
 
 function checkSidebarContents() {
@@ -203,4 +207,15 @@ if (typeof jQuery.fancybox != 'undefined'){
     openEffect  : 'none',
     closeEffect  : 'none'
   });
+}
+
+/**
+ * Check the URL for a service request variable and use it to prepopulate the form field.
+ */
+function checkServiceRequestPreset() {
+  var selection = location.search.match(/(?:\?|&)service_request=([^&]+)(?:&|$)/);
+
+  if (selection) {
+    jQuery('#edit-field-service-service-request').val(selection[1]);
+  }
 }
