@@ -518,6 +518,8 @@ function casella_misc_block_build_views_block_alter(array &$build, \Drupal\Core\
  */
 function casella_misc_form_contact_message_market_leads_form_alter(&$form, $form_state) {
   $form['message']['widget'][0]['value']['#title'] = new \Drupal\Core\StringTranslation\TranslatableMarkup('Describe your challenge:');
+
+  $form['#prefix'] = '<h3>' . new \Drupal\Core\StringTranslation\TranslatableMarkup('Please fill out the form or call <strong>888-488-2905</strong> to see how Casella can help you') . '</h3>';
 }
 
 /**
