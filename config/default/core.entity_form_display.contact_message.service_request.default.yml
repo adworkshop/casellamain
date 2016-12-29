@@ -12,9 +12,7 @@ dependencies:
     - field.field.contact_message.service_request.field_service_first_name
     - field.field.contact_message.service_request.field_service_last_name
     - field.field.contact_message.service_request.field_service_phone
-    - field.field.contact_message.service_request.field_service_promotional_code
     - field.field.contact_message.service_request.field_service_service_request
-    - field.field.contact_message.service_request.field_service_source
     - field.field.contact_message.service_request.field_service_state
     - field.field.contact_message.service_request.field_service_zip
   module:
@@ -112,20 +110,8 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-  field_service_promotional_code:
-    weight: 4
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
   field_service_service_request:
     weight: 2
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-  field_service_source:
-    weight: 3
     settings: {  }
     third_party_settings: {  }
     type: options_select

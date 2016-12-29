@@ -12,9 +12,9 @@ third_party_settings:
     disabled_form_message: 'This contact form has been disabled.'
     maximum_submissions_user: 0
 id: service_request
-label: 'I Need Service'
+label: 'Contact Us'
 recipients:
-  - service@example.com
+  - contact@example.com
 reply: ''
 weight: 0
 message: 'Your message has been sent.'

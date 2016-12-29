@@ -10,7 +10,7 @@ field_name: field_company
 entity_type: contact_message
 bundle: service_request
 label: 'Company:'
-description: Optional
+description: ''
 required: false
 translatable: false
 default_value: {  }
