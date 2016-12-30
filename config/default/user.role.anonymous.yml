@@ -16,3 +16,4 @@ permissions:
   - 'search content'
   - 'restful get casellalocationmarkers'
   - 'access news feeds'
+  - 'access sitemap'
