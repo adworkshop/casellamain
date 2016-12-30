@@ -86,29 +86,28 @@ third_party_settings:
       label: 'inquiry wrapper'
     group_contact_information:
       children:
-        - group_contact_info_wrapper
+        - field_address
+        - group_city_state_wrapper
+        - group_zip_phone_wrapper
       parent_name: ''
       weight: 3
       format_type: fieldset
       format_settings:
-        id: ''
-        classes: contactUs-contactinfo
+        label: 'Contact Information'
         required_fields: true
-        description: ''
+        id: ''
+        classes: contactUs-contactInformation
       label: 'Contact Information'
-    group_contact_info_wrapper:
+    group_city_state_wrapper:
       children:
-        - field_address
         - field_city
         - field_state
-        - field_zip
-        - field_lc_phone
       parent_name: group_contact_information
-      weight: 20
+      weight: 26
       format_type: html_element
       format_settings:
         id: ''
-        classes: contactUs-contactinfo-element-wrapper
+        classes: contactUs-inquiryInformation-element-wrapper
         element: div
         show_label: false
         label_element: h3
@@ -116,7 +115,25 @@ third_party_settings:
         effect: none
         speed: fast
         required_fields: true
-      label: 'Contact Information Wrapper'
+      label: 'city/state wrapper'
+    group_zip_phone_wrapper:
+      children:
+        - field_zip
+        - field_lc_phone
+      parent_name: group_contact_information
+      weight: 27
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: contactUs-inquiryInformation-element-wrapper
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: true
+      label: 'Zip/Phone wrapper'
 id: contact_message.service_location_contact_form.default
 targetEntityType: contact_message
 bundle: service_location_contact_form
@@ -130,7 +147,7 @@ content:
     third_party_settings: {  }
     type: string_textfield
   field_city:
-    weight: 26
+    weight: 27
     settings:
       size: 60
       placeholder: ''
@@ -165,7 +182,7 @@ content:
     third_party_settings: {  }
     type: string_textfield
   field_lc_phone:
-    weight: 29
+    weight: 30
     settings:
       size: 60
       placeholder: ''
@@ -197,12 +214,12 @@ content:
     third_party_settings: {  }
     type: boolean_checkbox
   field_state:
-    weight: 27
+    weight: 28
     settings: {  }
     third_party_settings: {  }
     type: options_select
   field_zip:
-    weight: 28
+    weight: 29
     settings:
       size: 60
       placeholder: ''
