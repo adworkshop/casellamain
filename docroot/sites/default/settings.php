@@ -706,6 +706,8 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 // $settings['cache']['bins']['render'] = 'cache.backend.null';
 // $settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
 
+ini_set ('display_errors', '0');
+
 
 // On Acquia Cloud, this include file configures Drupal to use the correct
 // database in each site environment (Dev, Stage, or Prod). To use this
