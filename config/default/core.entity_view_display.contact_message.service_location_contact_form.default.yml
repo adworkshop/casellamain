@@ -4,14 +4,19 @@ status: true
 dependencies:
   config:
     - contact.form.service_location_contact_form
+    - field.field.contact_message.service_location_contact_form.field_address
+    - field.field.contact_message.service_location_contact_form.field_city
     - field.field.contact_message.service_location_contact_form.field_email
     - field.field.contact_message.service_location_contact_form.field_first_name
     - field.field.contact_message.service_location_contact_form.field_last_name
+    - field.field.contact_message.service_location_contact_form.field_lc_company
+    - field.field.contact_message.service_location_contact_form.field_lc_phone
     - field.field.contact_message.service_location_contact_form.field_location_id
     - field.field.contact_message.service_location_contact_form.field_location_title
     - field.field.contact_message.service_location_contact_form.field_purpose
     - field.field.contact_message.service_location_contact_form.field_sign_up
-    - field.field.contact_message.service_location_contact_form.field_source
+    - field.field.contact_message.service_location_contact_form.field_state
+    - field.field.contact_message.service_location_contact_form.field_zip
   module:
     - options
 id: contact_message.service_location_contact_form.default
@@ -19,6 +24,20 @@ targetEntityType: contact_message
 bundle: service_location_contact_form
 mode: default
 content:
+  field_address:
+    weight: 11
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_city:
+    weight: 12
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
   field_email:
     weight: 3
     label: above
@@ -34,6 +53,20 @@ content:
     type: string
   field_last_name:
     weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_lc_company:
+    weight: 10
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_lc_phone:
+    weight: 15
     label: above
     settings:
       link_to_entity: false
@@ -68,12 +101,19 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
-  field_source:
-    weight: 5
+  field_state:
+    weight: 13
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+  field_zip:
+    weight: 14
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
   mail:
     weight: -2
     label: above

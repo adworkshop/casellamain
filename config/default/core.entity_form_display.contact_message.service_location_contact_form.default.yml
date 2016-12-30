@@ -4,14 +4,19 @@ status: true
 dependencies:
   config:
     - contact.form.service_location_contact_form
+    - field.field.contact_message.service_location_contact_form.field_address
+    - field.field.contact_message.service_location_contact_form.field_city
     - field.field.contact_message.service_location_contact_form.field_email
     - field.field.contact_message.service_location_contact_form.field_first_name
     - field.field.contact_message.service_location_contact_form.field_last_name
+    - field.field.contact_message.service_location_contact_form.field_lc_company
+    - field.field.contact_message.service_location_contact_form.field_lc_phone
     - field.field.contact_message.service_location_contact_form.field_location_id
     - field.field.contact_message.service_location_contact_form.field_location_title
     - field.field.contact_message.service_location_contact_form.field_purpose
     - field.field.contact_message.service_location_contact_form.field_sign_up
-    - field.field.contact_message.service_location_contact_form.field_source
+    - field.field.contact_message.service_location_contact_form.field_state
+    - field.field.contact_message.service_location_contact_form.field_zip
   module:
     - field_group
 third_party_settings:
@@ -32,6 +37,7 @@ third_party_settings:
       children:
         - field_first_name
         - field_last_name
+        - field_lc_company
         - field_email
       parent_name: group_personal_information
       weight: 20
@@ -50,11 +56,10 @@ third_party_settings:
     group_inquiry:
       children:
         - group_inquiry_wrapper
-        - field_message
         - message
         - field_sign_up
       parent_name: ''
-      weight: 1
+      weight: 4
       format_type: fieldset
       format_settings:
         id: ''
@@ -65,7 +70,6 @@ third_party_settings:
     group_inquiry_wrapper:
       children:
         - field_purpose
-        - field_source
       parent_name: group_inquiry
       weight: 20
       format_type: html_element
@@ -80,13 +84,60 @@ third_party_settings:
         speed: fast
         required_fields: true
       label: 'inquiry wrapper'
+    group_contact_information:
+      children:
+        - group_contact_info_wrapper
+      parent_name: ''
+      weight: 3
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: contactUs-contactinfo
+        required_fields: true
+        description: ''
+      label: 'Contact Information'
+    group_contact_info_wrapper:
+      children:
+        - field_address
+        - field_city
+        - field_state
+        - field_zip
+        - field_lc_phone
+      parent_name: group_contact_information
+      weight: 20
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: contactUs-contactinfo-element-wrapper
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: true
+      label: 'Contact Information Wrapper'
 id: contact_message.service_location_contact_form.default
 targetEntityType: contact_message
 bundle: service_location_contact_form
 mode: default
 content:
+  field_address:
+    weight: 25
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_city:
+    weight: 26
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
   field_email:
-    weight: 23
+    weight: 24
     settings:
       size: 60
       placeholder: ''
@@ -106,16 +157,30 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+  field_lc_company:
+    weight: 23
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_lc_phone:
+    weight: 29
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
   field_location_id:
     type: string_textfield
-    weight: 0
+    weight: 2
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   field_location_title:
     type: string_textfield
-    weight: 0
+    weight: 1
     settings:
       size: 60
       placeholder: ''
@@ -131,11 +196,18 @@ content:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
-  field_source:
-    weight: 22
+  field_state:
+    weight: 27
     settings: {  }
     third_party_settings: {  }
     type: options_select
+  field_zip:
+    weight: 28
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
   message:
     type: string_textarea
     weight: 22
