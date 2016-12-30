@@ -588,6 +588,9 @@ function casella_preprocess_field(&$variables) {
     if ('field_alert_title' == $variables['element']['#field_name']) {
       $variables['attributes']['class'][] = 'customerCare-alert-indContainer-alertType';
     }
+    if ('body' == $variables['element']['#field_name']) {
+      $variables['attributes']['class'][] = 'internal-mainBody-generalTxt-container';
+    }
 
     $acceptableWasteIntro = _casella_get_global('field_acceptable_waste_intro');
     $variables['acceptableWasteIntro'] = $acceptableWasteIntro ? $acceptableWasteIntro[0]['value'] : '';
