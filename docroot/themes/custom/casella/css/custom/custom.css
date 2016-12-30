@@ -684,14 +684,26 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   border: 2px solid #004a87; background:#FFF; color:#004a87;  
   }
 
+	.contact-form {line-height:1.5;}
+
 	.contact-form input,
 	.contact-form textarea,
 	.contact-form select,
 	.contact-form .field--name-field-enews-optin {margin:0 0 1.5rem;}
-
 	.contact-form input[type="submit"] {margin:1.5rem 0 0;}
-.contact-form #edit-field-enews-optin-value input {margin:0;}
-  
+	.contact-form #edit-field-enews-optin-value input {margin: 4px 0 0}
+
+	.contact-message-job-application-form.contact-form input,
+	.contact-message-job-application-form.contact-form textarea,
+	.contact-message-job-application-form.contact-form select,
+	.contact-message-job-application-form.contact-form .field--name-field-enews-optin,
+	.contact-message-job-application-form.contact-form input[type="submit"] {margin:0;}
+
+	.contact-message-service-location-contact-form-form.contact-form input,
+	.contact-message-service-location-contact-form-form.contact-form textarea,
+	.contact-message-service-location-contact-form-form.contact-form select,
+	.contact-message-service-location-contact-form-form.contact-form .field--name-field-enews-optin,
+	.contact-message-service-location-contact-form-form.contact-form input[type="submit"] {margin:0;}
   
 /* ======================================================= */
 /*   MEDIA QUERIES                                         */
