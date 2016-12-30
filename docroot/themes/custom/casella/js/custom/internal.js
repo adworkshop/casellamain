@@ -42,6 +42,12 @@ function checkSidebarContents() {
 
   if ('' == $sidebar.html().replace(/<!--((?!-->).)*-->/g, '').trim()) {
     $sidebar.remove();
+
+    // If this is a locations page with no sidebar and no body we need to tank the internal-mainBody-container.
+    if (jQuery('html.location').length && '' == jQuery('.internal-mainBody-contentContainer').html().trim()) {
+      jQuery('.internal-mainBody-container').remove();
+      return;
+    }
     jQuery('.internal-mainBody-container').removeClass('withSidebar').removeClass('noSidebarNav');
   }
 }
