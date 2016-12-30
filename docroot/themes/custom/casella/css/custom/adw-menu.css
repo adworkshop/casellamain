@@ -24,6 +24,7 @@
   -ms-transition: all .5s ease;
   transition: all .5s ease;
   content: "\f0c9";
+	cursor: pointer;
   }
   
   a.mainMenuToggle:before {content: "\f0c9";}

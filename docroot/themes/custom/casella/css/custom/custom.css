@@ -683,6 +683,14 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   input[type="submit"]:hover {
   border: 2px solid #004a87; background:#FFF; color:#004a87;  
   }
+
+	.contact-form input,
+	.contact-form textarea,
+	.contact-form select,
+	.contact-form .field--name-field-enews-optin {margin:0 0 1.5rem;}
+
+	.contact-form input[type="submit"] {margin:1.5rem 0 0;}
+.contact-form #edit-field-enews-optin-value input {margin:0;}
   
   
 /* ======================================================= */
