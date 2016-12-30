@@ -159,7 +159,7 @@ function casella_theme_suggestions_container_alter(array &$suggestions, array $v
   else {
     // Stripping the container from the location contact.
     if (isset($variables['element']['#id'])) {
-      if (in_array($variables['element']['#id'], array('edit-field-name-wrapper', 'edit-field-first-name-wrapper', 'edit-field-last-name-wrapper', 'edit-field-email-wrapper', 'edit-field-purpose-wrapper', 'edit-field-source-wrapper'))) {
+      if (in_array($variables['element']['#id'], array('edit-field-name-wrapper', 'edit-field-first-name-wrapper', 'edit-field-last-name-wrapper', 'edit-field-email-wrapper', 'edit-field-purpose-wrapper', 'edit-field-source-wrapper', 'edit-field-address-wrapper', 'edit-field-lc-company-wrapper', 'edit-field-city-wrapper', 'edit-field-state-wrapper', 'edit-field-zip-wrapper', 'edit-field-lc-phone-wrapper'))) {
         $suggestions[] = 'container__stripped';
       }
     }
@@ -374,7 +374,14 @@ function casella_preprocess_form_element(&$variables) {
       $variables['attributes']['class'][] = 'contactUs-personalInformation-element';
       $variables['attributes']['class'][] = 'contactUs-email';
     }
-    elseif (in_array($variables['element']['#id'], array('edit-field-purpose', 'edit-field-source'))) {
+    elseif ('edit-field-lc-company-0-value' == $variables['element']['#id']) {
+      $variables['attributes']['class'][] = 'contactUs-personalInformation-element';
+      $variables['attributes']['class'][] = 'contactUs-company';
+    }
+    elseif ('edit-field-address-0-value' == $variables['element']['#id']) {
+      $variables['attributes']['class'][] = 'contactUs-inquiryInformation-address-wrapper';
+    }
+    elseif (in_array($variables['element']['#id'], array('edit-field-purpose', 'edit-field-source', 'edit-field-city-0-value', 'edit-field-zip-0-value', 'edit-field-lc-phone-0-value'))) {
       $variables['attributes']['class'][] = 'contactUs-inquiryInformation-element';
     }
   }

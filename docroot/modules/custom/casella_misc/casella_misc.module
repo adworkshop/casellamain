@@ -229,7 +229,7 @@ function casella_misc_form_contact_message_service_location_contact_form_form_al
   $form['field_location_title']['#type'] = 'hidden';
   $form['field_location_id']['#type'] = 'hidden';
 
-  $form['message']['widget'][0]['value']['#title'] = new \Drupal\Core\StringTranslation\TranslatableMarkup('How can we help?:');
+  $form['message']['widget'][0]['value']['#title'] = new \Drupal\Core\StringTranslation\TranslatableMarkup('Briefly describe your question or request: *');
 
   $node = \Drupal::routeMatch()->getParameter('node');
   if (!$node) {

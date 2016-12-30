@@ -161,3 +161,9 @@ nav.footer-lowerNav-container ul {display: none;}
 .relativeWrapper {
     position: relative;
 }
+
+/* Duplicate .contactUs-inquiryInformation-element */
+.form-item-field-state {display:block; width:100%; padding:0; margin:0 0 20px;}
+@media all and (min-width: 840px) {
+    .form-item-field-state {display:inline-block; vertical-align:top; padding:0 0 0 50px; width:50%;}
+}
