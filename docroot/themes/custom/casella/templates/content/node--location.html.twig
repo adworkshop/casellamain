@@ -21,7 +21,8 @@
     {% endif %}
   {% endif %}
 
-  {% if content.field_dropoff_hours|render|striptags|trim or content.field_open_to|render|striptags|trim %}
+  {% set hasTimeWrapper = content.field_dropoff_hours|render|striptags|trim or content.field_open_to|render|striptags|trim %}
+  {% if hasTimeWrapper %}
     <div class="indLocation-drop-off-time">
       <div class="globalWidth">
         {{ content.field_dropoff_hours }}
@@ -31,7 +32,8 @@
     </div>
   {% endif %}
 
-  {% if content.field_acceptable_waste|render|trim or content.field_unacceptable_waste|render|trim %}
+  {% set hasAcceptableWrapper = content.field_acceptable_waste|render|trim or content.field_unacceptable_waste|render|trim %}
+  {% if hasAcceptableWrapper %}
     <div class="indLocation-feed-body">
       <div class="globalWidth">
         {{ content.field_acceptable_waste }}
@@ -41,7 +43,7 @@
     </div>
   {% endif %}
 
-  {% if 'Transfer' == serviceType %}
+  {% if 'Transfer' == serviceType and (hasAcceptableWrapper or hasTimeWrapper) %}
     <div class="indLocation-global-statment">
       <div class="globalWidth">
         <p></p>
