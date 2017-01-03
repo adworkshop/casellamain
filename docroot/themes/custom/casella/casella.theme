@@ -1658,7 +1658,6 @@ function _casella_get_globals($node = FALSE) {
 
   // By default we are at the end of the active trail. If there are 0 or 1
   // elements in the active trail then there is nothing to test.
-  $db = \Drupal\Core\Database\Database::getConnection();
   if (count($parameters->activeTrail) > 1) {
     // Now that we know there are parents check the db.
     $parents = _casellaFindParentIds($parameters->activeTrail, $db);
@@ -1666,6 +1665,8 @@ function _casella_get_globals($node = FALSE) {
   else {
     $parents = array();
   }
+
+  $casella_misc_service = \Drupal::service('casella_misc.misc_service');
 
   $subsection = FALSE;
   $type = $node ? $node->getType() : '';
@@ -1682,22 +1683,20 @@ function _casella_get_globals($node = FALSE) {
 
     // Check if this lives in a subsection but isnt marked.
     if (!$subsection && count($parents)) {
-      $parentSubsection = _casellaFindParentsSection($parents, $db);
+      $parentSubsection = $casella_misc_service->findParentsSection($parents);
       if ($parentSubsection) {
         $subsection[0]['value'] = $parentSubsection;
       }
     }
   }
 
-  $casella_misc_service = \Drupal::service('casella_misc.misc_service');
-  $subsectionPath = $casella_misc_service->getSubsectionPath($subsection[0]['value']);
+  $subsectionPath = $subsection ? $casella_misc_service->getSubsectionPath($subsection[0]['value']) : '';
 
   // assign the globals here.
   return array(
     'subsection' => $subsection,
     'subsectionPath' => $subsectionPath,
     'parents' => $parents,
-    'db' => $db,
   );
 }
 
@@ -1727,52 +1726,6 @@ function _casellaFindParentsLogo($parents, $db) {
   }
 
   return array();
-}
-
-/**
- * Helper function to check the node for parents and see if any of them have a logo.
- *
- * @param $parents
- * @param $db
- * @return bool
- */
-function _casellaFindParentsSection($parents, $db) {
-  if (!count($parents)) {
-    return FALSE;
-  }
-
-  foreach ($parents as $parent) {
-    $subsection = _casellaFindParentSection($parent, $db);
-    if ($subsection != '') {
-      return $subsection;
-    }
-  }
-
-  return FALSE;
-}
-
-/**
- * Helper function to check a node's for parent and see if it has a logo.
- *
- * @param $parentNid
- * @param $db
- * @return string
- */
-function _casellaFindParentSection($parentNid, $db) {
-  $select = $db->select('node__field_subsection', 'field_subsection')
-    ->fields('field_subsection', array('field_subsection_value'))
-    ->condition('entity_id', $parentNid, '=')
-    ->condition('bundle', 'page', '=');
-
-  $data = $select->execute();
-  $results = $data->fetchAll(\PDO::FETCH_OBJ);
-  if (!count($results)) {
-    return '';
-  }
-
-  foreach ($results as $result) {
-    return $result->field_subsection_value;
-  }
 }
 
 /**

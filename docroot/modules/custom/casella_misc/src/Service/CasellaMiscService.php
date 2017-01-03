@@ -54,4 +54,41 @@ class CasellaMiscService  {
 
     return '';
   }
+
+  public function findParentsSection(array $parentNids) {
+    if (!count($parentNids)) {
+      return '';
+    }
+
+    foreach ($parentNids as $parentNid) {
+      $subsection = $this->findParentSection($parentNid);
+      if ($subsection != '') {
+        return $subsection;
+      }
+    }
+
+    return '';
+  }
+
+  /**
+   * Finds the parents section and returns the string value.
+   * @param $nid
+   * @return string
+   */
+  private function findParentSection($parentNid) {
+    $select = $this->dbConnection->select('node__field_subsection', 'field_subsection');
+    $select->fields('field_subsection', array('field_subsection_value'));
+    $select->condition('entity_id', $parentNid, '=');
+    $select->condition('bundle', 'page', '=');
+
+    $data = $select->execute();
+    $results = $data->fetchAll(\PDO::FETCH_OBJ);
+    if (!count($results)) {
+      return '';
+    }
+
+    foreach ($results as $result) {
+      return $result->field_subsection_value;
+    }
+  }
 }
