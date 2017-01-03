@@ -1,0 +1,6 @@
+services:
+  casella_misc.misc_service:
+    class: Drupal\casella_misc\Service\CasellaMiscService
+    arguments: ['@path.alias_manager', '@database']
+    tags:
+      - { name: casella_misc_service }
