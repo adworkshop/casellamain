@@ -89,6 +89,29 @@ function initZozoTabs() {
   });
 }
 
+/**
+ * Get the url variables.
+ *
+ * @returns {{}}
+ */
+function getUrlVars() {
+  var args = location.search, i=0, tempArg, retVal = {};
+
+  if ('' == args) {
+    return {};
+  }
+
+  args = args.replace(/^\?/, '').split('&');
+  for (i = 0; i < args.length; i++) {
+    tempArg = args[i].split('=');
+    if (2 == tempArg.length) {
+      retVal[tempArg[0]] = tempArg[1];
+    }
+  }
+
+  return retVal;
+}
+
 // Binding
 var midToggled = false;
 jQuery(window).bind('resize', function(){
