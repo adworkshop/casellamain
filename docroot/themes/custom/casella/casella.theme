@@ -1689,21 +1689,8 @@ function _casella_get_globals($node = FALSE) {
     }
   }
 
-  $subsectionPath = '';
-  if ($subsection) {
-    $subsectionNidSelect = $db->select('node__field_subsection', 'subsection')
-      ->fields('subsection', array('entity_id'))
-      ->condition('bundle', 'subsection_homepage', '=')
-      ->condition('field_subsection_value', $subsection[0]['value']);
-
-    $data = $subsectionNidSelect->execute();
-    $results = $data->fetchAll(\PDO::FETCH_OBJ);
-
-    // Ensure we found something, and that we aren't already on the homepage.
-    if ($results) {
-      $subsectionPath = \Drupal::service('path.alias_manager')->getAliasByPath('/node/' . $results[0]->entity_id);
-    }
-  }
+  $casella_misc_service = \Drupal::service('casella_misc.misc_service');
+  $subsectionPath = $casella_misc_service->getSubsectionPath($subsection[0]['value']);
 
   // assign the globals here.
   return array(
