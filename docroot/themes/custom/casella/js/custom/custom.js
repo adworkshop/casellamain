@@ -151,7 +151,7 @@ function updateUrlArgs(event, item) {
     }
   }
 
-  window.history.replaceState('', '', location.pathname + newArgs);
+  window.history.replaceState('', '', location.pathname + newArgs + '#tabs');
 }
 
 // Binding
