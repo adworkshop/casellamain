@@ -70,12 +70,9 @@ jQuery(document).ready(function() {
 
 function initZozoTabs() {
   // Check if this is supposed to be deeplinked.
-  var args = getUrlVars(), defaultTab = 'tab1', tabTitles, i = 0;
-
-  console.log(args);
+  var args = getUrlVars(), defaultTab = 'tab1', tabTitles = jQuery('#tabbed-nav li'), i = 0;
 
   if (typeof args.tab != "undefined" && jQuery('li#' + args.tab).length) {
-    tabTitles = jQuery('#tabbed-nav li');
     for (i = 0; i < tabTitles.length; i++) {
       if (args.tab == jQuery(tabTitles[i]).attr('id')) {
         defaultTab = 'tab' + (i + 1);
@@ -83,8 +80,6 @@ function initZozoTabs() {
       }
     }
   }
-
-  console.log(defaultTab);
 
   jQuery("#tabbed-nav").zozoTabs({
     defaultTab: defaultTab,
@@ -103,7 +98,8 @@ function initZozoTabs() {
       easing: "easeInOutExpo",
       duration: 600,
       effects: "slideH"
-    }
+    },
+    select: updateUrlArgs
   });
 }
 
@@ -128,6 +124,34 @@ function getUrlVars() {
   }
 
   return retVal;
+}
+
+/**
+ * Update the current Url's arguments.
+ * @param event
+ */
+function updateUrlArgs(event, item) {
+  if ("function" != typeof window.history.replaceState) {
+    return;
+  }
+
+  var newArgs = '', propt, args = getUrlVars();
+  args.tab = jQuery(item.tab[0]).attr('id');
+
+  for (propt in args) {
+    if (args.hasOwnProperty(propt)) {
+      if ('' == newArgs) {
+        newArgs = '?';
+      }
+      else {
+        newArgs = newArgs + '&';
+      }
+
+      newArgs = newArgs + propt + '=' + args[propt];
+    }
+  }
+
+  window.history.replaceState('', '', location.pathname + newArgs);
 }
 
 // Binding
