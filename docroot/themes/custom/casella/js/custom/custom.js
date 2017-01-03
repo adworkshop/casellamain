@@ -121,6 +121,11 @@ function updateUrlArgs(event, item) {
     return;
   }
 
+  if (!jQuery("#tabbed-nav").hasClass('inited')) {
+    jQuery("#tabbed-nav").addClass('inited');
+    return;
+  }
+
   var newArgs = '', propt, args = getUrlVars();
   args.tab = jQuery(item.tab[0]).attr('id');
 
