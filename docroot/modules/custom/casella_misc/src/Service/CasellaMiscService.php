@@ -163,4 +163,41 @@ class CasellaMiscService  {
     $style = ImageStyle::load('max_400');
     return $style->buildUrl($file->getFileUri());
   }
+
+  /**
+   * Return an array of the content's parents in the main nav.
+   *
+   * @param array $activeTrail
+   * @return array
+   */
+  public function findParentIds($activeTrail) {
+    // Strip off the empty element at the end.
+    $keys = array_keys($activeTrail);
+    if (array_pop($keys) == '') {
+      array_pop($activeTrail);
+    }
+    // And current element.
+    array_shift($activeTrail);
+
+    if (!count($activeTrail)) {
+      return array();
+    }
+
+    $select = $this->dbConnection->select('menu_tree', 'menu_tree');
+    $select->fields('menu_tree', array('route_param_key'));
+    $select->condition('id', $activeTrail, 'IN');
+    $select->condition('menu_name', 'main', '=');
+    $select->orderBy('depth', 'DESC');
+
+    $data = $select->execute();
+    $results = $data->fetchAll(\PDO::FETCH_OBJ);
+    $parents = array();
+    foreach ($results as $result) {
+      if (substr($result->route_param_key, 0, 5) == 'node=') {
+        $parents[] = substr($result->route_param_key, 5);
+      }
+    }
+
+    return $parents;
+  }
 }

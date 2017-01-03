@@ -1664,7 +1664,7 @@ function _casella_get_globals($node = FALSE) {
   // elements in the active trail then there is nothing to test.
   if (count($parameters->activeTrail) > 1) {
     // Now that we know there are parents check the db.
-    $parents = _casellaFindParentIds($parameters->activeTrail, $db);
+    $parents = $casella_misc_service->findParentIds($parameters->activeTrail);
   }
   else {
     $parents = array();
