@@ -13,7 +13,7 @@
     <!-- Tab Navigation Menu -->
     <ul>
       {% for tab_anchor in tab_anchors %}
-        <li><a>{{ tab_anchor }}</a></li>
+        <li id="{{ tab_anchor|adw_machine_name }}"><a>{{ tab_anchor }}</a></li>
       {% endfor %}
     </ul>
 
