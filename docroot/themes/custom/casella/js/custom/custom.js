@@ -52,20 +52,6 @@ jQuery(document).ready(function() {
   jQuery('label.form-required').each(function(index, element){
     jQuery(element).html(jQuery(element).html().replace('*', '<span class="form-required">*</span>'));
   });
-
-  // make sure addThis picks up any hash changes from tab deep-linking
-  /*
-  jQuery(function(){
-      jQuery(window).hashchange(function(){
-          if(jQuery('div.addThis-container').length){
-              addthis.ost = 0;
-              addthis.update('share', 'url', window.location.href); // new url
-              addthis.update('share', 'title', window.document.title); // new title.
-              addthis.ready(); // this will re-render the buttons.
-          }
-      });
-  });
-  */
 });
 
 function initZozoTabs() {
@@ -152,6 +138,12 @@ function updateUrlArgs(event, item) {
   }
 
   window.history.replaceState('', '', location.pathname + newArgs + '#tabs');
+
+  // Make sure addThis picks up any hash changes from tab deep-linking.
+  if(jQuery('div.addThis-container').length) {
+    addthis.ost = 0;
+    addthis.update('share', 'url', location.pathname + newArgs + '#tabs'); // new url
+  }
 }
 
 // Binding
