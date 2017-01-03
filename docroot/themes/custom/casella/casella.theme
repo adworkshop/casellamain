@@ -1525,9 +1525,11 @@ function casella_preprocess_node(&$variables) {
 
   $variables['parentLogo'] = false;
   if ($variables['node']->hasField('field_logo') && count($casellaGlobals['parents'])) {
+    $casella_misc_service = \Drupal::service('casella_misc.misc_service');
+
     // By default we are at the end of the active trail. If there are 0 or 1
     // elements in the active trail then there is nothing to test.
-    $logo = _casellaFindParentsLogo($casellaGlobals['parents'], $casellaGlobals['db']);
+    $logo = $casella_misc_service->findParentsLogo($casellaGlobals['parents']);
     if (count($logo)) {
       $variables['parentLogo'] = $logo['logo'];
       $variables['parentLogoPath'] = $logo['path'];
@@ -1656,6 +1658,8 @@ function _casella_get_globals($node = FALSE) {
   // Build the typical default set of menu tree parameters.
   $parameters = $menu_tree->getCurrentRouteMenuTreeParameters($menu_name);
 
+  $casella_misc_service = \Drupal::service('casella_misc.misc_service');
+
   // By default we are at the end of the active trail. If there are 0 or 1
   // elements in the active trail then there is nothing to test.
   if (count($parameters->activeTrail) > 1) {
@@ -1665,8 +1669,6 @@ function _casella_get_globals($node = FALSE) {
   else {
     $parents = array();
   }
-
-  $casella_misc_service = \Drupal::service('casella_misc.misc_service');
 
   $subsection = FALSE;
   $type = $node ? $node->getType() : '';
@@ -1704,34 +1706,6 @@ function _casella_get_globals($node = FALSE) {
  * Helper function to check the node for parents and see if any of them have a logo.
  * @param $activeTrail
  * @param $db
- * @return array()
- */
-function _casellaFindParentsLogo($parents, $db) {
-  if (!count($parents)) {
-    return array();
-  }
-
-  foreach ($parents as $parent) {
-    $logoFid = _casellaFindParentLogo($parent, $db);
-    if ($logoFid != '') {
-      $path = _casellaLoadLogoPath($logoFid);
-      if ($path != '') {
-        $parentPath = \Drupal::service('path.alias_manager')->getAliasByPath('/node/' . $parent);
-        return array(
-          'path' => $parentPath,
-          'logo' => $path,
-        );
-      }
-    }
-  }
-
-  return array();
-}
-
-/**
- * Helper function to check the node for parents and see if any of them have a logo.
- * @param $activeTrail
- * @param $db
  * @return array();
  */
 function _casellaFindParentIds($activeTrail, $db) {
@@ -1763,52 +1737,6 @@ function _casellaFindParentIds($activeTrail, $db) {
   }
 
   return $parents;
-}
-
-/**
- * Helper function to check a node's for parent and see if it has a logo.
- * @param $currentRoute
- */
-function _casellaFindParentLogo($parentNid, $db) {
-  $select = $db->select('node__field_logo', 'field_logo')
-    ->fields('field_logo', array('field_logo_target_id'))
-    ->condition('entity_id', $parentNid, '=')
-    ->condition('bundle', 'page', '=');
-
-  $data = $select->execute();
-  $results = $data->fetchAll(\PDO::FETCH_OBJ);
-  if (!count($results)) {
-    return '';
-  }
-
-  foreach ($results as $result) {
-    return $result->field_logo_target_id;
-  }
-}
-
-/**
- * Loads the file by file ID and returns the uri or a blank screen.
- *
- * @param $logoFid
- * @return string
- */
-function _casellaLoadLogoPath($logoFid) {
-  $file = \Drupal\file\Entity\File::load($logoFid);
-  if (!$file) {
-    return '';
-  }
-
-  return _casellaThemeImage($file->getFileUri(), 'max_400');
-}
-
-/**
- * @param $uri
- * @param string $styleName
- * @return \Drupal\Core\GeneratedUrl|string
- */
-function _casellaThemeImage($uri, $styleName) {
-  $style = Drupal\image\Entity\ImageStyle::load($styleName);
-  return $style->buildUrl($uri);
 }
 
 /**

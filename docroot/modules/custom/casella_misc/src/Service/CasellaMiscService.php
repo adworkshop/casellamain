@@ -7,6 +7,9 @@
 
 namespace Drupal\casella_misc\Service;
 
+use \Drupal\file\Entity\File;
+use \Drupal\image\Entity\ImageStyle;
+
 
 class CasellaMiscService  {
   /**
@@ -72,7 +75,8 @@ class CasellaMiscService  {
 
   /**
    * Finds the parents section and returns the string value.
-   * @param $nid
+   *
+   * @param $parentNid
    * @return string
    */
   private function findParentSection($parentNid) {
@@ -90,5 +94,73 @@ class CasellaMiscService  {
     foreach ($results as $result) {
       return $result->field_subsection_value;
     }
+
+    return '';
+  }
+
+  /**
+   * Find and return the content's navigation parent's logo, if one exists.
+   * @param array $parentNids
+   * @return array
+   */
+  public function findParentsLogo($parentNids) {
+    if (!count($parentNids)) {
+      return array();
+    }
+
+    foreach ($parentNids as $parentNid) {
+      $logoFid = $this->findParentLogo($parentNid);
+      if ($logoFid != '') {
+        $path = $this->loadLogoPath($logoFid);
+        if ($path != '') {
+          $parentPath = $this->aliasManager->getAliasByPath('/node/' . $parentNid);
+          return array(
+            'path' => $parentPath,
+            'logo' => $path,
+          );
+        }
+      }
+    }
+
+    return array();
+  }
+
+  /**
+   * Checks the db to see if the nid is associated with a logo.
+   *
+   * @param $parentNid
+   * @return string
+   */
+  private function findParentLogo($parentNid) {
+    $select = $this->dbConnection->select('node__field_logo', 'field_logo');
+    $select->fields('field_logo', array('field_logo_target_id'));
+    $select->condition('entity_id', $parentNid, '=');
+    $select->condition('bundle', 'page', '=');
+
+    $data = $select->execute();
+    $results = $data->fetchAll(\PDO::FETCH_OBJ);
+    if (!count($results)) {
+      return '';
+    }
+
+    foreach ($results as $result) {
+      return $result->field_logo_target_id;
+    }
+  }
+
+  /**
+   * Loads the file by file ID and returns the uri or a blank screen.
+   *
+   * @param $logoFid
+   * @return string
+   */
+  private function loadLogoPath($logoFid) {
+    $file = File::load($logoFid);
+    if (!$file) {
+      return '';
+
+    }
+    $style = ImageStyle::load('max_400');
+    return $style->buildUrl($file->getFileUri());
   }
 }
