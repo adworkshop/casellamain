@@ -1607,6 +1607,15 @@ function casella_preprocess_html(&$variables) {
   else {
     $variables['#attached']['library'][] = 'casella/custom-internal';
   }
+
+  $current_path = \Drupal::service('path.current')->getPath();
+
+  if ('/sitemap' == $current_path) {
+    $variables['attributes']['class'][] = 'sitemap';
+  }
+  elseif ('/search/node' == $current_path) {
+    $variables['attributes']['class'][] = 'site-search';
+  }
 }
 
 /**
