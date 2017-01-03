@@ -1703,43 +1703,6 @@ function _casella_get_globals($node = FALSE) {
 }
 
 /**
- * Helper function to check the node for parents and see if any of them have a logo.
- * @param $activeTrail
- * @param $db
- * @return array();
- */
-function _casellaFindParentIds($activeTrail, $db) {
-  // Strip off the empty element at the end.
-  $keys = array_keys($activeTrail);
-  if (array_pop($keys) == '') {
-    array_pop($activeTrail);
-  }
-  // And current element.
-  array_shift($activeTrail);
-
-  if (!count($activeTrail)) {
-    return array();
-  }
-
-  $select = $db->select('menu_tree', 'menu_tree')
-    ->fields('menu_tree', array('route_param_key'))
-    ->condition('id', $activeTrail, 'IN')
-    ->condition('menu_name', 'main', '=')
-    ->orderBy('depth', 'DESC');
-
-  $data = $select->execute();
-  $results = $data->fetchAll(\PDO::FETCH_OBJ);
-  $parents = array();
-  foreach ($results as $result) {
-    if (substr($result->route_param_key, 0, 5) == 'node=') {
-      $parents[] = substr($result->route_param_key, 5);
-    }
-  }
-
-  return $parents;
-}
-
-/**
  * Helper function to snag the tab titles from a set of tabs.
  *
  * @param $variables
