@@ -69,7 +69,25 @@ jQuery(document).ready(function() {
 });
 
 function initZozoTabs() {
+  // Check if this is supposed to be deeplinked.
+  var args = getUrlVars(), defaultTab = 'tab1', tabTitles, i = 0;
+
+  console.log(args);
+
+  if (typeof args.tab != "undefined" && jQuery('li#' + args.tab).length) {
+    tabTitles = jQuery('#tabbed-nav li');
+    for (i = 0; i < tabTitles.length; i++) {
+      if (args.tab == jQuery(tabTitles[i]).attr('id')) {
+        defaultTab = 'tab' + (i + 1);
+        break;
+      }
+    }
+  }
+
+  console.log(defaultTab);
+
   jQuery("#tabbed-nav").zozoTabs({
+    defaultTab: defaultTab,
     position: "top-left",
     size: "xxlarge",
     multiline: false,
