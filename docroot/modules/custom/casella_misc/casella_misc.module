@@ -220,6 +220,37 @@ function casella_misc_mail($key, &$message, $params) {
 }
 
 /**
+ * Implements hook_mail_alter().
+ *
+ * @param $message
+ */
+function casella_misc_mail_alter(&$message) {
+  if ('contact_page_mail' == $message['id']) {
+    $node = \Drupal::routeMatch()->getParameter('node');
+    // 2776 is the ontario co. landfill.
+    if (2776 == $node->id()) {
+      // Get the correct email address target from the globals.
+      $globalsNode = \Drupal::entityTypeManager()->getStorage('node')->load(1951);
+      if (!$globalsNode->hasField('field_ontario_email')) {
+        return;
+      }
+
+      $address = $globalsNode->get('field_ontario_email')->getValue();
+
+      if (!$address || '' == $address[0]['value']) {
+        return;
+      }
+
+      if ('' != $message['to'] && ',' != substr(trim($message['to']), -1)) {
+        $message['to'] .= ', ';
+      }
+
+      $message['to'] .= $address[0]['value'];
+    }
+  }
+}
+
+/**
  * Implements hook_form_FORM_ID_alter().
  *
  * @param $form
