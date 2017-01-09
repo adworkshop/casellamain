@@ -1,0 +1,19 @@
+uuid: da106527-8ffe-43bb-b834-801aa8d043e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ontario_email
+    - node.type.casella_globals
+id: node.casella_globals.field_ontario_email
+field_name: field_ontario_email
+entity_type: node
+bundle: casella_globals
+label: 'Ontario Contact Email'
+description: 'The email address that should receive a copy of any contact form submissions from the Ontari Co. Landfill Location.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email
