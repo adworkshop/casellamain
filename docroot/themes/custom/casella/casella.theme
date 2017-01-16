@@ -997,8 +997,11 @@ function casella_preprocess_views_view(&$variables) {
     if ('page_1' == $variables['display_id']) {
       $variables['attributes']['class'][] = 'providerSearch-listings-container';
     }
-    if ('block_5' == $variables['display_id']) {
+    elseif ('block_5' == $variables['display_id']) {
       $variables['attributes']['class'][] = 'locationMap-listView-container';
+    }
+    elseif ('block_7' == $variables['display_id']) {
+      $variables['attributes']['class'][] = 'job-mainListings-container';
     }
   }
   elseif ('hr' == $variables['id']) {
@@ -1037,6 +1040,10 @@ function casella_preprocess_views_view_table(&$variables) {
     $variables['attributes']['id'] = 'providerListings';
   }
   elseif ('hr' == $variables['view']->id() && 'block_1' == $variables['view']->current_display) {
+    $variables['attributes']['id'] = 'jobListings';
+    $variables['attributes']['class'][] = 'table';
+  }
+  elseif ('locations' == $variables['view']->id() && 'block_7' == $variables['view']->current_display) {
     $variables['attributes']['id'] = 'jobListings';
     $variables['attributes']['class'][] = 'table';
   }
@@ -1264,6 +1271,7 @@ function casella_preprocess_node(&$variables) {
   $variables['title'] = $variables['node']->getTitle();
 
   $variables['wrapperClass'] = '';
+  $variables['locationsByCat'] = '';
 
   if ($variables['node']->hasField('field_h1_override')) {
     $h1 = $variables['node']->get('field_h1_override');
@@ -1480,6 +1488,18 @@ function casella_preprocess_node(&$variables) {
   elseif ('landing_page' == $type) {
     _casella_extract_link_bits($variables['node']->get('field_small_business_link')->get(0), $variables);
     $variables['location_search_action'] = $path_alias = \Drupal::service('path.alias_manager')->getAliasByPath('/node/41');
+  }
+  elseif ('page' == $type) {
+    if ($variables['node']->hasField('field_location_category')) {
+      $locationCat = $variables['node']->get('field_location_category')->getValue();
+      if ($locationCat) {
+        $view = \Drupal\views\Views::getView('locations');
+        $view->setDisplay('block_7');
+        $view->setArguments(array($locationCat[0]['value']));
+        $variables['locationsByCat'] = $view->render();
+        $variables['#attached']['library'][] = 'casella/jobsFootableInit';
+      }
+    }
   }
 
   $variables['full_width'] = TRUE;
