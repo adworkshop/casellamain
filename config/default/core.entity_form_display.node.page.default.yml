@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.page.field_full_width_promotion
     - field.field.node.page.field_h1_override
     - field.field.node.page.field_hero_text
+    - field.field.node.page.field_location_category
     - field.field.node.page.field_logo
     - field.field.node.page.field_meta_tags
     - field.field.node.page.field_post_category
@@ -94,7 +95,7 @@ third_party_settings:
         - group_promotions
         - group_media
       parent_name: ''
-      weight: 8
+      weight: 9
       format_type: tabs
       format_settings:
         id: ''
@@ -118,7 +119,7 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 13
+    weight: 14
     settings: {  }
     third_party_settings: {  }
   field_2_column:
@@ -165,6 +166,11 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+  field_location_category:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
   field_logo:
     weight: 28
     settings:
@@ -173,7 +179,7 @@ content:
     third_party_settings: {  }
     type: image_image
   field_meta_tags:
-    weight: 30
+    weight: 15
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
@@ -224,12 +230,12 @@ content:
     type: string_textarea
   langcode:
     type: language_select
-    weight: 9
+    weight: 10
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 10
+    weight: 11
     settings: {  }
     third_party_settings: {  }
   title:
@@ -240,12 +246,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 11
+    weight: 12
     settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 12
+    weight: 13
     settings:
       match_operator: CONTAINS
       size: 60
