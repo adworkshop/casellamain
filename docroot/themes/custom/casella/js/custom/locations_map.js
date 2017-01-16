@@ -55,10 +55,14 @@ function initMap() {
 
 function bindLinkContainerToggle() {
   jQuery('.locationMap-link-accordion-container').on('click', function(event){
-    event.preventDefault();
-    var accordion = jQuery(this),
-        accordionContent = accordion.children('.locationMap-marker-accordion-content'),
+    if (event.target != event.currentTarget) {
+      return;
+    }
+
+    var accordion = jQuery(event.currentTarget),
         accordionToggleIcon = accordion.children('.locationMap-marker-toggle-icon');
+
+    accordion.children('.locationMap-marker-accordion-toggle').removeClass('open');
 
     accordion.toggleClass("open");
     handleMapResize();
@@ -377,5 +381,4 @@ function debounce(func, wait, immediate) {
 
 function handleMapResize() {
   google.maps.event.trigger(casellaMap, "resize");
-  console.log('triggering the resize');
 }
