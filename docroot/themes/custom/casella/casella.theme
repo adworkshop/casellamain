@@ -330,7 +330,7 @@ function casella_theme_suggestions_views_view_unformatted_alter(array &$suggesti
       }
     }
     elseif (in_array('views_view__locations', $variables['view']->display_handler->output['#theme'])) {
-      if (in_array($variables['view']->current_display, array('block_4'))) {
+      if (in_array($variables['view']->current_display, array('block_4', 'block_8'))) {
         $suggestions[] = 'views_view_unformatted__stripped';
       }
     }

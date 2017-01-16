@@ -3754,6 +3754,7 @@ display:
         filters: false
         filter_groups: false
         fields: false
+        sorts: false
       filter_groups:
         operator: AND
         groups:
@@ -3934,6 +3935,19 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
+      sorts:
+        field_location_category_value:
+          id: field_location_category_value
+          table: node__field_location_category
+          field: field_location_category_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: standard
     cache_metadata:
       max-age: -1
       contexts:
