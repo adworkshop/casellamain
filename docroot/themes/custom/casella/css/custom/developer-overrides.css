@@ -167,3 +167,48 @@ nav.footer-lowerNav-container ul {display: none;}
 @media all and (min-width: 840px) {
     .form-item-field-state {display:inline-block; vertical-align:top; padding:0 0 0 50px; width:50%;}
 }
+
+.locationMap-link-accordion-container {width: 100%; clear: both; margin: 30px 0 0; border: 1px solid #eee; background: #f8f8f8;}
+
+.locationMap-link-accordion-container .locationMap-marker-accordion-content a.dropoff:before {content:'\e900'; color:#939598;}
+.locationMap-link-accordion-container .locationMap-marker-accordion-content a.hauling:before {content:'\e901'; color:#00253f;}
+.locationMap-link-accordion-container .locationMap-marker-accordion-content a.landfill:before {content:'\e902'; color:#e46425;}
+.locationMap-link-accordion-container .locationMap-marker-accordion-content a.organics:before {content:'\e903'; color:#3d963a;}
+.locationMap-link-accordion-container .locationMap-marker-accordion-content a.recycling:before {content:'\e904'; color:#0082ca;}
+.locationMap-link-accordion-container .locationMap-marker-accordion-content a.transfer:before {content:'\e905'; color:#a154a1;}
+
+.locationMap-link-accordion-container .locationMap-marker-accordion-content a:before {
+    display:table-cell;
+    width: 25px;
+    font-size: 20px;
+    vertical-align: middle;
+    font-family: 'location-markers' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.locationMap-link-accordion-container .locationMap-marker-accordion-content a div {
+    display: table-cell;
+    vertical-align: middle;
+    width: auto;
+    color: #606060;
+    font-weight: bold;
+}
+
+@media all and (min-width: 1024px) {
+    .locationMap-link-accordion-container {background: #FFF; color: #4c9d2a;}
+    .locationMap-link-accordion-container:hover {cursor: pointer; background: #7abf23; color: #FFF;}
+    .locationMap-link-accordion-container.open {background: #7abf23; color:#FFF;}
+    .locationMap-link-accordion-container.open .locationMap-marker-accordion-content {cursor: default; background: #FFF; color: #4c9d2a; overflow: hidden;}
+
+    .locationMap-link-accordion-container .locationMap-marker-accordion-toggle {color: inherit;}
+    .locationMap-link-accordion-container .locationMap-marker-accordion-toggle-icon {display: block; top: 28px;}
+    .locationMap-link-accordion-container .locationMap-marker-accordion-content {display: none !important; padding: 30px; overflow: auto; border-top: 1px solid #eee;}
+    .locationMap-link-accordion-container.open .locationMap-marker-accordion-content {display: block !important;}
+}

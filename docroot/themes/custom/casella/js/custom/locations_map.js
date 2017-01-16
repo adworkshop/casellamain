@@ -49,6 +49,26 @@ function initMap() {
   });
 
   jQuery(window).on('resize', debounce(handleMapResize, 100));
+
+  bindLinkContainerToggle();
+}
+
+function bindLinkContainerToggle() {
+  jQuery('.locationMap-link-accordion-container').on('click', function(event){
+    event.preventDefault();
+    var accordion = jQuery(this),
+        accordionContent = accordion.children('.locationMap-marker-accordion-content'),
+        accordionToggleIcon = accordion.children('.locationMap-marker-toggle-icon');
+
+    accordion.toggleClass("open");
+    handleMapResize();
+
+    if (accordion.hasClass("open")) {
+      accordionToggleIcon.html("<i class='fa fa-minus-circle'></i>");
+    } else {
+      accordionToggleIcon.html("<i class='fa fa-plus-circle'></i>");
+    }
+  });
 }
 
 /**
@@ -357,4 +377,5 @@ function debounce(func, wait, immediate) {
 
 function handleMapResize() {
   google.maps.event.trigger(casellaMap, "resize");
+  console.log('triggering the resize');
 }
