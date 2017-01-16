@@ -146,7 +146,7 @@ function casella_theme_suggestions_container_alter(array &$suggestions, array $v
       }
     }
     elseif ('locations' == $variables['element']['#name']) {
-      if (in_array($variables['element']['#display_id'], array('block_1', 'block_4', 'block_5', 'block_6'))) {
+      if (in_array($variables['element']['#display_id'], array('block_1', 'block_4', 'block_5', 'block_6', 'block_8'))) {
         $suggestions[] = 'container__stripped';
       }
     }
@@ -201,7 +201,8 @@ function casella_theme_suggestions_block_alter(array &$suggestions, array $varia
     'views_block__locations_block_5__post_search',
     'views_block__locations_block_6__assoc_hauling',
     'views_block__content_promotions_block_2',
-    'views_block__content_promotions_block_1'
+    'views_block__content_promotions_block_1',
+    'views_block__locations_block_8__cat_links',
   );
 
   if (in_array($variables['elements']['#id'], $toStrip)) {
@@ -293,7 +294,7 @@ function casella_theme_suggestions_views_view_alter(array &$suggestions, array $
       }
     }
     elseif (in_array('views_view__locations', $variables['view']->display_handler->output['#theme'])) {
-      if (in_array($variables['view']->current_display, array('block_1', 'block_4', 'block_6'))) {
+      if (in_array($variables['view']->current_display, array('block_1', 'block_4', 'block_6', 'block_8'))) {
         $suggestions[] = 'views_view__stripped';
       }
     }
