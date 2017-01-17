@@ -9,6 +9,7 @@ third_party_settings:
     available_menus:
       - footer
       - main
+      - organics
     parent: 'main:'
 _core:
   default_config_hash: zhtPXoRcC6REiepM0k16zw__FDW5YOXDR6U2WlldTrs
