@@ -23,5 +23,5 @@ settings:
   depth: 0
   expand: 0
   parent: 'organics:'
-  suggestion: organics
+  suggestion: main
 visibility: {  }
