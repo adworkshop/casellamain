@@ -8,6 +8,7 @@ third_party_settings:
   menu_ui:
     available_menus:
       - main
+      - organics
     parent: 'main:'
 name: 'FAQ Landing Page'
 type: faq_landing_page
