@@ -208,6 +208,9 @@ function casella_theme_suggestions_block_alter(array &$suggestions, array $varia
   if (in_array($variables['elements']['#id'], $toStrip)) {
     $suggestions[] = 'block__stripped';
   }
+  elseif ('organics_menu' == $variables['elements']['#id']) {
+    $suggestions[] = 'block__mainnavigation_2';
+  }
 }
 
 /**
@@ -1112,7 +1115,7 @@ function casella_preprocess_block(&$variables) {
     $variables['attributes']['class'][] = 'menuContainer';
     $variables['attributes']['id'] = 'mainMenu';
   }
-  elseif ('mainnavigation_2' == $variables['elements']['#id'] || 'mainnavigation_3' == $variables['elements']['#id']) {
+  elseif (in_array($variables['elements']['#id'], array('mainnavigation_2', 'mainnavigation_3', 'organics_menu'))) {
     $variables['attributes']['class'][] = 'menuContainer';
     $variables['attributes']['id'] = 'sectionMenu';
   }
