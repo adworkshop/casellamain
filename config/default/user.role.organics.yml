@@ -35,3 +35,4 @@ permissions:
   37: 'administer redirects'
   38: 'create url aliases'
   39: 'administer menu'
+  40: 'administer organics menu items'
