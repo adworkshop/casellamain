@@ -6,7 +6,7 @@
 
 {% block right_sidebar %}
 
-  {% if hasPromos or parentLogo or hasNav %}
+  {% if hasPromos or parentLogo or sidebar_nav.organics|render|adw_strip_comments|trim != '' %}
     <!--Col - Sidebar-->
     <div class="internal-mainBody-sidebarContainer">
 
@@ -18,8 +18,8 @@
         </div>
       {% endif %}
 
-      {% if sidebar_nav.mainnavigation_4|render|adw_strip_comments|trim %}
-        {{ sidebar_nav.mainnavigation_4 }}
+      {% if sidebar_nav.organics|render|adw_strip_comments|trim %}
+        {{ sidebar_nav.organics }}
       {% else %}
         {{ sidebar_nav.footer }}
       {% endif %}

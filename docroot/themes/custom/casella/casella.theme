@@ -190,6 +190,7 @@ function casella_theme_suggestions_block_alter(array &$suggestions, array $varia
     'mainnavigation',
     'mainnavigation_4',
     'mainnavigation_5',
+    'organics', // Organics sidebar nav block.
     'footer',
     'casella_content',
     'views_block__information_posts_block_1',
