@@ -162,6 +162,12 @@ Author URI: http://www.adworkshop.com
   }
   .internalFeaturedMedia.large .internal-slider-caption-btn a:hover,
   .internalFeaturedMedia.inBodyContent .internal-slider-caption-btn a:hover {color: #004a87; background: none; border: 2px solid #004a87;}
+
+	/*Bullets*/
+	.internalFeaturedMedia .rsDefault .rsBullets {background:none; bottom:20px;}
+	.internalFeaturedMedia .rsDefault .rsBullet {padding: 0; margin: 0 3px; width: 15px; height: 15px;}
+	.internalFeaturedMedia .rsDefault .rsBullet span {border: 2px solid #fff; width: 15px; height: 15px; background: #aeaeae;}
+	.internalFeaturedMedia .rsDefault .rsBullet.rsNavSelected span {background-color: #004a87;}
   
 /* ======================================================= */
 /*    INTERACTIVE CONTENT                                  */
