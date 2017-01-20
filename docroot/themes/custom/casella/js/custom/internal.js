@@ -75,7 +75,7 @@ function initFullWidthSlider() {
     numImagesToPreload: 1,
     thumbsFitInViewport: false,
     navigateByClick: true,
-    arrowsNavAutoHide:true,
+    arrowsNavAutoHide:false,
     arrowsNavHideOnTouch:false,
     autoPlay: {
       enabled: true,
@@ -105,7 +105,7 @@ function initNestedSlider() {
     arrowsNav: true,
     fadeinLoadedSlide: false,
     controlsInside: false,
-    arrowsNavAutoHide:true,
+    arrowsNavAutoHide:false,
     arrowsNavHideOnTouch:false,
     controlNavigation: 'bullets',
     navigateByClick: true,
