@@ -18,6 +18,10 @@ use Drupal\rest\ResourceResponse;
  * )
  */
 class LocationMarkersResource extends ResourceBase {
+  /**
+   * @var array
+   */
+  private $locationCategoryMap;
 
   /**
    * Responds to GET requests.
@@ -31,6 +35,14 @@ class LocationMarkersResource extends ResourceBase {
    *   The response containing the log entry.
    */
   public function get($town = NULL) {
+    if (!$this->locationCategoryMap) {
+      $settings = \Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_location_category');
+      $settings = $settings->getSetting('allowed_values');
+      if ($settings) {
+        $this->locationCategoryMap = $settings;
+      }
+    }
+
     $retVal = array();
 
     $view = \Drupal\views\Views::getView('locations');
@@ -54,13 +66,14 @@ class LocationMarkersResource extends ResourceBase {
         continue;
       }
 
+      $locationCategory = isset($this->locationCategoryMap[$values['field_location_category'][0]['value']]) ? $this->locationCategoryMap[$values['field_location_category'][0]['value']] : $values['field_location_category'][0]['value'];
       $retVal['markers'][] = array(
         'nid' => $viewRow->_entity->id(),
         'path' => $alias_manager->getAliasByPath('/node/' . $viewRow->_entity->id()),
         'title' => $values['title'][0]['value'],
         'latitude' => $values['field_latitude'][0]['value'],
         'longitude' => $values['field_longitude'][0]['value'],
-        'type' => $values['field_location_category'][0]['value'],
+        'type' => $locationCategory,
         'typeLC' => strtolower($values['field_location_category'][0]['value']),
       );
     }
