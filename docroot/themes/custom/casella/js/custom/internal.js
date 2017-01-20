@@ -61,7 +61,7 @@ function jobApplyToggleHandler(){
 function initFullWidthSlider() {
   jQuery('#internal-slider').royalSlider({
     arrowsNav: true,
-    controlNavigation: 'none',
+    controlNavigation: 'bullets',
     keyboardNavEnabled: true,
     controlsInside: false,
     imageScaleMode: 'fill',
@@ -78,9 +78,9 @@ function initFullWidthSlider() {
     arrowsNavAutoHide:true,
     arrowsNavHideOnTouch:false,
     autoPlay: {
-      enabled: false,
+      enabled: true,
       pauseOnHover: true,
-      delay: 10000
+      delay: 5000,
     },
     globalCaption: true,
     block: {
@@ -107,7 +107,7 @@ function initNestedSlider() {
     controlsInside: false,
     arrowsNavAutoHide:true,
     arrowsNavHideOnTouch:false,
-    controlNavigation: 'none',
+    controlNavigation: 'bullets',
     navigateByClick: true,
     imageScaleMode: 'none',
     imageAlignCenter:false,
@@ -124,6 +124,11 @@ function initNestedSlider() {
       speed: 500,
       moveOffset: 100,
       easing: 'easeOutSine',
+      delay: 5000,
+    },
+    autoPlay: {
+      enabled: true,
+      pauseOnHover: true,
       delay: 5000,
     },
   });
