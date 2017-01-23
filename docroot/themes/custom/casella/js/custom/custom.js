@@ -230,16 +230,24 @@ function initLocationHandlers() {
   jQuery('.holidayPanelTrigger').click(function() {
     jQuery('.indLocation-holidayPanel').slideToggle('slow');
     jQuery('.holidayPanelTrigger').addClass('hiddenBtn');
+    eventTracking('location holiday schedule','expand click','');
   });
 
   jQuery('.indLocation-holidayPanel-close').click(function() {
     jQuery('.indLocation-holidayPanel').slideToggle('slow');
     jQuery('.holidayPanelTrigger').removeClass('hiddenBtn');
+    eventTracking('location holiday schedule','collapse click','');
   });
 
   jQuery('.indLocation-contactPanel-trigger').click(function() {
     jQuery('.indLocation-contactPanel').slideToggle('slow');
     jQuery('.indLocation-contactPanel-trigger').toggleClass('active');
+
+    event_action = 'collapse click';
+    event_label = jQuery(this).text();
+    if (jQuery(this).hasClass('active')) event_action = 'expand click';
+    eventTracking('contact us form',event_action,event_label);
+
   });
 
   if ("function" == typeof jQuery().footable) {

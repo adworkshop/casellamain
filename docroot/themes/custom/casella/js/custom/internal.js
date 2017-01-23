@@ -24,6 +24,10 @@ jQuery(document).ready(function() {
 
   jQuery('.productGrid-filter-container input[type="checkbox"]').click(function(event){
     jQuery('#' + jQuery(event.currentTarget).val()).toggle();
+
+    var initial_action = 'hide click';
+    if (jQuery(this).is(':checked')) initial_action = 'show click';
+    eventTracking('earthlife products',initial_action,jQuery(event.currentTarget).val());
   });
 
   // Check the sidebar for emptyness.
@@ -56,6 +60,7 @@ function jobApplyToggleHandler(){
   jQuery(".job-indListing-formToggle-container").fadeToggle("slow");
   jQuery(".job-indListing-applyToggle a").fadeToggle("slow");
   jQuery('html, body').animate({ scrollTop: jQuery('.job-indListing-formToggle-container').offset().top - 50}, 1000);
+  eventTracking('career application form','apply today click',jQuery('h1').text());
 }
 
 function initFullWidthSlider() {

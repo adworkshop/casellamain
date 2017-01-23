@@ -47,6 +47,10 @@ jQuery(document).ready(function($){
 	faqTrigger.on('click', function(event){
 		event.preventDefault();
 		$(this).next('.cd-faq-content').slideToggle(200).end().parent('li').toggleClass('content-visible');
+		event_action = 'collapse click';
+		event_label = $(this).text();
+		if ($(this).parent('li').hasClass('content-visible')) event_action = 'expand click';
+    eventTracking('customer care faq',event_action,event_label);
 	});
 
 	//update category sidebar while scrolling

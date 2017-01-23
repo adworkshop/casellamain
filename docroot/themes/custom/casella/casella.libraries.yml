@@ -22,6 +22,7 @@ custom-js:
   js:
     js/custom/custom.js: {}
     js/custom/adw-menu.js: {}
+    js/custom/google_analytics_event_tracking.js: {}
   dependencies:
     - core/jquery
     - core/modernizr
