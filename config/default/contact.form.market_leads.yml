@@ -15,7 +15,6 @@ id: market_leads
 label: 'Drive Toward Zero Waste'
 recipients:
   - marketing@casella.com
-  - drupal@adworkshop.com
 reply: ''
 weight: 0
 message: ''

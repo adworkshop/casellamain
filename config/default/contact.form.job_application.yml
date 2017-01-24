@@ -14,7 +14,7 @@ third_party_settings:
 id: job_application
 label: 'Job Application'
 recipients:
-  - info@example.com
+  - devin.siva@casella.com
 reply: ''
 weight: 0
 message: 'Your message has been sent.'

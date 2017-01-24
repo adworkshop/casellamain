@@ -14,7 +14,7 @@ third_party_settings:
 id: service_location_contact_form
 label: 'Service Location Contact Form'
 recipients:
-  - test@example.com
+  - OnlineServiceRequest@casella.com
 reply: ''
 weight: 0
 message: 'Thank you for getting in touch. We will get back to you as soon as possible.'
