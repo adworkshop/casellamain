@@ -117,7 +117,9 @@ AddEncoding gzip svgz
   # RewriteCond %{HTTP_HOST} .
   # RewriteCond %{HTTP_HOST} !^www\. [NC]
   # RewriteRule ^ http%{ENV:protossl}://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-  #
+  RewriteCond %{HTTP_HOST} ^casella.com [NC]
+  RewriteRule ^ http%{ENV:protossl}://www.casella.com%{REQUEST_URI} [L,R=301]
+
   # To redirect all users to access the site WITHOUT the 'www.' prefix,
   # (http://www.example.com/foo will be redirected to http://example.com/foo)
   # uncomment the following:
@@ -133,6 +135,17 @@ AddEncoding gzip svgz
   # If your site is running in a VirtualDocumentRoot at http://example.com/,
   # uncomment the following line:
   # RewriteBase /
+
+  # custom domain specific redirects.
+  RewriteCond %{HTTP_HOST} ^epay.casella.com [NC,OR]
+  RewriteCond %{HTTP_HOST} ^www.epay.casella.com [NC]
+  RewriteRule ^ https://secure3.i-doxs.net/casella/default.asp [L,QSA,R=301]
+
+  RewriteCond %{SERVER_PORT} !^8083$ [NC]
+  RewriteCond %{HTTP_HOST} !^casella(dev|stg)?.prod.acquia-sites.com [NC]
+  RewriteCond %{HTTP_HOST} !^www1?.casella.com [NC]
+  RewriteCond %{HTTP_HOST} !^casella.com [NC]
+  RewriteRule ^ https://www.casella.com [L,QSA,R=301]
 
   # Redirect common PHP files to their new locations.
   RewriteCond %{REQUEST_URI} ^(.*)?/(install.php) [OR]
