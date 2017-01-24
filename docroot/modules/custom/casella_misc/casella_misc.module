@@ -683,5 +683,5 @@ function casella_misc_cron() {
     $titles[] = $result->title . ' (/node/' . $result->nid . ')';
   }
 
-  mail('Devin.Seva@casella.com,stephen@adworkshop.com', 'Unpublished the following jobs: ' . implode(', ', $titles), 'From: no-reply@casella.com');
+  mail('Devin.Seva@casella.com,stephen@adworkshop.com', 'Unpublished Jobs on Casella.com', 'Unpublished the following jobs: ' . implode("\r\n", $titles), 'From: no-reply@casella.com');
 }
