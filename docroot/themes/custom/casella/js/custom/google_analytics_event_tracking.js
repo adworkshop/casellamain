@@ -9,13 +9,11 @@ function cleanUpLabel(s) {
 function eventTracking(category,action,label) {
   if (typeof dataLayer != 'undefined') {
 
-    console.log('pushing event ' + category + ' ' + action + ' ' + label);
-
     dataLayer.push({
       'event':'trackevent',
-      'category':category,
-      'action':action,
-      'label':cleanUpLabel(label)
+      'eventcategory':category,
+      'eventaction':action,
+      'eventlabel':cleanUpLabel(label)
     });
   }
 }
