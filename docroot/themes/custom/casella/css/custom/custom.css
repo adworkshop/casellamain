@@ -375,7 +375,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   div.footer-lowerNav-container select {display: inline-block;}
   
   /*Attribute*/
-  .footer-attribute {font-size:11px; text-align:center; color:#d3d3d3;}
+  .footer-attribute {font-size:13px; text-align:center; color:#d3d3d3;}
   
 /* ======================================================= */
 /*   BASIC FORM ELEMENTS AND FORM OVERRIDES                */
