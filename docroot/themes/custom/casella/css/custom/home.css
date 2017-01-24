@@ -15,11 +15,11 @@ Author URI: http://www.adworkshop.com
   .home-headerPanel-listContainer {margin:20px 0 0; line-height: 1.5;}
   .home-headerPanel-listContainer:before {content:''; display:block; width:80px; height:1px; border-top:1px solid #265736; margin:25px 0 20px;}
   .home-headerPanel-listContainer ul li {display:block;}
-  .home-headerPanel-listContainer ul li:before {content:'\2022'; display:inline-block; color:#4c9d2a; margin:0 10px 0 0;}
-  .home-headerPanel-listContainer ul li:after {content:'\2022'; color:#4c9d2a; margin:0 10px 0 15px; display:none;}
+  .home-headerPanel-listContainer ul li:before {content:'\2022'; display:inline-block; color:#fff; margin:0 10px 0 0;}
+  .home-headerPanel-listContainer ul li:after {content:'\2022'; color:#fff; margin:0 10px 0 15px; display:none;}
   .home-headerPanel-listContainer ul li:last-of-type:after {display:none;}
-  .home-headerPanel-listContainer ul li a {font-family: 'Gotham-Bold'; font-size:13px; color:#fff; text-transform:uppercase;}
-  .home-headerPanel-listContainer ul li a:hover {color:#7abf23;}
+  .home-headerPanel-listContainer ul li a {font-family: 'Gotham-Bold'; font-size:13px; color:#265736; text-transform:uppercase;}
+  .home-headerPanel-listContainer ul li a:hover {color:#fff;}
   
   /*Resource Grid*/
   .home-resourceGrid {display:none; width: 100%; position: relative; padding: 0; font-size:0; margin:0; border-top:1px solid #FFF;}
@@ -286,7 +286,7 @@ Author URI: http://www.adworkshop.com
   
   @media all and (min-width: 1024px) {
   /*Header Region*/
-  .home-headerPanel-container {padding:0;}
+  .home-headerPanel-container {padding-top:30px;padding-bottom:0px;}
 	.home-headerPanel-container h1 {display:none;}
   .home-headerPanel-listContainer {display:none;}
   .home-resourceGrid {display:block;}	  
@@ -294,7 +294,7 @@ Author URI: http://www.adworkshop.com
   
   @media all and (min-width: 1200px) {
   /*Header Region*/
-  .home-headerPanel-container {padding: 138px 0 0;}
+  .home-headerPanel-container {padding: 198px 0 0;}
   
   /*Vertical Audience */
   .home-verticalPanel-indVertical-wrapper {width:86.5%; margin:0 auto; padding:0; border-bottom:none; }
