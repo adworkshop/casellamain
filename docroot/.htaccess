@@ -136,6 +136,7 @@ AddEncoding gzip svgz
   RewriteRule ^no-access/ / [L,QSA,R=301]
 
   #Launch list redirects
+  RewriteRule ^careers/[0-9]+$ /available-careers [L,QSA,R=301]
 
   # Pass all requests not referring directly to files in the filesystem to
   # index.php.
