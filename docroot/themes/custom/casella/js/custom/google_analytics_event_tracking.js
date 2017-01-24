@@ -43,14 +43,4 @@ jQuery(document).ready(function() {
     eventTracking('find my local provider form','form completion','');
   });
 
-
-
-
-
-
-
-
-
-
-
 });
