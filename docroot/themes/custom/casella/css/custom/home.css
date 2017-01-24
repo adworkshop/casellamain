@@ -10,7 +10,7 @@ Author URI: http://www.adworkshop.com
 /*    HEAD/UPPER REGION                                    */
 /* ======================================================= */ 
   .home-headerPanel-container {background:#0a253e; width:100%; padding:60px 0; text-align:left;}
-  .home-headerPanel-container h1 {color:#7abf23; font-size:40px; text-transform:uppercase;}
+  .home-headerPanel-container h1 {color:#FFF; font-size:40px; text-transform:uppercase;}
   .home-headerPanel-container h1 span.white {color:#FFF;}
   .home-headerPanel-listContainer {margin:20px 0 0; line-height: 1.5;}
   .home-headerPanel-listContainer:before {content:''; display:block; width:80px; height:1px; border-top:1px solid #265736; margin:25px 0 20px;}
@@ -22,7 +22,7 @@ Author URI: http://www.adworkshop.com
   .home-headerPanel-listContainer ul li a:hover {color:#7abf23;}
   
   /*Resource Grid*/
-  .home-resourceGrid {display:none; width: 100%; position: relative; padding: 0; font-size:0; margin:80px 0 0; border-top:1px solid #FFF;}
+  .home-resourceGrid {display:none; width: 100%; position: relative; padding: 0; font-size:0; margin:0; border-top:1px solid #FFF;}
   .home-resourceGrid .home-resourceGrid-indWrapper {display: inline-block; background: #fff; position: relative; width: 20%; line-height: 0;}
   .home-resourceGrid .home-resourceGrid-indWrapper a,
   .home-resourceGrid .home-resourceGrid-indWrapper a img {display: block; position: relative; color:#fff;}
@@ -249,7 +249,7 @@ Author URI: http://www.adworkshop.com
 /* ======================================================= */	
   @media all and (min-width: 600px) {
   /*Header Region*/
-  .home-headerPanel-container {padding:110px 0; text-align:left;}
+  .home-headerPanel-container {text-align:left;}
   .home-headerPanel-container {text-align:center;}
   .home-headerPanel-container h1 {font-size:40px;}
   .home-headerPanel-container h1 span.breaker{white-space:nowrap;}
@@ -286,15 +286,15 @@ Author URI: http://www.adworkshop.com
   
   @media all and (min-width: 1024px) {
   /*Header Region*/
-  .home-headerPanel-container {padding:110px 0 0;}
+  .home-headerPanel-container {padding:0;}
+	.home-headerPanel-container h1 {display:none;}
   .home-headerPanel-listContainer {display:none;}
   .home-resourceGrid {display:block;}	  
   }
   
   @media all and (min-width: 1200px) {
   /*Header Region*/
-  .home-headerPanel-container {padding:225px 0 0;}
-  .home-headerPanel-container h1 {font-size:55px;}
+  .home-headerPanel-container {padding: 138px 0 0;}
   
   /*Vertical Audience */
   .home-verticalPanel-indVertical-wrapper {width:86.5%; margin:0 auto; padding:0; border-bottom:none; }
