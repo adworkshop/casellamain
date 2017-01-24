@@ -642,3 +642,46 @@ function casella_misc_tokens($type, $tokens, array $data, array $options, \Drupa
 
   return $replacements;
 }
+
+/**
+ * Implements hook_cron().
+ */
+function casella_misc_cron() {
+  $lastCron = \Drupal::state()->get('casella_misc_last_cron') ? : REQUEST_TIME;
+  // Need to snag all of the job openings that are now expired but are still
+  // published.
+  $current = date('Y-m-d', strtotime('-30 days'));
+
+  $query = Drupal::database()->select('node_field_data');
+  $query->addField('node_field_data', 'nid');
+  $query->addField('node_field_data', 'title');
+
+  $query->condition('node_field_data.status', 1, '=');
+  $query->condition('node_field_data.type', 'job', '=');
+
+  $query->join('node__field_date_posted', NULL, 'node__field_date_posted.bundle = node_field_data.type AND node__field_date_posted.entity_id = node_field_data.nid');
+
+  $query->condition('node__field_date_posted.field_date_posted_value', $current, '<');
+
+  $results = $query->execute();
+  if (!$results) {
+    return;
+  }
+
+  $results = $results->fetchAll();
+
+  if (!count($results)) {
+    return;
+  }
+
+  $nodeStorage = \Drupal::entityTypeManager()->getStorage('node');
+  foreach ($results as $result) {
+    $node = $nodeStorage->load($result->nid);
+    $node->setPublished(FALSE);
+    $node->save();
+
+    $titles[] = $result->title . ' (/node/' . $result->nid . ')';
+  }
+
+  mail('Devin.Seva@casella.com,stephen@adworkshop.com', 'Unpublished the following jobs: ' . implode(', ', $titles), 'From: no-reply@casella.com');
+}
