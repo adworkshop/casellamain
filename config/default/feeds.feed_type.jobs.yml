@@ -16,11 +16,11 @@ parser: casella_jobs
 parser_configuration: {  }
 processor: 'entity:node'
 processor_configuration:
-  update_existing: 1
+  update_existing: 2
   expire: -1
   owner_id: 1
   authorize: true
-  skip_hash_check: false
+  skip_hash_check: true
   values:
     type: job
 mappings:
