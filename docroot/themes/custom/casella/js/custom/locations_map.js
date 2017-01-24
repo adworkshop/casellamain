@@ -95,7 +95,7 @@ function setCenter(markersInfo, mapInfo) {
     position: markerCenter,
     map: mapInfo.map,
     title: markersInfo.townInfo.townName,
-    icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+    icon: '//maps.google.com/mapfiles/ms/icons/blue-dot.png'
   });
 }
 
