@@ -228,7 +228,7 @@ function casella_misc_mail_alter(&$message) {
   if ('contact_page_mail' == $message['id']) {
     $node = \Drupal::routeMatch()->getParameter('node');
     // 2776 is the ontario co. landfill.
-    if (2776 == $node->id()) {
+    if ($node && 2776 == $node->id()) {
       // Get the correct email address target from the globals.
       $globalsNode = \Drupal::entityTypeManager()->getStorage('node')->load(1951);
       if (!$globalsNode->hasField('field_ontario_email')) {
