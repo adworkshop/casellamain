@@ -19,7 +19,7 @@ jQuery(document).ready(function() {
 
   newSelect.appendTo(lowerNavContainer);
 
-  jQuery("div.footer-lowerNav-container select").change(function() {
+  jQuery(".footer-lowerNav-container select").change(function() {
     window.location = jQuery(this).find("option:selected").val();
   });
 
