@@ -141,7 +141,7 @@ AddEncoding gzip svgz
   RewriteCond %{HTTP_HOST} ^www.epay.casella.com [NC]
   RewriteRule ^ https://secure3.i-doxs.net/casella/default.asp [L,QSA,R=301]
 
-  RewriteCond %{SERVER_PORT} !^8083$ [NC]
+  RewriteCond %{SERVER_PORT} !^808[34]$ [NC]
   RewriteCond %{HTTP_HOST} !^casella(dev|stg)?.prod.acquia-sites.com [NC]
   RewriteCond %{HTTP_HOST} !^www1?.casella.com [NC]
   RewriteCond %{HTTP_HOST} !^casella.com [NC]
