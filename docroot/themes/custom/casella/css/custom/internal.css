@@ -607,7 +607,10 @@ Author URI: http://www.adworkshop.com
   line-height: 45px;
   color: #555;
   }
-  .job-mainListings-container .footable .form-control.stateInput {margin:0 0 15px;}
+	.job-mainListings-container .footable select::-ms-expand {
+	display: none;
+	}
+	.job-mainListings-container .footable .form-control.stateInput {margin:0 0 15px;}
   .job-mainListings-container tr.footable-filtering th {padding:0 0 30px !important;}
   .job-mainListings-container .footable .pagination > li > a,
   .job-mainListings-container .footable .pagination > li > span {padding: 10px 12px; font-family: 'Gotham-Bold'; font-size: 13px; line-height: 1;}
