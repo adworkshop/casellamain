@@ -247,6 +247,31 @@ function casella_misc_mail_alter(&$message) {
 
       $message['to'] .= $address[0]['value'];
     }
+
+
+    if ('job_application' == $message['params']['contact_form']->getOriginalID()) {
+      // Pull the nid out of the values array.
+      $node = \Drupal::routeMatch()->getParameter('node');
+
+      $currentTitle = $node->getTitle();
+      $newTitle = $currentTitle;
+      if ($node->hasField('field_location')) {
+        $location = $node->get('field_location')->getValue();
+        if ($location) {
+          $locationNode = \Drupal::entityTypeManager()->getStorage('node')->load($location[0]['target_id']);
+          if ($locationNode) {
+            $city = $locationNode->get('field_city')->getValue();
+            $state = $locationNode->get('field_state')->getValue();
+            if ($city && $state) {
+              $newTitle .= ' - ' . $city[0]['value'] . ', ' . $state[0]['value'];
+            }
+          }
+        }
+      }
+
+      $newTitle .= ' - url: /node/' . $node->id();
+      $message['body'][1] = $message['body'][1]->create(str_replace($currentTitle, $newTitle, $message['body'][1]->__toString()));
+    }
   }
 }
 
