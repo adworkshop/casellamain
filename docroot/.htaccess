@@ -142,10 +142,10 @@ AddEncoding gzip svgz
   RewriteRule ^ https://secure3.i-doxs.net/casella/default.asp [L,QSA,R=301]
 
   RewriteCond %{HTTP_HOST} ^www.casellaorganics.com [NC]
-  RewriteRule ^/?$ https://www.casella.com/services/organics[L,QSA,R=301]
+  RewriteRule ^/?$ https://www.casella.com/services/organics [L,QSA,R=301]
 
   RewriteCond %{HTTP_HOST} ^casellaorganics.com [NC]
-  RewriteRule ^/?$ https://www.casella.com/services/organics[L,QSA,R=301]
+  RewriteRule ^/?$ https://www.casella.com/services/organics [L,QSA,R=301]
 
   RewriteCond %{HTTP_HOST} !^www\.casellaorganics\.com [NC]
   RewriteCond %{HTTP_HOST} !^casellaorganics\.com [NC]
@@ -328,9 +328,11 @@ AddEncoding gzip svgz
   RewriteRule ^is/catherine-aungst$ https://www.casella.com/services/organics[L,QSA,R=301]
   RewriteRule ^products/liming-agents/wood-ash-portsmouth-nh/document/wood-ash-portsmouth-nh-pil-use-maine$ https://www.casella.com/products/earthlife-products/liming-agents/wood-ash-portsmouth [L,QSA,R=301]
 
-  RewriteCond %{HTTP_HOST} ^casellaorganics\.com [NC,OR]
+  RewriteCond %{HTTP_HOST} ^casellaorganics\.com [NC]
+  RewriteRule .* https://www.casella.com/services/organics [L,R=301]
+
   RewriteCond %{HTTP_HOST} ^www\.casellaorganics\.com [NC]
-  RewriteRule .* https://www.casella.com/services/organics[L,R=301]
+  RewriteRule .* https://www.casella.com/services/organics [L,R=301]
 
   RewriteCond %{SERVER_PORT} !^808[34]$ [NC]
   RewriteCond %{HTTP_HOST} !^casella(dev|stg)?.prod.acquia-sites.com [NC]
