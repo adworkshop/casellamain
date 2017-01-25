@@ -141,12 +141,12 @@ AddEncoding gzip svgz
   RewriteCond %{HTTP_HOST} ^www.epay.casella.com [NC]
   RewriteRule ^ https://secure3.i-doxs.net/casella/default.asp [L,QSA,R=301]
 
-  RewriteCond %{HTTP_HOST} ^www\.casellaorganics\.com$ [NC,OR]
-  RewriteCond %{HTTP_HOST} ^casellaorganics.com$ [NC]
+  RewriteCond %{HTTP_HOST} ^www\.casellaorganics\.com [NC,OR]
+  RewriteCond %{HTTP_HOST} ^casellaorganics.com [NC]
   RewriteRule ^/?$ https://www.casella.com/services/organics[L,QSA,R=301]
 
-  RewriteCond %{HTTP_HOST} !^www\.casellaorganics\.com$ [NC]
-  RewriteCond %{HTTP_HOST} !^casellaorganics.com$ [NC]
+  RewriteCond %{HTTP_HOST} !^www\.casellaorganics\.com [NC]
+  RewriteCond %{HTTP_HOST} !^casellaorganics\.com [NC]
   # This one skips the next s rules. The number needs to match the number of rules to be skipped. CAREFUL!!!
   RewriteRule  .?  -  [S=176]
   RewriteRule ^about$ https://www.casella.com/services/organics/customers [L,QSA,R=301]
