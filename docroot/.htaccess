@@ -141,9 +141,6 @@ AddEncoding gzip svgz
   RewriteCond %{HTTP_HOST} ^www.epay.casella.com [NC]
   RewriteRule ^ https://secure3.i-doxs.net/casella/default.asp [L,QSA,R=301]
 
-  RewriteCond %{HTTP_HOST} ^casellaorganics.com [NC]
-  RewriteRule ^/?$ https://www.casella.com/services/casella-organics [L,QSA,R=301]
-
   RewriteCond %{HTTP_HOST} !^casellaorganics.com$ [NC]
   # This one skips the next s rules. The number needs to match the number of rules to be skipped. CAREFUL!!!
   RewriteRule  .?  -  [S=176]
@@ -323,6 +320,9 @@ AddEncoding gzip svgz
   RewriteRule ^products/mulch/nutri-mulch/document/coastal-botanical-gardens-fan-nutrimulch$ https://www.casella.com/products/earthlife-products/mulch/nutri-mulch [L,QSA,R=301]
   RewriteRule ^is/catherine-aungst$ https://www.casella.com/services/casella-organics [L,QSA,R=301]
   RewriteRule ^products/liming-agents/wood-ash-portsmouth-nh/document/wood-ash-portsmouth-nh-pil-use-maine$ https://www.casella.com/products/earthlife-products/liming-agents/wood-ash-portsmouth [L,QSA,R=301]
+
+  RewriteCond %{HTTP_HOST} ^(www\.)?casellaorganics.com [NC]
+  RewriteRule .* https://www.casella.com/services/casella-organics [L,R=301]
 
   RewriteCond %{SERVER_PORT} !^808[34]$ [NC]
   RewriteCond %{HTTP_HOST} !^casella(dev|stg)?.prod.acquia-sites.com [NC]
