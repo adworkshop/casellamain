@@ -173,3 +173,5 @@ permissions:
   167: 'revert content_promotions revisions'
   168: 'access mollom statistics'
   169: 'administer organics menu items'
+  170: 'configure sitmaptxt'
+  171: 'edit robots'
