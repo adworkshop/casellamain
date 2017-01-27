@@ -65,3 +65,4 @@ permissions:
   88: 'bypass mollom protection'
   89: 'access news feeds'
   90: 'access sitemap'
+  91: 'view any unpublished content'
