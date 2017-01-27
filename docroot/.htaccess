@@ -341,10 +341,10 @@ AddEncoding gzip svgz
   RewriteRule ^ https://www.casella.com [L,QSA,R=301]
 
   # Secure redirect. Allow insecure on dev, stage, and local.
-  RewriteCond %{HTTPS} off
-  RewriteCond %{SERVER_PORT} !^808[34]$ [NC]
-  RewriteCond %{HTTP_HOST} !^casella(dev|stg).prod.acquia-sites.com [NC]
-  RewriteRule ^(.*)$ https://www.casella.com/$1 [R=301,L]
+  #RewriteCond %{HTTPS} off
+  #RewriteCond %{SERVER_PORT} !^808[34]$ [NC]
+  #RewriteCond %{HTTP_HOST} !^casella(dev|stg).prod.acquia-sites.com [NC]
+  #RewriteRule ^(.*)$ https://www.casella.com/$1 [R=301,L]
 
   # Redirect common PHP files to their new locations.
   RewriteCond %{REQUEST_URI} ^(.*)?/(install.php) [OR]
