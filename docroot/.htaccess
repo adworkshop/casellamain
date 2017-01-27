@@ -340,6 +340,9 @@ AddEncoding gzip svgz
   RewriteCond %{HTTP_HOST} ^m\.casellaorganics\.com [NC]
   RewriteRule .* https://www.casella.com/casella-organics [L,R=301]
 
+  RewriteCond %{HTTP_HOST} earthlifegrows.com [NC]
+  RewriteRule .* https://www.casella.com/earthlife [L,R=301]
+
   RewriteCond %{SERVER_PORT} !^808[34]$ [NC]
   RewriteCond %{HTTP_HOST} !^casella(dev|stg).prod.acquia-sites.com [NC]
   RewriteCond %{HTTP_HOST} !^www.casella.com [NC]
