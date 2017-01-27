@@ -337,6 +337,7 @@ AddEncoding gzip svgz
   RewriteCond %{SERVER_PORT} !^808[34]$ [NC]
   RewriteCond %{HTTP_HOST} !^casella(dev|stg).prod.acquia-sites.com [NC]
   RewriteCond %{HTTP_HOST} !^www.casella.com [NC]
+  RewriteCond %{HTTP_HOST} !^casella.com [NC]
   RewriteRule ^ https://www.casella.com [L,QSA,R=301]
 
   # Secure redirect. Allow insecure on dev, stage, and local.
