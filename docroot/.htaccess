@@ -344,8 +344,8 @@ AddEncoding gzip svgz
   RewriteCond %{HTTPS} off
   RewriteCond %{HTTP:X-Forwarded-Proto} !https
   RewriteCond %{SERVER_PORT} !^808[34]$ [NC]
-  RewriteCond %{HTTP_HOST} !^casella(dev|stg).prod.acquia-sites.com [NC]
-  RewriteRule ^(.*)$ https://www.casella.com/$1 [R=301,L]
+  RewriteCond %{HTTP_HOST} !^casella(stg).prod.acquia-sites.com [NC]
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
   # Redirect common PHP files to their new locations.
   RewriteCond %{REQUEST_URI} ^(.*)?/(install.php) [OR]
