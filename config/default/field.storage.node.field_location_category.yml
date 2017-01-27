@@ -31,7 +31,7 @@ settings:
       label: Recycling
     -
       value: Transfer
-      label: Transfer/Dropoff
+      label: Transfer/Drop-off
     -
       value: Waste-to-energy
       label: 'Waste to Energy'
