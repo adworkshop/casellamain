@@ -22,7 +22,7 @@ settings:
       label: 'Request for dumpster rental'
     -
       value: waste_analysis
-      label: 'Free Waste Analysis'
+      label: 'Free waste analysis'
     -
       value: service_issue
       label: 'Report a service issue'
