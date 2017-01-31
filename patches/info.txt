@@ -2,6 +2,10 @@ Applied a core patch to get rid of a recurring error with the shortcuts module:
 https://www.drupal.org/node/2567035
 https://www.drupal.org/files/issues/2567035-7.patch
 
+Applied a core patch to get rid of bad node access checks related to views outer joins.
+https://www.drupal.org/node/1349080
+https://www.drupal.org/files/issues/1349080-342.patch
+
 Quickedit js patch
 https://www.drupal.org/files/issues/drupalbehaviorerror-2314185-18.patch
 
