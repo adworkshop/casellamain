@@ -152,10 +152,22 @@ class NodeGrantDatabaseStorage implements NodeGrantDatabaseStorageInterface {
       $langcode = FALSE;
     }
 
+    // $tables_ref should effectively be the same as $tables, except it is a
+    // reference to the original copy of the data, within the $query object.
+    // Edits made to $tables_ref are retained within the $query object.
+    // $tables_ref would not be necessary if the version of $tables in
+    // the alterQuery arguments was passed by reference -- but that
+    // would technically be an API change.
+    $tables_ref = &$query->getTables();
+
     // Find all instances of the base table being joined -- could appear
     // more than once in the query, and could be aliased. Join each one to
     // the node_access table.
     $grants = node_access_grants($op, $account);
+
+    // The main loop is using $tables instead of $tables_ref -- if for any
+    // reason the two arrays differ, technically this function has been
+    // told to operate on the entries listed in $tables.
     foreach ($tables as $nalias => $tableinfo) {
       $table = $tableinfo['table'];
       if (!($table instanceof SelectInterface) && $table == $base_table) {
@@ -190,7 +202,26 @@ class NodeGrantDatabaseStorage implements NodeGrantDatabaseStorageInterface {
         // Now handle entities.
         $subquery->where("$nalias.$field = na.nid");
 
-        $query->exists($subquery);
+        if (empty($tableinfo['join type']) || empty($tables_ref[$nalias]['join type'])) {
+          $query->exists($subquery);
+        }
+        else {
+          // If it's a join, add the node access check to the join condition.
+          // This requires altering the table information -- and therefore has
+          // to use $tables_ref instead of $tables.
+          $join_cond = $query
+            ->andConditionGroup()
+            ->exists($subquery);
+          // Add the existing join conditions into the Condition object.
+          if ($tables_ref[$nalias]['condition'] instanceof ConditionInterface) {
+            $join_cond->condition($tables_ref[$nalias]['condition']);
+          }
+          else {
+            $join_cond->where($tables_ref[$nalias]['condition'], $tables_ref[$nalias]['arguments']);
+            $tables_ref[$nalias]['arguments'] = array();
+          }
+          $tables_ref[$nalias]['condition'] = $join_cond;
+        }
       }
     }
   }
