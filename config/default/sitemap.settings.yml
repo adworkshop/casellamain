@@ -8,9 +8,9 @@ show_books: {  }
 books_expanded: true
 show_menus:
   main: main
+  organics: organics
   account: '0'
   admin: '0'
-  devel: '0'
   footer: '0'
   tools: '0'
 show_menus_hidden: false
@@ -36,9 +36,9 @@ order:
   front: -50
   menus_account: -50
   menus_admin: -50
-  menus_devel: -50
   menus_footer: -50
   menus_main: -50
+  menus_organics: -50
   menus_tools: -50
   vocabularies_content_promotion_tags: -50
   vocabularies_hiring_managers: -50

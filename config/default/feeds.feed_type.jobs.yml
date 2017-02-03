@@ -16,7 +16,7 @@ parser: casella_jobs
 parser_configuration: {  }
 processor: 'entity:node'
 processor_configuration:
-  update_existing: 2
+  update_existing: 0
   expire: -1
   owner_id: 1
   authorize: true

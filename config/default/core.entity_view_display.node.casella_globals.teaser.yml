@@ -4,13 +4,18 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.casella_globals.feeds_item
+    - field.field.node.casella_globals.field_acceptable_waste_intro
+    - field.field.node.casella_globals.field_charges_warning
     - field.field.node.casella_globals.field_customer_care
     - field.field.node.casella_globals.field_earthlife_sidebar_intro
     - field.field.node.casella_globals.field_footer_statement
     - field.field.node.casella_globals.field_job_application_intro
     - field.field.node.casella_globals.field_online_bill_pay
+    - field.field.node.casella_globals.field_ontario_email
     - field.field.node.casella_globals.field_search_overlay_text
     - field.field.node.casella_globals.field_social_icon_links
+    - field.field.node.casella_globals.field_unacceptable_waste_intro
     - node.type.casella_globals
   module:
     - user
@@ -22,11 +27,16 @@ content:
   links:
     weight: 100
 hidden:
+  feeds_item: true
+  field_acceptable_waste_intro: true
+  field_charges_warning: true
   field_customer_care: true
   field_earthlife_sidebar_intro: true
   field_footer_statement: true
   field_job_application_intro: true
   field_online_bill_pay: true
+  field_ontario_email: true
   field_search_overlay_text: true
   field_social_icon_links: true
+  field_unacceptable_waste_intro: true
   langcode: true
