@@ -96,7 +96,7 @@ Author URI: http://www.adworkshop.com
   .internal-sidebarFullPromo-col-content-wrapper p+ol {margin-top:5px;}
   .internal-sidebarFullPromo-col-content-btn {margin:25px 0 0;}
   .internal-sidebarFullPromo-col-content-btn a {
-  font-family: 'Gotham-Bold'; font-size:14px; color:#FFF; display:inline-block; background:#4c9d2a; padding: 20px 20px 18px; font-weight: normal;
+  font-family: 'Gotham-Bold'; font-size:14px; color:#FFF; display:inline-block; background:#4c9d2a; padding: 15px 20px 13px; font-weight: normal; line-height:1.2;
   border: 2px solid #4c9d2a; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;
   }
   .internal-sidebarFullPromo-col-content-btn a:hover {border: 2px solid #4c9d2a; background:#FFF; color:#4c9d2a;}
