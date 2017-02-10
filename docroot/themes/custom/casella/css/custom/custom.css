@@ -304,7 +304,8 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   }
   .navGlobal-wrapper {margin: 0; font-size:0;}
   .navGlobal-indCTABtn-Container {display:inline-block; vertical-align:top;}
-  .navGlobal-indCTABtn-Container.billPay {border-right:1px solid #fff; border-right:1px solid rgba(255,255,255,.2); padding:0 15px 0 0; margin:0 15px 0 0;}
+  .navGlobal-indCTABtn-Container.billPay,
+	.navGlobal-indCTABtn-Container.customerCare {border-right:1px solid #fff; border-right:1px solid rgba(255,255,255,.2); padding:0 15px 0 0; margin:0 15px 0 0;}
   a.navGlobal-indCTABtn {
   display:inline-block; font-size:9.75px; font-family: 'Gotham-Bold'; text-transform:uppercase; color:#FFF; cursor:pointer;
   -webkit-transition: all .3s ease-in-out;	
@@ -314,9 +315,10 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   transition: all .3s ease-in-out;
   }
   a.navGlobal-indCTABtn:hover {color:#FFF; opacity:.5;}
-  .navGlobal-indCTABtn-iconWrapper {display:inline-block; vertical-align:baseline; line-height: 0; margin:0 5px 0 0;}
+  .navGlobal-indCTABtn-iconWrapper {display:none;}
   .navGlobal-indCTABtn-Container.billPay .navGlobal-indCTABtn-iconWrapper {width:35px; height:19px;}
   .navGlobal-indCTABtn-Container.customerCare .navGlobal-indCTABtn-iconWrapper {width:19px; height:19px;}
+	.navGlobal-indCTABtn-Container.investorRelations .navGlobal-indCTABtn-iconWrapper {width:25px; height:19px;}
   .navGlobal-indCTABtn-iconWrapper img {width:100%; max-width:100%; height:auto;}
   .navGlobal-indCTABtn-txtWrapper {display:inline-block; vertical-align:baseline;}
   .navGlobal-indCTABtn-txtWrapper span {display:block;}
@@ -783,6 +785,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   .headerLogo {padding: 18px 0 15px 40px;}
   .searchFormPanelFormContainer form {padding: 30px 40px 27px;}
   .navGlobal-container {padding:25px 40px;}
+	.navGlobal-indCTABtn-iconWrapper {display:inline-block; vertical-align:baseline; line-height: 0; margin:0 5px 0 0;}
   }
   
   @media all and (min-width: 768px) {
