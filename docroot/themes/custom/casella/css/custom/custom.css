@@ -165,6 +165,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   
   .btnIconWrapper {margin:0 5px 0 0;}
   .earthlifeTitle {font-family: 'Gotham-BlackItalic';}
+	.sectionMenu-search-wrapper__txt {margin: 0 0 0 5px; font-family: 'Gotham-Bold';}
 
 	/*inline-buttons*/
 	a.inline-btn__green,

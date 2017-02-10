@@ -32,7 +32,14 @@
       <div class="sectionMenu-breadCrumb-wrapper">
         {{ breadcrumbOverride }}
       </div>
-      <div class="sectionMenu-search-wrapper"><a href="javascript:void(0)" title="" class="searchPanel_open"><div><span class="fa fa-search searchIcon"></span></div></a></div>
+      <div class="sectionMenu-search-wrapper">
+        <a href="javascript:void(0)" title="" class="searchPanel_open">
+          <div>
+            <span class="fa fa-search searchIcon"></span>
+            <span class="sectionMenu-search-wrapper__txt">Search</span>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 {% else %}
@@ -42,7 +49,14 @@
         <div class="sectionMenu-breadCrumb-wrapper">
           {{ node_content.casella_breadcrumbs }}
         </div>
-        <div class="sectionMenu-search-wrapper"><a href="javascript:void(0)" title="" class="searchPanel_open"><div><span class="fa fa-search searchIcon"></span></div></a></div>
+        <div class="sectionMenu-search-wrapper">
+          <a href="javascript:void(0)" title="" class="searchPanel_open">
+            <div>
+              <span class="fa fa-search searchIcon"></span>
+              <span class="sectionMenu-search-wrapper__txt">Search</span>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   {% endif %}
