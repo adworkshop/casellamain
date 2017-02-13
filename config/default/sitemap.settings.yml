@@ -7,6 +7,7 @@ show_titles: true
 show_books: {  }
 books_expanded: true
 show_menus:
+  earthlife: earthlife
   main: main
   organics: organics
   account: '0'
@@ -34,19 +35,20 @@ rss_taxonomy: -1
 css: false
 order:
   front: -50
-  menus_account: -50
-  menus_admin: -50
-  menus_footer: -50
-  menus_main: -50
-  menus_organics: -50
-  menus_tools: -50
-  vocabularies_content_promotion_tags: -50
-  vocabularies_hiring_managers: -50
-  vocabularies_job_category: -50
-  vocabularies_job_status: -50
-  vocabularies_post_categories: -50
-  vocabularies_product_tags: -50
-  vocabularies_towns_cities: -50
-  vocabularies_waste_categories: -50
+  menus_account: -49
+  menus_admin: -48
+  menus_earthlife: -45
+  menus_footer: -47
+  menus_main: -46
+  menus_organics: -44
+  menus_tools: -43
+  vocabularies_content_promotion_tags: -42
+  vocabularies_hiring_managers: -41
+  vocabularies_job_category: -40
+  vocabularies_job_status: -39
+  vocabularies_post_categories: -38
+  vocabularies_product_tags: -37
+  vocabularies_towns_cities: -36
+  vocabularies_waste_categories: -35
 _core:
   default_config_hash: qZeaiLq06xBUfw-JNZtgetxUUMz-J8YCzw_LuhPrk2E
