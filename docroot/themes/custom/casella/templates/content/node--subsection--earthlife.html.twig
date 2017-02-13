@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block right_sidebar %}
+  {% set hasNav = sidebar_nav.earthlife|render|adw_strip_comments|trim or sidebar_nav.footer|render|adw_strip_comments|trim %}
 
   {% if hasPromos or parentLogo or hasNav %}
     <!--Col - Sidebar-->
