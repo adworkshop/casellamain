@@ -19,6 +19,6 @@ sitemap_txt_content_types:
   sidebar_promotion: 0
   testimonial: 0
 sitemap_txt_additional_pages: ''
-sitemap_txt_omit_pages: "/thank-you\r\n/new-job\r\n/available-careers/2nd-shift-diesel-mechanic\r\n/down-maintenance\r\n/error-403\r\n/error-404\r\n/new-earthlife-page\r\n/testing-redirects\r\n/biomix"
+sitemap_txt_omit_pages: "/thank-you\r\n/new-job\r\n/available-careers/2nd-shift-diesel-mechanic\r\n/down-maintenance\r\n/error-403\r\n/error-404\r\n/new-earthlife-page\r\n/testing-redirects\r\n/biomix\r\n/contact-us/thank-you\r\n/casella-organics/contact-us/thank-you\r\n/contact/market_leads/thank-you"
 _core:
   default_config_hash: V9SuK-B72SJ904P5AR1ZH0feHOnKCxc4zrbKZ_lLyV0
