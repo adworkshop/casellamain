@@ -42,6 +42,12 @@ class CasellaMiscService  {
       return '';
     }
 
+    // Earthlife no longer uses the subsection landing page. Hardcoding the
+    // destination as the Products landing page.
+    if ('earthlife' == $subsection) {
+      return $this->aliasManager->getAliasByPath('/node/26');
+    }
+
     $subsectionNidSelect = $this->dbConnection->select('node__field_subsection', 'subsection');
     $subsectionNidSelect->fields('subsection', array('entity_id'));
     $subsectionNidSelect->condition('bundle', 'subsection_homepage', '=');
