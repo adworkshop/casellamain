@@ -129,6 +129,44 @@ function casella_misc_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\Fo
  * @param $form
  * @param \Drupal\Core\Form\FormStateInterface $form_state
  */
+function casella_misc_form_node_job_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  _casella_misc_job_form_locations_update($form);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function casella_misc_form_node_job_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  _casella_misc_job_form_locations_update($form);
+}
+
+/**
+ * Helper function to identify unpublished locations.
+ * @param $form
+ */
+function _casella_misc_job_form_locations_update(&$form) {
+  $nodeStorage = \Drupal::entityTypeManager()->getStorage('node');
+  $unpubLocations = $nodeStorage->loadByProperties(['type' => 'location', 'status' => 0]);
+  if (!$unpubLocations) {
+    return;
+  }
+
+  foreach ($unpubLocations as $nid => $node) {
+    if (isset($form['field_location']['widget']['#options'][$nid])) {
+      $form['field_location']['widget']['#options'][$nid] = $form['field_location']['widget']['#options'][$nid] . ' ** Unpublished **';
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
 function casella_misc_form_contact_message_job_application_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
   $form['field_hiring_manager']['#attributes']['class'][] = 'hidden';
 
