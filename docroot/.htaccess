@@ -81,7 +81,7 @@ AddEncoding gzip svgz
 <IfModule mod_rewrite.c>
   RewriteEngine on
 
-  RewriteCond %{HTTP_HOST} ^caselladumpster.com [NC]
+  RewriteCond %{HTTP_HOST} ^(www\.)?caselladumpster\.com [NC]
   RewriteRule (.*) http://local.casella.com/Dumpster-Rental [L,R=302]
 
   # Set "protossl" to "s" if we were accessed via https://.  This is used later
