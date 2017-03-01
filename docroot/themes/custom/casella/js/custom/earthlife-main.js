@@ -22,7 +22,8 @@ jQuery(document).ready(function() {
     equalheight('.mainEarthlife-featuredProducts-txtContainer');
   });
 
-  jQuery('#generalNav').hide();
+  // Added subsection class to avoid hiding the nav on a non-subsection page with a polluted js include.
+  jQuery('.subsection #generalNav').hide();
   jQuery('.collapsed-headerTrigger').click(collapsedHeaderClickHandler);
 });
 
