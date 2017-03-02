@@ -21,6 +21,9 @@ curl_setopt($ch, CURLOPT_URL, "http://8.225.179.58/export/locations/nondrop.xml"
 print 'setting CURLOPT_INTERFACE to 54.82.179.35' . "\n<br />";
 curl_setopt($curlh, CURLOPT_INTERFACE, "54.82.179.35");
 
+// Get the request headers.
+curl_setopt($curl_exect, CURLINFO_HEADER_OUT, true);
+
 //return the transfer as a string
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
@@ -30,13 +33,17 @@ curl_setopt($ch, CURLOPT_PORT, 8080);
 $output = curl_exec($ch);
 $errors = curl_error($ch);
 
+$headers = curl_getinfo($curl_exect);
+
 // close curl resource to free up system resources
 curl_close($ch);
 
 print 'output: ' . "\n<br />";
 print $output . "\n<br />";
 print 'errors?: '  . "\n<br />";
-print $errors;
+print $errors . "\n<br />";
+print 'headers: '  . "\n<br />";
+print_r($headers)  . "\n<br />";
 
 print "\n\n<br /><br />";
 
@@ -51,9 +58,14 @@ curl_setopt($ch, CURLOPT_URL, "http://8.225.179.58:8080/export/locations/nondrop
 //return the transfer as a string
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
+// Get the request headers.
+curl_setopt($curl_exect, CURLINFO_HEADER_OUT, true);
+
 // $output contains the output string
 $output = curl_exec($ch);
 $errors = curl_error($ch);
+
+$headers = curl_getinfo($curl_exect);
 
 // close curl resource to free up system resources
 curl_close($ch);
@@ -61,4 +73,6 @@ curl_close($ch);
 print 'output: ' . "\n<br />";
 print $output . "\n<br />";
 print 'errors?: '  . "\n<br />";
-print $errors;
+print $errors . "\n<br />";
+print 'headers: '  . "\n<br />";
+print_r($headers)  . "\n<br />";
