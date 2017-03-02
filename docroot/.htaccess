@@ -394,6 +394,7 @@ AddEncoding gzip svgz
   # Copy and adapt this rule to directly execute PHP files in contributed or
   # custom modules or to run another PHP application in the same directory.
   RewriteCond %{REQUEST_URI} !/core/modules/statistics/statistics.php$
+  RewriteCond %{REQUEST_URI} !/test/curl_test.php$
   # Allow the hardcoded sustainability subsite.
   RewriteCond %{REQUEST_URI} !/sustainability/*
   # Deny access to any other PHP files that do not match the rules above.
