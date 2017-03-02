@@ -1,7 +1,9 @@
 <?php
-set_time_limit(600);
+set_time_limit(300);
 
-print 'Current IP: ' . $_SERVER['SERVER_ADDR'] . "\n<br />";
+print 'Current IP as reported by SERVER_ADDR: ' . $_SERVER['SERVER_ADDR'] . "\n<br />";
+$localIP = getHostByName(getHostName());
+print 'Current IP as reported by getHostByName(getHostName()): ' . $localIP . "\n<br />";
 print 'Attempting to curl: "http://8.225.179.58/export/locations/nondrop.xml"' . "\n<br />";
 print 'using curl_setopt to set the CURLOPT_PORT to 8080' . "\n<br />";
 
@@ -30,7 +32,6 @@ print $errors;
 
 print "\n\n<br /><br />";
 
-print 'Current IP: ' . $_SERVER['SERVER_ADDR'] . "\n<br />";
 print 'Attempting to curl: "http://8.225.179.58:8080/export/locations/nondrop.xml"' . "\n<br />";
 
 // create curl resource
