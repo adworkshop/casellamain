@@ -43,7 +43,7 @@ print $output . "\n<br />";
 print 'errors?: '  . "\n<br />";
 print $errors . "\n<br />";
 print 'headers: '  . "\n<br />";
-print_r($headers)  . "\n<br />";
+print_r($headers);
 
 print "\n\n<br /><br />";
 
@@ -75,4 +75,4 @@ print $output . "\n<br />";
 print 'errors?: '  . "\n<br />";
 print $errors . "\n<br />";
 print 'headers: '  . "\n<br />";
-print_r($headers)  . "\n<br />";
+print_r($headers);
