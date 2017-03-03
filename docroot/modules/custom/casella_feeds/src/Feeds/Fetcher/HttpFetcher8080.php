@@ -12,7 +12,7 @@ use GuzzleHttp\RequestOptions;
  *
  * @FeedsFetcher(
  *   id = "http8080",
- *   title = @Translation("Download Port 80"),
+ *   title = @Translation("Download Port 8080"),
  *   description = @Translation("Downloads data from a URL using Drupal's HTTP request handler via port 8080."),
  *   form = {
  *     "configuration" = "Drupal\feeds\Feeds\Fetcher\Form\HttpFetcherForm",
@@ -58,8 +58,9 @@ class HttpFetcher8080 extends HttpFetcher {
       $response = $this->client->get($url, $options);
     }
     catch (RequestException $e) {
-      $args = ['%site' => $url, '%error' => $e->getMessage()];
-      throw new \RuntimeException($this->t('The feed from %site seems to be broken because of error "%error".', $args));
+      $args = ['%site' => $url, '%error' => $e->getMessage(), '%dump' => print_r($e, 1)];
+
+      throw new \RuntimeException($this->t('The feed from %site seems to be broken because of error "%error". dump: %dump', $args));
     }
 
     if ($cache_key) {
