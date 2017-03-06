@@ -8,10 +8,12 @@ label: 'Service Locations - Drop offs'
 id: service_locations_drop_offs
 description: ''
 import_period: -1
-fetcher: upload
+fetcher: http
 fetcher_configuration:
-  allowed_extensions: 'txt csv tsv xml opml'
-  directory: 'public://feeds'
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  fallback_hub: ''
+  request_timeout: 30
 parser: casella_service_locations_advanced
 parser_configuration: {  }
 processor: 'entity:node'
@@ -19,7 +21,7 @@ processor_configuration:
   update_existing: 2
   expire: -1
   owner_id: 1
-  authorize: true
+  authorize: false
   skip_hash_check: false
   values:
     type: location
