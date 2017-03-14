@@ -67,3 +67,4 @@ permissions:
   90: 'access sitemap'
   91: 'view any unpublished content'
   92: 'restful get casellatownsbyzip'
+  93: 'restful get casellaavailablecareers'
