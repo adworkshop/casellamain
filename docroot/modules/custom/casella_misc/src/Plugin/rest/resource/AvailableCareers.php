@@ -40,6 +40,7 @@ class AvailableCareers extends ResourceBase {
     ];
 
     $host = \Drupal::request()->getHost();
+    $jobStorage = [];
     foreach ($careers as $career) {
       $jobStatus = $career->get('field_job_status')->getValue();
       $jobStatus = $termStorage->load($jobStatus[0]['target_id']);
@@ -60,8 +61,10 @@ class AvailableCareers extends ResourceBase {
       $title = $career->get('title')->getValue();
       $body = $career->get('body')->getValue();
       $created = $career->get('field_date_posted')->getValue();
+      $createdStamp = isset($created[0]['value']) ? strtotime($created[0]['value']) : 0;
 
-      $retVal['job'][] = [
+      // Index by the created stamp. Make it an array in case of overlap.
+      $jobStorage[$createdStamp][] = [
         'ID' => $career->id(),
         'Title' => isset($title[0]['value']) ? $title[0]['value'] : '',
         'Ref' => 'JOB' . $career->id(),
@@ -76,6 +79,14 @@ class AvailableCareers extends ResourceBase {
         'JobLink' => '//' . $host . $url,
         'Published' => 'Yes',
       ];
+    }
+
+    // Reverse the order, we want most recent first.
+    krsort($jobStorage);
+    // Run through the Job Storage array and dump the jobs into the $retVal [].
+    foreach ($jobStorage as $jobBag) {
+      usort($jobBag, function($a, $b) {return strcmp($a["Title"], $b["Title"]);});
+      $retVal = array_merge($retVal, $jobBag);
     }
 
     return new ResourceResponse($retVal);
