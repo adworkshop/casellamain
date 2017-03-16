@@ -86,7 +86,7 @@ class AvailableCareers extends ResourceBase {
     // Run through the Job Storage array and dump the jobs into the $retVal [].
     foreach ($jobStorage as $jobBag) {
       usort($jobBag, function($a, $b) {return strcmp($a["Title"], $b["Title"]);});
-      $retVal = array_merge($retVal, $jobBag);
+      $retVal['job'] = array_merge($retVal['job'], $jobBag);
     }
 
     return new ResourceResponse($retVal);
