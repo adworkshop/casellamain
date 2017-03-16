@@ -36,7 +36,7 @@ class AvailableCareers extends ResourceBase {
     $careers = $nodeStorage->loadByProperties(['status' => TRUE, 'type' => 'job']);
 
     $retVal = [
-      'job' => '',
+      'job' => [],
     ];
 
     $host = \Drupal::request()->getHost();
