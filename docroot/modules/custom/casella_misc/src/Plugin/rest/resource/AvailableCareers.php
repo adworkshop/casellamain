@@ -26,6 +26,12 @@ class AvailableCareers extends ResourceBase {
    * @return \Drupal\rest\ResourceResponse
    */
   public function get() {
+    $build = array(
+      '#cache' => array(
+        'max-age' => 0,
+      ),
+    );
+
     $termStorage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
     $nodeStorage = \Drupal::entityTypeManager()->getStorage('node');
 
@@ -90,7 +96,7 @@ class AvailableCareers extends ResourceBase {
       $retVal['job'] = array_merge($retVal['job'], $jobBag);
     }
 
-    return new ResourceResponse($retVal);
+    return (new ResourceResponse($retVal))->addCacheableDependency($build);
   }
 
 }
