@@ -418,6 +418,14 @@ AddEncoding gzip svgz
     RewriteRule \.css\.gz$ - [T=text/css,E=no-gzip:1]
     RewriteRule \.js\.gz$ - [T=text/javascript,E=no-gzip:1]
 
+    <Files api/careers/available.xml>
+      FileETag None
+      Header unset ETag
+      Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+      Header set Pragma "no-cache"
+      Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
+    </Files>
+
     <FilesMatch "(\.js\.gz|\.css\.gz)$">
       # Serve correct encoding type.
       Header set Content-Encoding gzip
