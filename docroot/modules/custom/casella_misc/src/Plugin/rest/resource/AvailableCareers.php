@@ -21,13 +21,9 @@ class AvailableCareers extends ResourceBase {
   /**
    * Responds to GET requests.
    *
-   * Returns a list of markers in JSON format.
-   *
-   * @param string $town
-   *   The town being searched for
+   * Returns a list of recently added or updated careers.
    *
    * @return \Drupal\rest\ResourceResponse
-   *   The response containing the log entry.
    */
   public function get() {
     $termStorage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
@@ -94,13 +90,7 @@ class AvailableCareers extends ResourceBase {
       $retVal['job'] = array_merge($retVal['job'], $jobBag);
     }
 
-    $build = array(
-      '#cache' => array(
-        'max-age' => 0,
-      ),
-    );
-
-    return (new ResourceResponse($retVal))->addCacheableDependency($build);
+    return new ResourceResponse($retVal);
   }
 
 }
