@@ -35,7 +35,13 @@ class AvailableCareers extends ResourceBase {
     $termStorage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
     $nodeStorage = \Drupal::entityTypeManager()->getStorage('node');
 
-    $careers = $nodeStorage->loadByProperties(['status' => TRUE, 'type' => 'job']);
+    // $careers = $nodeStorage->loadByProperties(['status' => TRUE, 'type' => 'job']);
+    $query = \Drupal::entityQuery('node');
+    $query->condition('type', 'job');
+    $query->condition('status', '1');
+
+    $entityIds = $query->execute();
+    $careers = $nodeStorage->loadMultiple($entityIds);
 
     $retVal = [
       'job' => [],
