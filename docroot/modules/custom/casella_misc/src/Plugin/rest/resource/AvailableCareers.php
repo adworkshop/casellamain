@@ -112,12 +112,7 @@ class AvailableCareers extends ResourceBase {
       $retVal['job'] = array_merge($retVal['job'], $jobBag);
     }
 
-    // return (new ResourceResponse($retVal))->addCacheableDependency($build);
-    $response = new ResourceResponse($retVal);
-    // Adding an empty object as a cacheable dependenct. Since it doesn't
-    // implement the correct trait it will force a no-cache.
-    $response->addCacheableDependency((object)[]);
-    return $response;
+    return (new ResourceResponse($retVal))->addCacheableDependency($build);
   }
 
 }
