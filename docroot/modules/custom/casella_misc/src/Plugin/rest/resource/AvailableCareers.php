@@ -36,12 +36,22 @@ class AvailableCareers extends ResourceBase {
     $nodeStorage = \Drupal::entityTypeManager()->getStorage('node');
 
     // $careers = $nodeStorage->loadByProperties(['status' => TRUE, 'type' => 'job']);
+    /*
     $query = \Drupal::entityQuery('node');
     $query->condition('type', 'job');
     $query->condition('status', '1');
+    */
+    $query = \Drupal::database()->select('node_field_data');
+    $query->condition('node_field_data.type', 'job');
+    $query->condition('node_field_data.status', '1');
+    $query->fields('node_field_data', ['nid']);
+    $results = $query->execute();
+    $nids = [];
+    while ($result = $results->fetchAssoc()) {
+      $nids[] = $result['nid'];
+    }
 
-    $entityIds = $query->execute();
-    $careers = $nodeStorage->loadMultiple($entityIds);
+    $careers = $nodeStorage->loadMultiple($nids);
 
     $retVal = [
       'job' => [],
@@ -103,7 +113,11 @@ class AvailableCareers extends ResourceBase {
     }
 
     // return (new ResourceResponse($retVal))->addCacheableDependency($build);
-    return new ResourceResponse($retVal);
+    $response = new ResourceResponse($retVal);
+    // Adding an empty object as a cacheable dependenct. Since it doesn't
+    // implement the correct trait it will force a no-cache.
+    $response->addCacheableDependency((object)[]);
+    return $response;
   }
 
 }
