@@ -112,7 +112,11 @@ class AvailableCareers extends ResourceBase {
       $retVal['job'] = array_merge($retVal['job'], $jobBag);
     }
 
-    return (new ResourceResponse($retVal))->addCacheableDependency($build);
+    $resource = new ResourceResponse($retVal);
+    $resource->addCacheableDependency($build);
+    $dateTime = new \DateTime();
+    $resource->setLastModified($dateTime);
+    return $resource;
   }
 
 }
