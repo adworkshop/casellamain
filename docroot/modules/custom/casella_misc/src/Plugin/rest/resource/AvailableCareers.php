@@ -12,7 +12,7 @@ use Drupal\rest\ResourceResponse;
  *   id = "casellaavailablecareers",
  *   label = @Translation("Casella available careers"),
  *   uri_paths = {
- *     "canonical" = "/api/careers/available.xml",
+ *     "canonical" = "/api/careers/available",
  *   }
  * )
  */
@@ -114,8 +114,6 @@ class AvailableCareers extends ResourceBase {
 
     $resource = new ResourceResponse($retVal);
     $resource->addCacheableDependency($build);
-    $dateTime = new \DateTime();
-    $resource->setLastModified($dateTime);
     return $resource;
   }
 
