@@ -29,6 +29,7 @@ class AvailableCareers extends ResourceBase {
     $build = array(
       '#cache' => array(
         'max-age' => 0,
+        'url.query_args',
       ),
     );
 
@@ -113,8 +114,9 @@ class AvailableCareers extends ResourceBase {
     }
 
     $resource = new ResourceResponse($retVal);
+    $resource->setLastModified();
     $resource->addCacheableDependency($build);
-    $resource->setLastModified(new \DateTime());
+    $resource->setEtag();
     return $resource;
   }
 
