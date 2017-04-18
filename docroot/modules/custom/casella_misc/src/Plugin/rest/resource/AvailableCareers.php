@@ -114,6 +114,7 @@ class AvailableCareers extends ResourceBase {
 
     $resource = new ResourceResponse($retVal);
     $resource->addCacheableDependency($build);
+    $resource->setLastModified(new \DateTime());
     return $resource;
   }
 
