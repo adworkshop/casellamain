@@ -12,7 +12,7 @@ use Drupal\rest\ResourceResponse;
  *   id = "casellaavailablecareers",
  *   label = @Translation("Casella available careers"),
  *   uri_paths = {
- *     "canonical" = "/api/careers/available",
+ *     "canonical" = "/api/careers/available.xml",
  *   }
  * )
  */
