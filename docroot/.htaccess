@@ -153,6 +153,12 @@ AddEncoding gzip svgz
   RewriteCond %{HTTP_HOST} ^m.casellaorganics.com [NC]
   RewriteRule ^/?$ https://www.casella.com/casella-organics [L,QSA,R=301]
 
+  RewriteCond %{HTTP_HOST} ^evergreenwaste\.com [NC]
+  RewriteRule ^/?$ https://www.casella.com/welcome-evergreen-waste-customers [L,QSA,R=301]
+
+  RewriteCond %{HTTP_HOST} ^www\.evergreenwaste\.com [NC]
+  RewriteRule ^/?$ https://www.casella.com/welcome-evergreen-waste-customers [L,QSA,R=301]
+
   RewriteCond %{HTTP_HOST} !^www\.casellaorganics\.com [NC]
   RewriteCond %{HTTP_HOST} !^casellaorganics\.com [NC]
   # This one skips the next s rules. The number needs to match the number of rules to be skipped. CAREFUL!!!
