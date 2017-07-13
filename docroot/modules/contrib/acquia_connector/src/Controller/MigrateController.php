@@ -2,6 +2,7 @@
 
 namespace Drupal\acquia_connector\Controller;
 
+use Drupal\acquia_connector\Helper\Storage;
 use Drupal\acquia_connector\Migration;
 use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -16,9 +17,9 @@ class MigrateController extends ControllerBase {
    * Acquia_connector.migrate route callback.
    */
   public function migratePage() {
-    $config = $this->config('acquia_connector.settings');
-    $identifier = $config->get('identifier');
-    $key = $config->get('key');
+    $storage = new Storage();
+    $identifier = $storage->getIdentifier();
+    $key = $storage->getKey();
 
     if (!empty($identifier) && !empty($key)) {
       try {

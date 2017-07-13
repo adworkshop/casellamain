@@ -2,6 +2,7 @@
 
 namespace Drupal\acquia_connector\Form;
 
+use Drupal\acquia_connector\Helper\Storage;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\acquia_connector\Client;
 use Drupal\Core\Form\ConfigFormBase;
@@ -64,19 +65,19 @@ class CredentialForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $config = $this->config('acquia_connector.settings');
 
+    $storage = new Storage();
     $form['#prefix'] = $this->t('Enter your <a href=":net">identifier and key</a> from your subscriptions overview or <a href=":url">log in</a> to connect your site to the Acquia Subscription.', array(':net' => Url::fromUri('https://insight.acquia.com/subscriptions')->getUri(), ':url' => \Drupal::url('acquia_connector.setup')));
     $form['acquia_identifier'] = array(
       '#type' => 'textfield',
       '#title' => $this->t('Identifier'),
-      '#default_value' => $config->get('identifier'),
+      '#default_value' => $storage->getIdentifier(),
       '#required' => TRUE,
     );
     $form['acquia_key'] = array(
       '#type' => 'textfield',
       '#title' => $this->t('Network key'),
-      '#default_value' => $config->get('key'),
+      '#default_value' => $storage->getKey(),
       '#required' => TRUE,
     );
     $form['actions'] = array('#type' => 'actions');
@@ -134,21 +135,24 @@ class CredentialForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $config = $this->config('acquia_connector.settings');
 
-    $config->set('key', $form_state->getValue('acquia_key'))
-      ->set('identifier', $form_state->getValue('acquia_identifier'))
-      ->set('subscription_name', $form_state->getValue('subscription'))
+    $config->set('subscription_name', $form_state->getValue('subscription'))
       ->save();
+
+    $storage = new Storage();
+    $storage->setKey($form_state->getValue('acquia_key'));
+    $storage->setIdentifier($form_state->getValue('acquia_identifier'));
 
     // Check subscription and send a heartbeat to Acquia Network via XML-RPC.
     // Our status gets updated locally via the return data.
-    $subscription = Subscription::update();
+    $subscription = new Subscription();
+    $subscription_data = $subscription->update();
 
     // Redirect to the path without the suffix.
     $form_state->setRedirect('acquia_connector.settings');
 
     drupal_flush_all_caches();
 
-    if ($subscription['active']) {
+    if ($subscription_data['active']) {
       drupal_set_message($this->t('<h3>Connection successful!</h3>You are now connected to Acquia Cloud. Please enter a name for your site to begin sending profile data.'));
     }
   }
