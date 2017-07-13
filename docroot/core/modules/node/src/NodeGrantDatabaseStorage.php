@@ -152,28 +152,16 @@ class NodeGrantDatabaseStorage implements NodeGrantDatabaseStorageInterface {
       $langcode = FALSE;
     }
 
-    // $tables_ref should effectively be the same as $tables, except it is a
-    // reference to the original copy of the data, within the $query object.
-    // Edits made to $tables_ref are retained within the $query object.
-    // $tables_ref would not be necessary if the version of $tables in
-    // the alterQuery arguments was passed by reference -- but that
-    // would technically be an API change.
-    $tables_ref = &$query->getTables();
-
     // Find all instances of the base table being joined -- could appear
     // more than once in the query, and could be aliased. Join each one to
     // the node_access table.
     $grants = node_access_grants($op, $account);
-
-    // The main loop is using $tables instead of $tables_ref -- if for any
-    // reason the two arrays differ, technically this function has been
-    // told to operate on the entries listed in $tables.
     foreach ($tables as $nalias => $tableinfo) {
       $table = $tableinfo['table'];
       if (!($table instanceof SelectInterface) && $table == $base_table) {
         // Set the subquery.
         $subquery = $this->database->select('node_access', 'na')
-          ->fields('na', array('nid'));
+          ->fields('na', ['nid']);
 
         // If any grant exists for the specified user, then user has access to the
         // node for the specified operation.
@@ -202,26 +190,7 @@ class NodeGrantDatabaseStorage implements NodeGrantDatabaseStorageInterface {
         // Now handle entities.
         $subquery->where("$nalias.$field = na.nid");
 
-        if (empty($tableinfo['join type']) || empty($tables_ref[$nalias]['join type'])) {
-          $query->exists($subquery);
-        }
-        else {
-          // If it's a join, add the node access check to the join condition.
-          // This requires altering the table information -- and therefore has
-          // to use $tables_ref instead of $tables.
-          $join_cond = $query
-            ->andConditionGroup()
-            ->exists($subquery);
-          // Add the existing join conditions into the Condition object.
-          if ($tables_ref[$nalias]['condition'] instanceof ConditionInterface) {
-            $join_cond->condition($tables_ref[$nalias]['condition']);
-          }
-          else {
-            $join_cond->where($tables_ref[$nalias]['condition'], $tables_ref[$nalias]['arguments']);
-            $tables_ref[$nalias]['arguments'] = array();
-          }
-          $tables_ref[$nalias]['condition'] = $join_cond;
-        }
+        $query->exists($subquery);
       }
     }
   }
@@ -233,13 +202,13 @@ class NodeGrantDatabaseStorage implements NodeGrantDatabaseStorageInterface {
     if ($delete) {
       $query = $this->database->delete('node_access')->condition('nid', $node->id());
       if ($realm) {
-        $query->condition('realm', array($realm, 'all'), 'IN');
+        $query->condition('realm', [$realm, 'all'], 'IN');
       }
       $query->execute();
     }
     // Only perform work when node_access modules are active.
     if (!empty($grants) && count($this->moduleHandler->getImplementations('node_grants'))) {
-      $query = $this->database->insert('node_access')->fields(array('nid', 'langcode', 'fallback', 'realm', 'gid', 'grant_view', 'grant_update', 'grant_delete'));
+      $query = $this->database->insert('node_access')->fields(['nid', 'langcode', 'fallback', 'realm', 'gid', 'grant_view', 'grant_update', 'grant_delete']);
       // If we have defined a granted langcode, use it. But if not, add a grant
       // for every language this node is translated to.
       foreach ($grants as $grant) {
@@ -247,7 +216,7 @@ class NodeGrantDatabaseStorage implements NodeGrantDatabaseStorageInterface {
           continue;
         }
         if (isset($grant['langcode'])) {
-          $grant_languages = array($grant['langcode'] => $this->languageManager->getLanguage($grant['langcode']));
+          $grant_languages = [$grant['langcode'] => $this->languageManager->getLanguage($grant['langcode'])];
         }
         else {
           $grant_languages = $node->getTranslationLanguages(TRUE);
@@ -284,14 +253,14 @@ class NodeGrantDatabaseStorage implements NodeGrantDatabaseStorageInterface {
    */
   public function writeDefault() {
     $this->database->insert('node_access')
-      ->fields(array(
+      ->fields([
           'nid' => 0,
           'realm' => 'all',
           'gid' => 0,
           'grant_view' => 1,
           'grant_update' => 0,
           'grant_delete' => 0,
-        ))
+        ])
       ->execute();
   }
 
