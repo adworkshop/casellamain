@@ -2,6 +2,7 @@
 
 namespace Drupal\acquia_connector\Form;
 
+use Drupal\acquia_connector\Helper\Storage;
 use Drupal\acquia_connector\Client;
 use Drupal\acquia_connector\Migration;
 use Drupal\Core\Url;
@@ -101,8 +102,9 @@ class SettingsForm extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
 
     $config = $this->config('acquia_connector.settings');
-    $identifier = $config->get('identifier');
-    $key = $config->get('key');
+    $storage = new Storage();
+    $identifier = $storage->getIdentifier();
+    $key = $storage->getKey();
     $subscription = $config->get('subscription_name');
 
     if (empty($identifier) && empty($key)) {

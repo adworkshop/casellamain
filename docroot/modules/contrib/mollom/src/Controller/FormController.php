@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\mollom\Form\FormController.
- */
-
 namespace Drupal\mollom\Controller;
 
 use Drupal\Component\Utility\SafeMarkup;
@@ -13,7 +8,6 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityFormInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Logger\RfcLogLevel;
-use Drupal\Core\Entity\FieldableEntityInterface;
 use Drupal\mollom\Element\Mollom;
 use Drupal\mollom\Storage\ResponseDataStorage;
 use Drupal\mollom\Utility\Logger;
@@ -449,9 +443,7 @@ class FormController extends ControllerBase {
     if (!$entity_info = \Drupal::entityManager()->getDefinition($entity_type)) {
       return;
     }
-    if (!empty($entity_info->getKeys()['id'])) {
-      $form_info['mapping']['post_id'] = $entity_info->getKeys()['id'];
-    }
+    $form_info['mapping']['post_id'] = $entity_info->getKeys()['id'];
     $title = isset($form_info['mapping']['post_title']) ? $form_info['mapping']['post_title'] : '';
     $title_parts = explode('][', $title);
     $base_title = reset($title_parts);
@@ -835,10 +827,6 @@ class FormController extends ControllerBase {
     }
     /* @var $form_object \Drupal\Core\Entity\EntityFormInterface */
     $entity_id = $form_object->getEntity()->id();
-    // Don't try to save log data on enties without ids.
-    if (!$entity_id) {
-      return;
-    }
     $data = (object) $mollom;
     $data->id = $entity_id;
     $data->moderate = $mollom['require_moderation'] ? 1 : 0;

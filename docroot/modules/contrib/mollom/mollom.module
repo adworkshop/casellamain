@@ -2,7 +2,6 @@
 
 use Drupal\comment\CommentInterface;
 use Drupal\Component\Utility\Unicode;
-use Drupal\contact\Entity\ContactForm;
 use Drupal\Core\Url;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Entity\EntityInterface;
@@ -237,24 +236,12 @@ function comment_mollom_entity_report_access(CommentInterface $entity = NULL) {
  * Implements hook_mollom_form_list().
  */
 function contact_mollom_form_list() {
+  $forms['contact_message_feedback_form'] = array(
+    'title' => t('Site-wide contact form'),
+  );
   $forms['contact_message_personal_form'] = array(
     'title' => t('User contact form'),
   );
-
-  /** @var ContactForm[] $contact_forms */
-  $contact_forms = ContactForm::loadMultiple();
-  foreach ($contact_forms as $contact_form) {
-  if ($contact_form->id() == 'feedback') {
-      continue;
-  }
-  $form_id = 'contact_message_' . $contact_form->id() . '_form';
-  $forms[$form_id] = [
-      'title' => t('@name form', array('@name' => $contact_form->label())),
-      'entity' => 'contact_message',
-      'bundle' => $contact_form->id(),
-      'report access' => array('administer contact forms'),
-    ];
-  }
   return $forms;
 }
 
@@ -263,6 +250,22 @@ function contact_mollom_form_list() {
  */
 function contact_mollom_form_info($form_id) {
   switch ($form_id) {
+    case 'contact_message_feedback_form':
+      $form_info = array(
+        'mode' => FormInterface::MOLLOM_MODE_ANALYSIS,
+        'bypass access' => array('administer contact forms'),
+        'elements' => array(
+          'subject' => t('Subject'),
+          'message' => t('Message'),
+        ),
+        'mapping' => array(
+          'post_title' => 'subject',
+          'author_name' => 'name',
+          'author_mail' => 'mail',
+        ),
+      );
+      return $form_info;
+
     case 'contact_message_personal_form':
       $form_info = array(
         'mode' => FormInterface::MOLLOM_MODE_ANALYSIS,
@@ -278,27 +281,6 @@ function contact_mollom_form_info($form_id) {
         ),
       );
       return $form_info;
-  }
-
-  if (strpos($form_id, 'contact_message') === 0) {
-    $bundle = preg_replace('/^contact_message_|_form$/', '', $form_id);
-    $contact_form = ContactForm::load($bundle);
-    if ($contact_form) {
-      $form_info = [
-        'mode' => FormInterface::MOLLOM_MODE_ANALYSIS,
-        'bypass access' => ['administer contact forms'],
-        'elements' => array(
-          'subject' => t('Subject'),
-          'message' => t('Message'),
-        ),
-        'mapping' => [
-          'post_title' => 'subject',
-          'author_name' => 'name',
-          'author_mail' => 'mail',
-        ],
-      ];
-      return $form_info;
-    }
   }
 }
 
@@ -617,7 +599,7 @@ function mollom_entity_update(EntityInterface $entity) {
   // If the entity update function provides the original entity, only mark the
   // data as moderated when the entity's status transitioned to published.
   if (!isset($entity->original)) {
-    $entity->original = \Drupal::entityManager()->getStorage($entity->getEntityTypeId())->loadUnchanged($entity->id);
+    $entity->original = \Drupal::entityManager()->getStorage($entity->getEntityTypeId())->loadUnchanged($entity->id());
   }
   if (isset($entity->original->status)) {
     if (empty($entity->original->status->value) && !empty($entity->status->value)) {
