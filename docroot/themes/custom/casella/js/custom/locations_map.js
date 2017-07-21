@@ -362,6 +362,8 @@ function findLocationClickHandler(event) {
   jQuery('body,html').animate({ 'scrollTop': jQuery('.panelControlBtn[data-rel="#content-map"]').offset().top - 100}, 200);
 
   jQuery('.panelControlBtn[data-rel="#content-map"]').click();
+
+
 }
 
 function debounce(func, wait, immediate) {

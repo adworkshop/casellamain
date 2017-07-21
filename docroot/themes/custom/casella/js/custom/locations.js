@@ -35,7 +35,9 @@ function setContent($el) {
 
   $locationsMapPanel.promise().done(function () {
     $el.addClass('active');
-    jQuery($el.data('rel')).fadeIn(300);
+    jQuery($el.data('rel')).fadeIn(300).done(function() {
+        jQuery.fn.matchHeight._update();
+    });
 
     if ("undefined" != typeof casellaMap && '#content-map' == $el.attr('data-rel')) {
       google.maps.event.trigger(casellaMap, "resize");
@@ -47,7 +49,6 @@ function setContent($el) {
     }
   });
 
-  jQuery.fn.matchHeight._update();
 }
 
 function locationgMapMarkerClickHandler(event) {
