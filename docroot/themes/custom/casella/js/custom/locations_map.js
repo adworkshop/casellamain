@@ -382,3 +382,12 @@ function debounce(func, wait, immediate) {
 function handleMapResize() {
   google.maps.event.trigger(casellaMap, "resize");
 }
+
+jQuery(document).ready(function() {
+    jQuery(function() {
+        jQuery('.equalize').matchHeight({
+            byRow: true,
+            property: 'height',
+        });
+    });
+});

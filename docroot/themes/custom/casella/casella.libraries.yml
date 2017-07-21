@@ -233,6 +233,7 @@ royalslider:
 locations_map:
   version: 1.0
   js:
+    plugins/matchHeight/dist/jquery.matchHeight-min.js: {}
     js/custom/locations_map.js: {}
   dependencies:
     - casella/locations
