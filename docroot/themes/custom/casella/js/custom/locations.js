@@ -35,7 +35,7 @@ function setContent($el) {
 
   $locationsMapPanel.promise().done(function () {
     $el.addClass('active');
-    jQuery($el.data('rel')).fadeIn(300).done(function() {
+    jQuery($el.data('rel')).fadeIn(300).promise().done(function() {
         jQuery.fn.matchHeight._update();
     });
 
