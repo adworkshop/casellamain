@@ -46,6 +46,8 @@ function setContent($el) {
       }
     }
   });
+
+  jQuery.fn.matchHeight._update();
 }
 
 function locationgMapMarkerClickHandler(event) {
