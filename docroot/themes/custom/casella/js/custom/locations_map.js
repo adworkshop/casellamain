@@ -380,6 +380,7 @@ function debounce(func, wait, immediate) {
 };
 
 function handleMapResize() {
+  jQuery.fn.matchHeight._update();
   google.maps.event.trigger(casellaMap, "resize");
 }
 
