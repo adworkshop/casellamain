@@ -299,9 +299,9 @@ Author URI: http://www.adworkshop.com
   .not-searched .locationMap-marker-accordion-toggle {opacity:.3; pointer-events: none;}
   .not-searched .locationMap-locationToggles-wrapper {opacity:.3; pointer-events: none;}
   
-  .locationMap-container {display:table; table-layout:fixed;}
-  .locationMap-contentCol-container {display:table-cell; vertical-align:top; width: 40%; padding: 50px 40px;}
-  .locationMap-mapCol-container {display:table-cell; vertical-align:top; padding:0;}
+  .locationMap-container {font-size:0;}
+  .locationMap-contentCol-container {display:inline-block; vertical-align:top; width: 40%; padding: 50px 40px;}
+  .locationMap-mapCol-container {display:inline-block; vertical-align:top; width: 60%; padding:0;}
   .content-map {height: 100%; position: absolute; top: 0;}
   .locationMap-listView-container {padding:50px 7% 50px 50px;}
   
@@ -317,11 +317,16 @@ Author URI: http://www.adworkshop.com
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   }
+    
+  .locationMap-link-accordion-container,
+  .locationMap-searchForm-container .icon {font-size: 1rem;}
+    
   }
   
   @media all and (min-width: 1200px) {
   .locationMap-searchForm-title {font-size: 17px;}
   .locationMap-contentCol-container {width: 30%; padding: 50px 50px 50px 7%;}
+  .locationMap-mapCol-container {width: 70%;}
   }
   
   @media all and (min-width: 1300px) {
