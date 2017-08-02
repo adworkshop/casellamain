@@ -6,8 +6,10 @@ use Doctrine\Common\Inflector\Inflector;
 use Drupal\Component\Render\FormattableMarkup;
 use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\Entity\EntityManagerInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
 use Drupal\Core\Entity\Query\QueryFactory;
+use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\feeds\Entity\FeedType;
 use Drupal\feeds\Exception\EntityAccessException;
@@ -29,11 +31,11 @@ use Drupal\user\Entity\User;
 abstract class EntityProcessorBase extends ProcessorBase implements EntityProcessorInterface {
 
   /**
-   * The entity manager.
+   * The entity type manager.
    *
-   * @var \Drupal\Core\Entity\EntityManagerInterface
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
-  protected $entityManager;
+  protected $entityTypeManager;
 
   /**
    * The entity storage controller for the entity type being processed.
@@ -64,6 +66,13 @@ abstract class EntityProcessorBase extends ProcessorBase implements EntityProces
   protected $isLocked;
 
   /**
+   * The entity type bundle info.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeBundleInfoInterface
+   */
+  protected $entityTypeBundleInfo;
+
+  /**
    * Constructs an EntityProcessorBase object.
    *
    * @param array $configuration
@@ -72,16 +81,19 @@ abstract class EntityProcessorBase extends ProcessorBase implements EntityProces
    *   The plugin id.
    * @param array $plugin_definition
    *   The plugin definition.
-   * @param \Drupal\Core\Entity\EntityManagerInterface $entity_manager
-   *   The entity manager.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entity type manager.
    * @param \Drupal\Core\Entity\Query\QueryFactory $query_factory
    *   The entity query factory.
+   * @param \Drupal\Core\Entity\EntityTypeBundleInfoInterface $entity_type_bundle_info
+   *   The entity type bundle info.
    */
-  public function __construct(array $configuration, $plugin_id, array $plugin_definition, EntityManagerInterface $entity_manager, QueryFactory $query_factory) {
-    $this->entityManager = $entity_manager;
-    $this->entityType = $entity_manager->getDefinition($plugin_definition['entity_type']);
-    $this->storageController = $entity_manager->getStorage($plugin_definition['entity_type']);
+  public function __construct(array $configuration, $plugin_id, array $plugin_definition, EntityTypeManagerInterface $entity_type_manager, QueryFactory $query_factory, EntityTypeBundleInfoInterface $entity_type_bundle_info) {
+    $this->entityTypeManager = $entity_type_manager;
+    $this->entityType = $entity_type_manager->getDefinition($plugin_definition['entity_type']);
+    $this->storageController = $entity_type_manager->getStorage($plugin_definition['entity_type']);
     $this->queryFactory = $query_factory;
+    $this->entityTypeBundleInfo = $entity_type_bundle_info;
 
     parent::__construct($configuration, $plugin_id, $plugin_definition);
   }
@@ -224,7 +236,7 @@ abstract class EntityProcessorBase extends ProcessorBase implements EntityProces
    */
   public function bundleOptions() {
     $options = [];
-    foreach ($this->entityManager->getBundleInfo($this->entityType()) as $bundle => $info) {
+    foreach ($this->entityTypeBundleInfo->getBundleInfo($this->entityType()) as $bundle => $info) {
       if (!empty($info['label'])) {
         $options[$bundle] = $info['label'];
       }
@@ -266,7 +278,7 @@ abstract class EntityProcessorBase extends ProcessorBase implements EntityProces
     if (!$this->entityType->getKey('bundle')) {
       return $this->entityTypeLabel();
     }
-    $storage = $this->entityManager->getStorage($this->entityType->getBundleEntityType());
+    $storage = $this->entityTypeManager->getStorage($this->entityType->getBundleEntityType());
     return $storage->load($this->configuration['values'][$this->entityType->getKey('bundle')])->label();
   }
 
@@ -289,7 +301,12 @@ abstract class EntityProcessorBase extends ProcessorBase implements EntityProces
     $entity->enforceIsNew();
 
     if ($entity instanceof EntityOwnerInterface) {
-      $entity->setOwnerId($this->configuration['owner_id']);
+      if ($this->configuration['owner_feed_author']) {
+        $entity->setOwnerId($feed->getOwnerId());
+      }
+      else {
+        $entity->setOwnerId($this->configuration['owner_id']);
+      }
     }
     return $entity;
   }
@@ -302,13 +319,71 @@ abstract class EntityProcessorBase extends ProcessorBase implements EntityProces
     if (!count($violations)) {
       return;
     }
+
+    $errors = [];
+
+    foreach ($violations as $violation) {
+      $error = $violation->getMessage();
+
+      // Try to add more context to the message.
+      // @todo if an exception occurred because of a different bundle, add more
+      // context to the message.
+      $invalid_value = $violation->getInvalidValue();
+      if ($invalid_value instanceof FieldItemListInterface) {
+        // The invalid value is a field. Get more information about this field.
+        $error = new FormattableMarkup('@name (@property_name): @error', [
+          '@name' => $invalid_value->getFieldDefinition()->getLabel(),
+          '@property_name' => $violation->getPropertyPath(),
+          '@error' => $error,
+        ]);
+      }
+      else {
+        $error = new FormattableMarkup('@property_name: @error', [
+          '@property_name' => $violation->getPropertyPath(),
+          '@error' => $error,
+        ]);
+      }
+
+      $errors[] = $error;
+    }
+
+    $element = [
+      '#theme' => 'item_list',
+      '#items' => $errors,
+    ];
+
+    // Compose error message. If available, use the entity label to indicate
+    // which item failed. Fallback to the GUID value (if available) or else
+    // no indication.
+    $label = $entity->label();
+    $guid = $entity->get('feeds_item')->guid;
+
+    $messages = [];
     $args = [
       '@entity' => Unicode::strtolower($this->entityTypeLabel()),
-      '%label' => $entity->label(),
-      '%error' => $violations[0]->getMessage(),
-      '@url' => $this->url('entity.feeds_feed_type.mapping', ['feeds_feed_type' => $this->feedType->id()]),
+      '%label' => $label,
+      '%guid' => $guid,
+      '@errors' => \Drupal::service('renderer')->render($element),
+      ':url' => $this->url('entity.feeds_feed_type.mapping', ['feeds_feed_type' => $this->feedType->id()]),
     ];
-    throw new ValidationException(new FormattableMarkup('The @entity %label failed to validate with the error: %error Please check your <a href="@url">mappings</a>.', $args));
+    if ($label || $label === '0' || $label === 0) {
+      $messages[] = $this->t('The @entity %label failed to validate with the following errors: @errors', $args);
+    }
+    elseif ($guid || $guid === '0' || $guid === 0) {
+      $messages[] = $this->t('The @entity with GUID %guid failed to validate with the following errors: @errors', $args);
+    }
+    else {
+      $messages[] = $this->t('An entity of type "@entity" failed to validate with the following errors: @errors', $args);
+    }
+    $messages[] = $this->t('Please check your <a href=":url">mappings</a>.', $args);
+
+    // Concatenate strings as markup to mark them as safe.
+    $message_element = [
+      '#markup' => implode("\n", $messages),
+    ];
+    $message = \Drupal::service('renderer')->render($message_element);
+
+    throw new ValidationException($message);
   }
 
   /**
@@ -365,6 +440,7 @@ abstract class EntityProcessorBase extends ProcessorBase implements EntityProces
       'authorize' => $this->entityType->isSubclassOf('Drupal\user\EntityOwnerInterface'),
       'expire' => static::EXPIRE_NEVER,
       'owner_id' => 0,
+      'owner_feed_author' => 0,
     ];
 
     return $defaults;
@@ -637,7 +713,8 @@ abstract class EntityProcessorBase extends ProcessorBase implements EntityProces
   /**
    * {@inheritdoc}
    *
-   * @todo Sort this out so that we aren't calling db_delete() here.
+   * @todo Sort this out so that we aren't calling \Drupal::database()->delete()
+   * here.
    */
   public function onFeedDeleteMultiple(array $feeds) {
     $fids = [];
@@ -645,7 +722,7 @@ abstract class EntityProcessorBase extends ProcessorBase implements EntityProces
       $fids[] = $feed->id();
     }
     $table = $this->entityType() . '__feeds_item';
-    db_delete($table)
+    \Drupal::database()->delete($table)
       ->condition('feeds_item_target_id', $fids, 'IN')
       ->execute();
   }

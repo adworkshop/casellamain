@@ -7,7 +7,7 @@ dependencies:
 label: Towns
 id: towns
 description: ''
-import_period: -1
+import_period: 21600
 fetcher: http
 fetcher_configuration:
   auto_detect_feeds: false
@@ -69,3 +69,7 @@ mappings:
     map:
       value: lng
     unique: {  }
+  -
+    target: field_published
+    map:
+      value: published

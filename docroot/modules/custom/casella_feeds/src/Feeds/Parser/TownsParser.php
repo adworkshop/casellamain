@@ -42,6 +42,11 @@ class TownsParser extends PluginBase implements ParserInterface {
 
     foreach ($xml->town as $town) {
       $item = new TownsItem();
+      $published_status = '0';
+
+      if ('True' == trim($this->casella_feeds_get_xml_element_value($town, 'PubStat'))) {
+        $published_status = '1';
+      };
 
       $item->set('guid', $this->casella_feeds_get_xml_element_value($town, 'ID'));
       $item->set('title', $this->casella_feeds_get_xml_element_value($town, 'Title'));
@@ -51,10 +56,12 @@ class TownsParser extends PluginBase implements ParserInterface {
       $item->set('lat', $this->casella_feeds_get_xml_element_value($town, 'Lat'));
       $item->set('lng', $this->casella_feeds_get_xml_element_value($town, 'Lon'));
       $item->set('servicelocation', $this->casella_feeds_get_xml_element_value($town, 'Div'));
-      $item->set('published', 'On' == $this->casella_feeds_get_xml_element_value($town, 'PubStat'));
+      $item->set('published', $published_status);
 
       $result->addItem($item);
     }
+
+    \Drupal::logger('my_module')->notice('town ' . $item->get('title') . ' pub status is ' . $item->get('published');
 
     return $result;
   }

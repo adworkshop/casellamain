@@ -23,13 +23,13 @@ class PrivateFileTest extends FileFieldTestBase {
    * Tests private files work with Feeds module.
    */
   public function testPrivateFile() {
-    $node_storage = $this->container->get('entity.manager')->getStorage('node');
+    $node_storage = $this->container->get('entity_type.manager')->getStorage('node');
     $type_name = 'article';
     $field_name = strtolower($this->randomMachineName());
     $this->createFileField($field_name, 'node', $type_name, ['uri_scheme' => 'private']);
 
     $test_file = $this->getTestFile('text');
-    $nid = $this->uploadNodeFile($test_file, $field_name, $type_name, TRUE, array('private' => TRUE));
+    $nid = $this->uploadNodeFile($test_file, $field_name, $type_name, TRUE, ['private' => TRUE]);
     \Drupal::entityTypeManager()->getStorage('node')->resetCache([$nid]);
     /* @var \Drupal\node\NodeInterface $node */
     $node = $node_storage->load($nid);

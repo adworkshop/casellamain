@@ -31,7 +31,7 @@ class GenericOpmlParser {
    *   The XML string.
    */
   public function __construct($xml) {
-    $this->xpath = new \DOMXPath($this->getDomDocument($xml));
+    $this->xpath = new \DOMXPath(static::getDomDocument($xml));
   }
 
   /**
@@ -42,7 +42,7 @@ class GenericOpmlParser {
    *   them as is. Defaults to false.
    *
    * @return array
-   *   A structed array.
+   *   A structured array.
    *
    * @todo Document the return value.
    */

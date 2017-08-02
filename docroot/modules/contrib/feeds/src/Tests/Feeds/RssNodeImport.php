@@ -12,6 +12,7 @@ use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\simpletest\WebTestBase;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\taxonomy\Entity\Vocabulary;
+use Drupal\node\Entity\Node;
 
 /**
  * Integration test that imports nodes from an RSS feed.
@@ -111,13 +112,13 @@ class RssNodeImport extends WebTestBase {
     $this->clickLink(t('Import'));
     $this->drupalPostForm(NULL, [], t('Import'));
     $this->assertText('Created 6');
-    $this->assertEqual(db_query("SELECT COUNT(*) FROM {node}")->fetchField(), 6);
+    $this->assertEqual(\Drupal::database()->query("SELECT COUNT(*) FROM {node}")->fetchField(), 6);
 
     $xml = new \SimpleXMLElement($filepath, 0, TRUE);
 
     foreach (range(1, 6) as $nid) {
       $item = $xml->channel->item[$nid - 1];
-      $node = node_load($nid);
+      $node = Node::load($nid);
       $this->assertEqual($node->title->value, (string) $item->title);
       $this->assertEqual($node->body->value, (string) $item->description);
       $this->assertEqual($node->feeds_item->guid, (string) $item->guid);
@@ -147,13 +148,13 @@ class RssNodeImport extends WebTestBase {
     $this->type->getProcessor()->setConfiguration($configuration);
     $this->type->save();
     $this->drupalPostForm('feed/' . $feed->id() . '/import', [], t('Import'));
-    $this->assertEqual(db_query("SELECT COUNT(*) FROM {node}")->fetchField(), 6);
+    $this->assertEqual(\Drupal::database()->query("SELECT COUNT(*) FROM {node}")->fetchField(), 6);
     $this->assertText('Updated 6');
 
     // Delete items.
     $this->clickLink(t('Delete items'));
     $this->drupalPostForm(NULL, [], t('Delete items'));
-    $this->assertEqual(db_query("SELECT COUNT(*) FROM {node}")->fetchField(), 0);
+    $this->assertEqual(\Drupal::database()->query("SELECT COUNT(*) FROM {node}")->fetchField(), 0);
     $this->assertText('Deleted 6');
   }
 
@@ -239,7 +240,7 @@ class RssNodeImport extends WebTestBase {
 
   protected function reloadFeed($fid) {
     $this->container
-      ->get('entity.manager')
+      ->get('entity_type.manager')
       ->getStorage('feeds_feed')
       ->resetCache();
 

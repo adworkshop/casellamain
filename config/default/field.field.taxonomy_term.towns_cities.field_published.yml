@@ -1,0 +1,23 @@
+uuid: 40af8c9f-7d1a-4bec-9245-6dee50f38150
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_published
+    - taxonomy.vocabulary.towns_cities
+id: taxonomy_term.towns_cities.field_published
+field_name: field_published
+entity_type: taxonomy_term
+bundle: towns_cities
+label: Published
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

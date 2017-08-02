@@ -57,7 +57,7 @@ class FeedListBuilder extends EntityListBuilder {
   public static function createInstance(ContainerInterface $container, EntityTypeInterface $entity_type) {
     return new static(
       $entity_type,
-      $container->get('entity.manager')->getStorage($entity_type->id()),
+      $container->get('entity_type.manager')->getStorage($entity_type->id()),
       $container->get('date.formatter'),
       $container->get('redirect.destination')
     );
@@ -91,7 +91,7 @@ class FeedListBuilder extends EntityListBuilder {
    * {@inheritdoc}
    */
   public function buildRow(EntityInterface $entity) {
-    $uri = $entity->urlInfo();
+    $uri = $entity->toUrl();
     $options = $uri->getOptions();
     $uri->setOptions($options);
 
@@ -127,7 +127,7 @@ class FeedListBuilder extends EntityListBuilder {
       $operations['import'] = [
         'title' => $this->t('Import'),
         'weight' => 2,
-        'url' => $entity->urlInfo('import-form'),
+        'url' => $entity->toUrl('import-form'),
       ];
     }
 
@@ -135,7 +135,7 @@ class FeedListBuilder extends EntityListBuilder {
       $operations['clear'] = [
         'title' => $this->t('Delete items'),
         'weight' => 3,
-        'url' => $entity->urlInfo('clear-form'),
+        'url' => $entity->toUrl('clear-form'),
       ];
     }
 

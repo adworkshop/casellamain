@@ -3,6 +3,7 @@
 namespace Drupal\feeds\Entity;
 
 use Drupal\Component\Render\FormattableMarkup;
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
@@ -212,7 +213,7 @@ class Feed extends ContentEntityBase implements FeedInterface {
    * {@inheritdoc}
    */
   public function startBatchImport() {
-    $this->entityManager()
+    $this->entityTypeManager()
       ->getHandler('feeds_feed', 'feed_import')
       ->startBatchImport($this);
   }
@@ -221,7 +222,7 @@ class Feed extends ContentEntityBase implements FeedInterface {
    * {@inheritdoc}
    */
   public function startCronImport() {
-    $this->entityManager()
+    $this->entityTypeManager()
       ->getHandler('feeds_feed', 'feed_import')
       ->startCronImport($this);
   }
@@ -230,7 +231,7 @@ class Feed extends ContentEntityBase implements FeedInterface {
    * {@inheritdoc}
    */
   public function pushImport($raw) {
-    return $this->entityManager()
+    return $this->entityTypeManager()
       ->getHandler('feeds_feed', 'feed_import')
       ->pushImport($this, $raw);
   }
@@ -239,7 +240,7 @@ class Feed extends ContentEntityBase implements FeedInterface {
    * {@inheritdoc}
    */
   public function startBatchClear() {
-    $this->entityManager()
+    $this->entityTypeManager()
       ->getHandler('feeds_feed', 'feed_clear')
       ->startBatchClear($this);
   }
@@ -248,7 +249,7 @@ class Feed extends ContentEntityBase implements FeedInterface {
    * {@inheritdoc}
    */
   public function startBatchExpire() {
-    return $this->entityManager()
+    return $this->entityTypeManager()
       ->getHandler('feeds_feed', 'feed_expire')
       ->startBatchExpire($this);
   }
@@ -395,6 +396,7 @@ class Feed extends ContentEntityBase implements FeedInterface {
       $args = ['@id' => $this->bundle(), '@fid' => $this->id()];
       throw new LockException(new FormattableMarkup('Cannot acquire lock for feed @id / @fid.', $args));
     }
+    Cache::invalidateTags(['feeds_feed_locked']);
   }
 
   /**
@@ -402,6 +404,7 @@ class Feed extends ContentEntityBase implements FeedInterface {
    */
   public function unlock() {
     \Drupal::service('lock.persistent')->release("feeds_feed_{$this->id()}");
+    Cache::invalidateTags(['feeds_feed_locked']);
   }
 
   /**
@@ -418,7 +421,7 @@ class Feed extends ContentEntityBase implements FeedInterface {
     $type = $client->pluginType();
     // @todo Figure out why for the UploadFetcher there is no config available.
     $data = $this->get('config')->$type;
-    $data = !empty($data) ? $data : array();
+    $data = !empty($data) ? $data : [];
 
     return $data + $client->defaultFeedConfiguration();
   }
@@ -458,7 +461,7 @@ class Feed extends ContentEntityBase implements FeedInterface {
     // Delete values from other tables also referencing these feeds.
     $ids = array_keys($feeds);
 
-    // Group feeds by imporer.
+    // Group feeds by type.
     $grouped = [];
     foreach ($feeds as $fid => $feed) {
       $grouped[$feed->bundle()][$fid] = $feed;
