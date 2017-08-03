@@ -9,8 +9,8 @@ id: taxonomy_term.towns_cities.field_published
 field_name: field_published
 entity_type: taxonomy_term
 bundle: towns_cities
-label: Published
-description: ''
+label: Hidden
+description: 'Check this box to remove the town from the location search and service location output. This is handled automatically by the feed importer.'
 required: true
 translatable: false
 default_value:

@@ -25,6 +25,7 @@ content:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_city:
     weight: 4
     label: above
@@ -32,6 +33,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_latitude:
     weight: 5
     label: above
@@ -39,6 +41,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_longitude:
     weight: 6
     label: above
@@ -46,6 +49,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_service_location:
     weight: 3
     label: above
@@ -53,12 +57,14 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_state:
     weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: list_key
+    region: content
 hidden:
   feeds_item: true
   field_zip_code: true
