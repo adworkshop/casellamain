@@ -1066,7 +1066,6 @@ function casella_preprocess_views_view_table(&$variables) {
     $variables['attributes']['class'][] = 'table';
   }
 }
-//function casella_preprocess_views_view_table_
 /**
  * Implements template_preprocess_views_view_fields().
  * @param $variables
