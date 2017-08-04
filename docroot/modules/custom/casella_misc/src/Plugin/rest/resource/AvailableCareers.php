@@ -66,7 +66,13 @@ class AvailableCareers extends ResourceBase {
 
       $locationTitle = $city = $state = FALSE;
       $location = $career->get('field_location')->getValue();
-      if ($location) {
+
+      $customLocation = $career->get('field_override_location')->getValue();
+
+      if($customLocation[0]['value'] == "1") {
+        $city = $career->get('field_override_location_value')->getValue();
+        $state = $career->get('field_override_location_state')->getValue();
+      }else if ($location) {
         $locationNode = $nodeStorage->load($location[0]['target_id']);
 
         if ($locationNode) {

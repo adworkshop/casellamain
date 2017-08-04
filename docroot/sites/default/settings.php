@@ -244,8 +244,10 @@
  *   );
  * @endcode
  */
-$config_directories = array();
 
+   $config_directories = array(
+     CONFIG_SYNC_DIRECTORY => '../config/default',
+ );
 /**
  * Settings:
  *
@@ -715,8 +717,8 @@ ini_set ('display_errors', '0');
 // (Drupal 5 or 6) or $databases (Drupal 7 or 8) as described in comments above.
 if (file_exists('/var/www/site-php')) {
 }
-
-$config_directories['vcs'] = $app_root . '/../config/' . basename($site_path);
+//$config_directories['vcs'] = $app_root . '../config/default' . basename($site_path);
+$config_directories['vcs'] = '../config/default';
 
 // <DDSETTINGS>
 // Please don't edit anything between <DDSETTINGS> tags.

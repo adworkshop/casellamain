@@ -131,6 +131,15 @@ function casella_misc_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\Fo
  */
 function casella_misc_form_node_job_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
   _casella_misc_job_form_locations_update($form);
+
+  $form['field_override_location_value']['#states'] = array(
+    'visible' => array(
+      '#edit-field-override-location-value' => array('checked' => TRUE)),
+  );
+  $form['field_override_location_state']['#states'] = array(
+    'visible' => array(
+      '#edit-field-override-location-value' => array('checked' => TRUE)),
+  );
 }
 
 /**

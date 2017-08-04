@@ -1048,13 +1048,25 @@ function casella_preprocess_views_view_table(&$variables) {
   elseif ('hr' == $variables['view']->id() && 'block_1' == $variables['view']->current_display) {
     $variables['attributes']['id'] = 'jobListings';
     $variables['attributes']['class'][] = 'table';
+
+    foreach ($variables['rows'] as $key => $row) {
+      //Job location override
+      $override = $row['columns']['field_override_location']['content'][0]['field_output']['#markup'];
+
+      if($override == "1") {
+        $city = $row['columns']['field_override_location_value']['content'][0]['field_output']['#markup'];
+        $state = $row['columns']['field_override_location_state']['content'][0]['field_output']['#markup'];
+        $variables['rows'][0]['columns']['field_city']['content'][0]['field_output']['#markup'] = $city;
+        $variables['rows'][0]['columns']['field_state']['content'][0]['field_output']['#markup'] = $state;
+      }
+    }
   }
   elseif ('locations' == $variables['view']->id() && 'block_7' == $variables['view']->current_display) {
     $variables['attributes']['id'] = 'jobListings';
     $variables['attributes']['class'][] = 'table';
   }
 }
-
+//function casella_preprocess_views_view_table_
 /**
  * Implements template_preprocess_views_view_fields().
  * @param $variables
