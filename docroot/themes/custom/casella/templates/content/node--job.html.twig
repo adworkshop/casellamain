@@ -11,7 +11,7 @@
               <ul>
                 <li><span class="job-indListing-framework-reference-title">Reference:</span> JOB{{ node.id() }}</li>
                 {% if locationState and locationCity %}
-                  <li><span class="job-indListing-framework-reference-title">Location:</span> {{ locationCity[0]['value'] }}, {{ locationState[0]['value'] }}</li>
+                  <li><span class="job-indListing-framework-reference-title">Location:</span> {{ locationCity }}, {{ locationState }}</li>
                 {% endif %}
                 <li><span class="job-indListing-framework-reference-title">Company:</span> {{ content.field_location }}</li>
                 <li><span class="job-indListing-framework-reference-title">Status:</span> {{ content.field_job_status }}</li>

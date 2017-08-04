@@ -1477,6 +1477,9 @@ function casella_preprocess_node(&$variables) {
   elseif ('job' == $type) {
     $location = $variables['node']->get('field_location')->getValue();
     // Get the city and state from the location.
+    //override location
+    $override = $variables['node']->get('field_override_location')->getValue();
+
 
     if ($location) {
       $location = \Drupal::entityTypeManager()
@@ -1484,13 +1487,24 @@ function casella_preprocess_node(&$variables) {
         ->load($location[0]['target_id']);
     }
 
-    if ($location) {
-      $variables['locationCity'] = $location->get('field_city')->getValue();
-      $variables['locationState'] = $location->get('field_state')->getValue();
-    }
-    else {
-      $variables['locationCity'] = '';
-      $variables['locationState'] = '';
+    if (($location) && ($override[0]['value'] == "0")) {
+      $city = $location->get('field_city')->getValue();
+      $state = $location->get('field_state')->getValue();
+
+      $variables['locationCity'] = $city[0]['value'];
+      $variables['locationState'] = $state[0]['value'];
+
+    } else {
+      if($override[0]['value'] == "1"){
+        $city =  $variables['node']->get('field_override_location_value')->getValue();
+        $state =  $variables['node']->get('field_override_location_state')->getValue();
+        $variables['locationCity'] = $city[0]['value'];
+        $variables['locationState'] = $state[0]['value'];
+      } else {
+        $variables['locationCity'] = '';
+        $variables['locationState'] = '';
+      }
+
     }
 
     $status = $variables['node']->get('field_job_status')->getValue();
