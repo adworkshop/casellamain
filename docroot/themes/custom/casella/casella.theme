@@ -1049,15 +1049,16 @@ function casella_preprocess_views_view_table(&$variables) {
     $variables['attributes']['id'] = 'jobListings';
     $variables['attributes']['class'][] = 'table';
 
-    foreach ($variables['rows'] as $row) {
+    for($i=0;$i<count($variables['rows']);$i++) {
       //Job location override
-      $override = $row['columns']['field_override_location']['content'][0]['field_output']['#markup'];
+      $override = $variables['rows'][$i]['columns']['field_override_location']['content'][0]['field_output']['#markup'];
 
       if($override == "1") {
-        $city = $row['columns']['field_override_location_value']['content'][0]['field_output']['#markup'];
-        $state = $row['columns']['field_override_location_state']['content'][0]['field_output']['#markup'];
-        $variables['rows'][1]['columns']['field_city']['content'][0]['field_output']['#markup'] = $city;
-        $variables['rows'][1]['columns']['field_state']['content'][0]['field_output']['#markup'] = $state;
+        $city = $variables['rows'][$i]['columns']['field_override_location_value']['content'][0]['field_output']['#markup'];
+        $state = $variables['rows'][$i]['columns']['field_override_location_state']['content'][0]['field_output']['#markup'];
+
+        $variables['rows'][$i]['columns']['field_city']['content'][0]['field_output']['#markup'] = $city;
+        $variables['rows'][$i]['columns']['field_state']['content'][0]['field_output']['#markup'] = $state;
       }
     }
   }
