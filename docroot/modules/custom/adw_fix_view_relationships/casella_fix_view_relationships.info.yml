@@ -1,0 +1,7 @@
+name: Casella Fix View Relationships
+description: Defines fix view relationships for empty relationships.
+package: Custom
+
+type: module
+core: 8.x
+project: 'casella_fix_view_relationships'
