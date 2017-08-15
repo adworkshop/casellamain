@@ -1053,7 +1053,8 @@ function casella_preprocess_views_view_table(&$variables) {
     for($i=0;$i<count($variables['rows']);$i++) {
       //Job location override
       $override = $variables['rows'][$i]['columns']['field_override_location']['content'][0]['field_output']['#markup'];
-     if($override == "1") {
+
+     if($override == 1) {
         $city = $variables['rows'][$i]['columns']['field_override_location_value']['content'][0]['field_output']['#markup'];
         $state = $variables['rows'][$i]['columns']['field_override_location_state']['content'][0]['field_output']['#markup'];
 
