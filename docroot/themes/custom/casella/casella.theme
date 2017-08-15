@@ -1056,7 +1056,7 @@ function casella_preprocess_views_view_table(&$variables) {
      if($override == "1") {
         $city = $variables['rows'][$i]['columns']['field_override_location_value']['content'][0]['field_output']['#markup'];
         $state = $variables['rows'][$i]['columns']['field_override_location_state']['content'][0]['field_output']['#markup'];
-        print 'City: '.$city;
+
         $variables['rows'][$i]['columns']['field_city']['content'][0]['field_output']['#markup'] = $city;
         $variables['rows'][$i]['columns']['field_state']['content'][0]['field_output']['#markup'] = $state;
       }
