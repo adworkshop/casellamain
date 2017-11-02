@@ -13,7 +13,6 @@ use Drupal\rest\ResourceResponse;
  *   label = @Translation("Casella towns by zip"),
  *   uri_paths = {
  *     "canonical" = "/api/xml/towns/zip/{filter}",
- *    "https://www.drupal.org/link-relations/create" = "/api/xml/towns/zip/"
  *   }
  * )
  */
