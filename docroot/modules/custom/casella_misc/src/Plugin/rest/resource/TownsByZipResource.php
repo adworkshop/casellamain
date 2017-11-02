@@ -12,7 +12,7 @@ use Drupal\rest\ResourceResponse;
  *   id = "casellatownsbyzip",
  *   label = @Translation("Casella towns by zip"),
  *   uri_paths = {
- *     "canonical" = "/api/xml/towns/zip/{filter}",
+ *     "canonical" = "/api/xml/towns/zip/{filter}?_format=json",
  *   }
  * )
  */
