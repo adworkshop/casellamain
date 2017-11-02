@@ -13,6 +13,7 @@ use Drupal\rest\ResourceResponse;
  *   label = @Translation("Casella available careers"),
  *   uri_paths = {
  *     "canonical" = "/api/careers/available.xml",
+ *     "https://www.drupal.org/link-relations/create" = "/api/careers/"
  *   }
  * )
  */
