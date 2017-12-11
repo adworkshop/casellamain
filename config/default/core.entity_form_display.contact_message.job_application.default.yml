@@ -119,11 +119,13 @@ content:
       progress_indicator: throbber
     third_party_settings: {  }
     type: file_generic
+    region: content
   field_hiring_manager:
     type: options_buttons
     weight: 0
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_job_email:
     weight: 24
     settings:
@@ -131,6 +133,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: email_default
+    region: content
   field_job_reference:
     weight: 2
     settings:
@@ -138,6 +141,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_job_title:
     weight: 1
     settings:
@@ -145,6 +149,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_name:
     weight: 3
     settings:
@@ -152,6 +157,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_phone:
     weight: 26
     settings:
@@ -159,17 +165,20 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_resume:
     weight: 22
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
     type: file_generic
+    region: content
   field_status:
     weight: 23
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
 hidden:
   copy: true
   langcode: true

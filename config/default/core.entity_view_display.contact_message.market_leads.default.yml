@@ -50,12 +50,14 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_industry:
     weight: 17
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   field_ml_address:
     weight: 10
     label: above
@@ -63,6 +65,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_ml_city:
     weight: 11
     label: above
@@ -70,6 +73,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_ml_company:
     weight: 7
     label: above
@@ -77,12 +81,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_ml_email:
     weight: 8
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_ml_first_name:
     weight: 5
     label: above
@@ -90,6 +96,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_ml_last_name:
     weight: 6
     label: above
@@ -97,6 +104,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_ml_other:
     weight: 15
     label: above
@@ -104,6 +112,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_ml_phone:
     weight: 9
     label: above
@@ -111,12 +120,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_ml_state:
     weight: 12
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   field_ml_zip:
     weight: 13
     label: above
@@ -124,18 +135,21 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   mail:
     weight: 2
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   message:
     type: basic_string
     weight: 4
     label: above
     settings: {  }
     third_party_settings: {  }
+    region: content
   name:
     weight: 1
     label: above
@@ -143,6 +157,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   subject:
     weight: 3
     label: above
@@ -150,5 +165,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
 hidden:
   langcode: true

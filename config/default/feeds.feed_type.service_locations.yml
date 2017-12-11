@@ -7,7 +7,7 @@ dependencies:
 label: 'Service Locations'
 id: service_locations
 description: ''
-import_period: -1
+import_period: 21600
 fetcher: http
 fetcher_configuration:
   auto_detect_feeds: false

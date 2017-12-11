@@ -7,7 +7,7 @@ dependencies:
 label: 'Service Locations - Drop offs'
 id: service_locations_drop_offs
 description: ''
-import_period: -1
+import_period: 21600
 fetcher: http
 fetcher_configuration:
   auto_detect_feeds: false
@@ -22,7 +22,7 @@ processor_configuration:
   expire: -1
   owner_id: 1
   authorize: false
-  skip_hash_check: false
+  skip_hash_check: true
   values:
     type: location
 mappings:

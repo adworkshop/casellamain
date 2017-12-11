@@ -14,6 +14,9 @@ dependencies:
     - field.field.node.job.field_job_status
     - field.field.node.job.field_location
     - field.field.node.job.field_meta_tag
+    - field.field.node.job.field_override_location
+    - field.field.node.job.field_override_location_state
+    - field.field.node.job.field_override_location_value
     - node.type.job
   module:
     - datetime
@@ -33,22 +36,26 @@ content:
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
+    region: content
   created:
     type: datetime_timestamp
-    weight: 9
+    weight: 12
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_add_this:
     weight: 4
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
   field_date_posted:
-    weight: 28
+    weight: 15
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
+    region: content
   field_h1_override:
     weight: 1
     settings:
@@ -56,6 +63,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_hero_text:
     weight: 2
     settings:
@@ -63,36 +71,66 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   field_hiring_managers:
-    weight: 27
+    weight: 14
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
+    region: content
   field_job_categories:
-    weight: 7
+    weight: 10
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
+    region: content
   field_job_status:
     weight: 5
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_location:
     weight: 6
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_meta_tag:
-    weight: 29
+    weight: 16
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
+    region: content
+  field_override_location:
+    weight: 7
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_override_location_state:
+    weight: 8
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_override_location_value:
+    weight: 9
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   path:
     type: path
-    weight: 10
+    weight: 13
     settings: {  }
     third_party_settings: {  }
+    region: content
   title:
     type: string_textfield
     weight: 0
@@ -100,14 +138,16 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   uid:
     type: entity_reference_autocomplete
-    weight: 8
+    weight: 11
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden:
   feeds_item: true
   langcode: true

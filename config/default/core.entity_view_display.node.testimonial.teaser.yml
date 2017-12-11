@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.testimonial.feeds_item
     - field.field.node.testimonial.field_attribution
     - field.field.node.testimonial.field_quotation
     - field.field.node.testimonial.field_source
@@ -17,7 +18,9 @@ mode: teaser
 content:
   links:
     weight: 100
+    region: content
 hidden:
+  feeds_item: true
   field_attribution: true
   field_quotation: true
   field_source: true

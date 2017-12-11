@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.testimonial.feeds_item
     - field.field.node.testimonial.field_attribution
     - field.field.node.testimonial.field_quotation
     - field.field.node.testimonial.field_source
@@ -19,6 +20,7 @@ content:
     weight: 5
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_attribution:
     weight: 2
     settings:
@@ -26,6 +28,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_quotation:
     weight: 1
     settings:
@@ -33,6 +36,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   field_source:
     weight: 3
     settings:
@@ -40,16 +44,19 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   langcode:
     type: language_select
     weight: 2
     settings: {  }
     third_party_settings: {  }
+    region: content
   path:
     type: path
     weight: 6
     settings: {  }
     third_party_settings: {  }
+    region: content
   title:
     type: string_textfield
     weight: 0
@@ -57,8 +64,10 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   translation:
     weight: 10
+    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 4
@@ -67,6 +76,8 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden:
+  feeds_item: true
   promote: true
   sticky: true

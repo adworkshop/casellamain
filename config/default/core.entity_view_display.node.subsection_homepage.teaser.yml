@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.subsection_homepage.field_h1_override
     - field.field.node.subsection_homepage.field_icon
     - field.field.node.subsection_homepage.field_link
+    - field.field.node.subsection_homepage.field_meta_tag
     - field.field.node.subsection_homepage.field_promotion_description
     - field.field.node.subsection_homepage.field_promotion_image
     - field.field.node.subsection_homepage.field_promotion_link
@@ -38,8 +39,10 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
+    region: content
   links:
     weight: 100
+    region: content
 hidden:
   field_breadcrumb_override: true
   field_description: true
@@ -52,6 +55,7 @@ hidden:
   field_h1_override: true
   field_icon: true
   field_link: true
+  field_meta_tag: true
   field_promotion_description: true
   field_promotion_image: true
   field_promotion_link: true

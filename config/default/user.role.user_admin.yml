@@ -7,7 +7,7 @@ label: 'User Admin'
 weight: 8
 is_admin: null
 permissions:
-  0: 'administer users'
-  2: 'administer permissions'
-  3: 'create url aliases'
-  4: 'administer menu'
+  - 'administer menu'
+  - 'administer permissions'
+  - 'administer users'
+  - 'create url aliases'

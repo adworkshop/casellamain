@@ -15,6 +15,7 @@ content:
     weight: -10
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   contact: true
   langcode: true

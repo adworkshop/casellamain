@@ -7,7 +7,7 @@ dependencies:
 label: Holidays
 id: holidays
 description: ''
-import_period: -1
+import_period: 21600
 fetcher: http
 fetcher_configuration:
   auto_detect_feeds: false

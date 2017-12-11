@@ -35,6 +35,7 @@ content:
     weight: 101
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_2_column:
     weight: 103
     label: hidden
@@ -44,6 +45,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_add_this:
     weight: 102
     label: hidden
@@ -53,6 +55,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_full_width:
     weight: 106
     label: hidden
@@ -62,6 +65,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_full_width_promotion:
     weight: 105
     label: hidden
@@ -70,6 +74,7 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_reference_entity_view
+    region: content
   field_h1_override:
     weight: 107
     label: hidden
@@ -77,18 +82,21 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_hero_text:
     weight: 104
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_meta_tag:
     weight: 112
     label: above
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
+    region: content
   field_sidebar_promotions:
     weight: 108
     label: hidden
@@ -97,6 +105,7 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_reference_entity_view
+    region: content
   field_slider_images:
     weight: 109
     label: hidden
@@ -105,6 +114,7 @@ content:
       link: ''
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
+    region: content
   field_tabs:
     weight: 110
     label: hidden
@@ -113,16 +123,19 @@ content:
       link: ''
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
+    region: content
   field_upper_content:
     weight: 111
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   links:
     weight: 100
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   feeds_item: true
   field_teaser: true

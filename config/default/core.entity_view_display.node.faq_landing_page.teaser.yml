@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.faq_landing_page.field_faqs
     - field.field.node.faq_landing_page.field_h1_override
     - field.field.node.faq_landing_page.field_hero_text
+    - field.field.node.faq_landing_page.field_meta_tag
     - field.field.node.faq_landing_page.field_sidebar_promotions
     - field.field.node.faq_landing_page.field_upper_buttons
     - node.type.faq_landing_page
@@ -26,12 +27,15 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
+    region: content
   links:
     weight: 100
+    region: content
 hidden:
   field_faqs: true
   field_h1_override: true
   field_hero_text: true
+  field_meta_tag: true
   field_sidebar_promotions: true
   field_upper_buttons: true
   langcode: true

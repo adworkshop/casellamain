@@ -39,6 +39,7 @@ content:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_add_this:
     weight: 5
     label: hidden
@@ -48,6 +49,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_full_width:
     weight: 10
     label: above
@@ -57,6 +59,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_full_width_promotion:
     weight: 7
     label: hidden
@@ -65,6 +68,7 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_reference_entity_view
+    region: content
   field_h1_override:
     weight: 2
     label: hidden
@@ -72,18 +76,21 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_hero_text:
     weight: 3
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_meta_tag:
     weight: 12
     label: above
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
+    region: content
   field_sidebar_promotions:
     weight: 9
     label: hidden
@@ -92,6 +99,7 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_reference_entity_view
+    region: content
   field_slider_images:
     weight: 6
     label: hidden
@@ -100,6 +108,7 @@ content:
       link: ''
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
+    region: content
   field_tabs:
     weight: 8
     label: hidden
@@ -108,16 +117,19 @@ content:
       link: ''
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
+    region: content
   field_upper_content:
     weight: 11
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   links:
     weight: 1
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   feeds_item: true
   field_2_column: true

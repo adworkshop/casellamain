@@ -1,4 +1,4 @@
-uuid: 40af8c9f-7d1a-4bec-9245-6dee50f38150
+uuid: 2315f13f-5bda-4e93-bacb-79b057cf98e5
 langcode: en
 status: true
 dependencies:
@@ -11,11 +11,11 @@ entity_type: taxonomy_term
 bundle: towns_cities
 label: Hidden
 description: 'Check this box to remove the town from the location search and service location output. This is handled automatically by the feed importer.'
-required: true
+required: false
 translatable: false
 default_value:
   -
-    value: 1
+    value: 0
 default_value_callback: ''
 settings:
   on_label: 'On'

@@ -13,7 +13,9 @@ dependencies:
     - field.field.node.page.field_full_width_promotion
     - field.field.node.page.field_h1_override
     - field.field.node.page.field_hero_text
+    - field.field.node.page.field_location_category
     - field.field.node.page.field_logo
+    - field.field.node.page.field_meta_tags
     - field.field.node.page.field_post_category
     - field.field.node.page.field_sidebar_promotions
     - field.field.node.page.field_slider_images
@@ -38,8 +40,10 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
+    region: content
   links:
     weight: 101
+    region: content
 hidden:
   feeds_item: true
   field_2_column: true
@@ -49,7 +53,9 @@ hidden:
   field_full_width_promotion: true
   field_h1_override: true
   field_hero_text: true
+  field_location_category: true
   field_logo: true
+  field_meta_tags: true
   field_post_category: true
   field_sidebar_promotions: true
   field_slider_images: true

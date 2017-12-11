@@ -50,6 +50,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_link:
     weight: 6
     settings:
@@ -57,6 +58,7 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
   field_logo:
     weight: 8
     settings:
@@ -64,6 +66,7 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+    region: content
   field_lower_content:
     weight: 5
     settings:
@@ -71,11 +74,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   field_second_position:
     weight: 3
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_secondary_title:
     weight: 2
     settings:
@@ -83,6 +88,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_title:
     weight: 0
     settings:
@@ -90,6 +96,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_upper_content:
     weight: 4
     settings:
@@ -97,6 +104,10 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
+  translation:
+    weight: 10
+    region: content
 hidden:
   created: true
   status: true

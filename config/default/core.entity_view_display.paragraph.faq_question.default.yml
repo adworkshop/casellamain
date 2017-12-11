@@ -20,6 +20,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
   field_published:
     type: boolean
     weight: 0
@@ -29,6 +30,7 @@ content:
       format_custom_true: ''
       format_custom_false: ''
     third_party_settings: {  }
+    region: content
   field_question:
     weight: 0
     label: hidden
@@ -36,6 +38,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
 hidden:
   created: true
   uid: true

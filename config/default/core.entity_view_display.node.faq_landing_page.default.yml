@@ -27,6 +27,7 @@ content:
     weight: 4
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_faqs:
     type: entity_reference_revisions_entity_view
     weight: 6
@@ -35,6 +36,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
   field_h1_override:
     weight: 1
     label: hidden
@@ -42,18 +44,21 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_hero_text:
     weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_meta_tag:
     weight: 7
     label: above
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
+    region: content
   field_sidebar_promotions:
     weight: 5
     label: hidden
@@ -62,6 +67,7 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_reference_entity_view
+    region: content
   field_upper_buttons:
     type: entity_reference_revisions_entity_view
     weight: 3
@@ -70,9 +76,11 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
   links:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   langcode: true

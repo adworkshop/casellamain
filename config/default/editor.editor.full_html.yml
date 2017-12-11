@@ -6,6 +6,7 @@ dependencies:
     - filter.format.full_html
   module:
     - ckeditor
+    - editor_file
 third_party_settings:
   editor_file:
     status: true
@@ -50,11 +51,12 @@ settings:
           name: 'Block Formatting'
           items:
             - Format
+            - Source
   plugins:
-    language:
-      language_list: un
     stylescombo:
       styles: ''
+    language:
+      language_list: un
 image_upload:
   status: false
   scheme: public

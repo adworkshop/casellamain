@@ -68,6 +68,7 @@ content:
     weight: 11
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_business_desc:
     weight: 4
     settings:
@@ -75,6 +76,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   field_gallery_images:
     type: entity_reference_paragraphs
     weight: 9
@@ -85,6 +87,7 @@ content:
       add_mode: dropdown
       form_display_mode: default
     third_party_settings: {  }
+    region: content
   field_home_desc:
     weight: 2
     settings:
@@ -92,6 +95,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   field_industry_links:
     type: entity_reference_paragraphs
     weight: 15
@@ -102,6 +106,7 @@ content:
       add_mode: dropdown
       form_display_mode: default
     third_party_settings: {  }
+    region: content
   field_large_promotions:
     type: entity_reference_paragraphs
     weight: 8
@@ -112,11 +117,13 @@ content:
       add_mode: dropdown
       form_display_mode: default
     third_party_settings: {  }
+    region: content
   field_meta_tag:
     weight: 26
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
+    region: content
   field_org_desc:
     weight: 6
     settings:
@@ -124,6 +131,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   field_service_links:
     type: entity_reference_paragraphs
     weight: 14
@@ -134,6 +142,7 @@ content:
       add_mode: dropdown
       form_display_mode: default
     third_party_settings: {  }
+    region: content
   field_small_business_link:
     weight: 5
     settings:
@@ -141,6 +150,7 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
   field_verticals_boxes:
     type: entity_reference_paragraphs
     weight: 2
@@ -151,16 +161,19 @@ content:
       add_mode: dropdown
       form_display_mode: default
     third_party_settings: {  }
+    region: content
   langcode:
     type: language_select
     weight: 13
     settings: {  }
     third_party_settings: {  }
+    region: content
   path:
     type: path
     weight: 12
     settings: {  }
     third_party_settings: {  }
+    region: content
   title:
     type: string_textfield
     weight: 0
@@ -168,10 +181,12 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   translation:
     weight: 14
     settings: {  }
     third_party_settings: {  }
+    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 10
@@ -180,6 +195,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden:
   promote: true
   sticky: true

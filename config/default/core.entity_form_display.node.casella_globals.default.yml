@@ -72,6 +72,7 @@ content:
     weight: 1
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_acceptable_waste_intro:
     weight: 8
     settings:
@@ -79,6 +80,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_charges_warning:
     weight: 10
     settings:
@@ -86,6 +88,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_customer_care:
     weight: 9
     settings:
@@ -93,6 +96,7 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
   field_earthlife_sidebar_intro:
     weight: 6
     settings:
@@ -100,6 +104,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_footer_statement:
     weight: 5
     settings:
@@ -107,6 +112,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   field_job_application_intro:
     weight: 7
     settings:
@@ -114,6 +120,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   field_online_bill_pay:
     weight: 8
     settings:
@@ -121,6 +128,7 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
   field_ontario_email:
     weight: 26
     settings:
@@ -128,6 +136,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: email_default
+    region: content
   field_search_overlay_text:
     weight: 5
     settings:
@@ -135,6 +144,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_social_icon_links:
     type: entity_reference_paragraphs
     weight: 6
@@ -145,6 +155,7 @@ content:
       add_mode: dropdown
       form_display_mode: default
     third_party_settings: {  }
+    region: content
   field_unacceptable_waste_intro:
     weight: 9
     settings:
@@ -152,6 +163,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 0
@@ -160,6 +172,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden:
   feeds_item: true
   langcode: true

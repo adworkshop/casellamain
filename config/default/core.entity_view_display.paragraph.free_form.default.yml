@@ -25,6 +25,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
   field_image:
     weight: 5
     label: hidden
@@ -33,6 +34,7 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: responsive_image
+    region: content
   field_promotion:
     weight: 4
     label: hidden
@@ -41,12 +43,14 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_reference_entity_view
+    region: content
   field_tab_description:
     weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_tab_title:
     weight: 0
     label: hidden
@@ -54,6 +58,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
 hidden:
   created: true
   field_tab_anchor: true

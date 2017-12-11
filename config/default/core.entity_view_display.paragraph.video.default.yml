@@ -23,12 +23,14 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_reference_entity_view
+    region: content
   field_tab_description:
     weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_tab_title:
     weight: 0
     label: hidden
@@ -36,6 +38,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_vimeo_embed:
     weight: 5
     label: above
@@ -43,6 +46,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_youtube_id:
     weight: 3
     label: hidden
@@ -50,6 +54,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
 hidden:
   created: true
   field_tab_anchor: true

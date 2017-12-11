@@ -7,6 +7,7 @@ dependencies:
     - field.field.taxonomy_term.towns_cities.field_city
     - field.field.taxonomy_term.towns_cities.field_latitude
     - field.field.taxonomy_term.towns_cities.field_longitude
+    - field.field.taxonomy_term.towns_cities.field_published
     - field.field.taxonomy_term.towns_cities.field_service_location
     - field.field.taxonomy_term.towns_cities.field_state
     - field.field.taxonomy_term.towns_cities.field_zip_code
@@ -49,6 +50,16 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
+  field_published:
+    weight: 7
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
     region: content
   field_service_location:
     weight: 3

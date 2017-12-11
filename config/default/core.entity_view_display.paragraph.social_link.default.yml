@@ -20,6 +20,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_social_link:
     weight: 1
     label: hidden
@@ -31,6 +32,7 @@ content:
       target: ''
     third_party_settings: {  }
     type: link_separate
+    region: content
 hidden:
   created: true
   uid: true

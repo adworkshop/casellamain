@@ -82,11 +82,13 @@ content:
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
+    region: content
   created:
     type: datetime_timestamp
     weight: 8
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_breadcrumb_override:
     weight: 26
     settings:
@@ -94,6 +96,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_description:
     weight: 15
     settings:
@@ -101,6 +104,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   field_earthlife_description:
     weight: 11
     settings:
@@ -108,6 +112,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   field_earthlife_image:
     weight: 13
     settings:
@@ -115,6 +120,7 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+    region: content
   field_earthlife_link:
     weight: 9
     settings:
@@ -122,6 +128,7 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
   field_earthlife_links:
     type: entity_reference_paragraphs
     weight: 12
@@ -132,6 +139,7 @@ content:
       add_mode: dropdown
       form_display_mode: default
     third_party_settings: {  }
+    region: content
   field_earthlife_title:
     weight: 10
     settings:
@@ -139,11 +147,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_full_width_promotion:
     weight: 27
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_h1_override:
     weight: 1
     settings:
@@ -151,6 +161,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_icon:
     weight: 17
     settings:
@@ -158,6 +169,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_link:
     weight: 16
     settings:
@@ -165,11 +177,13 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
   field_meta_tag:
     weight: 28
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
+    region: content
   field_promotion_description:
     weight: 19
     settings:
@@ -177,6 +191,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   field_promotion_image:
     weight: 13
     settings:
@@ -184,6 +199,7 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+    region: content
   field_promotion_link:
     weight: 20
     settings:
@@ -191,11 +207,13 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
   field_subsection:
     weight: 2
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_subtitle:
     weight: 14
     settings:
@@ -203,6 +221,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_title:
     weight: 18
     settings:
@@ -210,16 +229,19 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   langcode:
     type: language_select
     weight: 2
     settings: {  }
     third_party_settings: {  }
+    region: content
   path:
     type: path
     weight: 6
     settings: {  }
     third_party_settings: {  }
+    region: content
   title:
     type: string_textfield
     weight: 0
@@ -227,10 +249,12 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   translation:
     weight: 10
     settings: {  }
     third_party_settings: {  }
+    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 7
@@ -239,6 +263,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden:
   promote: true
   sticky: true

@@ -43,6 +43,7 @@ content:
     weight: 1
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_acceptable_waste:
     type: entity_reference_revisions_entity_view
     weight: 15
@@ -51,12 +52,14 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
   field_alert_content:
     weight: 14
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
   field_alert_title:
     type: string
     weight: 13
@@ -64,6 +67,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    region: content
   field_assoc_hauling:
     weight: 18
     label: above
@@ -71,6 +75,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_city:
     weight: 3
     label: hidden
@@ -78,12 +83,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_dropoff_hours:
     weight: 17
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
   field_latitude:
     weight: 6
     label: hidden
@@ -91,12 +98,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_location_category:
     weight: 12
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: list_key
+    region: content
   field_longitude:
     weight: 7
     label: hidden
@@ -104,12 +113,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_meta_tag:
     weight: 20
     label: above
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
+    region: content
   field_open_to:
     weight: 19
     label: hidden
@@ -117,6 +128,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_phone_number:
     weight: 8
     label: hidden
@@ -124,6 +136,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_schedule_title:
     weight: 9
     label: hidden
@@ -131,6 +144,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_sidebar_promotions:
     weight: 11
     label: hidden
@@ -139,6 +153,7 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_reference_entity_view
+    region: content
   field_state:
     weight: 4
     label: hidden
@@ -146,6 +161,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_street_address:
     weight: 2
     label: hidden
@@ -153,6 +169,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_unacceptable_waste:
     type: entity_reference_revisions_entity_view
     weight: 16
@@ -161,6 +178,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
   field_zip:
     weight: 5
     label: hidden
@@ -168,10 +186,12 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   links:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   feeds_item: true
   field_alert_end_date: true

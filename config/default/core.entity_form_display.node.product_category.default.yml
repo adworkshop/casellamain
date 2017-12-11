@@ -93,23 +93,27 @@ content:
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
+    region: content
   created:
     type: datetime_timestamp
     weight: 11
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_2_column:
     weight: 5
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
   field_add_this:
     weight: 6
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
   field_breadcrumb_override:
     weight: 7
     settings:
@@ -117,17 +121,20 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_full_width:
     weight: 15
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
   field_full_width_promotion:
     weight: 14
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_h1_override:
     weight: 1
     settings:
@@ -135,6 +142,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_hero_text:
     weight: 2
     settings:
@@ -142,11 +150,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   field_meta_tag:
     weight: 26
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
+    region: content
   field_sidebar_promotions:
     weight: 13
     settings:
@@ -155,6 +165,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
   field_slider_images:
     weight: 14
     settings:
@@ -165,6 +176,7 @@ content:
       form_display_mode: default
     third_party_settings: {  }
     type: entity_reference_paragraphs
+    region: content
   field_tabs:
     weight: 8
     settings:
@@ -175,6 +187,7 @@ content:
       form_display_mode: default
     third_party_settings: {  }
     type: entity_reference_paragraphs
+    region: content
   field_upper_content:
     weight: 3
     settings:
@@ -182,16 +195,19 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   langcode:
     type: language_select
     weight: 13
     settings: {  }
     third_party_settings: {  }
+    region: content
   path:
     type: path
     weight: 12
     settings: {  }
     third_party_settings: {  }
+    region: content
   title:
     type: string_textfield
     weight: 0
@@ -199,10 +215,12 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   translation:
     weight: 9
     settings: {  }
     third_party_settings: {  }
+    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 10
@@ -211,6 +229,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden:
   feeds_item: true
   promote: true

@@ -12,6 +12,7 @@ granularity: method
 configuration:
   GET:
     supported_formats:
+      - json
       - xml
     supported_auth:
       - cookie

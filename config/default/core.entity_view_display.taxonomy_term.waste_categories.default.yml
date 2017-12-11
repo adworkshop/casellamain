@@ -18,11 +18,13 @@ content:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_description:
     weight: 1
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
 hidden:
   langcode: true

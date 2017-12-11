@@ -13,8 +13,8 @@ third_party_settings:
 id: organics_contact_us
 label: 'Contact Us'
 recipients:
-  - jen.mcdonnell@casella.com
-  - grenmarie.divico@casella.com
+  - John.Kelly@casella.com
+  - andrew.mockler@casella.com
 reply: ''
 weight: 0
 message: ''

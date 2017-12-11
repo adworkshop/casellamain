@@ -25,17 +25,20 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_contact_method:
     weight: 11
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
+    region: content
   field_enews_optin:
     weight: 12
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
   field_ml_email:
     weight: 8
     settings:
@@ -43,6 +46,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: email_default
+    region: content
   field_ml_first_name:
     weight: 6
     settings:
@@ -50,6 +54,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_ml_last_name:
     weight: 7
     settings:
@@ -57,6 +62,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_ml_phone:
     weight: 9
     settings:
@@ -64,16 +70,19 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_nature_of_inquiry:
     weight: 3
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_title:
     weight: 5
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   message:
     type: string_textarea
     weight: 10
@@ -81,6 +90,7 @@ content:
       rows: 12
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden:
   copy: true
   langcode: true

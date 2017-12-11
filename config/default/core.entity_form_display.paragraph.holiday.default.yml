@@ -22,6 +22,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
+    region: content
   field_guid:
     weight: 5
     settings:
@@ -29,12 +30,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_published:
     weight: 4
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
   field_service_schedule:
     weight: 3
     settings:
@@ -42,11 +45,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_service_status:
     weight: 2
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
+    region: content
   field_title:
     weight: 0
     settings:
@@ -54,6 +59,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
 hidden:
   created: true
   status: true

@@ -18,12 +18,14 @@ content:
       link: false
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_waste_description:
     weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
 hidden:
   created: true
   uid: true

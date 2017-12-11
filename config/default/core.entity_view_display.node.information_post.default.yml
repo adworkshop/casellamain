@@ -33,6 +33,7 @@ content:
     weight: 1
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_add_this:
     weight: 8
     label: above
@@ -42,6 +43,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_category:
     weight: 6
     label: hidden
@@ -49,6 +51,7 @@ content:
       link: false
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_date:
     weight: 7
     label: hidden
@@ -57,6 +60,7 @@ content:
       format_type: post_date
     third_party_settings: {  }
     type: datetime_default
+    region: content
   field_h1_override:
     weight: 2
     label: hidden
@@ -64,12 +68,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_hero_text:
     weight: 3
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_image:
     weight: 4
     label: hidden
@@ -78,12 +84,14 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+    region: content
   field_meta_tag:
     weight: 10
     label: above
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
+    region: content
   field_sidebar_promotions:
     weight: 9
     label: above
@@ -92,10 +100,12 @@ content:
       link: false
     third_party_settings: {  }
     type: entity_reference_entity_view
+    region: content
   links:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   feeds_item: true
   field_teaser: true

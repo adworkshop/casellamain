@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.job.body
+    - field.field.node.job.feeds_item
     - field.field.node.job.field_add_this
     - field.field.node.job.field_date_posted
     - field.field.node.job.field_h1_override
@@ -13,6 +14,7 @@ dependencies:
     - field.field.node.job.field_job_categories
     - field.field.node.job.field_job_status
     - field.field.node.job.field_location
+    - field.field.node.job.field_meta_tag
     - node.type.job
   module:
     - text
@@ -29,8 +31,10 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
+    region: content
   links:
     weight: 100
+    region: content
 hidden:
   feeds_item: true
   field_add_this: true
@@ -41,4 +45,5 @@ hidden:
   field_job_categories: true
   field_job_status: true
   field_location: true
+  field_meta_tag: true
   langcode: true

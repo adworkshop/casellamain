@@ -25,7 +25,6 @@ processor_configuration:
     vid: towns_cities
   owner_id: 0
   authorize: false
-  owner_feed_author: false
 mappings:
   -
     target: name

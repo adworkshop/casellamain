@@ -52,27 +52,32 @@ content:
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
+    region: content
   created:
     type: datetime_timestamp
     weight: 10
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_add_this:
     weight: 7
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
   field_category:
     weight: 4
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_date:
     weight: 3
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
+    region: content
   field_h1_override:
     weight: 1
     settings:
@@ -80,6 +85,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_hero_text:
     weight: 2
     settings:
@@ -87,6 +93,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   field_image:
     weight: 5
     settings:
@@ -94,11 +101,13 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+    region: content
   field_meta_tag:
     weight: 27
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
+    region: content
   field_sidebar_promotions:
     weight: 26
     settings:
@@ -107,6 +116,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
   field_teaser:
     weight: 15
     settings:
@@ -114,6 +124,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   field_teaser_image:
     weight: 14
     settings:
@@ -121,16 +132,19 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+    region: content
   langcode:
     type: language_select
     weight: 2
     settings: {  }
     third_party_settings: {  }
+    region: content
   path:
     type: path
     weight: 11
     settings: {  }
     third_party_settings: {  }
+    region: content
   title:
     type: string_textfield
     weight: 0
@@ -138,8 +152,10 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   translation:
     weight: 10
+    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 9
@@ -148,6 +164,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden:
   feeds_item: true
   promote: true

@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.service.field_h1_override
     - field.field.node.service.field_hero_text
     - field.field.node.service.field_logo
+    - field.field.node.service.field_meta_tag
     - field.field.node.service.field_sidebar_promotions
     - field.field.node.service.field_slider_images
     - field.field.node.service.field_tabs
@@ -38,8 +39,10 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
+    region: content
   links:
     weight: 100
+    region: content
 hidden:
   feeds_item: true
   field_2_column: true
@@ -50,6 +53,7 @@ hidden:
   field_h1_override: true
   field_hero_text: true
   field_logo: true
+  field_meta_tag: true
   field_sidebar_promotions: true
   field_slider_images: true
   field_tabs: true

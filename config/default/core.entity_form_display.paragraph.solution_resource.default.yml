@@ -19,6 +19,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_section_text:
     weight: 1
     settings:
@@ -26,6 +27,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_section_title:
     weight: 0
     settings:
@@ -33,6 +35,10 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
+  translation:
+    weight: 10
+    region: content
 hidden:
   created: true
   status: true

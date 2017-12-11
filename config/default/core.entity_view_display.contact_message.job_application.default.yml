@@ -27,6 +27,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: file_default
+    region: content
   field_hiring_manager:
     weight: 8
     label: above
@@ -34,12 +35,14 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_job_email:
     weight: 10
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_job_reference:
     weight: 2
     label: above
@@ -47,6 +50,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_job_title:
     weight: 1
     label: above
@@ -54,6 +58,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_name:
     weight: 3
     label: above
@@ -61,6 +66,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_phone:
     weight: 5
     label: above
@@ -68,24 +74,28 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_resume:
     weight: 6
     label: above
     settings: {  }
     third_party_settings: {  }
     type: file_default
+    region: content
   field_status:
     weight: 9
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   mail:
     weight: -2
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   message:
     type: string
     weight: 0
@@ -93,6 +103,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    region: content
   name:
     weight: -3
     label: above
@@ -100,6 +111,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   subject:
     weight: -1
     label: above
@@ -107,5 +119,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
 hidden:
   langcode: true

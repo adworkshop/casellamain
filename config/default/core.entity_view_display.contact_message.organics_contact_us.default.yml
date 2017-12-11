@@ -27,12 +27,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_contact_method:
     weight: 8
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   field_enews_optin:
     weight: 9
     label: above
@@ -42,12 +44,14 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_ml_email:
     weight: 6
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_ml_first_name:
     weight: 4
     label: above
@@ -55,6 +59,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_ml_last_name:
     weight: 5
     label: above
@@ -62,6 +67,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_ml_phone:
     weight: 7
     label: above
@@ -69,24 +75,28 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_nature_of_inquiry:
     weight: 1
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   field_title:
     weight: 3
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   mail:
     weight: -2
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   message:
     type: string
     weight: 0
@@ -94,6 +104,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    region: content
   name:
     weight: -3
     label: above
@@ -101,6 +112,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   subject:
     weight: -1
     label: above
@@ -108,5 +120,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
 hidden:
   langcode: true

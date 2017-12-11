@@ -7,6 +7,8 @@ dependencies:
   module:
     - node
     - user
+    - view_unpublished
+    - views_autocomplete_filters
 _core:
   default_config_hash: YIwhIF9MSP1E_HMam6MrYeti_UqMXQiLDMjDsPFKK8s
 id: content

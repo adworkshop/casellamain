@@ -27,3 +27,7 @@ backend_config:
     http_method: AUTO
   autocorrect_spell: true
   autocorrect_suggest_words: true
+  acquia_search_possible_cores:
+    - AJQZ-141300.prod.casella
+    - AJQZ-141300.prod.default
+    - AJQZ-141300

@@ -42,6 +42,7 @@ content:
     weight: 100
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_2_column:
     weight: 105
     label: hidden
@@ -51,6 +52,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_add_this:
     weight: 106
     label: hidden
@@ -60,6 +62,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_breadcrumb_override:
     weight: 115
     label: hidden
@@ -67,6 +70,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_full_width:
     weight: 108
     label: hidden
@@ -76,6 +80,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_full_width_promotion:
     weight: 110
     label: hidden
@@ -84,6 +89,7 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_reference_entity_view
+    region: content
   field_h1_override:
     weight: 102
     label: hidden
@@ -91,12 +97,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_hero_text:
     weight: 103
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_logo:
     weight: 113
     label: hidden
@@ -105,18 +113,21 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: responsive_image
+    region: content
   field_meta_tags:
     weight: 118
     label: above
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
+    region: content
   field_post_category:
     weight: 116
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: entity_reference_entity_id
+    region: content
   field_sidebar_promotions:
     weight: 112
     label: hidden
@@ -125,6 +136,7 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_reference_entity_view
+    region: content
   field_slider_images:
     type: entity_reference_revisions_entity_view
     weight: 109
@@ -133,6 +145,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
   field_tabs:
     type: entity_reference_revisions_entity_view
     weight: 111
@@ -141,16 +154,19 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
   field_upper_content:
     weight: 117
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   links:
     weight: 101
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   feeds_item: true
   field_location_category: true

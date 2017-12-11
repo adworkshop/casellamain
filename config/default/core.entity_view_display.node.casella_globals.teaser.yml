@@ -26,6 +26,7 @@ mode: teaser
 content:
   links:
     weight: 100
+    region: content
 hidden:
   feeds_item: true
   field_acceptable_waste_intro: true

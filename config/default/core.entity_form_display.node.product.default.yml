@@ -127,17 +127,20 @@ content:
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
+    region: content
   created:
     type: datetime_timestamp
     weight: 13
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_add_this:
     weight: 9
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
   field_benefits:
     weight: 6
     settings:
@@ -145,6 +148,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
   field_best_practices:
     weight: 8
     settings:
@@ -152,29 +156,34 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
   field_downloads:
     weight: 35
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
     type: file_generic
+    region: content
   field_feature_the_image:
     weight: 6
     settings:
       display_label: false
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
   field_featured:
     weight: 8
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
   field_full_width_promotion:
     weight: 10
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_h1_override:
     weight: 1
     settings:
@@ -182,6 +191,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_hero_text:
     weight: 2
     settings:
@@ -189,6 +199,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   field_image:
     weight: 5
     settings:
@@ -196,6 +207,7 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+    region: content
   field_images:
     weight: 9
     settings:
@@ -203,21 +215,25 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+    region: content
   field_meta_tag:
     weight: 36
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
+    region: content
   field_product_category:
     weight: 7
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_product_tags:
     weight: 6
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
+    region: content
   field_promotion_image:
     weight: 34
     settings:
@@ -225,6 +241,7 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+    region: content
   field_promotion_link:
     weight: 33
     settings:
@@ -232,6 +249,7 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
   field_recommendations:
     type: entity_reference_paragraphs
     weight: 7
@@ -242,6 +260,7 @@ content:
       add_mode: dropdown
       form_display_mode: default
     third_party_settings: {  }
+    region: content
   field_tabs:
     weight: 10
     settings:
@@ -252,6 +271,7 @@ content:
       form_display_mode: default
     third_party_settings: {  }
     type: entity_reference_paragraphs
+    region: content
   field_teaser:
     weight: 5
     settings:
@@ -259,6 +279,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   field_upper_content:
     weight: 3
     settings:
@@ -266,6 +287,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   field_vimeo_embed:
     weight: 7
     settings:
@@ -273,6 +295,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_youtube_id:
     weight: 8
     settings:
@@ -280,16 +303,19 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   langcode:
     type: language_select
     weight: 16
     settings: {  }
     third_party_settings: {  }
+    region: content
   path:
     type: path
     weight: 15
     settings: {  }
     third_party_settings: {  }
+    region: content
   title:
     type: string_textfield
     weight: 0
@@ -297,10 +323,12 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   translation:
     weight: 14
     settings: {  }
     third_party_settings: {  }
+    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 12
@@ -309,6 +337,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden:
   feeds_item: true
   promote: true

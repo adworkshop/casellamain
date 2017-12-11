@@ -32,6 +32,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_charges_warning:
     weight: 110
     label: above
@@ -39,6 +40,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_customer_care:
     weight: 102
     label: hidden
@@ -50,6 +52,7 @@ content:
       target: ''
     third_party_settings: {  }
     type: link_separate
+    region: content
   field_earthlife_sidebar_intro:
     weight: 106
     label: hidden
@@ -57,18 +60,21 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_footer_statement:
     weight: 103
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_job_application_intro:
     weight: 107
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_online_bill_pay:
     weight: 101
     label: hidden
@@ -80,12 +86,14 @@ content:
       target: ''
     third_party_settings: {  }
     type: link_separate
+    region: content
   field_ontario_email:
     weight: 111
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_search_overlay_text:
     weight: 105
     label: hidden
@@ -93,6 +101,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_social_icon_links:
     type: entity_reference_revisions_entity_view
     weight: 104
@@ -101,6 +110,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
   field_unacceptable_waste_intro:
     weight: 109
     label: above
@@ -108,6 +118,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
 hidden:
   feeds_item: true
   langcode: true

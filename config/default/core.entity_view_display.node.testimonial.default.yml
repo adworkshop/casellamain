@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.testimonial.feeds_item
     - field.field.node.testimonial.field_attribution
     - field.field.node.testimonial.field_quotation
     - field.field.node.testimonial.field_source
@@ -21,12 +22,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_quotation:
     weight: 0
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_source:
     weight: 2
     label: hidden
@@ -34,6 +37,8 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
 hidden:
+  feeds_item: true
   langcode: true
   links: true

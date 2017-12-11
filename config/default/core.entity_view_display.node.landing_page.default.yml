@@ -30,6 +30,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_gallery_images:
     type: entity_reference_revisions_entity_view
     weight: 107
@@ -38,12 +39,14 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
   field_home_desc:
     weight: 104
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_industry_links:
     type: entity_reference_revisions_entity_view
     weight: 109
@@ -52,6 +55,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
   field_large_promotions:
     type: entity_reference_revisions_entity_view
     weight: 106
@@ -60,18 +64,21 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
   field_meta_tag:
     weight: 111
     label: above
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
+    region: content
   field_org_desc:
     weight: 105
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_service_links:
     type: entity_reference_revisions_entity_view
     weight: 108
@@ -80,6 +87,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
   field_small_business_link:
     weight: 110
     label: hidden
@@ -91,6 +99,7 @@ content:
       target: ''
     third_party_settings: {  }
     type: link_separate
+    region: content
   field_verticals_boxes:
     type: entity_reference_revisions_entity_view
     weight: 101
@@ -99,9 +108,11 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
   links:
     weight: 100
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   langcode: true

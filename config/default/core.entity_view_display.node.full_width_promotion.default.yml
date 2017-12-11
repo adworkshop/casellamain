@@ -23,6 +23,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_image:
     weight: 102
     label: hidden
@@ -31,6 +32,7 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+    region: content
   field_link:
     weight: 105
     label: hidden
@@ -42,6 +44,7 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
+    region: content
   field_subtitle:
     weight: 103
     label: hidden
@@ -49,9 +52,11 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   links:
     weight: 100
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   langcode: true

@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.case_study.field_full_width_promotion
     - field.field.node.case_study.field_h1_override
     - field.field.node.case_study.field_hero_text
+    - field.field.node.case_study.field_meta_tag
     - field.field.node.case_study.field_sidebar_promotions
     - field.field.node.case_study.field_slider_images
     - field.field.node.case_study.field_tabs
@@ -34,8 +35,10 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
+    region: content
   links:
     weight: 100
+    region: content
 hidden:
   feeds_item: true
   field_2_column: true
@@ -44,6 +47,7 @@ hidden:
   field_full_width_promotion: true
   field_h1_override: true
   field_hero_text: true
+  field_meta_tag: true
   field_sidebar_promotions: true
   field_slider_images: true
   field_tabs: true

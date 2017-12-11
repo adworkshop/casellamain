@@ -34,6 +34,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_testimonials:
     weight: 2
     settings:
@@ -42,10 +43,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
   translation:
     weight: 3
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   created: true
   status: true

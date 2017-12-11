@@ -24,6 +24,7 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
+    region: content
 hidden:
   created: true
   field_link_class: true
