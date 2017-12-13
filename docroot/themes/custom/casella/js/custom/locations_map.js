@@ -28,7 +28,8 @@ function initMap() {
 
   mapInfo.map = new google.maps.Map(document.getElementById("content-map"), mapOptions);
   casellaMap = mapInfo.map;
-  mapInfo.bounds = new google.maps.LatLngBounds();
+  
+  google.maps.event.trigger(casellaMap, "resize");
 
   nameArg = location.search.match(/(?:\?|&)name=([^&]+)(?:&|$)/);
   nameArg = null != nameArg && nameArg.length ? nameArg[1] : 'all';
@@ -88,7 +89,7 @@ function setCenter(markersInfo, mapInfo) {
 
   var marker, markerCenter = new google.maps.LatLng(markersInfo.townInfo.latitude, markersInfo.townInfo.longitude);
   casellaMapCenter = markerCenter;
-  mapInfo.map.setCenter(markerCenter);
+
   mapInfo.map.setZoom(10);
 
   marker = new google.maps.Marker({
@@ -97,6 +98,9 @@ function setCenter(markersInfo, mapInfo) {
     title: markersInfo.townInfo.townName,
     icon: '//maps.google.com/mapfiles/ms/icons/blue-dot.png'
   });
+
+  setTimeout(function(){google.maps.event.trigger(casellaMap, "resize");casellaMap.setCenter(casellaMapCenter);console.log('setCenter centering');},1500);
+
 }
 
 /**
@@ -176,7 +180,6 @@ function initMarker(markerInfo, mapInfo, index) {
   mapInfo.markers.allIndexed['marker' + markerInfo.nid] = marker;
 
   // Extend the bounds.
-  mapInfo.bounds.extend(marker.position);
 
   // Add an info window.
   infoWindow = new google.maps.InfoWindow({
@@ -349,7 +352,7 @@ function findLocationClickHandler(event) {
     $target = jQuery(event.currentTarget),
     guid = $target.attr('data-guid');
 
-  mapInfo.map.setCenter(mapInfo.markers.allIndexed['marker' + guid].position);
+  //mapInfo.map.setCenter(mapInfo.markers.allIndexed['marker' + guid].position);
   mapInfo.map.setZoom(10);
   clearInfoWindows(mapInfo.infoWindows);
   mapInfo.infoWindows['info' + guid].open(mapInfo.map, mapInfo.markers.allIndexed['marker' + guid]);
