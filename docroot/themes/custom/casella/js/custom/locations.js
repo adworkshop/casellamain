@@ -38,15 +38,6 @@ function setContent($el) {
     jQuery($el.data('rel')).fadeIn(300).promise().done(function() {
         jQuery.fn.matchHeight._update();
     });
-
-    if ("undefined" != typeof casellaMap && '#content-map' == $el.attr('data-rel')) {
-      google.maps.event.trigger(casellaMap, "resize");
-
-      if (!$el.hasClass('inited')) {
-        casellaMap.setCenter(casellaMapCenter);
-        $el.addClass('inited')
-      }
-    }
   });
 
 }

@@ -4,7 +4,7 @@ if (jQuery('.locationMap-listView-container').length) {
 }
 
 // Exposing the map as a global so it can be used by the zozo init.
-var casellaMap, casellaMapCenter;
+var casellaMap, casellaMapCenter, nameArg;
 
 function initMap() {
   var mapOptions,
@@ -28,7 +28,7 @@ function initMap() {
 
   mapInfo.map = new google.maps.Map(document.getElementById("content-map"), mapOptions);
   casellaMap = mapInfo.map;
-  
+
   google.maps.event.trigger(casellaMap, "resize");
 
   nameArg = location.search.match(/(?:\?|&)name=([^&]+)(?:&|$)/);
@@ -48,8 +48,6 @@ function initMap() {
   }).error(function (data) {
     // console.log('error', data);
   });
-
-  jQuery(window).on('resize', debounce(handleMapResize, 100));
 
   bindLinkContainerToggle();
 }
@@ -99,7 +97,7 @@ function setCenter(markersInfo, mapInfo) {
     icon: '//maps.google.com/mapfiles/ms/icons/blue-dot.png'
   });
 
-  setTimeout(function(){google.maps.event.trigger(casellaMap, "resize");casellaMap.setCenter(casellaMapCenter);console.log('setCenter centering');},1500);
+  setTimeout(function(){google.maps.event.trigger(casellaMap, "resize");casellaMap.panTo(casellaMapCenter);},1500);
 
 }
 
@@ -191,6 +189,7 @@ function initMarker(markerInfo, mapInfo, index) {
   google.maps.event.addListener(marker, "click", function () {
     clearInfoWindows(mapInfo.infoWindows);
     infoWindow.open(mapInfo.map, marker);
+    casellaMap.panTo(marker.getPosition());
   });
   google.maps.event.addListener(background, "click", function () {
     clearInfoWindows(mapInfo.infoWindows);
@@ -357,10 +356,9 @@ function findLocationClickHandler(event) {
   clearInfoWindows(mapInfo.infoWindows);
   mapInfo.infoWindows['info' + guid].open(mapInfo.map, mapInfo.markers.allIndexed['marker' + guid]);
 
-  // Set the global and force the re center after change by removing the inited class.
+  // Set the global and force the re center
   casellaMapCenter = mapInfo.markers.allIndexed['marker' + guid].position;
-  jQuery('.locationsMap-panel.content-map').removeClass('inited');
-
+  casellaMap.setCenter(casellaMapCenter);
   // And scroll up in case we are too far down
   jQuery('body,html').animate({ 'scrollTop': jQuery('.panelControlBtn[data-rel="#content-map"]').offset().top - 100}, 200);
 
