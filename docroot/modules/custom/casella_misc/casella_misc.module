@@ -770,7 +770,10 @@ function casella_misc_node_view(array &$build, \Drupal\Core\Entity\EntityInterfa
     if (!$globalsNode->hasField('field_veterans_career_email')) {
       return;
     }
-    $val_array = $globalsNode->get('field_veterans_career_email')->getValue();
-    user_cookie_save(['apply_recipient_email' => $val_array[0]['value']]);
+    
+    if (count($node->get('field_veterans_career_page')->getValue())) {
+      $val_array = $globalsNode->get('field_veterans_career_email')->getValue();
+      user_cookie_save(['apply_recipient_email' => $val_array[0]['value']]);
+    }
   }
 }
