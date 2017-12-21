@@ -758,3 +758,19 @@ function casella_misc_cron() {
 
   mail('Devin.Siva@casella.com', 'Unpublished Jobs on Casella.com', 'Unpublished the following jobs:' . " \r\n" . implode(", \r\n", $titles), 'From: jobpostings@casella.com');
 }
+
+function casella_misc_node_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
+  $node = \Drupal::entityTypeManager()
+    ->getStorage('node')
+    ->load($entity->id());
+
+  // is this a vets career page (checkbox for admin)
+  if ($node && $node->hasField('field_veterans_career_page')) {
+    $globalsNode = \Drupal::entityTypeManager()->getStorage('node')->load(1951);
+    if (!$globalsNode->hasField('field_veterans_career_email')) {
+      return;
+    }
+    $val_array = $globalsNode->get('field_veterans_career_email')->getValue();
+    user_cookie_save(['apply_recipient_email' => $val_array[0]['value']]);
+  }
+}

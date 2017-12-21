@@ -21,6 +21,7 @@ dependencies:
     - field.field.node.page.field_subsection
     - field.field.node.page.field_tabs
     - field.field.node.page.field_upper_content
+    - field.field.node.page.field_veterans_career_page
     - node.type.page
     - responsive_image.styles.inline_logo
   module:
@@ -39,12 +40,12 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 100
+    weight: 0
     settings: {  }
     third_party_settings: {  }
     region: content
   field_2_column:
-    weight: 105
+    weight: 4
     label: hidden
     settings:
       format: default
@@ -54,7 +55,7 @@ content:
     type: boolean
     region: content
   field_add_this:
-    weight: 106
+    weight: 5
     label: hidden
     settings:
       format: default
@@ -64,7 +65,7 @@ content:
     type: boolean
     region: content
   field_breadcrumb_override:
-    weight: 115
+    weight: 12
     label: hidden
     settings:
       link_to_entity: false
@@ -72,7 +73,7 @@ content:
     type: string
     region: content
   field_full_width:
-    weight: 108
+    weight: 6
     label: hidden
     settings:
       format: default
@@ -82,7 +83,7 @@ content:
     type: boolean
     region: content
   field_full_width_promotion:
-    weight: 110
+    weight: 8
     label: hidden
     settings:
       link: true
@@ -91,7 +92,7 @@ content:
     type: entity_reference_entity_view
     region: content
   field_h1_override:
-    weight: 102
+    weight: 2
     label: hidden
     settings:
       link_to_entity: false
@@ -99,14 +100,14 @@ content:
     type: string
     region: content
   field_hero_text:
-    weight: 103
+    weight: 3
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
     region: content
   field_logo:
-    weight: 113
+    weight: 11
     label: hidden
     settings:
       responsive_image_style: inline_logo
@@ -115,21 +116,21 @@ content:
     type: responsive_image
     region: content
   field_meta_tags:
-    weight: 118
+    weight: 15
     label: above
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
     region: content
   field_post_category:
-    weight: 116
+    weight: 13
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: entity_reference_entity_id
     region: content
   field_sidebar_promotions:
-    weight: 112
+    weight: 10
     label: hidden
     settings:
       link: true
@@ -139,7 +140,7 @@ content:
     region: content
   field_slider_images:
     type: entity_reference_revisions_entity_view
-    weight: 109
+    weight: 7
     label: hidden
     settings:
       view_mode: default
@@ -148,7 +149,7 @@ content:
     region: content
   field_tabs:
     type: entity_reference_revisions_entity_view
-    weight: 111
+    weight: 9
     label: hidden
     settings:
       view_mode: default
@@ -156,19 +157,20 @@ content:
     third_party_settings: {  }
     region: content
   field_upper_content:
-    weight: 117
+    weight: 14
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
     region: content
   links:
-    weight: 101
+    weight: 1
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   feeds_item: true
   field_location_category: true
   field_subsection: true
+  field_veterans_career_page: true
   langcode: true

@@ -14,7 +14,7 @@ third_party_settings:
 id: job_application
 label: 'Job Application'
 recipients:
-  - devin.siva@casella.com
+  - ben@adworkshop.com
 reply: ''
 weight: 0
 message: 'Your message has been sent.'

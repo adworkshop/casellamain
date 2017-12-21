@@ -11,6 +11,7 @@ dependencies:
     - field.field.contact_message.job_application.field_job_title
     - field.field.contact_message.job_application.field_name
     - field.field.contact_message.job_application.field_phone
+    - field.field.contact_message.job_application.field_recipient_email
     - field.field.contact_message.job_application.field_resume
     - field.field.contact_message.job_application.field_status
   module:
@@ -74,6 +75,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
+  field_recipient_email:
+    weight: 11
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
     region: content
   field_resume:
     weight: 6

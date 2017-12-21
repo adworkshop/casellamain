@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.casella_globals.field_search_overlay_text
     - field.field.node.casella_globals.field_social_icon_links
     - field.field.node.casella_globals.field_unacceptable_waste_intro
+    - field.field.node.casella_globals.field_veterans_career_email
     - node.type.casella_globals
   module:
     - entity_reference_revisions
@@ -118,6 +119,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
+  field_veterans_career_email:
+    weight: 112
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
     region: content
 hidden:
   feeds_item: true
