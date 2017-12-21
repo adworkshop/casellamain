@@ -6,8 +6,12 @@ function getCookie(name) {
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
+  document.getElementById('edit-field-recipient-email-wrapper').style.display='none';
+  document.getElementById('edit-field-recipient-email-0-value').readOnly = true;
   cookie_check = getCookie('Drupal.visitor.apply_recipient_email');
+
   if ('' != cookie_check) {
-    document.getElementById('contact-message-job-application-form').field_recipient_email_wrapper.value=cookie_check;
+    document.getElementById('edit-field-recipient-email-0-value').value=decodeURIComponent(cookie_check);
+
   }
 });

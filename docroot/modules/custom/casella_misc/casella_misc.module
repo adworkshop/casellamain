@@ -180,12 +180,6 @@ function casella_misc_form_contact_message_job_application_form_alter(&$form, \D
   $form['#attached']['library'][] = 'casella_misc/veterans-apply';
   $form['field_hiring_manager']['#attributes']['class'][] = 'hidden';
 
-  user_cookie_save(['apply_recipient_email' => 'ben.hamelin@yahoo.com']);
-
-  // don't show this field to the user, we will use resulting value to send email conditionally
-  $form['field_recipient_email']['#type'] = 'hidden';
-
-
   // This form pulls information from the node on which it is displayed.
   $node = \Drupal::routeMatch()->getParameter('node');
   if (!$node) {
