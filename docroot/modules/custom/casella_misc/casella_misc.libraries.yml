@@ -4,3 +4,8 @@ admin-required-tabs:
     js/admin_required_tabs.js: {}
   dependencies:
     - core/jquery
+
+veterans-apply:
+  version: 1.x
+  js:
+    js/veterans_apply.js: {}
