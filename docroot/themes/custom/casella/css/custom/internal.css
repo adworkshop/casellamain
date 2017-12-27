@@ -576,6 +576,7 @@ Author URI: http://www.adworkshop.com
   .job-mainListings-container {}
   .job-mainListings-container .footable.table > thead > tr > th {padding:15px;}
   .job-mainListings-container .footable.table > tbody > tr > td {vertical-align:middle; font-family: 'Source Sans Pro', sans-serif; padding: 15px; border-top: 1px solid #e7e7e7;}
+  th.job-num-container,
   th.job-jobTitle-container,
   th.job-city-container,
   th.job-state-container,
