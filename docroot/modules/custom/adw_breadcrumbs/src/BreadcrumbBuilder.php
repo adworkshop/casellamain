@@ -22,7 +22,7 @@ use Drupal\Core\Path\PathMatcherInterface;
  *
  * {@inheritdoc}
  */
-abstract class BreadcrumbBuilder extends PathBasedBreadcrumbBuilder implements PathMatcherInterface {
+class BreadcrumbBuilder extends PathBasedBreadcrumbBuilder implements PathMatcherInterface {
 
   /**
    * {@inheritdoc}
