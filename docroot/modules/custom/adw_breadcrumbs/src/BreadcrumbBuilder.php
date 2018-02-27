@@ -21,7 +21,7 @@ use Symfony\Cmf\Component\Routing\RouteObjectInterface;
  *
  * {@inheritdoc}
  */
-abstract class BreadcrumbBuilder extends PathBasedBreadcrumbBuilder {
+class BreadcrumbBuilder extends PathBasedBreadcrumbBuilder {
 
   /**
    * {@inheritdoc}
