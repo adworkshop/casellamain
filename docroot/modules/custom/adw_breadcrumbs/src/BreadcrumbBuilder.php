@@ -13,7 +13,7 @@ use Drupal\Core\Breadcrumb\Breadcrumb;
 use Drupal\Component\Utility\Unicode;
 use Drupal\system\PathBasedBreadcrumbBuilder;
 use Symfony\Cmf\Component\Routing\RouteObjectInterface;
-
+use Drupal\Core\Path\PathMatcherInterface;
 /**
  * Adds the current page title to the breadcrumb.
  *
@@ -23,7 +23,7 @@ use Symfony\Cmf\Component\Routing\RouteObjectInterface;
  *
  * {@inheritdoc}
  */
-class BreadcrumbBuilder extends PathBasedBreadcrumbBuilder {
+class BreadcrumbBuilder extends PathBasedBreadcrumbBuilder implements PathMatcherInterface {
 
   /**
    * {@inheritdoc}
