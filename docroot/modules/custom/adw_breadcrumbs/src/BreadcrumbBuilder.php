@@ -218,7 +218,7 @@ class BreadcrumbBuilder extends PathBasedBreadcrumbBuilder implements PathMatche
     return $nodeTypeAssoc[0]['type'];
   }
 
-  public function matchPath($path, $patterns);
+  public function matchPath($path, $patterns){ }
 
   /**
    * Checks if the current page is the front page.
@@ -226,5 +226,5 @@ class BreadcrumbBuilder extends PathBasedBreadcrumbBuilder implements PathMatche
    * @return bool
    *   TRUE if the current page is the front page.
    */
-  public function isFrontPage();
+  public function isFrontPage() {}
 }
