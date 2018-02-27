@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Contains \Drupal\adw_breadcrumbs\BreadcrumbBuilder.
