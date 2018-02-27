@@ -12,7 +12,6 @@ use Drupal\Core\Breadcrumb\Breadcrumb;
 use Drupal\Component\Utility\Unicode;
 use Drupal\system\PathBasedBreadcrumbBuilder;
 use Symfony\Cmf\Component\Routing\RouteObjectInterface;
-use Drupal\Core\Path\PathMatcherInterface;
 /**
  * Adds the current page title to the breadcrumb.
  *
@@ -22,7 +21,7 @@ use Drupal\Core\Path\PathMatcherInterface;
  *
  * {@inheritdoc}
  */
-class BreadcrumbBuilder extends PathBasedBreadcrumbBuilder implements PathMatcherInterface {
+abstract class BreadcrumbBuilder extends PathBasedBreadcrumbBuilder {
 
   /**
    * {@inheritdoc}
@@ -217,14 +216,4 @@ class BreadcrumbBuilder extends PathBasedBreadcrumbBuilder implements PathMatche
 
     return $nodeTypeAssoc[0]['type'];
   }
-
-  public function matchPath($path, $patterns){ }
-
-  /**
-   * Checks if the current page is the front page.
-   *
-   * @return bool
-   *   TRUE if the current page is the front page.
-   */
-  public function isFrontPage() {}
 }
