@@ -31,6 +31,7 @@ custom-js:
 custom-home:
   version: 1.x
   js:
+    js/libs/jquery-migrate-3.0.0.min.js: {}
     js/custom/home.js: {}
   css:
     theme:

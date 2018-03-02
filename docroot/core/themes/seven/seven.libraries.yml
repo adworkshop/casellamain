@@ -1,5 +1,7 @@
 global-styling:
   version: VERSION
+  js:
+    js/jquery-migrate-3.0.0.min.js: {}
   css:
     base:
       css/base/elements.css: {}
