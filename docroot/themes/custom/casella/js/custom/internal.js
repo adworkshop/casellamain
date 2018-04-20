@@ -57,9 +57,9 @@ function checkSidebarContents() {
 }
 
 function jobApplyToggleHandler(){
-  jQuery(".job-indListing-formToggle-container").fadeToggle("slow");
-  jQuery(".job-indListing-applyToggle a").fadeToggle("slow");
-  jQuery('html, body').animate({ scrollTop: jQuery('.job-indListing-formToggle-container').offset().top - 50}, 1000);
+  jQuery(".job-indListing-formToggle-container").show();
+  var formDiv = document.querySelector('.job-indListing-form-personalInfo-nameContainer');
+  window.scrollTo(0, formDiv.offsetTop);
   eventTracking('career application form','apply today click',jQuery('h1').text());
 }
 

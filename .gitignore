@@ -5,3 +5,5 @@ docroot/sites/*/private
 docroot/sites/default/settings.local.php
 #ignore phpstorm
 .idea
+#ignore npm stuff
+node_modules
