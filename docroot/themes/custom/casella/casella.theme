@@ -1174,6 +1174,10 @@ function casella_preprocess_container(&$variables) {
     }
     elseif ('edit-field-resume-wrapper' == $variables['element']['#id']) {
       $variables['attributes']['class'][] = 'job-indListing-form-applicationDetails-subContainer';
+      $variables['attributes']['class'][] = 'left';
+    }
+    elseif ('edit-field-application-wrapper' == $variables['element']['#id']) {
+      $variables['attributes']['class'][] = 'job-indListing-form-applicationDetails-subContainer';
       $variables['attributes']['class'][] = 'right';
     }
     elseif ('edit-field-sign-up-wrapper' == $variables['element']['#id']) {

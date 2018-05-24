@@ -52,6 +52,11 @@ jQuery(document).ready(function() {
   jQuery('label.form-required').each(function(index, element){
     jQuery(element).html(jQuery(element).html().replace('*', '<span class="form-required">*</span>'));
   });
+
+  // add file download markup to job application
+  jQuery('#edit-field-application-0-upload').append('<div class="file-download"><span><a href="pdf/HR-Application-English-v09-FILL.pdf" target="_blank" title="Download the Application">Download the application (PDF)</a>,<br>once completed and saved, click "Choose File" to submit.</span></div></div>');
+  document.getElementById('edit-field-application-0-upload--description').innerHTML = 'This pdf must be completed and submitted in its entirety to be considered for employment.'+document.getElementById('edit-field-application-0-upload--description').innerHTML.replace(/<br\s*[\/]?>/gi, "\n");
+
 });
 
 function initZozoTabs() {
@@ -256,7 +261,8 @@ function initLocationHandlers() {
 }
 
 /**
- * Checks for the nested zozotab structure in the services tab and inits if it exists.
+ * Checks for the nested zozotab structure in the services tab and inits if it
+ * exists.
  */
 function initNestedTabs() {
   var nestedWrapper = jQuery(".nestedTabs-wrapper");
