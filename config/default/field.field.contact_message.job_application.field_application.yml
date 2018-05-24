@@ -1,0 +1,27 @@
+uuid: caa83016-60a5-4280-8ee6-eda8882e185f
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.job_application
+    - field.storage.contact_message.field_application
+  module:
+    - file
+id: contact_message.job_application.field_application
+field_name: field_application
+entity_type: contact_message
+bundle: job_application
+label: Application
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file
