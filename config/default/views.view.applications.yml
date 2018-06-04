@@ -575,6 +575,8 @@ display:
           text: view
           entity_type: contact_message
           plugin_id: entity_link
+          output_url_as_text: false
+          absolute: false
       filters:
         contact_form:
           id: contact_form
@@ -1198,6 +1200,8 @@ display:
           text: view
           entity_type: contact_message
           plugin_id: entity_link
+          output_url_as_text: false
+          absolute: false
         edit_contact_message:
           id: edit_contact_message
           table: contact_message

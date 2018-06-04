@@ -288,7 +288,7 @@ display:
         path:
           id: path
           table: node
-          field: path
+          field: view_node
           relationship: none
           group_type: group
           admin_label: ''
@@ -335,7 +335,8 @@ display:
           hide_alter_empty: true
           absolute: false
           entity_type: node
-          plugin_id: node_path
+          plugin_id: entity_link
+          output_url_as_text: true
       filters:
         status:
           value: '1'
@@ -612,7 +613,7 @@ display:
         path:
           id: path
           table: node
-          field: path
+          field: view_node
           relationship: none
           group_type: group
           admin_label: ''
@@ -659,7 +660,8 @@ display:
           hide_alter_empty: true
           absolute: false
           entity_type: node
-          plugin_id: node_path
+          plugin_id: entity_link
+          output_url_as_text: true
       defaults:
         fields: false
     cache_metadata:
@@ -750,7 +752,7 @@ display:
         path:
           id: path
           table: node
-          field: path
+          field: view_node
           relationship: none
           group_type: group
           admin_label: ''
@@ -797,7 +799,8 @@ display:
           hide_alter_empty: true
           absolute: false
           entity_type: node
-          plugin_id: node_path
+          plugin_id: entity_link
+          output_url_as_text: true
         field_image:
           id: field_image
           table: node__field_image
@@ -1989,7 +1992,7 @@ display:
         path:
           id: path
           table: node
-          field: path
+          field: view_node
           relationship: none
           group_type: group
           admin_label: ''
@@ -2036,7 +2039,8 @@ display:
           hide_alter_empty: true
           absolute: false
           entity_type: node
-          plugin_id: node_path
+          plugin_id: entity_link
+          output_url_as_text: true
     cache_metadata:
       max-age: -1
       contexts:

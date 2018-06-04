@@ -640,7 +640,7 @@ display:
         path:
           id: path
           table: node
-          field: path
+          field: view_node
           relationship: none
           group_type: group
           admin_label: ''
@@ -687,7 +687,8 @@ display:
           hide_alter_empty: true
           absolute: false
           entity_type: node
-          plugin_id: node_path
+          plugin_id: entity_link
+          output_url_as_text: true
         field_override_location:
           id: field_override_location
           table: node__field_override_location
@@ -1172,7 +1173,7 @@ display:
         path:
           id: path
           table: node
-          field: path
+          field: view_node
           relationship: none
           group_type: group
           admin_label: ''
@@ -1219,7 +1220,8 @@ display:
           hide_alter_empty: true
           absolute: false
           entity_type: node
-          plugin_id: node_path
+          plugin_id: entity_link
+          output_url_as_text: true
         title:
           id: title
           table: node_field_data

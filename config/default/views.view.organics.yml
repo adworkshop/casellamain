@@ -569,7 +569,7 @@ display:
         path:
           id: path
           table: node
-          field: path
+          field: view_node
           relationship: none
           group_type: group
           admin_label: ''
@@ -616,7 +616,8 @@ display:
           hide_alter_empty: true
           absolute: false
           entity_type: node
-          plugin_id: node_path
+          plugin_id: entity_link
+          output_url_as_text: true
         field_teaser_anchor:
           id: field_teaser_anchor
           table: node__field_teaser_anchor
@@ -1302,7 +1303,7 @@ display:
         path:
           id: path
           table: node
-          field: path
+          field: view_node
           relationship: field_services
           group_type: group
           admin_label: ''
@@ -1349,7 +1350,8 @@ display:
           hide_alter_empty: true
           absolute: false
           entity_type: node
-          plugin_id: node_path
+          plugin_id: entity_link
+          output_url_as_text: true
       arguments:
         nid:
           id: nid
