@@ -400,7 +400,7 @@ function casella_preprocess_form_element(&$variables) {
  */
 function casella_preprocess_field(&$variables) {
   // quick edit bug
-  $unsetFields = ['field_verticals_boxes'];
+  $unsetFields = ['field_verticals_boxes', 'field_home_desc'];
   if ( in_array($variables['element']['#field_name'], $unsetFields) ) {
    unset($variables['attributes']['data-quickedit-field-id']);
   }
