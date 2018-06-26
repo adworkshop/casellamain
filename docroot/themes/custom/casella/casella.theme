@@ -399,6 +399,12 @@ function casella_preprocess_form_element(&$variables) {
  * @param $variables
  */
 function casella_preprocess_field(&$variables) {
+  // quick edit bug
+  $unsetFields = ['field_verticals_boxes'];
+  if ( in_array($variables['element']['#field_name'], $unsetFields) ) {
+   unset($variables['attributes']['data-quickedit-field-id']);
+  }
+
   $variables['theme_path'] = drupal_get_path('theme', 'casella');
   if (in_array($variables['element']['#field_name'], array('field_business_desc', 'field_home_desc', 'field_org_desc'))) {
     $variables['attributes']['class'][] = 'home-verticalPanel-content';
@@ -1881,14 +1887,3 @@ function _casella_make_machine_name($text) {
   return preg_replace('/[^a-z0-9_]+/', '_', strtolower(trim(strip_tags($text))));
 }
 
-/**
- * Implements hook_preprocess_field().
- */
-//Quick edit bug when field headers are removed
-function casella_preprocess_field(&$variables){
-  $unsetFields = ['field_verticals_boxes'];
-  if ( in_array($variables['element']['#field_name'], $unsetFields) ) {
-   unset($variables['attributes']['data-quickedit-field-id']);
-  }
-
-}
