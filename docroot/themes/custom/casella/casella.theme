@@ -400,7 +400,7 @@ function casella_preprocess_form_element(&$variables) {
  */
 function casella_preprocess_field(&$variables) {
   // quick edit bug
-  $unsetFields = ['field_verticals_boxes', 'field_home_desc', 'field_service_links', 'field_business_desc', 'field_org_desc', 'field_industry_links', 'field_slider_images', 'field_large_promotions', 'field_hero_text', 'field_gallery_images', 'field_upper_content', 'field_title', 'body', 'field_secondary_content', 'field_solution_resources'];
+  $unsetFields = ['field_verticals_boxes', 'field_home_desc', 'field_service_links', 'field_business_desc', 'field_org_desc', 'field_industry_links', 'field_slider_images', 'field_large_promotions', 'field_hero_text', 'field_gallery_images', 'field_upper_content', 'field_title', 'body', 'field_secondary_content', 'field_solution_resources', 'field_full_width_promotion'];
   if ( in_array($variables['element']['#field_name'], $unsetFields) ) {
    unset($variables['attributes']['data-quickedit-field-id']);
   }
