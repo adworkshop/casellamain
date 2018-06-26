@@ -1880,3 +1880,15 @@ function _casella_extract_link_bits($link, &$variables) {
 function _casella_make_machine_name($text) {
   return preg_replace('/[^a-z0-9_]+/', '_', strtolower(trim(strip_tags($text))));
 }
+
+/**
+ * Implements hook_preprocess_field().
+ */
+//Quick edit bug when field headers are removed
+function casella_preprocess_field(&$variables){
+  $unsetFields = ['field_verticals_boxes'];
+  if ( in_array($variables['element']['#field_name'], $unsetFields) ) {
+   unset($variables['attributes']['data-quickedit-field-id']);
+  }
+
+}
