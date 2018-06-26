@@ -22,7 +22,7 @@ jQuery(document).ready(function() {
   var originalSlider = jQuery('#home-slider').html();
 
   picturefill();
-  
+
   jQuery(window).on('resize', {'originalSlider' : originalSlider}, windowResize);
 	// Dont need to send the original html through the first time, it isn't regenerating.
   windowResize();
@@ -40,7 +40,7 @@ function markCustomerCare(index, element){
   }
 }
 
-jQuery(window).load(function() {
+jQuery(window).on("load", function() {
   equalheight('.home-verticalPanel-content');
 });
 
@@ -145,13 +145,13 @@ function royalsliderMobileBind() {
     controlsInside: false,
     imageScaleMode: 'fill',
     imageAlignCenter: true,
-    autoScaleSlider: true, 
+    autoScaleSlider: true,
     autoScaleSliderWidth: 1000,
     autoScaleSliderHeight: 800,
     imgWidth: 1000,
     imgHeight: 800,
     loop: true,
-    numImagesToPreload: 1, 
+    numImagesToPreload: 1,
     thumbsFitInViewport: false,
     navigateByClick: true,
     arrowsNavAutoHide:true,
