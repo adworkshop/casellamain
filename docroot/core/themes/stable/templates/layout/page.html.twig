@@ -78,7 +78,10 @@
     {% endif %}
 
   </main>
-
+  <!--Twine Social-->
+{% if is_front %}
+  <script id="twine-script" src="//apps.twinesocial.com/embed?app=casella&layout=251053&showLoadMore=yes&autoload=no"></script>
+{% endif %}
   {% if page.footer %}
     <footer role="contentinfo">
       {{ page.footer }}
