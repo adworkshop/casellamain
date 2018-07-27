@@ -183,7 +183,7 @@ Author URI: http://www.adworkshop.com
 /* ======================================================= */
 /*    GRID                                              */
 /* ======================================================= */ 
-  .home-gridDisplay-container {display:block; width:100%; border-top:4px solid #FFF; border-bottom: 4px solid #FFF;}
+  .home-gridDisplay-container {display:block; width:100%; border-top:4px solid #FFF; border-bottom: 10px solid #e8e8e8;}
   .home-gridDisplay-leftCol-container {display:block; width:100%;}
   .home-gridDisplay-rightCol-container {display:block; width:100%; position: relative;}
   
