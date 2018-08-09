@@ -1,4 +1,4 @@
-uuid: 27495b78-9a21-4c55-ada7-5f97c5e3aa8f
+uuid: c061ab8d-c73d-44b4-b22c-dcdb36150f36
 langcode: en
 status: true
 dependencies:
@@ -9,14 +9,14 @@ dependencies:
     - views
   theme:
     - casella
-id: views_block__content_promotions_block_2
+id: views_block__content_promotions_block_3
 theme: casella
 region: node_middle_content
-weight: -24
+weight: -22
 provider: null
-plugin: 'views_block:content_promotions-block_2'
+plugin: 'views_block:content_promotions-block_3'
 settings:
-  id: 'views_block:content_promotions-block_2'
+  id: 'views_block:content_promotions-block_3'
   label: ''
   provider: views
   label_display: '0'
@@ -25,6 +25,6 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: /node/506
+    pages: /node/13541
     negate: false
     context_mapping: {  }

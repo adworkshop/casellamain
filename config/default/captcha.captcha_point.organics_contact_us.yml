@@ -1,0 +1,7 @@
+uuid: c9920390-be4f-4484-ac98-e59cecb7f1a5
+langcode: en
+status: true
+dependencies: {  }
+formId: organics_contact_us
+captchaType: recaptcha/reCAPTCHA
+label: organics_contact_us

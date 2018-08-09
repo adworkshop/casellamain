@@ -1,0 +1,7 @@
+uuid: 956009ca-b2d9-4d3f-912f-dc3f45fad9bd
+langcode: en
+status: true
+dependencies: {  }
+formId: market_leads
+captchaType: recaptcha/reCAPTCHA
+label: market_leads

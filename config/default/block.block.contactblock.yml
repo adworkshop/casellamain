@@ -2,6 +2,8 @@ uuid: e36ecda7-7233-4613-b446-1b5828d52cdf
 langcode: en
 status: true
 dependencies:
+  config:
+    - contact.form.job_application
   module:
     - contact_block
   theme:

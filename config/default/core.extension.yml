@@ -11,6 +11,7 @@ module:
   breakpoint: 0
   cacheflush: 0
   cacheflush_entity: 0
+  captcha: 0
   casella_feeds: 0
   casella_misc: 0
   ckeditor: 0
@@ -51,7 +52,6 @@ module:
   menu_block: 0
   menu_ui: 0
   metatag: 0
-  mollom: 0
   node: 0
   options: 0
   page_cache: 0
@@ -59,6 +59,7 @@ module:
   publishcontent: 0
   quickedit: 0
   rdf: 0
+  recaptcha: 0
   redirect: 0
   responsive_image: 0
   rest: 0
