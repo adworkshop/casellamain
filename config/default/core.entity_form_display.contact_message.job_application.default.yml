@@ -93,9 +93,9 @@ third_party_settings:
       label: 'Contact Container'
     group_application_details_wrappe:
       children:
+        - field_application
         - field_cover_letter
         - field_resume
-        - field_application
       parent_name: group_application_details
       weight: 20
       format_type: html_element
@@ -123,7 +123,7 @@ content:
       progress_indicator: throbber
     third_party_settings: {  }
   field_cover_letter:
-    weight: 21
+    weight: 24
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
@@ -184,7 +184,7 @@ content:
     type: email_default
     region: content
   field_resume:
-    weight: 22
+    weight: 25
     settings:
       progress_indicator: throbber
     third_party_settings: {  }

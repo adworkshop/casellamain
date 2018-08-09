@@ -12,7 +12,7 @@ dependencies:
 id: views_block__information_posts_block_1
 theme: casella
 region: node_middle_content
-weight: -21
+weight: -25
 provider: null
 plugin: 'views_block:information_posts-block_1'
 settings:

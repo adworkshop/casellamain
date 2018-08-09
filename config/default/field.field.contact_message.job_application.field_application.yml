@@ -11,9 +11,9 @@ id: contact_message.job_application.field_application
 field_name: field_application
 entity_type: contact_message
 bundle: job_application
-label: 'Application*'
+label: Application
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''

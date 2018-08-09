@@ -2,6 +2,8 @@ uuid: 6aba8a55-5b62-447d-a9a4-0ff82c74f9cc
 langcode: en
 status: true
 dependencies:
+  config:
+    - contact.form.service_request
   module:
     - contact_block
     - system

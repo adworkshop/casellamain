@@ -1,0 +1,7 @@
+uuid: 970fa1cd-719c-4b52-a287-a900f489450d
+langcode: en
+status: false
+dependencies: {  }
+formId: node_case_study_form
+captchaType: default
+label: null
