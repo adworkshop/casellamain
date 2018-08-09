@@ -29,6 +29,7 @@ regions:
   node_middle_content: 'Node Content in body'
   node_lower_content: 'Node Content below body'
   form_container: 'Form Container'
+  form_container_drivers: 'Job Application Form Container'
 
 ckeditor_stylesheets:
   - css/custom/editor.css

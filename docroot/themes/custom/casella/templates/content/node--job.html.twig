@@ -52,7 +52,12 @@
                   <div class="job-indListing-formToggle-info">{{ application_intro }}</div>
                 {% endif %}
 
-                {{ form_container }}
+                {# conditional based on what type of job app this is. Driver's now have their own #}
+                {% if content.field_use_driver_application|render|striptags|adw_strip_comments|trim %}
+                  {{ form_container_drivers }}
+                {% else %}
+                  {{ form_container }}
+                {% endif %}
 
               </div>
               <!--END Toggle Form-->

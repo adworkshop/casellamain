@@ -151,7 +151,7 @@ function casella_theme_suggestions_container_alter(array &$suggestions, array $v
       }
     }
     elseif ('hr' == $variables['element']['#name']) {
-      if ('block_1' == $variables['element']['#display_id'] || 'block_2' == $variables['element']['#display_id']) {
+      if ('block_1' == $variables['element']['#display_id'] || 'block_2' == $variables['element']['#display_id'] || 'block_3' == $variables['element']['#display_id']) {
         $suggestions[] = 'container__stripped';
       }
     }
@@ -1051,7 +1051,8 @@ function casella_preprocess_views_view_table(&$variables) {
   elseif ('views_view_table__locations__page_1' == $variables['theme_hook_original']) {
     $variables['attributes']['id'] = 'providerListings';
   }
-  elseif ('hr' == $variables['view']->id() && 'block_1' == $variables['view']->current_display) {
+  elseif ('hr' == $variables['view']->id() && ('block_1' == $variables['view']->current_display
+  || 'block_3' == $variables['view']->current_display)) {
     $variables['attributes']['id'] = 'jobListings';
     $variables['attributes']['class'][] = 'table';
 
@@ -1333,6 +1334,8 @@ function casella_preprocess_node(&$variables) {
       'node_lower_content',
       'sidebar_nav',
       'form_container',
+      'form_container_drivers',
+
     );
     _casella_add_regions_to_node($pageLevel, $variables);
   }
