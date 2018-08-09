@@ -1,0 +1,21 @@
+uuid: 9e4309a0-d6f8-49aa-85c7-6dc0f460f14f
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.job_application_drivers
+    - field.storage.contact_message.field_expiration_date
+  module:
+    - datetime
+id: contact_message.job_application_drivers.field_expiration_date
+field_name: field_expiration_date
+entity_type: contact_message
+bundle: job_application_drivers
+label: 'Expiration Date'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,21 @@
+uuid: 505afe36-567d-45d5-809f-e6b4c5333d8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.job_application_drivers
+    - field.storage.contact_message.field_recipient_email
+id: contact_message.job_application_drivers.field_recipient_email
+field_name: field_recipient_email
+entity_type: contact_message
+bundle: job_application_drivers
+label: 'Recipient Email'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: Devin.Siva@casella.com
+default_value_callback: ''
+settings: {  }
+field_type: email

@@ -1,0 +1,19 @@
+uuid: a1790046-952b-4267-a6c0-2d077d97c370
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.job_application_drivers
+    - field.storage.contact_message.field_former_employer
+id: contact_message.job_application_drivers.field_former_employer
+field_name: field_former_employer
+entity_type: contact_message
+bundle: job_application_drivers
+label: 'Former Employer'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
