@@ -53,7 +53,7 @@
                 {% endif %}
 
                 {# conditional based on what type of job app this is. Driver's now have their own #}
-                {% if content.field_use_driver_application|render|striptags|adw_strip_comments|trim %}
+                {% if 'driver' in content.field_job_categories|render|striptags|adw_strip_comments|trim %}
                   {{ form_container_drivers }}
                 {% else %}
                   {{ form_container }}
