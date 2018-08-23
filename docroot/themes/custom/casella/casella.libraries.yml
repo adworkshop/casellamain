@@ -253,3 +253,9 @@ markerclusterer:
     plugins/js-marker-clusterer/src/markerclusterer.js: {}
   dependencies:
     - casella/google_maps
+
+driver-form:
+  version: 1.x
+  css:
+    theme:
+      css/custom/drivers-application.css: {}

@@ -211,6 +211,51 @@ function casella_misc_form_contact_message_job_application_form_alter(&$form, \D
   }
 }
 
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function casella_misc_form_contact_message_job_application_drivers_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+
+  $form['field_hiring_manager']['#attributes']['class'][] = 'hidden';
+  $form['field_status']['#access'] = FALSE;
+
+  // This form pulls information from the node on which it is displayed.
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if (!$node) {
+    return;
+  }
+
+  $form['field_job_title']['widget'][0]['value']['#default_value'] = $node->getTitle();
+  $form['field_job_reference']['widget'][0]['value']['#default_value'] = 'JOB' . $node->id();
+
+  if ($node->hasField('field_hiring_managers')) {
+    $managers = $node->get('field_hiring_managers')->getValue();
+
+    $defaults = array();
+    foreach ($managers as $manager) {
+      if (isset($form['field_hiring_manager']['widget']['#options'][$manager['target_id']])) {
+        $defaults[$manager['target_id']] = $manager['target_id'];
+      }
+    }
+
+    $form['field_hiring_manager']['widget']['#default_value'] = $defaults;
+  }
+
+
+
+  foreach (array_keys($form['actions']) as $action) {
+    if ($action != 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+      $form['actions'][$action]['#submit'][] = '_casella_misc_form_contact_message_job_application_form_submit';
+    }
+  }
+}
+
+
+
 /**
  * Custom submit function for the job application contact form.
  *

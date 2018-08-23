@@ -1,0 +1,21 @@
+uuid: c58ec410-bee9-497d-b745-cc150a5772e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.job_application_drivers
+    - field.storage.contact_message.field_state_license
+  module:
+    - options
+id: contact_message.job_application_drivers.field_state_license
+field_name: field_state_license
+entity_type: contact_message
+bundle: job_application_drivers
+label: State
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
