@@ -53,13 +53,14 @@
                 {% endif %}
 
                 {# conditional based on what type of job app this is. Driver's now have their own #}
-                {% if 'driver' in content.field_job_categories|render|striptags|adw_strip_comments|trim %}
+                  {#{% if 'driver' in content.field_job_categories|render|striptags|adw_strip_comments|trim %}
                     {{ attach_library('casella/driver-form') }}
                   {{ form_container_drivers }}
                 {% else %}
                   {{ form_container }}
                 {% endif %}
-
+                #}
+                  {{ form_container }}
               </div>
               <!--END Toggle Form-->
             {% endif %}
