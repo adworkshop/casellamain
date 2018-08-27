@@ -1,0 +1,6 @@
+uuid: 2ffb4510-95ee-4b62-b273-c0e116ecf53c
+langcode: en
+status: true
+dependencies: {  }
+id: content_chunk
+label: 'Content Chunk'

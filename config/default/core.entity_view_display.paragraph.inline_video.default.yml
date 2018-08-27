@@ -1,0 +1,32 @@
+uuid: 27acf14d-8604-4790-be20-cea318fe2cfd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.inline_video.field_vimeo_embed
+    - field.field.paragraph.inline_video.field_youtube_id
+    - paragraphs.paragraphs_type.inline_video
+id: paragraph.inline_video.default
+targetEntityType: paragraph
+bundle: inline_video
+mode: default
+content:
+  field_vimeo_embed:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_youtube_id:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  created: true
+  uid: true

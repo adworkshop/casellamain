@@ -1,0 +1,58 @@
+uuid: a9bf764f-018d-4976-9cea-8f343ad4dab8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.blog_post.field_blog_content
+    - field.field.node.blog_post.field_blog_featured_image
+    - field.field.node.blog_post.field_blog_tags
+    - field.field.node.blog_post.field_blog_teaser
+    - field.field.node.blog_post.field_blog_teaser_image
+    - field.field.node.blog_post.field_date_posted
+    - field.field.node.blog_post.field_vimeo_embed
+    - field.field.node.blog_post.field_youtube_id
+    - node.type.blog_post
+  module:
+    - datetime
+    - image
+    - user
+id: node.blog_post.teaser
+targetEntityType: node
+bundle: blog_post
+mode: teaser
+content:
+  field_blog_teaser:
+    type: string
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_blog_teaser_image:
+    type: image
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+  field_date_posted:
+    type: datetime_default
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: post_date
+    third_party_settings: {  }
+hidden:
+  field_blog_content: true
+  field_blog_featured_image: true
+  field_blog_tags: true
+  field_vimeo_embed: true
+  field_youtube_id: true
+  langcode: true
+  links: true
