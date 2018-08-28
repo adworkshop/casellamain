@@ -1,4 +1,4 @@
-uuid: e125a5e2-c4cd-4ecc-a795-05b83f1eb67f
+uuid: 5ab2261e-1348-427c-b00d-ac0c60235b01
 langcode: en
 status: true
 dependencies:
@@ -9,22 +9,22 @@ dependencies:
     - views
   theme:
     - casella
-id: views_block__hr_block_1__job_search
+id: views_block__hr_block_3
 theme: casella
 region: node_lower_content
-weight: -5
+weight: 0
 provider: null
-plugin: 'views_block:hr-block_1'
+plugin: 'views_block:hr-block_3'
 settings:
-  id: 'views_block:hr-block_1'
+  id: 'views_block:hr-block_3'
   label: ''
   provider: views
-  label_display: visible
+  label_display: '0'
   views_label: ''
   items_per_page: none
 visibility:
   request_path:
     id: request_path
-    pages: "/node/696\r\n/careers-veterans\r\n"
+    pages: /node/12881
     negate: false
     context_mapping: {  }

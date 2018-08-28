@@ -2,6 +2,6 @@ host: search.acquia.com
 path: ''
 derived_key_salt: debc03e4fbde895fa990a1a5e2ad5417
 derived_key: ''
-version: 8.x-1.7
+version: 8.x-1.14
 _core:
   default_config_hash: zlvPX7k5gD_ETDSeqWuByIOcYNL7ZenNiz-a9wdccaw
