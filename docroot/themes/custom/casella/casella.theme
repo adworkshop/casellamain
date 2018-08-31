@@ -1204,6 +1204,7 @@ function casella_preprocess_form(&$variables) {
     if ('views-exposed-form-locations-page-1' == $variables['element']['#id']) {
       $hasCity = isset($_GET['city']) && $_GET['city'] != '';
       $hasZip = isset($_GET['zip_code']) && $_GET['zip_code'] != '';
+      $hasZip = isset($_GET['zip_code']) && $_GET['zip_code'] != '';
 
       $variables['searchMeta'] = array();
       $variables['providerSearchResults'] = '';
@@ -1620,6 +1621,14 @@ function casella_preprocess_node(&$variables) {
       $view->setArguments(array($postCat[0]['target_id']));
       $variables['postByCat'] = $view->render();
     }
+  }
+
+  // blog
+  $variables['blogListContent'] = FALSE;
+  if ($variables['node']->hasField('field_blog_overview_page') && count($variables['node']->get('field_blog_overview_page')->getValue())) {
+    $view = \Drupal\views\Views::getView('blog');
+    $view->setDisplay('blog_archive');
+    $variables['blogListContent'] = $view->render();
   }
 }
 
