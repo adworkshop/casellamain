@@ -220,6 +220,8 @@ function casella_misc_form_contact_message_job_application_form_alter(&$form, \D
  */
 function casella_misc_form_contact_message_job_application_drivers_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
 
+  drupal_set_message('<pre>' . print_r('job app drivers',1) . '</pre>');
+  
   $form['field_hiring_manager']['#attributes']['class'][] = 'hidden';
   $form['field_status']['#access'] = FALSE;
 
@@ -228,6 +230,7 @@ function casella_misc_form_contact_message_job_application_drivers_form_alter(&$
   if (!$node) {
     return;
   }
+  drupal_set_message('<pre>' . print_r($node->getTitle(),1) . '</pre>');
 
   $form['field_job_title']['widget'][0]['value']['#default_value'] = $node->getTitle();
   $form['field_job_reference']['widget'][0]['value']['#default_value'] = 'JOB' . $node->id();
