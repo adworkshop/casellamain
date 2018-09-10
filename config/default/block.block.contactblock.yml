@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - contact.form.job_application_drivers
+    - contact.form.job_application
   module:
     - contact_block
   theme:
@@ -19,5 +19,5 @@ settings:
   label: 'Job Application Contact block'
   provider: contact_block
   label_display: '0'
-  contact_form: job_application_drivers
+  contact_form: job_application
 visibility: {  }
