@@ -1,4 +1,4 @@
-uuid: a1f01ba2-4073-4b70-b06e-09501502d99f
+uuid: ec43604a-a6a9-4aef-996c-b29ed4dc9035
 langcode: en
 status: true
 dependencies:
@@ -6,7 +6,6 @@ dependencies:
     - contact.form.job_application_drivers
   module:
     - contact_block
-    - node
   theme:
     - casella
 id: contactblock_2
@@ -21,11 +20,5 @@ settings:
   provider: contact_block
   label_display: '0'
   contact_form: job_application_drivers
-visibility:
-  node_type:
-    id: node_type
-    bundles:
-      job: job
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'
+visibility: {  }
+

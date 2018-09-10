@@ -467,7 +467,10 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   
   
   .description {font-family: 'Source Sans Pro', sans-serif; font-size: 13px; font-weight:400; font-style:italic;  margin: .5rem 0 0; line-height:1.5;}
-	.file-download {font-size: 13px; line-height: 1.4; margin: 15px 0 15px 0; padding: 0 0 15px; position:relative; border-bottom:1px dotted #e4e4e4;}
+  .description ol, .description ul {margin-left: 15px; margin-bottom: 15px;}
+  .description ol {list-style: decimal;}
+  .description ul {list-style: disc;}
+  .file-download {font-size: 13px; line-height: 1.4; margin: 15px 0 15px 0; padding: 0 0 15px; position:relative; border-bottom:1px dotted #e4e4e4;}
 	.file-download:before {font-family: 'FontAwesome'; content: "\f1c1"; display:inline-block; position:absolute; left:0; top:0; font-size: 20px; color: #990000;}
 	.file-download span {display:inline-block; padding:0 0 0 30px;}
   .form-required {color:#004a87;}
