@@ -72,14 +72,40 @@
  * @ingroup themeable
  */
 #}
-<article{{ attributes }}>
 
-  <h2{{ title_attributes }}>
-    <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-  </h2>
 
-  <div{{ content_attributes }}>
-    {{ content }}
+
+
+
+
+
+
+<div class="news-indListing-container">
+
+  <!--Ind News Listing: Col Left-->
+  <div class="news-indListing-colLeft-container">
+    {{ content.field_blog_teaser_image }}
   </div>
+  <!--END Ind News Listing: Col Left-->
 
-</article>
+  <!--Ind News Listing: Col Right-->
+  <div class="news-indListing-colRight-container">
+    <div class="news-indListing-title-container">{{ label }}</div>
+    <div class="news-indListing-submissionDateTag-container">
+      <div class="news-indListing-submissionDate-wrapper">
+        <span class="fa fa-calendar" aria-hidden="true"></span> {{ content.field_date_posted|render|striptags }}
+      </div>
+      <a class="news-indListing-submissionTag-wrapper">
+        <span class="fa fa-tags" aria-hidden="true"></span>
+      </a> {{ content.field_blog_tags }}
+    </div>
+    <div class="news-indListing-teaser-container">
+      <p>{{ content.field_blog_teaser }}</p>
+    </div>
+    <div class="news-indListing-btnContainer">
+      <a href="{{ url }}" title="">Learn More</a>
+    </div>
+  </div>
+  <!--END Ind News Listing: Col Right-->
+
+</div>
