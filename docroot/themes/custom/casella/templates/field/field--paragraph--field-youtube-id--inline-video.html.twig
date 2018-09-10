@@ -1,0 +1,9 @@
+{{ attach_library('casella/jquery.fitvids') }}
+<!--Inline Video Panel-->
+<div class="video-panel">
+    {% for item in items %}
+
+       <iframe src="https://www.youtube.com/embed/{{ item.content }}" frameborder="0" allowfullscreen></iframe>
+    {% endfor %}
+</div>
+<!--END Inline Video Panel-->

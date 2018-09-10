@@ -18,7 +18,16 @@
         {% block title %}
           <h1>{{ title }}</h1>
 
-            {{ content.field_hero_text }}
+            <div class="internal-headerPanel-hero">{{ content.field_blog_teaser }}</div>
+            <div class="indNews-submissionDateTag-container blog-submissionDateTag">
+                <div class="indNews-submissionDate-wrapper">
+                    <span class="fa fa-calendar" aria-hidden="true"></span> {{ content.field_date_posted|render|striptags }}
+                </div>
+                <a class="indNews-submissionTag-wrapper">
+                    <span class="fa fa-tags" aria-hidden="true"></span> {{ content.field_blog_tags|render|striptags }}
+                </a>
+            </div>
+
 
             {% block heroBreadcrumbs %}
                 {% if breadcrumbOverride %}
@@ -83,12 +92,12 @@
                         {{ content[featuredMedia] }}
                     {% endif %}
 
-                  <h1{{ title_attributes }}>{{ label }}</h1>
+
 
                   <div{{ content_attributes }}>
-                      {{ content.field_date_posted }}
+
                       {{ content.field_blog_content }}
-                      {{ content.field_blog_tags }}
+
                   </div>
 
                 </article>
