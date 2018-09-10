@@ -1,0 +1,11 @@
+<!--Inline Image Panel-->
+<div class="img-panel">
+    {% for item in items %}
+    <figure role="group">
+
+        <img alt="{{ item.content['#item'].alt }}" data-entity-type="file" data-entity-uuid="" src="{{ file_url(item.content['#item'].entity.uri.value) }}">
+        <figcaption>{{ item.content['#item'].alt }}</figcaption>
+    </figure>
+    {% endfor %}
+</div>
+<!--END Inline Image Panel-->
