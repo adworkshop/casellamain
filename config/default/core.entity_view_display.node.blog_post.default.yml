@@ -24,7 +24,7 @@ mode: default
 content:
   field_blog_content:
     type: entity_reference_revisions_entity_view
-    weight: 4
+    weight: 5
     label: hidden
     settings:
       view_mode: default
@@ -32,7 +32,7 @@ content:
     third_party_settings: {  }
     region: content
   field_blog_featured_image:
-    weight: 0
+    weight: 1
     label: hidden
     settings:
       image_style: ''
@@ -41,15 +41,23 @@ content:
     type: image
     region: content
   field_blog_tags:
-    weight: 5
+    weight: 6
     label: hidden
     settings:
       link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
+  field_blog_teaser:
+    type: string
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
   field_date_posted:
-    weight: 6
+    weight: 7
     label: hidden
     settings:
       timezone_override: ''
@@ -58,14 +66,6 @@ content:
     type: datetime_default
     region: content
   field_vimeo_embed:
-    weight: 1
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_youtube_id:
     weight: 2
     label: hidden
     settings:
@@ -73,12 +73,19 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-  links:
+  field_youtube_id:
     weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  links:
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_blog_teaser: true
   field_blog_teaser_image: true
   langcode: true

@@ -22,6 +22,14 @@ targetEntityType: node
 bundle: blog_post
 mode: teaser
 content:
+  field_blog_tags:
+    type: entity_reference_label
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
   field_blog_teaser:
     type: string
     weight: 1
@@ -51,7 +59,6 @@ content:
 hidden:
   field_blog_content: true
   field_blog_featured_image: true
-  field_blog_tags: true
   field_vimeo_embed: true
   field_youtube_id: true
   langcode: true
