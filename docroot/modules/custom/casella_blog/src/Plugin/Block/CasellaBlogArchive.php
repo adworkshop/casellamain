@@ -13,7 +13,7 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
 
-/**node
+/**
  * Provides a blog archive block.
  *
  * @Block(
