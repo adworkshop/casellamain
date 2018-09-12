@@ -3,20 +3,21 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
-    - field.field.node.blog_post.field_blog_content
-    - field.field.node.blog_post.field_blog_featured_image
-    - field.field.node.blog_post.field_blog_tags
-    - field.field.node.blog_post.field_blog_teaser
-    - field.field.node.blog_post.field_blog_teaser_image
-    - field.field.node.blog_post.field_date_posted
-    - field.field.node.blog_post.field_vimeo_embed
-    - field.field.node.blog_post.field_youtube_id
-    - node.type.blog_post
+  - core.entity_view_mode.node.teaser
+  - field.field.node.blog_post.field_blog_content
+  - field.field.node.blog_post.field_blog_featured_image
+  - field.field.node.blog_post.field_blog_tags
+  - field.field.node.blog_post.field_blog_teaser
+  - field.field.node.blog_post.field_blog_teaser_image
+  - field.field.node.blog_post.field_date_posted
+  - field.field.node.blog_post.field_vimeo_embed
+  - field.field.node.blog_post.field_youtube_id
+  - image.style.240x160
+  - node.type.blog_post
   module:
-    - datetime
-    - image
-    - user
+  - datetime
+  - image
+  - user
 id: node.blog_post.teaser
 targetEntityType: node
 bundle: blog_post
@@ -44,7 +45,7 @@ content:
     region: content
     label: hidden
     settings:
-      image_style: ''
+      image_style: 240x160
       image_link: ''
     third_party_settings: {  }
   field_date_posted:
