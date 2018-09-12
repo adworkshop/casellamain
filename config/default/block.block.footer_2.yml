@@ -6,7 +6,7 @@ dependencies:
     - system.menu.footer
   module:
     - menu_block
-    - node
+    - system
   theme:
     - casella
 id: footer_2
@@ -26,10 +26,8 @@ settings:
   parent: 'footer:menu_link_content:89c79084-c9e5-488c-8022-abca849757f3'
   suggestion: footer_sidebar
 visibility:
-  node_type:
-    id: node_type
-    bundles:
-      blog_post: blog_post
+  request_path:
+    id: request_path
+    pages: "/blog\r\n/blog/*"
     negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'
+    context_mapping: {  }

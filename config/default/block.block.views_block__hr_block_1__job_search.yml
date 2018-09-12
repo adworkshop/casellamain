@@ -12,7 +12,7 @@ dependencies:
 id: views_block__hr_block_1__job_search
 theme: casella
 region: node_lower_content
-weight: -5
+weight: -22
 provider: null
 plugin: 'views_block:hr-block_1'
 settings:

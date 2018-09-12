@@ -12,7 +12,7 @@ dependencies:
 id: contactblock__i_need_service
 theme: casella
 region: node_lower_content
-weight: -2
+weight: -21
 provider: null
 plugin: contact_block
 settings:
