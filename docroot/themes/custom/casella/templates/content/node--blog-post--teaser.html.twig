@@ -95,9 +95,7 @@
       <div class="news-indListing-submissionDate-wrapper">
         <span class="fa fa-calendar" aria-hidden="true"></span> {{ content.field_date_posted|render|striptags }}
       </div>
-      <a class="news-indListing-submissionTag-wrapper">
-        <span class="fa fa-tags" aria-hidden="true"></span>
-      </a> {{ content.field_blog_tags }}
+      {{ content.field_blog_tags }}
     </div>
     <div class="news-indListing-teaser-container">
       <p>{{ content.field_blog_teaser }}</p>

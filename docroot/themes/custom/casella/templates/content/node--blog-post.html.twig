@@ -21,11 +21,10 @@
             <div class="internal-headerPanel-hero">{{ content.field_blog_teaser }}</div>
             <div class="indNews-submissionDateTag-container blog-submissionDateTag">
                 <div class="indNews-submissionDate-wrapper">
-                    <span class="fa fa-calendar" aria-hidden="true"></span> {{ content.field_date_posted|render|striptags }}
+                    <span class="fa fa-calendar" aria-hidden="true"></span> {{ content.field_date_posted|render|striptags|trim }}
                 </div>
-                <a class="indNews-submissionTag-wrapper">
-                    <span class="fa fa-tags" aria-hidden="true"></span> {{ content.field_blog_tags|render|striptags }}
-                </a>
+                {{ content.field_blog_tags|render|adw_strip_comments|replace({'news-indListing-submissionTag-wrapper':'indNews-submissionTag-wrapper'})|raw }}
+
             </div>
 
 
