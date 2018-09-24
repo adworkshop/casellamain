@@ -6,6 +6,7 @@ dependencies:
     - system.menu.footer
   module:
     - menu_block
+    - system
   theme:
     - casella
 id: footer
@@ -24,4 +25,9 @@ settings:
   expand: 0
   parent: 'footer:'
   suggestion: main_sidebar
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: /blog/archive/all
+    negate: true
+    context_mapping: {  }

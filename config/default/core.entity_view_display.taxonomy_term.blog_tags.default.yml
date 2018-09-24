@@ -1,0 +1,22 @@
+uuid: a83126e0-cadc-415c-84e9-52ff95f07fd6
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.blog_tags
+  module:
+    - text
+id: taxonomy_term.blog_tags.default
+targetEntityType: taxonomy_term
+bundle: blog_tags
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

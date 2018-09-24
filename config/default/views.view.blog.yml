@@ -44,7 +44,7 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Apply
+          submit_button: 'Filter by Tag'
           reset_button: false
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
@@ -373,7 +373,7 @@ display:
             identifier: tags
             required: false
             remember: false
-            multiple: true
+            multiple: false
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
@@ -407,10 +407,12 @@ display:
       defaults:
         filters: false
         filter_groups: false
+        title: false
       filter_groups:
         operator: AND
         groups:
           1: AND
+      title: 'Blog Posts by Tag'
     cache_metadata:
       max-age: -1
       contexts:
