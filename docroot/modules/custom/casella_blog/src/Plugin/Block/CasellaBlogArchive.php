@@ -60,13 +60,13 @@ class CasellaBlogArchive extends BlockBase {
       }
     }
 
-    $markup = '';
+    $markup = '<!--Blog Archive Blocks-->';
     foreach ($dateArray as $year => $bits) {
       $yearLink = Url::fromUri('internal:/blog/archive/' . $year);
       $yearMarkup = Link::fromTextAndUrl($year, $yearLink)->toString();
 
       if (count($bits)) {
-        $yearMarkup .= '<ul class="archive-links__inner">';
+        $yearMarkup .= '<ul class="archive-links__inner"><li class="init">Filter by Months...</li>';
         foreach ($bits as $numMonth => $stringMonth) {
           $monthLink = Url::fromUri('internal:/blog/archive/' . $year . '/' . $numMonth);
           $yearMarkup .= '<li>' . Link::fromTextAndUrl($this->t($stringMonth), $monthLink)->toString() . '</li>';
@@ -79,9 +79,14 @@ class CasellaBlogArchive extends BlockBase {
     if ('' != $markup) {
       $markup = '<ul class="archive-links">' . $markup . '</ul>';
     }
-
+    $markup .= '<!--END Blog Archive Blocks-->';
     return [
       '#markup' => $markup,
+      '#attached' => array(
+        'library' => array(
+          'casella/blog',
+        ),
+      ),
     ];
   }
 

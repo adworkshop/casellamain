@@ -1443,6 +1443,7 @@ a.indLocation-holidayPanel-close:hover {background: #FFF; border:2px solid #4c9d
 
 @media only screen and (max-width: 1199px) {}
 
+/*General Updates to be add to css on Aquia - from GS blog work September 2018*/
 /*Inline Video*/
 .video-panel {position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 0 0 30px;}
 .video-panel iframe,
@@ -1454,3 +1455,162 @@ a.indLocation-holidayPanel-close:hover {background: #FFF; border:2px solid #4c9d
 .img-panel figure {}
 .img-panel img {width: 100%; max-width: 100%; height: auto;}
 .img-panel figcaption {border-bottom: 1px solid #e4e4e4; padding: 20px 0 30px; font-style: italic; font-size: 13px; line-height:1.7;}
+
+
+
+/*Sept 18th - NEW ///////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+/*Blog Tags*/
+@media all and (min-width: 1200px) {
+  .indNews-submissionDateTag-container.blog-submissionDateTag {position:relative; bottom:0 ; margin:40px 0 0;}
+}
+
+
+/*Blog Archives*/
+#block-casellablogarchive {
+  margin: 0 0 50px;
+  padding: 0 0 50px;
+  border-bottom: 3px solid #f4f4f4;
+}
+
+#block-casellablogarchive ul.archive-links {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+
+#block-casellablogarchive ul.archive-links > li {
+  flex:0 0 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0 0 15px;
+}
+
+#block-casellablogarchive ul.archive-links > li:last-of-type {
+  margin: 0;
+}
+
+
+@media all and (min-width: 600px) {
+  #block-casellablogarchive ul.archive-links > li {
+    flex:1;
+    max-width:50%;
+    padding: 0 50px 0 0;
+    margin: 0;
+  }
+}
+
+
+@media all and (min-width: 1600px) {
+  #block-casellablogarchive ul.archive-links > li {
+    max-width:33.3333%;
+  }
+}
+
+
+
+
+#block-casellablogarchive ul.archive-links > li > a {
+  flex:0 0 75px;
+  font-family: 'Gotham-Black';
+  font-size:20px;
+  color:#4c9d2a;
+  text-decoration:none;
+  align-self: baseline;
+}
+
+#block-casellablogarchive ul.archive-links > li > a:after {
+  font-family: 'FontAwesome';
+  font-size: 13px;
+  line-height: 1;
+  font-style: normal;
+  font-weight: normal;
+  content:'\f178';
+  display:inline-block;
+  color:#CCC;
+  margin:0 0 0 5px;
+}
+
+#block-casellablogarchive ul.archive-links > li > a:hover {
+  color:#004a87;
+}
+
+#block-casellablogarchive ul.archive-links > li > ul.archive-links__inner {
+  flex:1;
+  font-family: 'Gotham-Black';
+  font-size:18px;
+  align-self: baseline;
+  position:relative;
+}
+
+#block-casellablogarchive ul.archive-links > li > ul.archive-links__inner:after {
+  font-family: 'FontAwesome';
+  font-size: 15px;
+  line-height: 1;
+  font-style: normal;
+  font-weight: normal;
+  content:'\f103';
+  display:inline-block;
+  color:#6490af;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#block-casellablogarchive ul.archive-links > li > ul.archive-links__inner li {
+  display:none;
+  line-height:1;
+  padding:10px 0 0;
+  margin:10px 0 0;
+  border-top:1px dotted #ccc;
+  position: relative;
+  z-index: 2;
+}
+
+#block-casellablogarchive ul.archive-links > li > ul.archive-links__inner li:nth-child(2) {
+  padding:0;
+  margin:20px 0 0;
+  border-top:none;
+}
+
+#block-casellablogarchive ul.archive-links > li > ul.archive-links__inner li.init {
+  font-family: 'Gotham-Bold';
+  font-size:15px;
+  display:block;
+  padding:0 15px 0 0;
+  margin:0;
+  border-top:none;
+  cursor: pointer;
+}
+
+#block-casellablogarchive ul.archive-links > li > ul.archive-links__inner li.init:hover {
+  color:#6490af;
+}
+
+#block-casellablogarchive ul.archive-links > li > ul.archive-links__inner a {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size:14px;
+  font-weight: 600;
+  display:block;
+  line-height:1;
+  color:#004a87;
+}
+#block-casellablogarchive ul.archive-links > li > ul.archive-links__inner a:before {
+  font-family: 'FontAwesome';
+  font-size: 13px;
+  line-height: 1;
+  font-style: normal;
+  font-weight: normal;
+  content:'\f0da';
+  display:inline-block;
+  color:#CCC;
+  margin:0 5px 0 0;
+}
+
+#block-casellablogarchive ul.archive-links > li > ul.archive-links__inner a:hover {
+  color:#4c9d2a;
+}
+
