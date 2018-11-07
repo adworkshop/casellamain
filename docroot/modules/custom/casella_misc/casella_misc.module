@@ -278,7 +278,7 @@ function _casella_misc_form_contact_message_job_application_form_submit($form, \
      'query' => ['job_reference' => $form_state->getValue('field_job_reference')[0][value]],
   ];
    
-  // Redirect to thank you with job refrence # for GA
+  // Redirect to thank you with job refrence # for Google Analytics
   $form_state->setRedirectUrl(Url::fromUri('internal:' . '/job-application-thank-you', $params));
   // $form_state->setRedirectUrl($url);
 
