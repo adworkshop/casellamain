@@ -1,5 +1,5 @@
 <?php
-
+use \Drupal\Core\Url;
 /**
  * Implements hook_form_alter().
  * @param $form
@@ -247,6 +247,7 @@ function casella_misc_form_contact_message_job_application_drivers_form_alter(&$
 
 
 
+
   foreach (array_keys($form['actions']) as $action) {
     if ($action != 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
       $form['actions'][$action]['#submit'][] = '_casella_misc_form_contact_message_job_application_form_submit';
@@ -270,12 +271,21 @@ function _casella_misc_form_contact_message_job_application_form_submit($form, \
   $jobRef = $values['field_job_reference'][0]['value'];
   $jobRef = str_replace('JOB', '', $jobRef);
   $url = \Drupal\Core\Url::fromRoute('entity.node.canonical', array('node' => $jobRef));
-  $form_state->setRedirectUrl($url);
+
+  drupal_set_message($form_state->getValue('field_job_reference') );
+
+  $params = [
+     'query' => ['job_reference' => $form_state->getValue('field_job_reference')[0][value]],
+  ];
+   
+  // Redirect to thank you with job refrence # for GA
+  $form_state->setRedirectUrl(Url::fromUri('internal:' . '/job-application-thank-you', $params));
+  // $form_state->setRedirectUrl($url);
 
   $taxonomyStorage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
 
   // Send out an email to the hiring managers - if they exist.
-  $mailManager = \Drupal::service('plugin.manager.mail');
+ $mailManager = \Drupal::service('plugin.manager.mail');
   foreach ($values['field_hiring_manager'] as $hiringManager) {
     if ('' != $hiringManager['target_id']) {
       $manager = $taxonomyStorage->load($hiringManager['target_id']);
