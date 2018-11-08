@@ -186,6 +186,24 @@ function casella_misc_form_contact_message_job_application_form_alter(&$form, \D
     return;
   }
 
+  // Add job categories to hidden form field
+  $job_cats_tids = [];
+  $job_cat_names = [];
+  $jobCatsTids = $node->get('field_job_categories')->getValue();
+  for($i = 0; $i < count($jobCatsTids); $i++) {
+    array_push($job_cats_tids , $jobCatsTids[$i]['target_id']);
+  }
+
+  $taxonomyStorage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+
+  for ($z=0; $z < count($job_cats_tids); $z++) {
+    $term = $taxonomyStorage->load($job_cats_tids[$z]);
+    array_push($job_cat_names, $term->getName());
+  }
+
+  $form['field_job_category'] = array('#type' => 'hidden',  '#value' => implode("+", $job_cat_names));  
+
+
   $form['field_job_title']['widget'][0]['value']['#default_value'] = $node->getTitle();
   $form['field_job_reference']['widget'][0]['value']['#default_value'] = 'JOB' . $node->id();
 
@@ -229,6 +247,24 @@ function casella_misc_form_contact_message_job_application_drivers_form_alter(&$
     return;
   }
 
+  // Add job categories to hidden field
+  $job_cats_tids = [];
+  $job_cat_names = [];
+  $jobCatsTids = $node->get('field_job_categories')->getValue();
+  for($i = 0; $i < count($jobCatsTids); $i++) {
+    array_push($job_cats_tids , $jobCatsTids[$i]['target_id']);
+  }
+
+  $taxonomyStorage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+
+  for ($z=0; $z < count($job_cats_tids); $z++) {
+    $term = $taxonomyStorage->load($job_cats_tids[$z]);
+    array_push($job_cat_names, $term->getName());
+  }
+
+  $form['field_job_category'] = array('#type' => 'hidden',  '#value' => implode("+", $job_cat_names));  
+
+  // $form['field_job_category']['widget'][0]['value']['#default_value'] = implode("+", $job_cat_names);
   $form['field_job_title']['widget'][0]['value']['#default_value'] = $node->getTitle();
   $form['field_job_reference']['widget'][0]['value']['#default_value'] = 'JOB' . $node->id();
 
@@ -253,6 +289,7 @@ function casella_misc_form_contact_message_job_application_drivers_form_alter(&$
       $form['actions'][$action]['#submit'][] = '_casella_misc_form_contact_message_job_application_form_submit';
     }
   }
+
 }
 
 
@@ -268,19 +305,19 @@ function _casella_misc_form_contact_message_job_application_form_submit($form, \
 
   // Make sure we stay on the job itself.
   // Pull the nid from the job reference field.
-  $jobRef = $values['field_job_reference'][0]['value'];
-  $jobRef = str_replace('JOB', '', $jobRef);
-  $url = \Drupal\Core\Url::fromRoute('entity.node.canonical', array('node' => $jobRef));
+   //$jobRef = $values['field_job_reference'][0]['value'];
+  //  $jobRef = str_replace('JOB', '', $jobRef);
+  //  $url = \Drupal\Core\Url::fromRoute('entity.node.canonical', array('node' => $jobRef));
 
-  drupal_set_message($form_state->getValue('field_job_reference') );
-
+  //drupal_set_message($form_state->getValue('field_job_reference') );
+ 
   $params = [
-     'query' => ['job_reference' => $form_state->getValue('field_job_reference')[0][value]],
+     'query' => ['job_reference' => $form_state->getValue('field_job_category')],
   ];
    
   // Redirect to thank you with job refrence # for Google Analytics
   $form_state->setRedirectUrl(Url::fromUri('internal:' . '/job-application-thank-you', $params));
-  // $form_state->setRedirectUrl($url);
+   //$form_state->setRedirectUrl($url);
 
   $taxonomyStorage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
 
