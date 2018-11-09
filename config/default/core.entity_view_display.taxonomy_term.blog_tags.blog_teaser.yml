@@ -1,0 +1,15 @@
+uuid: e3b527e9-e772-4e4b-a445-ae74edd0e938
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.blog_teaser
+    - taxonomy.vocabulary.blog_tags
+id: taxonomy_term.blog_tags.blog_teaser
+targetEntityType: taxonomy_term
+bundle: blog_tags
+mode: blog_teaser
+content: {  }
+hidden:
+  description: true
+  langcode: true

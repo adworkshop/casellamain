@@ -12,6 +12,7 @@ module:
   cacheflush: 0
   cacheflush_entity: 0
   captcha: 0
+  casella_blog: 0
   casella_feeds: 0
   casella_misc: 0
   ckeditor: 0
@@ -26,6 +27,7 @@ module:
   crop: 0
   ctools: 0
   datetime: 0
+  dblog: 0
   diff: 0
   draggableviews: 0
   dynamic_page_cache: 0
@@ -73,7 +75,6 @@ module:
   syslog: 0
   system: 0
   taxonomy: 0
-  taxonomy_access_fix: 0
   text: 0
   token: 0
   toolbar: 0

@@ -1,0 +1,21 @@
+uuid: 3873d5a5-ae62-4398-a623-ef4175da17dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_paragraph_long_text
+    - paragraphs.paragraphs_type.content_chunk
+  module:
+    - text
+id: paragraph.content_chunk.field_paragraph_long_text
+field_name: field_paragraph_long_text
+entity_type: paragraph
+bundle: content_chunk
+label: Content
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,27 @@
+uuid: 8ddeb454-2b19-4046-8a16-64ef13cb48e9
+langcode: en
+status: true
+dependencies:
+  module:
+    - casella_blog
+    - system
+  theme:
+    - casella
+id: casellablogarchive
+theme: casella
+region: content
+weight: -27
+provider: null
+plugin: casella_blog_archive
+settings:
+  id: casella_blog_archive
+  label: 'Casella Blog Archive'
+  provider: casella_blog
+  label_display: '0'
+  show_months: 1
+visibility:
+  request_path:
+    id: request_path
+    pages: "/blog/archive\r\n/blog/archive/*"
+    negate: false
+    context_mapping: {  }

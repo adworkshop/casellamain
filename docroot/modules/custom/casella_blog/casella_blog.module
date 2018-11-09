@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * Implements preprocess_node().
+ *
+ * @param $variables
+ */
+function casella_blog_preprocess_node(&$variables) {
+  if ('blog_post' == $variables['node']->getType()) {
+    // Check the featured media. There can only be one.
+    $fImage = $variables['node']->get('field_blog_featured_image');
+    $fVidVimeo = $variables['node']->get('field_vimeo_embed');
+    $fVidYouTube = $variables['node']->get('field_youtube_id');
+
+    $variables['featuredMedia'] = FALSE;
+    if (!$fImage->isEmpty()) {
+      $variables['featuredMedia'] = 'field_blog_featured_image';
+    }
+    elseif (!$fVidVimeo->isEmpty()) {
+      $variables['featuredMedia'] = 'field_vimeo_embed';
+    }
+    elseif (!$fVidYouTube->isEmpty()) {
+      $variables['featuredMedia'] = 'field_youtube_id';
+    }
+
+    if ($variables['featuredMedia']) {
+      $variables['attributes']['class'][] = 'hasFeaturedMedia';
+    }
+  }
+}
+
+/**
+ * Implements preprocess_paragraph().
+ * @param $variables
+ */
+function casella_blog_preprocess_paragraph(&$variables) {
+  if ('inline_video' == $variables['paragraph']->getType()) {
+    // Ensure only one video is output at a time.
+    $vidVimeo = $variables['paragraph']->get('field_vimeo_embed');
+    $vidYouTube = $variables['paragraph']->get('field_youtube_id');
+    $variables['videoFieldName'] = FALSE;
+    if (!$vidVimeo->isEmpty()) {
+      $variables['videoFieldName'] = 'field_vimeo_embed';
+    }
+    if (!$vidYouTube->isEmpty()) {
+      $variables['videoFieldName'] = 'field_youtube_id';
+    }
+  }
+}

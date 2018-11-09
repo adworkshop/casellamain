@@ -12,7 +12,7 @@ dependencies:
 id: views_block__products_block_2
 theme: casella
 region: node_lower_content
-weight: -9
+weight: -23
 provider: null
 plugin: 'views_block:products-block_2'
 settings:

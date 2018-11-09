@@ -1,0 +1,10 @@
+uuid: 6eb8d636-777e-4301-99c1-68d36cda4d36
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.blog_teaser
+label: blog_teaser
+targetEntityType: taxonomy_term
+cache: true

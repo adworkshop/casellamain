@@ -259,3 +259,10 @@ driver-form:
   css:
     theme:
       css/custom/drivers-application.css: {}
+
+blog:
+  version: 1.0
+  js:
+    js/custom/blog.js: {}
+  dependencies:
+  - core/jquery

@@ -1,0 +1,6 @@
+uuid: 8dd45dc0-9c82-4f27-880b-21591e041797
+langcode: en
+status: true
+dependencies: {  }
+id: inline_image
+label: 'Inline Image'

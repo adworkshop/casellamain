@@ -1,0 +1,7 @@
+name: Casella Blog support
+description: Casella Blog helper and support functions.
+package: Custom
+
+type: module
+core: 8.x
+project: 'casella_blog'

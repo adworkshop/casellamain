@@ -1,0 +1,33 @@
+uuid: 4d9ed074-a359-414e-be71-30be8b34ee66
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.inline_video.field_vimeo_embed
+    - field.field.paragraph.inline_video.field_youtube_id
+    - paragraphs.paragraphs_type.inline_video
+id: paragraph.inline_video.default
+targetEntityType: paragraph
+bundle: inline_video
+mode: default
+content:
+  field_vimeo_embed:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_youtube_id:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

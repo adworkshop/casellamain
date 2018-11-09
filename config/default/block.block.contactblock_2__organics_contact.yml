@@ -13,7 +13,7 @@ dependencies:
 id: contactblock_2__organics_contact
 theme: casella
 region: node_lower_content
-weight: 0
+weight: -19
 provider: null
 plugin: contact_block
 settings:

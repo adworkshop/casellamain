@@ -1,0 +1,6 @@
+uuid: 3887a099-b5b6-4b08-88f5-90c0420f6101
+langcode: en
+status: true
+dependencies: {  }
+id: inline_video
+label: 'Inline Video'

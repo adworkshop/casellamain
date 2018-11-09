@@ -1,0 +1,19 @@
+uuid: 32145fdb-576f-4347-bd65-1a63b609d565
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_youtube_id
+    - node.type.blog_post
+id: node.blog_post.field_youtube_id
+field_name: field_youtube_id
+entity_type: node
+bundle: blog_post
+label: 'Youtube ID'
+description: "Please enter the YouTube video ID. This is the string of 11 characters at the end of the YouTube URL of the video after the ?v=. Given the example URL below, the video ID you would enter would be <em><strong>S_U6UuFLEGQ</strong></em>\r\nE.g. https://www.youtube.com/watch?v=S_U6UuFLEGQ\r\n"
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
