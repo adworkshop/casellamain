@@ -63,6 +63,9 @@ class BreadcrumbBuilder extends PathBasedBreadcrumbBuilder {
         elseif ('information_post' == $type) {
           $baseNid = '36';
         }
+        elseif ('blog_post' == $type) {
+          $baseNid = '16281';
+        }
         elseif ('product' == $type) {
           // See if we can get a product category.
           $cat = $node->get('field_product_category');
