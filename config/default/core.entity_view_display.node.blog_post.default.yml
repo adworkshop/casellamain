@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.blog_post.field_blog_teaser
     - field.field.node.blog_post.field_blog_teaser_image
     - field.field.node.blog_post.field_date_posted
+    - field.field.node.blog_post.field_hero_text
     - field.field.node.blog_post.field_vimeo_embed
     - field.field.node.blog_post.field_youtube_id
     - node.type.blog_post
@@ -65,6 +66,13 @@ content:
       format_type: post_date
     third_party_settings: {  }
     type: datetime_default
+    region: content
+  field_hero_text:
+    weight: 8
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
     region: content
   field_vimeo_embed:
     weight: 2
