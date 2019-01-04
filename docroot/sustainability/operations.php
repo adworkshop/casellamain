@@ -48,28 +48,28 @@
             <div class="mapToggles">
               <div class="mapTogglesInnerWrapper"><input type="checkbox" name="mapToggles" id="collection_facilities" checked="checked" class="mapCollection"><label for="collection_facilities" class="mapLabel collectionLabel">Collection Facilities</label></div>
               <div class="mapTogglesClickOutContainer">
-                <div class="mapTogglesClickOutInnerContainer"><a href="http://www.casella.com/where-we-are/locations/Drop-Off" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
+                <div class="mapTogglesClickOutInnerContainer"><a href="https://www.casella.com/where-we-are/locations/Drop-Off" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
               </div>
             </div>
             
             <div class="mapToggles">
               <div class="mapTogglesInnerWrapper"><input type="checkbox" name="mapToggle" id="recycling_facilities" checked="checked" class="mapRecycling"><label for="recycling_facilities" class="mapLabel recycleLabel">Recycling Facilities</label></div>
               <div class="mapTogglesClickOutContainer">
-                <div class="mapTogglesClickOutInnerContainer"><a href="http://www.casella.com/where-we-are/locations/Recycling" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
+                <div class="mapTogglesClickOutInnerContainer"><a href="https://www.casella.com/where-we-are/locations/Recycling" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
               </div>
             </div>
             
             <div class="mapToggles">
               <div class="mapTogglesInnerWrapper"><input type="checkbox" name="mapToggle" id="organic_facilities" checked="checked" class="mapOrganics"><label for="organic_facilities" class="mapLabel organicLabel">Organic Facilities</label></div>
               <div class="mapTogglesClickOutContainer">
-                <div class="mapTogglesClickOutInnerContainer"><a href="http://www.casella.com/where-we-are/locations/Organics" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
+                <div class="mapTogglesClickOutInnerContainer"><a href="https://www.casella.com/where-we-are/locations/Organics" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
               </div>
             </div>
             
             <div class="mapToggles last">
               <div class="mapTogglesInnerWrapper"><input type="checkbox" name="mapToggle" id="landfills" checked="checked" class="mapLandfills"><label for="landfills" class="mapLabel landfillLabel">Landfills</label></div>
               <div class="mapTogglesClickOutContainer">
-                <div class="mapTogglesClickOutInnerContainer"><a href="http://www.casella.com/where-we-are/locations/Landfill" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
+                <div class="mapTogglesClickOutInnerContainer"><a href="https://www.casella.com/where-we-are/locations/Landfill" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
               </div>
             </div>
             
@@ -83,11 +83,11 @@
             <div class="mapToggles last3">
               <div class="mapTogglesInnerWrapper"><input type="checkbox" name="mapToggle" id="transfer_stations" checked="checked" class="mapTransfer"><label for="transfer_stations" class="mapLabel transferLabel">Transfer Stations</label></div>
               <div class="mapTogglesClickOutContainer">
-                <div class="mapTogglesClickOutInnerContainer"><a href="http://www.casella.com/where-we-are/locations/Transfer" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
+                <div class="mapTogglesClickOutInnerContainer"><a href="https://www.casella.com/where-we-are/locations/Transfer" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
               </div>
             </div>
             
-            <div style="margin:15px 0 0;"><a href="http://www.casella.com/where-we-are/all-locations" target="_blank" class="mapBtn" title="">Review All Locations</a></div>
+            <div style="margin:15px 0 0;"><a href="https://www.casella.com/our-locations" target="_blank" class="mapBtn" title="">Review All Locations</a></div>
             
           </form>
         </div>
