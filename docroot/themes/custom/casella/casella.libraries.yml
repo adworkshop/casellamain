@@ -17,26 +17,31 @@ custom-css:
       css/custom/developer-overrides.css: {}
       css/custom/adw-menu.css: {}
 
-custom-js:
+jquery-migrate:
   version: 1.x
   js:
     js/libs/jquery-migrate-3.0.0.min.js: {}
+
+custom-js:
+  version: 1.x
+  js:
     js/custom/custom.min.js: {}
     js/custom/adw-menu.js: {}
     js/custom/google_analytics_event_tracking.js: {}
   dependencies:
+    - casella/jquery-migrate
     - core/jquery
     - core/modernizr
 
 custom-home:
   version: 1.x
   js:
-    js/libs/jquery-migrate-3.0.0.min.js: {}
     js/custom/home.min.js: {}
   css:
     theme:
       css/custom/home.css: {}
   dependencies:
+    - casella/jquery-migrate
     - core/jquery
     - core/modernizr
     - casella/casella-master
