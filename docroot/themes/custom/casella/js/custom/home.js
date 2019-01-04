@@ -1,3 +1,8 @@
+
+// jQuery(document).ready(function() {
+window.addEventListener('DOMContentLoaded', function() { 
+"use strict";
+
 // Accordion / Toggles...
 jQuery('.accordion-toggle').on('click', function(event){
 	"use strict";
@@ -17,8 +22,7 @@ jQuery('.accordion-toggle').on('click', function(event){
 	}
 });
 
-jQuery(document).ready(function() {
-  "use strict";
+
   var originalSlider = jQuery('#home-slider').html();
 
   picturefill();
@@ -32,7 +36,7 @@ jQuery(document).ready(function() {
   });
 
   jQuery('.home-gridDisplay-leftCol-indContainer').each(markCustomerCare);
-});
+
 
 function markCustomerCare(index, element){
   if (jQuery('.home-gridDisplay-leftCol-titleContainer h2 div', element).html().match(/Customer\sCare/) !== null) {
@@ -193,7 +197,7 @@ jQuery(window).bind('resize', function(){
     }
   }
 }).resize();
-
+});
 function equalheight(container){
 
   var currentTallest = 0,
