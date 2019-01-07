@@ -14,5 +14,7 @@ content:
   member_for:
     weight: 5
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   langcode: true

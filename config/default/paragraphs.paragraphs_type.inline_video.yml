@@ -4,3 +4,6 @@ status: true
 dependencies: {  }
 id: inline_video
 label: 'Inline Video'
+icon_uuid: null
+description: null
+behavior_plugins: {  }

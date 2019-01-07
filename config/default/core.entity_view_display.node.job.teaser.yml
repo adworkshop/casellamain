@@ -15,6 +15,9 @@ dependencies:
     - field.field.node.job.field_job_status
     - field.field.node.job.field_location
     - field.field.node.job.field_meta_tag
+    - field.field.node.job.field_override_location
+    - field.field.node.job.field_override_location_state
+    - field.field.node.job.field_override_location_value
     - node.type.job
   module:
     - text
@@ -35,6 +38,8 @@ content:
   links:
     weight: 100
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   feeds_item: true
   field_add_this: true
@@ -46,4 +51,7 @@ hidden:
   field_job_status: true
   field_location: true
   field_meta_tag: true
+  field_override_location: true
+  field_override_location_state: true
+  field_override_location_value: true
   langcode: true

@@ -31,6 +31,8 @@ content:
   links:
     weight: 100
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   field_faqs: true
   field_h1_override: true

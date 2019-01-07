@@ -22,6 +22,7 @@ dependencies:
     - field.field.node.page.field_subsection
     - field.field.node.page.field_tabs
     - field.field.node.page.field_upper_content
+    - field.field.node.page.field_veterans_career_page
     - node.type.page
   module:
     - text
@@ -44,6 +45,8 @@ content:
   links:
     weight: 101
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   feeds_item: true
   field_2_column: true
@@ -62,4 +65,5 @@ hidden:
   field_subsection: true
   field_tabs: true
   field_upper_content: true
+  field_veterans_career_page: true
   langcode: true

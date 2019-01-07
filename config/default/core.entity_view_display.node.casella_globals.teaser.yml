@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.casella_globals.field_search_overlay_text
     - field.field.node.casella_globals.field_social_icon_links
     - field.field.node.casella_globals.field_unacceptable_waste_intro
+    - field.field.node.casella_globals.field_veterans_career_email
     - node.type.casella_globals
   module:
     - user
@@ -27,6 +28,8 @@ content:
   links:
     weight: 100
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   feeds_item: true
   field_acceptable_waste_intro: true
@@ -40,4 +43,5 @@ hidden:
   field_search_overlay_text: true
   field_social_icon_links: true
   field_unacceptable_waste_intro: true
+  field_veterans_career_email: true
   langcode: true

@@ -4,3 +4,6 @@ status: true
 dependencies: {  }
 id: content_chunk
 label: 'Content Chunk'
+icon_uuid: null
+description: null
+behavior_plugins: {  }

@@ -189,7 +189,7 @@ subscription_data:
   uuid: b1cf2220-a4c7-48b1-81d4-c846c26189dd
   subscription_name: Casella
   expiration_date:
-    value: '2018-12-08T00:00:00'
+    value: '2021-12-08T00:00:00'
   product:
     view: 'Acquia Network'
   derived_key_salt: debc03e4fbde895fa990a1a5e2ad5417

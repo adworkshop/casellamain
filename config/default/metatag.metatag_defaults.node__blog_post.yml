@@ -1,0 +1,8 @@
+uuid: b65c1214-b093-4d8e-b17d-8b2fdb5d610b
+langcode: en
+status: true
+dependencies: {  }
+id: node__blog_post
+label: 'Content: Blog Post'
+tags:
+  og_image: '[node:field_blog_teaser_image:1200x960:url]'
