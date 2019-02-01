@@ -6,6 +6,7 @@ dependencies:
     - system.menu.main
   module:
     - menu_block
+    - system
   theme:
     - casella
 id: mainnavigation
@@ -24,4 +25,9 @@ settings:
   expand: 1
   parent: 'main:'
   suggestion: main_sidebar
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: "/blog\r\n/blog/*"
+    negate: true
+    context_mapping: {  }
