@@ -5,8 +5,8 @@ dependencies:
   config:
     - system.menu.main
   module:
-    - ctools
     - menu_block
+    - system
   theme:
     - casella
 id: mainnavigation_6
@@ -26,10 +26,8 @@ settings:
   parent: 'main:menu_link_content:9f38a5a0-a720-4537-973d-b08bf45d563d'
   suggestion: main
 visibility:
-  'entity_bundle:node':
-    id: 'entity_bundle:node'
-    bundles:
-      blog_post: blog_post
+  request_path:
+    id: request_path
+    pages: "/blog/*\r\n/blog"
     negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'
+    context_mapping: {  }

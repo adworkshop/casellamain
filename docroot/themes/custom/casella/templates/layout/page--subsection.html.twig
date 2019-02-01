@@ -54,6 +54,12 @@
 
     {{ page.content }}
 
+    {% if page.sidebar_nav %}
+    <!--Col - Sidebar-->
+    <div class="internal-mainBody-sidebarContainer">
+        {{ page.sidebar_nav }}
+    </div>
+    {% endif %}
     {% if page.sidebar_first %}
       <aside class="layout-sidebar-first" role="complementary">
         {{ page.sidebar_first }}

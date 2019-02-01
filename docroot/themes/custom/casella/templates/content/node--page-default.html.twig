@@ -73,7 +73,7 @@
 
 {# Check if we need withSidebar or noSidebarNav wrapper classes here. #}
 {% set hasPromos = content.field_sidebar_promotions|render|adw_strip_comments|trim != '' %}
-{% set hasNav = sidebar_nav.mainnavigation|render|adw_strip_comments|trim != '' or sidebar_nav.footer|render|adw_strip_comments|trim != '' %}
+{% set hasNav = sidebar_nav.mainnavigation|render|adw_strip_comments|trim != '' or sidebar_nav.footer|render|adw_strip_comments|trim != ''  or sidebar_nav.mainnavigation_6|render|adw_strip_comments|trim != '' %}
 {% set wrapperClasses = '' %}
 {% if hasPromos or parentLogo or sidebar_nav %}
   {% set wrapperClasses = ' withSidebar' %}
@@ -193,9 +193,15 @@
 
               {% if sidebar_nav.mainnavigation|render|adw_strip_comments|trim %}
                 {{ sidebar_nav.mainnavigation }}
-              {% else %}
+              {% endif %}
+              {%  if sidebar_nav.footer|render|adw_strip_comments|trim %}
                 {{ sidebar_nav.footer }}
               {% endif %}
+                {%  if sidebar_nav.mainnavigation_6|render|adw_strip_comments|trim %}
+
+                    {{ sidebar_nav.mainnavigation_6 }}
+
+                {% endif %}
 
               {{ content.field_sidebar_promotions }}
 

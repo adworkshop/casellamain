@@ -190,7 +190,6 @@ function casella_theme_suggestions_block_alter(array &$suggestions, array $varia
     'mainnavigation',
     'mainnavigation_4',
     'mainnavigation_5',
-    'footer_2', // blog posts
     'organics', // Organics sidebar nav block.
     'earthlife', // Earthlife sidebar nav block.
     'footer',
@@ -278,6 +277,9 @@ function casella_theme_suggestions_page_alter(array &$suggestions, array $variab
   if ($node = \Drupal::routeMatch()->getParameter('node')) {
     $content_type = $node->bundle();
     $suggestions[] = 'page__'.$content_type;
+    if ('blog_post' == $content_type) {
+      $suggestions[] = 'page__blog';
+    }
   }
 }
 
