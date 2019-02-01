@@ -1,0 +1,35 @@
+uuid: 928fbfee-88da-4b6c-ba5c-c5d25c839314
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - ctools
+    - menu_block
+  theme:
+    - casella
+id: mainnavigation_6
+theme: casella
+region: sidebar_nav
+weight: 0
+provider: null
+plugin: 'menu_block:main'
+settings:
+  id: 'menu_block:main'
+  label: 'Blog Sidebar'
+  provider: menu_block
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand: 1
+  parent: 'main:menu_link_content:9f38a5a0-a720-4537-973d-b08bf45d563d'
+  suggestion: main
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      blog_post: blog_post
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

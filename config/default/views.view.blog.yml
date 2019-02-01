@@ -440,17 +440,16 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          default_action: ignore
+          default_action: default
           exception:
             value: all
             title_enable: false
             title: All
           title_enable: true
           title: 'Blog Posts from {{ arguments.field_date_posted_value_year }}'
-          default_argument_type: raw
+          default_argument_type: fixed
           default_argument_options:
-            index: 2
-            use_alias: false
+            argument: all
           default_argument_skip_url: false
           summary_options:
             base_path: ''
