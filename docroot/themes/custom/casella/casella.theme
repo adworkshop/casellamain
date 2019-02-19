@@ -1639,7 +1639,7 @@ function casella_preprocess_page(&$variables) {
   $variables['wrapperClass'] = '';
   $variables['subsectionName'] = '';
   $variables['theme_path'] = drupal_get_path('theme', 'casella');
-
+  $variables['recycleBetterTracking'] = '';
   $casellaGlobals = &drupal_static('casellaGlobals');
   if (!isset($casellaGlobals)) {
     $node = \Drupal::routeMatch()->getParameter('node');
@@ -1652,6 +1652,14 @@ function casella_preprocess_page(&$variables) {
   }
 
   $variables['hasNode'] = isset($variables['node']);
+  if ($variables['hasNode']) {
+    $theNode = $variables['node'];
+    if (13541 == $theNode->id()) {
+      // Recycle Better - needs page tracking. bh:2019-02-19
+      $variables['recycleBetterTracking'] = '<script async src=\'https://tag.simpli.fi/sifitag/83e399e0-f5c1-0136-56dd-067f653fa718\'></script>
+<script async src=\'https://tag.simpli.fi/sifitag/af871370-138a-0137-4c94-06659b33d47c\'></script> ';
+    }
+  }
 }
 
 /**
