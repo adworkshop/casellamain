@@ -23,25 +23,33 @@ class TownsByZipResource extends ResourceBase {
    *
    * Returns a list of markers in JSON format.
    *
-   * @param string $town
-   *   The town being searched for
+   * @param string $filter
+   *   The zip code
    *
    * @return \Drupal\rest\ResourceResponse
    *   The response containing the log entry.
    */
-  public function get($zip = NULL) {
-    if (is_null($zip)) {
+  public function get($filter = NULL) {
+
+
+    drupal_set_message('<pre>' . print_r($filter,1) . '</pre>');
+
+
+    if (is_null($filter)) {
       return new ResourceResponse();
     }
 
-    if (!preg_match('/[0-9]{5}/', $zip)) {
+    if (!preg_match('/[0-9]{5}/', $filter)) {
       return new ResourceResponse();
     }
 
     $termStorage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
     $nodeStorage = \Drupal::entityTypeManager()->getStorage('node');
 
-    $terms = $termStorage->loadByProperties(['field_zip_code' => $zip, 'vid' => 'towns_cities']);
+    $terms = $termStorage->loadByProperties(['field_zip_code' => $filter, 'vid' => 'towns_cities']);
+
+
+    drupal_set_message('<pre>' . print_r($terms,1) . '</pre>');
 
     $retVal = [
       'town' => [],
@@ -50,7 +58,7 @@ class TownsByZipResource extends ResourceBase {
     // need Zip, Name, Provider
     foreach ($terms as $term) {
       $temp = [
-        'Zip' => $zip,
+        'Zip' => $filter,
         'Name' => $term->getName(),
         'Provider' => '',
       ];
