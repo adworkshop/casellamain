@@ -18,12 +18,7 @@
   
   <link rel="stylesheet" type="text/css" href="css/base-global.css">
   <link rel="stylesheet" type="text/css" href="css/base-internal.css">
-  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="css/adw-menu.css">
-  <link rel="stylesheet" type="text/css" href="css/ui.totop.css">
-  
-  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic,600italic|Droid+Serif:400,700,400italic,700italic">
-  
+  <?php include ('includes/headCSS.php'); ?>
   <?php include ('includes/headJS.php'); ?>
   
 </head>
@@ -48,42 +43,42 @@
             <div class="mapToggles">
               <div class="mapTogglesInnerWrapper"><input type="checkbox" name="mapToggles" id="collection_facilities" checked="checked" class="mapCollection"><label for="collection_facilities" class="mapLabel collectionLabel">Collection Facilities</label></div>
               <div class="mapTogglesClickOutContainer">
-                <div class="mapTogglesClickOutInnerContainer"><a href="https://www.casella.com/where-we-are/locations/Drop-Off" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
+                <div class="mapTogglesClickOutInnerContainer"><a href="https://www.casella.com/our-locations/hauling" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
               </div>
             </div>
             
             <div class="mapToggles">
               <div class="mapTogglesInnerWrapper"><input type="checkbox" name="mapToggle" id="recycling_facilities" checked="checked" class="mapRecycling"><label for="recycling_facilities" class="mapLabel recycleLabel">Recycling Facilities</label></div>
               <div class="mapTogglesClickOutContainer">
-                <div class="mapTogglesClickOutInnerContainer"><a href="https://www.casella.com/where-we-are/locations/Recycling" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
+                <div class="mapTogglesClickOutInnerContainer"><a href="https://www.casella.com/our-locations/recycling" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
               </div>
             </div>
             
             <div class="mapToggles">
               <div class="mapTogglesInnerWrapper"><input type="checkbox" name="mapToggle" id="organic_facilities" checked="checked" class="mapOrganics"><label for="organic_facilities" class="mapLabel organicLabel">Organic Facilities</label></div>
               <div class="mapTogglesClickOutContainer">
-                <div class="mapTogglesClickOutInnerContainer"><a href="https://www.casella.com/where-we-are/locations/Organics" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
+                <div class="mapTogglesClickOutInnerContainer"><a href="https://www.casella.com/our-locations/organics" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
               </div>
             </div>
             
             <div class="mapToggles last">
               <div class="mapTogglesInnerWrapper"><input type="checkbox" name="mapToggle" id="landfills" checked="checked" class="mapLandfills"><label for="landfills" class="mapLabel landfillLabel">Landfills</label></div>
               <div class="mapTogglesClickOutContainer">
-                <div class="mapTogglesClickOutInnerContainer"><a href="https://www.casella.com/where-we-are/locations/Landfill" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
+                <div class="mapTogglesClickOutInnerContainer"><a href="https://www.casella.com/our-locations/landfills" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
               </div>
             </div>
             
             <div class="mapToggles last2">
               <div class="mapTogglesInnerWrapper"><input type="checkbox" name="mapToggle" id="landfill_gas" checked="checked" class="mapLandfillsGas"><label for="landfill_gas" class="mapLabel landfillGasLabel">Landfill Gas-to-Energy</label></div>
-              <!--<div class="mapTogglesClickOutContainer">
+              <div class="mapTogglesClickOutContainer">
                 <div class="mapTogglesClickOutInnerContainer"><a href="#" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
-              </div>-->
+              </div>
             </div>
             
             <div class="mapToggles last3">
-              <div class="mapTogglesInnerWrapper"><input type="checkbox" name="mapToggle" id="transfer_stations" checked="checked" class="mapTransfer"><label for="transfer_stations" class="mapLabel transferLabel">Transfer Stations</label></div>
+              <div class="mapTogglesInnerWrapper"><input type="checkbox" name="mapToggle" id="transfer_stations" checked="checked" class="mapTransfer"><label for="transfer_stations" class="mapLabel transferLabel">Transfer Stations/Drop Off</label></div>
               <div class="mapTogglesClickOutContainer">
-                <div class="mapTogglesClickOutInnerContainer"><a href="https://www.casella.com/where-we-are/locations/Transfer" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
+                <div class="mapTogglesClickOutInnerContainer"><a href="https://www.casella.com/our-locations/transfer-stations" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
               </div>
             </div>
             
@@ -109,11 +104,14 @@
     <div id="keyMobile"></div>
   </div>
   
+  <div class="globalWidth operations-message">
+    <div>The dots on this map represent the facilities we own and/or operate. The LFGTE plants shown in NY and VT are owned/operated by partners and they receive gas from our operations. We have a small ownership stake in the two organics facilities shown in MA. The shaded areas indicate our collection service territory.</div>
+  </div>
   
   <!--Upper Title Region-->
   <div class="internalPageTitleContainerNoColor mapContent">
     <div class="internalPageTitleInnerContainer">
-      <div class="internalPageTitleDescriptionNoColor">Walking the walk in our fleet and facilities</div>
+      <div class="internalPageTitleDescriptionNoColor">Sustainability in our Fleet and Facilities</div>
     </div>
   </div>
   <!--END Upper Title Region-->
@@ -125,8 +123,8 @@
     <div class="carbonUpperContentContainer">
       
       <div class="twoColumnContentContainer">
-        <p>Throughout the northeast, we operate roughly 100 locations, including vehicle fleets and maintenance shops, transfer stations, recycling facilities, organics processing facilities, solid waste landfills, and administrative offices. Each of these locations delivers valuable resource management services to our customers, while also consuming resources and contributing to our corporate carbon footprint.</p>
-        <p>The previous section detailed the ways we partner with our customers to improve their environmental performance. In the pages that follow, we will detail the enhancements we are making to improve the environmental performance of our own facilities. These initiatives improve the efficiency of our operations and complement the broader environmental benefits of our resource management services.</p>
+        <p>To deliver valuable resource management services to our customers, we run over 500 front-line vehicles and operate over 100 facilities, including maintenance shops, transfer stations, recycling facilities, organics processing facilities, and solid waste landfills. These facilities provide important environmental benefits, but they also consume resources and contribute to our carbon footprint.</p>
+        <p>Whereas the previous section discussed the ways we partner with our customers to advance resource renewal, this section will discuss the steps we are taking to understand and improve the resource impacts of our own operations. </p>
       </div>
       
     </div>
@@ -143,44 +141,11 @@
   
   <!--.......................................................................................................................................-->  
   
-    
-  <script>
-  jQuery(".mapCollection").click(function() {
-	jQuery("#layerCollection").fadeToggle( "slow", function() {
-	});
-  });
-  
-  jQuery(".mapRecycling").click(function() {
-	jQuery("#layerRecycling").fadeToggle( "slow", function() {
-	});
-  });
-  
-  jQuery(".mapOrganics").click(function() {
-	jQuery("#layerOrganics").fadeToggle( "slow", function() {
-	});
-  });
-  
-  jQuery(".mapLandfills").click(function() {
-	jQuery("#layerLandfills").fadeToggle( "slow", function() {
-	});
-  });
-  
-  jQuery(".mapLandfillsGas").click(function() {
-	jQuery("#layerLandfillsGas").fadeToggle( "slow", function() {
-	});
-  });
-  
-  jQuery(".mapTransfer").click(function() {
-	jQuery("#layerTransfer").fadeToggle( "slow", function() {
-	});
-  });
-  </script>
+  <!-- Unique: Operations--> 
+  <script type='text/javascript' src='js/custom/custom-operations.js'></script>
     
   <!--General-->
-  <script type="text/javascript" src="js/libs/ios-orientationchange-fix.js"></script>
-  <script type="text/javascript" src="js/libs/jquery.easing.pack.js"></script>
-  <script type="text/javascript" src="js/libs/jquery.ui.totop.min.js"></script>
-  <script type='text/javascript' src='js/custom/adw-menu.js'></script>
+  <?php include ('includes/footJS.php'); ?>
   <script type='text/javascript' src='js/custom/custom-internal.js'></script>
   <script type='text/javascript' src='js/custom/custom-general.js'></script>
   <!--END JAVASCRIPT-->

@@ -10,24 +10,24 @@ Author URL: http://www.adworkshop.com
 /* ======================================================= */
   @font-face {
   font-family: 'museo_sans900';
-  src: url('../fonts/MuseoSans-900-webfont.eot');
-  src: url('../fonts/MuseoSans-900-webfont.eot?#iefix') format('embedded-opentype'),
-	   url('../fonts/MuseoSans-900-webfont.woff2') format('woff2'),
-	   url('../fonts/MuseoSans-900-webfont.woff') format('woff'),
-	   url('../fonts/MuseoSans-900-webfont.ttf') format('truetype'),
-	   url('../fonts/MuseoSans-900-webfont.svg#museo_sans900') format('svg');
+  src: url('../webfonts/MuseoSans-900-webfont.eot');
+  src: url('../webfonts/MuseoSans-900-webfont.eot?#iefix') format('embedded-opentype'),
+	   url('../webfonts/MuseoSans-900-webfont.woff2') format('woff2'),
+	   url('../webfonts/MuseoSans-900-webfont.woff') format('woff'),
+	   url('../webfonts/MuseoSans-900-webfont.ttf') format('truetype'),
+	   url('../webfonts/MuseoSans-900-webfont.svg#museo_sans900') format('svg');
   font-weight: normal;
   font-style: normal;
   }
   
   @font-face {
   font-family: 'museo_sans700';
-  src: url('../fonts/MuseoSans-700-webfont.eot');
-  src: url('../fonts/MuseoSans-700-webfont.eot?#iefix') format('embedded-opentype'),
-	   url('../fonts/MuseoSans-700-webfont.woff2') format('woff2'),
-	   url('../fonts/MuseoSans-700-webfont.woff') format('woff'),
-	   url('../fonts/MuseoSans-700-webfont.ttf') format('truetype'),
-	   url('../fonts/MuseoSans-700-webfont.svg#museo_sans700') format('svg');
+  src: url('../webfonts/MuseoSans-700-webfont.eot');
+  src: url('../webfonts/MuseoSans-700-webfont.eot?#iefix') format('embedded-opentype'),
+	   url('../webfonts/MuseoSans-700-webfont.woff2') format('woff2'),
+	   url('../webfonts/MuseoSans-700-webfont.woff') format('woff'),
+	   url('../webfonts/MuseoSans-700-webfont.ttf') format('truetype'),
+	   url('../webfonts/MuseoSans-700-webfont.svg#museo_sans700') format('svg');
   font-weight: normal;
   font-style: normal;
   }
@@ -62,7 +62,7 @@ Author URL: http://www.adworkshop.com
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 13px;
   font-weight: 400;
-  color: #666;
+  color: #444;
   line-height: 1;
   background: #FFF;
   -webkit-font-smoothing: antialiased;
@@ -72,7 +72,7 @@ Author URL: http://www.adworkshop.com
   }
   
   h1 {}
-  h2 {font-family: 'museo_sans900', sans-serif; font-weight:normal;}
+  h2 {font-family: 'museo_sans900', sans-serif; font-weight:normal; color: #002337;}
   h3 {font-family: 'museo_sans700', sans-serif; font-weight:normal; font-size:17px; color: #00263e; margin: 0 0 15px; line-height: 1.3;}
   h4 {}
   h5 {}
@@ -115,6 +115,32 @@ Author URL: http://www.adworkshop.com
   sup {vertical-align: super; font-size: 40%;}
   
   .globalWidth {width:100%; margin:0 auto; padding:0 30px;}
+  .accessibility-hidden {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+.featured-open {
+  font-size:112%;
+  color:#111;
+}
+
+.responsive-img {
+  width:100%;
+  height:auto;
+  max-width:100%;
+  margin-bottom:25px;
+}
+
+.earthlife {
+  font-family: 'museo_sans900', sans-serif; font-weight:normal;
+  font-style:italic;
+  color:#00263e;
+}
     
 /* ======================================================= */
 /*   PRELOADER                                             */
@@ -187,8 +213,12 @@ Author URL: http://www.adworkshop.com
   background: #FFF;
   color: #76bd22;
   }
-  .triggerBtnContainer.down {margin: -35px auto 0;}
+  .triggerBtnContainer.down {margin:50px auto 0;}
   .triggerBtnContainer.up {margin: 0 auto -35px;}
+
+  @media only screen and (min-width: 960px) {
+    .triggerBtnContainer.down {margin:50px 0 0; float:right;}
+  }
 
 /* ======================================================= */
 /*   FOOTER                                                */
@@ -217,8 +247,8 @@ Author URL: http://www.adworkshop.com
   .lowerFooterService {display:block; line-height: 1.3;}
   .lowerFooterService.last:after {content:''; padding:0; margin:0;}
   .lowerFooterSocialContainer {margin:20px 0 0; font-size:24px;}
-  a.socialIcons {color:#0082CA; font-weight:normal;}
-  a.socialIcons:hover {color:#00263e;}
+  a.socialIcons {color:#00263e; font-weight:normal;}
+  a.socialIcons:hover {color:#0082CA;}
   
 /* ======================================================= */
 /*   BASIC FORM ELEMENTS AND FORM OVERRIDES                */

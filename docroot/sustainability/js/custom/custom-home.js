@@ -1,21 +1,4 @@
-  jQuery(document).ready(function() {
-	resizeContentContainerTriangles();
-  });
 
-// Window Resize Functions
-  jQuery(window).resize(function() {
-	resizeContentContainerTriangles();
-  });
-
-// Resize Content Container Triangles
-  function resizeContentContainerTriangles() {
-	var windowWidthR = jQuery(window).width();
-	jQuery(".upper-content-container-triangle-left").css({ "border-top": windowWidthR / 6 + 'px solid #00263e' });
-	jQuery(".upper-content-container-triangle-left").css({ "border-right": windowWidthR / 1.5 + 'px solid transparent' });
-	jQuery(".upper-content-container-triangle-right").css({ "border-top": windowWidthR / 6 + 'px solid #00263e' });
-	jQuery(".upper-content-container-triangle-right").css({ "border-left": windowWidthR / 1.5 + 'px solid transparent' });
-  }
- 
 // Make sure div stays full width/height on resize// make sure div stays full width/height on resize
   jQuery(window).resize(function() {
 	getWidthAndHeight();
@@ -24,7 +7,7 @@
   function getWidthAndHeight (){
 	var winWidth = jQuery(window).width();
 	var winHeight = jQuery(window).height();
-	jQuery('.homeTitleContainer').css({'width': winWidth,'height': winHeight,});
+	jQuery('.homeTitleContainer').css({'height': winHeight,});
   }
 
 // SCROLLING ELEMENTS
@@ -69,14 +52,6 @@
   jQuery("a.ceo-toggle").click(function () {
 	jQuery('.slideTogglebox').slideToggle("slow", function() {
 	  // Animation complete.
-	  if(Modernizr.mq("(min-width: 1100px)")) jQuery("html, body").stop(true).animate({ scrollTop: jQuery(".homeSection5Container").offset().top - jQuery(".navContainer").height() }, 800);
-	});
-  });
-
-// Goals Toggle
-  jQuery("a.homeGoalsTriggerCol2Wrapper").click(function () {
-	jQuery('.homeGoalsPanel').slideToggle("slow", function() {
-	  // Animation complete.
-	  if(Modernizr.mq("(min-width: 1100px)")) jQuery("html, body").stop(true).animate({ scrollTop: jQuery(".homeGoalsTriggerCol2Wrapper").offset().top - jQuery(".navContainer").height() }, 800);
+	  if(Modernizr.mq("(min-width: 1100px)")) jQuery("html, body").stop(true).animate({ scrollTop: jQuery(".homeSectionCEOInnerContainer").offset().top - jQuery(".navContainer").height() - 30 }, 800);
 	});
   });

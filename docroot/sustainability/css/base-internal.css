@@ -12,15 +12,24 @@ Author URL: http://www.adworkshop.com
   #generalNav {border-bottom:2px solid #e4e4e4; background:#fff;}
   .headerLogo img {opacity:1;}
   .headerLogo a img:hover {opacity:.4;}
+
+  .internalPageTitleContainer-desktop {display:none;}
   
-  .internalPageTitleContainer {background: #00263e; padding: 40px 0;}
+  .internalPageTitleContainer {display: block; background: #00263e; padding: 40px 0; position:relative; overflow:hidden;}
   .internalPageTitleContainer.wHeaderImage {border-bottom: 8px solid #001A2A;}
   .internalPageTitleInnerContainer {display:table; width:100%; padding: 0 30px; margin:0 auto;}
-  .internalPageTitleIconContainer {display:block; vertical-align:middle; width:100px; line-height:0; margin:0 auto; padding: 0;}
+  .internalPageTitleIconContainer {display:block; vertical-align:middle; width:100px; line-height:0; margin:0; padding: 0;}
   .internalPageTitleIconContainer img {width:100%; max-width:100%;}
-  .internalPageTitleContentContainer {display:block; vertical-align:middle; text-align:center;}
+  .internalPageTitleContentContainer {display:block; vertical-align:middle; text-align:left;}
   .internalPageTitle {font-family: 'museo_sans900', sans-serif; font-size: 30px; font-weight: normal; color: #0082CA; margin:15px 0 10px; text-transform: uppercase;}
   .internalPageTitleDescription {font-family: 'Source Sans Pro', sans-serif; font-size: 15px; line-height: 1.2; color: #e4e4e4;}
+  .internalPageTitleDescription strong {font-weight:600; color:#FFF;}
+  .internalPageTitleDescription strong em,
+  .internalPageTitleDescription em strong {font-weight:600; color:#FFF; font-style:italic;}
+
+  .internalPageTitleContainer__graphicTop-wrapper {position: absolute; bottom: -1px; right: 0; width: 100%; height:30px; z-index: 3;}
+  .internalPageTitleContainer__graphicTop {position: absolute; bottom: 0; right: 0; width: 100%; height:100%; fill: #FFF;}
+  .internalPageTitleContainer__graphicBefore {position: absolute; bottom: -1px; right: 0;  width: 100%; height:30px; fill: #0082CA; z-index: 2;}
   
   /*Overrides*/
   .collection {color:#76777b;}
@@ -28,22 +37,172 @@ Author URL: http://www.adworkshop.com
   .landfills {color:#ff681d;}
   .energy {color:#ffe900;}
   .resources {color:#76bd22;}
+  .white {color:#FFF;}
+
+  .collection-fill {fill:#76777b;}
+  .organics-fill {fill:#49a942;}
+  .landfills-fill {fill:#ff681d;}
+  .energy-fill {fill:#ffe900;}
+  .resources-fill {fill:#76bd22;}
+
   .internalPageTitleContainer.people {padding: 20px 0 30px;}
   .internalPageTitleContainer.people .internalPageTitleContentContainer {text-align:left;}
   
   .subPageTitleContainer {background: #00263e; margin: 0 0 40px;}
-  h2.subPageTitle {color: #0082CA; text-transform: uppercase; text-align: center; padding: 25px 0; font-size: 20px;}
+  h2.subPageTitle {color: #0082CA; text-align: center; padding: 25px 0; font-size: 20px;}
   
   .internalPageTitleContainerNoColor {padding: 50px 0 0; color:#fff;}
-  .internalPageTitleNoColor {font-family: 'museo_sans900', sans-serif; font-size: 30px; font-weight: normal; color: #76bd22; text-transform: uppercase; display: inline-block; background: #FFF; padding: 0 15px; margin: 0 0 0 -20px; line-height: .85;}
-  .internalPageTitleDescriptionNoColor {font-family: 'Source Sans Pro', sans-serif; font-size: 15px; line-height: 1.4; color: #00263e; margin: 20px 0 0;}
+  .internalPageTitleNoColor {font-family: 'museo_sans900', sans-serif; font-size: 30px; font-weight: normal; color: #76bd22; text-transform: uppercase; display: block; background: #FFF; border-bottom: 4px solid #f4f4f4; padding-bottom: 30px;}
+  .internalPageTitleDescriptionNoColor {font-family: 'Source Sans Pro', sans-serif; font-size: 18px; line-height: 1.5; color: #00263e; margin: 20px 0 0;}
   
   /*Txt Layout*/
   .twoColumnContentContainer {}
   .threeColumnContentContainer {}
   .internalPageHeaderImageContainer {line-height:0; border-bottom: 6px solid #F2F2F2;}
   .internalPageHeaderImageContainer img {width:100%; max-width:100%;}
-  
+
+  /*Goal Panel*/
+  .goal-panel {padding:60px 0;}
+  .goal-panel .globalWidth {position:relative; max-width: 1100px;}
+
+  .goal-panel__title-region {position:relative; margin-bottom: 20px;}
+  .goal-panel__title-region__flag {width:50px; position: absolute; top: 2px; left: 0;}
+  .goal-panel__title-region__flag img {width:100%; max-width:100%; height:auto;}
+  .goal-panel__title-region--wrapper {padding-left: 70px;}
+  .goal-panel__title-region__main {font-family: 'museo_sans900', sans-serif; font-size: 44px; font-weight: normal; color:#00263e; text-transform:uppercase;}
+  .goal-panel__title-region__main span {}
+  .goal-panel__title-region__sub {text-transform: uppercase; font-size: 24px; color: #004080; margin-top: 5px;}
+
+  .goal-panel__puzzle-desktop {display:none;}
+
+  .goal-panel__puzzle-desktop .Focus {fill:#76BC21;}
+  .goal-panel__puzzle-desktop .Focus .puzzle-shape {fill:#76BC21;}
+  .goal-panel__puzzle-desktop .Focus .text {fill:#FFFFFF;}
+  .goal-panel__puzzle-desktop .Track {fill:#004987;}
+  .goal-panel__puzzle-desktop .Track .puzzle-shape {fill:#004987;}
+  .goal-panel__puzzle-desktop .Track .text {fill:#FFFFFF;}
+
+  .goal-panel__bubbles {display:block; margin:0 -15px; width:calc(100% + 30px); text-align: center;}
+  .goal-panel__bubbles__one,
+  .goal-panel__bubbles__two,
+  .goal-panel__bubbles__three {width:100%; padding:15px;}
+
+  .goal-panel__bubbles__one__wrapper {width:100%; padding:30px; border-radius:8px;}
+  .goal-panel__bubbles__two__wrapper {width:100%; background:#d2e9ff; padding:30px 20px; border-radius:8px;}
+  .goal-panel__bubbles__three__wrapper {width:100%; background:#e4ffd0; padding:30px 20px; border-radius:8px;}
+
+  .goal-panel__bubbles__one__marker-mobile {width: 50%; margin: 0 auto 15px; max-width: 80px;}
+  .goal-panel__bubbles__one__marker-mobile svg .puzzle-shape {fill:#000;}
+  .goal-panel__bubbles__one__marker-mobile svg .text {fill:#FFF;}
+
+  .goal-panel__bubbles__two__marker-mobile {width: 50%; margin: 0 auto 15px; max-width: 80px;}
+  .goal-panel__bubbles__two__marker-mobile svg .puzzle-shape {fill:#004987;}
+  .goal-panel__bubbles__two__marker-mobile svg .text {fill:#FFF;}
+
+  .goal-panel__bubbles__three__marker-mobile {width: 50%; margin: 0 auto 15px; max-width: 80px;}
+  .goal-panel__bubbles__three__marker-mobile svg .puzzle-shape {fill:#76BC21;}
+  .goal-panel__bubbles__three__marker-mobile svg .text {fill:#FFF;}
+
+  .goal-panel__bubbles__content {}
+  .goal-panel__bubbles__content__title {text-transform: uppercase; color: #111; font-family: 'museo_sans900', sans-serif; font-size: 16px; font-weight: normal; line-height: 1.2;}
+  .goal-panel__bubbles__content__info {color: #111; line-height: 1.5; margin: 7px 0 0; font-size: 14px;}
+
+  .goal-panel__achieved {width:100%; border-top: 1px dashed #d0d0d0; margin-top: 20px; padding-top: 30px;}
+  .goal-panel__achieved__label {font-family: 'museo_sans900', sans-serif; font-size: 18px; color:#004987; margin-bottom:8px; text-transform: uppercase;}
+  .goal-panel__achieved__label i {color:#76BC21;}
+  .goal-panel__achieved__content {font-size: 15px; line-height: 1.3;}
+
+  @media only screen and (min-width: 768px) {
+    .goal-panel__achieved {display:flex;}
+    .goal-panel__achieved__label {font-size: 24px; padding-right: 20px; margin-bottom:0;}
+    .goal-panel__achieved__content {flex:1; max-width:100%; font-size: 16px;}
+  }
+
+
+  /*Specialized*/
+  .goal-energy .goal-panel__puzzle-desktop .Goal {fill:#ffe300;}
+  .goal-energy .goal-panel__puzzle-desktop .Goal .puzzle-shape,
+  .goal-panel__bubbles__one__marker-mobile svg .puzzle-shape {fill:#ffe300;}
+  .goal-energy .goal-panel__puzzle-desktop .Goal .text {fill:#FFFFFF;}
+  .goal-energy .goal-panel__bubbles__one__wrapper {background:#fffad6;}
+
+  .goal-collection .goal-panel__puzzle-desktop .Goal {fill:#76777a;}
+  .goal-collection .goal-panel__puzzle-desktop .Goal .puzzle-shape {fill:#76777a;}
+  .goal-collection .goal-panel__puzzle-desktop .Goal .text {fill:#FFFFFF;}
+  .goal-collection .goal-panel__bubbles__one__wrapper {background:#f4f4f4;}
+
+  .goal-organic .goal-panel__puzzle-desktop .Goal {fill:#4c9c2e;}
+  .goal-organic .goal-panel__puzzle-desktop .Goal .puzzle-shape {fill:#4c9c2e;}
+  .goal-organic .goal-panel__puzzle-desktop .Goal .text {fill:#FFFFFF;}
+  .goal-organic .goal-panel__bubbles__one__wrapper {background:#dfecda;}
+
+  .goal-recycle .goal-panel__puzzle-desktop .Goal {fill:#0082ca;}
+  .goal-recycle .goal-panel__puzzle-desktop .Goal .puzzle-shape {fill:#0082ca;}
+  .goal-recycle .goal-panel__puzzle-desktop .Goal .text {fill:#FFFFFF;}
+  .goal-recycle .goal-panel__bubbles__one__wrapper {background:#bfe0f2;}
+
+  .goal-landfill .goal-panel__puzzle-desktop .Goal {fill:#ff681d;}
+  .goal-landfill .goal-panel__puzzle-desktop .Goal .puzzle-shape {fill:#ff681d;}
+  .goal-landfill .goal-panel__puzzle-desktop .Goal .text {fill:#FFFFFF;}
+  .goal-landfill .goal-panel__bubbles__one__wrapper {background:#ffeadf;}
+
+
+  @media only screen and (min-width: 768px) {
+    .goal-panel__title-region {position:absolute; top:10px; left:40px; text-align:left; margin-bottom:0;}
+    .goal-panel__title-region__main {font-size: 60px;}
+    .goal-panel__title-region__sub {font-size: 16px;}
+    
+    .goal-panel__puzzle-desktop {display:block;}
+    .goal-panel__bubbles {display:flex;}
+    .goal-panel__bubbles__one,
+    .goal-panel__bubbles__two,
+    .goal-panel__bubbles__three {width:33.3333%;}
+    
+    .goal-panel__bubbles__one__marker-mobile,
+    .goal-panel__bubbles__two__marker-mobile,
+    .goal-panel__bubbles__three__marker-mobile {display:none;}
+  }
+
+  @media only screen and (min-width: 900px) {
+    .goal-panel__title-region {top:20px;}
+    .goal-panel__title-region__main {font-size: 60px;}
+    .goal-panel__title-region__sub {font-size: 20px;}
+  }
+
+  @media only screen and (min-width: 1100px) {
+    .goal-panel__title-region {top:40px; left:0;}
+    .goal-panel__title-region__main {font-size: 70px;}
+    .goal-panel__title-region__sub {font-size: 24px;}
+  }
+
+  @media only screen and (min-width: 1300px) {
+    .goal-panel__title-region {top:60px;}
+  }
+
+.recycleBin {}
+.recycleBin .subPageTitleContainer {}
+.recycleBin .subPageTitle {text-align: left; padding: 40px 0 10px; color: #59c1e8;}
+.recycleBin .subPageTeaser {color: #FFF; font-size: 16px; font-family: 'museo_sans700', sans-serif; line-height: 1.5; padding-bottom: 40px; display: block;}
+.recycleBin__lower {background:#ecf8ff; padding: 60px 0; margin-top: -40px;}
+.recycleBin__lower h3 {margin: 0 0 7px;}
+.recycleBin__lower--wrapper {}
+.recycleBin__lower__col1 {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.8;}
+.recycleBin__lower__col2 {}
+.recycleBin__lower__col2 img {margin:30px 0; max-width:400px;}
+.recycleBin__lower__col2__txt {font-style: italic; line-height: 1.5; border-top: 1px dashed #ccc; margin-top: 30px; padding-top: 30px;}
+
+@media only screen and (min-width: 600px) {
+  .recycleBin__lower__col1 {font-size: 16px;}
+}
+
+@media only screen and (min-width: 768px) {
+  .recycleBin__lower--wrapper {display:flex;}
+  .recycleBin__lower__col1 {flex: 0 0 60%; padding: 0 20px 0 0;}
+  .recycleBin__lower__col2 {flex: 0 0 40%; padding: 0 0 0 40px;}
+  .recycleBin__lower__col2 img {margin:0; max-width:100%;}
+}
+
+
 /* ======================================================= */
 /*    SERVICES: MAIN                                       */
 /* ======================================================= */
@@ -55,10 +214,10 @@ Author URL: http://www.adworkshop.com
   .serviceContentInnerWrapper {width: 100%;}
   .serviceContentTitleContainer {}
   .serviceContentTitleContainer h1 {font-family: 'museo_sans900', sans-serif; font-size: 50px; font-weight: normal; color: #76bd22; text-transform: uppercase; line-height: .88;}
-  .serviceContentSubTitle {font-family: 'Source Sans Pro', sans-serif; font-size: 20px; color: #003A63; text-transform: uppercase; line-height: 1.1; margin: 10px 0 0;}
-  .serviceContentTxtContainer {margin: 15px 0 0;}
-  .serviceContentFeaturedTxt {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.5; margin:0 0 20px;}
-  .serviceContentTxt {line-height: 1.7;}
+  .serviceContentSubTitle {font-family: 'museo_sans900', sans-serif; font-size: 18px; color: #003A63; text-transform: uppercase; line-height: 1.1; margin: 10px 0 0;}
+  .serviceContentTxtContainer {margin: 15px 0 0; color: #444;}
+  .serviceContentFeaturedTxt {font-family: 'Droid Serif', serif; font-size: 16px; line-height: 1.5; margin:0 0 20px;}
+  .serviceContentTxt {font-size: 15px; line-height: 1.7;}
   
   .indServiceContentLinkContainer {display:block; width:100%;}
   .indServiceContentLinkContainerLeft, .indServiceContentLinkContainerCenter, .indServiceContentLinkContainerRight {display: block; width: 100%; border-bottom: 1px dotted #A8ED56; padding: 15px 0;}
@@ -73,7 +232,7 @@ Author URL: http://www.adworkshop.com
   transition: none;
   }
   .indServiceContentLinkInnerWrapperLeft {display:table-cell; vertical-align:middle; width:28px; padding:0 8px 0 0; line-height:0;}
-  .indServiceContentLinkInnerWrapperRight {display:table-cell; vertical-align:middle; display: table-cell; vertical-align: middle;}
+  .indServiceContentLinkInnerWrapperRight {display:table-cell; vertical-align:middle;}
   .indServiceContentLinkInnerWrapper img {width:100%; max-width:100%;}
   
   .indServiceContentLinkInnerWrapper:hover img {opacity:1;}
@@ -87,36 +246,76 @@ Author URL: http://www.adworkshop.com
 /*    RECYCLE                                              */
 /* ======================================================= */
   .recycleUpperContainer {width:100%; padding:0 30px; margin:40px auto;}
-  .recycleUpperContentContainer {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7;}
+  .recycleUpperContentContainer {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.8;}
+
+  .rec-highlight {border: 2px solid #002338; padding: 25px 25px 25px 50px; position:relative;}
+  .rec-highlight i {position: absolute; top: 15px; left: 7px; font-size: 30px; color: #e4bd00;}
   
   /*Tabs*/
+  .small-nav-icon {font-size:80%; top: -2px; position: relative;}
   .recycleTabs {width:100%; margin: 40px auto; padding:0 30px;}
   .recycleTabs .z-tabs > ul > li > a {font-family: 'museo_sans700', sans-serif !important;}
+
+  .recycleTabs .z-tabs.flat.flat-nephritis > ul.z-tabs-nav > li.z-active > a,
+  .recycleTabs .z-tabs.flat.flat-nephritis > ul.z-tabs-mobile.z-state-closed > li a,
+  .recycleTabs .z-tabs.flat.flat-nephritis > ul.z-tabs-mobile > li a {background: #0082CA !important;}
+  .recycleTabs .z-tabs.flat.flat-nephritis > ul,
+  .recycleTabs .z-tabs.flat.flat-nephritis > .z-container {border-color: #0082CA!important;}
+
+  .recycleGraphicContainer__upper {margin: 0;}
+  .recycleGraphicContainer__upper h2 {font-size: 30px; margin: 0 0 25px; color: #0066a4; line-height: 1.1;}
+  .recycleGraphicContainer__upper .teaser {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.8; color: #444}
+  .recycleGraphicContainer__upper .sub {font-family: 'museo_sans700', sans-serif; font-size: 14px; line-height: 1.6; margin: 15px 0 0; color: #00263e;}
+  .recycleGraphicContainer__upper .supplimental {font-family: 'museo_sans700', sans-serif; padding: 20px; background: #007fc5; font-size: 14px; color: #fff; border-radius: 5px; margin-top: 20px; display: inline-block;}
   .recycleGraphicContainer {display:table; width:100%; padding: 40px 0 0;}
-  .recycleGraphicColumnLeft {display: block; vertical-align:top; padding:0;}
+  .recycleGraphicColumnLeft {display: block; vertical-align:top; padding:0; margin-top: 40px;}
   .recycleGraphicColumnLeft img {width:100%; max-width:100%;}
   .recycleGraphicColumnRight {display: block; width: 100%; vertical-align: middle;}
-  .recycleGraphicInnerColumnRight {border-top: 3px dotted #E4E4E4; padding: 40px 0 0; margin: 40px 0 0; border-left: none;}
+  .recycleGraphicInnerColumnRight {padding: 40px 0 0; margin: 0; border-left: none;}
   .recycleGraphicCallOutContainer {display:table; width:100%; margin: 0 0 30px; padding: 0 0 30px; border-bottom: 1px dotted #e4e4e4;}
   .recycleGraphicCallOutContainer.last {margin: 0; padding: 0; border-bottom: none;}
   .recycleGraphicCallOutNumberContainer {display:table-cell; vertical-align:top; width:70px;}
-  .recycleGraphicCallOutNumberWrapper {border-radius: 25px 25px 25px 25px; -moz-border-radius: 25px 25px 25px 25px; -webkit-border-radius: 25px 25px 25px 25px; width: 50px; height: 50px;}
-  .recycleGraphicCallOutNumber {display:table-cell; vertical-align:middle; text-align:center; width:50px; height:50px; font-family: 'museo_sans700', sans-serif; font-size: 18px; color:#FFF;}
-  .recycleGraphicCallOutContentContainer {display:table-cell; vertical-align:top; font-family: 'Source Sans Pro', sans-serif; font-size: 13px; font-weight: 400; color: #666;}
-  .recycleGraphicCallOutContentTitle {font-family: 'museo_sans700', sans-serif; font-size: 16px;}
-  .recycleGraphicCallOutContent {margin: 5px 0 0; line-height:1.5;}
+  .recycleGraphicCallOutNumberWrapper {-moz-border-radius: 25px 25px 25px 25px; -webkit-border-radius: 25px 25px 25px 25px; border-radius: 25px 25px 25px 25px; width: 50px; height: 50px;}
+  .recycleGraphicCallOutNumber {display:table-cell; vertical-align:middle; text-align:center; width:50px; height:50px; line-height: 50px; font-family: 'museo_sans700', sans-serif; font-size: 18px; color:#FFF;}
+  .recycleGraphicCallOutContentContainer {display:table-cell; vertical-align:top; font-family: 'Source Sans Pro', sans-serif; font-size: 13px; font-weight: 400; color: #444;}
+  .recycleGraphicCallOutContentTitle {font-family: 'museo_sans700', sans-serif; font-size: 18px;}
+  .recycleGraphicCallOutContent {margin: 8px 0 0; line-height: 1.8;  font-size: 16px;}
   .recycleGraphicCallOutNumberWrapper.drkBlue {background: #00263e;}
   .recycleGraphicCallOutNumberWrapper.lightBlue {background: #0082ca;}
   .recycleGraphicCallOutNumberWrapper.midBlue {background: #004a88;}
   .recycleGraphicCallOutNumberWrapper.green {background: #4c9d2f;}
+  .recycleGraphicCallOutNumberWrapper.drkGreen {background: #006937;}
   .recycleGraphicCallOutContentTitle.drkBlue {color: #00263e;}
   .recycleGraphicCallOutContentTitle.lightBlue {color: #0082ca;}
   .recycleGraphicCallOutContentTitle.midBlue {color: #004a88;}
   .recycleGraphicCallOutContentTitle.green {color: #4c9d2f;}
+  .recycleGraphicCallOutContentTitle.drkGreen {color: #006937;}
+  .recycleGraphicCallOutGoal {display:flex; margin-top:20px;}
+  .recycleGraphicCallOutGoal__col1 {flex:0 0 55px; max-width:55px;}
+  .recycleGraphicCallOutGoal__col1__icon {display:inline-block; width:9px;}
+  .recycleGraphicCallOutGoal__col1__label {display: inline-block; font-family: 'museo_sans700', sans-serif; font-size: 14px;}
+  .recycleGraphicCallOutGoal__col2 {font-weight: 700; color: #006937; font-size: 14px;}
+  .recycleGraphicContainer__diagram {margin-top:30px;}
+  .recycleGraphicContainer__diagram img {width:100%; max-width:100%; height:auto;}
+
+  @media only screen and (min-width: 820px) {
+    .recycleGraphicContainer__upper {margin: 30px 0;}
+    .recycleGraphicContainer__upper h2 {font-size: 44px;}
+    .recycleGraphicContainer__upper .teaser {font-size: 16px;}
+    .recycleGraphicContainer__upper .sub {font-size: 15px;}
+    .recycleGraphicContainer__upper .supplimental {font-size: 15px;}
+    .recycleGraphicColumnLeft {margin-top: 0;}
+  }
+
+
+  .recyclefullWidthImg {margin:50px 0;}
+  .recyclefullWidthImg__element {line-height:0;}
+  .recyclefullWidthImg__element img {width:100%; max-width:100%; height:auto;}
+  .recyclefullWidthImg__caption {margin-top:20px; font-size:16px; font-style:italic; line-height: 1.5;}
   
   .recycleProjectImgContainer {line-height:0;}
   .recycleProjectImgContainer img {width:100%; max-width:100%;}
-  .recycleProjectContentContainer {display:table; width:100%; font-family: 'Source Sans Pro', sans-serif; font-size: 13px; font-weight: 400; color: #666; margin: 30px 0 0;}
+  .recycleProjectContentContainer {display:table; width:100%; font-family: 'Source Sans Pro', sans-serif; font-size: 13px; font-weight: 400; color: #444; margin: 30px 0 0;}
   .recycleProjectDescriptionWrapper {display: block; width: 100%; padding: 0; text-align: left;}
   .recycleProjectInnerDescriptionWrapper {padding: 0; border-bottom: 1px dotted #ccc; border-right: none; margin: 0 0 30px; line-height:1.7; font-style:italic;}
   .recycleProjectContentWrapper {display: block; width: 100%; vertical-align:top;}
@@ -131,42 +330,23 @@ Author URL: http://www.adworkshop.com
   .recycleFocusColRight {display:block; vertical-align:top; padding:0; margin:40px 0 0;}
   .recycleFocusColRightWrapper {line-height:0; padding:0; border-bottom:1px dotted #e4e4e4;}
   .recycleFocusColRightWrapper img {width:100%; max-width:100%;}
-  .recycleFocusColLeftWrapper {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7; color: #666;}
-  .recycleFocusColLeftTitle {font-family: 'museo_sans700', sans-serif; font-size: 21px; color: #00263e; margin: 0 0 10px; line-height:1.3;}
-  
+  .recycleFocusColLeftWrapper {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.8;}
+  .recycleFocusColLeftTitle {font-family: 'museo_sans900', sans-serif; font-size: 30px; color: #0066a4; margin: 0 0 10px; line-height:1.1;}
+
+  @media only screen and (min-width: 600px) {
+    .recycleFocusColLeftWrapper {font-size:16px;}
+  }
+  @media only screen and (min-width: 820px) {
+    .recycleFocusContainer {margin-top:30px;}
+    .recycleFocusColLeftTitle {font-size: 44px;}
+  }
+
   /*Sustainable*/
   .recycleSustainableContainer {font-family: 'Droid Serif', serif; font-size: 14px; line-height: 1.7;}
   .recycleSustainableTitle {  font-family: 'museo_sans700', sans-serif; font-weight: normal; font-size: 17px; color: #00263e; margin: 0 0 8px; line-height: 1.3;}
   
-  /*Image Grid*/
-  .recycleGrid {list-style: none; width: 100%; position: relative; padding: 0; font-size:0; margin:30px 0 0}
-  .recycleGrid li {display: inline-block; background: #fff; position: relative; width: 50%;}
-  .recycleGrid li a,
-  .recycleGrid li a img {display: block; position: relative;}
-  .recycleGrid li a img {width:100%; max-width:100%;}
-  .recycleGrid li a:hover img {opacity:1;}
-  .recycleGrid li a {overflow: hidden; cursor: default;}
-  .recycleGrid li a div.recycleInnerGrid {
-  position: absolute;
-  background: #00263e;
-  background: rgba(0,38,62,0.9);
-  width: 100%;
-  height: 100%;
-  font-family: 'museo_sans700', sans-serif;
-  font-size: 11px;
-  line-height:1.4;
-  font-weight: normal;
-  text-align:center;
-  padding:10px 20px;
-  }
-  .recycleGrid li a:hover div.recycleInnerGrid {color:#fff;}
-  .recycleGridWrapper {display:table; width:100%; height:100%;}
-  .recycleGridInnerWrapper {display:table-cell; vertical-align:middle;}
-  .recycleGridNumberContainer  { background:#0082ca; border-radius: 25px 25px 25px 25px; -moz-border-radius: 25px 25px 25px 25px; -webkit-border-radius: 25px 25px 25px 25px; width: 50px; height: 50px; margin:0 auto 10px;}
-  .recycleGridNumber {display: table-cell; vertical-align: middle; text-align: center; width: 50px; height: 52px; font-family: 'museo_sans900', sans-serif; font-size: 20px; color: #FFF;}
-  
   /*Graph*/
-  .recycleGraphContainer {display:table; width:100%; margin:60px 0;}
+  .recycleGraphContainer {display:table; width:100%; margin:60px 0; border-top: 1px solid #caebff; border-bottom: 1px solid #caebff; padding: 60px 0;}
   .recycleGraphDescriptionContainer {display:block; vertical-align:middle; width:100%; text-align:left; padding: 0; line-height:1.7;}
   .recycleGraphDescriptionInnerContainer {padding: 0; border-right: none; border-bottom: 1px dotted #e4e4e4;}
   .recycleGraphDescriptionWrapper {font-size: 13px; line-height: 1.7; margin:10px 0 0;}
@@ -176,121 +356,156 @@ Author URL: http://www.adworkshop.com
 /* ======================================================= */
 /*    COLLECTION                                           */
 /* ======================================================= */  
-  .AFCContainer {background: #F7F7F7; padding: 0 0 60px; border-top: 6px solid #f5f5f5;}
-  h2.AFCTitle {color: #76777b; text-transform: uppercase; text-align: center; font-size: 23px; margin: 0 0 60px; background: #00263a; padding: 30px;}
-  .indAFCContainer {display:table; width:100%; padding: 0 0 50px; margin: 0 0 50px; border-bottom: 3px dotted #ccc; font-size:0;}
-  .indAFCContainer.last {padding: 0; margin: 0; border-bottom: none;}
-  .indAFCCo1Wrapper {display:block; vertical-align:bottom; width:100%; padding: 0; text-align:center; margin:0 0 40px;}
-  .indAFCCo2Wrapper {display:block; vertical-align:bottom; width:100%; padding: 0; margin:0 0 30px;}
-  .indAFCCo3Wrapper {display:block; vertical-align:top; width:100%; padding: 0; color:#444; font-size: 15px; line-height: 1.4; margin:0 0 20px;}
-  .indAFCCo4Wrapper {display:block; vertical-align:top; width:100%; padding: 0; margin:0 0 20px;}
-  .indAFCCo1IconWrapper {line-height:0; max-width: 150px; margin: 0 auto;}
-  .indAFCCo1Title {font-family: 'museo_sans700', sans-serif; font-weight: normal; font-size: 16px; margin: 20px 0 0; color: #444;}
-  .indAFCCo2ImageWrapper {line-height:0; max-width: 280px; margin: 0 auto;}
-  .indAFCCo1IconWrapper img, .indAFCCo2ImageWrapper img {width:100%; max-width:100%;}
-  .indAFCCo4InnerWrapper {display:table; width:100%;}
-  .indAFCCo4InnerTextWrapper {display:table-cell; width:75%; vertical-align:middle; color: #444; font-size: 15px; line-height: 1.4;}
-  .indAFCCo4InnerImageWrapper {display:table-cell; vertical-align:top;}
-  .indAFCCo4InnerImageWrapper img {width:100%; max-width:100%;}
-  .indAFCCo4InnerTextWrapper span {display: block; font-family: 'museo_sans900', sans-serif; font-weight: normal; letter-spacing: -2px; line-height: 1;}
-  span.naturalGas {font-size: 38px; color: #0082ca;}
-  span.biodiesel {font-size: 38px; color: #49a942;}
-  span.improvements {font-size: 38px; color: #0065a4;}
-  .indAFCCo4InnerWrapper.naturalGas {text-align:right;}
-  .indAFCCo4InnerWrapper.naturalGas .indAFCCo4InnerImageWrapper {padding:0 0 0 15px;}
-  .indAFCCo4InnerWrapper.biodiesel {text-align:left;}
-  .indAFCCo4InnerWrapper.biodiesel .indAFCCo4InnerImageWrapper {padding:0 15px 0 0;}
-  .indAFCCo4InnerWrapper.improvements {text-align:right;}
-  .indAFCCo4InnerWrapper.improvements .indAFCCo4InnerImageWrapper {padding:0 0 0 15px; vertical-align:bottom;}
-  
+  .AFCContainer {background: #F7F7F7; padding: 100px 0; border-top: 6px solid #f5f5f5;}
+  .AFCContainer--wrapper {display:block;}
+  h2.AFCTitle {font-family: 'museo_sans900', sans-serif; font-size: 44px; font-weight: normal; color: #00263e; margin-bottom:30px; line-height: 1.1;}
+  .AFCContainer--graphic {margin-top: 40px;}
+  .AFCContainer--graphic img {width:100%; max-width:100%; height:auto;}
+  .AFCContainer--text {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.8;}
+  .AFCContainer--text-source {font-style:italic; font-size:13px;}
+
+  @media only screen and (min-width: 600px) {
+    .AFCContainer--text {font-size: 16px;}
+  }
+
+  @media only screen and (min-width: 1100px) {
+    .AFCContainer--wrapper {display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -moz-flex; display: -webkit-flex; display: flex;}
+    .AFCContainer--graphic {flex:0 0 70%; order:1; max-width:70%; padding-right: 60px; margin-top:0;}
+    .AFCContainer--text {flex:0 0 30%; order:2; max-width:30%;}
+  }
+                                                                                                                                                                                                                                                                                                                                                                                                             
 /* ======================================================= */
 /*    ORGANICS                                             */
 /* ======================================================= */ 
   .organicsUpperContainer {width:100%; padding:0 30px; margin:40px auto;}
-  .organicsUpperContentContainer {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7;}
+  .organicsUpperContentContainer {font-family: 'Droid Serif', serif; font-size: 14px; line-height: 1.8;}
   .organicsUpperContentInnerContainer {display:table; width:100%;}
   .organicsUpperContentInnerContainerLeft {display:block; vertical-align:top; width:100%; text-align:left;}
   .organicsUpperContentInnerContainerRight {display:block; vertical-align:top; padding: 35px 0 0; margin: 30px 0 0; border-top: 6px solid #EDEDED;}
   .organicsUpperContentInnerContainerWrapper {padding:0; border-left:none;}
-  .indOrganicsUpperDescriptContainer {display:table; width:100%; padding: 0 0 30px; margin: 0 0 30px; border-bottom: 1px dotted #e4e4e4;}
-  .indOrganicsUpperDescriptContainer.last {padding: 0; margin: 0; border-bottom: none;}
-  .indOrganicsUpperDescriptContainerLeft {display:block; vertical-align:top; line-height:0; padding: 0; margin: 0 0 15px;}
-  .indOrganicsUpperDescriptContainerLeft img {width:100%; max-width:100%;}
-  .indOrganicsUpperDescriptContainerRight {display:block; vertical-align:middle; width:100%;}
-  .indOrganicsUpperDescriptTitle {font-family: 'museo_sans700', sans-serif; font-size: 16px; color: #00263e;}
-  .indOrganicsUpperDescriptTxt {font-family: 'Source Sans Pro', sans-serif; line-height: 1.4;}
+  .indOrganicsUpperDescriptContainer {display:flex; width:100%;}
+  .indOrganicsUpperDescriptContainer .imgContainer {flex:0 0 50%; width:50%; max-width:50%;}
+  .indOrganicsUpperDescriptContainer .imgContainer:nth-child(1) {padding-right:15px;}
+  .indOrganicsUpperDescriptContainer .imgContainer:nth-child(2) {padding-left:15px;}
+  .indOrganicsUpperDescriptContainer .imgContainer img {width:100%; max-width:100%; height:auto;}
   
-  .earthlifeContainer {width:100%; background: #ECF8FF; padding:40px 0; border-top: 2px dotted #AFDB79; border-bottom: 2px dotted #AFDB79;}
-  .earthlifeInnerContainer {display:table; width:100%;}
-  .earthlifeInnerContainerLeft {display:none; vertical-align:middle; width:100%;}
-  .earthlifeInnerContainerLeftWrapper {
-  width:150px; margin:0 auto;
-  -webkit-transform: rotate(-8deg);
-  -moz-transform: rotate(-8deg);
-  -o-transform: rotate(-8deg);
-  -ms-transform: rotate(-8deg);
-  transform: rotate(-8deg);
-  }
-  .earthlifeInnerContainerLeftWrapper img {width:100%; max-width:100%;}
-  .earthlifeInnerContainerRight {display:block; vertical-align:middle; padding: 0;}
-  .earthlifeInnerContainerRightTitle {font-family: 'museo_sans700', sans-serif; font-size: 27px; font-weight: normal; margin: 0 0 15px; color: #003A63;}
-  .earthlifeInnerContainerRightTitle span {font-family: 'museo_sans900', sans-serif;  font-style:italic; padding:0 5px 0 0;}
-  .earthlifeInnerContainerRightTxt {font-size: 14px; line-height: 1.7;}
+  .organicOppContainer {width: 100%; background: #dcebd5; padding: 100px 0;}
+  .organicOppContainer__upper {margin-bottom:50px;}
+  .organicOppContainer__upper h2 {font-size: 40px; margin-bottom: 20px; line-height: 1.2; color: #0a253e;}
+  .organicOppContainer__upper__text {font-family: 'Droid Serif', serif; font-size: 14px; line-height: 1.8; color: #515152;}
+  .organicOppContainer img {width:100%; max-width:100%; height:auto;}
+  .organicOppContainer__upper__source {font-style: italic; font-size: 14px; color: #515152; margin-top: 50px; line-height: 1.4; border-top: 1px dotted #006cc8; padding-top: 40px;}
   
   .organicsLowerContainer {display:table; width:100%; padding:60px 0;}
   .organicsLowerContainerLeft {display:block; vertical-align:top; width:100%; margin: 40px 0 0; padding: 40px 0 0; border-top: 6px solid #e4e4e4;}
   .organicsLowerContainerRight {display:block; vertical-align:top; padding: 0;}
   .organicsLowerInnerContainerRight {padding:0; border-left:none;}
   .foodScrapTitle {font-family: 'museo_sans900', sans-serif; font-size: 30px; font-weight: normal; margin: 0 0 15px; color: #49a942;}
-  .upperFoodScrapDescriptContainer {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7;}
-  .lowerFoodScrapDescriptContainer {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7; margin: 40px 0 0;}
-  .indFoodScrapDescriptContainer {display: table; width: 100%; padding: 0 0 30px; margin: 0 0 30px; border-bottom: 1px dotted #e4e4e4;}
-  .indFoodScrapDescriptContainerLeft {display: block; vertical-align: top; line-height: 0; padding: 0; margin: 0 0 15px;}
+  .upperFoodScrapDescriptContainer {font-family: 'Droid Serif', serif; font-size: 14px; line-height: 1.8;}
+  .lowerFoodScrapDescriptContainer {font-family: 'Droid Serif', serif; font-size: 14px; line-height: 1.8; margin: 40px 0 0;}
+  
+  .indFoodScrapDescriptContainer {display: block; width: 100%; padding: 0 0 10px; margin: 0 0 30px; border-bottom: 1px dotted #e4e4e4;}
+  .indFoodScrapDescriptContainer:last-of-type {padding: 0; margin: 0; border-bottom: none;}
+  .indFoodScrapDescriptContainerLeft {display: block; line-height: 0; padding: 0; margin: 0 0 15px;}
+  .indFoodScrapDescriptContainerLeft .multiImg {margin-bottom:30px;}
   .indFoodScrapDescriptContainerLeft img {width:100%; max-width:100%;}
-  .indFoodScrapDescriptContainerRight {display: block; vertical-align: middle; width: 100%;}
-  .organicsLowerContainerLeftTitle {font-family: 'museo_sans900', sans-serif; font-size: 24px; font-weight: normal; margin: 0 0 25px; text-align: center; color: #003A63;}
-  .organicsLowerContainerLeftIcon {line-height:0; max-width: 400px; margin: 0 auto;}
+  .indFoodScrapDescriptContainerRight {display: block; width: 100%;}
+  .indFoodScrapDescriptContainerRight h2 {font-size:22px;}
+  .indFoodScrapDescriptContainerRight strong {font-family: 'museo_sans700', sans-serif; font-weight: normal;}
+  .indFoodScrapDescriptContainer ul {list-style: disc; margin-left: 15px;}
+  .indFoodScrapDescriptContainer ul li {margin-bottom: 20px;}
+  .indFoodScrapDescriptContainer ul li:last-of-type {margin-bottom: 0;}
+
+  .organicsLowerContainerLeftTitle {font-family: 'museo_sans900', sans-serif; font-size: 24px; font-weight: normal; margin: 0 0 20px; color: #003A63;}
+  .organicsLowerContainerLeftIcon {line-height:0; max-width: 400px; margin: 0;}
   .organicsLowerContainerLeftIcon img {width:100%; max-width:100%;}
-  .organicsLowerContainerLeftIconDescript1 {font-family: 'museo_sans700', sans-serif; font-weight: normal; font-size: 12px; margin: 15px 0 30px; text-align: center; padding: 0 0 30px; border-bottom: 2px dotted #76bd22; line-height: 1.4;}
-  .organicsLowerContainerLeftIconDescript2 {font-family: 'museo_sans700', sans-serif; font-weight: normal; font-size: 12px; margin: 15px 0 0; text-align: center; line-height: 1.4;}
+  .organicsLowerContainerLeftIconDescript1 {font-size: 14px; margin: 15px 0 30px; line-height: 1.8;}
+  .organicsLowerContainerLeftIconDescript2 {font-size: 14px; margin: 15px 0 0; line-height: 1.8;}
+
+  .organics-caseStudy {background: #dcebd5; position: relative; width: 100%; padding: 60px 0 35px;}
+  .organics-caseStudy__wrapper {margin: 0 auto; color:#515152}
+  .organics-caseStudy__title-Container {margin-bottom: 30px;}
+  .organics-caseStudy__title {font-family: 'museo_sans900', sans-serif; font-weight: normal; color: #0a253e; font-size: 30px; margin-bottom:20px;}
+  .organics-caseStudy__teaser {font-family: 'Droid Serif', serif; font-size: 14px; line-height: 1.8;}
+  .organics-caseStudy__content--wrapper {display:block;}
+  .organics-caseStudy__content--image {width:100%; margin-bottom:30px;}
+  .organics-caseStudy__content--image img {width:100%; max-width:100%; height:auto;}
+  .organics-caseStudy__content--text {font-size: 14px; line-height: 1.8;}
+
+  @media only screen and (min-width: 600px) {
+    .organicOppContainer__upper__text,
+    .organics-caseStudy__teaser,
+    .organics-caseStudy__content--text,
+    .organicsLowerContainerLeftIconDescript1,
+    .organicsLowerContainerLeftIconDescript2 {font-size: 16px;}
+  }
+  @media only screen and (min-width: 768px) {
+    .organics-caseStudy__content--wrapper {display:flex;}
+    .organics-caseStudy__content--image {width:30%; flex:0 0 30%; padding:0 40px 0 0; margin-bottom:0;}
+  }
+  @media only screen and (min-width: 1100px) {
+    .organics-caseStudy__wrapper {width: 70%;}
+  }
 
 /* ======================================================= */
 /*    ENERGY                                               */
-/* ======================================================= */ 
+/* ======================================================= */
+  .energyPage .internalPageTitleContainer__graphicBefore {fill: #fce800;}
   .energyUpperContainer {width: 100%; padding: 0 30px; margin: 40px auto;}
-  .energyUpperContentContainer {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7;}
-  .energyGridContainer {display:block; width:100%; font-size: 0;}
-  .indEnergyContainer {display: block; vertical-align:top; width:100%; padding:0;}
-  .indEnergyTitle {font-family: 'museo_sans700', sans-serif; font-size: 22px; font-weight: normal; color: #00263e; border-top: 1px solid #e4e4e4; margin: 30px 0 0; padding: 30px 0 0; line-height:1.1;}
+  .energyUpperContentContainer {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.8;}
+  .energyUpperContainer__title {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.8; margin: 0 auto 40px;}
+  .energyGridContainer {display:block; font-size: 0; margin: 0 -20px; width: calc(100% + 40px);}
+  .indEnergyContainer {display: block; vertical-align:top; width:100%; padding:0 20px;}
+  .indEnergyTitle {font-family: 'museo_sans700', sans-serif; font-size: 20px; font-weight: normal; color: #00263e; border-top: 1px solid #e4e4e4; margin: 30px 0 0; padding: 30px 0 0; line-height:1.1;}
   .indEnergyTitle.first {border-top: none; margin: 0; padding: 0;}
   .indEnergyInnerContainer {margin: 10px 0 0;}
   .indEnergyInnerImgContainer {margin: 0 0 15px; line-height:0;}
   .indEnergyInnerImgContainer img {width:100%; max-width:100%;}
-  .indEnergyInnerTxtContainer {font-size:13px;}
+  .indEnergyInnerTxtContainer {font-size:13px; line-height:1.8;}
   .energyCabotGridContainer {display: table; width: 100%; margin:40px 0;}
   .energyCabotTxtContainer {display: block;}
   h2.CabotTitle {color: #ffe900; text-transform: uppercase; text-align: center; font-size: 23px; background: #00263e; padding: 30px;}
   .energyCabotTxt {font-size: 13px; line-height: 1.5; margin: 0 0 20px; font-family: 'Source Sans Pro', sans-serif;}
-  .energyCabotMessage {font-size: 13px; line-height: 1.5; font-family: 'Source Sans Pro', sans-serif; font-weight: 700; font-style: italic; color: #00263e;}
   .energyCabotImgContainer {line-height:0; margin:40px 0 0;}
   .energyCabotImgContainer img {width:100%; max-width:100%;}
+  .energy-genCopy {font-family: 'Droid Serif', serif; font-size: 15px; line-height: 1.7; border-top: 5px solid #f5f5f5; margin-top: 30px; margin-bottom:60px; padding-top: 60px;}
+  .energy-genCopy .globalWidth {max-width: 1100px;}
+  .energy-graphic {background:#fff9d5; padding:100px 0;}
+  .energy-graphic .globalWidth {max-width: 900px;}
+  .energy-graphic img {width:100%; max-width:100%; height:auto;}
+  .energy-caseStudy {background: #00263e; position: relative; width: 100%; padding: 60px 0 35px;}
+  .energy-caseStudy__wrapper {margin: 0 auto; color:#fff}
+  .energy-caseStudy__title-Container {margin-bottom: 30px;}
+  .energy-caseStudy__title {font-family: 'museo_sans900', sans-serif; font-weight: normal; color: #FFF; font-size: 30px; margin-bottom:15px;}
+  .energy-caseStudy__teaser {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.8;}
+  .energy-caseStudy__content--wrapper {display:block;}
+  .energy-caseStudy__content--image {width:100%; margin-bottom:30px;}
+  .energy-caseStudy__content--image img {width:100%; max-width:100%; height:auto;}
+  .energy-caseStudy__content--text {font-size: 13px; line-height: 1.8;}
+
+  @media only screen and (min-width: 600px) {
+    .energyUpperContainer__title,
+    .indEnergyInnerTxtContainer,
+    .energy-caseStudy__teaser,
+    .energy-caseStudy__content--text {font-size: 16px;}
+  }
+  @media only screen and (min-width: 768px) {
+    .energy-caseStudy__content--wrapper {display:flex;}
+    .energy-caseStudy__content--image {width:30%; flex:0 0 30%; padding:0 40px 0 0; margin-bottom:0;}
+  }
+  @media only screen and (min-width: 1100px) {
+    .energyUpperContainer__title {margin: 0 auto 60px;}
+    .energy-caseStudy__wrapper {width: 70%;}
+  }
+
 
 /* ======================================================= */
 /*    LANDFILLS                                            */
 /* ======================================================= */ 
   .landfillUpperContainer {width: 100%; padding: 0 30px; margin: 40px auto;}
-  .landfillUpperContainer h2 {font-family: 'museo_sans700', sans-serif; font-size: 19px; font-weight: normal; margin: 0 0 15px; color: #003A63; line-height: 1.3;}
-  .landfillUpperTeaserTxt {font-family: 'Droid Serif', serif; font-size: 14px; line-height: 1.7; margin:0 0 40px;}
-  .landfillReasonsColContainer {display:table; width:100%;}
-  .landfillReasonsColLeft {display:block; vertical-align:top; width:100%; padding: 0;}
-  .landfillReasonsColRight {display:block; vertical-align:top; width:100%; padding: 0;}
-  .indLandfillReasonWrapper {display:table; width:100%; margin: 0 0 30px;}
-  .landfillGraphicCallOutNumberContainer {display: table-cell; vertical-align: top; width: 60px;}
-  .landfillGraphicCallOutNumberWrapper {border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px; width: 40px; height: 40px; background:#ff681d;}
-  .landfillGraphicCallOutNumber {display: table-cell; vertical-align: middle; text-align: center; width: 40px; height: 40px; font-family: 'museo_sans700', sans-serif; font-size: 15px; color: #FFF;}
-  .indLandfillReasonTitle {font-size: 15px; line-height: 1.3; margin: 0 0 5px; color: #003A63; font-family: 'museo_sans700', sans-serif;}
-  .indLandfillReasonTxt {display:table-cell; vertical-align:top; line-height:1.6}
-  .indLandfillCallOut {margin: 15px 0 0; font-style: italic; border-top: 1px dotted #e4e4e4; padding: 35px 0 0; font-family: 'Droid Serif', serif; font-size: 16px; line-height: 1.7; text-align: left;}
+
+
+
   
   /*Tabs*/
   .landfillTabs {width: 100%; margin: 40px auto; padding: 0 30px;}
@@ -300,10 +515,10 @@ Author URL: http://www.adworkshop.com
   
   /*Safe & Secure*/
   .landfillSafeTitle {font-family: 'museo_sans700', sans-serif; font-size: 19px; font-weight: normal; margin: 20px 0 15px; color: #003A63; line-height: 1.3;}
-  .landfillSafeTeaser {font-family: 'Droid Serif', serif; font-size: 14px; line-height: 1.7; color:#666;}
-  .landfillSafeGridContainer {display:table; width:100%; font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7; margin: 30px 0 0; color:#666;}
+  .landfillSafeTeaser {font-family: 'Droid Serif', serif; font-size: 14px; line-height: 1.7; color:#444;}
+  .landfillSafeGridContainer {display:table; width:100%; font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7; margin: 30px 0 0; color:#444;}
   .landfillSafeGridColLeft, .landfillSafeGridColRigh {display:block; vertical-align:top; width:100%; padding:0;}
-  ul.content.landfillBullets li {font-family: 'Source Sans Pro', sans-serif; color: #666; margin: 0 0 5px 2px;}
+  ul.content.landfillBullets li {font-family: 'Source Sans Pro', sans-serif; color: #444; margin: 0 0 5px 2px;}
   
   /*Gas-Energy Graphic*/
   .landfillGasEnergyContainer {}
@@ -320,20 +535,20 @@ Author URL: http://www.adworkshop.com
   .landfillGasEnergyGraphicTxtDesc {font-size:80%; text-align:right; margin:0 50px 0 0;}
   
   .landfillGasEnergyDescriptionContainer {display:table; width:100%;}
-  .landfillGasEnergyDescriptionCol1 {display:block; vertical-align:middle; width:100%; padding: 0 0 30px; font-size: 15px; line-height: 1.3; color: #666; font-family: 'museo_sans700', sans-serif;}
-  .landfillGasEnergyDescriptionCol2 {display:block; vertical-align:middle; width:100%; padding: 0 0 30px; font-size: 15px; line-height: 1.3; color: #666; font-family: 'museo_sans700', sans-serif;}
-  .landfillGasEnergyDescriptionCol3 {display:block; vertical-align:middle; width:100%; padding: 0 0 30px; font-size: 15px; line-height: 1.3; color: #666; font-family: 'museo_sans700', sans-serif;}
+  .landfillGasEnergyDescriptionCol1 {display:block; vertical-align:middle; width:100%; padding: 0 0 30px; font-size: 15px; line-height: 1.3; color: #444; font-family: 'museo_sans700', sans-serif;}
+  .landfillGasEnergyDescriptionCol2 {display:block; vertical-align:middle; width:100%; padding: 0 0 30px; font-size: 15px; line-height: 1.3; color: #444; font-family: 'museo_sans700', sans-serif;}
+  .landfillGasEnergyDescriptionCol3 {display:block; vertical-align:middle; width:100%; padding: 0 0 30px; font-size: 15px; line-height: 1.3; color: #444; font-family: 'museo_sans700', sans-serif;}
   .landfillGasEnergyDescriptionCol1Wrapper, .landfillGasEnergyDescriptionCol2Wrapper {display:table; width:100%;}
   .landfillGasEnergyDescriptionTextWrapper {display:table-cell; vertical-align:middle;}
   .landfillGasEnergyDescriptionCol3 span {font-family: 'museo_sans900', sans-serif; color:#ff681d; line-height:1; font-size: 35px;}
   
-  .landfillGasEnergyGraphicTxtWrapperCol1Container2.mobile {vertical-align: middle;  padding: 0 0 30px; font-size: 15px; line-height: 1.3; color: #666; font-family: 'museo_sans700', sans-serif;}
-  .landfillGasEnergyGraphicTxtWrapperCol1Container2Inner.mobile {width: 100%; padding: 0 0 30px; font-size: 15px; line-height: 1.3; color: #666; font-family: 'museo_sans700', sans-serif;}
+  .landfillGasEnergyGraphicTxtWrapperCol1Container2.mobile {vertical-align: middle;  padding: 0 0 30px; font-size: 15px; line-height: 1.3; color: #444; font-family: 'museo_sans700', sans-serif;}
+  .landfillGasEnergyGraphicTxtWrapperCol1Container2Inner.mobile {width: 100%; padding: 0 0 30px; font-size: 15px; line-height: 1.3; color: #444; font-family: 'museo_sans700', sans-serif;}
   .landfillGasEnergyGraphicTxtWrapperCol1Container2Inner.mobile span { font-family: 'museo_sans900', sans-serif; color: #ff681d; line-height: 1; font-size: 35px;}
   
   /*Zero Waste*/
   .landfillZeroWasteTitle {font-family: 'museo_sans700', sans-serif; font-size: 19px; font-weight: normal; margin: 20px 0 15px; color: #003A63; line-height: 1.3;}
-  .landfillZeroWasteTeaser {font-family: 'Droid Serif', serif; font-size: 14px; line-height: 1.7; color:#666;}
+  .landfillZeroWasteTeaser {font-family: 'Droid Serif', serif; font-size: 15px; line-height: 1.7; color:#444;}
   .landfillZeroWasteGrid {display:table; width:100%; margin:50px 0 0;}
   .landfillZeroWasteColLeft {display:block; vertical-align:top;}
   .landfillZeroWasteColRight {display:block; vertical-align:top; width:100%; border-top: 3px solid #e4e4e4; padding: 50px 0 0; margin: 25px 0 0;}
@@ -342,39 +557,77 @@ Author URL: http://www.adworkshop.com
   .indMythContainer.last {margin: 0; padding: 0; border-bottom: none;}
   .indMythContentMythTitle {font-family: 'museo_sans700', sans-serif; font-size: 17px; font-weight: normal; color: #E25712; text-transform: uppercase;}
   .indMythContentTitle {font-family: 'museo_sans700', sans-serif; font-size: 17px; line-height: 1.3; color: #003A63; margin: 0 0 5px;}
-  .indMythContentTxt {font-family: 'Source Sans Pro', sans-serif; color: #666; line-height: 1.5;}
-  .landfillZeroWasteGraphicWrapper {text-align:center; margin: 0 0 30px; padding: 0 0 30px; border-bottom: 1px dotted #e4e4e4;}
+  .indMythContentTxt {font-family: 'Source Sans Pro', sans-serif; color: #444; line-height: 1.5;}
+  .landfillZeroWasteGraphicWrapper {text-align:center;}
   .landfillZeroWasteGraphicWrapper.last {margin: 0; padding: 0; border-bottom: none;}
   .landfillZeroWasteGraphicTitle {font-family: 'museo_sans700', sans-serif; font-size: 14px; font-weight: normal; color: #003A63; line-height: 1.3; margin: 0 0 10px;}
-  .landfillZeroWasteGraphicNote {font-family: 'Source Sans Pro', sans-serif; color: #666; line-height: 1.5; font-size: 12px; margin: 5px 0 15px;}
+  .landfillZeroWasteGraphicNote {font-family: 'Source Sans Pro', sans-serif; color: #444; line-height: 1.5; font-size: 12px; margin: 5px 0 15px;}
   .landfillZeroWasteGraphicContainer {line-height:0;}
   .landfillZeroWasteGraphicContainer img {width:100%; max-width:100%;}
+  .landfillZeroWasteGraphicContainer img:nth-of-type(2) {margin-top:20px;}
   .landfillZeroWasteGraphicTeaser {font-family: 'museo_sans700', sans-serif; font-size: 12px; font-weight: normal; color: #003A63; line-height: 1.3; font-style: italic; margin: 15px 0 0;}
-  .landfillZeroWasteGraphicFig {font-family: 'Source Sans Pro', sans-serif; color: #666; line-height: 1.5; font-size: 12px; margin: 5px 0 0;}
+  .landfillZeroWasteGraphicFig {font-family: 'Source Sans Pro', sans-serif; color: #444; line-height: 1.5; font-size: 12px; margin: 5px 0 0;}
+
+
+  .landfill-general-content {font-family: 'Droid Serif', serif; font-size: 14px; line-height: 1.7; color:#444;}
+  .land-highlight {font-family: 'museo_sans700', sans-serif; font-size: 15px; color:#ff681d;}
+
   
 /* ======================================================= */
 /*    RESOURCES                                            */
 /* ======================================================= */   
   .resourcesUpperContainer {width: 100%; padding: 0 30px; margin: 30px auto;}
-  .resourcesUpperContentContainer {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7;}
-  .resourceGridContainer {display:table; width:100%;}
+  .resourcesUpperContentContainer {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.8;}
+  .resourceGridContainer {display:table; width:100%; border-top: 2px dotted #76bd22; padding-top: 50px; margin-top: 40px;}
   .resourceGridColLeftContainer, .resourceGridColRightContainer {display:block; width:100%; vertical-align:top; padding:0;}
   .resourcesSolutionsContainer {padding: 0;}
-  .resourcesSolutionsTitle {font-family: 'museo_sans900', sans-serif; font-size: 23px; font-weight: normal;  color:#00263e; line-height: 1; margin: 40px 0 30px; border-bottom: 2px dotted #76bd22; padding: 0 0 20px;}
   .indResourceContainer {display:table; width:100%; padding: 0 0 50px;}
   .indResourceIconContainer {display:table-cell; vertical-align:top; width:75px; text-align:center; padding:0 20px 0 0;}
   .indResourceIconContainer img {width:100%; max-width:100%;}
   .indResourceTxtContainer {display:table-cell; vertical-align:top;}
   .indResourceTitle {font-family: 'museo_sans700', sans-serif; font-size: 19px; font-weight: normal; color: #00263e; line-height: 1.2;}
-  .indResourceTxt {margin: 5px 0 0; font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.6;}
+  .indResourceTxt {margin: 5px 0 0; font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.8;}
   .resourcesActionTitleWrapper {}
-  .resourcesActionTitle {font-family: 'museo_sans900', sans-serif; font-size: 23px; font-weight: normal; color: #00263e; line-height: 1; margin:0 0 10px;}
-  .resourcesActionSubTitle {font-family: 'Source Sans Pro', sans-serif; font-size: 15px; line-height: 1.2;}
+  .resourcesActionTitleWrapper .actiontitle-col1 {padding: 30px 0 0 0;}
+  .resourcesActionTitleWrapper .actiontitle-col2 {
+    width:150px;
+    height:auto;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+  }
+  .resourcesActionTitle {font-family: 'museo_sans700', sans-serif; font-size: 19px; font-weight: normal; color: #00263e; line-height: 1; margin:0 0 10px;}
+  .resourcesActionSubTitle {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.8; color: #444;}
+  @media only screen and (min-width: 600px) {
+    .resourcesActionSubTitle,
+    .indResourceTxt {font-size: 16px;}
+    
+    .resourcesActionTitleWrapper {display: -webkit-box;  display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: row wrap;}
+    
+    .resourcesActionTitleWrapper .actiontitle-col1 {
+      -webkit-box-ordinal-group: 1; -moz-box-ordinal-group: 1; -ms-flex-order: 1; -webkit-order: 1; order: 1;
+      flex: 1; padding: 0 50px 0 0
+    }
+    .resourcesActionTitleWrapper .actiontitle-col2 {
+      -webkit-box-ordinal-group: 2; -moz-box-ordinal-group: 2; -ms-flex-order: 2; -webkit-order: 2; order: 2;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    
+    
+  }
   .indResourceTabContainer {display:table; width:100%; margin: 30px 0 0;}
+
+  .indResourceTabContainer__label {font-family: 'museo_sans900', sans-serif; font-size: 16px; font-weight: normal; color: #00263e; line-height: 1.2; margin: 0 0 5px;}
+
   .indResourceTabContainerCol1 {display:block; vertical-align:top; width:100%; padding:0; margin:0 0 30px; text-align: center;}
-  .indResourceTabContainerCol1 img {width:100%; max-width:100%;}
-  .indResourceTabContainerCol1 img.logo {max-width:250px;}
-  .indResourceTabContainerCol2 {display: block; vertical-align: top; font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7; color: #666;}
+  .indResourceTabContainerCol1 img {width:100%; max-width:100%; height:auto;}
+  .indResourceTabContainerCol2 {display: block; vertical-align: top; font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7; color: #444;}
   .indResourceTabContainerCol2Title {font-family: 'museo_sans700', sans-serif; font-size: 19px; font-weight: normal; color: #00263e; line-height: 1.2; margin: 0 0 10px;}
   .resourcesQuote {font-style: italic; font-size: 16px; color: #4c9d2f; line-height: 1.8;}
   .resourcesMeta {font-family: 'Source Sans Pro', sans-serif; font-size: 13px; font-weight: 700; margin: 10px 0 0; line-height: 1.3;}
@@ -382,19 +635,86 @@ Author URL: http://www.adworkshop.com
   .resourcesTab .z-tabs > ul > li > a {font-family: 'museo_sans700', sans-serif !important;}
   .resourcesTab .z-tabs.flat.z-multiline > ul > li> a, .resourcesTab .z-tabs.flat.z-multiline > ul > li.z-active > a {font-weight: normal !important;}
   .resourcesTab .z-tabs.flat.vertical > .z-container > .z-content > .z-content-inner {padding: 0 2em 0 0 !important;}
+
+  .indResourceTabContainerCol2__grouping {margin-top:20px;}
+  .indResourceTabContainerCol2__grouping ul {border-left:2px solid #e4e4e4; padding-left:20px;}
+  .indResourceTabContainerCol2__grouping ul li {margin-top:10px;}
+
+  .res-man-service {background: #00263e; padding: 50px 0; color:#FFF;}
+  @media only screen and (min-width: 960px) {
+    .res-man-service {padding: 80px 0;}
+  }
+  .res-man-serviceTitleWrapper {border-bottom: 1px dotted #76bd22; padding: 0 0 30px;}
+  .res-man-serviceTitle {font-family: 'museo_sans900', sans-serif; font-size: 23px; font-weight: normal; color: #7fc136; line-height: 1; margin: 0 0 10px;}
+  @media only screen and (min-width: 700px) {
+    .res-man-serviceTitle {font-size: 33px;}
+  }
+  .res-man-serviceSubTitle {font-family: 'Droid Serif', serif; font-size: 15px; line-height: 1.6;  color: #FFF;}
+  @media only screen and (min-width: 700px) {
+    .res-man-serviceSubTitle {font-size: 18px; line-height: 1.7;}
+  }
+  .res-man-service__lower {display:block; width:100%; margin-top: 30px;}
+  @media only screen and (min-width: 700px) {
+    .res-man-service__lower {display:flex;}
+  }
+  .res-man-service__lower__images {width:100%; margin-bottom:50px;}
+  @media only screen and (min-width: 700px) {
+    .res-man-service__lower__images {flex: 0 0 30%; width:30%; margin-bottom:0; padding-right: 40px;}
+  }
+  .res-man-service__lower__images img {display:block; width:100%; max-width:100%; height:auto; margin-bottom:10px;}
+  .res-man-service__lower__images img.last {margin-bottom:0}
+  .res-man-service__lower__content {line-height:1.6;}
+  .res-man-service__lower__content strong {color: #2a9fff; font-weight: normal; font-family: 'museo_sans700', sans-serif; font-size: 19px;}
+  .res-man-service__lower__content ul {list-style: disc; margin-left: 15px; font-size: 16px;}
+  .res-man-service__lower__content ul li {margin-bottom:20px;}
+  .res-man-service__lower__content ul li:last-of-type {margin-bottom:0;}
+
+
+  .resourcesJourney {}
+  .resourcesJourney__graphic {line-height:0;}
+  .resourcesJourney__graphic img {width:102%; max-width:102%; height:auto;}
+  .resourcesJourney__content {background:#004987; padding:50px 0;}
+  @media only screen and (min-width: 960px) {
+    .resourcesJourney__content {padding:80px 0;}
+  }
+
+  .resourcesJourney__TitleWrapper {}
+  @media only screen and (min-width: 960px) {
+    .resourcesJourney__TitleWrapper {}
+  }
+
+  .resourcesJourney__Title {font-family: 'museo_sans900', sans-serif; font-size: 23px; font-weight: normal; color: #FFF; line-height: 1; margin: 0 0 10px;}
+  @media only screen and (min-width: 700px) {
+    .resourcesJourney__Title {font-size: 33px;}
+  }
+
+  .resourcesJourney__SubTitle {font-family: 'Droid Serif', serif; font-size: 15px; line-height: 1.6;  color: #FFF; }
+  @media only screen and (min-width: 1100px) {
+    .resourcesJourney__SubTitle {font-size: 18px; line-height: 1.7;}
+  }
+
+
+  .resource-leb-artc {margin-top:25px;}
+  .resource-leb-artc__item {margin-top:10px; font-size:15px;}
+  .resource-leb-artc__item span {font-family: 'museo_sans900', sans-serif; font-size: 17px; color:#00263e;}
+  .resource-leb-artc blockquote {margin-top:40px; padding-top:40px; border-top:1px dashed #e4e4e4; font-family: 'Droid Serif', serif; font-size: 18px; color:#4c9d2f; font-style:italic;}
+  .resource-leb-artc blockquote span {display:block; width:100%; margin-top:10px; color:#666; font-family: 'museo_sans700', sans-serif; font-style:normal; font-size: 14px;}
+
+  @media only screen and (min-width: 600px) {
+    .resource-leb-artc blockquote {font-size: 22px;}
+  }
+
+  @media only screen and (min-width: 1100px) {
+    .resource-leb-artc blockquote {font-size: 27px;}
+  }
+
+
   
 /* ======================================================= */
 /*    CARBON FOOTPRINT                                     */
 /* ======================================================= */   
   .carbonUpperContainer {width: 100%; padding: 0 30px; margin: 30px auto;}
-  .carbonUpperContentContainer {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7;}
-  .carbonUpperGridContainer {display:table; width:100%;}
-  .carbonUpperGridContainer img {width:100%; max-width:100%;}
-  .carbonUpperGridCol1 {display:block; width:100%; vertical-align:top; margin: 0 0 40px; padding: 0 0 15px; border-bottom: 1px dotted #e4e4e4;}
-  .carbonUpperGridCol2 {display:block; vertical-align:top; border-left: none; padding: 0;}
-  .carbonUpperGridInnerCol2 {color: #00263e; font-size: 13px; line-height: 1.6; font-family: 'Source Sans Pro', sans-serif; font-weight: 600;}
-  .carbonUpperGridInnerImgWrapper {line-height:0; margin:0 0 30px;}
-  .carbonUpperGridInnerCol2Txt {}
+  .carbonUpperContentContainer {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.8;}
   
   .electrictyProContainer {
   background: rgb(179,227,241);
@@ -412,7 +732,19 @@ Author URL: http://www.adworkshop.com
   .electrictyProGridCol1 {display:block; width:100%; vertical-align:bottom; font-family: 'Droid Serif', serif; font-size: 15px; line-height: 1.7; color: #26526E; text-align:left; padding:0;}
   .electrictyProGridCol2 {display:block; vertical-align:top; margin: 40px auto 0;}
   .electrictyProGridInnerCol1 {padding: 0; border-right: none;}
-  .electrictyProTitle {font-family: 'museo_sans900', sans-serif; font-weight: normal; font-size: 36px; color: #00263e; margin: 0 0 15px; line-height: 1;}
+
+  .electrictyProGridInnerCol1-wrapper {display: table; width: 100%;}
+  .electrictyProGridInnerCol1-wrapper-icon {display: table-cell; vertical-align: top; width: 20%; line-height: 0; padding: 0 20px 0 0;}
+  .electrictyProGridInnerCol1-wrapper-icon img {width:100%; max-width:100%; height:auto;}
+  .electrictyProGridInnerCol1-wrapper-content {display: table-cell; vertical-align: top;}
+  @media only screen and (min-width: 600px) {
+    .electrictyProGridInnerCol1-wrapper-icon {width: 15%;}
+  }
+  @media only screen and (min-width: 820px) {
+    .electrictyProGridInnerCol1-wrapper-icon {width: 98px;}
+  }
+
+  .electrictyProTitle {font-family: 'museo_sans900', sans-serif; font-weight: normal; font-size: 20px; color: #00263e; margin: 0 0 15px; line-height: 1;}
   .electrictyProGridCol1 span {font-weight:700;}
   .electrictyProTxt {font-size: 13px; line-height: 1.4; font-family: 'museo_sans700', sans-serif;}
   .electrictyProGridInnerCol2 {display:table; width:100%;}
@@ -430,36 +762,55 @@ Author URL: http://www.adworkshop.com
   .carbonTabEmissionCol2 {display:block; vertical-align:bottom; line-height:0;}
   .carbonTabEmissionTitle {font-family: 'museo_sans900', sans-serif; font-weight: normal; font-size: 24px; color: #00263e; margin: 0 0 5px; line-height: 1;}
   .carbonTabEmissionSubTitle {font-family: 'museo_sans700', sans-serif; font-weight: normal; font-size: 14px; color: #0082ca; margin: 0 0 15px; line-height: 1;}
-  .carbonTabEmissionTxt {font-size: 15px; line-height: 1.5; color: #666; font-family: 'Source Sans Pro', sans-serif;}
-  .carbonTabEmissionCol2 img {width:100%; max-width:100%;}
+  .carbonTabEmissionTxt {font-size: 15px; line-height: 1.5; color: #444; font-family: 'Source Sans Pro', sans-serif;}
+  .carbonTabEmissionCol2 img {width:100%; max-width:100%; height: auto;}
   
   /*Tab: Reduction in Greenhouse Gas Per Ton*/
-  .carbonTabReductionContainer {display:table; width:100%;}
+  .carbonTabReductionContainer {display:table; width:100%; margin-top: 40px}
   .carbonTabReductionCol1 {display:block; vertical-align:middle; width:100%; padding:0; margin:0 0 30px; text-align:left;}
   .carbonTabReductionCol2 {display:block; vertical-align:middle; line-height:0;}
-  .carbonTabReductionTitle {font-family: 'museo_sans900', sans-serif; font-weight: normal; font-size: 24px; color: #00263e; margin: 0 0 5px; line-height: 1;}
-  .carbonTabReductionSubTitle {font-family: 'museo_sans700', sans-serif; font-weight: normal; font-size: 14px; color: #0082ca; margin: 0 0 15px; line-height: 1;}
-  .carbonTabReductionTxt {font-size: 15px; line-height: 1.5; color: #666; font-family: 'Source Sans Pro', sans-serif;}
-  .carbonTabReductionCol2 img {width:100%; max-width:100%;}
+  .carbonTabReductionTitle {font-family: 'museo_sans900', sans-serif; font-weight: normal; font-size: 20px; color: #00263e; margin: 0 0 5px; line-height: 1;}
+  .carbonTabReductionSubTitle {font-family: 'museo_sans700', sans-serif; font-weight: normal; font-size: 15px; color: #0082ca; margin: 0 0 5px; line-height: 1;}
+  .carbonTabReductionTeaser {font-family: 'Droid Serif', serif; font-size: 14px; line-height: 1.6; margin: 15px 0 0; color: #444;}
+  .carbonTabReductionTxt {font-size: 15px; line-height: 1.5; color: #444; font-family: 'Source Sans Pro', sans-serif;}
+  .carbonTabReductionCol2 img {width:100%; max-width:100%; height: auto; margin-bottom:40px;}
+
+  .carbonTabReductionContainer ul {list-style-type: square; margin-left: 15px; margin-bottom: 25px;}
+  .carbonTabReductionContainer ul li {margin-bottom:15px;}
+  .carbonTabReductionContainer ul li:last-of-type {margin-bottom:0;}
   
   /*Tab: Improvements*/
-  .improvementTabTitle {font-family: 'museo_sans700', sans-serif; font-size: 19px; font-weight: normal; margin: 0; color: #003A63; line-height: 1.3; margin:0 0 10px;}
-  .improvementTabSubTitle {font-family: 'Droid Serif', serif; font-size: 15px; line-height: 1.7; color: #666;margin:0 0 50px;}
+  .improvementTabTitle {font-family: 'museo_sans900', sans-serif; font-weight: normal; font-size: 24px; color: #00263e; margin: 0 0 30px; line-height: 1;}
+  .improvementTabTitle span {font-family: 'museo_sans700', sans-serif; display:block; font-weight: normal; font-size: 14px; color: #0082ca; margin: 5px 0 0; line-height: 1;}
+  .improvementTabSubTitle {font-family: 'Droid Serif', serif; font-size: 15px; line-height: 1.7; color: #444; margin:0 0 50px;}
   .improvementGridContainer {display:table; width:100;}
   .improvementGridCol1, .improvementGridCol2 {display:block; vertical-align:top; width:100%; padding:0;}
+  .improvementGridCol2-upperElement {margin-bottom:50px; padding-bottom:50px; border-bottom:5px solid #E4e4e4; margin-top:50px; padding-top:50px; border-top:5px solid #E4e4e4;}
   .indImprovementContainer {display:table; width:100%;}
   .indImprovementCol1 {display:table-cell; vertical-align:top; width:20%; line-height:0; padding:0 20px 0 0;}
   .indImprovementCol2 {display:table-cell; vertical-align:top;}
-  .indImprovementInnerWrapper {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7; color: #666; border-bottom: 1px dotted #e4e4e4; margin: 0 0 25px;}
+  .indImprovementInnerWrapper {font-family: 'Droid Serif', serif; font-size: 15px; line-height: 1.7; color: #444; margin: 0 0 40px;}
   .indImprovementInnerWrapper.lastCol1 {}
   .indImprovementInnerWrapper.last {border-bottom: none; margin: 0;}
-  .indImprovementInnerTitle {font-family: 'museo_sans700', sans-serif; font-size: 19px; font-weight: normal; margin: 0 0 15px; color: #003A63; line-height: 1.3;}
+  .indImprovementInnerTitle {font-family: 'museo_sans900', sans-serif; font-weight: normal; font-size: 20px; color: #00263e; margin: 0 0 15px; line-height: 1;}
   .indImprovementInnerWrapper span {font-family: 'museo_sans700', sans-serif; font-size: 16px; font-weight: normal; color: #003A63;}
   .indImprovementContainer img {width:100%; max-width:100%;}
+
+  .carbon-tab-impact-grouping {margin-bottom: 60px; padding-bottom: 60px; border-bottom: 8px solid #e4e4e4;}
+  .carbon-tab-impact-grouping:last-of-type {margin-bottom: 0; padding-bottom: 0; border-bottom: none;}
+
+  .carbon-footnote {font-size:13px; font-style:italic; color:#666; margin-top:30px;}
   
 /* ======================================================= */
 /*    OUR PEOPLE                                           */
-/* ======================================================= */   
+/* ======================================================= */
+  .peopleGrouping {background: #00263e; position: relative; width: 100%; padding: 60px 0; border-bottom: 10px solid rgba(0,0,0,.2); color:#FFF;}
+  .peopleGroupingWrapper {width:90%; max-width:1300px; margin:0 auto;}
+  .peopleGrouping h2 {color: #76bd22; font-size:24px; line-height: 1.1;}
+  .peopleGroupingTeaser {font-family: 'Droid Serif', serif; font-size: 16px; line-height: 1.7; color: #FFF; margin-top: 15px;}
+  .peopleGrouping .twoColumnContentContainer {line-height:1.8; font-size:15px; margin-top:30px;}
+  .peopleGrouping .twoColumnContentContainer p:last-of-type {margin:0;}
+
   .peopleHeaderImageContainer {line-height:0; padding:0; border-bottom: 2px solid #FFF;}
   .peopleHeaderImageContainer img {width:100%; max-width:100%;}
   .peopleUpperContainer {width: 100%; padding: 0 30px; margin: 40px auto 15px;}
@@ -470,18 +821,21 @@ Author URL: http://www.adworkshop.com
   .peopleUpperInnerGridCol2 {border-left:none; padding:0;}
   .coreValuesContainer {width: 100%; /*background: #ECF8FF; padding: 60px 0; border-top: 2px dotted #AFDB79; border-bottom: 2px dotted #AFDB79;*/ padding: 60px 0 30px; border-top: 6px solid #e4e4e4;}
   .coreValuesInnerContainer {display:table; width:100%;}
-  .coreValuesInnerCol1 {display:block; vertical-align:top; text-align:left; font-family: 'Droid Serif', serif; font-size: 14px; line-height: 1.7;}
+  .coreValuesInnerCol1 {display:block; vertical-align:top; text-align:left; font-family: 'Droid Serif', serif; font-size: 15px; line-height: 1.7;}
   .coreValuesInnerCol2 {display:block; vertical-align:top; width:100%; padding:0;}
   .coreValuesInnerCol1Title {font-family: 'museo_sans900', sans-serif; font-size: 23px; font-weight: normal; margin: 0 0 10px; color: #00263e; line-height:1.1;}
+  .coreValuesInnerCol1Title.next {margin-top:50px;}
+  .coreValuesInnerCol1Title.image {margin:20px 0 0; width:100%;}
+  .coreValuesInnerCol1Title.image img {width:100%; max-width:300px; height:auto;}
   .coreValuesInnerCol1Txt {}
   .coreValuesInnerCol2Wrapper {border-left:none; padding:0; margin:30px 0 0;}
   .indCoreValueOutterContainer {display:table; width:100%;}
   .indCoreValueOutterCol1, .indCoreValueOutterCol2 {display:block; vertical-align:top; width:100%; padding:0;}
   .indCoreValueContainer {}
   .indCoreValueTitle {font-family: 'museo_sans900', sans-serif; font-size: 21px; font-weight: normal; margin: 0 0 5px; color: #76bd22; line-height: 1; text-transform: uppercase;}
-  .indCoreValueSubTitle {font-family: 'museo_sans700', sans-serif; font-size: 15px; font-weight: normal; margin: 0 0 10px; color: #00263e; line-height: 1.2;}
-  .indCoreValueTxt {line-height: 1.5; font-size: 14px; color: #555;}
-  .indCoreValueSep {width:20%; height:1px; /*border-top:1px dotted #AFDAF2;*/ margin:20px 0; border-top:1px solid #e4e4e4;}
+  .indCoreValueSubTitle {font-family: 'museo_sans700', sans-serif; font-size: 16px; font-weight: normal; margin: 0 0 10px; color: #00263e; line-height: 1.3;}
+  .indCoreValueTxt {line-height: 1.6; font-size: 15px; color: #555;}
+  .indCoreValueSep {width:20%; height:1px; /*border-top:1px dotted #AFDAF2;*/ margin:30px 0; border-top:1px solid #e4e4e4;}
   
   .peopleTabs {width: 100%; margin: 40px auto; padding: 0 30px;}
   .peopleTabs .z-tabs > ul > li > a {font-family: 'museo_sans700', sans-serif !important;}
@@ -489,62 +843,49 @@ Author URL: http://www.adworkshop.com
   .internalTabContainer {margin:20px 0 0;}
   
   /*Tab: High Impact Leaders*/
-  .dhilTitleContainer {display:table; width:100%;}
-  .dhilTitleEmpty {display:none;}
-  .dhilTitleWrapper {display:block; vertical-align:top; width:100%; padding:0;}
-  .dhilTitle {font-family: 'museo_sans700', sans-serif; font-size: 23px; font-weight: normal; color: #00263e; line-height: 1.1; margin: 0 0 20px;}
-  .dhilGridContainer {display:table; width:100%;}
-  .dhilGridCol1 {display:block; vertical-align:top; line-height:0; margin:0 0 20px;}
-  .dhilGridCol2 {display:block; vertical-align:top; width:100%; padding: 0; font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7; color: #666;}
-  .dhilGridCol1 img {width:100%; max-width:100%;}
-  .dhilGridInnerCol2 {border-left:none; padding:0;}
-  .dhilGridSubTitle {font-family: 'museo_sans700', sans-serif; font-size: 18px; color: #00263e; line-height:1.1; margin:0 0 8px;}
-  
-  /*Tab: Health & Safety*/
-  .peopleHealthContainer {display:table; width:100%;}
-  .peopleHealthContainerCol1 {display:block; vertical-align:top;}
-  .peopleHealthContainerCol2 {display:block; vertical-align:top; width:100%; margin: 30px 0 0; padding: 40px 0 0; border-top: 1px dotted #e4e4e4;}
-  .peopleHealthInnerContainerCol2 {padding:0; border-left:none;}
-  .indCommitContainer {margin: 0 0 40px; padding: 0 0 30px; border-bottom: 1px dotted #e4e4e4;}
-  .indHealthContainer {}
-  .peopleHealthTitle {font-family: 'museo_sans700', sans-serif; font-size: 23px; font-weight: normal; color: #00263e; line-height: 1.1; margin:0 0 15px;}
-  .peopleHealthTxt {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7; color: #666;}
-  .peopleHealthNestedContainer {display:table; width:100%;}
-  .peopleHealthNestedimgContainer {display:block; vertical-align:top; width:100%; padding:0;}
-  .peopleHealthNestedTxtContainer {display:block; vertical-align:top;}
-  .peopleHealthNestedimgWrapper {margin:5px 0 15px; line-height:0;}
-  .peopleHealthNestedimgWrapper img {width:100%; max-width:100%;}
-  .healthChartContainer {margin: 20px 0 0;}
-  .healthChartTitle {font-family: 'museo_sans700', sans-serif; font-size: 15px; font-weight: normal; color: #00263e; line-height: 1.1;}
-  .healthChartDescription {line-height: 1.5; font-size: 12px; color: #666; margin:3px 0 0;}
-  .healthChartImgWrapper {line-height:0; margin:15px 0 0;}
-  .healthChartImgWrapper img {width:100%; max-width: 450px;}
-  
-  /*Tab: Community Engagement*/
-  .peopleCommunityTitle {font-family: 'museo_sans700', sans-serif; font-size: 23px; font-weight: normal; color: #00263e; line-height: 1.1; margin: 0 0 15px;}
-  .peopleCommunityTxt {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7; color:#666;}
-  
-  .partnershipGridCol1 {display:block; vertical-align:top; line-height: 1.5; background: #ECF8FF; padding: 30px; margin: 50px 0 0; border: 2px dotted #AFDB79; color: #444; font-family: 'Source Sans Pro', sans-serif; font-size: 13px;}
-  .partnershipGridCol1Title {font-family: 'museo_sans700', sans-serif; font-size: 18px; color: #00263e; line-height: 1.1; margin: 0 0 20px; padding: 0 0 20px; border-bottom: 1px dotted #AFDAF2;}
-  .partnershipGridCol1SubTitle {font-size: 16px; font-weight: 700; margin: 0 0 5px;}
-  .partnershipGridCol1SubTitle span {font-style:italic; color:#00263e;}
-  .partnershipGridCol1Quote {font-style: italic; font-family: 'Droid Serif', serif; font-size: 17px; line-height: 1.6; color: #4c9d2f;}
-  .partnershipGridCol1QuoteName {font-weight: 600; margin: 6px 0 0;}
-  .partnershipGridCol1QuotePosition {font-size: 11px; font-style: italic; margin: 0 0 0 5px;}
-  
-  /*Tab: Partnerships*/
-  .partnershipTitleContainer {display: block; width: 100%;}
-  .partnershipTitle {font-family: 'museo_sans700', sans-serif; font-size: 23px; font-weight: normal; color: #00263e; line-height: 1.1; margin: 0 0 8px;}
-  .partnershipSubTitle {padding:0; margin:0 0 50px; font-family: 'Source Sans Pro', sans-serif; font-size: 17px; line-height: 1.2; color: #76bd22;}
-  .partnershipGridWrapper {display: block; vertical-align: top; width: 100%; padding: 0; font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7; color: #666;}
-  .indPartnershipContainer {border-bottom: 3px solid #EFEFEF; margin: 0 0 30px; padding:0 0 30px}
-  .indPartnershipContainer.last {margin: 0; padding:0; border:none;}
-  .indPartnershipTitle {font-family: 'museo_sans700', sans-serif; font-size: 16px; font-weight: normal; margin: 0 0 15px; color: #00263e; line-height: 1.1;}
-  .indPartnershipInnerContainer {display:table; width:100%;}
-  .indPartnershipInnerContainer.last {margin: 0;}
-  .indPartnershipInnerCol1 {display:block; vertical-align:top; width:100%; padding:0; margin:0 0 15px; line-height:0;}
-  .indPartnershipInnerCol2 {display:block; vertical-align:top;}
-  .indPartnershipInnerCol1 img {width:100%; max-width:100%;}
+  .talentTitle {font-family: 'museo_sans700', sans-serif; font-size: 23px; font-weight: normal; color: #00263e; line-height: 1.1; margin: 0 0 20px;}
+  .talentTeaser {font-family: 'Droid Serif', serif; font-size: 14px; line-height: 1.7; color:#444;}
+
+  .talentGridMainContainer {margin:50px 0 0;}
+  .talentGridMainContainer img {width:100%; max-width:100%; height:auto;}
+  .talentGridMainContainer img.margin-top {margin-top: 30px;}
+  .talentGridMainContainer img.margin-bottom {margin-bottom:30px;}
+  .talentGridMainContainer img.margin-both {margin:30px 0;}
+  .talentGridMainContainer blockquote {font-family: 'Droid Serif', serif; font-style:italic; font-size: 18px; line-height: 1.7; color: #003A63;}
+  .talentGridMainContainer blockquote span {font-family: 'museo_sans900', sans-serif; display:block; font-style:normal; font-size:13px; color: #444; margin-top:10px;}
+  .talentGridOutterContainer {display:block; width:100%;}
+  .talentGridOutterCol1,
+  .talentGridOutterCol2,
+  .talentGridOutterCol3 {display:block; vertical-align:top; width:100%; padding:0;}
+  .talentGridContainer {}
+  .talentGridContainer p.last {margin:0;}
+  .talentGridTitle {font-family: 'museo_sans900', sans-serif; font-size: 21px; font-weight: normal; margin: 0 0 5px; color: #76bd22; line-height: 1; text-transform: uppercase;}
+  .talentGridSubTitle {font-family: 'museo_sans700', sans-serif; font-size: 15px; font-weight: normal; margin: 0 0 10px; color: #00263e; line-height: 1.2;}
+  .talentGridTxt {line-height: 1.5; font-size: 14px; color: #555;}
+  .talentGridSep {width:20%; height:1px; /*border-top:1px dotted #AFDAF2;*/ margin:30px 0; border-top:1px solid #e4e4e4;}
+
+  /*Tab: Comm Engage*/
+  .commTitle {font-family: 'museo_sans700', sans-serif; font-size: 23px; font-weight: normal; color: #00263e; line-height: 1.1; margin: 0 0 20px;}
+  .commTeaser {font-family: 'Droid Serif', serif; font-size: 15px; line-height: 1.7; color:#444;}
+  .twoColumnContentContainer.commContent {line-height:1.6; font-size:15px; margin-top:30px; color:#555;}
+  .twoColumnContentContainer.commContent p:last-of-type {margin:0;}
+
+  .commEngageContainer {display:table; width:100%; margin-top:50px;}
+  .commEngageContainerCol1 {display:block; vertical-align:top;}
+  .commEngageContainerCol2 {display:block; vertical-align:top; width:100%;}
+  .commEngageInnerContainerCol2 {padding:0; border-left:none;}
+  .indCommitContainer {margin: 0 0 20px; padding: 0 0 10px; border-bottom: 1px dotted #e4e4e4;}
+  .indHealthContainer {width:100%; max-width:100%; height:auto;}
+  .commEngageTitle {font-family: 'museo_sans700', sans-serif; font-size: 23px; font-weight: normal; color: #00263e; line-height: 1.1; margin:0 0 15px;}
+  .commEngageTxt {font-family: 'Droid Serif', serif; font-size: 13px; line-height: 1.7; color: #444;}
+  .commEngageContainerCol2 .commEngageTxt {margin: 30px 0; padding-bottom: 25px; border-bottom: 1px dotted #e4e4e4;}
+  .commEngageImgContainer {display:block; width:100%; padding:0;}
+  .commEngageImgContainer img {display:block; width:100%; padding:0;}
+  .commEngageNestedContainer {display:table; width:100%;}
+  .commEngageNestedimgContainer {display:block; vertical-align:top; width:100%; padding:0;}
+  .commEngageNestedTxtContainer {display:block; vertical-align:top;}
+  .commEngageNestedimgWrapper {margin:5px 0 15px; line-height:0;}
+  .commEngageNestedimgWrapper img {width:100%; max-width:100%; height:auto;}
   
 /* ======================================================= */
 /*    SCORECARD                                            */
@@ -598,7 +939,7 @@ Author URL: http://www.adworkshop.com
   
   /*Key*/
   .mapKey {padding: 15px; background: #fff; display: inline-block; line-height:1.5;}
-  .keyMobileContainer .mapKey {padding: 0; display: block; line-height:1.5; font-size:0; margin: 30px 0 0; border-bottom: 3px solid #e4e4e4; padding: 0 0 30px;}
+  .keyMobileContainer .mapKey {display: block; line-height:1.5; font-size:0; margin: 30px 0 0; border-bottom: 3px solid #e4e4e4; padding: 0 0 30px;}
   .keyMobileContainer .mapToggles {font-size: 15px;}
   .mapToggles {width: 100%; display: table;margin:0 0 8px; padding:0 0 8px; border-bottom:1px dotted #e4e4e4;}
   .mapToggles.last3 {margin:0; padding:0; border-bottom:none;}
@@ -615,6 +956,8 @@ Author URL: http://www.adworkshop.com
   .mapTogglesClickOutInnerContainer {padding: 0; border-left:none;}
   .mapTogglesClickOutInnerContainer a {color:#AAA;}
   .mapTogglesClickOutInnerContainer a:hover {color:#00263e;}
+
+  .operations-message {font-size:13px; font-style:italic; line-height:1.4; color:#666; margin-top:50px;}
   
 /* ======================================================= */
 /*   Media Queries                                         */
@@ -628,7 +971,7 @@ Author URL: http://www.adworkshop.com
   h2.subPageTitle {padding: 30px 0; font-size: 30px;}
   
   .internalPageTitleNoColor {font-size: 40px;}
-  .internalPageTitleContainerNoColorBG {background:url('../i/general/spacer.png') repeat-x center 45%;}
+  /*.internalPageTitleContainerNoColorBG {background:url('../i/general/spacer.png') repeat-x center 45%;}*/
   
   /*Services: Main*/
   .indServiceContentLinkContainer {display:table;}
@@ -640,13 +983,10 @@ Author URL: http://www.adworkshop.com
   
   /*Recycle*/
   .recycleUpperContainer {padding:0 40px;}
-  .recycleUpperContentContainer {font-size: 14px;}
+  .recycleUpperContentContainer {font-size: 16px;}
   .recycleTabs {padding:0 40px;}
-  .recycleFocusColLeftWrapper {font-size: 14px;}
+  .recycleFocusColLeftWrapper {font-size: 16px; line-height:1.8;}
   .recycleGraphDescriptionWrapper {font-size: 14px;}
-  .recycleGridImageContainer {width:33.3333333%; width: calc(100% / 3);}
-  .recycleGrid li {width:33.3333333%; width: calc(100% / 3);}
-  .recycleGrid li a div.recycleInnerGrid {font-size: 12px; padding:10px 25px;}
   
   /*Collection*/
   .indAFCCo1Wrapper {display:inline-block; width:50%; padding: 0 25px 0 0; margin:0 0 40px;}
@@ -658,7 +998,7 @@ Author URL: http://www.adworkshop.com
   
   /*Organics*/
   .organicsUpperContainer {padding:0 40px;}
-  .organicsUpperContentContainer, .upperFoodScrapDescriptContainer, .lowerFoodScrapDescriptContainer {font-size: 14px;}
+  .organicsUpperContentContainer, .upperFoodScrapDescriptContainer, .lowerFoodScrapDescriptContainer {font-size: 16px;}
   .earthlifeInnerContainerRightTitle {font-size: 35px;}
   
   /*Energy*/
@@ -669,19 +1009,19 @@ Author URL: http://www.adworkshop.com
   
   /*Landfills*/
   .landfillUpperContainer {padding: 0 40px;}
-  .landfillUpperContainer h2 {font-size: 23px;}
-  .landfillUpperTeaserTxt {font-size: 15px;}
   .landfillTabs {padding: 0 40px;}
   .landfillSafeTitle {font-size: 27px;}
   .landfillSafeTeaser {font-size: 17px;}
   .landfillSafeGridContainer {font-size: 14px;}
   .landfillZeroWasteTitle {font-size: 27px;}
-  .landfillZeroWasteTeaser {font-size: 15px;}
+  .landfillZeroWasteTeaser {font-size: 16px;}
   .indMythContentTitle {font-size: 18px;}
+  .landfill-general-content {font-size: 15px;}
+  .landfill-general-content.text-right {text-align:right;}
   
   /*Resources*/
   .resourcesUpperContainer {padding: 0 40px;}
-  .resourcesUpperContentContainer {font-size: 14px;}
+  .resourcesUpperContentContainer {font-size: 16px;}
   .resourcesTab {padding:0 40px;}
   
   /*Operations*/
@@ -695,19 +1035,16 @@ Author URL: http://www.adworkshop.com
   .indCoreValueOutterCol2 {display:table-cell; width:50%; padding:0 0 0 25px;}
   .indCoreValueSep.mobile {display:none;}
   .peopleTabs {padding: 0 40px;}
-  .dhilGridCol2 {font-size: 14px;}
-  .peopleCommunityTxt {font-size: 14px;}
-  .partnershipSubTitle {font-size: 21px;}
   
   /*Carbon Footprint*/
   .carbonUpperContainer {padding: 0 40px;}
-  .carbonUpperContentContainer {font-size: 14px;}
+  .carbonUpperContentContainer {font-size: 16px; line-height: 1.8;}
   .electrictyProGridImgContainer {display:table-cell; vertical-align:bottom; width:50%; line-height:0;}
   .electrictyProGridImgContainer.top {margin:0;}
-  .electrictyProGridCol1 {text-align:center;}
-  .improvementTabTitle {font-size: 23px;}
   .indImprovementCol1 {width:15%;}
   .carbonTabs {padding: 0 40px;}
+  .carbonTabReductionTitle {font-size: 24px;}
+  .carbonTabReductionTeaser {font-size: 16px; line-height: 1.8;}
   
   /*ScoreCard*/
   .stacktable.small-only span.title {font-size: 18px;}
@@ -718,22 +1055,21 @@ Author URL: http://www.adworkshop.com
   .threeColumnContentContainer {-webkit-columns: 2; -moz-columns: 2; columns: 2; -webkit-column-gap: 40px; -moz-column-gap: 40px; column-gap: 40px;}
   
   /*Organics*/
+  .indFoodScrapDescriptContainer {display: flex;}
   .indOrganicsUpperDescriptContainerLeft {display:table-cell; padding: 0 30px 0 0; margin:0;}
-  .indOrganicsUpperDescriptContainerRight {display:table-cell; width:60%;}
-  .indFoodScrapDescriptContainerLeft {display: table-cell; padding: 0 30px 0 0; margin: 0;}
-  .indFoodScrapDescriptContainerRight {display: table-cell; width: 60%;}
+  .indOrganicsUpperDescriptContainerRight {}
+  .indFoodScrapDescriptContainerLeft {padding: 0 0 0 30px; margin: 10px 0 0; width: 40%; flex: 0 0 40%; max-width: 40%; order: 2;}
+  .indFoodScrapDescriptContainerRight {width: 60%;}
   .earthlifeInnerContainerLeft {display:table-cell; width:150px;}
   .earthlifeInnerContainerRight {display:table-cell; padding: 0 0 0 50px;}
   
   /*Landfills*/
-  .landfillZeroWasteGraphicWrapper {display: table-cell; vertical-align: top; width: 50%; padding: 0 30px; margin:0; border-bottom:none;}
+  
   
   /*Resources*/
   .resourcesSolutionsTitle {font-size: 33px; margin: 0 0 40px;}
   .indResourceTabContainerCol1 {display:table-cell; width:25%; padding:0 30px 0 0; margin:0;}
-  .indResourceTabContainerCol2 {display: table-cell;}
-  .resourcesActionTitle {font-size: 33px;}
-  .resourcesActionSubTitle {font-size: 17px;}
+  .indResourceTabContainerCol2 {display: table-cell; font-size: 15px;}
   
   /*Operations*/
   .mapTitle {font-size: 45px;}
@@ -741,32 +1077,28 @@ Author URL: http://www.adworkshop.com
   .keyMobileContainer .mapToggles {width: 33.33333%;}
   .keyMobileContainer .mapToggles.last {margin:0; padding:0; border-bottom:none;}
   
-  /*Carbon Footprint*/
-  .carbonUpperGridInnerCol2 {display:table;}
-  .carbonUpperGridInnerImgWrapper {display: table-cell; width: 40%; padding: 0 30px 0 0; vertical-align: top; margin: 0;}
-  .carbonUpperGridInnerCol2Txt {display: table-cell; vertical-align: middle;}
-  
   /*Our People*/
-  .dhilTitle {font-size: 25px;}
-  .peopleHealthNestedimgContainer {display:table-cell; width:40%; padding:0 30px 0 0;}
-  .peopleHealthNestedTxtContainer {display:table-cell;}
-  .partnershipTitle {font-size: 25px;}
-  .indPartnershipInnerCol1 {display:table-cell; width:25%; padding:5px 30px 0 0; margin:0;}
-  .indPartnershipInnerCol2 {display:table-cell;}
+ .peopleGrouping h2 {font-size:40px;}
+  .peopleGroupingTeaser {font-size: 18px; line-height: 1.8;}
+  .commEngageNestedimgContainer {display:table-cell; width:55%; padding:0 30px 0 0;}
+  .commEngageNestedTxtContainer {display:table-cell;}
   }
   
   @media only screen and (min-width: 820px) {
+  .internalPageTitleContainer-desktop {display: block;}
+  .internalPageTitleContainer {display:none;}
+   
   .internalPageTitleIconContainer {display:table-cell; width:180px; margin:0; padding: 0 30px 0 0;}
   .internalPageTitleContentContainer {display:table-cell; text-align:left;}
   .internalPageTitle {font-size: 70px; margin:0 0 5px;}
   .internalPageTitleDescription {font-size: 17px;}
   .internalPageTitleNoColor {font-size: 50px;}
-  .internalPageTitleDescriptionNoColor {font-size: 19px;}
+  .internalPageTitleDescriptionNoColor {font-size: 20px;}
   
   /*Recycle*/
-  .recycleGraphicColumnLeft {display: table-cell; padding:0 30px 0 0;}
-  .recycleGraphicColumnRight {display: table-cell; width:50%;}
-  .recycleGraphicInnerColumnRight {border-left:1px dotted #e4e4e4; border-top:none; padding:0 0 0 30px; margin:0;}
+  .recycleGraphicColumnLeft {display: table-cell; padding:0 0 0 40px;}
+  .recycleGraphicColumnRight {display: table-cell; width:60%;}
+  .recycleGraphicInnerColumnRight {border-right:1px dotted #e4e4e4; border-top:none; padding:0 40px 0 0; margin:0;}
   .recycleProjectDescriptionWrapper {display:table-cell; width:30%; text-align:right; padding:0 30px 0 0;}
   .recycleProjectInnerDescriptionWrapper {padding:0 30px 0 0; margin:0; border-right:1px dotted #ccc; border-bottom:0;}
   .recycleProjectContentWrapper {display:table-cell; width:70%;}
@@ -782,14 +1114,12 @@ Author URL: http://www.adworkshop.com
   .foodScrapTitle {font-size: 44px; margin: 0 0 25px;}
   
   /*Energy*/
-  .indEnergyContainer {display: inline-block; width:50%; padding:0 25px 0 0;}
-  .indEnergyContainer.odd {padding:0 0 0 25px;}
+  .indEnergyContainer {display: inline-block; width:50%; padding:0 20px;}
+  .indEnergyContainer.odd {padding:0 20px;}
   .indEnergyTitle.second {border-top: none; margin: 0; padding: 0;}
   h2.CabotTitle {font-size: 30px;}
   
   /*Landfills*/
-  .landfillUpperContainer h2 {font-size: 27px;}
-  .indLandfillCallOut {font-size: 21px; text-align: center;}
   .landfillGasEnergyDescriptionCol1 {display:table-cell; vertical-align:middle; width:33.3333%; padding: 0 30px 30px; font-size:13px;}
   .landfillGasEnergyDescriptionCol2 {display:table-cell; vertical-align:middle; width:33.3333%; padding: 0 30px 30px; font-size:13px;}
   .landfillGasEnergyDescriptionCol3 {display:table-cell; vertical-align:middle; width:33.3333%; padding: 0 30px 30px; font-size:13px;}
@@ -805,8 +1135,9 @@ Author URL: http://www.adworkshop.com
   
   /*Carbon Footprint*/
   .electrictyProGridCol2 {width: 80%;}
-  .improvementTabTitle {font-size: 27px;}
-  .improvementTabSubTitle {font-size: 17px;}
+  .improvementGridCol1 {display:table-cell; width:40%; padding:0 50px 0 0;}
+  .improvementGridCol2 {display:table-cell; width:60%; padding:0 0 0 50px;}
+  .improvementGridCol2-upperElement {margin-top:0; padding-top:0; border-top:none;}
   
   /*Scorecard*/
   .indScorecardTableWrapper {border: 2px solid #00263e;}
@@ -816,8 +1147,7 @@ Author URL: http://www.adworkshop.com
   .internalPageTitle {font-size: 90px;}
   .internalPageTitle.resources {font-size: 60px;}
   .internalPageTitleDescription {font-size: 20px;}
-  .internalPageTitleNoColor {font-size: 80px;}
-  .internalPageTitleDescriptionNoColor {font-size: 23px;}
+  .internalPageTitleDescriptionNoColor {font-size: 28px;}
   
   /*Recycle*/
   .recycleGraphDescriptionContainer {display:table-cell; width:40%; text-align:right; padding: 0 40px 0 0;}
@@ -850,15 +1180,19 @@ Author URL: http://www.adworkshop.com
   .peopleUpperGridCol1 {display:table-cell; text-align:right;}
   .peopleUpperGridCol2 {display:table-cell; width:60%; padding:0 0 0 30px;}
   .peopleUpperInnerGridCol2 {border-left:1px dotted #e4e4e4; padding:0 0 0 30px;}
-  .dhilTitleEmpty {display:table-cell; vertical-align:top; width:35%;}
-  .dhilTitleWrapper {display:table-cell; width:65%; padding:0 0 0 30px;}
-  .dhilTitle {padding:0 0 0 30px;}
-  .dhilGridCol1 {display:table-cell; margin:0;}
-  .dhilGridCol2 {display:table-cell; width:65%;padding: 0 0 0 30px;}
-  .dhilGridInnerCol2 {border-left:1px dotted #e4e4e4; padding:0 0 0 30px;}
-  .peopleHealthContainerCol1 {display:table-cell; margin:0;}
-  .peopleHealthContainerCol2 {display:table-cell; width:40%; padding:0 0 0 40px; margin:0; border-top:none;}
-  .peopleHealthInnerContainerCol2 {padding:0 0 0 40px; border-left:1px dotted #e4e4e4;}
+  .commEngageContainerCol1 {display:table-cell; margin:0;}
+  .commEngageContainerCol2 {display:table-cell; width:40%; padding:0 40px 0 0; margin:0; border-top:none;}
+  .commEngageContainerCol2 .commEngageTxt:last-of-type {border:none; margin: 0; padding-bottom: 0;}
+  .commEngageInnerContainerCol2 {padding:0 40px 0 0; border-right:1px dotted #e4e4e4;}
+  .talentTitle {font-size: 40px;}
+  .talentTeaser {font-size: 16px; line-height: 1.8;}
+  .talentGridOutterContainer {display: flex; width: calc(100% + 40px); margin: 0 -20px;}
+  .talentGridOutterCol1,
+  .talentGridOutterCol2,
+  .talentGridOutterCol3 {width:33.3333%; padding:0 20px;}
+  .talentGridSep.mobile {display:none;}
+  .commTitle {font-size: 40px;}
+  .commTeaser {font-size: 16px; line-height: 1.8;}
   }
   
   @media only screen and (min-width: 1020px) {
@@ -871,27 +1205,21 @@ Author URL: http://www.adworkshop.com
   .landfillGasEnergyGraphicTxtWrapperCol2 span {font-size: 54px;}
   
   /*Carbon Footprint*/
-  .carbonUpperGridCol1 {display:table-cell; width:75%; padding:0 40px 0 0; margin: 0; border-bottom: none;}
-  .carbonUpperGridCol2 {display:table-cell; border-left: 1px dotted #e4e4e4; padding: 0 0 0 40px;}
   .carbonTabEmissionCol1 {display:table-cell; width:35%; padding:0 0 0 30px; margin:0;}
   .carbonTabEmissionCol2 {display:table-cell;}
-  .carbonTabReductionCol1 {display:table-cell; width:40%; padding:0 30px 0 0; margin:0; text-align:right;}
-  .carbonTabReductionCol2 {display:table-cell;}
-  .improvementGridCol1 {display:table-cell; width:50%; padding:0 20px 0 0;}
-  .improvementGridCol2 {display:table-cell; width:50%; padding:0 0 0 20px;}
+  .carbonTabReductionCol1 {display:table-cell; width:70%; padding:0 0 0 30px; margin:0;}
+  .carbonTabReductionCol2 {display:table-cell; vertical-align:top;}
   .indImprovementInnerWrapper.lastCol1 {border-bottom: none; margin: 0;}
-  .carbonUpperGridInnerCol2 {display:block;}
-  .carbonUpperGridInnerImgWrapper {display:block; width: 100%; padding: 0; margin: 0 0 40px;}
-  .carbonUpperGridInnerCol2Txt {display:block;}
   }
   
   @media only screen and (min-width: 1100px) {
   .twoColumnContentContainer {-webkit-columns: 2; -moz-columns: 2; columns: 2; -webkit-column-gap: 40px; -moz-column-gap: 40px; column-gap: 40px;}
   
-  .internalPageTitleContainer {padding: 160px 0 70px;}
+    .internalPageTitleContainer-desktop {margin-top:89px;}
+  .internalPageTitleContainer {padding: 160px 0 90px;}
   .internalPageTitleInnerContainer {width:90%; max-width:1300px; padding:0;}
   .internalPageTitle.resources {font-size: 70px;}
-  h2.subPageTitle {padding: 40px 0; font-size: 36px;}
+  h2.subPageTitle {padding: 40px 0; font-size: 44px;}
   .internalPageTitleContainerNoColor {padding: 170px 0 0;}
   .threeColumnContentContainer {-webkit-columns: 3; -moz-columns: 3; columns: 3; -webkit-column-gap: 40px; -moz-column-gap: 40px; column-gap: 40px;}
     
@@ -903,7 +1231,6 @@ Author URL: http://www.adworkshop.com
   /*Recycle*/
   .recycleUpperContainer {width:90%; max-width:1300px; padding:0; margin:60px auto;}
   .recycleTabs {width:90%; max-width:1300px; margin: 80px auto 60px; padding:0;}
-  .recycleGridImageContainer .caption {font-size: 12px;}
   
   /*Collection*/
   h2.AFCTitle {font-size: 36px;}
@@ -915,7 +1242,7 @@ Author URL: http://www.adworkshop.com
   
   /*Organics*/
   .organicsUpperContainer {width: 90%; max-width: 1300px; padding: 0; margin: 60px auto;}
-  .organicsUpperContentInnerContainerLeft {display:table-cell; vertical-align:top; width:35%; text-align:right;}
+  .organicsUpperContentInnerContainerLeft {display:table-cell; vertical-align:top; width:45%; text-align:right;}
   .organicsUpperContentInnerContainerRight {display:table-cell; vertical-align:top; padding:0 0 0 40px; margin:0; border-top:none;}
   .organicsUpperContentInnerContainerWrapper {padding:0 0 0 40px; border-left:1px dotted #e4e4e4;}
   .organicsLowerContainerLeft {display:table-cell; width:35%; margin: 0; padding: 0; border-top: none;}
@@ -924,6 +1251,8 @@ Author URL: http://www.adworkshop.com
   .earthlifeInnerContainerRightTitle {font-size: 44px;}
   
   /*Energy*/
+  /*.indEnergyContainer {width:25%;}
+  .indEnergyTitle {border-top: none; margin: 0; padding: 0;}*/
   .energyUpperContainer {width: 90%; max-width: 1300px; padding: 0; margin: 60px auto;}
   h2.CabotTitle {font-size: 36px;}
   
@@ -933,15 +1262,16 @@ Author URL: http://www.adworkshop.com
   .landfillGasEnergyTitle {display:block;}
   .landfillZeroWasteColLeft {display:table-cell;}
   .landfillZeroWasteColRight {display:table-cell; width:40%; padding: 0 0 0 40px; border-top:none;}
+  .landfillZeroWasteColRight.wide {width: 60%;}
   .landfillZeroWasteInnerColRight {padding:0 0 0 40px; border-left: 1px dotted #e4e4e4;}
-  .landfillZeroWasteGraphicWrapper {display: block; width: 100%; margin: 0 0 30px; padding: 0 0 30px; border-bottom: 1px dotted #e4e4e4;}
+  .landfillZeroWasteGraphicWrapper {display: block; width: 100%;}
   
   .landfillGasEnergyGraphicInnerContainer {bottom:60px; font-size: 15px;}
   .landfillGasEnergyDescriptionCol1, .landfillGasEnergyDescriptionCol2, .landfillGasEnergyDescriptionCol3 {font-size:15px;}
   .landfillGasEnergyDescriptionCol3 span {font-size:54px;}
   
   /*Resources*/
-  .resourcesUpperContainer {width: 90%; max-width: 1300px; padding: 0; margin:30px auto 60px;}
+  .resourcesUpperContainer {width: 90%; max-width: 1300px; padding: 0; /*margin:30px auto 60px;*/}
   .resourcesTab {width:90%; max-width:1300px; margin: 40px auto 60px; padding:0;}
   
   /*Operations*/
@@ -962,12 +1292,13 @@ Author URL: http://www.adworkshop.com
   .coreValuesInnerCol1 {display:table-cell; text-align:right;}
   .coreValuesInnerCol2 {display:table-cell; width:65%; padding:0 0 0 30px;}
   .coreValuesInnerCol2Wrapper {/*border-left:1px dotted #AFDAF2;*/ padding:0 0 0 30px; margin:0; border-left:1px dotted #e4e4e4;}
-  .peopleTabs {width: 90%; max-width: 1300px; margin: 60px auto; padding: 0;}
+  .peopleTabs {width: 90%; max-width: 1300px; margin: 100px auto 60px; padding: 0;}
+    
   }
   
   @media only screen and (min-width: 1200px) {
   /*Carbon Footprint*/
-  .electrictyProGridCol1 {display:table-cell; width:33%; text-align:right; padding:0 30px 0 0;}
+  .electrictyProGridCol1 {display:table-cell; width:40%; padding:0 30px 0 0;}
   .electrictyProGridCol2 {display:table-cell; margin:0; width:auto;}
   .electrictyProGridInnerCol1 {padding: 0 50px 0 0; border-right: 3px solid #DEF5FA;}
   .electrictyProGridContainer {margin: -150px 0 0;}
@@ -981,10 +1312,7 @@ Author URL: http://www.adworkshop.com
   span.naturalGas, span.biodiesel, span.improvements {font-size: 55px;}
   
   /*Organics*/
-  .organicsUpperContentInnerContainerLeft, .organicsLowerContainerLeft {width:25%;}
-  
-  /*Landfills*/
-  .landfillZeroWasteColRight {width:30%;}
+  .organicsUpperContentInnerContainerLeft, .organicsLowerContainerLeft {width:35%;}
   }
   
   @media only screen and (max-width: 1099px)  {
