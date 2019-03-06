@@ -18,12 +18,7 @@
   
   <link rel="stylesheet" type="text/css" href="css/base-global.css">
   <link rel="stylesheet" type="text/css" href="css/base-internal.css">
-  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="css/adw-menu.css">
-  <link rel="stylesheet" type="text/css" href="css/ui.totop.css">
-  
-  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic,600italic|Droid+Serif:400,700,400italic,700italic">
-  
+  <?php include ('includes/headCSS.php'); ?>
   <?php include ('includes/headJS.php'); ?>
   
 </head>
@@ -56,15 +51,20 @@
           <div class="serviceContentInnerWrapper">
             
             <div class="serviceContentTitleContainer">
-              <h1>Our Services</h1>
+              <h1>Our Solutions</h1>
               <div class="serviceContentSubTitle">Resource solutions for our customers</div>
             </div>
             
             <div class="serviceContentTxtContainer">
-              <div class="serviceContentFeaturedTxt">Partnering with our customers around Resource Solutions is the number one way we can help protect the environment, support our communities, and build our business. In Section 2 you will find a discussion of the many important improvements we're making to our own operations, but our true sustainability sweet spot is where we combine our efforts with those of our customers, so this is where we begin our report.</div>
+              <div class="serviceContentFeaturedTxt">We believe that our greatest sustainability impacts come through our collaborations with customers. In the pages that follow, we describe each of our services, which we call Resource Solutions, and we provide case studies to illustrate the ways our customers use our services to achieve their resource renewal goals.</div>
               <div class="serviceContentTxt">
-                <p>Nationwide, about 35% of the municipal solid waste stream is recycled and 65% is disposed. This is according to EPA reporting, which also tells us that a large portion of this disposed material could have been recycled using traditional recycling technology. Another large fraction is organics that could have been diverted via donation, composting, or other forms of organics recycling. In fact, we could drastically improve our national diversion rate by fully utilizing the strategies available to us today.</p>
-                <p>Some of our customers are well above average with their recycling rates, while others are still building up their programs. To help our customers increase diversion and create value from each component of the waste stream, we offer a suite of services: recycling, collection, organics, energy, and landfills. We describe each of these Resource Solutions in the pages that follow.</p>
+                
+                <p>A recurring theme of this section is change. Our customers' goals, processes, and supply chains will always be changing. Markets, policies, technologies, culture, and infrastructure will always be changing too. Against this backdrop, our Resource Solutions will never be static; they should always be adapting and evolving. To this end, we are increasingly focused on approaches that are flexible, modular, and distributed.</p>
+                
+                <p>Our customers have myriad goals for their solid waste streams, and they call upon us to find solutions that provide multiple benefits: reducing waste, cutting carbon, closing resource loops, building the regional economy, supporting the community, creating supply chain value, and more.</p>
+                
+                <p>Our Resource Solutions are now capturing over a million tons per year of solid waste from the disposal stream. We are proud of this milestone, but we know that this reflects only one of our customers' many important goals. So, although tonnage will continue to be a metric we track, it cannot be our only metric. As we develop and deliver services for our customers, our focus will be on practical solutions that create multiple forms of value for our customers. These are true Resource Solutions.</p> 
+                
               </div>
               
               <div class="indServiceContentLinkContainer">
@@ -101,9 +101,13 @@
                     <div class="indServiceContentLinkInnerWrapperRight">Landfills</div>
                   </a>
                 </div>
-                <div class="indServiceContentLinkContainerRight hide"></div>
+                <div class="indServiceContentLinkContainerRight last">
+                  <a href="resourceSolutions.php" class="indServiceContentLinkInnerWrapper organics" title="" onmouseover="onHoverSolutions();" onmouseout="offHoverSolutions();">
+                    <div class="indServiceContentLinkInnerWrapperLeft"><img src="i/general/resourceIcon-nav.png" alt="" id="menuSolutionsImg"></div>
+                    <div class="indServiceContentLinkInnerWrapperRight">Solutions</div>
+                  </a>
+                </div>
               </div>
-              
               
             </div>
           
@@ -127,7 +131,6 @@
   
   <!--.......................................................................................................................................-->  
  
-	
   
   <!--RoyalSlider-->
   <link rel="stylesheet" href="plugins/royalslider/royalslider.css">
@@ -136,14 +139,8 @@
   <script type="text/javascript" src="plugins/royalslider/jquery.royalslider.min.js"></script>
   <script type="text/javascript" src="js/custom/sliderSwap.js"></script>
   
-  <!--Directional Fading-->
-  <script type='text/javascript' src='plugins/fadethis/jquery.fadethis.js'></script>
-    
   <!--General-->
-  <script type="text/javascript" src="js/libs/ios-orientationchange-fix.js"></script>
-  <script type="text/javascript" src="js/libs/jquery.easing.pack.js"></script>
-  <script type="text/javascript" src="js/libs/jquery.ui.totop.min.js"></script>
-  <script type='text/javascript' src='js/custom/adw-menu.js'></script>
+  <?php include ('includes/footJS.php'); ?>
   <script type='text/javascript' src='js/custom/custom-internal.js'></script>
   <script type='text/javascript' src='js/custom/custom-general.js'></script>
   <!--END JAVASCRIPT-->

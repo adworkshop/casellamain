@@ -18,20 +18,7 @@
   
   <link rel="stylesheet" type="text/css" href="css/base-global.css">
   <link rel="stylesheet" type="text/css" href="css/base-internal.css">
-  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="css/adw-menu.css">
-  <link rel="stylesheet" type="text/css" href="css/ui.totop.css">
-  
-  <!--[if gte IE 9]>
-      <style type="text/css">
-        .gradient {
-           filter: none;
-        }
-      </style>
-  <![endif]-->
-  
-  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic,600italic|Droid+Serif:400,700,400italic,700italic">
-  
+  <?php include ('includes/headCSS.php'); ?>
   <?php include ('includes/headJS.php'); ?>
   
 </head>
@@ -54,7 +41,7 @@
       </div>
     </div>
     <div class="internalPageTitleInnerContainer">
-      <div class="internalPageTitleDescriptionNoColor">We have been reducing our company-wide carbon footprint since 2005. In 2013 we continued that trend, cutting out emissions by another 175,000 metric tons. Compared to out 2005 baseline, we have cut our carbon footprint by over 50%.</div>
+      <div class="internalPageTitleDescriptionNoColor">We have been focused on measuring and managing our company-wide carbon footprint since 2005. Since then, we have cut our carbon footprint in half. In recent years, despite continued growth of our business, our emissions have remained flat.</div>
     </div>
   </div>
   <!--END Upper Title Region-->
@@ -65,33 +52,10 @@
   <div class="carbonUpperContainer">
     <div class="carbonUpperContentContainer">
       
-      <!--Grid-->
-      <div class="carbonUpperGridContainer">
-      
-        <!--Column 1-->
-        <div class="carbonUpperGridCol1">
-          <div class="twoColumnContentContainer">
-            <p>The largest emission reduction over the past year came from the closure of our only waste-to-energy incineration facility. The Maine Energy Recovery Company (MERC) facility emitted roughly 100,000 Mg CO2e (metric tons of carbon dioxide equivalents) per year. With the closure of the operation at the end of 2012, and full dismantling of the facility over the course of 2013-2014, we eliminated those combustion emissions from our carbon footprint.</p>
-            <p>MERC processed roughly 200,000 tons of MSW per year, and these tons did not simply disappear with the closure of the facility. Much of this tonnage has been redirected to other landfill facilities, each of which has a lower carbon footprint than MERC in terms of greenhouse gas (GHG) per ton. So the net impact of the decision to close the facility will be a decrease in disposal emissions.</p>
-            <p>Additional emission reductions were achieved through continued improvements to the gas collection systems at our landfills, as well as through fuel and energy efficiency measures in our fleet and facilities.</p>
-            <p>Since joining the voluntary EPA Climate Leaders program eight years ago, we have drastically reduced our overall carbon footprint. We now intend to continue our climate leadership within the industry by turning our attention to smaller emission reduction projects. Our goal will be to reduce the carbon intensity of our operations.</p>
-          </div>
-        </div>
-        <!--END Column 1-->
-        
-        <!--Column 2-->
-        <div class="carbonUpperGridCol2">
-          <div class="carbonUpperGridInnerCol2">
-            <div class="carbonUpperGridInnerImgWrapper"><img src="img/carbon/climateLogos.jpg" alt=""></div>
-            <div class="carbonUpperGridInnerCol2Txt">
-              <p>In January 2012, we were recognized by the EPA, the Association of Climate Change Officers (ACCO), the Center for Climate and Energy Solutions (C2ES), and The Climate Registry (TCR) with a Climate Leadership Award for Excellence in GHG Management.</p>
-            </div>
-          </div>
-        </div>
-        <!--END Column 2-->
-      
+      <div class="twoColumnContentContainer">
+        <p>On a per ton basis, our emission rate has declined every year since 2010. In 2017, our greenhouse gas emission rate was 116 kilograms of carbon dioxide equivalents per ton of waste and recyclables received. This is a 20% reduction since our last report, which means we have achieved our goal of continuous improvement.</p>
+        <p>We attribute our success to our investment in landfill capping and landfill gas collection infrastructure, as well as select fuel and energy efficiency projects. Still, we see opportunities to improve in the areas of landfill gas recovery, fleet fuel efficiency, and facility energy efficiency, as detailed below</p>
       </div>
-      <!--END Grid-->
       
     </div>
   </div>
@@ -110,59 +74,36 @@
         <!-- Tab Navigation Menu -->
         <ul>
           <li><a>Greenhouse Gas Emissions</a></li>
-          <li><a>Reduction in Greenhouse Gas</a></li>
-          <li><a>Continuing to Improve</a></li>
+          <li><a>Impacts</a></li>
+          <li><a>CASE STUDY: Energy Retrofits at our Home Office</a></li>
+          <li><a>Contaminants of Emerging Concern</a></li>
         </ul>
   
         <!-- Content container -->
         <div>
   
-          <!--2013 Greenhouse Gas Emissions-->
-          <div>
-            <div class="internalTabContainer">
-            
-              <div class="carbonTabEmissionContainer">
-                <div class="carbonTabEmissionCol2"><img src="img/carbon/emissions.png" alt=""></div>
-                <div class="carbonTabEmissionCol1">
-                  <div class="carbonTabEmissionTitle">2013 Greenhouse Gas Emissions</div>
-                  <div class="carbonTabEmissionSubTitle">(metric tons CO2e)</div>
-                  <div class="carbonTabEmissionTxt">Since 2005, we have cut our carbon footprint in half by reducing emissions from our operations. We also benefit the climate by finding new ways to conserve resources through recycling, organics recovery, and energy production. At Casella, protecting the climate means emitting less and recovering more.</div>
-                </div>
-              </div>
-            
-            </div>
-          </div>
-          <!--END 2013 Greenhouse Gas Emissions-->
-          
-          <!--Reduction in Greenhouse Gas-->
-          <div>
-            <div class="internalTabContainer">
-            
-              <div class="carbonTabReductionContainer">
-                <div class="carbonTabReductionCol1">
-                  <div class="carbonTabReductionTitle">Reduction in Greenhouse Gas Per Ton</div>
-                  <div class="carbonTabReductionSubTitle">(kgCO2e/ton)</div>
-                  <div class="carbonTabReductionTxt">We have begun to track our greenhouse gas emissions on an intensity basis, or in terms of emissions per ton of material received at our facilities. The downward trend in this chart shows that we have begun to decouple our emissions from our tonnage and business growth.</div>
-                </div>
-                <div class="carbonTabReductionCol2"><img src="img/carbon/reduction.png" alt=""></div>
-              </div>
-            
-            </div>
-          </div>
-          <!--END Reduction in Greenhouse Gas-->
-  
           <!--Continuing to Improve Our Environmental Impac-->
           <div>
             <div class="internalTabContainer">
-            
-              <div class="improvementTabTitle">Continuing to Improve Our Environmental Impact</div>
-              <div class="improvementTabSubTitle">Having reduced our carbon footprint by over 50%, we will now focus on reducing our company-wide emissions on a per ton basis. We will achieve this intensity reduction goal through a continued focus on the strategies listed below.</div>
               
               <!--Grid-->
               <div class="improvementGridContainer">
               
                 <!--Column 1-->
                 <div class="improvementGridCol1">
+                  <div class="improvementTabTitle">Emissions by Source<span>(metric tons CO2e)</span></div>
+                  <img src="img/carbon/emissions.svg" alt="" style="width:100%; max-width:100%: height:auto;">
+                  <div class="carbon-footnote">Source: Casella greenhouse gas inventory, scope 1 and 2 emissions</div>
+                </div>
+                <!--END Column 1-->
+                
+                <!--Column 2-->
+                <div class="improvementGridCol2">
+                  
+                  <div class="improvementGridCol2-upperElement">
+                    <div class="improvementTabTitle">Reduced GHG Per Ton<span>(kgCO2e/ton)</span></div>
+                    <img src="img/carbon/Asset-1.svg" alt="" style="width:100%; max-width:450px; height:auto;">
+                  </div>
                 
                   <!--Ind Improvement-->
                   <div class="indImprovementContainer">
@@ -170,7 +111,8 @@
                     <div class="indImprovementCol2">
                       <div class="indImprovementInnerWrapper">
                         <div class="indImprovementInnerTitle">Enhancing Gas Capture at our Landfills</div>
-                        <p>To minimize landfill gas emissions, we focus on measures that improve the gas capture systems at each of our facilities. These measures include rapidly installing horizontal collectors, strategically employing low permeability intermediate cover, achieving comprehensive coverage with our vertical wells, and keeping our capture and cover systems well-tuned and well-maintained throughout the year. Through these efforts, we strive to exceed industry standards and achieve high capture efficiencies at each of our active landfills.</p>
+                        <p>Since 2005, our focus on landfill gas collection has prevented millions of metric tons of greenhouse gas emissions. Much of this gas was diverted to landfill gas to energy facilities to produce renewable electricity, thus yielding a second greenhouse gas benefit.</p>
+                        <p>Still, landfill gas continues to account for 87% of our overall carbon footprint. We believe that we can further enhance the gas capture performance at our landfills. We will do so with a renewed focus on well-tuning and continued strategic investments in landfill gas infrastructure.</p>
                       </div>
                     </div>
                   </div>
@@ -181,57 +123,10 @@
                     <div class="indImprovementCol1"><img src="img/carbon/icon-fuel.png" alt=""></div>
                     <div class="indImprovementCol2">
                       <div class="indImprovementInnerWrapper">
-                        <div class="indImprovementInnerTitle">Fuel Efficiency in our Fleet</div>
-                        <p>The fuel consumed by our fleet of vehicles accounts for roughly 13% of our total carbon footprint, and costs us over $20 million per year. Improving our fuel efficiency is an important sustainability effort that benefits us both environmentally and economically.</p>
-                        <p>In 2005 we set a goal to reduce our overall diesel consumption by 10% or roughly 580,000 gallons by 2013. In pursuit of this goal we implemented various fuel efficiency measures and began transitioning some of our fleet to run on compressed natural gas (CNG), which is a cleaner-burning alternative to diesel. Our 35 CNG vehicles displace approximately 400,000 gallons of diesel fuel per year, reducing carbon emissions while also improving local air quality.</p>
-                        <p>Despite these initiatives, our fleet efficiency improvements have not kept pace with growth in our collection business, and we have not yet achieved our goal of reducing our overall diesel consumption by 10%.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <!--END Ind Improvement-->
-                  
-                  <!--Ind Improvement-->
-                  <div class="indImprovementContainer">
-                    <div class="indImprovementCol1"><img src="img/carbon/icon-energy.png" alt=""></div>
-                    <div class="indImprovementCol2">
-                      <div class="indImprovementInnerWrapper lastCol1">
-                        <div class="indImprovementInnerTitle">Energy Efficiency at our Facilities</div>
-                        <p>Electricity and heating fuel usage at our facilities accounts for 3% of our company-wide carbon footprint and costs us over $3 million per year. Our facility energy usage makes up a small portion of our overall greenhouse gas emissions, but beyond climate benefits, efficiencies in this area will help to improve local air quality and reduce local operating costs.</p>
-                        <p>In 2009 we set a goal to reduce our electricity and stationary natural gas consumption by 5%. The following measures helped us to make progress toward these targets:</p>
-                        <p><span>Natural Gas:</span> Prior to its closure, the Maine Energy facility consumed over 500,000 therms per year of natural gas. The decommissioning of this facility slashed our stationary natural gas consumption and reduced our total usage by roughly 75%, allowing us to achieve our goal.</p>
-                        <p><span>Electricity:</span> Since 2009, we have implemented efficiency measures such as lighting retrofits and the installation of timers for our vehicle plug-in stations. However these improvements did not keep pace with increases in electricity usage elsewhere in our footprint, so we have not yet achieved our electricity reduction target.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <!--END Ind Improvement-->
-                
-                </div>
-                <!--END Column 1-->
-                
-                <!--Column 2-->
-                <div class="improvementGridCol2">
-                
-                  <!--Ind Improvement-->
-                  <div class="indImprovementContainer">
-                    <div class="indImprovementCol1"><img src="img/carbon/icon-monitor.png" alt=""></div>
-                    <div class="indImprovementCol2">
-                      <div class="indImprovementInnerWrapper">
-                        <div class="indImprovementInnerTitle">Enhanced Measurement and Monitoring</div>
-                        <p>Over the past year, we have migrated our energy and greenhouse gas data to Hara/Verisae's cloud-based software platform. The system provides an accessible and secure space to store our data, dashboards to explore trends in our energy consumption and emissions, and custom reports to support internal and external communications. We have begun to leverage the new system to support facility-level benchmarking and normalization of data into useful key performance indicators (KPIs). These new capabilities will allow us to identify and prioritize projects to drive further energy savings and emission reductions in the coming years.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <!--END Ind Improvement-->
-                  
-                  <!--Ind Improvement-->
-                  <div class="indImprovementContainer">
-                    <div class="indImprovementCol1"><img src="img/carbon/icon-green.png" alt=""></div>
-                    <div class="indImprovementCol2">
-                      <div class="indImprovementInnerWrapper last">
-                        <div class="indImprovementInnerTitle">Employee Green Teams</div>
-                        <p>To lead the company toward achieving our sustainable operations goals, we have begun to form "green teams" at select facilities throughout our footprint. These teams will convene quarterly to develop and implement facility-specific strategies for achieving sustainability goals.</p>
-                        <p>Drawing upon the support of our in-house sustainability team, our energy and emissions database, and local utility and energy efficiency partners, these green teams will lead the company toward a new wave of energy savings, emission reductions, and environmental improvements.</p>
-                        <p>The green team initiative will tap into our local teams' knowledge and expertise to help achieve our sustainability goals, while also supporting a broader effort to engage and energize employees around our resource renewal vision.</p>
+                        <div class="indImprovementInnerTitle">Fleet Fuel Efficiency and Alternative Fuels</div>
+                        <p>Our fleet is the second largest contributor to our overall carbon footprint, accounting for 11% of our total emissions. Other emissions from our fleet, as with any heavy-duty vehicles, include particulate matter and NOx, which impact local air quality.</p>
+                        <p>As discussed earlier in this report, we are improving the emissions performance of our vehicles through our 5-year fleet plan, which is systematically increasing the number and percentage of new (model year 2007 or later) vehicles within our fleet. Because these newer vehicles have better emission controls, our fleet is getting cleaner with each passing year.</p>
+                        <p>We will achieve further improvements through a continued focus on integrating alternative fuel vehicles into our fleet, provided that they must meet our standards for reliability and performance. We will also continue to pursue routing efficiency opportunities to reduce our fuel consumption while improving our productivity.</p>
                       </div>
                     </div>
                   </div>
@@ -246,6 +141,192 @@
             </div>
           </div>
           <!--END Continuing to Improve Our Environmental Impac-->
+          
+          <!--Impacts-->
+          <div>
+            <div class="internalTabContainer">
+              
+              <div class="carbon-tab-impact-grouping">
+                
+                <div class="landfillZeroWasteTitle">Water Impacts:</div>
+                <div class="landfillZeroWasteTeaser">We are fortunate to operate in the northeastern U.S., which is home to countless beautiful streams, rivers, lakes, and long stretches of coastline. These water resources support our communities with drinking water, wildlife habitat, recreation, tourism, and more. Here are some of the ways we work to manage our impact on water resources: </div>
+
+                <!--Grid-->
+                <div class="landfillZeroWasteGrid">
+
+                  <div class="landfillZeroWasteColLeft">
+
+                    <div class="landfill-general-content">
+                      
+                      <h3>Fleet</h3>
+                      <p>Heavy-duty trucks and equipment rely on liquids like fuel, lubricants, and coolant to operate. To protect our local water resources, we need to properly manage the storage and distribution of these liquids, prevent spills, and respond rapidly when spills do happen. Each of our maintenance shops has best management practices and infrastructure for properly handling liquids, and relevant employees are trained in spill prevention and response. Our equipment preventive maintenance programs help to minimize the potential for spills by identifying and correcting worn or damaged components on a proactive basis. When accidents do happen, our staff are trained to respond quickly to contain, clean up, and report the spill. In 2017, we had 93 reportable spills, including 25 that occurred at our facilities, and 68 that occurred off-site. Each spill was properly reported, contained and remediated, and documented with appropriate corrective actions. The majority of the reportable spills consisted of small hydraulic fluid or lubricant releases contained to the immediate spill area, and no spills to surface water or wetlands occurred.</p>
+                      
+                      <h3>Stormwater management:</h3>
+                      <p>Stormwater is the rain and snowmelt that flows over the surface of the land. To protect local water resources around our facilities, we need to ensure that this water doesn’t pick up and carry contaminants or excess sediments off-site. We deploy best management practices to keep runoff clean and prevent erosion. To track performance, we regularly monitor and sample our outfalls and report the results to regulators as required by our stormwater permits.</p>
+                      
+                      <h3>Leachate management:</h3>
+                      <p>Each of our active MSW landfills is equipped with a highly-engineered double composite liner system designed to contain and collect the liquid – called leachate – that percolates through the waste. These liner systems contain both primary and secondary monitoring systems, so we can be sure they’re working properly. In 2017, we collected over 100 million gallons of landfill leachate and delivered it to permitted wastewater facilities for treatment. To protect the quality of our leachate, we have special waste approval processes and waste screening practices to ensure that our facilities accept only the waste materials they were engineered to manage.</p>
+                      
+                      <h3>Litter control:</h3>
+                      <p>Litter on the land can have the potential to be transported by wind or stormwater to water bodies, so we see litter control as a form of water protection. At each of our facilities, collecting windblown litter is a part of daily operations. Our landfills use redundant litter control systems including portable litter fences, permanent perimeter net systems, and manual collection efforts to control wind-blown debris. Our collection drivers do their best to minimize windblown litter as they collect waste and recyclables. One program that has had litter prevention benefits is the transition from open recycling bins to wheeled recycling carts with lids.</p>
+                      
+                    </div>
+
+                  </div>
+
+                  <div class="landfillZeroWasteColRight">
+                    <div class="landfillZeroWasteInnerColRight">
+                      <div class="landfillZeroWasteGraphicWrapper">
+                        <div class="landfillZeroWasteGraphicContainer">
+                          <img src="img/carbon/Lake-champlain.jpg" alt="">
+                          <img src="img/carbon/testing-water.jpg" alt="">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <!--END Grid-->
+                
+              </div>
+              
+              <!--***-->
+              
+              <div class="carbon-tab-impact-grouping">
+                
+                <div class="landfillZeroWasteTitle">Local Air &amp; Odor Impacts:</div>
+                <div class="landfillZeroWasteTeaser">As an operator of solid waste management facilities, one of our top priorities is to effectively manage local air and odor impacts.</div>
+
+                <!--Grid-->
+                <div class="landfillZeroWasteGrid">
+
+                  <div class="landfillZeroWasteColLeft">
+
+                    <div class="landfill-general-content">
+                      <p>Odor management is a complex science that draws on the fields of meteorology, physics, biology, chemistry, and more. At our landfills, we identify two broad classes of odors: those related to arriving waste and those related to waste-in-place that is breaking down. To control the latter form of odors, we rely on the same landfill gas collection systems that we use to cut our carbon footprint and produce renewable energy (as discussed in the preceding pages). To manage odors from incoming waste, we deploy daily cover systems and misting technologies that capture and contain odiferous compounds. Where possible, we also work with customers to pre-treat their waste in ways that mitigate odors at the source, so they are stable upon arrival at our facilities.</p>
+                    </div>
+
+                  </div>
+
+                  <div class="landfillZeroWasteColRight">
+                    <div class="landfillZeroWasteInnerColRight">
+                      <div class="landfillZeroWasteGraphicWrapper">
+                        <div class="landfillZeroWasteGraphicContainer"><img src="img/carbon/Odor-Control.jpg" alt=""></div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <!--END Grid-->
+                
+              </div>
+              
+              <!--***-->
+              
+              <div class="carbon-tab-impact-grouping">
+                
+                <div class="landfillZeroWasteTitle">Environmental Compliance &amp; Responsiveness:</div>
+                <div class="landfillZeroWasteTeaser">Solid waste facilities operating in the northeastern U.S. are subject to a strict regime of environmental regulations designed to ensure protection of human health and the environment.</div>
+
+                <!--Grid-->
+                <div class="landfillZeroWasteGrid">
+
+                  <div class="landfillZeroWasteColLeft">
+
+                    <div class="landfill-general-content">
+                      <p>To operate our facilities, we maintain hundreds of permits and certifications, and are held accountable for thousands of permit conditions and requirements encompassing everything from major environmental protections to relatively minor labeling and administrative reporting requirements. To ensure ongoing compliance, our facility managers and operators receive support from our safety, environmental compliance, and engineering specialists. These specialists conduct internal audits and permit reviews, maintain databases of permit conditions and deadlines, develop training programs, and communicate with external regulators to keep abreast of evolving rules and requirements. The team also works to ensure rapid corrective response in the event that incidents do occur. Each year, we evaluate the environmental compliance incidents that occurred during the previous twelve months and implement corrective actions to prevent reoccurrence. Our corrective actions can include the construction or installation of new engineering controls, retraining of company staff, the assignment of additional internal or external technical resources, or improvements to our reporting and information-sharing practices.  Still, we strive for continuous improvement and our goal each day, month, and year is to achieve a perfect record of zero environmental compliance incidents.</p>
+                    </div>
+
+                  </div>
+
+                  <div class="landfillZeroWasteColRight">
+                    <div class="landfillZeroWasteInnerColRight">
+                      <div class="landfillZeroWasteGraphicWrapper">
+                        <div class="landfillZeroWasteGraphicContainer"><img src="img/carbon/landfill.jpg" alt=""></div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <!--END Grid-->
+                
+              </div>
+            
+            </div>
+          </div>
+          <!--END Impacts-->
+          
+          <!-- Case Study -->
+          <div>
+              <div class="internalTabContainer">
+
+                <div class="landfillZeroWasteTitle">CASE STUDY: Energy Retrofits at our Home Office</div>
+                <div class="landfillZeroWasteTeaser">Our home office in Rutland, VT was originally built as a truck maintenance shop. Today it is a major administrarive hub and hosts our corporate server room. To rein in our rising energy bills, we have launched three efficiency programs:</div>
+
+                <!--Grid-->
+                <div class="landfillZeroWasteGrid">
+                    <div class="landfillZeroWasteColLeft">
+                        <div class="landfill-general-content">
+                        <p><strong>Efficient Heating and Cooling:</strong> To keep our servers at optimal temperatures, we are constantly removing heat from our server room. Rather than letting that heat go to waste, we now capture it and use it to heat our offices. By installing water-sourced row coolers in our server room, installing and optimizing heat pumps, upgrading our inefficient cooling tower, and re-piping our boiler, we're keeping our offices comfortable while reducing our use of propane and electricity.</p>
+                        <p><strong>Energy Management System (EMS):</strong> Our new EMS gives us unprecendented visibility and control over our lighting, heating, and cooling. This enables us to make ongoing adjustments to optimize both emplyoee comfort and energy efficiency.</p>
+                        <p><strong>LED Smart Lighting Upgrades:</strong> Our home office (along with our neighboring recycling facility and administrative buildings) underwent lighting upgrades which have yielded significant efficiencies. By installing efficient LED smart lights, we cut our overall wattage, optimized lighting levels, and enabled sensors and dimmers that automatically adjust the lights when no one is around, or when ambient lighting changes.</p>
+                        <p>We expect these improvements to help cut our electricity, propane, and water consumption. As we close in on the one-year mark of having completed the retrofits, we will soon be able to calculate and report the precise savings and benefits. We thank Efficiency Vermont for their support.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="landfillZeroWasteColRight">
+                        <div class="landfillZeroWasteInnerColRight">
+                            <div class="landfillZeroWasteGraphicWrapper">
+                                <div class="landfillZeroWasteGraphicContainer">
+                                  <img src="img/carbon/case1.jpg" alt="working on office systems"><br />
+                                  <img src="img/carbon/case2.jpg" alt="working on office systems">
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--END Grid-->
+
+              </div>
+          </div>
+          <!--END Case Study-->
+  
+          <!--Emerging Concern-->
+          <div>
+            <div class="internalTabContainer">
+            
+              <div class="landfillZeroWasteTitle">Contaminants of Emerging Concern:</div>
+              <div class="landfillZeroWasteTeaser">One of the biggest environmental questions facing our industry (and many other industries) is the issue of "contaminants of emerging concern." This phrase refers to chemicals that are being identified based on newer research and analytical techniques, or that are now better understood from a risk management or environmental exposure standpoint. These contaminants are often measured in the environment at extremely low concentrations. </div>
+
+              <!--Grid-->
+              <div class="landfillZeroWasteGrid">
+
+                <div class="landfillZeroWasteColLeft">
+
+                  <div class="landfill-general-content twoColumnContentContainer">
+                    <p>Emerging contaminants can be found in common household and commercial products such as detergents, fragrances, medications, disinfectants, stain repellants, water-proof coatings, and more. Given their prevalence in so many consumer products, these constituents also appear in our waste streams.</p>
+                    <p>The most recent emerging contaminant with relevance to disposal streams is a group of man-made chemicals called Per- and Polyfluoroalkyl Substances (PFAS), which have been manufactured and used around the world since the 1940s. They can be found in food and food packaging, commercial household products such as stain and water-repellent fabrics, nonstick products, polishes, paints, cleaning products, and fire-fighting foams.</p>
+                    <p>As scientists learn to detect these low-concentration chemicals, we must all rely on public health researchers and policy-makers to keep pace and provide steady and prudent guidance on how society should adapt and respond to this new information.</p>
+                  </div>
+
+                </div>
+
+                <div class="landfillZeroWasteColRight">
+                  <div class="landfillZeroWasteInnerColRight">
+                    <div class="landfillZeroWasteGraphicWrapper">
+                      <div class="landfillZeroWasteGraphicContainer"><img src="img/carbon/shopping.jpg" alt=""></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <!--END Grid-->
+            
+            </div>
+          </div>
+          <!--END Emerging Concern-->
   
         </div>
   
@@ -271,16 +352,29 @@
         
           <div class="electrictyProGridCol1">
             <div class="electrictyProGridInnerCol1">
-              <div class="electrictyProTitle">Net Producer of Electricity</div>
-              <p><span>In 2013, we produced more than 5X as much energy as we consumed.</span> This graphic depicts annual electricity consumption at our facilities and annual electricity production (in Megawatt Hours - MWh) at the power plants we own and/or operate.</p>
-              <div class="electrictyProTxt">As a company, we want to reduce the energy we consume and increase the energy we produce to maximize our net benefit.</div>
+              
+              <div class="electrictyProGridInnerCol1-wrapper">
+                
+                <div class="electrictyProGridInnerCol1-wrapper-icon">
+                  <img src="img/carbon/icon-energy.png" alt="">
+                </div>
+
+                <div class="electrictyProGridInnerCol1-wrapper-content">
+                  <div class="electrictyProTitle">Facility Energy Efficiency</div>
+                  <p>Energy consumption at our operating facilities and offices account for only 2% of our overall carbon footprint. And interestingly, we generate substantially more electricity than we consume, as shown in the graphic here. Still, we are committed to energy efficiency improvements because most measures also yield safer and more productive work environments for our employees.</p>
+                  <div class="electrictyProTxt">Across the company we have completed dozens of lighting retrofits, often tapping into state and utility company incentives to achieve prompt payback. We have also adopted significant efficiency measures in our home office, as detailed in the case study below. We have learned a lot from the projects completed so far, and in the coming months and years we will apply this knowledge to additional energy efficiency initiatives.</div>
+                </div>
+                
+              </div>
+              
+              
             </div>
           </div>
         
           <div class="electrictyProGridCol2">
             <div class="electrictyProGridInnerCol2">
-              <div class="electrictyProGridImgContainer top"><img src="img/carbon/lightSmall.png" alt=""></div>
-              <div class="electrictyProGridImgContainer"><img src="img/carbon/lightLarge.png" alt=""></div>
+              <div class="electrictyProGridImgContainer top"><img src="img/carbon/Asset-2.svg" alt=""></div>
+              <div class="electrictyProGridImgContainer"><img src="img/carbon/Asset-3.svg" alt=""></div>
             </div>
           </div>
         
@@ -304,38 +398,12 @@
   <!--.......................................................................................................................................-->  
   
     
-  <!--Directional Fading-->
-  <script type='text/javascript' src='plugins/fadethis/jquery.fadethis.js'></script>
-  
-  <!-- Zozo Tabs css -->
-  <link href="plugins/zozoTabs/css/zozo.tabs.min.css" rel="stylesheet" />
-  <link href="plugins/zozoTabs/css/zozo.tabs.flat.min.css" rel="stylesheet" />
-  <script src="plugins/zozoTabs/js/zozo.tabs.min.js"></script>
-  
-  <script>
-	  jQuery(document).ready(function ($) {
-		  jQuery("#tabbed-nav").zozoTabs({
-			  position: "top-left",
-			  style: "clean",
-			  theme: "flat-nephritis",
-			  spaced: true,
-			  rounded: false,
-			  minWindowWidth: 960,
-			  animation: {
-				  easing: "easeInOutExpo",
-				  duration: 600,
-				  effects: "slideH"
-			  },
-			  size:"large"
-		  });
-	  });
-  </script>
+  <!-- Zozo Tabs *** 960px -->
+  <?php include ('includes/zozo-assets.php'); ?>
+  <script type='text/javascript' src='js/custom/custom-zozo-960.js'></script>
     
   <!--General-->
-  <script type="text/javascript" src="js/libs/ios-orientationchange-fix.js"></script>
-  <script type="text/javascript" src="js/libs/jquery.easing.pack.js"></script>
-  <script type="text/javascript" src="js/libs/jquery.ui.totop.min.js"></script>
-  <script type='text/javascript' src='js/custom/adw-menu.js'></script>
+  <?php include ('includes/footJS.php'); ?>
   <script type='text/javascript' src='js/custom/custom-internal.js'></script>
   <script type='text/javascript' src='js/custom/custom-general.js'></script>
   <!--END JAVASCRIPT-->

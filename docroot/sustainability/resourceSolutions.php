@@ -18,12 +18,7 @@
   
   <link rel="stylesheet" type="text/css" href="css/base-global.css">
   <link rel="stylesheet" type="text/css" href="css/base-internal.css">
-  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="css/adw-menu.css">
-  <link rel="stylesheet" type="text/css" href="css/ui.totop.css">
-  
-  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic,600italic|Droid+Serif:400,700,400italic,700italic">
-  
+  <?php include ('includes/headCSS.php'); ?>
   <?php include ('includes/headJS.php'); ?>
   
 </head>
@@ -39,15 +34,22 @@
   
   
   <!--Upper Title Region-->
-  <div class="internalPageTitleContainerNoColor">
-    <div class="internalPageTitleContainerNoColorBG">
-      <div class="internalPageTitleInnerContainer">
-        <div class="internalPageTitleNoColor"><span style="font-size:70%; display:block;">Resource Solutions:</span> Bringing it all Together</div>
+  <div class="internalPageTitleContainer-desktop">
+    <img src="img/resources/SVG/header.svg" alt="">
+  </div>
+  <div class="internalPageTitleContainer">
+    <div class="internalPageTitleInnerContainer">
+      
+      <!--icon-->
+      <div class="internalPageTitleIconContainer"><img src="i/general/resourceIcon.png" alt=""></div>
+      <!--End icon-->
+      
+      <div class="internalPageTitleContentContainer">
+        <div class="internalPageTitle">Solutions</div>
+        <div class="internalPageTitleDescription">We help our customers meet their <strong>resource management</strong> goals by providing consulting, sourcing, customer care, reporting, and other customized services.</div>
       </div>
     </div>
-    <div class="internalPageTitleInnerContainer">
-      <div class="internalPageTitleDescriptionNoColor">Our resource solutions approach focuses on delivering value to large and complex organizations such as universities, hospitals, manufacturers, and municipalities.</div>
-    </div>
+
   </div>
   <!--END Upper Title Region-->
   
@@ -56,10 +58,9 @@
   
   
   <div class="resourcesUpperContainer">
-    <div class="resourcesUpperContentContainer twoColumnContentContainer">
-      <p>Resource management (RM) practices have been widely adopted for years in the industrial sector, driven by cost savings, lean manufacturing, and sustainability goals. Casella leverages these best practices and lessons learned to deliver valuable solutions to customers in the many markets that we serve.</p>
-      <p>Recognizing that there is no one-size-fits-all program, we create tailored solutions to suit the unique needs of each customer. Our methodical Resource Solutions approach applies our knowledge and experience in recycling, collection, organics, energy and landfills to deliver measurable economic and environmental return for our customers.</p>
-      <p>This professional services approach is in contrast to traditional waste management and is designed to deliver operational efficiencies, resource conservation and other forms of value.</p>
+    <div class="resourcesUpperContentContainer">
+      <p>What does a so-called "waste" company do in a world where its customers want and need to waste less? Casella's Resource Solutions team exists to answer this question.</p>
+      <p>Our Resource Solutions team collaborates in the space between our largest, most sophisticated customers and our talented local sales and operating teams. Together, we deliver safe, reliable, and practical solutions that meet today’s needs and yield immediate customer value, while simultaneously designing and delivering tomorrow’s sustainable resource management solutions.</p>
     </div>
   </div>
     
@@ -70,69 +71,30 @@
   <div class="resourcesSolutionsContainer">
     <div class="globalWidth">
     
-      <div class="resourcesSolutionsTitle">The Resource Solutions Approach</div>
+      <div class="resourcesActionTitle">Customer Resource Solutions</div>
+      <div class="resourcesActionSubTitle">Customers in the industrial, institutional, municipal, and retail sectors are the most likely to seek the services of our Resource Solutions team. Here are the types of services we provide in each of these four sectors.</div>
       
       <!--Resource Grid-->
       <div class="resourceGridContainer">
       
         <div class="resourceGridColLeftContainer">
-        
+          
           <!--Ind Resource-->
           <div class="indResourceContainer">
-            <div class="indResourceIconContainer"><img src="img/resources/holistic.png" alt=""></div>
+            <div class="indResourceIconContainer"><img src="img/resources/Asset-1.png" alt=""></div>
             <div class="indResourceTxtContainer">
-              <div class="indResourceTitle">Holistic Strategy</div>
-              <div class="indResourceTxt">Recognizing that most of our customers' waste-related costs are incurred before the material becomes waste, we seek value from the "point of generation" all the way through to end processing or disposal.</div>
+              <div class="indResourceTitle">Industrial</div>
+              <div class="indResourceTxt">Manufacturers have been pursuing waste reduction for decades and are often the farthest along in their journey to reduce and even eliminate waste. They tend to be motivated by process efficiency and cost minimization imperatives, and a need to meet and exceed environmental sustainability targets without distracting from their core business. They have disciplined and well-trained employees and exercise a relatively high degree of control over what enters and exits their plants. Most importantly, the unique waste streams they produce are not suited for traditional blue bin recycling programs, but through professional management, can yield substantial value. See the Lebanon ARC example below that shows how we do this with our innovative ARC&trade; approach.</div>
             </div>
           </div>
           <!--END Ind Resource-->
           
           <!--Ind Resource-->
           <div class="indResourceContainer">
-            <div class="indResourceIconContainer"><img src="img/resources/re-thinking.png" alt=""></div>
+            <div class="indResourceIconContainer"><img src="img/resources/Asset-2.png" alt=""></div>
             <div class="indResourceTxtContainer">
-              <div class="indResourceTitle">Re-thinking Waste</div>
-              <div class="indResourceTxt">We apply the science of resource management to help customers adjust their waste streams in ways that make them suitable for higher and better uses. This includes re-designing products to enhance their recyclability or eliminating toxic substances so waste streams can be redirected to beneficial uses or low emission landfills.</div>
-            </div>
-          </div>
-          <!--END Ind Resource-->
-          
-          <!--Ind Resource-->
-          <div class="indResourceContainer">
-            <div class="indResourceIconContainer"><img src="img/resources/baseline.png" alt=""></div>
-            <div class="indResourceTxtContainer">
-              <div class="indResourceTitle">Evaluation and Baseline</div>
-              <div class="indResourceTxt">We inventory each new customer's existing services, equipment, and volumes. This provides a baseline against which to measure progress, and suggests areas to improve efficiencies, reduce waste, and create value.</div>
-            </div>
-          </div>
-          <!--END Ind Resource-->
-          
-          <!--Ind Resource-->
-          <div class="indResourceContainer">
-            <div class="indResourceIconContainer"><img src="img/resources/education.png" alt=""></div>
-            <div class="indResourceTxtContainer">
-              <div class="indResourceTitle">Education, Training and Marketing</div>
-              <div class="indResourceTxt">We engage internal and external stakeholders in outreach programs to drive behavioral change.</div>
-            </div>
-          </div>
-          <!--END Ind Resource-->
-          
-          <!--Ind Resource-->
-          <div class="indResourceContainer">
-            <div class="indResourceIconContainer"><img src="img/resources/technology.png" alt=""></div>
-            <div class="indResourceTxtContainer">
-              <div class="indResourceTitle">Technology and Innovation Programs</div>
-              <div class="indResourceTxt">We leverage new and existing technologies, as well as innovative RM programs, to reduce disposal volumes and create value.</div>
-            </div>
-          </div>
-          <!--END Ind Resource-->
-          
-          <!--Ind Resource-->
-          <div class="indResourceContainer">
-            <div class="indResourceIconContainer"><img src="img/resources/strategy.png" alt=""></div>
-            <div class="indResourceTxtContainer">
-              <div class="indResourceTitle">Strategic Sourcing and Third Party Management Services</div>
-              <div class="indResourceTxt">We work with hundreds of qualified environmental service providers across the US to deliver a wide range of environmental services.</div>
+              <div class="indResourceTitle">Institutional</div>
+              <div class="indResourceTxt">Colleges, universities, and hospitals have some of the most ambitious aspirations for sustainable resource management, but also face some of the most complex barriers to change. They support diverse services ranging from dining halls to research laboratories and tend to be compartmentalized into relatively isolated departments. Four-year schools, by definition, have annual turnover rates of 25% and require extra training. Much of the material flowing through campus is purchased through a centralized procurement office, but much is also imported by students and visitors. For these reasons and more, successful resource management in these settings requires much more than placing out a bunch of recycling bins.</div>
             </div>
           </div>
           <!--END Ind Resource-->
@@ -144,50 +106,20 @@
           
           <!--Ind Resource-->
           <div class="indResourceContainer">
-            <div class="indResourceIconContainer"><img src="img/resources/service.png" alt=""></div>
+            <div class="indResourceIconContainer"><img src="img/resources/Asset-3.png" alt=""></div>
             <div class="indResourceTxtContainer">
-              <div class="indResourceTitle">Dedicated Customer Service and Support</div>
-              <div class="indResourceTxt">Our central support team provides customized and direct customer service to thousands of locations serviced across most of the US.</div>
+              <div class="indResourceTitle">Municipal</div>
+              <div class="indResourceTxt">Many cities, towns, and villages are working to reduce waste and increase their residents' recycling. Some have announced  quantitative targets. The challenges they face include weak channels of communication with residents, along with turnover and language barriers. Unlike factories, municipalities have essentially no control over the types of materials their residents purchase and discard, so their services must support traditional curbside recycling as well as bulky items, household hazardous waste, yard debris, food waste, and more. Meeting ambitious resource management goals requires overcoming all of these barriers.</div>
             </div>
           </div>
           <!--END Ind Resource-->
           
           <!--Ind Resource-->
           <div class="indResourceContainer">
-            <div class="indResourceIconContainer"><img src="img/resources/support.png" alt=""></div>
+            <div class="indResourceIconContainer"><img src="img/resources/Asset-4.png" alt=""></div>
             <div class="indResourceTxtContainer">
-              <div class="indResourceTitle">Supporting Current Infrastructure and Initiatives</div>
-              <div class="indResourceTxt">We work closely with existing recycling and diversion programs to support and build their success.</div>
-            </div>
-          </div>
-          <!--END Ind Resource-->
-          
-          <!--Ind Resource-->
-          <div class="indResourceContainer">
-            <div class="indResourceIconContainer"><img src="img/resources/health.png" alt=""></div>
-            <div class="indResourceTxtContainer">
-              <div class="indResourceTitle">Focus on Health and Safety</div>
-              <div class="indResourceTxt">A focus on health and safety complements our customer initiatives.</div>
-            </div>
-          </div>
-          <!--END Ind Resource-->
-          
-          <!--Ind Resource-->
-          <div class="indResourceContainer">
-            <div class="indResourceIconContainer"><img src="img/resources/equipement.png" alt=""></div>
-            <div class="indResourceTxtContainer">
-              <div class="indResourceTitle">On-Site Personnel and Equipment</div>
-              <div class="indResourceTxt">We strategically deploy on-site management and operating staff to act as an extension of our customers' environmental management teams, allowing our customers to focus on what they do best.</div>
-            </div>
-          </div>
-          <!--END Ind Resource-->
-          
-          <!--Ind Resource-->
-          <div class="indResourceContainer">
-            <div class="indResourceIconContainer"><img src="img/resources/aligned.png" alt=""></div>
-            <div class="indResourceTxtContainer">
-              <div class="indResourceTitle">Aligned Incentives</div>
-              <div class="indResourceTxt">We are committed to structuring transparent win/win agreements with our customers. Such agreements allow us to leverage our best practices and experience to drive down expensive waste and material handling activities.</div>
+              <div class="indResourceTitle">Retail</div>
+              <div class="indResourceTxt">Multi-location groceries, restaurants, and other retailers are uniquely positioned to pursue ambitious waste reduction goals. They can quickly share innovations and best practices from one area to another, and they can leverage friendly competition through benchmarking among locations. Barriers to change can include employee turnover, language differences, and organizational complexity within corporate and franchise hierarchies.</div>
             </div>
           </div>
           <!--END Ind Resource-->
@@ -196,113 +128,222 @@
       
       </div>
       <!--END Resource Grid-->
+      
+      <!--Next-->
+      <div style="border-top: 10px solid #f4f4f4; padding-top: 50px;">
+
+        <div class="resourcesActionTitleWrapper">
+          <h2 class="resourcesActionTitle">Aggregation &amp; Recovery Collaboratives</h2>
+          <div class="resourcesActionSubTitle">On their journey to zero waste, many of our customers have reached a point where the path gets steeper. They are recycling their cardboard, metal, and other "traditional" recyclables. They have programs in place for food waste. The dominant streams in their waste dumpsters are now items like plastic tubing, wooden reels, film plastics, packaged food and beverages, label backing, and more. What fills their dumpsters today is a miscellany of stuff that is unique to their business, with no off-the-shelf recovery solution.</div>
+        </div>
+
+        <div class="recycleUpperContentContainer twoColumnContentContainer" style="margin-top: 30px; -webkit-column-gap: 60px;  -moz-column-gap: 60px; column-gap: 60px;">
+          <p>This lack of easy solutions often doesn’t reflect a lack of recovery value. In fact, many of these items may be quite valuable when in the right quantities and in the right place. To capture these materials, we have begun developing and deploying Aggregation &amp; Recovery Collaboratives (ARC&trade;), through which local organizations come together to establish practical resource recovery operations tailored to their unique needs.</p>
+          <p>We established our first ARC in Lebanon, NH, with Hypertherm, a manufacturer of industrial cutting systems. The operation, detailed in the side bar to the right, has helped to increase that company’s recycling rate from 43% to over 97%, while also serving others throughout the region.</p>
+          <h3>Benefits</h3>
+          <p>ARCs enable innovative recovery solutions through risk- and reward-sharing, aggregation and densification technologies, and efficient access to reuse and recycling markets. The model can be replicated in any geography, and tailored to handle any combination of materials, allowing for the recovery of numerous items that were previously considered “unrecoverable.” Although these items are often lightweight, they have high embedded energy, carbon, and other resource value, and are highly worthwhile to recover.</p>
+          <h3>Business Model</h3>
+          <p>ARCs have an innovative, yet flexible, business model built around aligned incentives, modular equipment, and revenue transparency. The scope extends from point-of-generation through to commodity marketing.  The specifics of property ownership, revenue sharing, and contractual relationships are established on a case-by-case basis. The approach resists "technology for the sake of technology" and focuses instead on practical problem-solving and a “get the job done” attitude.</p>
+          <h3>Innovative Partnerships</h3>
+          <p>Establishing a successful ARC requires very close collaboration and a pioneering spirit among the partnering stakeholders. Casella brings expertise in logistics, handling, processing equipment, and commodity markets. Generator partners bring a commitment to waste reduction, volumes of recyclable items, and in some cases, tangible assets such as equipment, vehicles, or warehouse space. Most importantly, all partners contribute a willingness to work together to create enduring solutions to serve their unique local materials recovery needs.</p>
+        </div>
+
+      </div>
+      <!--END Next-->
     
     </div>
   </div>
   
   
-  <div class="globalWidth">
-    <div class="resourcesActionTitleWrapper">
-      <div class="resourcesActionTitle">Our Resource Solutions in Action</div>
-      <div class="resourcesActionSubTitle">The case studies below illustrate successes our customers have implemented to capture value from the waste stream.</div>
+  <!------------------>
+  
+  
+  <div class="res-man-service">
+    <div class="globalWidth">
+
+      <div class="res-man-serviceTitleWrapper">
+        <div class="res-man-serviceTitle">Resource Management Services</div>
+        <div class="res-man-serviceSubTitle">Our Resource Solutions team delivers a full menu of specialized resource management services, that are essential to helping customers meet their resource management goals:</div>
+      </div>
+
+      <div class="res-man-service__lower">
+
+        <!--images-->
+        <div class="res-man-service__lower__images">
+          <img src="img/resources/res-man-1.jpg" alt="">
+          <img src="img/resources/res-man-2.jpg" alt="">
+          <img class="last" src="img/resources/res-man-3.jpg" alt="">
+        </div>
+        <!--END images-->
+
+        <!--content-->
+        <div class="res-man-service__lower__content">
+          <ul>
+            <li><strong>Sourcing and Logistics:</strong><br />With a growing network of over 700 qualified vendors, we can collect, transport, process, and recover hundreds of unique commodities and materials.</li>
+            <li><strong>Chain of Custody Services:</strong><br />To protect our customers’ brands and reputations, we are equipped to track the movement and certify the destruction of non-salable, off-spec, and expired goods.</li>
+            <li><strong>Commodity Management:</strong><br />With substantial tonnage under management, we have commodity market expertise and unique access to primary mills, secondary processors, and brokers.</li>
+            <li><strong>On-Site and Supply Chain Services:</strong><br />Effective resource management begins long before material hits the loading dock, so we regularly hire staff to work right inside customer operations to manage materials with a focus on protecting product quality and value.</li>
+            <li><strong>Multi-Site and Large Account Management:</strong><br />With professional management, coordination, and benchmarking, we help retail chains and institutional campuses achieve ambitious goals.</li>
+            <li><strong>Sustainability Consulting and Continuous Improvement:</strong><br />We provide consultative and ongoing support to help customers understand their impact, evaluate options, manage change, and achieve their goals.</li>
+            <li><strong>Innovative Technologies and Solutions:</strong><br />We closely monitor the technological developments in our industry and in related fields. We pilot promising solutions and match them with customers.</li>
+          </ul>
+        </div>
+        <!--END content-->
+
+      </div>
+
+
     </div>
   </div>
-    
-    
+  
+ 
+  <!------------------>
+
   <!--Tabbed Container-->
-  <div class="resourcesTab">
+  <div class="recycleTabs">
     
     <!-- Start Tabs-->
     <div id="tabbed-nav">
 
       <!-- Tab Navigation Menu -->
       <ul>
-        <li><a>Tompkins County<span>Residential Food Scraps Recycling</span></a></li>
-        <li><a>Becton Dickinson (BD)</a></li>
-        <li><a>Lewiston-Auburn<span>Pollution Control Authority</span></a></li>
-        <li><a>Skidmore College</a></li>
-        <li><a>Bertucci's Italian Restaurants</a></li>
-        <li><a>CVPH<span>Champlain Valley Physicians Hospital</span></a></li>
+        <li><a>Putting the Pieces Together</a></li>
+        <li><a>Sustainable Enterprise Solutions</a></li>
+        <li><a>The Lebanon ARC</a></li>
       </ul>
 
       <!-- Content container -->
       <div>
-
-        <!--Tompkins-->
-        <div>
-          <div class="indResourceTabContainer">
-            <div class="indResourceTabContainerCol1"><img class="logo" src="img/resources/tompkins-logo.jpg" alt=""></div>
-            <div class="indResourceTabContainerCol2">
-              <div class="indResourceTabContainerCol2Title">Tompkins County - Residential Food Scraps Recycling</div>
-              <p>With a strong commitment to achieving 75% waste reduction by 2016, Tompkins County in upstate New York is always on the cutting edge of municipal recycling. Most recently, the County has set their sights on residential food scraps recycling, making great strides in the past two years. Through a grant-funded pilot that began in 2012, the County is offering free curbside food scraps collection for roughly 1,200 households. Participants received 13-gallon carts, kitchen caddies, compostable liners, and educational materials, and are encouraged to set out their food scraps for weekly collection and delivery to Cayuga Compost in Trumansburg. Casella is proud to provide the collection service for this important trial. County residents can also recycle their food scraps by bringing them to one of five available drop spot locations, or by drawing upon County and Cornell Cooperative Extension support for backyard composting.</p>
-            </div>
-          </div>
-        </div>
-        <!--END Tompkins-->
         
-        <!--Becton Dickinson-->
+        <!--Pieces-->
         <div>
-          <div class="indResourceTabContainer">
-            <div class="indResourceTabContainerCol1"><img src="img/resources/BD.jpg" alt=""></div>
-            <div class="indResourceTabContainerCol2">
-              <div class="indResourceTabContainerCol2Title">Becton Dickinson (BD)</div>
-              <p>Becton Dickinson is a global medical technology company that manufactures and sells medical and diagnostic equipment. With Casella's support, the company has developed a successful resource management program, including on-site staff, unified invoicing, monthly performance reports, accessible data dashboards, and ongoing associate education. Under the program, BD is recycling 7,000 tons/year of plastic, 5,000 tons per year of fiber, and 2,000 tons per year of metal and glass. Excitingly, Casella and BD are currently developing a closed-loop recycling program that would beneficially reuse 2,500 tons per year of production waste polypropylene.</p>
+          
+          <div class="resourcesActionTitleWrapper">
+            <div class="actiontitle-col2">
+              <img src="img/resources/SVG/puzzle.svg" alt="">
+            </div>
+            <div class="actiontitle-col1">
+              <div class="resourcesActionTitle">Putting the Pieces Together</div>
+              <div class="resourcesActionSubTitle">As described at the beginning of this report, creating a circular economy requires matching innovative Resource Solutions with the smart resource renewal goals of our customers. Here are a couple examples. Visit <a href="https://www.casella.com/your-business" title="">casella.com/your-business</a> for more case studies.</div>
             </div>
           </div>
-        </div>
-        <!--END Becton Dickinson-->
+          
+          <!--Tompkins-->
+          <div class="indResourceTabContainer">
+            <div class="indResourceTabContainerCol1"><img class="logo" src="img/services/Tsongas-Center-Containers.jpg" alt=""></div>
+            <div class="indResourceTabContainerCol2">
+              <div class="indResourceTabContainerCol2Title"><span>Case Study: </span>UMass Lowell Tsongas Center – Lowell, MA</div>
+              <div class="indResourceTabContainerCol2__grouping">
+                <div class="indResourceTabContainer__label">Goal:</div>
+                <div>Reduce waste, educate students, engage community at the UML Tsongas Center Stadium</div>
+              </div>
 
-        <!--Lewiston-Auburn-->
-        <div>
-          <div class="indResourceTabContainer">
-            <div class="indResourceTabContainerCol1"><img src="img/resources/LAPCA.jpg" alt=""></div>
-            <div class="indResourceTabContainerCol2">
-              <div class="indResourceTabContainerCol2Title">The Lewiston-Auburn Pollution Control Authority</div>
-              <p>The solid residuals produced at wastewater treatment facilities contain carbon and nutrients that can help to build soils. Still a large percentage of this material is typically disposed in landfills or incinerators. The Lewiston-Auburn Pollution Control Authority in Maine is committed to recycling 100% of their biosolids. To do this, they operate their own compost facility and work with us to complete direct land application of their Class B biosolids in season. Our talented project managers work tirelessly to find suitable fields and coordinate scheduling as dictated by field owner's needs, plant production, and the always unpredictable northeastern weather.</p>
-            </div>
-          </div>
-        </div>
-        <!--END Lewiston-Auburn-->
+              <div class="indResourceTabContainerCol2__grouping">
+                <div class="indResourceTabContainer__label">Solutions:</div>
+                <ul>
+                  <li><strong>Stadium Recycling:</strong> The 7,800-seat capacity Tsongas Center hosts dozens of major campus and community events throughout the year. Casella worked with the facility to establish a highly-effective recycling program that captures recycling from these events while simultaneously educating the student body and broader community.</li>
+                  <li><strong>Food Waste Recovery:</strong> The Tsongas kitchen serves stadium events and is a major campus catering hub. Casella helped the arena establish a successful tote-based food waste recovery program. Demonstrating its commitment to innovation, beginning in the fall of 2018, UML will become the first college in the northeast to use Grind2Energy technology to divert its food waste to nearby on-farm digesters for renewable energy and fertilizer production.</li>
+                </ul>
+              </div>
 
-        <!--Skidmore College-->
-        <div>
-          <div class="indResourceTabContainer">
-            <div class="indResourceTabContainerCol1"><img class="logo" src="img/resources/skidmore.jpg" alt=""></div>
-            <div class="indResourceTabContainerCol2">
-              <div class="indResourceTabContainerCol2Title">Skidmore College</div>
-              <p>Skidmore College had established a goal to achieve 40% recycling by the end of 2014. However, it faced challenges with staff training, communication, data access and signage, and actual recycling performance hovered around 16%. Casella spent time understanding the college's needs, efficiently implemented Zero-Sort Recycling, and began providing monthly data reports. We increased sustainability awareness through co-branded signage, presentations for faculty and staff, and regular waste audits with students and faculty. This increased the recycling rate to 28%, with peak monthly rates of 40% in May and June 2014. The school is also now able to capture and divert increased volumes during move-out periods.</p>
-              <div class="resourcesQuote">"From the quarterly meetings and conference calls to the overall support we've received, even including our local Casella sales rep sorting trash with us, it has been a very pleasant process. It goes above and beyond what we would expect from a typical waste hauler."</div>
-              <div class="resourcesMeta">- Rachel Willis, <em>Sustainability Coordinator</em></div>
+              <div class="indResourceTabContainerCol2__grouping">
+                <div class="indResourceTabContainer__label">Result:</div>
+                <p>The Tsongas Center now recovers nearly 80 tons of recyclables and food waste from its disposal stream each year, setting a bold example for the surrounding community and other universities.</p>
+              </div>
             </div>
           </div>
-        </div>
-        <!--END Skidmore College-->
-        
-        <!--Bertucci-->
-        <div>
+          <!--END Tompkins-->
+
+          <!--Becton Dickinson-->
           <div class="indResourceTabContainer">
-            <div class="indResourceTabContainerCol1"><img src="img/resources/Bertucci.jpg" alt=""></div>
+            <div class="indResourceTabContainerCol1"><img src="img/services/WenhamMA.jpg" alt=""></div>
             <div class="indResourceTabContainerCol2">
-              <div class="indResourceTabContainerCol2Title">Bertucci's Italian Restaurants</div>
-              <p>Bertucci's Italian Restaurant chain has over 90 locations and is renowned for its large open kitchens with distinctive brick oven pizzas. The organization needed a reliable waste management partner to help managers and staff to minimize time spent on waste and recycling. Casella coordinated the delivery of nearly 170 solid waste and recycling containers, and implemented Zero-Sort Recycling at the majority of locations, simplifying the recycling process and diverting more material from the waste stream. By also optimizing collection frequencies and right-sizing containers, we were able to help reduce Bertucci's solid waste costs and increase recycling.</p>
+              <div class="indResourceTabContainerCol2Title"><span>Case Study: </span>Hamilton and Wenham, MA</div>
+
+              <div class="indResourceTabContainerCol2__grouping">
+                <div class="indResourceTabContainer__label">Goal:</div>
+                <div>Maximize recycling and recovery of organic waste</div>
+              </div>
+
+              <div class="indResourceTabContainerCol2__grouping">
+                <div class="indResourceTabContainer__label">Solutions:</div>
+                <ul>
+                  <li>Casella provides weekly three-bin service (trash, recycling, and food waste) to the 4,000+ residents of the Towns of Hamilton and Wenham. Food waste is collected in 12-gallon carts and delivered to a local farm composter.</li>
+                  <li>The Towns arrange for residents to receive finished compost for their gardens.</li>
+                </ul>
+              </div>
+
+              <div class="indResourceTabContainerCol2__grouping">
+                <div class="indResourceTabContainer__label">Result:</div>
+                <p>The Towns reduce their disposal costs, achieve recycling rates of around 50%, and demonstrate a viable model for a three-bin municipal waste and recycling program.</p>
+              </div>
+
             </div>
           </div>
+          <!--END Becton Dickinson-->
+          
+          
         </div>
-        <!--END Bertucci-->
-        
-        <!--CVPH-->
+        <!--END Pieces-->
+
+        <!--Process-->
         <div>
-          <div class="indResourceTabContainer">
-            <div class="indResourceTabContainerCol1"><img class="logo" src="img/resources/cvph.jpg" alt=""></div>
-            <div class="indResourceTabContainerCol2">
-              <div class="indResourceTabContainerCol2Title">Champlain Valley Physicians Hospital (CVPH)</div>
-              <p>CVPH Medical Center is a not-for-profit hospital with over 2,000 employees, and is one of the largest generators of waste in the Plattsburgh, NY region. Patients at the center need to focus their full energy on getting healthy, and understandably lack time or interest to understand complicated waste sorting rules. Casella helped CVPH implement Zero-Sort Recycling in patient rooms, and created a centralized system to help employees understand the ease of the program for increasing recycling. CVPH has also partnered with Casella to launch a composting program. As a result, 850,000 pounds is being diverted from disposal, and the program helps to reduce costs.</p>
-              <div class="resourcesQuote">"It is very important for us at CVPH to be a part of the Zero-Sort Recycling program because we are one of the largest employers in the North Country. We're putting recyclable, reusable products back out there to be reused and we're keeping them out of our local landfills."</div>
-              <div class="resourcesMeta">- James Moran, <em>Environmental Services Supervisor</em></div>
+          
+          <div class="resourcesActionTitleWrapper">
+            <div class="resourcesActionTitle">Sustainable Enterprise Solutions</div>
+            <div class="resourcesActionSubTitle">In collaboration with our most progressive customers, we are developing and refining the cutting-edge services that will one day become the norm for all customers. In this way, our Resource Solutions team is an essential part of Casella’s engine for innovation, development, and growth. To ensure that the company is prepared to deliver the sustainable resource management services that customers increasingly demand, the Solutions team works closely with all Casella operating divisions, helping to advance:</div>
+          </div>
+          
+          <div class="recycleUpperContentContainer twoColumnContentContainer" style="margin-top: 30px; color: #444;">
+            <h3>An Integrated Sales Strategy:</h3>
+            <p>To deliver a holistic suite of resource management solutions to our customers, we are modernizing our sales approach, providing training pathways, leveraging customer relationship management technology, and building our digital presence.</p>
+            <h3>Sustainability and innovation</h3>
+            <p>With more customers striving to reduce or eliminate waste, new technologies emerge daily. We help our customers and our divisions evaluate these systems to see what works and what doesn’t, and we help them innovate new solutions of their own.</p>
+            <h3>A Coordinated Engagement Strategy:</h3>
+            <p>Our divisions engage closely with their communities, supporting countless local events and organizations. Through coordination, corporate matching, and more, we are linking local values to corporate resources, and amplifying their impact.</p>
+          </div>
+          
+        </div>
+        <!--END Process-->
+
+        <!--The Lebanon ARC-->
+        <div>
+          
+          <div class="recycleFocusContainer">
+                   
+            <!--Content-->
+            <div class="recycleFocusColLeft">
+              <div class="recycleFocusColLeftWrapper">
+                <div class="resourcesActionTitle">The Lebanon ARC</div>
+                
+                <div class="resource-leb-artc">
+                  <div class="resource-leb-artc__item"><span>Location:</span> Lebanon, NH</div>
+                  <div class="resource-leb-artc__item"><span>Square footage:</span> 5,000</div>
+                  <div class="resource-leb-artc__item"><span>Equipment:</span> Balers, scales, and a plastics grinder</div>
+                  <div class="resource-leb-artc__item"><span>Staff:</span> Two full-time Casella employees</div>
+                  <div class="resource-leb-artc__item"><span>Materials Handled:</span> >50 tons per month of loose, baled, super-sacked or ground film plastics, rigid plastics, plastic tubing and hosing, plastic and wooden reels, label backing, cardboard, metal, and other unique hard-to-recycle items</div>
+                  <div class="resource-leb-artc__item"><span>Customers/Industries served:</span> Hypertherm, plastic molders, food manufacturers, healthcare, printing, and other regional businesses</div>
+                  <div class="resource-leb-artc__item"><span>Business model:</span> 90-day baseline and program initiation, access to warehouse space, royalty payments, and aligned partnership milestones and goals.</div>
+                  
+                  <blockquote>"We are partners with Casella because they understand the multi-layered approach we have for resource management and reducing our waste."
+                  <span>- Jenny Levy, VP, People, Community &amp; Environment Hypertherm</span>
+                  </blockquote>
+                  
+                </div>
+               
+              </div>
             </div>
+            <!--END Content-->
+            
+            <!--Image-->
+            <div class="recycleFocusColRight">
+              <div class="recycleFocusColRightWrapper"><img src="img/resources/lebanon.jpg" alt=""></div>
+            </div>
+            <!--END Image-->
+            
           </div>
         </div>
-        <!--END CVPH-->
+        <!--END The Lebanon ARC-->
 
       </div>
 
@@ -311,7 +352,25 @@
   
   </div>
   <!--END Tabbed Container-->
-      
+  
+  
+  <!------------------>
+
+  
+  <!--Resource Journey-->
+  <div class="resourcesJourney">
+    <div class="resourcesJourney__content">
+      <div class="globalWidth">
+        <div class="resourcesJourney__TitleWrapper">
+          <div class="resourcesJourney__Title">The Resource Renewal Journey</div>
+          <div class="resourcesJourney__SubTitle">Resource Solutions customers pursue and achieve far more than a simplistic "diversion" target. Through a process of continuous improvement, they use our services to advance both quantity and quality in their recycling efforts, while creating value for their organizations.</div>
+        </div>
+      </div>
+    </div>
+    <div class="resourcesJourney__graphic"><img src="img/resources/SVG/chart.svg" title=""></div>
+  </div>
+  <!--END Resource Journey-->
+
     
   <!--//////////////////////////////////////////////-->
   
@@ -324,41 +383,12 @@
   <!--.......................................................................................................................................-->  
   
     
-  <!--Directional Fading-->
-  <script type='text/javascript' src='plugins/fadethis/jquery.fadethis.js'></script>
-  
-  <!-- Zozo Tabs css -->
-  <link href="plugins/zozoTabs/css/zozo.tabs.min.css" rel="stylesheet" />
-  <link href="plugins/zozoTabs/css/zozo.tabs.flat.min.css" rel="stylesheet" />
-  <script src="plugins/zozoTabs/js/zozo.tabs.min.js"></script>
-  
-  <script>
-	  jQuery(document).ready(function ($) {
-		  jQuery("#tabbed-nav").zozoTabs({
-			  position: "top-right",
-                theme: "flat-nephritis",
-                style: "clean",
-                shadows: false,
-                multiline: true,
-                bordered: true,
-				minWindowWidth: 945,
-                orientation: "vertical",
-                size: "small",
-                animation: {
-                    easing: "easeInOutExpo",
-                    duration: 500,
-                    effects: "slideH"
-                }
-			  ,
-		  });
-	  });
-  </script>
+  <!-- Zozo Tabs *** 960px -->
+  <?php include ('includes/zozo-assets.php'); ?>
+  <script type='text/javascript' src='js/custom/custom-zozo-960.js'></script>
     
   <!--General-->
-  <script type="text/javascript" src="js/libs/ios-orientationchange-fix.js"></script>
-  <script type="text/javascript" src="js/libs/jquery.easing.pack.js"></script>
-  <script type="text/javascript" src="js/libs/jquery.ui.totop.min.js"></script>
-  <script type='text/javascript' src='js/custom/adw-menu.js'></script>
+  <?php include ('includes/footJS.php'); ?>
   <script type='text/javascript' src='js/custom/custom-internal.js'></script>
   <script type='text/javascript' src='js/custom/custom-general.js'></script>
   <!--END JAVASCRIPT-->

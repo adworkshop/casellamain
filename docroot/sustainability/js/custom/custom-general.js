@@ -58,3 +58,6 @@ jQuery(window).bind('resize', function(){
   
   function onHoverLandfills() {jQuery("#menuLandfillsImg").attr('src', 'i/general/landfillsIcon.png');}
   function offHoverLandfills() {jQuery("#menuLandfillsImg").attr('src', 'i/general/landfillsIcon-nav.png');}
+  
+  function onHoverSolutions() {jQuery("#menuSolutionsImg").attr('src', 'i/general/resourceIcon.png');}
+  function offHoverSolutions() {jQuery("#menuSolutionsImg").attr('src', 'i/general/resourceIcon-nav.png');}

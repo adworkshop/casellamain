@@ -1,7 +1,6 @@
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-JSKKV" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-
 <div id="generalNav">
   <div class="navContainer">
     <div class="navInnerContainer">
@@ -12,7 +11,14 @@
       
       <!--Mobile Btn Set-->
       <div class="mobileBtnWrapper">
-        <a href="#menu" class="mainMenuToggle"></a>
+        <div class="mobileBtnWrapper__icon">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
       <!--END Mobile Btn Set-->
       
@@ -21,20 +27,20 @@
         
         <ul class="adwMenu">      
           <li class="tierMenu">
-            <span class="openChild"><span class="openChildInner"></span></span>
-            <a href="services.php">Our Services</a>
+            <button class="openChild" aria-expanded="false"><span class="accessibility-hidden">show submenu</span></button>
+            <a href="services.php">Our Solutions</a>
             <ul class="subMenu">
               <li><a href="recycling.php">Recycling</a></li>
               <li><a href="collection.php">Collection</a></li>
               <li><a href="organics.php">Organics</a></li>
               <li><a href="energy.php">Energy</a></li>
               <li><a href="landfills.php">Landfills</a></li>
-              <li><a href="resourceSolutions.php">Bringing it all Together</a></li>
+              <li><a href="resourceSolutions.php">Solutions</a></li>
             </ul>
           </li> 
           
           <li class="tierMenu">
-            <span class="openChild"><span class="openChildInner"></span></span>
+            <button class="openChild" aria-expanded="false"><span class="accessibility-hidden">show submenu</span></button>
             <a href="operations.php">Our Operations</a>
             <ul class="subMenu">
               <li><a href="carbonFootprint.php">Carbon Footprint</a></li>
