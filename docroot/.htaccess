@@ -381,8 +381,6 @@ AddEncoding gzip svgz
   #Launch list redirects
   RewriteRule ^careers/[0-9]+$ /available-careers [L,QSA,R=301]
 
-  # 2019-01-10:ben@adworkshop.com - redirect /sustainability/ requests to PDF until 2018 version is done
-  RewriteRule ^sustainability/(.*)$ http://bit.ly/CasellaSustainabilityReport2018 [L,R=307]
 
   # Pass all requests not referring directly to files in the filesystem to
   # index.php.
@@ -408,7 +406,7 @@ AddEncoding gzip svgz
 
 
   # Allow the hardcoded sustainability subsite.
-  #RewriteCond %{REQUEST_URI} !/sustainability/*
+  RewriteCond %{REQUEST_URI} !/sustainability/*
 
   # Deny access to any other PHP files that do not match the rules above.
   # Specifically, disallow autoload.php from being served directly.
