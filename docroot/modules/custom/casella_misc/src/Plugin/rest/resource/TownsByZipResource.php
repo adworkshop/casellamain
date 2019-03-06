@@ -48,9 +48,6 @@ class TownsByZipResource extends ResourceBase {
 
     $terms = $termStorage->loadByProperties(['field_zip_code' => $filter, 'vid' => 'towns_cities']);
 
-
-    drupal_set_message('<pre>' . print_r($terms,1) . '</pre>');
-
     $retVal = [
       'town' => [],
     ];
