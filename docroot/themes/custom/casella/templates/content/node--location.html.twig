@@ -260,3 +260,6 @@
     </div>
   </div>
 {% endblock %}
+{% if tab_anchors|length %}
+  {% include "/" ~ theme_path ~ "/templates/includes/tab-panels.html.twig" %}
+{% endif %}
