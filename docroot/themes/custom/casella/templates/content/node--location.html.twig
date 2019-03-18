@@ -206,7 +206,7 @@
   {% set latitude = content.field_latitude|render|striptags|trim %}
   {% set longitude = content.field_longitude|render|striptags|trim %}
   {% set suppress_map = content.field_supress_map|render|striptags|trim %}
-  {% if suppress_map == 'Off' and latitude and longitude %}
+  {% if suppress_map != 'On' and latitude and longitude %}
     <!--Map-->
     <div class="indLocation-staticGoogleMap" style="height:400px; background:url(https://maps.googleapis.com/maps/api/staticmap?markers=size:small%7C{{ latitude ~ ',' ~ longitude }}&zoom=12&size=640x640&scale=2&key=AIzaSyAl0whz4aUUDJH4GIpbK2Rz65MbC6nE8io
   ) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
