@@ -7,6 +7,7 @@ label: 'Human Resources'
 weight: 7
 is_admin: null
 permissions:
+  - 'access taxonomy overview'
   - 'add terms in hiring_managers'
   - 'add terms in job_category'
   - 'add terms in job_status'

@@ -1,0 +1,23 @@
+uuid: 68503ae8-7264-477c-a1db-d39ba3a697df
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_supress_map
+    - node.type.location
+id: node.location.field_supress_map
+field_name: field_supress_map
+entity_type: node
+bundle: location
+label: 'Supress Map'
+description: 'Check to suppress map output for this location (on this page only - main locations map will continue to output).'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

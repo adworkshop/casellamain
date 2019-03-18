@@ -23,6 +23,7 @@ dependencies:
     - field.field.node.location.field_sidebar_promotions
     - field.field.node.location.field_state
     - field.field.node.location.field_street_address
+    - field.field.node.location.field_supress_map
     - field.field.node.location.field_unacceptable_waste
     - field.field.node.location.field_zip
     - node.type.location
@@ -170,6 +171,16 @@ content:
     third_party_settings: {  }
     type: string
     region: content
+  field_supress_map:
+    weight: 21
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
   field_unacceptable_waste:
     type: entity_reference_revisions_entity_view
     weight: 16
@@ -189,9 +200,9 @@ content:
     region: content
   links:
     weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   feeds_item: true
   field_alert_end_date: true

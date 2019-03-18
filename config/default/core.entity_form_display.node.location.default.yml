@@ -23,6 +23,7 @@ dependencies:
     - field.field.node.location.field_sidebar_promotions
     - field.field.node.location.field_state
     - field.field.node.location.field_street_address
+    - field.field.node.location.field_supress_map
     - field.field.node.location.field_unacceptable_waste
     - field.field.node.location.field_zip
     - node.type.location
@@ -43,6 +44,7 @@ third_party_settings:
         - field_zip
         - field_latitude
         - field_longitude
+        - field_supress_map
         - field_phone_number
       parent_name: ''
       weight: 8
@@ -110,7 +112,7 @@ content:
     region: content
   created:
     type: datetime_timestamp
-    weight: 12
+    weight: 13
     settings: {  }
     third_party_settings: {  }
     region: content
@@ -123,6 +125,7 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
+      default_paragraph_type: ''
     third_party_settings: {  }
     region: content
   field_alert_content:
@@ -148,7 +151,7 @@ content:
     third_party_settings: {  }
     region: content
   field_assoc_hauling:
-    weight: 15
+    weight: 16
     settings:
       match_operator: CONTAINS
       size: 60
@@ -181,6 +184,7 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
+      default_paragraph_type: ''
     third_party_settings: {  }
     region: content
   field_latitude:
@@ -206,7 +210,7 @@ content:
     type: string_textfield
     region: content
   field_meta_tag:
-    weight: 30
+    weight: 17
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
@@ -220,7 +224,7 @@ content:
     type: string_textfield
     region: content
   field_phone_number:
-    weight: 9
+    weight: 10
     settings:
       size: 60
       placeholder: ''
@@ -236,7 +240,7 @@ content:
     type: string_textfield
     region: content
   field_sidebar_promotions:
-    weight: 14
+    weight: 15
     settings:
       match_operator: CONTAINS
       size: 60
@@ -260,6 +264,13 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_supress_map:
+    weight: 9
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_unacceptable_waste:
     type: entity_reference_paragraphs
     weight: 15
@@ -269,6 +280,7 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
+      default_paragraph_type: ''
     third_party_settings: {  }
     region: content
   field_zip:
@@ -282,7 +294,8 @@ content:
   langcode:
     type: language_select
     weight: 7
-    settings: {  }
+    settings:
+      include_locked: true
     third_party_settings: {  }
     region: content
   path:
@@ -295,7 +308,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 120
+    weight: 18
     region: content
     third_party_settings: {  }
   title:
@@ -307,10 +320,10 @@ content:
     third_party_settings: {  }
     region: content
   translation:
-    weight: 13
+    weight: 14
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 11
