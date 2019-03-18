@@ -24,6 +24,7 @@ dependencies:
     - field.field.node.location.field_state
     - field.field.node.location.field_street_address
     - field.field.node.location.field_supress_map
+    - field.field.node.location.field_tabs
     - field.field.node.location.field_unacceptable_waste
     - field.field.node.location.field_zip
     - node.type.location
@@ -96,6 +97,30 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Accepted/Unaccepted Waste Categories'
+    group_additional_content:
+      children:
+        - group_tabs
+      parent_name: ''
+      weight: 20
+      format_type: tabs
+      format_settings:
+        id: ''
+        classes: ''
+        direction: vertical
+      label: 'Additional Content'
+    group_tabs:
+      children:
+        - field_tabs
+      parent_name: group_additional_content
+      weight: 20
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Tabs
 id: node.location.default
 targetEntityType: node
 bundle: location
@@ -270,6 +295,18 @@ content:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
+  field_tabs:
+    weight: 21
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
     region: content
   field_unacceptable_waste:
     type: entity_reference_paragraphs

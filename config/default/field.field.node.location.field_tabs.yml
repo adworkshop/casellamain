@@ -1,0 +1,123 @@
+uuid: e183ebeb-fde6-4d1c-9fe7-8c236a9e6d30
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tabs
+    - node.type.location
+    - paragraphs.paragraphs_type.case_studies
+    - paragraphs.paragraphs_type.free_form
+    - paragraphs.paragraphs_type.image_gallery
+    - paragraphs.paragraphs_type.organics_updates
+    - paragraphs.paragraphs_type.products
+    - paragraphs.paragraphs_type.services
+    - paragraphs.paragraphs_type.testimonials
+    - paragraphs.paragraphs_type.video
+  module:
+    - entity_reference_revisions
+id: node.location.field_tabs
+field_name: field_tabs
+entity_type: node
+bundle: location
+label: Tabs
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      case_studies: case_studies
+      free_form: free_form
+      image_gallery: image_gallery
+      organics_updates: organics_updates
+      products: products
+      services: services
+      testimonials: testimonials
+      video: video
+    target_bundles_drag_drop:
+      block_link_with_icon:
+        weight: 28
+        enabled: false
+      case_studies:
+        enabled: true
+        weight: 29
+      content_chunk:
+        weight: 30
+        enabled: false
+      earthlink_link:
+        weight: 31
+        enabled: false
+      faq_category:
+        weight: 32
+        enabled: false
+      faq_question:
+        weight: 33
+        enabled: false
+      fa_link_with_icon:
+        weight: 34
+        enabled: false
+      free_form:
+        enabled: true
+        weight: 35
+      holiday:
+        weight: 36
+        enabled: false
+      image_gallery:
+        enabled: true
+        weight: 37
+      image_with_caption:
+        weight: 38
+        enabled: false
+      inline_image:
+        weight: 39
+        enabled: false
+      inline_video:
+        weight: 40
+        enabled: false
+      large_promotion:
+        weight: 41
+        enabled: false
+      link_with_icon:
+        weight: 42
+        enabled: false
+      organics_updates:
+        enabled: true
+        weight: 43
+      products:
+        enabled: true
+        weight: 44
+      recommendation:
+        weight: 45
+        enabled: false
+      services:
+        enabled: true
+        weight: 46
+      slider_image:
+        weight: 47
+        enabled: false
+      social_link:
+        weight: 48
+        enabled: false
+      solution_resource:
+        weight: 49
+        enabled: false
+      testimonials:
+        enabled: true
+        weight: 50
+      upper_button:
+        weight: 51
+        enabled: false
+      vertical:
+        weight: 52
+        enabled: false
+      video:
+        enabled: true
+        weight: 53
+      waste_category:
+        weight: 54
+        enabled: false
+field_type: entity_reference_revisions
