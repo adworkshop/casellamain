@@ -1494,6 +1494,20 @@ function casella_preprocess_node(&$variables) {
       $variables['serviceType'] = $category[0]['value'];
     }
 
+    $variables['landfill_sub_nav'] = '';
+    // for landfill type, setup the sidebar landfill nav
+    if ('Landfill' == $variables['serviceType'] && 'full' == $variables['view_mode']) {
+
+
+        // build TAAG sidebar nav list
+        $view = \Drupal\views\Views::getView('locations');
+        $view->setDisplay('block_9');
+        $view->preExecute();
+        $view->execute();
+        $variables['landfill_sub_nav'] = $view->render();
+
+    }
+
     $chargesWarning = _casella_get_global('field_charges_warning');
     $variables['chargesWarning'] = $chargesWarning ? $chargesWarning[0]['value'] : '';
 
