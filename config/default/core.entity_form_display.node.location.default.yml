@@ -21,6 +21,7 @@ dependencies:
     - field.field.node.location.field_phone_number
     - field.field.node.location.field_schedule_title
     - field.field.node.location.field_sidebar_promotions
+    - field.field.node.location.field_slider_images
     - field.field.node.location.field_state
     - field.field.node.location.field_street_address
     - field.field.node.location.field_supress_map
@@ -100,6 +101,7 @@ third_party_settings:
     group_additional_content:
       children:
         - group_tabs
+        - group_media
       parent_name: ''
       weight: 20
       format_type: tabs
@@ -121,6 +123,19 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Tabs
+    group_media:
+      children:
+        - field_slider_images
+      parent_name: group_additional_content
+      weight: 21
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Media
 id: node.location.default
 targetEntityType: node
 bundle: location
@@ -272,6 +287,18 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_slider_images:
+    weight: 30
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
     region: content
   field_state:
     weight: 5

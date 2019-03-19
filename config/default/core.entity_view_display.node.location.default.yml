@@ -21,6 +21,7 @@ dependencies:
     - field.field.node.location.field_phone_number
     - field.field.node.location.field_schedule_title
     - field.field.node.location.field_sidebar_promotions
+    - field.field.node.location.field_slider_images
     - field.field.node.location.field_state
     - field.field.node.location.field_street_address
     - field.field.node.location.field_supress_map
@@ -155,6 +156,15 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_reference_entity_view
+    region: content
+  field_slider_images:
+    weight: 23
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
     region: content
   field_state:
     weight: 4
