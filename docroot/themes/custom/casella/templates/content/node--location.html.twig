@@ -139,7 +139,12 @@
 
 
   <!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
+  <!-- NEW: tab options extended to locations -->
+  {% if tab_anchors|length %}
+    {% include "/" ~ theme_path ~ "/templates/includes/tab-panels.html.twig" %}
+  {% endif %}
 
+  <!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
 
   <!--Second Tier CTA's-->
   <div class="indLocation-SecondTier-container">
@@ -232,6 +237,8 @@
         <!--Col - Content-->
         <div class="internal-mainBody-contentContainer">
 
+          {{ content.field_slider_images }}
+
           {{ content.body }}
 
           {% if 'Hauling' == serviceType %}
@@ -247,6 +254,131 @@
         <!--Col - Sidebar-->
         <div class="internal-mainBody-sidebarContainer">
 
+          {% if 'Landfill' == serviceType %}
+          <div class="sidebarNav-wrapper internal-sidebar-elementSpacer">
+
+            <div class="sidebarNavMainTitle">
+              <a href="/services/landfills" data-drupal-link-system-path="node/526">Landfills</a>
+            </div>
+
+            <nav id="sidebarMenu" class="internal-sidebarMenu menuContainer">
+
+              <ul class="adwMenu">
+
+
+
+                <li class="tierMenu first">
+                  <span class="openChild"><span class="openChildInner"></span></span>
+                  <a href="/services/recycling" class="subNav-active is-active" data-drupal-link-system-path="node/561">Recycling</a>
+
+                  <ul class="subMenu">
+
+
+
+
+                    <li class="first">
+                      <a href="/services/recycling/zero-sort-recycling" data-drupal-link-system-path="node/661">Zero-Sort Recycling</a>
+                    </li>
+
+
+
+                    <li>
+                      <a href="/services/recycling/recycle-better" data-drupal-link-system-path="node/13541">Recycle Better™</a>
+                    </li>
+                  </ul>
+
+                </li>
+
+
+
+                <li class="tierMenu">
+                  <a href="/services/collection" data-drupal-link-system-path="node/406">Collection</a>
+                </li>
+
+
+
+                <li class="tierMenu">
+                  <a href="/services/organics" data-drupal-link-system-path="node/4026">Organics</a>
+                </li>
+
+
+
+                <li class="tierMenu">
+                  <a href="/services/energy" data-drupal-link-system-path="node/456">Energy</a>
+                </li>
+
+
+
+                <li class="tierMenu">
+                  <a href="/services/landfills" data-drupal-link-system-path="node/526">Landfills</a>
+                </li>
+
+
+
+                <li class="tierMenu">
+                  <span class="openChild"><span class="openChildInner"></span></span>
+                  <a href="/services/special-waste" data-drupal-link-system-path="node/586">Special Waste</a>
+
+                  <ul class="subMenu">
+
+
+
+
+                    <li class="first">
+                      <a href="/services/landfills/special-waste/special-waste-maine" data-drupal-link-system-path="node/591">Maine</a>
+                    </li>
+
+
+
+                    <li>
+                      <a href="/services/landfills/special-waste/special-waste-massachusetts" data-drupal-link-system-path="node/596">Massachusetts</a>
+                    </li>
+
+
+
+                    <li>
+                      <a href="/services/landfills/special-waste/special-waste-new-hampshire" data-drupal-link-system-path="node/601">New Hampshire</a>
+                    </li>
+
+
+
+                    <li>
+                      <a href="/services/landfills/special-waste/special-waste-new-york" data-drupal-link-system-path="node/606">New York</a>
+                    </li>
+
+
+
+                    <li>
+                      <a href="/services/landfills/special-waste/special-waste-pennsylvania" data-drupal-link-system-path="node/611">Pennsylvania</a>
+                    </li>
+
+
+
+                    <li>
+                      <a href="/services/landfills/special-waste/special-waste-vermont" data-drupal-link-system-path="node/616">Vermont</a>
+                    </li>
+                  </ul>
+
+                </li>
+
+
+
+                <li class="tierMenu">
+                  <a href="/services/professional-services" title="Professional Services" data-drupal-link-system-path="node/3991">Professional Services</a>
+                </li>
+
+
+
+                <li class="tierMenu">
+                  <a href="/services/fee-information" target="" rel="" title="Fee Information" data-drupal-link-system-path="node/471">Fee Information</a>
+                </li>
+              </ul>
+
+            </nav>
+          </div>
+
+          {% endif %}
+
           {{ node_content.views_block__hr_block_2 }}
 
           {{ content.field_sidebar_promotions }}
@@ -260,6 +392,3 @@
     </div>
   </div>
 {% endblock %}
-{% if tab_anchors|length %}
-  {% include "/" ~ theme_path ~ "/templates/includes/tab-panels.html.twig" %}
-{% endif %}

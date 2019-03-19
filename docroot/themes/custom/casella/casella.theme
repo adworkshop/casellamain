@@ -612,6 +612,24 @@ function casella_preprocess_field(&$variables) {
 
     $unacceptableWasteIntro = _casella_get_global('field_unacceptable_waste_intro');
     $variables['unacceptableWasteIntro'] = $unacceptableWasteIntro ? $unacceptableWasteIntro[0]['value'] : '';
+
+    if ('field_slider_images' == $variables['element']['#field_name']) {
+
+
+    //setup / overrides for locaiton sliders
+    $variables['inner_id'] = 'content-slider'; // make this default for content types that don't have the fullWidth option, such as locations
+    $classArray = array(
+      'internalFeaturedMedia',
+      'cf',
+      'inBodyContent',
+      'topPosition'
+    );
+
+    if (!isset($variables['attributes']['class'])) {
+      $variables['attributes']['class'] = array();
+    }
+    $variables['attributes']['class'] = array_merge($variables['attributes']['class'], $classArray);
+    }
   }
   elseif ('free_form' == $variables['element']['#bundle']) {
     if ('field_free_form_content' == $variables['element']['#field_name']) {
@@ -674,6 +692,7 @@ function casella_preprocess_field(&$variables) {
         if (!isset($variables['attributes']['class'])) {
           $variables['attributes']['class'] = array();
         }
+
         $variables['attributes']['class'] = array_merge($variables['attributes']['class'], $classArray);
 
         break;
