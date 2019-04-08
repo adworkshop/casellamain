@@ -139,12 +139,6 @@
 
 
   <!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
-  <!-- NEW: tab options extended to locations -->
-  {% if tab_anchors|length %}
-    {% include "/" ~ theme_path ~ "/templates/includes/tab-panels.html.twig" %}
-  {% endif %}
-
-  <!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
 
 
 
@@ -209,6 +203,15 @@
     </div>
   </div>
 {% endblock %}
+
+
+
+<!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
+<!-- NEW: tab options extended to locations -->
+{% if tab_anchors|length %}
+  {% include "/" ~ theme_path ~ "/templates/includes/tab-panels.html.twig" %}
+{% endif %}
+
 
   {# need to verify that a lat/lng pair exists before diving in #}
   {% set latitude = content.field_latitude|render|striptags|trim %}
