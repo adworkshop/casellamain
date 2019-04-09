@@ -65,86 +65,10 @@
 
       <div class="indLocation-upperGrid-wrapper">
 
-        <!--Address-->
-        <div class="indLocation-upperGrid-indElement-container indLocation--address">
-          <div class="indLocation-upperGrid-indElement-label">Address:</div>
-          <div class="indLocation-upperGrid-indElement-blockContent">
-            <div>{{ content.field_street_address }}</div>
-            <div>{{ content.field_city|render|adw_strip_comments|trim }}, {{ content.field_state }} {{ content.field_zip }}</div>
-          </div>
-          {% if mapLink %}
-            <a href="{{ mapLink }}" target="_blank;" title=""><i class="fa fa-map-marker" aria-hidden="true"></i> Driving Directions</a>
-          {% endif %}
-        </div>
-        <!--END Address-->
-
-        {{ node_content.views_block__locations_block_6__assoc_hauling }}
-
-        <!--Bill-->
-        <div class="indLocation-upperGrid-indElement-container indLocation--bill">
-          <div class="indLocation-upperGrid-indElement-label">Pay your Bill:</div>
-          <div class="indLocation-upperGrid-indElement-blockContent">
-            <div class="indLocation-upperGrid-indElement-strong">Casella</div>
-            <div>PO Box 1371</div>
-            <div>Williston, VT 05495-1371</div>
-          </div>
-          <a href="https://secure3.i-doxs.net/casella/default.asp" target="_blank;" title=""><i class="fa fa-credit-card" aria-hidden="true"></i> Pay Online</a>
-        </div>
-        <!--END Bill-->
-
-        <!--Holiday-->
-        <div class="indLocation-upperGrid-indElement-container indLocation--holiday">
-
-          {{ node_content.views_block__locations_block_2__next_holiday }}
-
-        </div>
-        <!--END Holiday-->
 
       </div>
     </div>
   </div>
-
-
-  <!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
-
-
-  <!--Open Panel::Triggered Open-->
-  <div class="indLocation-holidayPanel">
-    <div class="globalWidth">
-      <div class="indLocation-holidayPanel-wrapper">
-
-        <div class="indLocation-holidayPanel-title">
-          <div class="indLocation-holidayPanel-title-location">{{ title }}</div>
-          <h2>{{ "now"|date("Y") }} Holiday Schedule</h2>
-        </div>
-
-        <!--Locations - FooTable-->
-        <div class="indLocation-holidayPanel-gridContainer">
-
-          {{ node_content.views_block__locations_block_1__holiday_list }}
-
-        </div>
-        <!--END Locations - FooTable-->
-
-        <!--Close Panel-->
-        <div class="indLocation-holidayPanel-closePanel-container">
-          <a class="indLocation-holidayPanel-close"><span class="fa fa-times" aria-hidden="true"></span></a>
-        </div>
-        <!--END Close Panel-->
-
-      </div>
-    </div>
-  </div>
-  <!--END Open Panel::Triggered Open-->
-
-
-  <!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
-
-
-
-  <!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
-
-
 
   <!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
 
@@ -194,8 +118,47 @@
 
           {{ content.field_sidebar_promotions }}
 
+
+          <!--Address-->
+          <div class="indLocation-upperGrid-indElement-container indLocation--address">
+            <div class="indLocation-upperGrid-indElement-label">Address:</div>
+            <div class="indLocation-upperGrid-indElement-blockContent">
+              <div>{{ content.field_street_address }}</div>
+              <div>{{ content.field_city|render|adw_strip_comments|trim }}, {{ content.field_state }} {{ content.field_zip }}</div>
+            </div>
+            {% if mapLink %}
+              <a href="{{ mapLink }}" target="_blank;" title=""><i class="fa fa-map-marker" aria-hidden="true"></i> Driving Directions</a>
+            {% endif %}
+          </div>
+          <!--END Address-->
+
+          {{ node_content.views_block__locations_block_6__assoc_hauling }}
+
+          <!--Bill-->
+          <div class="indLocation-upperGrid-indElement-container indLocation--bill">
+            <div class="indLocation-upperGrid-indElement-label">Pay your Bill:</div>
+            <div class="indLocation-upperGrid-indElement-blockContent">
+              <div class="indLocation-upperGrid-indElement-strong">Casella</div>
+              <div>PO Box 1371</div>
+              <div>Williston, VT 05495-1371</div>
+            </div>
+            <a href="https://secure3.i-doxs.net/casella/default.asp" target="_blank;" title=""><i class="fa fa-credit-card" aria-hidden="true"></i> Pay Online</a>
+          </div>
+          <!--END Bill-->
+
+          <!--Holiday-->
+          <div class="indLocation-upperGrid-indElement-container indLocation--holiday">
+
+            {{ node_content.views_block__locations_block_2__next_holiday }}
+
+          </div>
+          <!--END Holiday-->
+
         </div>
         <!--END Col - Sidebar-->
+
+
+
 
       </div>
       <!--END Grid-->
@@ -205,7 +168,35 @@
 {% endblock %}
 
 
+<!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--Open Panel::Triggered Open-->
+<div class="indLocation-holidayPanel">
+  <div class="globalWidth">
+    <div class="indLocation-holidayPanel-wrapper">
 
+      <div class="indLocation-holidayPanel-title">
+        <div class="indLocation-holidayPanel-title-location">{{ title }}</div>
+        <h2>{{ "now"|date("Y") }} Holiday Schedule</h2>
+      </div>
+
+      <!--Locations - FooTable-->
+      <div class="indLocation-holidayPanel-gridContainer">
+
+        {{ node_content.views_block__locations_block_1__holiday_list }}
+
+      </div>
+      <!--END Locations - FooTable-->
+
+      <!--Close Panel-->
+      <div class="indLocation-holidayPanel-closePanel-container">
+        <a class="indLocation-holidayPanel-close"><span class="fa fa-times" aria-hidden="true"></span></a>
+      </div>
+      <!--END Close Panel-->
+
+    </div>
+  </div>
+</div>
+<!--END Open Panel::Triggered Open-->
 <!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
 <!-- NEW: tab options extended to locations -->
 {% if tab_anchors|length %}

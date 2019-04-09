@@ -216,3 +216,15 @@ nav.footer-lowerNav-container ul {display: none;}
     .locationMap-link-accordion-container .locationMap-marker-accordion-content {display: none !important; padding: 30px; overflow: auto; border-top: 1px solid #eee;}
     .locationMap-link-accordion-container.open .locationMap-marker-accordion-content {display: block !important;}
 }
+
+/* ben added overrides for the landfill pages, now that contact/billing/holidays in sidebar */
+div.internal-mainBody-sidebarContainer div.indLocation-upperGrid-indElement-container.indLocation--address {
+    margin-top: 50px;
+}
+
+div.internal-mainBody-sidebarContainer div.indLocation-upperGrid-indElement-container.indLocation--bill,
+div.internal-mainBody-sidebarContainer div.indLocation-upperGrid-indElement-container.indLocation--holiday,
+div.internal-mainBody-sidebarContainer div.indLocation-upperGrid-indElement-container.indLocation--address {
+ width: 100%;
+}
+
