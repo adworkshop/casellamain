@@ -54,7 +54,7 @@ jQuery(document).ready(function() {
   });
 
   // add file download markup to job application
-  jQuery('#edit-field-application-0-upload').append('<div class="file-download"><span><a href="https://www.casella.com/sites/default/files/pdfs/HR-Application-English-v09-FILL.pdf" target="_blank" title="Download the Application">Download the application (PDF)</a>,<br>once completed and saved, click "Choose File" to submit.</span></div></div>');
+  jQuery('#edit-field-application-0-upload').append('<div class="file-download"><span><a href="https://www.casella.com/sites/default/files/pdfs/HR-Application-English-v11-FILL.pdf" target="_blank" title="Download the Application">Download the application (PDF)</a>,<br>once completed and saved, click "Choose File" to submit.</span></div></div>');
   var el = document.getElementById('edit-field-application-0-upload--description');
   if (el !== null) {
     el.innerHTML = 'This pdf must be completed and submitted in its entirety to be considered for employment.' + el.innerHTML.replace(/<br\s*[\/]?>/gi, "\n");
