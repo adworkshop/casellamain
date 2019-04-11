@@ -65,10 +65,158 @@
 
       <div class="indLocation-upperGrid-wrapper">
 
+        <!--Address-->
+        <div class="indLocation-upperGrid-indElement-container indLocation--address">
+          <div class="indLocation-upperGrid-indElement-label">Address:</div>
+          <div class="indLocation-upperGrid-indElement-blockContent">
+            <div>{{ content.field_street_address }}</div>
+            <div>{{ content.field_city|render|adw_strip_comments|trim }}, {{ content.field_state }} {{ content.field_zip }}</div>
+          </div>
+          {% if mapLink %}
+            <a href="{{ mapLink }}" target="_blank;" title=""><i class="fa fa-map-marker" aria-hidden="true"></i> Driving Directions</a>
+          {% endif %}
+        </div>
+        <!--END Address-->
+
+        {{ node_content.views_block__locations_block_6__assoc_hauling }}
+
+        <!--Bill-->
+        <div class="indLocation-upperGrid-indElement-container indLocation--bill">
+          <div class="indLocation-upperGrid-indElement-label">Pay your Bill:</div>
+          <div class="indLocation-upperGrid-indElement-blockContent">
+            <div class="indLocation-upperGrid-indElement-strong">Casella</div>
+            <div>PO Box 1371</div>
+            <div>Williston, VT 05495-1371</div>
+          </div>
+          <a href="https://secure3.i-doxs.net/casella/default.asp" target="_blank;" title=""><i class="fa fa-credit-card" aria-hidden="true"></i> Pay Online</a>
+        </div>
+        <!--END Bill-->
+
+        <!--Holiday-->
+        <div class="indLocation-upperGrid-indElement-container indLocation--holiday">
+
+          {{ node_content.views_block__locations_block_2__next_holiday }}
+
+        </div>
+        <!--END Holiday-->
 
       </div>
     </div>
   </div>
+
+
+  <!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+  <!--Open Panel::Triggered Open-->
+  <div class="indLocation-holidayPanel">
+    <div class="globalWidth">
+      <div class="indLocation-holidayPanel-wrapper">
+
+        <div class="indLocation-holidayPanel-title">
+          <div class="indLocation-holidayPanel-title-location">{{ title }}</div>
+          <h2>{{ "now"|date("Y") }} Holiday Schedule</h2>
+        </div>
+
+        <!--Locations - FooTable-->
+        <div class="indLocation-holidayPanel-gridContainer">
+
+          {{ node_content.views_block__locations_block_1__holiday_list }}
+
+        </div>
+        <!--END Locations - FooTable-->
+
+        <!--Close Panel-->
+        <div class="indLocation-holidayPanel-closePanel-container">
+          <a class="indLocation-holidayPanel-close"><span class="fa fa-times" aria-hidden="true"></span></a>
+        </div>
+        <!--END Close Panel-->
+
+      </div>
+    </div>
+  </div>
+  <!--END Open Panel::Triggered Open-->
+
+
+  <!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+  <!--Second Tier CTA's-->
+  <div class="indLocation-SecondTier-container">
+    <div class="indLocation-SecondTier-wrapper">
+      <div class="indLocation-SecondTier-indElement"><a href="{{ serviceUrl }}?service_request=billing" title="">Request a Quote</a></div>
+      <div class="indLocation-SecondTier-indElement"><a href="{{ faqUrl }}#faq_411_target" title="">Frequently Asked Questions</a></div>
+      <div class="indLocation-SecondTier-indElement"><a href="javascript:void(0)" title="" class="indLocation-contactPanel-trigger">Contact Us</a></div>
+    </div>
+  </div>
+  <!--END Second Tier CTA's-->
+
+
+  <!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+  <!--Contact Us Information-->
+  <div class="indLocation-contactPanel">
+    <div class="globalWidth">
+
+      <div class="indLocation-contactPanel-container">
+
+        <!--Col-Left-->
+        <div class="indLocation-contactPanel-colLeft">
+
+          <div class="indLocation-contactPanel-colLeft-element">
+            <div class="indLocation-contactPanel-colLeft-element-title">Customer Care</div>
+            <ul>
+              <li><strong>Phone:</strong> (888) 852-2151</li>
+              <li><strong>Mon - Fri:</strong> 7:00am - 5:00pm</li>
+              <li><strong>Sat:</strong> 8:00am - 12:00pm</li>
+            </ul>
+          </div>
+
+          <div class="indLocation-contactPanel-colLeft-element">
+            <div class="indLocation-contactPanel-colLeft-element-title">Office</div>
+            <ul>
+              <li><strong>Phone:</strong> (802) 438-2151</li>
+              <li><strong>Mon - Fri:</strong> 8:00 AM - 5:00 PM</li>
+            </ul>
+          </div>
+
+        </div>
+        <!--END Col-Left-->
+
+        <!--Col-Right-->
+        <div class="indLocation-contactPanel-colRight">
+
+          {{ node_content.location_contact_contactblock }}
+
+        </div>
+        <!--END Col-Right-->
+
+      </div>
+
+    </div>
+  </div>
+  <!--END Contact Us Information-->
+
+
+  <!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+  {# need to verify that a lat/lng pair exists before diving in #}
+  {% set latitude = content.field_latitude|render|striptags|trim %}
+  {% set longitude = content.field_longitude|render|striptags|trim %}
+  {% if latitude and longitude %}
+    <!--Map-->
+    <div class="indLocation-staticGoogleMap" style="height:400px; background:url(https://maps.googleapis.com/maps/api/staticmap?markers=size:small%7C{{ latitude ~ ',' ~ longitude }}&zoom=12&size=640x640&scale=2&key=AIzaSyAl0whz4aUUDJH4GIpbK2Rz65MbC6nE8io
+            ) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+      {% if mapLink %}
+        <a href="{{ mapLink }}" target="_blank" title="">
+          <div class="indLocation-staticGoogleMap-btn">Get Directions</div>
+        </a>
+      {% endif %}
+    </div>
+    <!--END Map-->
+  {% endif %}
 
   <!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
 
@@ -82,8 +230,6 @@
 
         <!--Col - Content-->
         <div class="internal-mainBody-contentContainer">
-
-          {{ content.field_slider_images }}
 
           {{ content.body }}
 
@@ -100,65 +246,12 @@
         <!--Col - Sidebar-->
         <div class="internal-mainBody-sidebarContainer">
 
-          {% if 'Landfill' == serviceType %}
-          <div class="sidebarNav-wrapper internal-sidebar-elementSpacer">
-
-            <div class="sidebarNavMainTitle">
-              <a href="/services/landfills" data-drupal-link-system-path="node/526">Landfills</a>
-            </div>
-
-            <nav id="sidebarMenu" class="internal-sidebarMenu menuContainer">
-              {{ landfill_sub_nav }}
-            </nav>
-          </div>
-
-          {% endif %}
-
           {{ node_content.views_block__hr_block_2 }}
 
           {{ content.field_sidebar_promotions }}
 
-
-          <!--Address-->
-          <div class="indLocation-upperGrid-indElement-container indLocation--address">
-            <div class="indLocation-upperGrid-indElement-label">Address:</div>
-            <div class="indLocation-upperGrid-indElement-blockContent">
-              <div>{{ content.field_street_address }}</div>
-              <div>{{ content.field_city|render|adw_strip_comments|trim }}, {{ content.field_state }} {{ content.field_zip }}</div>
-            </div>
-            {% if mapLink %}
-              <a href="{{ mapLink }}" target="_blank;" title=""><i class="fa fa-map-marker" aria-hidden="true"></i> Driving Directions</a>
-            {% endif %}
-          </div>
-          <!--END Address-->
-
-          {{ node_content.views_block__locations_block_6__assoc_hauling }}
-
-          <!--Bill-->
-          <div class="indLocation-upperGrid-indElement-container indLocation--bill">
-            <div class="indLocation-upperGrid-indElement-label">Pay your Bill:</div>
-            <div class="indLocation-upperGrid-indElement-blockContent">
-              <div class="indLocation-upperGrid-indElement-strong">Casella</div>
-              <div>PO Box 1371</div>
-              <div>Williston, VT 05495-1371</div>
-            </div>
-            <a href="https://secure3.i-doxs.net/casella/default.asp" target="_blank;" title=""><i class="fa fa-credit-card" aria-hidden="true"></i> Pay Online</a>
-          </div>
-          <!--END Bill-->
-
-          <!--Holiday-->
-          <div class="indLocation-upperGrid-indElement-container indLocation--holiday">
-
-            {{ node_content.views_block__locations_block_2__next_holiday }}
-
-          </div>
-          <!--END Holiday-->
-
         </div>
         <!--END Col - Sidebar-->
-
-
-
 
       </div>
       <!--END Grid-->
@@ -166,116 +259,3 @@
     </div>
   </div>
 {% endblock %}
-
-
-<!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
-<!--Open Panel::Triggered Open-->
-<div class="indLocation-holidayPanel">
-  <div class="globalWidth">
-    <div class="indLocation-holidayPanel-wrapper">
-
-      <div class="indLocation-holidayPanel-title">
-        <div class="indLocation-holidayPanel-title-location">{{ title }}</div>
-        <h2>{{ "now"|date("Y") }} Holiday Schedule</h2>
-      </div>
-
-      <!--Locations - FooTable-->
-      <div class="indLocation-holidayPanel-gridContainer">
-
-        {{ node_content.views_block__locations_block_1__holiday_list }}
-
-      </div>
-      <!--END Locations - FooTable-->
-
-      <!--Close Panel-->
-      <div class="indLocation-holidayPanel-closePanel-container">
-        <a class="indLocation-holidayPanel-close"><span class="fa fa-times" aria-hidden="true"></span></a>
-      </div>
-      <!--END Close Panel-->
-
-    </div>
-  </div>
-</div>
-<!--END Open Panel::Triggered Open-->
-<!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
-<!-- NEW: tab options extended to locations -->
-{% if tab_anchors|length %}
-  {% include "/" ~ theme_path ~ "/templates/includes/tab-panels.html.twig" %}
-{% endif %}
-
-
-  {# need to verify that a lat/lng pair exists before diving in #}
-  {% set latitude = content.field_latitude|render|striptags|trim %}
-  {% set longitude = content.field_longitude|render|striptags|trim %}
-  {% set suppress_map = content.field_supress_map|render|striptags|trim %}
-  {% if suppress_map != 'On' and latitude and longitude %}
-    <!--Map-->
-    <div class="indLocation-staticGoogleMap" style="height:400px; background:url(https://maps.googleapis.com/maps/api/staticmap?markers=size:small%7C{{ latitude ~ ',' ~ longitude }}&zoom=12&size=640x640&scale=2&key=AIzaSyAl0whz4aUUDJH4GIpbK2Rz65MbC6nE8io
-            ) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
-      {% if mapLink %}
-        <a href="{{ mapLink }}" target="_blank" title="">
-          <div class="indLocation-staticGoogleMap-btn">Get Directions</div>
-        </a>
-      {% endif %}
-    </div>
-    <!--END Map-->
-  {% endif %}
-
-
-
-<!--Second Tier CTA's-->
-<div class="indLocation-SecondTier-container">
-  <div class="indLocation-SecondTier-wrapper">
-    <div class="indLocation-SecondTier-indElement"><a href="{{ serviceUrl }}?service_request=billing" title="">Request a Quote</a></div>
-    <div class="indLocation-SecondTier-indElement"><a href="{{ faqUrl }}#faq_411_target" title="">Frequently Asked Questions</a></div>
-    <div class="indLocation-SecondTier-indElement"><a href="javascript:void(0)" title="" class="indLocation-contactPanel-trigger">Contact Us</a></div>
-  </div>
-</div>
-<!--END Second Tier CTA's-->
-
-
-<!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
-
-
-<!--Contact Us Information-->
-<div class="indLocation-contactPanel">
-  <div class="globalWidth">
-
-    <div class="indLocation-contactPanel-container">
-
-      <!--Col-Left-->
-      <div class="indLocation-contactPanel-colLeft">
-
-        <div class="indLocation-contactPanel-colLeft-element">
-          <div class="indLocation-contactPanel-colLeft-element-title">Customer Care</div>
-          <ul>
-            <li><strong>Phone:</strong> (888) 852-2151</li>
-            <li><strong>Mon - Fri:</strong> 7:00am - 5:00pm</li>
-            <li><strong>Sat:</strong> 8:00am - 12:00pm</li>
-          </ul>
-        </div>
-
-        <div class="indLocation-contactPanel-colLeft-element">
-          <div class="indLocation-contactPanel-colLeft-element-title">Office</div>
-          <ul>
-            <li><strong>Phone:</strong> (802) 438-2151</li>
-            <li><strong>Mon - Fri:</strong> 8:00 AM - 5:00 PM</li>
-          </ul>
-        </div>
-
-      </div>
-      <!--END Col-Left-->
-
-      <!--Col-Right-->
-      <div class="indLocation-contactPanel-colRight">
-
-        {{ node_content.location_contact_contactblock }}
-
-      </div>
-      <!--END Col-Right-->
-
-    </div>
-
-  </div>
-</div>
-<!--END Contact Us Information-->

@@ -253,6 +253,25 @@ function casella_theme_suggestions_node_alter(array &$suggestions, array $variab
   elseif (2051 == $variables['elements']['#node']->id()) {
     $suggestions[] = 'node__locations_map';
   }
+
+  //landfill locations override
+  if ('location' == $type) {
+
+    // Check the service type
+    $variables['serviceType'] = '';
+    $category = $variables['elements']['#node']->get('field_location_category');
+    if ($category) {
+      $category = $category->getValue();
+      $variables['serviceType'] = $category[0]['value'];
+    }
+
+    if ('Landfill' == $variables['serviceType']) {
+      $suggestions[] = 'node__location__landfill';
+    }
+
+
+  }
+
 }
 
 /**
