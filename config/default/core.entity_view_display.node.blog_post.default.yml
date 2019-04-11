@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.blog_post.field_add_this
     - field.field.node.blog_post.field_blog_content
     - field.field.node.blog_post.field_blog_featured_image
     - field.field.node.blog_post.field_blog_tags
@@ -26,6 +27,16 @@ targetEntityType: node
 bundle: blog_post
 mode: default
 content:
+  field_add_this:
+    weight: 10
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
   field_blog_content:
     type: entity_reference_revisions_entity_view
     weight: 5
