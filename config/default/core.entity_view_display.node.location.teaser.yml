@@ -22,8 +22,13 @@ dependencies:
     - field.field.node.location.field_phone_number
     - field.field.node.location.field_schedule_title
     - field.field.node.location.field_sidebar_promotions
+    - field.field.node.location.field_slider_images
     - field.field.node.location.field_state
     - field.field.node.location.field_street_address
+    - field.field.node.location.field_suppress_holiday
+    - field.field.node.location.field_suppress_pay_your_bill
+    - field.field.node.location.field_supress_map
+    - field.field.node.location.field_tabs
     - field.field.node.location.field_unacceptable_waste
     - field.field.node.location.field_zip
     - node.type.location
@@ -66,8 +71,13 @@ hidden:
   field_phone_number: true
   field_schedule_title: true
   field_sidebar_promotions: true
+  field_slider_images: true
   field_state: true
   field_street_address: true
+  field_suppress_holiday: true
+  field_suppress_pay_your_bill: true
+  field_supress_map: true
+  field_tabs: true
   field_unacceptable_waste: true
   field_zip: true
   langcode: true

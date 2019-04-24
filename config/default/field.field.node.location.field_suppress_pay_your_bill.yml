@@ -1,0 +1,23 @@
+uuid: 61b0b302-f02d-48b6-a3d5-2807a7b0f178
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_suppress_pay_your_bill
+    - node.type.location
+id: node.location.field_suppress_pay_your_bill
+field_name: field_suppress_pay_your_bill
+entity_type: node
+bundle: location
+label: 'Suppress Pay Your Bill'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

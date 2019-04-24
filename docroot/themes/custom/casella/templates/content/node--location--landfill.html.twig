@@ -134,6 +134,9 @@
 
           {{ node_content.views_block__locations_block_6__assoc_hauling }}
 
+
+          {% set suppress_bill = content.field_suppress_pay_your_bill|render|striptags|trim %}
+          {% if suppress_bill != 'On' %}
           <!--Bill-->
           <div class="indLocation-upperGrid-indElement-container indLocation--bill">
             <div class="indLocation-upperGrid-indElement-label">Pay your Bill:</div>
@@ -145,14 +148,17 @@
             <a href="https://secure3.i-doxs.net/casella/default.asp" target="_blank;" title=""><i class="fa fa-credit-card" aria-hidden="true"></i> Pay Online</a>
           </div>
           <!--END Bill-->
+          {% endif %}
 
+          {% set suppress_holiday = content.field_suppress_holiday|render|striptags|trim %}
+          {% if suppress_holiday != 'On' %}
           <!--Holiday-->
           <div class="indLocation-upperGrid-indElement-container indLocation--holiday">
-
             {{ node_content.views_block__locations_block_2__next_holiday }}
 
           </div>
           <!--END Holiday-->
+          {% endif %}
 
         </div>
         <!--END Col - Sidebar-->
@@ -169,6 +175,7 @@
 
 
 <!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
+{% if suppress_holiday != 'On' %}
 <!--Open Panel::Triggered Open-->
 <div class="indLocation-holidayPanel">
   <div class="globalWidth">
@@ -197,6 +204,7 @@
   </div>
 </div>
 <!--END Open Panel::Triggered Open-->
+{% endif %}
 <!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
 <!-- NEW: tab options extended to locations -->
 {% if tab_anchors|length %}
