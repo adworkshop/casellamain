@@ -432,6 +432,11 @@ function casella_preprocess_field(&$variables) {
     $variables['attributes']['class'][] = 'home-verticalPanel-content';
   }
 
+
+  if ($variables['element']['#bundle'] == 'faqs_tab') {
+
+  }
+
   if ($variables['element']['#bundle'] == 'large_promotion') {
     switch ($variables['element']['#field_name']) {
       case 'field_secondary_title':
@@ -659,6 +664,7 @@ function casella_preprocess_field(&$variables) {
       $variables['attributes']['class'][] = 'internal-indInteractivePanel-freeForm-image-container';
     }
   }
+
   elseif ('waste_category' == $variables['element']['#bundle']) {
     if ('field_waste_category' == $variables['element']['#field_name']) {
       $variables['attributes']['class'][] = 'indLocation-feed-body__groups__ind-container__title';
@@ -754,9 +760,11 @@ function casella_preprocess_field(&$variables) {
       case 'field_faqs':
         $variables['attributes']['class'][] = 'cd-faq-items';
         $faqLabels = array();
+
         foreach ($variables['items'] as $item) {
           // Check if the category has a name.
           $category = $item['content']['#paragraph']->get('field_category')->getValue();
+
           if (!count($category)) {
             continue;
           }
@@ -772,6 +780,8 @@ function casella_preprocess_field(&$variables) {
             'category' => $category[0]['value'],
           );
         }
+
+
 
         $variables['faqLabels'] = $faqLabels;
         break;
@@ -957,6 +967,20 @@ function casella_preprocess_paragraph(&$variables) {
       }
 
       break;
+
+    case 'faqs_tab':
+      // $variables['paragraph'] - Drupal\paragraphs\Entity\Paragraph
+        // e.g. $variables['paragraph']->getType(); // line 281
+        // $variables['paragraph']->getParagraphType(); // Drupal\paragraphs\Entity\ParagraphsType
+        // $variables['paragraph']->get('_referringItem']
+      // dpm($variables['paragraph']);
+      // $variables['paragraph']->values['parent_type']
+      // $variables['paragraph']->values['parent_id']
+      // $variables['paragraph']->values['parent_field_name']
+      $faqs = $variables['paragraph']->get('field_faqs');
+      $type = $variables['paragraph']->get('parent_type');
+
+      break;
     case 'case_studies':
       $caseStudies = $variables['paragraph']->get('field_case_studies');
       $caseStudyIds = array();
@@ -997,6 +1021,8 @@ function casella_preprocess_paragraph(&$variables) {
       break;
   }
 }
+
+
 
 function casella_preprocess_breadcrumb(&$variables) {
   $variables['theme_path'] = drupal_get_path('theme', 'casella');
@@ -1389,6 +1415,7 @@ function casella_preprocess_node(&$variables) {
     $icon = $variables['node']->get('field_icon')->getValue();
     $variables['link_icon'] = $icon ? $icon[0]['value'] : FALSE;
 
+
     // If the referring item is a paragraph this is outputting in the zozo tabs.
     if ('paragraph' == $variables['node']->_referringItem->getEntity()->getEntityTypeId()) {
       $variables['attributes']['class'][] = 'internal-indInteractivePanel-gridColRight';
@@ -1727,6 +1754,10 @@ function casella_preprocess_html(&$variables) {
 
   if (isset($variables['node_type'])) {
     $variables['html_attributes']->addClass(str_replace('_', '-', $variables['node_type']));
+
+    if ('recycle_better_page' == $variables['node_type']) {
+      $variables['#attached']['library'][] = 'casella/casella-recycle';
+    }
     if ('landing_page' == $variables['node_type']) {
       $variables['#attached']['library'][] = 'casella/custom-home';
       $variables['#attached']['library'][] = 'casella/royalslider';
@@ -1740,13 +1771,15 @@ function casella_preprocess_html(&$variables) {
       $variables['attributes']['class'][] = 'earthlife';
       $variables['#attached']['library'][] = 'casella/earthlife';
     }
-    elseif ('faq_landing_page' == $variables['node_type']) {
+    elseif ('faq_landing_page' == $variables['node_type'] || 'recycle_better_page' == $variables['node_type']) {
       $variables['#attached']['library'][] = 'casella/faq';
     }
   }
   else {
     $variables['#attached']['library'][] = 'casella/custom-internal';
   }
+
+
 
   $current_path = \Drupal::service('path.current')->getPath();
 
@@ -1757,6 +1790,31 @@ function casella_preprocess_html(&$variables) {
     $variables['attributes']['class'][] = 'site-search';
   }
 }
+
+function casella_preprocess_video_embed_iframe(&$variables) {
+
+}
+
+/**
+ * TODO: casella/proto/plugins/mb.YTPlayer-v.3.2.9 - implement for player options not available through query string
+ * @param $variables
+ */
+function casella_preprocess_video_embed_iframe__youtube(&$variables) {
+  $variables['query']['autoplay'] = TRUE;
+  $variables['query']['modestbranding'] = TRUE;
+  $variables['query']['controls'] = FALSE;
+  $variables['query']['iv_load_policy'] = 3;
+  $variables['query']['cc_load_policy'] = 0;
+  $variables['query']['html5'] = TRUE;
+  $variables['query']['t'] = "1m9s";
+  $variables['query']['end'] = "1m24s";
+
+  $variables['attributes']['width'] = 640;
+  $variables['attributes']['height'] = 360;
+  // dpm($variables['attributes']);
+}
+
+
 
 /**
  * Helper function to get and return a global variable from the global element node.

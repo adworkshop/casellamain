@@ -1,0 +1,10 @@
+{% embed "/" ~ theme_path ~ "/templates/includes/paragraph--zozo-tab.html.twig" %}
+  {% block tabContent %}
+    <ul class="cd-faq-categories">
+      {% for faqLabel in faqLabels %}
+        <li><a {% if loop.first %}class="selected" {% endif %}href="#faq_{{ faqLabel.id }}">{{ faqLabel.category }}</a></li>
+      {% endfor %}
+    </ul>
+    {{ content.field_faqs }}
+  {% endblock %}
+{% endembed %}

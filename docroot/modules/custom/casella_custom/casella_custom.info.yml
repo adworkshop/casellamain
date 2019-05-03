@@ -1,0 +1,5 @@
+name: Casella Custom
+description: Custom module
+type: module
+core: 8.x
+package: Custom

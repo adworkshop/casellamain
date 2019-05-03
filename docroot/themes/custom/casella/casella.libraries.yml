@@ -15,6 +15,7 @@ custom-css:
       plugins/font-awesome-v.4.6.3/css/font-awesome.min.css: {}
       css/custom/custom.css: {}
       css/custom/developer-overrides.css: {}
+      css/custom/video.css: {}
       css/custom/adw-menu.css: {}
 
 jquery-migrate:
@@ -62,6 +63,13 @@ custom-internal:
   dependencies:
     - core/jquery
     - core/modernizr
+
+casella-recycle:
+  version: 1.x
+  js:
+    plugins/mb.YTPlayer-v.3.2.9/dist/jquery.mb.YTPlayer.js: {}
+  dependencies:
+    - core/jquery
 
 earthlife:
   version: 1.x
@@ -167,6 +175,13 @@ jquery.fancybox:
     theme:
       plugins/fancybox-v.2.1.5/source/jquery.fancybox.css: {}
       plugins/fancybox-v.2.1.5/source/helpers/jquery.fancybox-buttons.css: {}
+  dependencies:
+    - core/jquery
+
+jquery.ytplayer:
+  version: 3.2.9
+  js:
+    plugins/mb.YTPlayer-v.3.2.9/dist/jquery.mb.YTPlayer.js: {}
   dependencies:
     - core/jquery
 

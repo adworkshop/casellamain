@@ -1,0 +1,5 @@
+{% if subsection %}
+  {% include theme_path ~ "/templates/content/node--subsection--" ~ subsectionName ~ ".html.twig" %}
+{% else %}
+  {% include theme_path ~ "/templates/content/node--page-default.html.twig" %}
+{% endif %}

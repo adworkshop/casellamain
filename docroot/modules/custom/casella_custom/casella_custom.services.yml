@@ -1,0 +1,5 @@
+services:
+  casella_custom.conditional_date:
+    class: Drupal\casella_custom\ConditionalDate
+    tags:
+      - {name: date_service}

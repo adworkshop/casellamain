@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Display an iframe with alterable components.
+ */
+
+#}
+<!-- class="featured-ambient-video featured-ambient-video--two-thirds-height featured-ambient-video--align-center clearfix" -->
+<div>
+  <iframe{{ attributes }}{% if url is not empty %} src="{{ url }}{% if query is not empty %}?{{ query | url_encode }}{% endif %}{% if fragment is not empty %}#{{ fragment }}{% endif %}"{% endif %}></iframe>
+</div>
+<!-- <div id="featured-bgnd-video" class="bgnd-video-player" data-property="{videoURL:'https://youtu.be/LdvboQQWUc8', autoPlay:true, containment:'.featured-ambient-video', mute:true, opacity:1, quality:'highres', showControls:false, startAt:69, stopAt:83}"></div> -->
+

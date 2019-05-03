@@ -1,0 +1,9 @@
+casella_custom.test:
+  path: '/testRoute'
+  defaults:
+    _controller: '\Drupal\casella_custom\Controller\CasellaCustomController::main'
+    _title: 'Casella Controller Main Route'
+  requirements:
+    _permission: 'access content'
+
+

@@ -1,0 +1,23 @@
+<?php
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ *
+ * @param $route_name
+ * @param RouteMatchInterface $route_match
+ */
+function casella_custom_help($route_name, RouteMatchInterface $route_match) {
+
+  switch ($route_name) {
+    case 'help.page.casella_custom':
+      $output = '';
+      $output .= '<h3>' . t('Casella Custom') . '</h3>';
+      $output .= '<p>' . t('Sweet') . '</p>';
+
+      return $output;
+    default:
+      return '';
+  }
+}

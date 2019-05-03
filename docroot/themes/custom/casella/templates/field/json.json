@@ -1,0 +1,118 @@
+{
+  "field_tab_anchor": {
+    "#theme": "field",
+    "#title": "Tab Anchor",
+    "#label_display": "above",
+    "#view_mode": "default",
+    "#language": "en",
+    "#field_name": "field_tab_anchor",
+    "#field_type": "string",
+    "#field_translatable": true,
+    "#entity_type": "paragraph",
+    "#bundle": "faqs_tab",
+    "#object": {},
+    "#items": {},
+    "#formatter": "string",
+    "#is_multiple": false,
+    "0": {
+      "#type": "inline_template",
+      "#template": "{{ value|nl2br }}",
+      "#context": {
+        "value": "FAQs"
+      }
+    },
+    "#cache": {
+      "contexts": [],
+      "tags": [],
+      "max-age": -1
+    },
+    "#weight": 0
+  },
+  "field_tab_title": {
+    "#theme": "field",
+    "#title": "Tab Title",
+    "#label_display": "above",
+    "#view_mode": "default",
+    "#language": "en",
+    "#field_name": "field_tab_title",
+    "#field_type": "string",
+    "#field_translatable": true,
+    "#entity_type": "paragraph",
+    "#bundle": "faqs_tab",
+    "#object": {},
+    "#items": {},
+    "#formatter": "string",
+    "#is_multiple": false,
+    "0": {
+      "#type": "inline_template",
+      "#template": "{{ value|nl2br }}",
+      "#context": {
+        "value": "FAQs"
+      }
+    },
+    "#cache": {
+      "contexts": [],
+      "tags": [],
+      "max-age": -1
+    },
+    "#weight": 1
+  },
+  "field_tab_description": {
+    "#theme": "field",
+    "#title": "Tab Description",
+    "#label_display": "above",
+    "#view_mode": "default",
+    "#language": "en",
+    "#field_name": "field_tab_description",
+    "#field_type": "string_long",
+    "#field_translatable": true,
+    "#entity_type": "paragraph",
+    "#bundle": "faqs_tab",
+    "#object": {},
+    "#items": {},
+    "#formatter": "basic_string",
+    "#is_multiple": false,
+    "0": {
+      "#type": "inline_template",
+      "#template": "{{ value|nl2br }}",
+      "#context": {
+        "value": "Desc"
+      }
+    },
+    "#cache": {
+      "contexts": [],
+      "tags": [],
+      "max-age": -1
+    },
+    "#weight": 2
+  },
+  "field_faqs_tab_content": {
+    "#theme": "field",
+    "#title": "FAQs Tab Content",
+    "#label_display": "above",
+    "#view_mode": "default",
+    "#language": "en",
+    "#field_name": "field_faqs_tab_content",
+    "#field_type": "string_long",
+    "#field_translatable": false,
+    "#entity_type": "paragraph",
+    "#bundle": "faqs_tab",
+    "#object": {},
+    "#items": {},
+    "#formatter": "basic_string",
+    "#is_multiple": false,
+    "0": {
+      "#type": "inline_template",
+      "#template": "{{ value|nl2br }}",
+      "#context": {
+        "value": "qq"
+      }
+    },
+    "#cache": {
+      "contexts": [],
+      "tags": [],
+      "max-age": -1
+    },
+    "#weight": 3
+  }
+}
