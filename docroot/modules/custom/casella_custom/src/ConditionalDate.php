@@ -14,6 +14,6 @@ class ConditionalDate {
     if ((int)$time->format('G') >= 00 && (int)$time->format('G') < 12 ) {
       return $this->t('Morning time');
     }
-    return $this->t('After noon');
+    return $this->t('After noon - ' . $time->format('G'));
   }
 }
