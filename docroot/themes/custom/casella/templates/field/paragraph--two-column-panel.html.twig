@@ -1,0 +1,24 @@
+{%
+  set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  'news-indListing-container'
+]
+%}
+  <div{{ attributes.addClass(classes) }}>
+    <div class="">
+      <div class="news-indListing-colLeft-container">
+        {{ content.field_section_image }}
+      </div>
+      <div class="news-indListing-colRight-container">
+        <div class="news-indListing-title-container">
+          {{ content.field_section_title }}
+        </div>
+        <div class="news-indListing-teaser-container">
+          {{ content.field_free_form_content }}
+        </div>
+      </div>
+    </div>
+  </div>
+
