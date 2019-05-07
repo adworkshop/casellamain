@@ -1,0 +1,458 @@
+/*
+Website Name: Casella
+Description: Recycle Better specific stylesheet
+Version: 1.0
+Author: Adworkshop
+Author URI: http://www.adworkshop.com
+*/
+
+/* ======================================================= */
+/*    AMBIENT VIDEO                                        */
+/* ======================================================= */
+
+.featured-ambient-video {
+  position: relative;
+  width: 100%;
+  border-top: 1px solid #fff;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.featured-ambient-video--full-height {
+  height: 100%;
+  min-height: 100vh;
+}
+
+.featured-ambient-video--one-third-height {
+  height: 33%;
+  min-height: 33vh;
+}
+
+.featured-ambient-video--half-height {
+  height: 50%;
+  min-height: 50vh;
+}
+
+.featured-ambient-video--two-thirds-height {
+  height: 66%;
+  min-height: 66vh;
+}
+
+.featured-ambient-video--align-center {
+  background-position: center center;
+}
+
+.featured-ambient-video--align-top {
+  background-position: center top;
+}
+
+.featured-ambient-video--align-bottom {
+  background-position: center bottom;
+}
+
+/* ======================================================= */
+/*    NEWS                                                 */
+/* ======================================================= */
+
+.internal-mainBody-generalTxt-container .news-indListing-container:last-child {
+  margin: 0;
+  padding: 0;
+  border-bottom: none;
+}
+
+/* ======================================================= */
+/*    BIN COMPARISON                                       */
+/* ======================================================= */
+
+.bin-comparison-container {
+  position: relative;
+  line-height: 0;
+}
+
+.bin-comparison-container img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.bin-comparison ul {
+  font-size: 15px;
+  line-height: 2;
+  color: #fff;
+}
+
+.bin-comparison ul,
+.bin-comparison ul li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bin-comparison ul li span.fa {
+  font-size: 200%;
+  margin: 0 10px 0 0;
+  color: #7abf23;
+  vertical-align: middle;
+}
+
+.bin-comparison-left,
+.bin-comparison-right {
+  padding: 30px;
+  background: #4c9d2a;
+}
+
+/* ======================================================= */
+/*    RESOURCES NAV                                        */
+/* ======================================================= */
+
+.resources-nav {
+  margin: 0 0 30px 0;
+  padding: 0 0 5px 0;
+  border-bottom: 2px solid #0a253e;
+}
+
+.resources-nav ul,
+.resources-nav ul li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resources-nav ul {
+  text-align: center;
+}
+
+.resources-nav ul li {
+  display: inline-block;
+  margin: 0 15px;
+  font-size: 14px;
+  line-height: 1.8;
+  text-transform: uppercase;
+}
+
+.resources-nav ul li a {
+  color: #0a253e;
+  font-family: 'Gotham-Bold';
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.resources-nav ul li a:hover {
+  color: #888;
+}
+
+/* ======================================================= */
+/*    RESOURCES LISTINGS                                   */
+/* ======================================================= */
+
+.resources-listing {
+  margin: 0 0 30px 0;
+  padding: 0 0 30px 0;
+  border-bottom: 2px solid #f3f3f3;
+}
+
+.resources-listing-content {
+  padding: 15px 20px 60px 20px;
+  background: #0a253e;
+}
+
+.resources-listing-category {
+  font-family: 'Gotham-Bold';
+  font-size: 16px;
+  line-height: 1.4;
+  color: #0c5ca7;
+  text-transform: uppercase;
+}
+
+.resources-listing-category span.fa {
+  margin: 0 0 0 5px;
+}
+
+.resources-listing-title {
+  margin: 5px 0 0 0;
+  font-family: 'Gotham-Bold';
+  font-size: 24px;
+  line-height: 1.4;
+  color: #7abf23;
+  text-transform: uppercase;
+}
+
+.resources-listing-teaser {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+  line-height: 2;
+  color: #fff;
+}
+
+.resources-listing-teaser p:last-child {
+  margin: 0;
+}
+
+.resources-listing-image {
+  position: relative;
+  margin: -40px 20px 0 20px;
+  line-height: 0;
+}
+
+.resources-listing-image img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.resources-listing-image a span.fa {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 100px;
+  line-height: 1;
+  color: #fff;
+  text-decoration: none;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -ms-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.resources-listing-image a span.fa:hover {
+  opacity: 0.66;
+}
+
+.resource-listing-list ul,
+.resource-listing-list ul li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resource-listing-list ul {
+  margin: 20px 20px 0 20px;
+  font-size: 13px;
+  line-height: 2;
+}
+
+.resource-listing-list ul li span.fa {
+  font-size: 150%;
+  margin: 0 5px 0 0;
+  color: #4c9d2a;
+}
+
+/* ======================================================= */
+/*    FAQs                                                 */
+/* ======================================================= */
+
+.z-content .cd-faq-categories {
+  transform: translateY(0) !important;
+}
+
+/* ======================================================= */
+/*    FEATURED PAGE LAYOUT: Your Home / Sm Business        */
+/* ======================================================= */
+
+/*Btn-Row*/
+.featured-btnRow-container--no-border {margin-bottom: 0;}
+.featured-btnRow-container--no-border:after {display: none;}
+
+/* ======================================================= */
+/*    SIDEBAR ITEMS SEARCH                                 */
+/* ======================================================= */
+
+.sidebar-items-search {
+  position: relative;
+  padding: 15px 20px 20px 20px;
+  background: #4c9d2a;
+}
+
+.sidebar-items-search-title {
+  font-family: 'Gotham-Bold';
+  font-size: 16px;
+  line-height: 1.6;
+  color: #fff;
+}
+
+.sidebar-items-search-teaser {
+  margin: 5px 0 0 0;
+  font-size: 14px;
+  line-height: 2;
+  color: #fff;
+}
+
+.sidebar-items-search-teaser p:last-child {
+  margin: 0;
+}
+
+.sidebar-items-search form {
+  margin: 20px 0 0 0;
+}
+
+.sidebar-items-search .form-actions {
+  margin: 30px 0 0 0;
+}
+
+/* ======================================================= */
+/*    CUSTOM FORM GRIDS                                    */
+/* ======================================================= */
+
+.form-component,
+.form-item {
+  margin: 0 0 15px 0;
+}
+
+.form-component,
+.form-item,
+.form-actions {
+  width: 100%;
+}
+
+/* ======================================================= */
+/*    MEDIA QUERIES                                        */
+/* ======================================================= */
+
+@media all and (min-width: 480px) {
+
+  /*Custom Form Grids*/
+  form.form--gridded, .form-items--gridded, .form-checkboxes--gridded {display: -ms-flexbox; display: flex; -ms-flex-flow: row wrap; flex-flow: row wrap;}
+  .form-item--half-left, .form-actions--half-left {width: 50%; padding: 0 15px 0 0;}
+  .form-item--half-left.form-item--select:after {right: 35px;}
+  .form-item--half-right, .form-actions--half-right {width: 50%; padding: 0 0 0 15px;}
+  .form-actions--half-left, .form-actions--half-right {margin: 0 0 15px 0; align-self: flex-end;}
+  .form-checkboxes--gridded .form-item {margin: 8px 0;}
+
+}
+
+@media all and (min-width: 600px) {
+
+  /*Bin Comparison*/
+  .bin-comparison {display: table; width: 100%; table-layout:fixed;}
+  .bin-comparison ul {font-size: 16px;}
+  .bin-comparison-left, .bin-comparison-right {display: table-cell; width: 50%; padding: 40px; vertical-align: top;}
+
+  /*Resources Nav */
+  .resources-nav {margin: 0 0 30px 0;}
+
+  /*Resources Listings*/
+  .resources-listing {margin: 0 0 40px 0; padding: 0 0 40px 0;}
+  .resources-listing-category {font-size: 17px;}
+  .resources-listing-title {font-size: 30px;}
+  .resources-listing-teaser {font-size: 17px;}
+  .resources-listing-image a span.fa {font-size: 150px;}
+  .resource-listing-list ul {font-size: 14px;}
+
+  /*Sidebar Items Search*/
+  .sidebar-items-search-title {font-size: 17px;}
+  .sidebar-items-search-teaser {font-size: 15px;}
+
+  /*Custom Form Grids*/
+  .form-component, .form-item {margin: 0 0 20px 0;}
+  .form-component--half-left {width: 50%; padding: 0 2.5% 0 0;}
+  .form-component--half-right {width: 50%; padding: 0 0 0 2.5%;}
+  .form-item--third-left, .form-actions--third-left {width: 33.33%; padding: 0 15px 0 0;}
+  .form-item--third-left.form-item--select:after {right: 35px;}
+  .form-item--third-middle, .form-actions--third-middle {width: 33.33%; padding: 0 8px;}
+  .form-item--third-middle.form-item--select:after {right: 28px;}
+  .form-item--third-right, .form-actions--third-right {width: 33.33%; padding: 0 0 0 15px;}
+  .form-actions--half-left, .form-actions--half-right, .form-actions--third-left, .form-actions--third-middle, .form-actions--third-right {margin: 0 0 20px 0;}
+
+}
+
+@media all and (min-width: 768px) {
+
+}
+
+@media all and (min-width: 840px) {
+
+}
+
+@media all and (min-width: 960px) {
+
+  /*Bin Comparison*/
+  .bin-comparison {position: absolute; bottom: 0; left: 0; width: 100%;}
+  .bin-comparison ul {font-size: 17px;}
+  .bin-comparison-left, .bin-comparison-right {background:rgba(76, 157, 42, 0.85);}
+  .bin-comparison-left {border-right: 1px dashed rgba(255, 255, 255, 0.16);}
+  .bin-comparison-right {border-left: 1px dashed rgba(255, 255, 255, 0.16);}
+
+  /*Resources Listings*/
+  .resources-listings-group {display: table; width: 100%; table-layout: fixed; margin: 0 0 50px 0; padding: 0 0 50px 0; border-bottom: 2px solid #f3f3f3;}
+  .resources-listing {margin: 0 0 50px 0; padding: 0 0 50px 0;}
+  .resources-listings-group .resources-listing {display: table-cell; width: 50%; margin: 0; padding: 0; border-bottom: none; vertical-align: top;}
+  .resources-listings-group .resources-listing:nth-child(1) {border-right: 1px solid #fff;}
+  .resources-listings-group .resources-listing:nth-child(2) {border-left: 1px solid #fff;}
+  .resources-listing-category {font-size: 18px;}
+  .resources-listing-title {font-size: 36px;}
+  .resources-listing-teaser {font-size: 18px;}
+  .resources-listing-image a span.fa {font-size: 200px;}
+  .resource-listing-list ul {font-size: 15px;}
+
+  /*Sidebar Items Search*/
+  .sidebar-items-search-title {font-size: 18px;}
+  .sidebar-items-search-teaser {font-size: 16px;}
+
+  /*Custom Form Grids*/
+  .form-component, .form-item {margin: 0 0 25px 0;}
+  .form-component--third-left {width: 33.33%; padding: 0 2.5% 0 0;}
+  .form-component--third-middle {width: 33.33%; padding: 0 1.25%;}
+  .form-component--third-right {width: 33.33%; padding: 0 0 0 2.5%;}
+  .form-checkboxes--gridded .form-item {margin: 4px 0;}
+  .form-actions--half-left, .form-actions--half-right, .form-actions--third-left, .form-actions--third-middle, .form-actions--third-right {margin: 0 0 25px 0;}
+
+}
+
+@media all and (min-width: 1024px) {
+
+}
+
+@media all and (min-width: 1200px) {
+
+  /*Main Body*/
+  .internal-mainBody-sidebarContainer .news-indListing-container {display: block; table-layout: auto;}
+  .internal-mainBody-sidebarContainer .news-indListing-colLeft-container {display: block; vertical-align: baseline; width: 100%; padding: 0; margin: 0 0 30px 0;}
+  .internal-mainBody-sidebarContainer .news-indListing-colRight-container {display: block; vertical-align: baseline;}
+
+  /*Bin Comparison*/
+  .bin-comparison ul {font-size: 18px;}
+  .bin-comparison-left, .bin-comparison-right {padding: 7%;}
+
+  /*Resources Nav*/
+  .resources-nav {margin: 0 0 50px 0;}
+  .internal-page-anchor-offset::before {display: block; content: " "; margin-top: -70px; height: 70px; visibility: hidden; pointer-events: none;}
+
+  /*Resources Listings*/
+  .resources-listing-image a span.fa {font-size: 250px;}
+
+  /*Custom Form Grids*/
+  .form-component, .form-item {margin: 0 0 30px 0;}
+  .form-actions--half-left, .form-actions--half-right, .form-actions--third-left, .form-actions--third-middle, .form-actions--third-right {margin: 0 0 30px 0;}
+
+}
+
+@media all and (min-width: 1300px) {
+
+}
+
+@media all and (min-width: 1400px) {
+
+}
+
+@media all and (min-width: 1600px) {
+
+}
+
+@media all and (min-width: 1800px) {
+
+}
+
+@media only screen and (max-width: 1199px)  {
+
+}

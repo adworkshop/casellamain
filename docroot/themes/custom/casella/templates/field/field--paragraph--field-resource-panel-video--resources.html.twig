@@ -1,0 +1,9 @@
+{% for item in items %}
+
+  <div{{ item.attributes }} class="resources-listing resources">
+    <div class="resources-listing-content">
+      <div class="resources-listing-category">Video<span class="fa fa-video-camera" aria-hidden="true"></span></div>
+      {{ item.content }}
+    </div>
+  </div>
+{% endfor %}

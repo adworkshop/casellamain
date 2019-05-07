@@ -68,6 +68,9 @@ casella-recycle:
   version: 1.x
   js:
     plugins/mb.YTPlayer-v.3.2.9/dist/jquery.mb.YTPlayer.js: {}
+  css:
+    theme:
+      css/custom/recycle-better.css: {}
   dependencies:
     - core/jquery
 

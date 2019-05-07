@@ -996,6 +996,14 @@ function casella_preprocess_paragraph(&$variables) {
       $variables['caseStudiesView'] = $view->render();
 
       break;
+    case 'resource_toolkit_button':
+        $paragraph = $variables['paragraph'];
+        // $linkField = $paragraph->field_link->get(0)->view();
+        // $linkFieldTitle = $paragraph->field_link->title;
+        // $variables['button_title_value'] = $linkFieldTitle;
+
+        // dpm($variables['paragraph']->field_link->get(0)->view());
+      break;
     case 'organics_updates':
       $view = \Drupal\views\Views::getView('information_posts');
       $view->setDisplay('block_3');
@@ -1757,6 +1765,7 @@ function casella_preprocess_html(&$variables) {
 
     if ('recycle_better_page' == $variables['node_type']) {
       $variables['#attached']['library'][] = 'casella/casella-recycle';
+      $variables['#attached']['library'][] = 'casella/faq';
     }
     if ('landing_page' == $variables['node_type']) {
       $variables['#attached']['library'][] = 'casella/custom-home';
@@ -1771,7 +1780,7 @@ function casella_preprocess_html(&$variables) {
       $variables['attributes']['class'][] = 'earthlife';
       $variables['#attached']['library'][] = 'casella/earthlife';
     }
-    elseif ('faq_landing_page' == $variables['node_type'] || 'recycle_better_page' == $variables['node_type']) {
+    elseif ('faq_landing_page' == $variables['node_type']) {
       $variables['#attached']['library'][] = 'casella/faq';
     }
   }
