@@ -1,6 +1,6 @@
 {%
   set classes = [
-  'start-of-tips-resources',
+  'start-of-videos-resources',
   'resources-listing',
   'paragraph',
   'paragraph--type--' ~ paragraph.bundle|clean_class,
@@ -9,12 +9,9 @@
 %}
 <div{{ attributes.addClass(classes) }}>
   <div class="resources-listing-content resources-listing-content--title--desc">
-    {{ content | without('field_tip_image', 'field_resource_tip') }}
+    {{ content | without('field_resource_video') }}
   </div>
-
 </div>
-{{ content.field_tip_image }}
-<div class="resource-listing-list">
-  {{ content.field_resource_tip }}
+<div class="resources-listing-image">
+  {{ content.field_resource_video }}
 </div>
-

@@ -399,6 +399,8 @@ Author URI: http://www.adworkshop.com
   .resources-listings-group {display: table; width: 100%; table-layout: fixed; margin: 0 0 50px 0; padding: 0 0 50px 0; border-bottom: 2px solid #f3f3f3;}
   .resources-listing {margin: 0 0 50px 0; padding: 0 0 50px 0;}
   .resources-listings-group .resources-listing {display: table-cell; width: 50%; margin: 0; padding: 0; border-bottom: none; vertical-align: top;}
+  .resources-listings-group .resources-listing.is-video-listing {display: block; width: 100%; margin-bottom: 50px; padding-bottom: 50px; border-bottom: 2px solid #f3f3f3;}
+  .resources-listings-group .resources-listing.is-video-listing:last-of-type{margin-bottom: 0; padding-bottom: 0; border-bottom: none}
   .resources-listings-group .resources-listing:nth-child(1) {border-right: 1px solid #fff;}
   .resources-listings-group .resources-listing:nth-child(2) {border-left: 1px solid #fff;}
   .resources-listing-category {font-size: 18px;}
@@ -406,6 +408,7 @@ Author URI: http://www.adworkshop.com
   .resources-listing-teaser {font-size: 18px;}
   .resources-listing-image a span.fa {font-size: 200px;}
   .resource-listing-list ul {font-size: 15px;}
+  .internal-mainBody-generalTxt-container .resource-listing-list ul {margin: 20px 20px 0 20px;}
 
   /*Sidebar Items Search*/
   .sidebar-items-search-title {font-size: 18px;}

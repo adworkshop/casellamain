@@ -1,9 +1,8 @@
 {% for item in items %}
-
-  <div{{ item.attributes }} class="resources-listing resources">
-    <div class="resources-listing-content">
+  <div{{ item.attributes }} class="resources-listing is-video-listing">
+    <div class="resources-listing-content fa-tip">
       <div class="resources-listing-category">Video<span class="fa fa-video-camera" aria-hidden="true"></span></div>
-      {{ item.content }}
     </div>
+    {{ item.content }}
   </div>
 {% endfor %}
