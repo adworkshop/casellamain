@@ -1,6 +1,6 @@
 <div class="internal-indInteractivePanelContainer">
   <div class="internal-mainBody-container">
-    <div class="internal-indInteractivePanelContainer">
+    <div class="internal-indInteractivePanelContainer withSidebar">
 
         <nav role="navigation" class="resources-nav">
           <ul>
@@ -30,6 +30,11 @@
             <p>{{ content.field_resource_panel_toolkit_des }}</p>
             {{ content.field_resource_panel_toolkit }}
           </div>
+        </div>
+        <div class="internal-mainBody-sidebarContainer" style="font-size: inherit">
+          {% block sidebarContainer %}
+            {{ content.field_resource_sidebar_panel }}
+          {% endblock %}
         </div>
       </div>
     </div>

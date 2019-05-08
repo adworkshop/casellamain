@@ -437,6 +437,13 @@ function casella_preprocess_field(&$variables) {
 
   }
 
+  if ($variables['element']['#bundle'] === 'recycle_better_page') {
+    // dpm($variables['element'], 'el');
+    if ($variables['element']['#field_name'] === 'field_free_form_content') {
+      // dpm($variables['items']);
+    }
+  }
+
   if ($variables['element']['#bundle'] == 'large_promotion') {
     switch ($variables['element']['#field_name']) {
       case 'field_secondary_title':
@@ -638,21 +645,19 @@ function casella_preprocess_field(&$variables) {
     $variables['unacceptableWasteIntro'] = $unacceptableWasteIntro ? $unacceptableWasteIntro[0]['value'] : '';
 
     if ('field_slider_images' == $variables['element']['#field_name']) {
+      //setup / overrides for locaiton sliders
+      $variables['inner_id'] = 'content-slider'; // make this default for content types that don't have the fullWidth option, such as locations
+      $classArray = array(
+        'internalFeaturedMedia',
+        'cf',
+        'inBodyContent',
+        'topPosition'
+      );
 
-
-    //setup / overrides for locaiton sliders
-    $variables['inner_id'] = 'content-slider'; // make this default for content types that don't have the fullWidth option, such as locations
-    $classArray = array(
-      'internalFeaturedMedia',
-      'cf',
-      'inBodyContent',
-      'topPosition'
-    );
-
-    if (!isset($variables['attributes']['class'])) {
-      $variables['attributes']['class'] = array();
-    }
-    $variables['attributes']['class'] = array_merge($variables['attributes']['class'], $classArray);
+      if (!isset($variables['attributes']['class'])) {
+        $variables['attributes']['class'] = array();
+      }
+      $variables['attributes']['class'] = array_merge($variables['attributes']['class'], $classArray);
     }
   }
   elseif ('free_form' == $variables['element']['#bundle']) {
@@ -862,6 +867,7 @@ function casella_preprocess_image(&$variables) {
  */
 function casella_preprocess_paragraph(&$variables) {
   $paragraphType = $variables['paragraph']->getType();
+
   $variables['theme_path'] = drupal_get_path('theme', 'casella');
 
   switch ($paragraphType) {
@@ -1639,6 +1645,7 @@ function casella_preprocess_node(&$variables) {
     }
   }
 
+
   $variables['full_width'] = TRUE;
   if ($variables['node']->hasField('field_full_width')) {
     $fullWidth = $variables['node']->get('field_full_width')->getValue();
@@ -1766,6 +1773,7 @@ function casella_preprocess_html(&$variables) {
     if ('recycle_better_page' == $variables['node_type']) {
       $variables['#attached']['library'][] = 'casella/casella-recycle';
       $variables['#attached']['library'][] = 'casella/faq';
+      $variables['#attached']['library'][] = 'casella/jquery.sticky-kit';
     }
     if ('landing_page' == $variables['node_type']) {
       $variables['#attached']['library'][] = 'casella/custom-home';
@@ -2029,3 +2037,12 @@ function _casella_make_machine_name($text) {
   return preg_replace('/[^a-z0-9_]+/', '_', strtolower(trim(strip_tags($text))));
 }
 
+/*function casella_preprocess_field__paragraph__field_resource_panels__resources(&$variables) {
+  dpm($variables->field_resource_panels, 'resource panels');
+}*/
+
+function casella_preprocess_field__paragraph__field_free_form_content__resource_tips(&$variables) {
+  //dpm($variables['element']['#object']);
+  // $paragraph = $variables['paragraph'];
+  // dpm($paragraph);
+}
