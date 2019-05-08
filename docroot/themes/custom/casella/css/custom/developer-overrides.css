@@ -228,3 +228,7 @@ div.internal-mainBody-sidebarContainer div.indLocation-upperGrid-indElement-cont
  width: 100%;
 }
 
+/* @JFC - temp fix for Toolkit font icon size */
+.featured-btnRow-IndBtn-container a .featured-btnRow-IndBtn-icon {
+  font-size: 37px !important;
+}
