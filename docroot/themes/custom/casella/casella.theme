@@ -1813,18 +1813,20 @@ function casella_preprocess_video_embed_iframe(&$variables) {
 }
 
 /**
- * TODO: casella/proto/plugins/mb.YTPlayer-v.3.2.9 - implement for player options not available through query string
+ * TODO: Apply user-defined settings here instead of globally to all videos
  * @param $variables
  */
 function casella_preprocess_video_embed_iframe__youtube(&$variables) {
   $variables['query']['autoplay'] = TRUE;
   $variables['query']['modestbranding'] = TRUE;
-  $variables['query']['controls'] = FALSE;
+  $variables['query']['controls'] = 0;
   $variables['query']['iv_load_policy'] = 3;
   $variables['query']['cc_load_policy'] = 0;
   $variables['query']['html5'] = TRUE;
-  $variables['query']['t'] = "1m9s";
-  $variables['query']['end'] = "1m24s";
+  $variables['query']['start'] = '69';
+  $variables['query']['end'] = '124';
+  $variables['query']['mute'] = 1;
+  $variables['query']['rel'] = 0;
 
   $variables['attributes']['width'] = 640;
   $variables['attributes']['height'] = 360;
