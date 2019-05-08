@@ -1,11 +1,20 @@
 {%
   set classes = [
   'start-of-tips-resources',
+  'resources-listing',
   'paragraph',
   'paragraph--type--' ~ paragraph.bundle|clean_class,
   view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 ]
 %}
 <div{{ attributes.addClass(classes) }}>
-  {{ content }}
+  <div class="resources-listing-content resources-listing-content--title--desc">
+    {{ content | without('field_tip_image', 'field_free_form_content') }}
+  </div>
+
 </div>
+{{ content.field_tip_image }}
+<div class="resource-listing-list">
+  {{ content.field_free_form_content }}
+</div>
+

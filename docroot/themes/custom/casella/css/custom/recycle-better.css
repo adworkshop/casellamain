@@ -156,9 +156,21 @@ Author URI: http://www.adworkshop.com
   border-bottom: 2px solid #f3f3f3;
 }
 
+.resources-listing .resources-listing.paragraph--type--resource-tips {
+  border-left: none !important;
+}
+
 .resources-listing-content {
   padding: 15px 20px 60px 20px;
   background: #0a253e;
+}
+
+.resources-listing-content.fa-tip {
+  padding-bottom: 0;
+}
+
+.resources-listing-content.resources-listing-content--title--desc {
+  padding-top: 1px;
 }
 
 .resources-listing-category {

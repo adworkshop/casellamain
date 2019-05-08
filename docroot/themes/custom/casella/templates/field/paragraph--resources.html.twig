@@ -1,13 +1,9 @@
+{% embed "/" ~ theme_path ~ "/templates/includes/paragraph--resources-tab.html.twig" %}
+  {% block resourceContent %}
 <div class="internal-indInteractivePanelContainer">
   <div class="internal-mainBody-container">
     <div class="internal-indInteractivePanelContainer">
-      <nav role="navigation" class="resources-nav">
-        <ul>
-          <li><a href="#tips">Tips</a></li>
-          <li><a href="#videos">Videos</a></li>
-          <li><a href="#toolkits">Toolkits</a></li>
-        </ul>
-      </nav>
+
       <div class="internal-mainBody-layoutContainer">
         <div class="internal-mainBody-contentContainer">
           <div class="internal-mainBody-generalTxt-container">
@@ -31,3 +27,5 @@
     </div>
   </div>
 </div>
+  {% endblock %}
+{% endembed %}

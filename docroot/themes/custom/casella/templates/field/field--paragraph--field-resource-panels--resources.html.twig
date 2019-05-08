@@ -1,8 +1,10 @@
 {% for item in items %}
   <div{{ item.attributes }} class="resources-listing">
-    <div class="resources-listing-content">
-      <div class="resources-listing-category">Tip<span class="fa  fa-lightbulb-o" aria-hidden="true"></span></div>
+    {% block resourceContent %}
+      <div class="resources-listing-content fa-tip">
+        <div class="resources-listing-category">Tip<span class="fa  fa-lightbulb-o" aria-hidden="true"></span></div>
+      </div>
       {{ item.content }}
-    </div>
+    {% endblock %}
   </div>
 {% endfor %}
