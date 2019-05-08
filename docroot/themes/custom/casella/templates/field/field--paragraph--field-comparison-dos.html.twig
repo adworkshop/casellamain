@@ -1,0 +1,10 @@
+{% set checkicon %}
+  <span class="fa fa-ban" aria-hidden="true"></span>
+{% endset %}
+
+<ul>
+  {% for item in items %}
+    <li>{{ checkicon }}{{ item.content }}</li>
+  {% endfor %}
+</ul>
+

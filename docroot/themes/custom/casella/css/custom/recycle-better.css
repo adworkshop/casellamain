@@ -327,6 +327,13 @@ Author URI: http://www.adworkshop.com
   width: 100%;
 }
 
+/*.internal-mainBody-container .bin-comparison {
+  margin-bottom: -60px;
+}*/
+.z-container .z-content-inner .internal-mainBody-container {
+  padding-bottom: 0;
+}
+
 /* ======================================================= */
 /*    MEDIA QUERIES                                        */
 /* ======================================================= */

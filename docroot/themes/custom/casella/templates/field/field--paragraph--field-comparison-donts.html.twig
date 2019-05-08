@@ -1,0 +1,10 @@
+{% set banicon %}
+  <span class="fa fa-ban" aria-hidden="true"></span>
+{% endset %}
+
+<ul>
+  {% for item in items %}
+    <li>{{ banicon }}{{ item.content }}</li>
+  {% endfor %}
+</ul>
+
