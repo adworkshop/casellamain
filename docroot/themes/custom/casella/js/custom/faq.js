@@ -5,7 +5,7 @@ jQuery(document).ready(function($){
     var $link = $('a', element);
 
     if (!$($link.attr('href')).length) {
-      element.remove()
+      element.remove();
     }
   });
 
@@ -18,24 +18,25 @@ jQuery(document).ready(function($){
 		faqsCategoriesContainer = $('.cd-faq-categories'),
 		faqsCategories = faqsCategoriesContainer.find('a'),
 		closeFaqsContainer = $('.cd-close-panel');
-	
-	//select a faq section 
+
+	//select a faq section
 	faqsCategories.on('click', function(event){
 		event.preventDefault();
 		var selectedHref = $(this).attr('href'),
 			target= $(selectedHref);
+
 		if( $(window).width() < MqM) {
 			faqsContainer.scrollTop(0).addClass('slide-in').children('ul').removeClass('selected').end().children(selectedHref).addClass('selected');
 			closeFaqsContainer.addClass('move-left');
 			$('body').addClass('cd-overlay');
 		} else {
-	        $('body,html').animate({ 'scrollTop': target.offset().top - 100}, 200); 
+	        $('body,html').animate({ 'scrollTop': target.offset().top - 100}, 200);
 		}
 	});
 
 	//close faq lateral panel - mobile only
 	$('body').bind('click touchstart', function(event){
-		if( $(event.target).is('body.cd-overlay') || $(event.target).is('.cd-close-panel')) { 
+		if( $(event.target).is('body.cd-overlay') || $(event.target).is('.cd-close-panel')) {
 			closePanel(event);
 		}
 	});
@@ -44,11 +45,11 @@ jQuery(document).ready(function($){
 	});
 
 	//show faq content clicking on faqTrigger
-	faqTrigger.on('click', function(event){
+	faqTrigger.on('click', function(event) {
 		event.preventDefault();
 		$(this).next('.cd-faq-content').slideToggle(200).end().parent('li').toggleClass('content-visible');
-		event_action = 'collapse click';
-		event_label = $(this).text();
+		var event_action = 'collapse click';
+		var event_label = $(this).text();
 		if ($(this).parent('li').hasClass('content-visible')) event_action = 'expand click';
     eventTracking('customer care faq',event_action,event_label);
 	});
@@ -56,7 +57,7 @@ jQuery(document).ready(function($){
 	//update category sidebar while scrolling
 	$(window).on('scroll', function(){
 		if ( $(window).width() > MqL ) {
-			(!window.requestAnimationFrame) ? updateCategory() : window.requestAnimationFrame(updateCategory); 
+			(!window.requestAnimationFrame) ? updateCategory() : window.requestAnimationFrame(updateCategory);
 		}
 	});
 
@@ -69,7 +70,7 @@ jQuery(document).ready(function($){
 				'-o-transform': 'translateY(0)',
 				'transform': 'translateY(0)',
 			});
-		}	
+		}
 		if( faqsCategoriesContainer.hasClass('is-fixed') ) {
 			faqsCategoriesContainer.css({
 				'left': faqsContainer.offset().left,
@@ -114,7 +115,7 @@ jQuery(document).ready(function($){
 				'-o-transform': 'translateZ(0) translateY('+delta+'px)',
 				'transform': 'translateZ(0) translateY('+delta+'px)',
 			});
-		} else { 
+		} else {
 			faqsCategoriesContainer.removeClass('is-fixed').css({
 				'left': 0,
 				'top': 0,
@@ -128,7 +129,7 @@ jQuery(document).ready(function($){
 				margin = parseInt($('.cd-faq-title').eq(1).css('marginTop').replace('px', '')),
 				activeCategory = $('.cd-faq-categories a[href="#'+actual.attr('id')+'"]'),
 				topSection = (activeCategory.parent('li').is(':first-child')) ? 0 : Math.round(actual.offset().top);
-			
+
 			if ( ( topSection - 100 <= $(window).scrollTop() ) && ( Math.round(actual.offset().top) + actual.height() + margin - 100 > $(window).scrollTop() ) ) {
 				activeCategory.addClass('selected');
 			}else {

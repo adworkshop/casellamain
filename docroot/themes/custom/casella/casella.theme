@@ -762,10 +762,11 @@ function casella_preprocess_field(&$variables) {
       case 'field_solution_resources':
         $variables['attributes']['class'][] = 'internal-resourceSolution-subGridElement-container';
         break;
+
       case 'field_faqs':
         $variables['attributes']['class'][] = 'cd-faq-items';
         $faqLabels = array();
-
+        //dpm($variables['items']);
         foreach ($variables['items'] as $item) {
           // Check if the category has a name.
           $category = $item['content']['#paragraph']->get('field_category')->getValue();
@@ -975,16 +976,41 @@ function casella_preprocess_paragraph(&$variables) {
       break;
 
     case 'faqs_tab':
-      // $variables['paragraph'] - Drupal\paragraphs\Entity\Paragraph
-        // e.g. $variables['paragraph']->getType(); // line 281
-        // $variables['paragraph']->getParagraphType(); // Drupal\paragraphs\Entity\ParagraphsType
-        // $variables['paragraph']->get('_referringItem']
-      // dpm($variables['paragraph']);
-      // $variables['paragraph']->values['parent_type']
-      // $variables['paragraph']->values['parent_id']
-      // $variables['paragraph']->values['parent_field_name']
       $faqs = $variables['paragraph']->get('field_faqs');
-      $type = $variables['paragraph']->get('parent_type');
+      $faqIds = [];
+
+      /**
+       * Loop through field_faqs and get the target_id, a reference to the referring
+       * entity ID
+       */
+      for ($i = 0; $i < $faqs->count(); $i++) {
+        $faqIds[$i] = $faqs->get($i)->getValue()['target_id'];
+      }
+
+      /**
+       * Drupal::entityStorage method is deprecated, use entityTypeManager instead.
+       * Grab the paragraph entity type instead of the usual node
+       */
+      $entityStorage = Drupal::entityTypeManager()->getStorage('paragraph');
+      $paragraphEntities = $entityStorage->loadMultiple($faqIds);
+
+      // get specific count here instead of using it in the loop below
+      $numEntities = count($paragraphEntities);
+
+      $entityKeys = array_keys($paragraphEntities);
+
+      for ($k = 0; $k < $numEntities; $k++) {
+        $faqId = $entityStorage->load($entityKeys[$k])->id();
+        $categoryField = $entityStorage->load($entityKeys[$k])->get('field_category');
+        $faqCategory = $categoryField->getValue()[0]['value'];
+
+        $faqLabels[] = [
+          'id' => $faqId,
+          'category' => $faqCategory
+        ];
+      }
+
+      $variables['faqLabels'] = $faqLabels ?? '';
 
       break;
     case 'case_studies':
@@ -1817,7 +1843,7 @@ function casella_preprocess_video_embed_iframe(&$variables) {
  * @param $variables
  */
 function casella_preprocess_video_embed_iframe__youtube(&$variables) {
-  $variables['query']['autoplay'] = TRUE;
+  $variables['query']['autoplay'] = 0;
   $variables['query']['modestbranding'] = TRUE;
   $variables['query']['controls'] = 0;
   $variables['query']['iv_load_policy'] = 3;
