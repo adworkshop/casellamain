@@ -449,6 +449,9 @@ Author URI: http://www.adworkshop.com
     line-height: 30px;
     font-family: 'Droid Serif';
   }
+  .internal-mainBody-sidebarContainer .news-indListing-container .paragraph--type--sidebar-panel img {
+    margin-bottom: 30px;
+  }
   .internal-mainBody-sidebarContainer .news-indListing-colLeft-container {display: block; vertical-align: baseline; width: 100%; padding: 0; margin: 0 0 30px 0;}
   .internal-mainBody-sidebarContainer .news-indListing-colRight-container {display: block; vertical-align: baseline;}
 
