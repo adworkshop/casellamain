@@ -59,7 +59,13 @@ Author URI: http://www.adworkshop.com
 /*    NEWS                                                 */
 /* ======================================================= */
 
-.internal-mainBody-generalTxt-container .news-indListing-container:last-child {
+/*.internal-mainBody-generalTxt-container .news-indListing-container:last-child {
+  margin: 0;
+  padding: 0;
+  border-bottom: none;
+}*/
+
+.internal-mainBody-generalTxt-container .news-indListing-container:last-of-type {
   margin: 0;
   padding: 0;
   border-bottom: none;

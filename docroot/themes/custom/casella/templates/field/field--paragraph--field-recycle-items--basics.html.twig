@@ -1,0 +1,11 @@
+{%
+  set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  'news-indListing-container'
+]
+%}
+{% for item in items %}
+  <div class="news-indListing-container">{{ item.content }}</div>
+{% endfor %}
