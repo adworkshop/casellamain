@@ -114,10 +114,6 @@
 {% endblock %}
 
 
-{% if hasBgVideo %}
-  {{ content.field_background_video }}
-{% endif %}
-
 {% block featuredMedia %}{% endblock %}
 
 <!--Main Body Region-->
@@ -215,10 +211,10 @@
           <!--END Col - Sidebar-->
         {% endif %}
       {% endblock %}
+
       </div>
       <!--END Grid-->
     {% endblock %}
-
   </div>
 </div>
 
@@ -230,6 +226,10 @@
 
 {% if tab_anchors|length %}
   {% include "/" ~ theme_path ~ "/templates/includes/tab-panels.html.twig" with {'faqs': content.field_faqs} %}
+{% endif %}
+
+{% if hasBgVideo %}
+  {{ content.field_background_video }}
 {% endif %}
 
 {% block resourceSolutions %}{% endblock %}
