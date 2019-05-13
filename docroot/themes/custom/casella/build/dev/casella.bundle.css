@@ -1,0 +1,85 @@
+.autocomplete-suggestions .translateY {
+  top: 200px; }
+
+.autocomplete-no-suggestions {
+  text-align: left;
+  cursor: default;
+  border: 1px solid #ccc;
+  border-top: 0;
+  background: #fff;
+  box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  display: none;
+  z-index: 9999;
+  max-height: 254px;
+  overflow: hidden;
+  overflow-y: auto;
+  box-sizing: border-box; }
+
+.autocomplete-has-suggestions {
+  padding: .5em;
+  text-align: left;
+  cursor: default;
+  border: 1px solid #ccc;
+  border-top: 0;
+  background: #fff;
+  box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  max-height: 200px;
+  z-index: 999999;
+  overflow: hidden;
+  overflow-y: auto;
+  box-sizing: border-box; }
+
+.autocomplete-has-suggestions.is-hidden {
+  display: none; }
+
+.autocomplete-has-suggestions p {
+  margin-left: .5em;
+  margin-bottom: 0;
+  font-weight: bold; }
+
+.autocomplete-has-suggestions .fa {
+  color: green; }
+
+.autocomplete-no-suggestions.no-suggestions {
+  padding: .5em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%; }
+
+.autocomplete-no-suggestions.is-hidden {
+  display: none; }
+
+.autocomplete-no-suggestions.no-suggestions .fa {
+  color: red; }
+
+.autocomplete-no-suggestions.no-suggestions p {
+  margin-left: .5em;
+  margin-bottom: 0;
+  font-weight: bold; }
+
+.autocomplete-no-suggestion {
+  position: relative;
+  padding: 0 .6em;
+  line-height: 23px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.02em;
+  color: #333; }
+
+.autocomplete-no-suggestion strong {
+  font-weight: normal;
+  color: #1f8dd6; }
+
+.autocomplete-no-suggestion.selected {
+  background: #f0f0f0; }
+
+
+/*# sourceMappingURL=casella.bundle.css.map*/

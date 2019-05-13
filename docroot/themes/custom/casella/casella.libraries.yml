@@ -69,9 +69,12 @@ casella-recycle:
   js:
     plugins/mb.YTPlayer-v.3.2.9/dist/jquery.mb.YTPlayer.js: {}
     js/custom/sticky_div.js: {}
+    build/dev/casella.bundle.js: {}
   css:
     theme:
       css/custom/recycle-better.css: {}
+      css/lib/auto-complete.css: {}
+      build/dev/casella.bundle.css: {}
   dependencies:
     - core/jquery
 
