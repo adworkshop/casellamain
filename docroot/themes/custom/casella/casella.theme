@@ -1053,6 +1053,12 @@ function casella_preprocess_paragraph(&$variables) {
       _casella_extract_link_bits($variables['paragraph']->get('field_icon_link')->get(0), $variables);
       $variables['attributes']['class'][] = 'featured-btnRow-IndBtn-container';
       break;
+    case 'fa_link_with_pdf':
+      $class = $variables['paragraph']->get('field_fa_icon')->getValue();
+      $variables['link_class'] = $class ? 'fa ' . $class[0]['value'] : '';
+      $title = $variables['paragraph']->get('field_button_title')->get(0)->view();
+      $variables['button_title'] = $title ?? '';
+      break;
     case 'block_link_with_icon':
       $class = $variables['paragraph']->get('field_custom_icon')->getValue();
       $variables['link_class'] = $class ? $class[0]['value'] : '';
