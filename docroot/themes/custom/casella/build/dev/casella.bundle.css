@@ -3,6 +3,14 @@
 .tingle-modal {
   z-index: 9000; }
 
+.tingle-modal-box__content {
+  font-size: 15px;
+  line-height: 1.5;
+  font-family: "Droid Serif", sans-serif; }
+
+.tingle-modal-box__content p {
+  font: inherit; }
+
 .field_modal_pdf {
   display: none; }
 
@@ -15,6 +23,7 @@
   border: 1px solid #ccc;
   border-top: 0;
   background: #fff;
+  -webkit-box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.1);
   box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.1);
   position: absolute;
   display: none;
@@ -22,6 +31,7 @@
   max-height: 254px;
   overflow: hidden;
   overflow-y: auto;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
 .autocomplete-has-suggestions {
@@ -31,16 +41,25 @@
   border: 1px solid #ccc;
   border-top: 0;
   background: #fff;
+  -webkit-box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.1);
   box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.1);
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   width: 100%;
   max-height: 200px;
   z-index: 999999;
   overflow: hidden;
   overflow-y: auto;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
 .autocomplete-has-suggestions.is-hidden {
@@ -56,8 +75,15 @@
 
 .autocomplete-no-suggestions.no-suggestions {
   padding: .5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   width: 100%; }
 

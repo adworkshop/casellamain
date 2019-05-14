@@ -18,7 +18,11 @@ class Autocompleter {
     this.valid = this.checkValidity();
     this.addListener();
 
-    this.choices = ['Bulky Items', 'Construction', 'Electronic', 'Food Scraps', 'Hazardous Waste', 'Yard Waste'];
+    this.choices = [
+      'Cardboard', 'Boxboard', 'Dry-food boxes', 'Egg Cartons', 'Paper Rolls', 'Envelopes', 'Paper Bags', 'Office Paper',
+      'Catalogs', 'Junk Mail', 'Periodicals', 'Plastic Bottles', 'Plastic Jugs', 'Plastic Tubs', 'Plastic Lids',
+      'Aluminum Foil', 'Aluminum Cans', 'Glass Jars', 'Glass Bottles'
+    ];
     this.matches = [];
     this.options = Object.assign({}, defaultOptions);
   }

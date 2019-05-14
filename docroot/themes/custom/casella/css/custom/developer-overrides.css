@@ -232,3 +232,8 @@ div.internal-mainBody-sidebarContainer div.indLocation-upperGrid-indElement-cont
 .featured-btnRow-IndBtn-container a .featured-btnRow-IndBtn-icon {
   font-size: 37px !important;
 }
+
+.internal-mainBody-container.noPaddingTop {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
