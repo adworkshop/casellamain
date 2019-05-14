@@ -1,9 +1,9 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   entry: {
-    'casella': './src/casella.js'
+    'casella': ['./src/casella.js', './src/casella.css']
   },
 
   output: {
@@ -14,7 +14,7 @@ const config = {
   module: {
     rules: [
       {
-        text: /\.js$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         //use: ['babel-loader']
         use: {
@@ -23,16 +23,22 @@ const config = {
             presets: ['@babel/preset-env']
           }
         }
+      },
+      {
+        test: /\.css$|.scss$/,
+        use: [
+          MiniCSSExtractPlugin.loader,
+          'css-loader',
+          'sass-loader',
+          'postcss-loader'
+        ]
       }
     ]
   },
 
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './build/dev/index.html',
-      filename: 'index.html',
-      inject: true,
-      hash: true
+    new MiniCSSExtractPlugin({
+      filename: '[name].bundle.css'
     })
   ],
 
