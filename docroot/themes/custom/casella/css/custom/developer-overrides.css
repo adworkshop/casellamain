@@ -233,7 +233,7 @@ div.internal-mainBody-sidebarContainer div.indLocation-upperGrid-indElement-cont
   font-size: 37px !important;
 }
 
-.internal-mainBody-container.noPaddingTop {
+.internal-mainBody-container.noPaddingTopBottom {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
