@@ -1,6 +1,7 @@
 import 'core-js/features/array/some';
 import 'core-js/features/array/from';
 import * as autoComplete from './auto-complete';
+import { range } from './util/utils';
 import './pdfModal';
 
 const defaultOptions = {
@@ -12,11 +13,18 @@ const defaultOptions = {
   menuClass: ''
 };
 
+const stateOptions = {
+  hiddenClass: 'is-hidden'
+};
+
 class Autocompleter {
   constructor(selector = 'input[type="search"]') {
     this.selector = selector;
     this.valid = this.checkValidity();
     this.addListener();
+
+    this.renderNoMatchesAlert();
+    this.renderMatchesAlert();
 
     this.choices = [
       'Cardboard', 'Boxboard', 'Dry-food boxes', 'Egg Cartons', 'Paper Rolls', 'Envelopes', 'Paper Bags', 'Office Paper',
@@ -38,8 +46,26 @@ class Autocompleter {
 
     let searchElem = document.querySelector(this.selector);
 
+    searchElem.addEventListener('blur', event => {
+      event.target.value = '';
+    });
+
+    searchElem.addEventListener('input', event => {
+      if (event.target.value.length === 0) {
+        Autocompleter.hideElementById('ac-no-matches');
+      } else {
+        Autocompleter.hideElementById('ac-has-matches');
+      }
+    });
+
     searchElem.addEventListener('keydown', event => {
-      let whichKey = event.keyCode;
+
+      // let whichKey = event.keyCode;
+
+      // let allowedKeysRange = range(65, 90);
+      /* if ( !allowedKeysRange.includes(whichKey) ) {
+        return false;
+      } */
 
       setTimeout(() => {
         let matchesContainer = document.querySelector('.autocomplete-suggestions');
@@ -65,7 +91,6 @@ class Autocompleter {
 
     });
 
-    searchElem.addEventListener('blur', () => Autocompleter.hideElementById('ac-no-matches' ));
   }
 
   setOption(optionName, optionValue) {
@@ -80,29 +105,41 @@ class Autocompleter {
       position = 'afterend',
       markup;
 
-    markup = `<div id="ac-no-matches" class="autocomplete-no-suggestions no-suggestions"><span class="fa fa-ban" aria-hidden="true"></span><p>Sorry, this is not allowed, but <a href="/contact-us">click here</a> for more information</p></div>`;
+    markup = `<div id="ac-no-matches" class="autocomplete-no-suggestions no-suggestions is-hidden"><span class="fa fa-ban" aria-hidden="true"></span><p>Sorry, this is not allowed, but <a href="/contact-us">click here</a> for more information</p></div>`;
 
     selectorElem.insertAdjacentHTML(position, markup);
   }
 
   renderMatchesAlert() {
     let
-      selectorElem = document.querySelector('.autocomplete-suggestions'),
+      selectorElem = document.querySelector('.form-actions'),
       position = 'afterbegin',
       markup;
 
-    markup = `<div id="ac-has-matches" class="autocomplete-has-suggestions"><span class="fa fa-check-circle" aria-hidden="true"></span><p>These are good to go!</p></div>`;
+    markup = `<div id="ac-has-matches" class="autocomplete-has-suggestions is-hidden"><span class="fa fa-check-circle" aria-hidden="true"></span><p>These are good to go!</p></div>`;
 
     setTimeout(() => {
       selectorElem.insertAdjacentHTML(position, markup);
     }, 500);
 
-    console.log(selectorElem, 'sugg');
   }
 
   static hideElementById(elemId) {
     if (document.getElementById(elemId)) {
-      document.getElementById(elemId).classList.add('is-hidden');
+      let elem = document.getElementById(elemId);
+      if ( !elem.classList.contains(stateOptions.hiddenClass) ) {
+        elem.classList.add(stateOptions.hiddenClass);
+      }
+    }
+  }
+
+  static showElementById(elemId, term = null) {
+    if (document.getElementById(elemId)) {
+      let elem = document.getElementById(elemId);
+      if (term) {
+        elem.innerHTML = `<span class="fa fa-check-circle" aria-hidden="true"></span><p><strong>${term}</strong> can be recycled!</p>`;
+      }
+      elem.classList.remove(stateOptions.hiddenClass);
     }
   }
 
@@ -119,7 +156,7 @@ class Autocompleter {
           Autocompleter.hideElementById('ac-no-matches');
           _.matches = _.choices.filter(choice => choice.toLowerCase().indexOf(term) !== -1);
         } else {
-          _.renderNoMatchesAlert();
+          Autocompleter.showElementById('ac-no-matches');
         }
         suggest(_.matches);
         _.matches = [];
@@ -127,7 +164,10 @@ class Autocompleter {
       renderItem(item, search) {
         search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
         let re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
-        return `<div class="autocomplete-suggestion" data-val="{$item}">${item.replace(re, '<b>$1</b>')}</div>`;
+        return `<div class="autocomplete-suggestion" data-val="${item}">${item.replace(re, '<b>$1</b>')}</div>`;
+      },
+      onSelect(event, term, item ) {
+        Autocompleter.showElementById('ac-has-matches', term);
       }
     });
   }

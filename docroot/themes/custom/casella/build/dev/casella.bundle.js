@@ -2389,12 +2389,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_features_array_from__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_features_array_from__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _auto_complete__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auto-complete */ "./src/auto-complete.js");
 /* harmony import */ var _auto_complete__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_auto_complete__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _pdfModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pdfModal */ "./src/pdfModal.js");
+/* harmony import */ var _util_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util/utils */ "./src/util/utils.js");
+/* harmony import */ var _pdfModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pdfModal */ "./src/pdfModal.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 
 
 
@@ -2408,6 +2410,9 @@ var defaultOptions = {
   cache: true,
   menuClass: ''
 };
+var stateOptions = {
+  hiddenClass: 'is-hidden'
+};
 
 var Autocompleter =
 /*#__PURE__*/
@@ -2420,6 +2425,8 @@ function () {
     this.selector = selector;
     this.valid = this.checkValidity();
     this.addListener();
+    this.renderNoMatchesAlert();
+    this.renderMatchesAlert();
     this.choices = ['Cardboard', 'Boxboard', 'Dry-food boxes', 'Egg Cartons', 'Paper Rolls', 'Envelopes', 'Paper Bags', 'Office Paper', 'Catalogs', 'Junk Mail', 'Periodicals', 'Plastic Bottles', 'Plastic Jugs', 'Plastic Tubs', 'Plastic Lids', 'Aluminum Foil', 'Aluminum Cans', 'Glass Jars', 'Glass Bottles'];
     this.matches = [];
     this.options = Object.assign({}, defaultOptions);
@@ -2440,8 +2447,23 @@ function () {
       }
 
       var searchElem = document.querySelector(this.selector);
+      searchElem.addEventListener('blur', function (event) {
+        event.target.value = '';
+      });
+      searchElem.addEventListener('input', function (event) {
+        if (event.target.value.length === 0) {
+          Autocompleter.hideElementById('ac-no-matches');
+        } else {
+          Autocompleter.hideElementById('ac-has-matches');
+        }
+      });
       searchElem.addEventListener('keydown', function (event) {
-        var whichKey = event.keyCode;
+        // let whichKey = event.keyCode;
+        // let allowedKeysRange = range(65, 90);
+
+        /* if ( !allowedKeysRange.includes(whichKey) ) {
+          return false;
+        } */
         setTimeout(function () {
           var matchesContainer = document.querySelector('.autocomplete-suggestions');
           var hasMatchesContainer = document.querySelector('.autocomplete-has-suggestions');
@@ -2462,9 +2484,6 @@ function () {
           }
         }, _this.options.delay + 100);
       });
-      searchElem.addEventListener('blur', function () {
-        return Autocompleter.hideElementById('ac-no-matches');
-      });
     }
   }, {
     key: "setOption",
@@ -2479,20 +2498,19 @@ function () {
       var selectorElem = document.querySelector(this.selector),
           position = 'afterend',
           markup;
-      markup = "<div id=\"ac-no-matches\" class=\"autocomplete-no-suggestions no-suggestions\"><span class=\"fa fa-ban\" aria-hidden=\"true\"></span><p>Sorry, this is not allowed, but <a href=\"/contact-us\">click here</a> for more information</p></div>";
+      markup = "<div id=\"ac-no-matches\" class=\"autocomplete-no-suggestions no-suggestions is-hidden\"><span class=\"fa fa-ban\" aria-hidden=\"true\"></span><p>Sorry, this is not allowed, but <a href=\"/contact-us\">click here</a> for more information</p></div>";
       selectorElem.insertAdjacentHTML(position, markup);
     }
   }, {
     key: "renderMatchesAlert",
     value: function renderMatchesAlert() {
-      var selectorElem = document.querySelector('.autocomplete-suggestions'),
+      var selectorElem = document.querySelector('.form-actions'),
           position = 'afterbegin',
           markup;
-      markup = "<div id=\"ac-has-matches\" class=\"autocomplete-has-suggestions\"><span class=\"fa fa-check-circle\" aria-hidden=\"true\"></span><p>These are good to go!</p></div>";
+      markup = "<div id=\"ac-has-matches\" class=\"autocomplete-has-suggestions is-hidden\"><span class=\"fa fa-check-circle\" aria-hidden=\"true\"></span><p>These are good to go!</p></div>";
       setTimeout(function () {
         selectorElem.insertAdjacentHTML(position, markup);
       }, 500);
-      console.log(selectorElem, 'sugg');
     }
   }, {
     key: "makeAutoComplete",
@@ -2513,7 +2531,7 @@ function () {
               return choice.toLowerCase().indexOf(term) !== -1;
             });
           } else {
-            _.renderNoMatchesAlert();
+            Autocompleter.showElementById('ac-no-matches');
           }
 
           suggest(_.matches);
@@ -2522,7 +2540,10 @@ function () {
         renderItem: function renderItem(item, search) {
           search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
           var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
-          return "<div class=\"autocomplete-suggestion\" data-val=\"{$item}\">".concat(item.replace(re, '<b>$1</b>'), "</div>");
+          return "<div class=\"autocomplete-suggestion\" data-val=\"".concat(item, "\">").concat(item.replace(re, '<b>$1</b>'), "</div>");
+        },
+        onSelect: function onSelect(event, term, item) {
+          Autocompleter.showElementById('ac-has-matches', term);
         }
       });
     }
@@ -2530,7 +2551,26 @@ function () {
     key: "hideElementById",
     value: function hideElementById(elemId) {
       if (document.getElementById(elemId)) {
-        document.getElementById(elemId).classList.add('is-hidden');
+        var elem = document.getElementById(elemId);
+
+        if (!elem.classList.contains(stateOptions.hiddenClass)) {
+          elem.classList.add(stateOptions.hiddenClass);
+        }
+      }
+    }
+  }, {
+    key: "showElementById",
+    value: function showElementById(elemId) {
+      var term = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      if (document.getElementById(elemId)) {
+        var elem = document.getElementById(elemId);
+
+        if (term) {
+          elem.innerHTML = "<span class=\"fa fa-check-circle\" aria-hidden=\"true\"></span><p><strong>".concat(term, "</strong> can be recycled!</p>");
+        }
+
+        elem.classList.remove(stateOptions.hiddenClass);
       }
     }
   }]);
@@ -2577,6 +2617,34 @@ if (modalTriggers) {
       }
     });
   });
+}
+
+/***/ }),
+
+/***/ "./src/util/utils.js":
+/*!***************************!*\
+  !*** ./src/util/utils.js ***!
+  \***************************/
+/*! exports provided: range */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "range", function() { return range; });
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function range(start, end) {
+  if (start === end) {
+    return [start];
+  }
+
+  return [start].concat(_toConsumableArray(range(start + 1, end)));
 }
 
 /***/ }),
