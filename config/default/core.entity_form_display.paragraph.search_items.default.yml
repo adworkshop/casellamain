@@ -1,0 +1,25 @@
+uuid: a4a53da2-c1cb-4a23-a702-573d5aab3773
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.search_items.field_search_panel
+    - paragraphs.paragraphs_type.search_items
+id: paragraph.search_items.default
+targetEntityType: paragraph
+bundle: search_items
+mode: default
+content:
+  field_search_panel:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

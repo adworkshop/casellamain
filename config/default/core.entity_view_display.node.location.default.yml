@@ -24,8 +24,6 @@ dependencies:
     - field.field.node.location.field_slider_images
     - field.field.node.location.field_state
     - field.field.node.location.field_street_address
-    - field.field.node.location.field_suppress_holiday
-    - field.field.node.location.field_suppress_pay_your_bill
     - field.field.node.location.field_supress_map
     - field.field.node.location.field_tabs
     - field.field.node.location.field_unacceptable_waste
@@ -184,33 +182,13 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-  field_suppress_holiday:
-    weight: 25
-    label: hidden
-    settings:
-      format: default
-      format_custom_true: ''
-      format_custom_false: ''
-    third_party_settings: {  }
-    type: boolean
-    region: content
-  field_suppress_pay_your_bill:
-    weight: 24
-    label: hidden
-    settings:
-      format: default
-      format_custom_true: ''
-      format_custom_false: ''
-    third_party_settings: {  }
-    type: boolean
-    region: content
   field_supress_map:
     weight: 21
     label: hidden
     settings:
       format: default
-      format_custom_true: ''
       format_custom_false: ''
+      format_custom_true: ''
     third_party_settings: {  }
     type: boolean
     region: content

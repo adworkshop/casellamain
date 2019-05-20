@@ -1,0 +1,110 @@
+uuid: 67b88ed4-2cb9-424d-bab6-e85856d75aa4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tabs
+    - node.type.recycle_better_page
+  module:
+    - entity_reference_revisions
+id: node.recycle_better_page.field_tabs
+field_name: field_tabs
+entity_type: node
+bundle: recycle_better_page
+label: Tabs
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles: null
+    target_bundles_drag_drop:
+      block_link_with_icon:
+        weight: 28
+        enabled: false
+      case_studies:
+        weight: 29
+        enabled: false
+      content_chunk:
+        weight: 30
+        enabled: false
+      earthlink_link:
+        weight: 31
+        enabled: false
+      faq_category:
+        weight: 32
+        enabled: false
+      faq_question:
+        weight: 33
+        enabled: false
+      faqs_tab:
+        weight: 33
+        enabled: false
+      fa_link_with_icon:
+        weight: 34
+        enabled: false
+      free_form:
+        weight: 35
+        enabled: false
+      holiday:
+        weight: 36
+        enabled: false
+      image_gallery:
+        weight: 37
+        enabled: false
+      image_with_caption:
+        weight: 38
+        enabled: false
+      inline_image:
+        weight: 39
+        enabled: false
+      inline_video:
+        weight: 40
+        enabled: false
+      large_promotion:
+        weight: 41
+        enabled: false
+      link_with_icon:
+        weight: 42
+        enabled: false
+      organics_updates:
+        weight: 43
+        enabled: false
+      products:
+        weight: 44
+        enabled: false
+      recommendation:
+        weight: 45
+        enabled: false
+      services:
+        weight: 46
+        enabled: false
+      slider_image:
+        weight: 47
+        enabled: false
+      social_link:
+        weight: 48
+        enabled: false
+      solution_resource:
+        weight: 49
+        enabled: false
+      testimonials:
+        weight: 50
+        enabled: false
+      upper_button:
+        weight: 51
+        enabled: false
+      vertical:
+        weight: 52
+        enabled: false
+      video:
+        weight: 53
+        enabled: false
+      waste_category:
+        weight: 54
+        enabled: false
+field_type: entity_reference_revisions

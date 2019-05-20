@@ -1,0 +1,19 @@
+uuid: fac344ca-b298-43b7-aabd-6231bb5a2345
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tab_title
+    - paragraphs.paragraphs_type.faqs_tab
+id: paragraph.faqs_tab.field_tab_title
+field_name: field_tab_title
+entity_type: paragraph
+bundle: faqs_tab
+label: 'Tab Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

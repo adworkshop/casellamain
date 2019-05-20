@@ -1,0 +1,25 @@
+uuid: 12315689-01d2-4ac6-8fc6-47a73de87261
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_background_video
+    - node.type.recycle_better_page
+  module:
+    - video_embed_field
+id: node.recycle_better_page.field_background_video
+field_name: field_background_video
+entity_type: node
+bundle: recycle_better_page
+label: 'Background Video'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_providers:
+    vimeo: vimeo
+    youtube: youtube
+    youtube_playlist: '0'
+field_type: video_embed_field

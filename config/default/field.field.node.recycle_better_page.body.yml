@@ -1,0 +1,22 @@
+uuid: 6329980c-4a84-4d3e-af70-cb9ddabeca1a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.recycle_better_page
+  module:
+    - text
+id: node.recycle_better_page.body
+field_name: body
+entity_type: node
+bundle: recycle_better_page
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

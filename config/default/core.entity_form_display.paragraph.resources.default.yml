@@ -1,0 +1,135 @@
+uuid: d544e1cc-1fe8-40f9-a48a-7ddb2847b85a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.resources.field_resource_panel_tip_descrip
+    - field.field.paragraph.resources.field_resource_panel_toolkit
+    - field.field.paragraph.resources.field_resource_panel_toolkit_des
+    - field.field.paragraph.resources.field_resource_panel_video
+    - field.field.paragraph.resources.field_resource_panel_video_descr
+    - field.field.paragraph.resources.field_resource_panels
+    - field.field.paragraph.resources.field_resource_sidebar_panel
+    - field.field.paragraph.resources.field_tab_anchor
+    - field.field.paragraph.resources.field_tab_description
+    - field.field.paragraph.resources.field_tab_title
+    - field.field.paragraph.resources.field_tip_images
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.resources
+  module:
+    - image
+    - paragraphs
+    - text
+id: paragraph.resources.default
+targetEntityType: paragraph
+bundle: resources
+mode: default
+content:
+  field_resource_panel_tip_descrip:
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_resource_panel_toolkit:
+    type: entity_reference_paragraphs
+    weight: 8
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_resource_panel_toolkit_des:
+    weight: 7
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_resource_panel_video:
+    type: entity_reference_paragraphs
+    weight: 6
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_resource_panel_video_descr:
+    weight: 5
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_resource_panels:
+    type: entity_reference_paragraphs
+    weight: 4
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_resource_sidebar_panel:
+    type: entity_reference_paragraphs
+    weight: 10
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_tab_anchor:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_tab_description:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_tab_title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_tip_images:
+    weight: 9
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

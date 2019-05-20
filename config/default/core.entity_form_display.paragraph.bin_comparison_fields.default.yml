@@ -1,0 +1,72 @@
+uuid: 6fd0a0e6-05fa-4c3e-a354-faec175254b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.bin_comparison_fields.field_bin_comparison_image
+    - field.field.paragraph.bin_comparison_fields.field_comparison_donts
+    - field.field.paragraph.bin_comparison_fields.field_comparison_dos
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.bin_comparison_fields
+  module:
+    - field_group
+    - image
+third_party_settings:
+  field_group:
+    group_donts_list:
+      children:
+        - field_comparison_donts
+      parent_name: ''
+      weight: 1
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Donts List'
+    group_dos_list:
+      children:
+        - field_comparison_dos
+      parent_name: ''
+      weight: 2
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Dos List'
+id: paragraph.bin_comparison_fields.default
+targetEntityType: paragraph
+bundle: bin_comparison_fields
+mode: default
+content:
+  field_bin_comparison_image:
+    weight: 0
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_comparison_donts:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_comparison_dos:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

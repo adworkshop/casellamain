@@ -1,0 +1,9 @@
+uuid: 88ac4391-0f37-4da7-bd50-13b802a50ffe
+langcode: en
+status: true
+dependencies: {  }
+id: bin_comparison_fields
+label: 'Bin Comparison Fields'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,33 @@
+uuid: 0999e5c8-30b0-475a-bae1-8f3fa8fe85c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.resource_toolkit_button.field_link
+    - field.field.paragraph.resource_toolkit_button.field_link_type
+    - paragraphs.paragraphs_type.resource_toolkit_button
+  module:
+    - link
+id: paragraph.resource_toolkit_button.default
+targetEntityType: paragraph
+bundle: resource_toolkit_button
+mode: default
+content:
+  field_link:
+    weight: 1
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_link_type:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

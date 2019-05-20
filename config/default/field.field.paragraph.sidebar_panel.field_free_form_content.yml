@@ -1,0 +1,21 @@
+uuid: 91176a03-c577-44c1-8735-0b7f18250a52
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_free_form_content
+    - paragraphs.paragraphs_type.sidebar_panel
+  module:
+    - text
+id: paragraph.sidebar_panel.field_free_form_content
+field_name: field_free_form_content
+entity_type: paragraph
+bundle: sidebar_panel
+label: 'Free Form Content'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

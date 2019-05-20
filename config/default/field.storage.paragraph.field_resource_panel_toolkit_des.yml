@@ -1,0 +1,19 @@
+uuid: e00f8d0f-3c01-4fc4-8752-06c435bf735c
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+id: paragraph.field_resource_panel_toolkit_des
+field_name: field_resource_panel_toolkit_des
+entity_type: paragraph
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

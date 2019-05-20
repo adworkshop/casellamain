@@ -1,0 +1,9 @@
+uuid: d86ea5f5-106c-4986-a8bd-517584adc75a
+langcode: en
+status: true
+dependencies: {  }
+id: fa_link_with_pdf
+label: 'FA Link with PDF'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

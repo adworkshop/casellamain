@@ -1,0 +1,11 @@
+uuid: 236808b2-542f-4554-ac87-f7fd40189569
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.recycle_better_page
+id: node.recycle_better_page
+target_entity_type_id: node
+target_bundle: recycle_better_page
+default_langcode: site_default
+language_alterable: false

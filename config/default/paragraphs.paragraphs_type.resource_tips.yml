@@ -1,0 +1,9 @@
+uuid: 1b7532fc-9b0f-4c7e-8bf3-f57df985c8eb
+langcode: en
+status: true
+dependencies: {  }
+id: resource_tips
+label: 'Resource Tips'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

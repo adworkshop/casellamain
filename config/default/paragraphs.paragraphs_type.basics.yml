@@ -1,0 +1,9 @@
+uuid: c2eca5ed-72a1-4123-8622-845bfbfec9bb
+langcode: en
+status: true
+dependencies: {  }
+id: basics
+label: Basics
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

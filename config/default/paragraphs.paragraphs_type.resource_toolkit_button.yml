@@ -1,0 +1,9 @@
+uuid: 3be6db29-b2c9-470c-a0d2-becfde963885
+langcode: en
+status: true
+dependencies: {  }
+id: resource_toolkit_button
+label: 'Resource Toolkit Button'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

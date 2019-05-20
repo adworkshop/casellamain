@@ -1,0 +1,19 @@
+uuid: cc8187a9-0da8-4c49-bff6-b5a66c18fbe8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_comparison_dos
+    - paragraphs.paragraphs_type.bin_comparison_fields
+id: paragraph.bin_comparison_fields.field_comparison_dos
+field_name: field_comparison_dos
+entity_type: paragraph
+bundle: bin_comparison_fields
+label: 'Comparison Dos'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
