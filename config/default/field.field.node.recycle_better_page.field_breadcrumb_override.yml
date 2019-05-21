@@ -1,0 +1,19 @@
+uuid: 06b3bc26-9664-4628-a8bd-6e62d775cfb9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_breadcrumb_override
+    - node.type.recycle_better_page
+id: node.recycle_better_page.field_breadcrumb_override
+field_name: field_breadcrumb_override
+entity_type: node
+bundle: recycle_better_page
+label: 'Breadcrumb Override'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

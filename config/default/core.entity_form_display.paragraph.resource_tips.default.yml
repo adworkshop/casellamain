@@ -1,0 +1,54 @@
+uuid: 779365e7-9e0c-4b81-8ab9-305e4fbeecf1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.resource_tips.field_description
+    - field.field.paragraph.resource_tips.field_resource_tip
+    - field.field.paragraph.resource_tips.field_tip_image
+    - field.field.paragraph.resource_tips.field_title
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.resource_tips
+  module:
+    - image
+id: paragraph.resource_tips.default
+targetEntityType: paragraph
+bundle: resource_tips
+mode: default
+content:
+  field_description:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_resource_tip:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_tip_image:
+    weight: 2
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

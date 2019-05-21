@@ -1,0 +1,9 @@
+uuid: 058b4127-63fc-45fb-b041-31f6c47756cb
+langcode: en
+status: true
+dependencies: {  }
+id: search_items
+label: 'Search Items'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

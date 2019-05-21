@@ -1,0 +1,9 @@
+uuid: 5d3b0c49-a62e-41a1-900a-0e18428ca9b9
+langcode: en
+status: true
+dependencies: {  }
+id: faqs_tab
+label: 'FAQs Tab'
+icon_uuid: null
+description: 'FAQs tab for recycle page'
+behavior_plugins: {  }

@@ -1,0 +1,22 @@
+uuid: 4ec9f84a-007e-4388-8480-31acaba74bde
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.recycle_better_page
+id: node.recycle_better_page.promote
+field_name: promote
+entity_type: node
+bundle: recycle_better_page
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

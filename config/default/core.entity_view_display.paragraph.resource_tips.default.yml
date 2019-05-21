@@ -1,0 +1,50 @@
+uuid: 7d76b98c-05c5-417e-94bc-1cbebca30b92
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.resource_tips.field_description
+    - field.field.paragraph.resource_tips.field_resource_tip
+    - field.field.paragraph.resource_tips.field_tip_image
+    - field.field.paragraph.resource_tips.field_title
+    - paragraphs.paragraphs_type.resource_tips
+  module:
+    - image
+id: paragraph.resource_tips.default
+targetEntityType: paragraph
+bundle: resource_tips
+mode: default
+content:
+  field_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_resource_tip:
+    weight: 4
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_tip_image:
+    weight: 2
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

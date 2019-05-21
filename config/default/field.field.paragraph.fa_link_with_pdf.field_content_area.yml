@@ -1,0 +1,21 @@
+uuid: 21d7ba79-28a9-4216-81b0-279be6f162c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content_area
+    - paragraphs.paragraphs_type.fa_link_with_pdf
+  module:
+    - text
+id: paragraph.fa_link_with_pdf.field_content_area
+field_name: field_content_area
+entity_type: paragraph
+bundle: fa_link_with_pdf
+label: 'Content Area'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

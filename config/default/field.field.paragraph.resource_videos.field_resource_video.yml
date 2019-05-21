@@ -1,0 +1,25 @@
+uuid: 00311a02-2ea7-437a-ba3a-df2990a88c82
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_resource_video
+    - paragraphs.paragraphs_type.resource_videos
+  module:
+    - video_embed_field
+id: paragraph.resource_videos.field_resource_video
+field_name: field_resource_video
+entity_type: paragraph
+bundle: resource_videos
+label: 'Resource Video'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_providers:
+    vimeo: vimeo
+    youtube: youtube
+    youtube_playlist: '0'
+field_type: video_embed_field

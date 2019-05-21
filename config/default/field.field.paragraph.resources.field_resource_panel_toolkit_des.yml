@@ -1,0 +1,21 @@
+uuid: 186c2288-fa08-4534-96ed-39ffffbc3e33
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_resource_panel_toolkit_des
+    - paragraphs.paragraphs_type.resources
+  module:
+    - text
+id: paragraph.resources.field_resource_panel_toolkit_des
+field_name: field_resource_panel_toolkit_des
+entity_type: paragraph
+bundle: resources
+label: 'Resource Panel Toolkit Description'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

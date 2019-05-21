@@ -1,0 +1,9 @@
+uuid: 257a38bd-3a37-4c9e-a1f4-c12e006f2539
+langcode: en
+status: true
+dependencies: {  }
+id: resource_videos
+label: 'Resource Videos'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

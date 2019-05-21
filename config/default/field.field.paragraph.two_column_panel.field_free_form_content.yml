@@ -1,0 +1,21 @@
+uuid: c15cd0be-94ad-4174-a973-c3458069a97b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_free_form_content
+    - paragraphs.paragraphs_type.two_column_panel
+  module:
+    - text
+id: paragraph.two_column_panel.field_free_form_content
+field_name: field_free_form_content
+entity_type: paragraph
+bundle: two_column_panel
+label: 'Free Form Content'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

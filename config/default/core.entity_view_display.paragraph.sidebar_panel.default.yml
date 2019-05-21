@@ -1,0 +1,33 @@
+uuid: 0950aa36-5c76-4f57-b5a3-726cb40c97af
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.sidebar_panel.field_free_form_content
+    - field.field.paragraph.sidebar_panel.field_section_image
+    - paragraphs.paragraphs_type.sidebar_panel
+  module:
+    - image
+    - text
+id: paragraph.sidebar_panel.default
+targetEntityType: paragraph
+bundle: sidebar_panel
+mode: default
+content:
+  field_free_form_content:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_section_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+hidden: {  }

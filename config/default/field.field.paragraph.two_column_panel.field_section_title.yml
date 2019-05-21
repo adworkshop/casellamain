@@ -1,0 +1,19 @@
+uuid: c2a34eee-778a-42dd-8aef-11fe67179ed7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_section_title
+    - paragraphs.paragraphs_type.two_column_panel
+id: paragraph.two_column_panel.field_section_title
+field_name: field_section_title
+entity_type: paragraph
+bundle: two_column_panel
+label: 'Section Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

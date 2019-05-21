@@ -1,0 +1,40 @@
+uuid: 8308ef13-9888-4657-ad0c-f1271194c95b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.fa_link_with_pdf.field_button_title
+    - field.field.paragraph.fa_link_with_pdf.field_content_area
+    - field.field.paragraph.fa_link_with_pdf.field_fa_icon
+    - paragraphs.paragraphs_type.fa_link_with_pdf
+  module:
+    - text
+id: paragraph.fa_link_with_pdf.default
+targetEntityType: paragraph
+bundle: fa_link_with_pdf
+mode: default
+content:
+  field_button_title:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_content_area:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_fa_icon:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

@@ -1,0 +1,9 @@
+uuid: 1a2cf6cc-ada5-4cdc-9178-e69efc2d09c8
+langcode: en
+status: true
+dependencies: {  }
+id: resources
+label: Resources
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

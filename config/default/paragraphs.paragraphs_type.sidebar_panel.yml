@@ -1,0 +1,9 @@
+uuid: 2caba6e7-22a1-4256-af8e-535db01ab9aa
+langcode: en
+status: true
+dependencies: {  }
+id: sidebar_panel
+label: 'Sidebar Panel'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

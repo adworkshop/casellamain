@@ -1,0 +1,21 @@
+uuid: 26d1b313-d8a3-4ab5-b379-1509ea5df7c5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_link_type
+    - paragraphs.paragraphs_type.resource_toolkit_button
+  module:
+    - options
+id: paragraph.resource_toolkit_button.field_link_type
+field_name: field_link_type
+entity_type: paragraph
+bundle: resource_toolkit_button
+label: 'Link Type'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

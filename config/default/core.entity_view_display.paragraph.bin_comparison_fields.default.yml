@@ -1,0 +1,42 @@
+uuid: 43143ce4-a423-4cd4-87e0-27d2e7552efd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.bin_comparison_fields.field_bin_comparison_image
+    - field.field.paragraph.bin_comparison_fields.field_comparison_donts
+    - field.field.paragraph.bin_comparison_fields.field_comparison_dos
+    - paragraphs.paragraphs_type.bin_comparison_fields
+  module:
+    - image
+id: paragraph.bin_comparison_fields.default
+targetEntityType: paragraph
+bundle: bin_comparison_fields
+mode: default
+content:
+  field_bin_comparison_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_comparison_donts:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_comparison_dos:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

@@ -1,0 +1,118 @@
+uuid: 42a4f249-325a-4536-9664-f1c35394b506
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.recycle_better_page.body
+    - field.field.node.recycle_better_page.field_add_this
+    - field.field.node.recycle_better_page.field_background_video
+    - field.field.node.recycle_better_page.field_breadcrumb_override
+    - field.field.node.recycle_better_page.field_h1_override
+    - field.field.node.recycle_better_page.field_hero_text
+    - field.field.node.recycle_better_page.field_logo
+    - field.field.node.recycle_better_page.field_meta_tags
+    - field.field.node.recycle_better_page.field_tabs
+    - field.field.node.recycle_better_page.field_upper_content
+    - node.type.recycle_better_page
+  module:
+    - entity_reference_revisions
+    - metatag
+    - responsive_image
+    - text
+    - user
+    - video_embed_field
+id: node.recycle_better_page.default
+targetEntityType: node
+bundle: recycle_better_page
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_add_this:
+    weight: 4
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_background_video:
+    type: video_embed_field_video
+    weight: 9
+    region: content
+    label: hidden
+    settings:
+      responsive: true
+      width: 854
+      height: 480
+      autoplay: true
+    third_party_settings: {  }
+  field_breadcrumb_override:
+    weight: 6
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_h1_override:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_hero_text:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_logo:
+    weight: 5
+    label: hidden
+    settings:
+      image_link: ''
+      responsive_image_style: ''
+    third_party_settings: {  }
+    type: responsive_image
+    region: content
+  field_meta_tags:
+    weight: 10
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
+  field_tabs:
+    weight: 8
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_upper_content:
+    weight: 7
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  links:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

@@ -1,0 +1,23 @@
+uuid: b1f4337f-24c8-4e40-9f87-8debb183db3c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_link
+    - paragraphs.paragraphs_type.resource_toolkit_button
+  module:
+    - link
+id: paragraph.resource_toolkit_button.field_link
+field_name: field_link
+entity_type: paragraph
+bundle: resource_toolkit_button
+label: Link
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

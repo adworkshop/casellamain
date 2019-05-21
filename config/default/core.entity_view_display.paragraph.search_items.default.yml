@@ -1,0 +1,22 @@
+uuid: 0c77c240-f66a-4b93-9ebb-8ddbf45a7b90
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.search_items.field_search_panel
+    - paragraphs.paragraphs_type.search_items
+id: paragraph.search_items.default
+targetEntityType: paragraph
+bundle: search_items
+mode: default
+content:
+  field_search_panel:
+    weight: 0
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+hidden: {  }

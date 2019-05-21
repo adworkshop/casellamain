@@ -1,0 +1,21 @@
+uuid: 3d5f57b4-fa64-4bc2-be60-86b6115266b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.items_search_block
+    - field.storage.block_content.field_block_title
+id: block_content.items_search_block.field_block_title
+field_name: field_block_title
+entity_type: block_content
+bundle: items_search_block
+label: 'Block Title'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'Items Search'
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,8 @@
+uuid: 06f57b05-9370-462d-bc06-d6cd1048a133
+langcode: en
+status: true
+dependencies: {  }
+id: items_search_block
+label: 'Items Search Block'
+revision: 0
+description: ''

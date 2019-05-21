@@ -1,0 +1,139 @@
+uuid: 73e6ca49-9851-4f81-bd8e-9083f8c550d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_bin_comparisons
+    - paragraphs.paragraphs_type.basics
+    - paragraphs.paragraphs_type.bin_comparison_fields
+  module:
+    - entity_reference_revisions
+id: paragraph.basics.field_bin_comparisons
+field_name: field_bin_comparisons
+entity_type: paragraph
+bundle: basics
+label: 'Bin Comparisons'
+description: 'Add full width image and checklist items here.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      bin_comparison_fields: bin_comparison_fields
+    target_bundles_drag_drop:
+      basics:
+        weight: 37
+        enabled: false
+      block_link_with_icon:
+        weight: 38
+        enabled: false
+      bin_comparison_fields:
+        enabled: true
+        weight: 39
+      case_studies:
+        weight: 39
+        enabled: false
+      content_chunk:
+        weight: 40
+        enabled: false
+      earthlink_link:
+        weight: 41
+        enabled: false
+      faqs_tab:
+        weight: 42
+        enabled: false
+      faq_category:
+        weight: 43
+        enabled: false
+      faq_question:
+        weight: 44
+        enabled: false
+      fa_link_with_icon:
+        weight: 45
+        enabled: false
+      free_form:
+        weight: 46
+        enabled: false
+      holiday:
+        weight: 47
+        enabled: false
+      image_gallery:
+        weight: 48
+        enabled: false
+      image_with_caption:
+        weight: 49
+        enabled: false
+      inline_image:
+        weight: 50
+        enabled: false
+      inline_video:
+        weight: 51
+        enabled: false
+      large_promotion:
+        weight: 52
+        enabled: false
+      link_with_icon:
+        weight: 53
+        enabled: false
+      organics_updates:
+        weight: 54
+        enabled: false
+      products:
+        weight: 55
+        enabled: false
+      recommendation:
+        weight: 56
+        enabled: false
+      resources:
+        weight: 57
+        enabled: false
+      resource_tips:
+        weight: 58
+        enabled: false
+      resource_toolkit_button:
+        weight: 59
+        enabled: false
+      resource_videos:
+        weight: 60
+        enabled: false
+      search_items:
+        weight: 61
+        enabled: false
+      services:
+        weight: 62
+        enabled: false
+      sidebar_panel:
+        weight: 63
+        enabled: false
+      slider_image:
+        weight: 64
+        enabled: false
+      social_link:
+        weight: 65
+        enabled: false
+      solution_resource:
+        weight: 66
+        enabled: false
+      testimonials:
+        weight: 67
+        enabled: false
+      two_column_panel:
+        weight: 68
+        enabled: false
+      upper_button:
+        weight: 69
+        enabled: false
+      vertical:
+        weight: 70
+        enabled: false
+      video:
+        weight: 71
+        enabled: false
+      waste_category:
+        weight: 72
+        enabled: false
+field_type: entity_reference_revisions
