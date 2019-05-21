@@ -5,6 +5,9 @@ dependencies:
   config:
     - field.storage.node.field_tabs
     - node.type.recycle_better_page
+    - paragraphs.paragraphs_type.basics
+    - paragraphs.paragraphs_type.faqs_tab
+    - paragraphs.paragraphs_type.resources
   module:
     - entity_reference_revisions
 id: node.recycle_better_page.field_tabs
@@ -21,7 +24,10 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     negate: 0
-    target_bundles: null
+    target_bundles:
+      faqs_tab: faqs_tab
+      basics: basics
+      resources: resources
     target_bundles_drag_drop:
       block_link_with_icon:
         weight: 28
@@ -38,10 +44,10 @@ settings:
       faq_category:
         weight: 32
         enabled: false
-      faq_question:
-        weight: 33
-        enabled: false
       faqs_tab:
+        enabled: true
+        weight: 33
+      faq_question:
         weight: 33
         enabled: false
       fa_link_with_icon:
@@ -61,6 +67,12 @@ settings:
         enabled: false
       inline_image:
         weight: 39
+        enabled: false
+      basics:
+        enabled: true
+        weight: 39
+      bin_comparison_fields:
+        weight: 40
         enabled: false
       inline_video:
         weight: 40
@@ -89,6 +101,9 @@ settings:
       social_link:
         weight: 48
         enabled: false
+      fa_link_with_pdf:
+        weight: 49
+        enabled: false
       solution_resource:
         weight: 49
         enabled: false
@@ -106,5 +121,26 @@ settings:
         enabled: false
       waste_category:
         weight: 54
+        enabled: false
+      resources:
+        enabled: true
+        weight: 61
+      resource_tips:
+        weight: 62
+        enabled: false
+      resource_toolkit_button:
+        weight: 63
+        enabled: false
+      resource_videos:
+        weight: 64
+        enabled: false
+      search_items:
+        weight: 65
+        enabled: false
+      sidebar_panel:
+        weight: 67
+        enabled: false
+      two_column_panel:
+        weight: 72
         enabled: false
 field_type: entity_reference_revisions
