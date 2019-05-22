@@ -227,4 +227,6 @@ hidden:
   feeds_item: true
   field_alert_end_date: true
   field_holiday_schedule: true
+  field_suppress_holiday: true
+  field_suppress_pay_your_bill: true
   langcode: true
