@@ -57,9 +57,11 @@ function bindLinkContainerToggle() {
     if (event.target != event.currentTarget) {
       return;
     }
+    // maintain the current scrollY
+    var currentY = window.scrollY;
 
     var accordion = jQuery(event.currentTarget),
-        accordionToggleIcon = accordion.children('.locationMap-marker-toggle-icon');
+        accordionToggleIcon = accordion.children('.locationMap-marker-accordion-toggle-icon');
 
     accordion.children('.locationMap-marker-accordion-toggle').removeClass('open');
 
@@ -67,10 +69,14 @@ function bindLinkContainerToggle() {
     handleMapResize();
 
     if (accordion.hasClass("open")) {
-      accordionToggleIcon.html("<i class='fa fa-minus-circle'></i>");
+      accordionToggleIcon.innerHTML = "<i class='fa fa-minus-circle'></i>";
     } else {
-      accordionToggleIcon.html("<i class='fa fa-plus-circle'></i>");
+      accordionToggleIcon.innerHTML = "<i class='fa fa-plus-circle'></i>";
     }
+
+    //keep it there
+    window.scrollTo(0,currentY);
+
   });
 }
 

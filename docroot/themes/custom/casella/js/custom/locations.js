@@ -7,7 +7,14 @@ function initLocationsMap() {
   jQuery('.panelControlBtn').click(panelControlBtnClickHandler);
 
   // set content on load
-  setContent(jQuery('.panelControlBtn.active'));
+  // for initial (non-search) the map button is active, as is set in node--locations-map
+  // however, if "name" is present in the url we want to swap that to the list, per update 2019-05-22
+  if (document.location.search.indexOf('name') != -1) {
+    jQuery('.panelControlBtn[data-rel="#content-list"]').click();
+  } else {
+    setContent(jQuery('.panelControlBtn.active'));
+  }
+
 
   jQuery('.locationMap-marker-accordion-toggle').on('click', locationgMapMarkerClickHandler);
 }
@@ -52,9 +59,9 @@ function locationgMapMarkerClickHandler(event) {
   accordionContent.slideToggle(250);
 
   if (accordion.hasClass("open")) {
-    accordionToggleIcon.html("<i class='fa fa-minus-circle'></i>");
+    accordionToggleIcon.innerHTML = "<i class='fa fa-minus-circle'></i>";
   }
   else {
-    accordionToggleIcon.html("<i class='fa fa-plus-circle'></i>");
+    accordionToggleIcon.innerHTML = "<i class='fa fa-plus-circle'></i>";
   }
 }

@@ -33,7 +33,10 @@
 {% set phone = fields.field_phone_number.content|render|striptags|trim %}
 
 <!--Ind List View Listing-->
-<div class="locationMap-listView-indListing-container {{ fields.field_location_category.content|render|striptags|lower }}">
+{# do this to solve the "transfer/drop-off niche case; we just want "transfer" #}
+{% set locationTypeClassArray = fields.field_location_category.content|render|striptags|lower|trim|split('/') %}
+{% set locationTypeClass = locationTypeClassArray[0] %}
+<div class="locationMap-listView-indListing-container {{ locationTypeClass }}">
   <!--Associated Marker-->
   <div class="locationMap-listView-indListing-marker-container">
     <div class="locationMap-listView-indListing-marker"></div>

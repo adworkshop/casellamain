@@ -103,7 +103,7 @@ organics:
 locations:
   version: 1.x
   js:
-    js/custom/locations.js: {}
+    js/custom/locations.min.js: {}
   css:
     theme:
       css/custom/locations.css: {}
@@ -263,7 +263,7 @@ locations_map:
   version: 1.0
   js:
     plugins/matchHeight/dist/jquery.matchHeight-min.js: {}
-    js/custom/locations_map.js: {}
+    js/custom/locations_map.min.js: {}
   dependencies:
     - casella/locations
 
