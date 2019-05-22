@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Hiring Managers'
 vid: hiring_managers
 description: ''
-hierarchy: 0
 weight: 0

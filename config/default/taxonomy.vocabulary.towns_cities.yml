@@ -5,5 +5,4 @@ dependencies: {  }
 name: Towns/Cities
 vid: towns_cities
 description: ''
-hierarchy: 0
 weight: 0

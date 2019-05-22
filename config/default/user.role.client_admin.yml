@@ -105,6 +105,7 @@ permissions:
   - 'edit any page content'
   - 'edit any product content'
   - 'edit any product_category content'
+  - 'edit any recycle_better_page content'
   - 'edit any service content'
   - 'edit any sidebar_promotion content'
   - 'edit any solution content'
