@@ -85,3 +85,24 @@
 .autocomplete-no-suggestion { position: relative; padding: 0 .6em; line-height: 23px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 1.02em; color: #333; }
 .autocomplete-no-suggestion strong { font-weight: normal; color: #1f8dd6; }
 .autocomplete-no-suggestion.selected { background: #f0f0f0; }
+
+.form-calculator-form {
+
+}
+
+.form-calculator-form input.is-invalid {
+  border: 1px solid #ff0000;
+}
+
+.calculator-form-results.autocomplete-has-suggestions {
+  display: block;
+}
+
+.calculator-form-results {
+  transition: all 500ms linear;
+}
+
+.calculator-form-results.is-hidden {
+  transition: all 500ms linear;
+  display: none;
+}

@@ -2374,9 +2374,9 @@ var autoComplete = function () {
 
 /***/ }),
 
-/***/ "./src/casella.js":
+/***/ "./src/casella.ts":
 /*!************************!*\
-  !*** ./src/casella.js ***!
+  !*** ./src/casella.ts ***!
   \************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2389,13 +2389,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_features_array_from__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_features_array_from__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _auto_complete__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auto-complete */ "./src/auto-complete.js");
 /* harmony import */ var _auto_complete__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_auto_complete__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _util_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util/utils */ "./src/util/utils.js");
+/* harmony import */ var _components_calculator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/calculator */ "./src/components/calculator.ts");
 /* harmony import */ var _pdfModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pdfModal */ "./src/pdfModal.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -2417,18 +2419,25 @@ var stateOptions = {
 var Autocompleter =
 /*#__PURE__*/
 function () {
-  function Autocompleter() {
-    var selector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'input[type="search"]';
-
+  // private selector: string = 'input[type="search"]';
+  function Autocompleter(selector = 'input[type="search"]') {
     _classCallCheck(this, Autocompleter);
+
+    _defineProperty(this, "valid", void 0);
+
+    _defineProperty(this, "choices", void 0);
+
+    _defineProperty(this, "matches", []);
+
+    _defineProperty(this, "options", void 0);
 
     this.selector = selector;
     this.valid = this.checkValidity();
     this.addListener();
     this.renderNoMatchesAlert();
     this.renderMatchesAlert();
-    this.choices = ['Cardboard', 'Boxboard', 'Dry-food boxes', 'Egg Cartons', 'Paper Rolls', 'Envelopes', 'Paper Bags', 'Office Paper', 'Catalogs', 'Junk Mail', 'Periodicals', 'Plastic Bottles', 'Plastic Jugs', 'Plastic Tubs', 'Plastic Lids', 'Aluminum Foil', 'Aluminum Cans', 'Glass Jars', 'Glass Bottles'];
-    this.matches = [];
+    this.choices = ['Cardboard', 'Boxboard', 'Dry-food boxes', 'Egg Cartons', 'Paper Rolls', 'Envelopes', 'Paper Bags', 'Office Paper', 'Catalogs', 'Junk Mail', 'Periodicals', 'Plastic Bottles', 'Plastic Jugs', 'Plastic Tubs', 'Plastic Lids', 'Aluminum Foil', 'Aluminum Cans', 'Glass Jars', 'Glass Bottles']; // this.matches = [];
+
     this.options = Object.assign({}, defaultOptions);
   }
 
@@ -2517,7 +2526,7 @@ function () {
     value: function makeAutoComplete() {
       var _ = this;
 
-      new _auto_complete__WEBPACK_IMPORTED_MODULE_2__({
+      return new _auto_complete__WEBPACK_IMPORTED_MODULE_2___default.a({
         selector: this.selector,
         minChars: 1,
         source: function source(term, suggest) {
@@ -2582,6 +2591,105 @@ new Autocompleter().makeAutoComplete();
 
 /***/ }),
 
+/***/ "./src/components/calculator.ts":
+/*!**************************************!*\
+  !*** ./src/components/calculator.ts ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var Calculator =
+/*#__PURE__*/
+function () {
+  function Calculator() {
+    _classCallCheck(this, Calculator);
+
+    _defineProperty(this, "calculatorElement", void 0);
+
+    _defineProperty(this, "calculatorResultsElement", void 0);
+
+    _defineProperty(this, "calcSizeOfBin", void 0);
+
+    _defineProperty(this, "calcSetOutFreq", void 0);
+
+    _defineProperty(this, "formIsValid", true);
+
+    this.calculatorElement = document.getElementById('js-calculator-form');
+    this.calculatorResultsElement = document.getElementById('js-calculator-form-results');
+    this.calcSizeOfBin = document.getElementById('calc_size_of_bin');
+    this.calcSetOutFreq = document.getElementById('calc_frequency_setout');
+    this.addFormListener();
+  }
+
+  _createClass(Calculator, [{
+    key: "addFormListener",
+    value: function addFormListener() {
+      var _this = this;
+
+      try {
+        this.calculatorElement.addEventListener('submit', function (event) {
+          event.preventDefault();
+
+          if (_this.validateForm()) {
+            _this.showResults();
+          }
+
+          console.log(event, 'event');
+        });
+      } catch (e) {
+        console.warn(e, 'exception raised');
+      }
+    }
+  }, {
+    key: "showResults",
+    value: function showResults() {
+      this.calculatorResultsElement.classList.remove('is-hidden');
+    }
+  }, {
+    key: "validateForm",
+    value: function validateForm() {
+      var calcSizeOfBin = this.calcSizeOfBin,
+          calcSetOutFreq = this.calcSetOutFreq;
+
+      if (calcSizeOfBin.classList.contains('is-invalid')) {
+        calcSizeOfBin.classList.remove('is-invalid');
+      }
+
+      if (calcSetOutFreq.classList.contains('is-invalid')) {
+        calcSetOutFreq.classList.remove('is-invalid');
+      }
+
+      if (calcSizeOfBin.value === '') {
+        calcSizeOfBin.classList.add('is-invalid');
+        this.formIsValid = false;
+      }
+
+      if (calcSetOutFreq.value === '') {
+        calcSetOutFreq.classList.add('is-invalid');
+        this.formIsValid = false;
+      }
+
+      return this.formIsValid;
+    }
+  }]);
+
+  return Calculator;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (new Calculator());
+
+/***/ }),
+
 /***/ "./src/pdfModal.js":
 /*!*************************!*\
   !*** ./src/pdfModal.js ***!
@@ -2621,42 +2729,14 @@ if (modalTriggers) {
 
 /***/ }),
 
-/***/ "./src/util/utils.js":
-/*!***************************!*\
-  !*** ./src/util/utils.js ***!
-  \***************************/
-/*! exports provided: range */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "range", function() { return range; });
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
-function range(start, end) {
-  if (start === end) {
-    return [start];
-  }
-
-  return [start].concat(_toConsumableArray(range(start + 1, end)));
-}
-
-/***/ }),
-
 /***/ 0:
 /*!************************************************!*\
-  !*** multi ./src/casella.js ./src/casella.css ***!
+  !*** multi ./src/casella.ts ./src/casella.css ***!
   \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./src/casella.js */"./src/casella.js");
+__webpack_require__(/*! ./src/casella.ts */"./src/casella.ts");
 module.exports = __webpack_require__(/*! ./src/casella.css */"./src/casella.css");
 
 

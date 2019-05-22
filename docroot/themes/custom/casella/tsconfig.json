@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "noEmit": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "@": ["src"]
+    }
+  },
+  "include": [
+    "custom.d.ts",
+    "src"
+  ]
+}
