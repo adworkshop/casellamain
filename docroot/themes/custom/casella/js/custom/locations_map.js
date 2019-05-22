@@ -67,11 +67,11 @@ function bindLinkContainerToggle() {
 
     accordion.toggleClass("open");
     handleMapResize();
-
+    console.log(accordion.hasClass("open"));
     if (accordion.hasClass("open")) {
-      accordionToggleIcon.innerHTML = "<i class='fa fa-minus-circle'></i>";
+      jQuery('.locationMap-marker-accordion-toggle-icon').html("<i class='fa fa-minus-circle'></i>");
     } else {
-      accordionToggleIcon.innerHTML = "<i class='fa fa-plus-circle'></i>";
+      jQuery('.locationMap-marker-accordion-toggle-icon').html("<i class='fa fa-plus-circle'></i>");
     }
 
     //keep it there
@@ -211,10 +211,10 @@ function initMarker(markerInfo, mapInfo, index) {
  */
 function buildInfoWindowContent(markerInfo) {
   return '<div class="markerWrapper">' +
-    '<h3 class="markerTitle">' + markerInfo.title + '</h3>' +
-    '<div class="markerType">' + markerInfo.type + '</div>' +
-    '<div class="markerLink"><a href="' + markerInfo.path + '">Read More</a></div>' +
-    '</div>';
+      '<h3 class="markerTitle">' + markerInfo.title + '</h3>' +
+      '<div class="markerType">' + markerInfo.type + '</div>' +
+      '<div class="markerLink"><a href="' + markerInfo.path + '">Read More</a></div>' +
+      '</div>';
 }
 
 /**
@@ -354,8 +354,8 @@ function filterChangeHandler(event) {
 
 function findLocationClickHandler(event) {
   var mapInfo = event.data.mapInfo,
-    $target = jQuery(event.currentTarget),
-    guid = $target.attr('data-guid');
+      $target = jQuery(event.currentTarget),
+      guid = $target.attr('data-guid');
 
   //mapInfo.map.setCenter(mapInfo.markers.allIndexed['marker' + guid].position);
   mapInfo.map.setZoom(10);
@@ -394,10 +394,10 @@ function handleMapResize() {
 }
 
 jQuery(document).ready(function() {
-    jQuery(function() {
-        jQuery('.equalize').matchHeight({
-            byRow: true,
-            property: 'height',
-        });
+  jQuery(function() {
+    jQuery('.equalize').matchHeight({
+      byRow: true,
+      property: 'height',
     });
+  });
 });

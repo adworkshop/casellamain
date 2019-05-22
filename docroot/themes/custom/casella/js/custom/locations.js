@@ -59,6 +59,7 @@ function locationgMapMarkerClickHandler(event) {
   accordionContent.slideToggle(250);
 
   if (accordion.hasClass("open")) {
+
     accordionToggleIcon.innerHTML = "<i class='fa fa-minus-circle'></i>";
   }
   else {
