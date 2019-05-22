@@ -49,6 +49,9 @@ robots.txt
 # Same thing with sitemap.
 sitemap.txt
 
+# No huge node_modules folder
+node_modules
+
 # Don't revision .git folders.
 .git
 
