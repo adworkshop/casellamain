@@ -15,20 +15,24 @@
         <hr />
         {{ content.field_tab_description }}
 
-        <div id="js-calculator-form-results" class="calculator-form-results autocomplete-has-suggestions is-hidden">
-          <p><strong>Calculator results</strong></p>
-          <p>Some dynamic stuff can go here...</p>
+        <div id="js-calculator-form-results" class="calculator-form-results is-hidden">
+          <div class="result-header">
+            <p>Calculator Results <span class="fa fa-fw fa-calculator" aria-hidden="true"></span> </p>
+          </div>
+          <div class="result-body">
+            <div id="js-result-body-container"></div>
+          </div>
         </div>
 
         <form id="js-calculator-form" class="form--gridded form-calculator-form">
           <div class="form-item">
-            <label for="calc_size_of_bin">Size of bin</label>
-            <input name="calc_size_of_bin" id="calc_size_of_bin" type="text" />
+            <label for="calc_size_of_bin">Size of bin <span>(in gallons)</span></label>
+            <input name="calc_size_of_bin" id="calc_size_of_bin" type="number" />
           </div>
           <br />
           <div class="form-item">
-            <label for="calc_frequency_setout">Frequency of Set-out</label>
-            <input name="calc_frequency_setout" id="calc_frequency_setout" type="text" />
+            <label for="calc_frequency_setout">Frequency of Set-out <span>(per week)</span></label>
+            <input name="calc_frequency_setout" id="calc_frequency_setout" type="number" />
           </div>
           <div class="form-actions">
             <input name="submit" type="submit" value="Submit" />

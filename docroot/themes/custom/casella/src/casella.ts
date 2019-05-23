@@ -21,6 +21,7 @@ const stateOptions = {
 class Autocompleter {
   // private selector: string = 'input[type="search"]';
   private readonly valid: boolean;
+  private searchItemsForm: HTMLFormElement;
   public choices: string[];
   public matches: string[] = [];
   public options: any;
@@ -28,7 +29,10 @@ class Autocompleter {
   constructor(public selector: string) {
     this.selector = selector;
     this.valid = this.checkValidity();
+
+    this.searchItemsForm = <HTMLFormElement>document.getElementById('sidebar-items-search-form-recycle');
     this.addListener();
+    this.addFormListener();
 
     this.renderNoMatchesAlert();
     this.renderMatchesAlert();
@@ -44,6 +48,15 @@ class Autocompleter {
 
   checkValidity(): boolean {
     return ( document.querySelector(this.selector) instanceof HTMLElement );
+  }
+
+  addFormListener(): void {
+    const {searchItemsForm} = this;
+    if (searchItemsForm instanceof HTMLFormElement) {
+      searchItemsForm.addEventListener('submit', (event: Event) => {
+        event.preventDefault();
+      })
+    }
   }
 
   addListener(): boolean | void {

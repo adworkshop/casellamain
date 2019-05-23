@@ -3,6 +3,7 @@ class Calculator {
 
   private calculatorElement: HTMLFormElement;
   private calculatorResultsElement: HTMLDivElement;
+  private calculatorResultsBodyElement: HTMLDivElement;
   private calcSizeOfBin: HTMLInputElement;
   private calcSetOutFreq: HTMLInputElement;
   private formIsValid: boolean = true;
@@ -10,6 +11,7 @@ class Calculator {
   constructor() {
     this.calculatorElement = <HTMLFormElement>document.getElementById('js-calculator-form');
     this.calculatorResultsElement = <HTMLDivElement>document.getElementById('js-calculator-form-results');
+    this.calculatorResultsBodyElement = <HTMLDivElement>document.getElementById('js-result-body-container');
     this.calcSizeOfBin = <HTMLInputElement>document.getElementById('calc_size_of_bin');
     this.calcSetOutFreq = <HTMLInputElement>document.getElementById('calc_frequency_setout');
 
@@ -29,8 +31,18 @@ class Calculator {
     }
   }
 
+  static calculateValues(sizeOfBin: number, setOutFreq: number): string {
+    return ( ( +sizeOfBin * setOutFreq ) / 100 ).toFixed(4);
+  }
+
   showResults(): void {
+    const {calcSizeOfBin, calcSetOutFreq} = this;
     this.calculatorResultsElement.classList.remove('is-hidden');
+
+    let calcString = `<p><strong>Size of Bin (in gallons)</strong>: ${calcSizeOfBin.value}<br />`;
+    calcString += `<strong>Frequency of Set-out (per week)</strong>: ${calcSetOutFreq.value}</p>`;
+    calcString += `<p>${calcSizeOfBin.value} * ${calcSetOutFreq.value} / 100 = ${Calculator.calculateValues(+calcSizeOfBin.value, +calcSetOutFreq.value)} megaWattJoules`;
+    this.calculatorResultsBodyElement.innerHTML = calcString;
     this.formIsValid = true;
   }
 

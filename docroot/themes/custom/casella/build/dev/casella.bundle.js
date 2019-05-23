@@ -2420,10 +2420,12 @@ var Autocompleter =
 /*#__PURE__*/
 function () {
   // private selector: string = 'input[type="search"]';
-  function Autocompleter(selector = 'input[type="search"]') {
+  function Autocompleter(selector) {
     _classCallCheck(this, Autocompleter);
 
     _defineProperty(this, "valid", void 0);
+
+    _defineProperty(this, "searchItemsForm", void 0);
 
     _defineProperty(this, "choices", void 0);
 
@@ -2433,7 +2435,9 @@ function () {
 
     this.selector = selector;
     this.valid = this.checkValidity();
+    this.searchItemsForm = document.getElementById('sidebar-items-search-form-recycle');
     this.addListener();
+    this.addFormListener();
     this.renderNoMatchesAlert();
     this.renderMatchesAlert();
     this.choices = ['Cardboard', 'Boxboard', 'Dry-food boxes', 'Egg Cartons', 'Paper Rolls', 'Envelopes', 'Paper Bags', 'Office Paper', 'Catalogs', 'Junk Mail', 'Periodicals', 'Plastic Bottles', 'Plastic Jugs', 'Plastic Tubs', 'Plastic Lids', 'Aluminum Foil', 'Aluminum Cans', 'Glass Jars', 'Glass Bottles']; // this.matches = [];
@@ -2445,6 +2449,17 @@ function () {
     key: "checkValidity",
     value: function checkValidity() {
       return document.querySelector(this.selector) instanceof HTMLElement;
+    }
+  }, {
+    key: "addFormListener",
+    value: function addFormListener() {
+      var searchItemsForm = this.searchItemsForm;
+
+      if (searchItemsForm instanceof HTMLFormElement) {
+        searchItemsForm.addEventListener('submit', function (event) {
+          event.preventDefault();
+        });
+      }
     }
   }, {
     key: "addListener",
@@ -2587,7 +2602,7 @@ function () {
   return Autocompleter;
 }();
 
-new Autocompleter().makeAutoComplete();
+new Autocompleter('input[type="search"]').makeAutoComplete();
 
 /***/ }),
 
@@ -2608,6 +2623,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+/*jslint es6 */
 var Calculator =
 /*#__PURE__*/
 function () {
@@ -2618,6 +2634,8 @@ function () {
 
     _defineProperty(this, "calculatorResultsElement", void 0);
 
+    _defineProperty(this, "calculatorResultsBodyElement", void 0);
+
     _defineProperty(this, "calcSizeOfBin", void 0);
 
     _defineProperty(this, "calcSetOutFreq", void 0);
@@ -2626,6 +2644,7 @@ function () {
 
     this.calculatorElement = document.getElementById('js-calculator-form');
     this.calculatorResultsElement = document.getElementById('js-calculator-form-results');
+    this.calculatorResultsBodyElement = document.getElementById('js-result-body-container');
     this.calcSizeOfBin = document.getElementById('calc_size_of_bin');
     this.calcSetOutFreq = document.getElementById('calc_frequency_setout');
     this.addFormListener();
@@ -2643,8 +2662,6 @@ function () {
           if (_this.validateForm()) {
             _this.showResults();
           }
-
-          console.log(event, 'event');
         });
       } catch (e) {
         console.warn(e, 'exception raised');
@@ -2653,13 +2670,21 @@ function () {
   }, {
     key: "showResults",
     value: function showResults() {
+      var calcSizeOfBin = this.calcSizeOfBin,
+          calcSetOutFreq = this.calcSetOutFreq;
       this.calculatorResultsElement.classList.remove('is-hidden');
+      var calcString = "<p><strong>Size of Bin (in gallons)</strong>: ".concat(calcSizeOfBin.value, "<br />");
+      calcString += "<strong>Frequency of Set-out (per week)</strong>: ".concat(calcSetOutFreq.value, "</p>");
+      calcString += "<p>".concat(calcSizeOfBin.value, " * ").concat(calcSetOutFreq.value, " / 100 = ").concat(Calculator.calculateValues(+calcSizeOfBin.value, +calcSetOutFreq.value), " megaWattJoules");
+      this.calculatorResultsBodyElement.innerHTML = calcString;
+      this.formIsValid = true;
     }
   }, {
     key: "validateForm",
     value: function validateForm() {
       var calcSizeOfBin = this.calcSizeOfBin,
           calcSetOutFreq = this.calcSetOutFreq;
+      this.formIsValid = true;
 
       if (calcSizeOfBin.classList.contains('is-invalid')) {
         calcSizeOfBin.classList.remove('is-invalid');
@@ -2680,6 +2705,11 @@ function () {
       }
 
       return this.formIsValid;
+    }
+  }], [{
+    key: "calculateValues",
+    value: function calculateValues(sizeOfBin, setOutFreq) {
+      return (+sizeOfBin * setOutFreq / 100).toFixed(4);
     }
   }]);
 
