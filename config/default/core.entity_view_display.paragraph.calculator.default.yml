@@ -1,0 +1,38 @@
+uuid: 9e50cdee-996d-4e90-b252-9adf9bc07ef6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.calculator.field_tab_anchor
+    - field.field.paragraph.calculator.field_tab_description
+    - field.field.paragraph.calculator.field_tab_title
+    - paragraphs.paragraphs_type.calculator
+id: paragraph.calculator.default
+targetEntityType: paragraph
+bundle: calculator
+mode: default
+content:
+  field_tab_anchor:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_tab_description:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_tab_title:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

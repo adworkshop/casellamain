@@ -1,0 +1,19 @@
+uuid: f76fb3a8-c7b8-4198-adf2-eedf55c176d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tab_title
+    - paragraphs.paragraphs_type.calculator
+id: paragraph.calculator.field_tab_title
+field_name: field_tab_title
+entity_type: paragraph
+bundle: calculator
+label: 'Tab Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
