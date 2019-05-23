@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Content Promotion Tags'
 vid: content_promotion_tags
 description: 'Use to categorize content promotions for page assignment'
-hierarchy: 0
 weight: 0

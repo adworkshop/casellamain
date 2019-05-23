@@ -1,0 +1,14 @@
+uuid: ed14775c-e3bb-477e-854d-16d0a46ccbf9
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.recycle_better
+  module:
+    - user
+id: user_remove_role_action.recycle_better
+label: 'Remove the Recycle Better role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: recycle_better

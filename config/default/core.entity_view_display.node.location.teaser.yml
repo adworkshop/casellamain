@@ -66,8 +66,13 @@ hidden:
   field_phone_number: true
   field_schedule_title: true
   field_sidebar_promotions: true
+  field_slider_images: true
   field_state: true
   field_street_address: true
+  field_suppress_holiday: true
+  field_suppress_pay_your_bill: true
+  field_supress_map: true
+  field_tabs: true
   field_unacceptable_waste: true
   field_zip: true
   langcode: true

@@ -1,0 +1,10 @@
+uuid: 7698f7ae-c995-4c0a-a5d2-b6b9fded25b7
+langcode: en
+status: true
+dependencies: {  }
+id: recycle_better
+label: 'Recycle Better'
+weight: 9
+is_admin: null
+permissions:
+  - 'edit any recycle_better_page content'
