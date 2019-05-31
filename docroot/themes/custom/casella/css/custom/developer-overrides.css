@@ -237,3 +237,119 @@ div.internal-mainBody-sidebarContainer div.indLocation-upperGrid-indElement-cont
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
+
+.paragraphs-subform.js-form-wrapper.form-wrapper .form-wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.paragraphs-subform.js-form-wrapper.form-wrapper .form-wrapper.field--name-field-to-present {
+  margin-bottom: 0;
+}
+
+/* Contact Form Paragraphs */
+.paragraphs-subform.js-form-wrapper.form-wrapper .field--type-datetime h4 {
+  display: inline-block;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  padding-bottom: 0;
+  font-weight: normal;
+  font-family: 'Gotham-Bold', sans-serif;
+  color: #4c9d2a;
+  font-size: 14px;
+  border-bottom: none;
+}
+
+.job-employers-accordion .field-group-format-toggler {
+
+}
+
+.job-employers-accordion .field-group-accordion-item {
+  padding: 1.25rem;
+}
+
+.job-employers-accordion .field-group-accordion-item .form-wrapper {
+  margin-top: 1.5rem;
+}
+
+.job-employers-accordion .field-group-accordion-item .field--name-field-start-date h4,
+.job-employers-accordion .field-group-accordion-item .field--name-field-start-date2 h4,
+.job-employers-accordion .field-group-accordion-item .field--name-field-start-date3 h4,
+.job-employers-accordion .field-group-accordion-item .field--name-field-start-date4 h4 {
+  display: inline-block;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  padding-bottom: 0;
+  font-weight: normal;
+  font-family: 'Gotham-Bold', sans-serif;
+  color: #4c9d2a;
+  font-size: 14px;
+  border-bottom: none;
+}
+
+.job-employers-accordion .field-group-accordion-item .field--name-field-end-date h4,
+.job-employers-accordion .field-group-accordion-item .field--name-field-end-date2 h4,
+.job-employers-accordion .field-group-accordion-item .field--name-field-end-date3 h4,
+.job-employers-accordion .field-group-accordion-item .field--name-field-end-date4 h4 {
+  display: inline-block;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  padding-bottom: 0;
+  font-weight: normal;
+  font-family: 'Gotham-Bold', sans-serif;
+  color: #4c9d2a;
+  font-size: 14px;
+  border-bottom: none;
+}
+
+.job-employers-accordion .field-group-accordion-item .field--name-field-expiration-date h4 {
+  display: inline-block;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  padding-bottom: 0;
+  font-weight: normal;
+  font-family: 'Gotham-Bold', sans-serif;
+  color: #4c9d2a;
+  font-size: 14px;
+  border-bottom: none;
+}
+
+/* Hide first Remove button */
+#edit-field-employers-0-top {
+  display: none;
+}
+
+.field--name-field-start-date {
+
+}
+
+.field--type-entity-reference-revisions.field--name-field-employers {
+
+}
+
+.field--type-entity-reference-revisions.field--name-field-employers table.field-multiple-table td.field-multiple-drag {
+  display: none;
+}
+
+.field--type-entity-reference-revisions.field--name-field-employers table.field-multiple-table .paragraph-type--employer {
+  /*width: 47.5%;
+  display: inline-block;
+  vertical-align: top;*/
+}
+
+.field--type-entity-reference-revisions.field--name-field-employers table.field-multiple-table .paragraph-type--employer:nth-of-type(odd) {
+  /*margin-right: 5%;*/
+}
+
+.ui-accordion .ui-accordion-header {
+  font-size: 15px;
+}
+
+
+.field--name-field-to-present .form-wrapper legend {
+  display: none;
+}
+
+/* Use to temporarily keep form container open */
+/*.job-indListing-formToggle-container {
+  display: block !important;
+}*/

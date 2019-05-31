@@ -21,3 +21,65 @@ function casella_custom_help($route_name, RouteMatchInterface $route_match) {
       return '';
   }
 }
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ *
+ * Implementation of States API - show / hide "end date" field based on state of
+ * "to present" check box
+ *
+ * @param $element
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param $context
+ */
+function casella_custom_field_widget_entity_reference_paragraphs_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context) {
+  // \Drupal\field\Entity\FieldConfig $field_definition
+  $field_definition = $context['items']->getFieldDefinition();
+  $paragraph_reference_field_name = $field_definition->getName();
+
+  if ($paragraph_reference_field_name === 'field_employers') {
+    // \Drupal\paragraphs\Plugin\Field\FieldWidget\ParagraphsWidget::formElement()
+    $widget_state = \Drupal\Core\Field\WidgetBase::getWidgetState($element['#field_parents'], $paragraph_reference_field_name, $form_state);
+
+    // \Drupal\paragraphs\Entity\Paragraph $paragraph
+    $paragraph_instance = $widget_state['paragraphs'][$element['#delta']];
+    $paragraph_instance_entity = $paragraph_instance['entity'];
+    $paragraph_type = $paragraph_instance_entity->bundle(); // paragraph machine name
+
+
+    if ($paragraph_type === 'employer') {
+      $dependee_field_name = 'field_to_present';
+      $selector = sprintf('input[name="%s[%d][subform][%s][value]"]', $paragraph_reference_field_name, $element['#delta'], $dependee_field_name);
+
+      if ((int)$element['#delta'] === 0) {
+        // Access element directly
+        // $element['subform']['field_end_date']
+        $element['subform']['field_end_date']['#states'] = [
+          'invisible' => [
+            ':' . $selector => ['checked' => TRUE]
+          ]
+        ];
+      } else {
+        unset($element['subform'][$dependee_field_name]['widget']);
+        $element['subform'][$dependee_field_name]['#states'] = [
+          'invisible' => TRUE
+        ];
+      }
+
+    }
+  }
+
+}
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ */
+/*function casella_custom_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
+  if (isset($variables['element']) && isset($variables['element']['#type']) && $variables['element']['#type'] == 'form') {
+    $original_theme_hook = $variables['theme_hook_original'];
+
+    $suggestions[] = $original_theme_hook . '__' . str_replace('-', '_', $variables['element']['#id']);
+  }
+
+  return $suggestions;
+}*/
