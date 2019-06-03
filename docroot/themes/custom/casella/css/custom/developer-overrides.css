@@ -238,6 +238,14 @@ div.internal-mainBody-sidebarContainer div.indLocation-upperGrid-indElement-cont
   padding-bottom: 0 !important;
 }
 
+.job-indListing-form-personalInfo-container .js-form-item-field-cdl-class input[type="radio"] {
+
+}
+
+.job-indListing-form-personalInfo-container .job-indListing-form-personalInfo-contactContainer {
+  /*margin-top: 1.25rem;*/
+}
+
 .paragraphs-subform.js-form-wrapper.form-wrapper .form-wrapper {
   margin-bottom: 1.5rem;
 }
@@ -326,6 +334,38 @@ div.internal-mainBody-sidebarContainer div.indLocation-upperGrid-indElement-cont
 
 }
 
+.field--type-entity-reference-revisions.field--name-field-employers .field--hide-label label {
+  /*display: none;*/
+}
+
+.field--type-entity-reference-revisions.field--name-field-employers .paragraphs-subform fieldset legend {
+  display: none;
+}
+
+.field--type-entity-reference-revisions.field--name-field-employers table.field-multiple-table thead h4.label {
+  display: none;
+}
+
+.field--type-entity-reference-revisions.field--name-field-licenses table.field-multiple-table thead h4.label {
+  display: none;
+}
+
+.field--type-entity-reference-revisions.field--name-field-licenses table.field-multiple-table .paragraph-type--licenses {
+  border-bottom: 1px solid #bbbbbb;
+}
+
+.field--type-entity-reference-revisions.field--name-field-licenses table.field-multiple-table .paragraph-type--licenses .field-multiple-drag {
+  display: none;
+}
+
+#edit-field-licenses-0-top-links-remove-button {
+  display: none;
+}
+
+.field--type-entity-reference-revisions.field--name-field-licenses table.field-multiple-table thead h4.label {
+  display: none;
+}
+
 .field--type-entity-reference-revisions.field--name-field-employers table.field-multiple-table td.field-multiple-drag {
   display: none;
 }
@@ -338,6 +378,10 @@ div.internal-mainBody-sidebarContainer div.indLocation-upperGrid-indElement-cont
 
 .field--type-entity-reference-revisions.field--name-field-employers table.field-multiple-table .paragraph-type--employer:nth-of-type(odd) {
   /*margin-right: 5%;*/
+}
+
+.job-employers-accordion h3.accordion-item a label {
+  display: none;
 }
 
 .ui-accordion .ui-accordion-header {

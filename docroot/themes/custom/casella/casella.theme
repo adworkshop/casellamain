@@ -382,10 +382,9 @@ function casella_theme_suggestions_form_element_alter(array &$suggestions, array
 }
 
 function casella_preprocess_fieldset(&$variables) {
-  // $variables['legend']
-  if ($variables['legend']['title']['#markup'] === 'Employers') {
+  /*if ($variables['legend']['title']['#markup'] === 'Employers') {
     $variables['legend']['title']['#markup'] = 'Employer';
-  }
+  }*/
   // dpm($variables['legend']);
 }
 
@@ -852,7 +851,8 @@ function casella_preprocess_field(&$variables) {
  * @param array $variables
  */
 function casella_preprocess_input__textfield(&$variables) {
-  if ('edit-field-job-title-0-value' == $variables['attributes']['id']) {
+  if ('edit-field-job-title-0-value' === $variables['attributes']['id']) {
+    // dpm($variables);
     $variables['attributes']['readonly'] = 'readonly';
   }
   elseif ('edit-field-job-reference-0-value' == $variables['attributes']['id']) {

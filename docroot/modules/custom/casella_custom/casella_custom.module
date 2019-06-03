@@ -48,6 +48,10 @@ function casella_custom_field_widget_entity_reference_paragraphs_form_alter(&$el
 
 
     if ($paragraph_type === 'employer') {
+
+      $element['subform']['field_employer_name']['#attributes']['class'][] = 'field--hide-label';
+
+      // dpm($element['subform']);
       $dependee_field_name = 'field_to_present';
       $selector = sprintf('input[name="%s[%d][subform][%s][value]"]', $paragraph_reference_field_name, $element['#delta'], $dependee_field_name);
 
