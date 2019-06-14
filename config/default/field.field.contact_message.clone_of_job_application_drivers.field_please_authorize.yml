@@ -1,0 +1,23 @@
+uuid: 60f95a5e-ac09-4e08-9ec3-b0e654c1c847
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.clone_of_job_application_drivers
+    - field.storage.contact_message.field_please_authorize
+id: contact_message.clone_of_job_application_drivers.field_please_authorize
+field_name: field_please_authorize
+entity_type: contact_message
+bundle: clone_of_job_application_drivers
+label: 'Please authorize'
+description: 'I hereby authorize you to release the following information to: Casella Waste Systems, Inc. (Prospective Employer) for purposed of investigation as required by Section 391.23 and 391.25 of the Federal Motor Carriers Safety Regulations. You are released from any and all liability which may result from furnishing this information. I am confirming that all information provided above is accurate to the best of my knowledge.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

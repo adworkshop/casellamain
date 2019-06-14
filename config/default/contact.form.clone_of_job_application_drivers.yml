@@ -1,0 +1,21 @@
+uuid: 5a4a1775-bc52-4688-ac28-255548b0eb55
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact_storage
+third_party_settings:
+  contact_storage:
+    redirect_uri: ''
+    submit_text: 'Submit your Application'
+    show_preview: false
+    disabled_form_message: 'This contact form has been disabled.'
+    maximum_submissions_user: 0
+id: clone_of_job_application_drivers
+label: 'Clone of Job Application Drivers'
+recipients:
+  - jcicero@yourworkshop.com
+reply: ''
+weight: 0
+message: 'Your message has been sent.'
+redirect: ''

@@ -1,0 +1,21 @@
+uuid: 9145eaba-db83-4d8c-bee2-9b0abc6a3f85
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_endorsements
+    - paragraphs.paragraphs_type.licenses
+  module:
+    - options
+id: paragraph.licenses.field_endorsements
+field_name: field_endorsements
+entity_type: paragraph
+bundle: licenses
+label: Endorsements
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

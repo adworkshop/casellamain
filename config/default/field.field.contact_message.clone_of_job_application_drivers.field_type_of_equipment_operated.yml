@@ -1,0 +1,19 @@
+uuid: 80bea81b-6534-4c32-a54b-63f4fb96e90f
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.clone_of_job_application_drivers
+    - field.storage.contact_message.field_type_of_equipment_operated
+id: contact_message.clone_of_job_application_drivers.field_type_of_equipment_operated
+field_name: field_type_of_equipment_operated
+entity_type: contact_message
+bundle: clone_of_job_application_drivers
+label: 'Type of equipment operated in past positions'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

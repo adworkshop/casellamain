@@ -1,0 +1,23 @@
+uuid: 064b30cf-4f8a-408e-8b49-a1b969ef48b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.job_application_drivers
+    - field.storage.contact_message.field_cdl_class
+  module:
+    - options
+id: contact_message.job_application_drivers.field_cdl_class
+field_name: field_cdl_class
+entity_type: contact_message
+bundle: job_application_drivers
+label: 'CDL Class'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: A
+default_value_callback: ''
+settings: {  }
+field_type: list_string

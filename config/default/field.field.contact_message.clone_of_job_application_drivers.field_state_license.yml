@@ -1,0 +1,21 @@
+uuid: 9110507f-bdc9-4027-a070-c416633915b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.clone_of_job_application_drivers
+    - field.storage.contact_message.field_state_license
+  module:
+    - options
+id: contact_message.clone_of_job_application_drivers.field_state_license
+field_name: field_state_license
+entity_type: contact_message
+bundle: clone_of_job_application_drivers
+label: State
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

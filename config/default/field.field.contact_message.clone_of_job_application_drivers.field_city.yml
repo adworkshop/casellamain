@@ -1,0 +1,19 @@
+uuid: c7b9d151-975e-4e35-8a90-1a988e5b01ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.clone_of_job_application_drivers
+    - field.storage.contact_message.field_city
+id: contact_message.clone_of_job_application_drivers.field_city
+field_name: field_city
+entity_type: contact_message
+bundle: clone_of_job_application_drivers
+label: 'City: *'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

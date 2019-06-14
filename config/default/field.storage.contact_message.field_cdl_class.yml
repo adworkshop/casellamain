@@ -1,0 +1,33 @@
+uuid: edc2f433-ffff-4ae6-9c22-85e0fe1925d6
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+    - options
+id: contact_message.field_cdl_class
+field_name: field_cdl_class
+entity_type: contact_message
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: A
+      label: A
+    -
+      value: B
+      label: B
+    -
+      value: C
+      label: C
+    -
+      value: None
+      label: None
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

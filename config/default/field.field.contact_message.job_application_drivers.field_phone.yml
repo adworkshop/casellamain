@@ -11,7 +11,7 @@ entity_type: contact_message
 bundle: job_application_drivers
 label: 'Cell#'
 description: 'Enter your phone number with area code.'
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''

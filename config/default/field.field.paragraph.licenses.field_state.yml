@@ -1,0 +1,21 @@
+uuid: a9f81336-cfd2-4f6d-baa5-0234f5dcc19f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_state
+    - paragraphs.paragraphs_type.licenses
+  module:
+    - options
+id: paragraph.licenses.field_state
+field_name: field_state
+entity_type: paragraph
+bundle: licenses
+label: State
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
