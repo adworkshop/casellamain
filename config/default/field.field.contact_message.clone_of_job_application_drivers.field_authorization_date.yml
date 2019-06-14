@@ -1,0 +1,24 @@
+uuid: 0f3b3cf2-e6b2-459b-ae0c-d47490f2d417
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.clone_of_job_application_drivers
+    - field.storage.contact_message.field_authorization_date
+  module:
+    - datetime
+id: contact_message.clone_of_job_application_drivers.field_authorization_date
+field_name: field_authorization_date
+entity_type: contact_message
+bundle: clone_of_job_application_drivers
+label: 'Authorization Date'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

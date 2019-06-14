@@ -1,0 +1,76 @@
+uuid: a7930665-86ab-4de9-a4fd-ef45a080edf0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.employer.field_employer_name
+    - field.field.paragraph.employer.field_end_date
+    - field.field.paragraph.employer.field_position
+    - field.field.paragraph.employer.field_start_date
+    - field.field.paragraph.employer.field_to_present
+    - paragraphs.paragraphs_type.employer
+  module:
+    - datetime
+    - field_group
+third_party_settings:
+  field_group:
+    group_employers:
+      children:
+        - field_employer_name
+        - field_position
+        - field_start_date
+        - field_end_date
+        - field_to_present
+      parent_name: ''
+      weight: 0
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        required_fields: true
+        description: ''
+      label: Employers
+id: paragraph.employer.default
+targetEntityType: paragraph
+bundle: employer
+mode: default
+content:
+  field_employer_name:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_end_date:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_position:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_start_date:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_to_present:
+    weight: 5
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

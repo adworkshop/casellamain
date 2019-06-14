@@ -1,0 +1,19 @@
+uuid: 4a3bd174-ecf7-4821-871a-8395b3fdf70e
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.clone_of_job_application_drivers
+    - field.storage.contact_message.field_job_reference
+id: contact_message.clone_of_job_application_drivers.field_job_reference
+field_name: field_job_reference
+entity_type: contact_message
+bundle: clone_of_job_application_drivers
+label: 'Job Reference:'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

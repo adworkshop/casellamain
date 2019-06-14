@@ -1,0 +1,148 @@
+uuid: 2fe5a555-90b1-4b24-a024-d22efafbacc2
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.job_application_drivers
+    - field.storage.contact_message.field_employers
+    - paragraphs.paragraphs_type.employer
+  module:
+    - entity_reference_revisions
+id: contact_message.job_application_drivers.field_employers
+field_name: field_employers
+entity_type: contact_message
+bundle: job_application_drivers
+label: Employers
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      employer: employer
+    target_bundles_drag_drop:
+      basics:
+        weight: 41
+        enabled: false
+      bin_comparison_fields:
+        weight: 42
+        enabled: false
+      block_link_with_icon:
+        weight: 43
+        enabled: false
+      calculator:
+        weight: 44
+        enabled: false
+      case_studies:
+        weight: 45
+        enabled: false
+      content_chunk:
+        weight: 46
+        enabled: false
+      earthlink_link:
+        weight: 47
+        enabled: false
+      employer:
+        enabled: true
+        weight: 48
+      faqs_tab:
+        weight: 49
+        enabled: false
+      faq_category:
+        weight: 50
+        enabled: false
+      faq_question:
+        weight: 51
+        enabled: false
+      fa_link_with_icon:
+        weight: 52
+        enabled: false
+      fa_link_with_pdf:
+        weight: 53
+        enabled: false
+      free_form:
+        weight: 54
+        enabled: false
+      holiday:
+        weight: 55
+        enabled: false
+      image_gallery:
+        weight: 56
+        enabled: false
+      image_with_caption:
+        weight: 57
+        enabled: false
+      inline_image:
+        weight: 58
+        enabled: false
+      inline_video:
+        weight: 59
+        enabled: false
+      large_promotion:
+        weight: 60
+        enabled: false
+      link_with_icon:
+        weight: 61
+        enabled: false
+      organics_updates:
+        weight: 62
+        enabled: false
+      products:
+        weight: 63
+        enabled: false
+      recommendation:
+        weight: 64
+        enabled: false
+      resources:
+        weight: 65
+        enabled: false
+      resource_tips:
+        weight: 66
+        enabled: false
+      resource_toolkit_button:
+        weight: 67
+        enabled: false
+      resource_videos:
+        weight: 68
+        enabled: false
+      search_items:
+        weight: 69
+        enabled: false
+      services:
+        weight: 70
+        enabled: false
+      sidebar_panel:
+        weight: 71
+        enabled: false
+      slider_image:
+        weight: 72
+        enabled: false
+      social_link:
+        weight: 73
+        enabled: false
+      solution_resource:
+        weight: 74
+        enabled: false
+      testimonials:
+        weight: 75
+        enabled: false
+      two_column_panel:
+        weight: 76
+        enabled: false
+      upper_button:
+        weight: 77
+        enabled: false
+      vertical:
+        weight: 78
+        enabled: false
+      video:
+        weight: 79
+        enabled: false
+      waste_category:
+        weight: 80
+        enabled: false
+field_type: entity_reference_revisions

@@ -28,4 +28,13 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
+  field_add_this: true
+  field_background_video: true
+  field_breadcrumb_override: true
+  field_h1_override: true
+  field_hero_text: true
+  field_logo: true
+  field_meta_tags: true
+  field_tabs: true
+  field_upper_content: true
   langcode: true

@@ -399,5 +399,7 @@ content:
     region: content
 hidden:
   feeds_item: true
+  field_suppress_holiday: true
+  field_suppress_pay_your_bill: true
   promote: true
   sticky: true

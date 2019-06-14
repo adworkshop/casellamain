@@ -1,0 +1,19 @@
+uuid: 38d9db9c-3055-4fea-ba6f-510718afa1be
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_employer_name
+    - paragraphs.paragraphs_type.employer
+id: paragraph.employer.field_employer_name
+field_name: field_employer_name
+entity_type: paragraph
+bundle: employer
+label: Employer
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
