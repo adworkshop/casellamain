@@ -1,0 +1,19 @@
+uuid: a3d18ce8-a3ae-411c-a279-05948a22a76a
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.clone_of_job_application_drivers
+    - field.storage.contact_message.field_position
+id: contact_message.clone_of_job_application_drivers.field_position
+field_name: field_position
+entity_type: contact_message
+bundle: clone_of_job_application_drivers
+label: Position
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

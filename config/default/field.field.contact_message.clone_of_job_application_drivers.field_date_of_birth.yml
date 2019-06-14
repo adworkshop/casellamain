@@ -1,0 +1,21 @@
+uuid: 77e5803c-66df-4900-b06e-5f156ba1f6cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.clone_of_job_application_drivers
+    - field.storage.contact_message.field_date_of_birth
+  module:
+    - datetime
+id: contact_message.clone_of_job_application_drivers.field_date_of_birth
+field_name: field_date_of_birth
+entity_type: contact_message
+bundle: clone_of_job_application_drivers
+label: 'Date of Birth'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

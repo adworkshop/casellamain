@@ -1,0 +1,28 @@
+uuid: 6bbfed4b-5c6f-425a-99f7-ec1fe9d27207
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.clone_of_job_application_drivers
+    - field.storage.contact_message.field_hiring_manager
+    - taxonomy.vocabulary.hiring_managers
+id: contact_message.clone_of_job_application_drivers.field_hiring_manager
+field_name: field_hiring_manager
+entity_type: contact_message
+bundle: clone_of_job_application_drivers
+label: 'Hiring manager'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      hiring_managers: hiring_managers
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

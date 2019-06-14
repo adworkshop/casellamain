@@ -1,0 +1,19 @@
+uuid: 392bc2d3-13e3-41fa-a5c6-f90efd9beec0
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.clone_of_job_application_drivers
+    - field.storage.contact_message.field_former_employer
+id: contact_message.clone_of_job_application_drivers.field_former_employer
+field_name: field_former_employer
+entity_type: contact_message
+bundle: clone_of_job_application_drivers
+label: Employer
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

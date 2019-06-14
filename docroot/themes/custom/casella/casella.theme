@@ -129,6 +129,7 @@ function casella_theme_suggestions_paragraph_alter(array &$suggestions, array $v
  * @param array $variables
  */
 function casella_theme_suggestions_container_alter(array &$suggestions, array $variables) {
+
   if ('view' == $variables['element']['#type']) {
     if ('products' == $variables['element']['#name']) {
       if (in_array($variables['element']['#display_id'], array('block_2', 'block_4', 'block_5'))) {
@@ -376,6 +377,34 @@ function casella_theme_suggestions_form_alter(array &$suggestions, array $variab
   }
 }
 
+function casella_theme_suggestions_form_element_alter(array &$suggestions, array $variables) {
+
+}
+
+function casella_preprocess_fieldset(&$variables) {
+  /*if ($variables['legend']['title']['#markup'] === 'Employers') {
+    $variables['legend']['title']['#markup'] = 'Employer';
+  }*/
+  // dpm($variables['legend']);
+}
+
+function casella_preprocess_field_multiple_value_form(&$variables) {
+  // bundle job_application_drivers
+  // dpm($variables['element']['#id']);
+  if ($variables['element']['#id'] === 'edit-field-employers') {
+    // dpm($variables);
+    // $variables['element']['#theme'] === field_multiple_value_form
+    // $variables['element']['#attached']
+    // dpm($variables['element']['#title']);
+    $variables['element']['#title'] = 'Employer';
+  }
+  // dpm($variables['element']);
+  // field-multiple-value-form.html.twig
+  // $elements['button']
+}
+
+
+
 /**
  * Implements template_preprocess_form_element().
  *
@@ -383,6 +412,21 @@ function casella_theme_suggestions_form_alter(array &$suggestions, array $variab
  */
 function casella_preprocess_form_element(&$variables) {
   if (isset($variables['element']['#id'])) {
+
+    if ('edit-field-job-employers-0-top' === $variables['element']['#id']) {
+
+    }
+
+    if ('edit-field-job-employers-0-subform' === $variables['element']['#id']) {
+
+    }
+    if ('edit-field-job-employers-0-subform-field-start-date-wrapper' === $variables['element']['#id']) {
+      // start date
+    }
+    if ('edit-field-job-employers-0-subform-field-end-date-wrapper' === $variables['element']['#id']) {
+      // end date
+    }
+
     if ('edit-field-name-0-value' == $variables['element']['#id']) {
       $variables['attributes']['class'][] = 'job-indListing-form-personalInfo-nameContainer';
     }
@@ -807,7 +851,8 @@ function casella_preprocess_field(&$variables) {
  * @param array $variables
  */
 function casella_preprocess_input__textfield(&$variables) {
-  if ('edit-field-job-title-0-value' == $variables['attributes']['id']) {
+  if ('edit-field-job-title-0-value' === $variables['attributes']['id']) {
+    // dpm($variables);
     $variables['attributes']['readonly'] = 'readonly';
   }
   elseif ('edit-field-job-reference-0-value' == $variables['attributes']['id']) {

@@ -1,0 +1,47 @@
+uuid: 349c8676-fe7f-49ec-9512-8f0a1461b35c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.licenses.field_endorsements
+    - field.field.paragraph.licenses.field_expiration_date
+    - field.field.paragraph.licenses.field_license_
+    - field.field.paragraph.licenses.field_state
+    - paragraphs.paragraphs_type.licenses
+  module:
+    - datetime
+id: paragraph.licenses.default
+targetEntityType: paragraph
+bundle: licenses
+mode: default
+content:
+  field_endorsements:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_expiration_date:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_license_:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_state:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

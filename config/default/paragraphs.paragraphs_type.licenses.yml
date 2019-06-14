@@ -1,0 +1,9 @@
+uuid: a50cd720-53ab-4af5-81d3-52a4b870699f
+langcode: en
+status: true
+dependencies: {  }
+id: licenses
+label: License
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

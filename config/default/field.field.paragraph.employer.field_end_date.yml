@@ -1,0 +1,21 @@
+uuid: 7c3886b1-fcf8-4044-9f62-2247e37f5cb4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_end_date
+    - paragraphs.paragraphs_type.employer
+  module:
+    - datetime
+id: paragraph.employer.field_end_date
+field_name: field_end_date
+entity_type: paragraph
+bundle: employer
+label: 'End Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,23 @@
+uuid: 7ebbcc6b-e070-4940-878a-92dd7f4609a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_to_present
+    - paragraphs.paragraphs_type.employer
+id: paragraph.employer.field_to_present
+field_name: field_to_present
+entity_type: paragraph
+bundle: employer
+label: 'To Present'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

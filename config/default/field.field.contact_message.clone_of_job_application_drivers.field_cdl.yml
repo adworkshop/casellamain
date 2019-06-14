@@ -1,0 +1,19 @@
+uuid: c82ea286-7021-494a-845b-074d0d1a7cc2
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.clone_of_job_application_drivers
+    - field.storage.contact_message.field_cdl
+id: contact_message.clone_of_job_application_drivers.field_cdl
+field_name: field_cdl
+entity_type: contact_message
+bundle: clone_of_job_application_drivers
+label: CDL
+description: 'Do you have a valid CDL license? If so please specify class.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
