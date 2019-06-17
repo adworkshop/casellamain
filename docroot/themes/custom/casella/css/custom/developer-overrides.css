@@ -380,6 +380,10 @@ div.internal-mainBody-sidebarContainer div.indLocation-upperGrid-indElement-cont
   /*margin-right: 5%;*/
 }
 
+.job-indListing-formToggle-container .tabledrag-toggle-weight-wrapper {
+  display: none;
+}
+
 .job-employers-accordion h3.accordion-item a label {
   display: none;
 }
