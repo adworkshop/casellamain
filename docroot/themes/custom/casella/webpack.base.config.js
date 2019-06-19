@@ -4,6 +4,7 @@ const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const config = {
   entry: {
     'contactForm': './src/contactForm.js'
+    // 'casella': ['./src/casella.ts', './src/casella.css']
   },
 
   output: {
@@ -14,13 +15,16 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
+        test: [/.js$|.ts$/],
+        exclude: /(node_modules)/,
         //use: ['babel-loader']
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
+            presets: [
+              '@babel/typescript',
+              '@babel/preset-env'
+            ]
           }
         }
       },
@@ -32,8 +36,31 @@ const config = {
           'sass-loader',
           'postcss-loader'
         ]
+      },
+      {
+        test: /\.(jpg|jpeg|gif|png)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[hash.8].[ext]',
+              outputPath: 'assets/'
+            }
+          }
+        ]
       }
     ]
+  },
+
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src')
+    },
+    modules: [
+      'node_modules',
+      path.resolve(__dirname, './src')
+    ],
+    extensions: ['.js', '.ts']
   },
 
   plugins: [

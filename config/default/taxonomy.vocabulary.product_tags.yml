@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Earthlife Product Tags'
 vid: product_tags
 description: ''
-hierarchy: 0
 weight: 0

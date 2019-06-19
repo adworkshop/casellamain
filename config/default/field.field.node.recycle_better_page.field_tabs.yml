@@ -46,12 +46,12 @@ settings:
       faq_category:
         weight: 32
         enabled: false
-      faqs_tab:
-        enabled: true
-        weight: 33
       faq_question:
         weight: 33
         enabled: false
+      faqs_tab:
+        enabled: true
+        weight: 33
       fa_link_with_icon:
         weight: 34
         enabled: false

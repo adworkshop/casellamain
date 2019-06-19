@@ -1,0 +1,14 @@
+uuid: faf247ea-d801-41e0-97ba-79d232fb817a
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.recycle_better
+  module:
+    - user
+id: user_add_role_action.recycle_better
+label: 'Add the Recycle Better role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: recycle_better
