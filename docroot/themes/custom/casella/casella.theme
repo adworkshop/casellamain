@@ -1847,6 +1847,9 @@ function casella_preprocess_html(&$variables) {
   if (isset($variables['node_type'])) {
     $variables['html_attributes']->addClass(str_replace('_', '-', $variables['node_type']));
 
+    if ('job' === $variables['node_type']) {
+      $variables['#attached']['library'][] = 'casella/casella-contact';
+    }
     if ('recycle_better_page' == $variables['node_type']) {
       $variables['#attached']['library'][] = 'casella/casella-recycle';
       $variables['#attached']['library'][] = 'casella/faq';
