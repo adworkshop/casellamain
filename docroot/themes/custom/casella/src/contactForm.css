@@ -1,0 +1,16 @@
+@import "~tingle.js/dist/tingle.min.css";
+
+/* Override z-index for fixed site header */
+.tingle-modal {
+  z-index: 9000;
+}
+
+.tingle-modal-box__content {
+  font-size: 15px;
+  line-height: 1.5;
+  font-family: "Droid Serif", sans-serif;
+}
+
+.tingle-modal-box__content p {
+  font: inherit;
+}

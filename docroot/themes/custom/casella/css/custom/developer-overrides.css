@@ -397,6 +397,10 @@ div.internal-mainBody-sidebarContainer div.indLocation-upperGrid-indElement-cont
   display: none;
 }
 
+#contact-message-job-application-drivers-form input.is-invalid {
+  outline: 1px solid red;
+}
+
 /* Use to temporarily keep form container open */
 /*.job-indListing-formToggle-container {
   display: block !important;
