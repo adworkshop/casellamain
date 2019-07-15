@@ -12,7 +12,16 @@ module.exports = merge(webpackBaseConfig, {
   },
   optimization: {
     minimizer: [
-      new UglifyJsWebpackPlugin(),
+      new UglifyJsWebpackPlugin({
+        extractComments: 'all',
+        uglifyOptions: {
+          warnings: false,
+          mangle: false,
+          output: {
+            comments: false
+          }
+        }
+      }),
       new OptimizeCSSAssetsPlugin()
     ]
   }

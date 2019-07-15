@@ -1,0 +1,20 @@
+uuid: d311d25b-126a-46df-8ce7-8435b8d873cb
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - paragraphs
+id: paragraph.field_expiration_date
+field_name: field_expiration_date
+entity_type: paragraph
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,19 @@
+uuid: 74a396f0-962d-421e-9e68-289b0957ac3c
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.clone_of_job_application_drivers
+    - field.storage.contact_message.field_endorsements4
+id: contact_message.clone_of_job_application_drivers.field_endorsements4
+field_name: field_endorsements4
+entity_type: contact_message
+bundle: clone_of_job_application_drivers
+label: Endorsements
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

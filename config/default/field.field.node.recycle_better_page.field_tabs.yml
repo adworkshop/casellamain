@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_tabs
     - node.type.recycle_better_page
     - paragraphs.paragraphs_type.basics
+    - paragraphs.paragraphs_type.calculator
     - paragraphs.paragraphs_type.faqs_tab
     - paragraphs.paragraphs_type.resources
   module:
@@ -27,6 +28,7 @@ settings:
     target_bundles:
       faqs_tab: faqs_tab
       basics: basics
+      calculator: calculator
       resources: resources
     target_bundles_drag_drop:
       block_link_with_icon:
@@ -44,12 +46,12 @@ settings:
       faq_category:
         weight: 32
         enabled: false
-      faqs_tab:
-        enabled: true
-        weight: 33
       faq_question:
         weight: 33
         enabled: false
+      faqs_tab:
+        enabled: true
+        weight: 33
       fa_link_with_icon:
         weight: 34
         enabled: false
@@ -65,12 +67,12 @@ settings:
       image_with_caption:
         weight: 38
         enabled: false
-      inline_image:
-        weight: 39
-        enabled: false
       basics:
         enabled: true
         weight: 39
+      inline_image:
+        weight: 39
+        enabled: false
       bin_comparison_fields:
         weight: 40
         enabled: false
@@ -83,6 +85,9 @@ settings:
       link_with_icon:
         weight: 42
         enabled: false
+      calculator:
+        enabled: true
+        weight: 43
       organics_updates:
         weight: 43
         enabled: false
@@ -101,10 +106,10 @@ settings:
       social_link:
         weight: 48
         enabled: false
-      fa_link_with_pdf:
+      solution_resource:
         weight: 49
         enabled: false
-      solution_resource:
+      fa_link_with_pdf:
         weight: 49
         enabled: false
       testimonials:

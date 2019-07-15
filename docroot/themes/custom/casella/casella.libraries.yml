@@ -78,6 +78,14 @@ casella-recycle:
   dependencies:
     - core/jquery
 
+casella-contact:
+  version: 1.x
+  js:
+    build/dist/contactForm.bundle.js: {}
+  css:
+    theme:
+      build/dist/contactForm.bundle.css: {}
+
 earthlife:
   version: 1.x
   js:

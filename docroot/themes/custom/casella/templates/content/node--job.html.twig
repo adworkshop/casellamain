@@ -20,7 +20,7 @@
               {% if activeJob %}
                 <!--Apply - Toggle-->
                 <div class="job-indListing-applyToggle">
-                  <a href="javascript:void(0)" title=""><span class="fa fa-check-square-o btnIconWrapper" aria-hidden="true"></span> Apply Today</a>
+                  <a href="#active-job-apply" title=""><span class="fa fa-check-square-o btnIconWrapper" aria-hidden="true"></span> Apply Today</a>
                 </div>
                 <!--END Apply - Toggle-->
               {% endif %}
@@ -45,6 +45,7 @@
             {% endif %}
 
             {% if activeJob %}
+              <a name="activeJob" id="active-job-apply"></a>
               <!--Toggle Form-->
               <div class="job-indListing-formToggle-container">
 

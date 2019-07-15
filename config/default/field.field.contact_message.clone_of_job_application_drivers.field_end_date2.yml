@@ -1,0 +1,21 @@
+uuid: 72d7fe76-044f-436b-adb0-8b60ec889cce
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.clone_of_job_application_drivers
+    - field.storage.contact_message.field_end_date2
+  module:
+    - datetime
+id: contact_message.clone_of_job_application_drivers.field_end_date2
+field_name: field_end_date2
+entity_type: contact_message
+bundle: clone_of_job_application_drivers
+label: 'End Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime
