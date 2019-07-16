@@ -1,5 +1,6 @@
 <?php
 use \Drupal\Core\Url;
+use \Drupal\contact\Entity\ContactForm;
 /**
  * Implements hook_form_alter().
  * @param $form
