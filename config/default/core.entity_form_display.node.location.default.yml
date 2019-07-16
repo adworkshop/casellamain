@@ -24,6 +24,8 @@ dependencies:
     - field.field.node.location.field_slider_images
     - field.field.node.location.field_state
     - field.field.node.location.field_street_address
+    - field.field.node.location.field_suppress_holiday
+    - field.field.node.location.field_suppress_pay_your_bill
     - field.field.node.location.field_supress_map
     - field.field.node.location.field_tabs
     - field.field.node.location.field_unacceptable_waste
@@ -103,7 +105,7 @@ third_party_settings:
         - group_tabs
         - group_media
       parent_name: ''
-      weight: 20
+      weight: 18
       format_type: tabs
       format_settings:
         id: ''
@@ -152,7 +154,7 @@ content:
     region: content
   created:
     type: datetime_timestamp
-    weight: 13
+    weight: 12
     settings: {  }
     third_party_settings: {  }
     region: content
@@ -191,7 +193,7 @@ content:
     third_party_settings: {  }
     region: content
   field_assoc_hauling:
-    weight: 16
+    weight: 15
     settings:
       match_operator: CONTAINS
       size: 60
@@ -250,7 +252,7 @@ content:
     type: string_textfield
     region: content
   field_meta_tag:
-    weight: 17
+    weight: 16
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
@@ -280,7 +282,7 @@ content:
     type: string_textfield
     region: content
   field_sidebar_promotions:
-    weight: 15
+    weight: 14
     settings:
       match_operator: CONTAINS
       size: 60
@@ -316,6 +318,20 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_suppress_holiday:
+    type: boolean_checkbox
+    weight: 19
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_suppress_pay_your_bill:
+    type: boolean_checkbox
+    weight: 20
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_supress_map:
     weight: 9
     settings:
@@ -372,7 +388,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 18
+    weight: 17
     region: content
     third_party_settings: {  }
   title:
@@ -384,7 +400,7 @@ content:
     third_party_settings: {  }
     region: content
   translation:
-    weight: 14
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -399,7 +415,5 @@ content:
     region: content
 hidden:
   feeds_item: true
-  field_suppress_holiday: true
-  field_suppress_pay_your_bill: true
   promote: true
   sticky: true
