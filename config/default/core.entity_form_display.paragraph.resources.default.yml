@@ -85,6 +85,18 @@ content:
       default_paragraph_type: ''
     third_party_settings: {  }
     region: content
+  field_resource_sidebar_panel:
+    type: entity_reference_paragraphs
+    weight: 10
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
   field_tab_anchor:
     weight: 0
     settings:
@@ -119,6 +131,5 @@ content:
     region: content
 hidden:
   created: true
-  field_resource_sidebar_panel: true
   status: true
   uid: true

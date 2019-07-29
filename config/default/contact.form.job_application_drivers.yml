@@ -14,7 +14,8 @@ third_party_settings:
 id: job_application_drivers
 label: 'Job Application - Drivers'
 recipients:
-  - jcicero@yourworkshop.com
+  - Devin.Siva@casella.com
+  - bhamelin@yourworkshop.com
 reply: ''
 weight: 0
 message: 'Your message has been sent.'

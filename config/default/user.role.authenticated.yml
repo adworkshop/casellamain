@@ -23,6 +23,7 @@ permissions:
   - 'access toolbar'
   - 'administer main menu items'
   - 'bypass mollom protection'
+  - 'bypass paragraphs type content access'
   - 'cacheflush clear cache'
   - 'create full_width_promotion content'
   - 'create page content'
