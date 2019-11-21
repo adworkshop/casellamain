@@ -1,0 +1,25 @@
+name: casella
+recipe: drupal8
+config:
+  webroot: docroot
+  database: mysql:5.7
+  php: '7.2'
+  xdebug: false
+  via: nginx
+  drush: ^8
+  # Uncomment here if you need xdebug with PHPStorm
+  #config:
+  #  php: .lando.php.ini
+proxy:
+  pma:
+    - pma-casella.lndo.site
+services:
+  pma:
+    type: phpmyadmin
+    hosts:
+      - database
+  appserver:
+    xdebug: false
+    overrides:
+      environment:
+        PHP_IDE_CONFIG: "serverName=rensco.lndo.site"
