@@ -9,7 +9,7 @@ config:
   drush: ^8
   # Uncomment here if you need xdebug with PHPStorm
   #config:
-  #  php: .lando.php.ini
+  #  php:  .lando.php.ini
 proxy:
   pma:
     - pma-casella.lndo.site
