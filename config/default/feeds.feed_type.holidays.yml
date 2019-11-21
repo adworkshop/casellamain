@@ -25,4 +25,5 @@ processor_configuration:
   skip_hash_check: false
   values:
     type: location
+  owner_feed_author: false
 mappings: {  }

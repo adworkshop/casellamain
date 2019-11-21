@@ -1,0 +1,13 @@
+uuid: 02e3ac19-3c60-4e28-a2b7-5f25cc141cf0
+langcode: en
+status: true
+dependencies: {  }
+id: recycle_better
+label: 'Recycle Better'
+weight: 9
+is_admin: null
+permissions:
+  - 'edit any recycle_better_page content'
+  - 'publish any node type recycle_better_page'
+  - 'unpublish any node type recycle_better_page'
+  - 'view any unpublished recycle_better_page content'
