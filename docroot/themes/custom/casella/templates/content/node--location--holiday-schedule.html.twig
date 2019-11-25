@@ -1,3 +1,5 @@
+{{ attach_library('casella/locations') }}
+
 {% block titleSection %}
   <div class="internal-headerPanel-container">
     <div class="globalWidth">
@@ -23,6 +25,10 @@
         <div class="indLocation-holidayPanelOpen-title">
           <div class="indLocation-holidayPanelOpen-title-location">{{ title }}</div>
           <h2>{{ "now"|date("Y") }} Holiday Schedule</h2>
+          <div class="locationMap-listView-indListing-content-ctaContainer">
+            <a href="/node/{{ node.nid.value }}" title="" class="locationMap-listView-indListing-content-learnMore-btn"><span class="fa fa-tags btnIconWrapper" aria-hidden="true"></span> More details</a>
+          </div>
+          <div>{{ node_content.gobackblock }}</div>
         </div>
 
         <!--Locations - FooTable-->

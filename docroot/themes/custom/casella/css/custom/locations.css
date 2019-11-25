@@ -16,7 +16,7 @@ Author URI: http://www.adworkshop.com
   font-weight: normal;
   font-style: normal;
   }
-  
+
 /* ======================================================= */
 /*    LOCATIONS - MAP/MAIN                                 */
 /* ======================================================= */
@@ -25,7 +25,7 @@ Author URI: http://www.adworkshop.com
   .locationMap-contentCol-container {display:block; width: 100%; padding:50px 30px;}
   .locationMap-contentCol-wrapper {}
   .locationMap-mapCol-container {display:block; line-height:0; position:relative; background: #f8f8f8; border-top: 5px solid #f8f8f8; padding:30px;}
-  
+
   /*General Page Copy*/
 	.locationMap-pageCopy-container .internal-mainBody-featuredContent-container {font-family: 'Droid Serif', serif; font-size: 14px; line-height: 1.7; margin:0 0 50px;}
 
@@ -99,7 +99,7 @@ Author URI: http://www.adworkshop.com
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   }
-  
+
   .locationMap-key-location-container.corporate label {color:#2f559a;}
   .locationMap-key-location-container.dropoff label {color:#939598;}
   .locationMap-key-location-container.hauling label {color:#00253f;}
@@ -107,7 +107,7 @@ Author URI: http://www.adworkshop.com
   .locationMap-key-location-container.organics label {color:#3d963a;}
   .locationMap-key-location-container.recycling label {color:#0082ca;}
   .locationMap-key-location-container.transfer label {color:#a154a1;}
-  
+
   .locationMap-key-location-container.corporate label:before {content:'\e906';}
   .locationMap-key-location-container.dropoff label:before {content:'\e900';}
   .locationMap-key-location-container.hauling label:before {content:'\e901';}
@@ -115,7 +115,7 @@ Author URI: http://www.adworkshop.com
   .locationMap-key-location-container.organics label:before {content:'\e903';}
   .locationMap-key-location-container.recycling label:before {content:'\e904';}
   .locationMap-key-location-container.transfer label:before {content:'\e905';}
-  
+
   .checkbox-custom {opacity: 0; position: absolute;}
   .checkbox-custom, .checkbox-custom-label {display: inline-block; vertical-align: middle; margin: 5px; cursor: pointer;}
   .label-custom {position: relative; font-family: 'Source Sans Pro', sans-serif; font-weight: 600; font-size:15px; display: table; table-layout: fixed; width: 100%; margin:0;}
@@ -157,7 +157,7 @@ Author URI: http://www.adworkshop.com
 
 /* ======================================================= */
 /*    MAP VIEW                                             */
-/* ======================================================= */	
+/* ======================================================= */
   .content-map {height: 500px; width: 100%; line-height:1.5;}
 
 	.content-map .gm-style .gm-style-iw {font-weight: normal; padding: .5rem;}
@@ -195,14 +195,14 @@ Author URI: http://www.adworkshop.com
 
 /* ======================================================= */
 /*    LIST VIEW                                            */
-/* ======================================================= */	
+/* ======================================================= */
   .locationMap-listView-container {background:#f8f8f8; width:100%; padding:0; line-height:1.3;}
-  
+
   .locationMap-listView-indListing-container {display:table; table-layout:fixed; width:100%; margin: 0 0 40px; padding: 0 0 40px; border-bottom: 3px solid #fff;}
   .locationMap-listView-indListing-container:last-of-type {margin: 0; padding: 0; border-bottom: none;}
   .locationMap-listView-indListing-marker-container {display:table-cell; vertical-align:top; width:70px; padding:0 30px 0 0;}
   .locationMap-listView-indListing-content-container {display:table-cell; vertical-align:top;}
-  
+
   /*Markers*/
   .locationMap-listView-indListing-marker {
   font-family: 'location-markers' !important;
@@ -217,7 +217,7 @@ Author URI: http://www.adworkshop.com
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   }
-  
+
   .locationMap-listView-indListing-container.corporate .locationMap-listView-indListing-marker:before {content:'\e906'; color:#2f559a;}
   .locationMap-listView-indListing-container.dropoff .locationMap-listView-indListing-marker:before {content:'\e900'; color:#939598;}
   .locationMap-listView-indListing-container.hauling .locationMap-listView-indListing-marker:before {content:'\e901'; color:#00253f;}
@@ -225,7 +225,7 @@ Author URI: http://www.adworkshop.com
   .locationMap-listView-indListing-container.organics .locationMap-listView-indListing-marker:before {content:'\e903'; color:#3d963a;}
   .locationMap-listView-indListing-container.recycling .locationMap-listView-indListing-marker:before {content:'\e904'; color:#0082ca;}
   .locationMap-listView-indListing-container.transfer .locationMap-listView-indListing-marker:before {content:'\e905'; color:#a154a1;}
-  
+
   .locationMap-listView-indListing-distance {font-family: 'Gotham-Bold'; line-height: 1.3; color: #9c9c9c; font-size: 12px; text-align: center; margin: 10px 0 0;}
   .locationMap-listView-indListing-content-title {font-family: 'Gotham-Bold'; line-height: 1.2; color: #0a253e; font-size: 17px;}
   .locationMap-listView-indListing-content-description {line-height:1.5; margin:15px 0 0; font-size:13px;}
@@ -237,7 +237,10 @@ Author URI: http://www.adworkshop.com
   .locationMap-listView-indListing-content-ctaContainer {margin:5px 0 0;}
   .locationMap-listView-indListing-content-ctaContainer a {margin-top: 15px; margin-right: 5px;}
   .locationMap-listView-indListing-content-ctaContainer a:last-of-type {margin-right: 0;}
-  
+
+  .indLocation-holidayPanelOpen-title .locationMap-listView-indListing-content-ctaContainer {margin:10px 0;}
+  .indLocation-holidayPanelOpen-title .locationMap-listView-indListing-content-ctaContainer a {margin:0 0 5px;}
+
   a.locationMap-listView-indListing-content-viewMap-btn {
   font-family: 'Gotham-Bold'; font-size:12px; color:#FFF; display:inline-block; background:#76be43; padding: 10px 20px 9px;
   border: 2px solid #76be43; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;
@@ -245,7 +248,7 @@ Author URI: http://www.adworkshop.com
   }
   a.locationMap-listView-indListing-content-viewMap-btn:hover {border: 2px solid #76be43; background:#FFF; color:#76be43;}
   a.locationMap-listView-indListing-content-viewMap-btn:after {display:none;}
-  
+
   a.locationMap-listView-indListing-content-driving-btn {
   font-family: 'Gotham-Bold'; font-size:12px; color:#FFF; display:inline-block; background:#004a87; padding: 10px 20px 9px;
   border: 2px solid #004a87; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;
@@ -253,7 +256,7 @@ Author URI: http://www.adworkshop.com
   }
   a.locationMap-listView-indListing-content-driving-btn:hover {border: 2px solid #004a87; background:#FFF; color:#004a87;}
   a.locationMap-listView-indListing-content-driving-btn:after {display:none;}
-  
+
   a.locationMap-listView-indListing-content-learnMore-btn {
   font-family: 'Gotham-Bold'; font-size:12px; color:#FFF; display:inline-block; background:#0a253e; padding: 10px 20px 9px;
   border: 2px solid #0a253e; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;
@@ -261,18 +264,18 @@ Author URI: http://www.adworkshop.com
   }
   a.locationMap-listView-indListing-content-learnMore-btn:hover {border: 2px solid #0a253e; background:#FFF; color:#0a253e;}
   a.locationMap-listView-indListing-content-learnMore-btn:after {display:none;}
- 
+
 /* ======================================================= */
 /*    MEDIA QUERIES                                        */
-/* ======================================================= */	
+/* ======================================================= */
   @media all and (min-width: 480px) {}
-  
+
   @media all and (min-width: 600px) {
   .locationMap-searchForm-title {font-size: 20px;}
-  
+
   .locationMap-contentCol-container {padding: 50px 40px;}
   .locationMap-mapCol-container {padding:40px;}
-  
+
   .locationMap-listView-indListing-marker-container {width:100px;}
   .locationMap-listView-indListing-marker {font-size: 60px;}
   .locationMap-listView-indListing-distance {font-size: 14px;}
@@ -280,13 +283,13 @@ Author URI: http://www.adworkshop.com
   .locationMap-listView-indListing-content-description {font-size:15px;}
   .locationMap-listView-indListing-content-meta {font-size:15px;}
   }
-  
+
   @media all and (min-width: 768px) {}
-  
+
   @media all and (min-width: 840px) {}
-  
+
   @media all and (min-width: 960px) {}
-  
+
   @media all and (min-width: 1024px) {
   .locationMap-marker-accordion-container {margin: 50px 0 0;}
   .locationMap-marker-accordion-toggle {pointer-events: none; padding:30px;}
@@ -294,17 +297,17 @@ Author URI: http://www.adworkshop.com
   .locationMap-marker-accordion-toggle:hover {background: none; color: #4c9d2a;}
   .locationMap-marker-accordion-toggle-icon {display:none;}
   .locationMap-marker-accordion-content {display: block !important; padding: 0 30px 30px; border:none;}
-  
+
   .locationMap-marker-accordion-container.not-searched {display:block;}
   .not-searched .locationMap-marker-accordion-toggle {opacity:.3; pointer-events: none;}
   .not-searched .locationMap-locationToggles-wrapper {opacity:.3; pointer-events: none;}
-  
+
   .locationMap-container {font-size:0;}
   .locationMap-contentCol-container {display:inline-block; vertical-align:top; width: 40%; padding: 50px 40px;}
   .locationMap-mapCol-container {display:inline-block; vertical-align:top; width: 60%; padding:0;}
   .content-map {height: 100%; position: absolute; top: 0;}
   .locationMap-listView-container {padding:50px 7% 50px 50px;}
-  
+
   .panelControllers {position: absolute; z-index: 3; top: -42px; margin:0; border-top:none;}
   .panelControllers button {
   padding: 13px 20px 10px;
@@ -317,29 +320,29 @@ Author URI: http://www.adworkshop.com
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   }
-    
+
   .locationMap-link-accordion-container,
   .locationMap-searchForm-container .icon {font-size: 1rem;}
-    
+
   }
-  
+
   @media all and (min-width: 1200px) {
   .locationMap-searchForm-title {font-size: 17px;}
   .locationMap-contentCol-container {width: 30%; padding: 50px 50px 50px 7%;}
   .locationMap-mapCol-container {width: 70%;}
   }
-  
+
   @media all and (min-width: 1300px) {
   .locationMap-searchForm-title {font-size: 20px;}
   }
-  
+
   @media all and (min-width: 1800px) {
   .locationMap-searchForm-title {font-size: 25px;}
   }
-  
+
   @media all and (min-width: 1600px) {}
-  
+
   @media only screen and (max-width: 1023px) {
   .locationMap-contentCol-wrapper {min-height: 100% !important;}
-  
+
   }
