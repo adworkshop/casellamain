@@ -13,3 +13,10 @@ casella_custom.date_form:
     _title: 'Date Form Configuration'
   requirements:
     _permission: 'administer site configuration'
+
+casella_custom.holiday_schedule_display:
+  path: '/node/{node}/holiday-schedule'
+  defaults:
+    _entity_view: node.holiday_schedule
+  requirements:
+    _entity_access: 'node.view'

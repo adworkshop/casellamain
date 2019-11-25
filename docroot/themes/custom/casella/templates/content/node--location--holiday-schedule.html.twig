@@ -1,0 +1,162 @@
+{% block titleSection %}
+  <div class="internal-headerPanel-container">
+    <div class="globalWidth">
+      {% block title %}
+        <h1>{{ title }}</h1>
+
+        {{ content.field_hero_text }}
+
+        {% block heroBreadcrumbs %}
+          {{ node_content.casella_breadcrumbs }}
+        {% endblock %}
+      {% endblock %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block bodySection %}
+  <!--Open Panel::Always Open-->
+  <div class="indLocation-holidayPanelOpen">
+    <div class="globalWidth">
+      <div class="indLocation-holidayPanelOpen-wrapper">
+
+        <div class="indLocation-holidayPanelOpen-title">
+          <div class="indLocation-holidayPanelOpen-title-location">{{ title }}</div>
+          <h2>{{ "now"|date("Y") }} Holiday Schedule</h2>
+        </div>
+
+        <!--Locations - FooTable-->
+        <div class="indLocation-holidayPanelOpen-gridContainer">
+
+          {{ node_content.views_block__locations_block_1__holiday_list }}
+
+        </div>
+        <!--END Locations - FooTable-->
+
+      </div>
+    </div>
+  </div>
+  <!--END Open Panel::Triggered Open-->
+
+
+  <!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+  <!--Second Tier CTA's-->
+  <div class="indLocation-SecondTier-container">
+    <div class="indLocation-SecondTier-wrapper">
+      <div class="indLocation-SecondTier-indElement"><a href="{{ serviceUrl }}?service_request=billing" title="">Request a Quote</a></div>
+      <div class="indLocation-SecondTier-indElement"><a href="{{ faqUrl }}#faq_411_target" title="">Frequently Asked Questions</a></div>
+      <div class="indLocation-SecondTier-indElement"><a href="javascript:void(0)" title="" class="indLocation-contactPanel-trigger">Contact Us</a></div>
+    </div>
+  </div>
+  <!--END Second Tier CTA's-->
+
+
+  <!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+  <!--Contact Us Information-->
+  <div class="indLocation-contactPanel">
+    <div class="globalWidth">
+
+      <div class="indLocation-contactPanel-container">
+
+        <!--Col-Left-->
+        <div class="indLocation-contactPanel-colLeft">
+
+          <div class="indLocation-contactPanel-colLeft-element">
+            <div class="indLocation-contactPanel-colLeft-element-title">Customer Care</div>
+            <ul>
+              <li><strong>Phone:</strong> (888) 852-2151</li>
+              <li><strong>Mon - Fri:</strong> 7:00am - 5:00pm</li>
+              <li><strong>Sat:</strong> 8:00am - 12:00pm</li>
+            </ul>
+          </div>
+
+          <div class="indLocation-contactPanel-colLeft-element">
+            <div class="indLocation-contactPanel-colLeft-element-title">Office</div>
+            <ul>
+              <li><strong>Phone:</strong> (802) 438-2151</li>
+              <li><strong>Mon - Fri:</strong> 8:00 AM - 5:00 PM</li>
+            </ul>
+          </div>
+
+        </div>
+        <!--END Col-Left-->
+
+        <!--Col-Right-->
+        <div class="indLocation-contactPanel-colRight">
+
+          {{ node_content.location_contact_contactblock }}
+
+        </div>
+        <!--END Col-Right-->
+
+      </div>
+
+    </div>
+  </div>
+  <!--END Contact Us Information-->
+
+
+  <!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+  {# need to verify that a lat/lng pair exists before diving in #}
+  {% set latitude = content.field_latitude|render|striptags|trim %}
+  {% set longitude = content.field_longitude|render|striptags|trim %}
+  {% if latitude and longitude %}
+    <!--Map-->
+    <div class="indLocation-staticGoogleMap" style="height:400px; background:url(https://maps.googleapis.com/maps/api/staticmap?markers=size:small%7C{{ latitude ~ ',' ~ longitude }}&zoom=12&size=640x640&scale=2&key=AIzaSyAl0whz4aUUDJH4GIpbK2Rz65MbC6nE8io
+            ) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+      {% if mapLink %}
+        <a href="{{ mapLink }}" target="_blank" title="">
+          <div class="indLocation-staticGoogleMap-btn">Get Directions</div>
+        </a>
+      {% endif %}
+    </div>
+    <!--END Map-->
+  {% endif %}
+
+  <!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
+
+  <!--Main Body Region-->
+  {# The hr view block is lazy loaded, so we cant check if it exists yet. Assume a sidebar. #}
+  <div class="internal-mainBody-container withSidebar noSidebarNav">
+    <div class="globalWidth">
+
+      <!--Grid-->
+      <div class="internal-mainBody-layoutContainer">
+
+        <!--Col - Content-->
+        <div class="internal-mainBody-contentContainer">
+
+          {{ content.body }}
+
+          {% if 'Hauling' == serviceType %}
+            {# internal-mainBody-generalTxt-container class is a part of the locations block wrapper. #}
+            {{ node_content.views_block__locations_block_3__towns_on_location }}
+          {% endif %}
+
+        </div>
+        <!--Col - Content-->
+
+        <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+
+        <!--Col - Sidebar-->
+        <div class="internal-mainBody-sidebarContainer">
+
+          {{ node_content.views_block__hr_block_2 }}
+
+          {{ content.field_sidebar_promotions }}
+
+        </div>
+        <!--END Col - Sidebar-->
+
+      </div>
+      <!--END Grid-->
+
+    </div>
+  </div>
+{% endblock %}

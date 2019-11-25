@@ -68,9 +68,9 @@
 
           <!--Search Form-->
           <div class="locationMap-searchForm-container">
-            <div class="locationMap-searchForm-title">Find a facility near you...</div>
+            <div class="locationMap-searchForm-title">Find the holiday schedule of a facility near you...</div>
             <div class="locationMap-searchForm-container">
-              {{ node_content.exposedformlocation_townspage_1__town_search }}
+              {{ node_content.exposedformlocation_townspage_2 }}
               <span class="icon"><i class="fa fa-search"></i></span>
             </div>
           </div>
@@ -110,21 +110,6 @@
               </div>
             </div>
           </div>
-          <!--Map Location Toggles-->
-
-          {% if node_content.views_block__locations_block_8__cat_links|render|adw_strip_comments|trim %}
-            <div class="locationMap-link-accordion-container">
-              <a class="locationMap-marker-accordion-toggle">List Locations<span class="locationMap-marker-accordion-toggle-icon"><i class="fa fa-plus-circle"></i></span></a>
-              <div class="locationMap-marker-accordion-content">
-                <div class="locationMap-locationToggles-wrapper">
-
-                  {{ node_content.views_block__locations_block_8__cat_links }}
-
-                </div>
-              </div>
-            </div>
-          {% endif %}
-
         </div>
       </div>
       <!--END Map: Content Column - Left-->
@@ -145,9 +130,7 @@
           <div id="content-map" class="locationsMap-panel content-map active"></div>
           <!--END Map View Panel-->
 
-          <!--Node Middle Content-->
           {{ node_middle_content }}
-          <!--END Node Middle Content-->
 
       </div>
       <!--END Map: Google Map & Dynamic List Column - Right-->

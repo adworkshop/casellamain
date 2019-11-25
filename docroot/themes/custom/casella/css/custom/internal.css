@@ -904,6 +904,22 @@ a.indLocation-holidayPanel-close {
 }
 a.indLocation-holidayPanel-close:hover {background: #FFF; border:2px solid #4c9d2a; color:#4c9d2a;}
 
+/*Holiday display*/
+.indLocation-holidayPanelOpen {margin:20px 0 0;}
+.indLocation-holidayPanelOpen-wrapper {padding: 0; position:relative;}
+.indLocation-holidayPanelOpen-title {margin:0 0 30px;}
+.indLocation-holidayPanelOpen-title h2 {font-size:24px; color:#0a253e; text-transform:uppercase;}
+.indLocation-holidayPanelOpen-title-location {font-family: 'Droid Serif', serif; margin: 0 0 10px; font-size: 17px;}
+.indLocation-holidayPanelOpen-gridContainer {margin:0 0 50px;}
+.indLocation-holidayPanelOpen-gridContainer-label {font-family: 'Gotham-Bold'; color: #4c9d2a; text-transform: uppercase; font-size: 14px;}
+.indLocation-holidayPanelOpen-label {font-weight:600;}
+.indLocation-holidayPanelOpen-closePanel-container {position: absolute; top:30px; width: 100%; border-top:8px solid #4c9d2a;}
+a.indLocation-holidayPanelOpen-close {
+  position: absolute; top: -35px; display: inline-block; padding: 13px 15px; background: #4c9d2a; font-size: 30px; border: 2px solid #4c9d2a; color: #FFF;
+  -webkit-transition: all .3s ease-in-out; -moz-transition: all .3s ease-in-out; -o-transition: all .3s ease-in-out; -ms-transition: all .3s ease-in-out; transition: all .3s ease-in-out;
+}
+a.indLocation-holidayPanelOpen-close:hover {background: #FFF; border:2px solid #4c9d2a; color:#4c9d2a;}
+
 /* Contact Us Panel*/
 .indLocation-contactPanel {background:#0a253e; padding:75px 0; display:none;}
 .indLocation-contactPanel-container {display:block; width:100%;}

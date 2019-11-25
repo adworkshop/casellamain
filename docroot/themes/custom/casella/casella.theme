@@ -147,7 +147,7 @@ function casella_theme_suggestions_container_alter(array &$suggestions, array $v
       }
     }
     elseif ('locations' == $variables['element']['#name']) {
-      if (in_array($variables['element']['#display_id'], array('block_1', 'block_4', 'block_5', 'block_6', 'block_8'))) {
+      if (in_array($variables['element']['#display_id'], array('block_1', 'block_4', 'block_5', 'block_6', 'block_8', 'block_10'))) {
         $suggestions[] = 'container__stripped';
       }
     }
@@ -198,10 +198,16 @@ function casella_theme_suggestions_block_alter(array &$suggestions, array $varia
     'views_block__information_posts_block_1',
     'views_block__locations_block_1__holiday_list',
     'exposedformlocationspage_1__find_provider',
+    'exposedformlocation_townspage_1__town_search',
+    'exposedformlocation_townspage_2__town_search_holiday_schedule',
+    'exposedformlocation_townspage_2',
+    'exposedformlocation_townsblock_1',
     'views_block__hr_block_1__job_search',
     'views_block__hr_block_2',
     'views_block__locations_block_4__locations_map_initial',
     'views_block__locations_block_5__post_search',
+    'views_block__locations_block_10__post_search',
+    'views_block__locations_block_10',
     'views_block__locations_block_6__assoc_hauling',
     'views_block__content_promotions_block_2',
     'views_block__content_promotions_block_1',
@@ -253,6 +259,9 @@ function casella_theme_suggestions_node_alter(array &$suggestions, array $variab
   }
   elseif (2051 == $variables['elements']['#node']->id()) {
     $suggestions[] = 'node__locations_map';
+  }
+  elseif (26501 == $variables['elements']['#node']->id()) {
+    $suggestions[] = 'node__locations_holiday_schedule_map';
   }
 
   //landfill locations override
@@ -1173,6 +1182,9 @@ function casella_preprocess_views_view(&$variables) {
     elseif ('block_7' == $variables['display_id']) {
       $variables['attributes']['class'][] = 'job-mainListings-container';
     }
+    elseif ('block_10' == $variables['display_id']) {
+      $variables['attributes']['class'][] = 'locationMap-listView-container';
+    }
   }
   elseif ('hr' == $variables['id']) {
     if ('block_1' == $variables['display_id']) {
@@ -1258,6 +1270,35 @@ function casella_preprocess_views_view_fields__product_categories__block_1(&$var
  * @param $variables
  */
 function casella_preprocess_views_view_fields__locations__block_5(&$variables) {
+  // Build the address output for the print and map link.
+  $street = $variables['row']->_entity->get('field_street_address')->getValue();
+  $city = $variables['row']->_entity->get('field_city')->getValue();
+  $state = $variables['row']->_entity->get('field_state')->getValue();
+  $zip = $variables['row']->_entity->get('field_zip')->getValue();
+
+  //25 Greens Hill Ln, Rutland VT 05701
+  $address = '';
+  $parts = array(array('value' => $street, 'seperator' => ', '), array('value' => $city, 'seperator' => ' '), array('value' => $state, 'seperator' => ' '), array('value' => $zip, 'seperator' => ''));
+  while ($part = array_pop($parts)) {
+    if (!$part['value'] || !$part['value'][0]['value']) {
+      continue;
+    }
+
+    if ($address != '') {
+      $address = $part['seperator'] . $address;
+    }
+
+    $address = $part['value'][0]['value'] . $address;
+  }
+  $variables['builtAddress'] = $address;
+  $variables['addressLink'] = $address != '' ? 'https://www.google.com/maps/place/' . str_replace(' ', '+', trim($address)) : FALSE;
+}
+
+/**
+ * Implements template_preprocess_views_view_fields().
+ * @param $variables
+ */
+function casella_preprocess_views_view_fields__locations__block_10(&$variables) {
   // Build the address output for the print and map link.
   $street = $variables['row']->_entity->get('field_street_address')->getValue();
   $city = $variables['row']->_entity->get('field_city')->getValue();

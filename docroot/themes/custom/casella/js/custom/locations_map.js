@@ -210,11 +210,19 @@ function initMarker(markerInfo, mapInfo, index) {
  * @returns {string}
  */
 function buildInfoWindowContent(markerInfo) {
-  return '<div class="markerWrapper">' +
+  if (window.drupalSettings.path.currentPath === 'node/26501') {
+    return '<div class="markerWrapper">' +
+      '<h3 class="markerTitle">' + markerInfo.title + '</h3>' +
+      '<div class="markerType">' + markerInfo.type + '</div>' +
+      '<div class="markerLink"><a href="' + markerInfo.path + '/holiday-schedule">Holiday Schedule</a></div>' +
+      '</div>';
+  } else {
+    return '<div class="markerWrapper">' +
       '<h3 class="markerTitle">' + markerInfo.title + '</h3>' +
       '<div class="markerType">' + markerInfo.type + '</div>' +
       '<div class="markerLink"><a href="' + markerInfo.path + '">Read More</a></div>' +
       '</div>';
+  }
 }
 
 /**

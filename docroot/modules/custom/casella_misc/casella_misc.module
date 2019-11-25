@@ -118,7 +118,8 @@ function casella_misc_form_taxonomy_term_waste_categories_form_alter(&$form, \Dr
  * @param \Drupal\Core\Form\FormStateInterface $form_state
  */
 function casella_misc_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
-  if ("views-exposed-form-location-towns-page-1" == $form['#id']) {
+  if ("views-exposed-form-location-towns-page-1" == $form['#id'] ||
+      "views-exposed-form-location-towns-page-2" == $form['#id']) {
     $form['name']['#attributes']['placeholder'] = 'Search...';
     $form['#action'] = '';
   }
@@ -202,7 +203,7 @@ function casella_misc_form_contact_message_job_application_form_alter(&$form, \D
     array_push($job_cat_names, $term->getName());
   }
 
-  $form['field_job_category'] = array('#type' => 'hidden',  '#value' => implode("+", $job_cat_names));  
+  $form['field_job_category'] = array('#type' => 'hidden',  '#value' => implode("+", $job_cat_names));
 
 
   $form['field_job_title']['widget'][0]['value']['#default_value'] = $node->getTitle();
@@ -263,7 +264,7 @@ function casella_misc_form_contact_message_job_application_drivers_form_alter(&$
     array_push($job_cat_names, $term->getName());
   }
 
-  $form['field_job_category'] = array('#type' => 'hidden',  '#value' => implode("+", $job_cat_names));  
+  $form['field_job_category'] = array('#type' => 'hidden',  '#value' => implode("+", $job_cat_names));
 
   // $form['field_job_category']['widget'][0]['value']['#default_value'] = implode("+", $job_cat_names);
   $form['field_job_title']['widget'][0]['value']['#default_value'] = $node->getTitle();
@@ -311,11 +312,11 @@ function _casella_misc_form_contact_message_job_application_form_submit($form, \
   //  $url = \Drupal\Core\Url::fromRoute('entity.node.canonical', array('node' => $jobRef));
 
   //drupal_set_message($form_state->getValue('field_job_reference') );
- 
+
   $params = [
      'query' => ['job_reference' => $form_state->getValue('field_job_category')],
   ];
-   
+
   // Redirect to thank you with job refrence # for Google Analytics
   $form_state->setRedirectUrl(Url::fromUri('internal:' . '/job-application-thank-you', $params));
    //$form_state->setRedirectUrl($url);
@@ -540,7 +541,7 @@ function casella_misc_form_node_page_form_alter(&$form, \Drupal\Core\Form\FormSt
 function casella_misc_form_node_page_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
   // Remove a bunch of fields from the Our Locations page.
   $nodeParam = \Drupal::routeMatch()->getParameter('node');
-  if (2051 == $nodeParam->id()) {
+  if (2051 == $nodeParam->id() || 26501 == $nodeParam->id()) {
     foreach (array('body', 'field_2_column', 'field_full_width', 'field_logo', 'field_post_category', 'field_sidebar_promotions', 'field_slider_images', 'field_subsection', 'field_tabs') as $suppressionTarget) {
       $form[$suppressionTarget]['#access'] = FALSE;
     }
@@ -692,13 +693,15 @@ function casella_misc_entity_access(\Drupal\Core\Entity\EntityInterface $entity,
 }
 
 /**
- * Implements hook_block_build_alter() for views_block__locations_block_5.
+ * Implements hook_block_build_alter() for views_block__locations_block_5 and
+ * views_block__locations_block_10.
  * @param array $build
  * @param \Drupal\Core\Block\BlockPluginInterface $block
  */
 function casella_misc_block_build_views_block_alter(array &$build, \Drupal\Core\Block\BlockPluginInterface $block) {
   $config = $block->getConfiguration();
-  if (isset($config['id']) && 'views_block:locations-block_5' == $config['id']) {
+  if (isset($config['id']) && 'views_block:locations-block_5' == $config['id'] ||
+      isset($config['id']) && 'views_block:locations-block_10' == $config['id']) {
     // No caching for searches...
     // $build['#cache']['max-age'] = 0;
 
@@ -868,6 +871,12 @@ function casella_misc_node_view(array &$build, \Drupal\Core\Entity\EntityInterfa
   $node = \Drupal::entityTypeManager()
     ->getStorage('node')
     ->load($entity->id());
+
+  if (2051 == $node->id() || 26501 == $node->id()) {
+    foreach (array('body', 'field_2_column', 'field_full_width', 'field_logo', 'field_post_category', 'field_sidebar_promotions', 'field_slider_images', 'field_subsection', 'field_tabs') as $suppressionTarget) {
+      $build[$suppressionTarget]['#access'] = FALSE;
+    }
+  }
 
   // is this a vets career page (checkbox for admin)
   if ($node && $node->hasField('field_veterans_career_page')) {
