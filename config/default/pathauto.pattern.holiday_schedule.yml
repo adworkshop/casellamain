@@ -1,0 +1,22 @@
+uuid: 8d9d73c7-0344-473c-aa1f-31e4e2ace1fc
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: holiday_schedule
+label: 'Holiday Schedule'
+type: 'canonical_entities:node'
+pattern: '/locations/[node:title]/holiday-schedule'
+selection_criteria:
+  a8c60e00-67ad-4312-a9ac-ed33a65b1d4d:
+    id: node_type
+    bundles:
+      location: location
+    negate: false
+    context_mapping:
+      node: node
+    uuid: a8c60e00-67ad-4312-a9ac-ed33a65b1d4d
+selection_logic: and
+weight: -5
+relationships: {  }

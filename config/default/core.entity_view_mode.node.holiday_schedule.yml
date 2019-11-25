@@ -1,0 +1,10 @@
+uuid: 2f889f8d-785e-4a5b-9657-704ef391159e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.holiday_schedule
+label: 'Holiday Schedule'
+targetEntityType: node
+cache: true
