@@ -29,7 +29,7 @@
  * @see template_preprocess_views_view_fields()
  */
 #}
-
+fields.nid.content|render|striptags + 0: {{ dump(fields.nid.content|render|striptags + 0) }}
 {% set phone = fields.field_phone_number.content|render|striptags|trim %}
 {% set holiday_schedule = fields.field_holiday_schedule.content|render %}
 
@@ -56,7 +56,7 @@
     {% endif %}
 
     <div id="holidayScheduleWrapper">
-      {{ render_view('locations', 'block_1', 2791) }}
+      {{ render_view('locations', 'block_1', fields.nid.content|render|striptags + 0) }}
     </div>
 
     <div class="locationMap-listView-indListing-content-ctaContainer">
