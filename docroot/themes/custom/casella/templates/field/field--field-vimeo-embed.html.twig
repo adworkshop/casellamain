@@ -39,33 +39,33 @@
 
 {% if label_hidden %}
   {% if multiple %}
-  <div{{ attributes }}>
-    {% for item in items %}
-      <div{{ item.attributes }}>
-        <iframe id="ytplayer" type="text/html" width="640" height="480" src="https://www.youtube.com/embed/{{ item.content|render|striptags }}?autoplay=0&origin={{ siteUrl }}&rel=0" frameborder="0"></iframe>
-      </div>
-    {% endfor %}
+    <div{{ attributes }}>
+      {% for item in items %}
+        <div{{ item.attributes }}>
+          <iframe src="https://player.vimeo.com/video/{{ item.content|render|striptags }}" width="640" height="480" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+      {% endfor %}
     </div>
   {% else %}
     {% for item in items %}
       <div{{ attributes }}>
-        <iframe id="ytplayer" type="text/html" width="640" height="480" src="https://www.youtube.com/embed/{{ item.content|render|striptags }}?autoplay=0&origin={{ siteUrl }}&rel=0" frameborder="0"></iframe>
+        <iframe src="https://player.vimeo.com/video/{{ item.content|render|striptags }}" width="640" height="480" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
     {% endfor %}
   {% endif %}
 {% else %}
-<div{{ attributes }}>
-  <div{{ title_attributes }}>{{ label }}</div>
-  {% if multiple %}
-  <div>
-{% endif %}
-  {% for item in items %}
-  <div{{ item.attributes }}>
-    <iframe id="ytplayer" type="text/html" width="640" height="480" src="https://www.youtube.com/embed/{{ item.content|render|striptags }}?autoplay=0&origin={{ siteUrl }}&rel=0" frameborder="0"></iframe>
-  </div>
-{% endfor %}
-  {% if multiple %}
+  <div{{ attributes }}>
+    <div{{ title_attributes }}>{{ label }}</div>
+    {% if multiple %}
+    <div>
+      {% endif %}
+      {% for item in items %}
+        <div{{ item.attributes }}>
+          <iframe src="https://player.vimeo.com/video/{{ item.content|render|striptags }}" width="640" height="480" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+      {% endfor %}
+      {% if multiple %}
     </div>
-  {% endif %}
+    {% endif %}
   </div>
 {% endif %}
