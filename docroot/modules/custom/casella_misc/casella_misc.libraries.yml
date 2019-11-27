@@ -9,3 +9,8 @@ veterans-apply:
   version: 1.x
   js:
     js/veterans_apply.js: {}
+
+submit-on-click-autocomplete:
+  version: 1.x
+  js:
+    js/submit_on_click_autocomplete.js: {}

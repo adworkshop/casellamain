@@ -401,7 +401,49 @@ div.internal-mainBody-sidebarContainer div.indLocation-upperGrid-indElement-cont
   outline: 1px solid red;
 }
 
-/* Use to temporarily keep form container open */
-/*.job-indListing-formToggle-container {
-  display: block !important;
-}*/
+/* locationMapHolidaySchedule-container */
+.locationMapHolidaySchedule-container {
+  display:block; width:100%;
+}
+.locationMapHolidaySchedule-container .locationMap-pageCopy-container .internal-mainBody-featuredContent-container {
+  font-family: 'Droid Serif', serif;
+  font-size: 14px;
+  line-height: 1.7;
+  margin:0 0 50px;
+}
+.locationMapHolidaySchedule-container {
+  font-size:0;
+}
+.locationMapHolidaySchedule-container .locationMap-contentCol-container {
+  width: 100%;
+  padding: 50px 0;
+  margin: 0 auto;
+  display: block;
+}
+/*Centered Text*/
+.locationMapHolidaySchedule-container .center {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+.locationMapHolidaySchedule-container .locationMap-searchForm-container input[type="text"] {
+  width: 380px;
+  text-align: center;
+}
+.locationMapHolidaySchedule-container .locationMap-searchForm-container .icon {
+  right: unset;
+  margin-left: 220px
+}
+.locationMapHolidaySchedule-container {
+  font-family: 'Droid Serif', serif;
+  font-size: 14px;
+  line-height: 1.7;
+}
+table#holidaySchedule > tbody > tr > td,
+table#holidaySchedule > tbody > tr > th {
+  display: table-cell;
+  text-align: left;
+}
+.locationMapHolidaySchedule-container .locationMap-listView-container {
+  padding: 0 0 50px 0;
+}

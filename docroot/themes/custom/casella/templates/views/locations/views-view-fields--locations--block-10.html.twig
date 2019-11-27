@@ -31,18 +31,13 @@
 #}
 
 {% set phone = fields.field_phone_number.content|render|striptags|trim %}
+{% set holiday_schedule = fields.field_holiday_schedule.content|render %}
 
 <!--Ind List View Listing-->
 {# do this to solve the "transfer/drop-off niche case; we just want "transfer" #}
 {% set locationTypeClassArray = fields.field_location_category.content|render|striptags|lower|trim|split('/') %}
 {% set locationTypeClass = locationTypeClassArray[0] %}
 <div class="locationMap-listView-indListing-container {{ locationTypeClass }}">
-  <!--Associated Marker-->
-  <div class="locationMap-listView-indListing-marker-container">
-    <div class="locationMap-listView-indListing-marker"></div>
-    <div class="locationMap-listView-indListing-distance">{{ row.calc_distance|number_format(2, '.', ',') }} mi</div>
-  </div>
-  <!--END Associated Marker-->
 
   <!--Ind List Content-->
   <div class="locationMap-listView-indListing-content-container">
@@ -60,8 +55,12 @@
       </div>
     {% endif %}
 
+    <div id="holidayScheduleWrapper">
+      {{ render_view('locations', 'block_1', 2791) }}
+    </div>
+
     <div class="locationMap-listView-indListing-content-ctaContainer">
-      <a href="{{ fields.path.content|render|striptags }}/holiday-schedule" title="" class="locationMap-listView-indListing-content-learnMore-btn"><span class="fa fa-tags btnIconWrapper" aria-hidden="true"></span> Holiday Schedule</a>
+      <a href="{{ fields.path.content|render|striptags }}" title="" class="locationMap-listView-indListing-content-learnMore-btn"><span class="fa fa-tags btnIconWrapper" aria-hidden="true"></span> Learn More</a>
     </div>
   </div>
   <!--Ind List Content-->

@@ -402,8 +402,8 @@ display:
             remember: false
             multiple: false
             remember_roles:
+              anonymous: anonymous
               authenticated: authenticated
-              anonymous: '0'
               administrator: '0'
               client_admin: '0'
               organics: '0'
@@ -411,6 +411,8 @@ display:
               customer_care: '0'
               human_resources: '0'
               user_admin: '0'
+              recycle_better: '0'
+            placeholder: ''
             autocomplete_filter: 1
             autocomplete_min_chars: '0'
             autocomplete_items: '10'
@@ -513,6 +515,7 @@ display:
         filters: false
         filter_groups: false
         title: false
+        use_ajax: false
       filter_groups:
         operator: AND
         groups:
@@ -521,6 +524,7 @@ display:
       fields: {  }
       sorts: {  }
       title: 'Town Search Holiday Schedule'
+      use_ajax: true
     cache_metadata:
       max-age: -1
       contexts:

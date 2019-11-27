@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.body
     - field.storage.node.field_city
+    - field.storage.node.field_holiday_schedule
     - field.storage.node.field_latitude
     - field.storage.node.field_location_category
     - field.storage.node.field_longitude
@@ -21,6 +22,7 @@ dependencies:
     - node.type.page
   module:
     - datetime
+    - entity_reference_revisions
     - node
     - options
     - paragraphs
@@ -1430,6 +1432,69 @@ display:
           entity_type: node
           entity_field: nid
           plugin_id: field
+        field_holiday_schedule:
+          id: field_holiday_schedule
+          table: node__field_holiday_schedule
+          field: field_holiday_schedule
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_revisions_entity_view
+          settings:
+            view_mode: default
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
       defaults:
         fields: false
         filters: false
@@ -1440,6 +1505,7 @@ display:
         pager: false
         title: false
         cache: false
+        use_ajax: false
       filters:
         status:
           value: '1'
@@ -1492,6 +1558,45 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
+        field_location_category_value:
+          id: field_location_category_value
+          table: node__field_location_category
+          field: field_location_category_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            Hauling: Hauling
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          plugin_id: list_field
       filter_groups:
         operator: AND
         groups:
@@ -1540,12 +1645,13 @@ display:
       pager:
         type: some
         options:
-          items_per_page: 10
+          items_per_page: 1
           offset: 0
       title: 'Holiday Schedule Provider Map post search'
       cache:
         type: none
         options: {  }
+      use_ajax: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -1556,6 +1662,7 @@ display:
       tags:
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_city'
+        - 'config:field.storage.node.field_holiday_schedule'
         - 'config:field.storage.node.field_latitude'
         - 'config:field.storage.node.field_location_category'
         - 'config:field.storage.node.field_longitude'
