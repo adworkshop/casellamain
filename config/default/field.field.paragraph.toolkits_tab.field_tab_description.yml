@@ -1,14 +1,14 @@
-uuid: c725c5ad-a097-4f97-9a35-4f94f9571563
+uuid: 3042dc62-5ff9-4d5d-a2fe-7cb9bdc59837
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_tab_description
-    - paragraphs.paragraphs_type.faqs_tab
-id: paragraph.faqs_tab.field_tab_description
+    - paragraphs.paragraphs_type.toolkits_tab
+id: paragraph.toolkits_tab.field_tab_description
 field_name: field_tab_description
 entity_type: paragraph
-bundle: faqs_tab
+bundle: toolkits_tab
 label: 'Tab Description'
 description: ''
 required: false

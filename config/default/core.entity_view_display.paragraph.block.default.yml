@@ -1,0 +1,48 @@
+uuid: 5a8ce2fd-c4eb-4ea2-b019-edfee5eda67b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.block.field_block_reference
+    - field.field.paragraph.block.field_tab_anchor
+    - field.field.paragraph.block.field_tab_description
+    - field.field.paragraph.block.field_tab_title
+    - paragraphs.paragraphs_type.block
+id: paragraph.block.default
+targetEntityType: paragraph
+bundle: block
+mode: default
+content:
+  field_block_reference:
+    weight: 3
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_tab_anchor:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_tab_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_tab_title:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

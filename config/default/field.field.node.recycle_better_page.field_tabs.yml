@@ -6,9 +6,11 @@ dependencies:
     - field.storage.node.field_tabs
     - node.type.recycle_better_page
     - paragraphs.paragraphs_type.basics
+    - paragraphs.paragraphs_type.block
     - paragraphs.paragraphs_type.calculator
-    - paragraphs.paragraphs_type.faqs_tab
     - paragraphs.paragraphs_type.resources
+    - paragraphs.paragraphs_type.toolkits_tab
+    - paragraphs.paragraphs_type.videos_tab
   module:
     - entity_reference_revisions
 id: node.recycle_better_page.field_tabs
@@ -26,10 +28,12 @@ settings:
   handler_settings:
     negate: 0
     target_bundles:
-      faqs_tab: faqs_tab
       basics: basics
       calculator: calculator
+      toolkits_tab: toolkits_tab
+      block: block
       resources: resources
+      videos_tab: videos_tab
     target_bundles_drag_drop:
       block_link_with_icon:
         weight: 28
@@ -47,8 +51,8 @@ settings:
         weight: 32
         enabled: false
       faqs_tab:
-        enabled: true
         weight: 33
+        enabled: false
       faq_question:
         weight: 33
         enabled: false
@@ -94,19 +98,25 @@ settings:
       products:
         weight: 44
         enabled: false
+      toolkits_tab:
+        enabled: true
+        weight: 45
       recommendation:
         weight: 45
         enabled: false
-      services:
+      block:
+        enabled: true
         weight: 46
-        enabled: false
-      slider_image:
+      services:
         weight: 47
         enabled: false
-      social_link:
+      slider_image:
         weight: 48
         enabled: false
       solution_resource:
+        weight: 49
+        enabled: false
+      social_link:
         weight: 49
         enabled: false
       fa_link_with_pdf:
@@ -118,34 +128,43 @@ settings:
       upper_button:
         weight: 51
         enabled: false
-      vertical:
+      employer:
         weight: 52
         enabled: false
-      video:
+      vertical:
         weight: 53
         enabled: false
-      waste_category:
+      video:
         weight: 54
         enabled: false
-      resources:
-        enabled: true
+      waste_category:
         weight: 61
+        enabled: false
       resource_tips:
         weight: 62
         enabled: false
+      resources:
+        enabled: true
+        weight: 62
       resource_toolkit_button:
         weight: 63
         enabled: false
       resource_videos:
         weight: 64
         enabled: false
-      search_items:
+      licenses:
         weight: 65
         enabled: false
-      sidebar_panel:
+      search_items:
         weight: 67
+        enabled: false
+      sidebar_panel:
+        weight: 72
         enabled: false
       two_column_panel:
         weight: 72
         enabled: false
+      videos_tab:
+        enabled: true
+        weight: 85
 field_type: entity_reference_revisions

@@ -1,0 +1,19 @@
+uuid: 802b20f1-2b6d-4d18-a849-9197ac976c2c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tab_description
+    - paragraphs.paragraphs_type.block
+id: paragraph.block.field_tab_description
+field_name: field_tab_description
+entity_type: paragraph
+bundle: block
+label: 'Tab Description'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,31 +1,38 @@
-uuid: 3c5f10fb-731a-4624-8eac-e0e63656c3a7
+uuid: 88671770-cf6e-4956-b81e-6f9e93115036
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.faqs_tab.field_faqs
-    - field.field.paragraph.faqs_tab.field_tab_anchor
-    - field.field.paragraph.faqs_tab.field_tab_description
-    - field.field.paragraph.faqs_tab.field_tab_title
-    - paragraphs.paragraphs_type.faqs_tab
+    - field.field.paragraph.toolkits_tab.field_resource_panel_toolkit
+    - field.field.paragraph.toolkits_tab.field_tab_anchor
+    - field.field.paragraph.toolkits_tab.field_tab_description
+    - field.field.paragraph.toolkits_tab.field_tab_title
+    - paragraphs.paragraphs_type.toolkits_tab
   module:
     - paragraphs
-id: paragraph.faqs_tab.default
+id: paragraph.toolkits_tab.default
 targetEntityType: paragraph
-bundle: faqs_tab
+bundle: toolkits_tab
 mode: default
 content:
-  field_faqs:
-    type: entity_reference_paragraphs
-    weight: 4
+  field_resource_panel_toolkit:
+    weight: 3
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: open
-      add_mode: dropdown
+      closed_mode: preview
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: button
       form_display_mode: default
-      default_paragraph_type: ''
+      default_paragraph_type: fa_link_with_pdf
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
+        add_above: '0'
     third_party_settings: {  }
+    type: paragraphs
     region: content
   field_tab_anchor:
     weight: 0
@@ -54,4 +61,3 @@ content:
 hidden:
   created: true
   status: true
-  uid: true

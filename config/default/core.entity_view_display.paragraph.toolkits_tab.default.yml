@@ -1,32 +1,32 @@
-uuid: 69e0a1e6-87a6-427a-9c35-19a3161f3ca2
+uuid: 05a6c506-4abf-489b-afd8-732d792504d7
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.faqs_tab.field_faqs
-    - field.field.paragraph.faqs_tab.field_tab_anchor
-    - field.field.paragraph.faqs_tab.field_tab_description
-    - field.field.paragraph.faqs_tab.field_tab_title
-    - paragraphs.paragraphs_type.faqs_tab
+    - field.field.paragraph.toolkits_tab.field_resource_panel_toolkit
+    - field.field.paragraph.toolkits_tab.field_tab_anchor
+    - field.field.paragraph.toolkits_tab.field_tab_description
+    - field.field.paragraph.toolkits_tab.field_tab_title
+    - paragraphs.paragraphs_type.toolkits_tab
   module:
     - entity_reference_revisions
-id: paragraph.faqs_tab.default
+id: paragraph.toolkits_tab.default
 targetEntityType: paragraph
-bundle: faqs_tab
+bundle: toolkits_tab
 mode: default
 content:
-  field_faqs:
-    type: entity_reference_revisions_entity_view
-    weight: 4
-    label: hidden
+  field_resource_panel_toolkit:
+    weight: 3
+    label: above
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
     region: content
   field_tab_anchor:
     weight: 0
-    label: hidden
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
@@ -34,14 +34,14 @@ content:
     region: content
   field_tab_description:
     weight: 2
-    label: hidden
+    label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
     region: content
   field_tab_title:
     weight: 1
-    label: hidden
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }

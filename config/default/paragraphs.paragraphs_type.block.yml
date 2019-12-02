@@ -1,9 +1,9 @@
-uuid: 6e1b57e6-6ffc-4d25-b05e-aac5cba08483
+uuid: 393cfb9b-6a7c-4693-9956-8a5ee07154cb
 langcode: en
 status: true
 dependencies: {  }
-id: calculator
-label: 'Calculator Tab'
+id: block
+label: 'Block Tab'
 icon_uuid: null
 description: ''
 behavior_plugins: {  }

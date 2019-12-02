@@ -1,0 +1,19 @@
+uuid: b6907c29-31fd-48c0-8d89-ccc6de741c4a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tab_anchor
+    - paragraphs.paragraphs_type.block
+id: paragraph.block.field_tab_anchor
+field_name: field_tab_anchor
+entity_type: paragraph
+bundle: block
+label: 'Tab Anchor'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

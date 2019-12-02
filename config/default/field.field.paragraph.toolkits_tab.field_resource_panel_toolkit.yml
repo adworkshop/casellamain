@@ -1,0 +1,160 @@
+uuid: 9b12dfcb-9d0d-47e4-adf3-896ca17bacc7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_resource_panel_toolkit
+    - paragraphs.paragraphs_type.fa_link_with_pdf
+    - paragraphs.paragraphs_type.toolkits_tab
+  module:
+    - entity_reference_revisions
+id: paragraph.toolkits_tab.field_resource_panel_toolkit
+field_name: field_resource_panel_toolkit
+entity_type: paragraph
+bundle: toolkits_tab
+label: 'Resource Panel Toolkit'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      fa_link_with_pdf: fa_link_with_pdf
+    target_bundles_drag_drop:
+      toolkits_tab:
+        weight: 45
+        enabled: false
+      basics:
+        weight: 46
+        enabled: false
+      bin_comparison_fields:
+        weight: 47
+        enabled: false
+      block:
+        weight: 48
+        enabled: false
+      block_link_with_icon:
+        weight: 49
+        enabled: false
+      calculator:
+        weight: 50
+        enabled: false
+      case_studies:
+        weight: 51
+        enabled: false
+      content_chunk:
+        weight: 52
+        enabled: false
+      earthlink_link:
+        weight: 53
+        enabled: false
+      employer:
+        weight: 54
+        enabled: false
+      fa_link_with_icon:
+        weight: 55
+        enabled: false
+      fa_link_with_pdf:
+        enabled: true
+        weight: 56
+      faq_category:
+        weight: 57
+        enabled: false
+      faq_question:
+        weight: 58
+        enabled: false
+      faqs_tab:
+        weight: 59
+        enabled: false
+      free_form:
+        weight: 60
+        enabled: false
+      holiday:
+        weight: 61
+        enabled: false
+      image_gallery:
+        weight: 62
+        enabled: false
+      image_with_caption:
+        weight: 63
+        enabled: false
+      inline_image:
+        weight: 64
+        enabled: false
+      inline_video:
+        weight: 65
+        enabled: false
+      large_promotion:
+        weight: 66
+        enabled: false
+      licenses:
+        weight: 67
+        enabled: false
+      link_with_icon:
+        weight: 68
+        enabled: false
+      organics_updates:
+        weight: 69
+        enabled: false
+      products:
+        weight: 70
+        enabled: false
+      recommendation:
+        weight: 71
+        enabled: false
+      resource_tips:
+        weight: 72
+        enabled: false
+      resource_toolkit_button:
+        weight: 73
+        enabled: false
+      resource_videos:
+        weight: 74
+        enabled: false
+      resources:
+        weight: 75
+        enabled: false
+      search_items:
+        weight: 76
+        enabled: false
+      services:
+        weight: 77
+        enabled: false
+      sidebar_panel:
+        weight: 78
+        enabled: false
+      slider_image:
+        weight: 79
+        enabled: false
+      social_link:
+        weight: 80
+        enabled: false
+      solution_resource:
+        weight: 81
+        enabled: false
+      testimonials:
+        weight: 82
+        enabled: false
+      two_column_panel:
+        weight: 83
+        enabled: false
+      upper_button:
+        weight: 84
+        enabled: false
+      vertical:
+        weight: 85
+        enabled: false
+      video:
+        weight: 86
+        enabled: false
+      videos_tab:
+        weight: 87
+        enabled: false
+      waste_category:
+        weight: 88
+        enabled: false
+field_type: entity_reference_revisions

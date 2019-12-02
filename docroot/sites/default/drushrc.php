@@ -1,2 +1,2 @@
 <?php
-$options['uri'] = "http://casella.lndo.site:8000";
+$options['uri'] = "https://casella.lndo.site";

@@ -1,14 +1,14 @@
-uuid: fac344ca-b298-43b7-aabd-6231bb5a2345
+uuid: b4deeadd-cc6d-434a-8f8e-8609925a69dc
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_tab_title
-    - paragraphs.paragraphs_type.faqs_tab
-id: paragraph.faqs_tab.field_tab_title
+    - paragraphs.paragraphs_type.videos_tab
+id: paragraph.videos_tab.field_tab_title
 field_name: field_tab_title
 entity_type: paragraph
-bundle: faqs_tab
+bundle: videos_tab
 label: 'Tab Title'
 description: ''
 required: false
