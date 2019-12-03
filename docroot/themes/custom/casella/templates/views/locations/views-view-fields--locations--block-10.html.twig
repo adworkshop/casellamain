@@ -43,17 +43,6 @@
     <div class="locationMap-listView-indListing-content-title">{{ fields.title.content }}</div>
     {{ fields.body.content }}
 
-    {% if builtAddress or phone %}
-      <div class="locationMap-listView-indListing-content-meta">
-        {% if builtAddress %}
-          <div class="locationMap-listView-indListing-content-address"><span class="fa fa-map-marker btnIconWrapper" aria-hidden="true"></span>{{ builtAddress }}</div>
-        {% endif %}
-        {% if phone %}
-          <div class="locationMap-listView-indListing-content-phone"><span class="fa fa-phone btnIconWrapper" aria-hidden="true"></span>{{ phone }}</div>
-        {% endif %}
-      </div>
-    {% endif %}
-
     <div id="holidayScheduleWrapper">
       {{ render_view('locations', 'block_1', fields.nid.content|render|striptags + 0) }}
     </div>
