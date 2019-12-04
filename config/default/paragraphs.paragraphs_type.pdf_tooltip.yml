@@ -1,0 +1,9 @@
+uuid: e7949a0a-9883-4923-b6eb-efa8cdd129ab
+langcode: en
+status: true
+dependencies: {  }
+id: pdf_tooltip
+label: 'PDF tooltip'
+icon_uuid: null
+description: 'PDF link with image and description that will be displayed as a link with a tooltip containing image ans description.'
+behavior_plugins: {  }

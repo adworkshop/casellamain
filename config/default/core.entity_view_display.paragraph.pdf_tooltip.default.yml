@@ -1,0 +1,47 @@
+uuid: c2814745-36cb-43b1-96aa-e3d68990e060
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.pdf_tooltip.field_content_area
+    - field.field.paragraph.pdf_tooltip.field_image
+    - field.field.paragraph.pdf_tooltip.field_link
+    - paragraphs.paragraphs_type.pdf_tooltip
+  module:
+    - image
+    - link
+    - text
+id: paragraph.pdf_tooltip.default
+targetEntityType: paragraph
+bundle: pdf_tooltip
+mode: default
+content:
+  field_content_area:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_image:
+    weight: 1
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_link:
+    weight: 0
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+hidden: {  }

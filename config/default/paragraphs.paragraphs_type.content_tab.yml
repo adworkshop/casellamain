@@ -1,0 +1,9 @@
+uuid: 88b060d7-79e0-4dbe-81d0-6ca12a937d15
+langcode: en
+status: true
+dependencies: {  }
+id: content_tab
+label: 'PDF Links Tab'
+icon_uuid: null
+description: 'PDF links with tooltips.'
+behavior_plugins: {  }

@@ -1,0 +1,21 @@
+uuid: d9ada0c7-8755-46d8-95c4-e7816fa72f8e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content_area
+    - paragraphs.paragraphs_type.pdf_tooltip
+  module:
+    - text
+id: paragraph.pdf_tooltip.field_content_area
+field_name: field_content_area
+entity_type: paragraph
+bundle: pdf_tooltip
+label: 'PDF Description'
+description: 'Description of the PDF content.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

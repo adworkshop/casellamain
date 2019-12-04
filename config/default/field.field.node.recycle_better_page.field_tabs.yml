@@ -8,6 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.basics
     - paragraphs.paragraphs_type.block
     - paragraphs.paragraphs_type.calculator
+    - paragraphs.paragraphs_type.content_tab
     - paragraphs.paragraphs_type.resources
     - paragraphs.paragraphs_type.toolkits_tab
     - paragraphs.paragraphs_type.videos_tab
@@ -19,7 +20,7 @@ entity_type: node
 bundle: recycle_better_page
 label: Tabs
 description: ''
-required: false
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''
@@ -31,6 +32,7 @@ settings:
       basics: basics
       calculator: calculator
       toolkits_tab: toolkits_tab
+      content_tab: content_tab
       block: block
       resources: resources
       videos_tab: videos_tab
@@ -50,9 +52,6 @@ settings:
       faq_category:
         weight: 32
         enabled: false
-      faqs_tab:
-        weight: 33
-        enabled: false
       faq_question:
         weight: 33
         enabled: false
@@ -71,16 +70,16 @@ settings:
       image_with_caption:
         weight: 38
         enabled: false
-      basics:
-        enabled: true
-        weight: 39
       inline_image:
         weight: 39
         enabled: false
-      bin_comparison_fields:
+      basics:
+        enabled: true
+        weight: 39
+      inline_video:
         weight: 40
         enabled: false
-      inline_video:
+      bin_comparison_fields:
         weight: 40
         enabled: false
       large_promotion:
@@ -89,21 +88,24 @@ settings:
       link_with_icon:
         weight: 42
         enabled: false
-      calculator:
-        enabled: true
-        weight: 43
       organics_updates:
         weight: 43
         enabled: false
+      calculator:
+        enabled: true
+        weight: 43
       products:
         weight: 44
+        enabled: false
+      recommendation:
+        weight: 45
         enabled: false
       toolkits_tab:
         enabled: true
         weight: 45
-      recommendation:
+      content_tab:
+        enabled: true
         weight: 45
-        enabled: false
       block:
         enabled: true
         weight: 46
@@ -113,10 +115,10 @@ settings:
       slider_image:
         weight: 48
         enabled: false
-      solution_resource:
+      social_link:
         weight: 49
         enabled: false
-      social_link:
+      solution_resource:
         weight: 49
         enabled: false
       fa_link_with_pdf:
