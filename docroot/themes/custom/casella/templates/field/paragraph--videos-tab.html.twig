@@ -1,0 +1,22 @@
+{#
+{% set content_keys = content|keys %}
+content_keys: {{ dump(content_keys) }}
+#}
+<div class="internal-indInteractivePanelContainer">
+  <div class="internal-mainBody-container">
+    <div class="internal-indInteractivePanelContainer">
+      <div class="internal-mainBody-layoutContainer">
+        <div class="internal-mainBody-contentContainer">
+          <div class="internal-mainBody-generalTxt-container">
+            <p>{{ content.field_tab_description }}</p>
+            <h2 id="videos" class="internal-page-anchor-offset">Videos</h2>
+            <p>{{ content.field_resource_panel_video_descr }}</p>
+            <div class="videos-listings-group">
+              {{ content.field_resource_panel_video }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

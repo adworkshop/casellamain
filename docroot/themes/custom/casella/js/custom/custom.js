@@ -234,6 +234,22 @@ jQuery(window).scroll(function(){
   }
 });
 
+function openOverlay(element) {
+  jQuery('.hovered').removeClass('hovered');
+  jQuery(element).parent().addClass('hovered');
+  jQuery(document).click(function(e) {
+    if (!jQuery(e.target).parent().hasClass('hovered')) {
+      jQuery(element).parent().removeClass('hovered');
+      jQuery(document).unbind( "click" );
+      return false;
+    }
+    jQuery(element).parent().removeClass('hovered');
+    jQuery(document).unbind( "click" );
+    return true;
+  });
+  return true;
+}
+
 function initLocationHandlers() {
   jQuery('.holidayPanelTrigger').click(function() {
     jQuery('.indLocation-holidayPanel').slideToggle('slow');

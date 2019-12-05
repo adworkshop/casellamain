@@ -447,3 +447,39 @@ table#holidaySchedule > tbody > tr > th {
 .locationMapHolidaySchedule-container .locationMap-listView-container {
   padding: 0 0 50px 0;
 }
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltip-hover-content {
+  visibility: hidden;
+  width: 120px;
+  background-color: white;
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+  z-index: 99999;
+}
+
+.tooltip-content {
+  max-width: 450px;
+  max-height: 700px;
+  width: 80%;
+  line-height: 200px;
+  position: absolute;
+  top: -200px;
+  right: -250px;
+  background-color: #f1c40f;
+  border-radius: 5px;
+  text-align: center;
+  z-index: 100000; /* 1px higher than the overlay layer */
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip.hovered .tooltip-hover-content {
+  visibility: visible;
+}

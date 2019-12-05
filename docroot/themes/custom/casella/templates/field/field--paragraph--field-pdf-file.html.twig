@@ -1,0 +1,26 @@
+{% for item in items %}
+  <div{{ item.attributes }} class="internal-mainBody-featuredContent-container">
+    {% set uri = item.content['#paragraph'].field_link.0.uri %}
+    {% set title = item.content['#paragraph'].field_link.0.title %}
+    {% set field_image = item.content['#paragraph'].field_image %}
+    {% set field_content_area = item.content['#paragraph'].field_content_area %}
+
+    <div class="tooltip">
+      {% if uri starts with 'http' %}
+        <a class="toto" href="{{ uri }}" target="_blank" onmouseover="openOverlay(this);">{{ title }}</a>
+      {% elseif uri starts with 'internal:' %}
+        <a class="toto" href="{{ uri|slice(9) }}" target="_blank" onmouseover="openOverlay(this);">{{ title }}</a>
+      {% endif %}
+
+      <div class="tooltip-hover-content">
+        <div class="tooltip-content">
+          <div class="tooltip-image">
+            {{ drupal_image(field_image.0.value.target_id) }}
+          </div>
+          {{ field_content_area.0.value|raw }}
+        </div>
+      </div>
+    </div>
+
+  </div>
+{% endfor %}

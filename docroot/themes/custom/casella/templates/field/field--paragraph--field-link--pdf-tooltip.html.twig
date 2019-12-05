@@ -1,0 +1,11 @@
+{% for item in items %}
+  <div{{ item.attributes }} class="internal-mainBody-featuredContent-container">
+    <p>
+      {% if item.content['#url'].uri starts with 'http' %}
+        <a href="{{ item.content['#url'].uri }}" target="_blank">{{ item.content['#title'] }}</a>
+      {% elseif item.content['#url'].uri starts with 'base:' %}
+        {{ drupal_link(item.content['#title']|t, item.content['#url'].uri|slice(5), {attributes: {target: '_blank'}}) }}
+      {% endif %}
+    </p>
+  </div>
+{% endfor %}

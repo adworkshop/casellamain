@@ -455,6 +455,14 @@ Author URI: http://www.adworkshop.com
   .form-checkboxes--gridded .form-item {margin: 4px 0;}
   .form-actions--half-left, .form-actions--half-right, .form-actions--third-left, .form-actions--third-middle, .form-actions--third-right {margin: 0 0 25px 0;}
 
+  /*Videos Listings*/
+  .videos-listings-group {display: table; width: 100%; table-layout: fixed; margin: 0 0 50px 0; padding: 0 0 50px 0; border-bottom: 2px solid #f3f3f3;}
+  .videos-listings-group .resources-listing {display: table-cell; width: 50%; margin: 0; padding: 0; border-bottom: none; vertical-align: top;}
+  .videos-listings-group .resources-listing.is-video-listing {display: block; width: 100%; margin-bottom: 50px; padding-bottom: 50px; border-bottom: 2px solid #f3f3f3;}
+  .videos-listings-group .resources-listing.is-video-listing:last-of-type{margin-bottom: 0; padding-bottom: 0; border-bottom: none}
+  .videos-listings-group .resources-listing:nth-child(1) {border-right: 1px solid #fff;}
+  .videos-listings-group .resources-listing:nth-child(2) {border-left: 1px solid #fff;}
+
 }
 
 @media all and (min-width: 1024px) {
