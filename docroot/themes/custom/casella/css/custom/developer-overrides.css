@@ -448,38 +448,63 @@ table#holidaySchedule > tbody > tr > th {
   padding: 0 0 50px 0;
 }
 
-/* Tooltip container */
-.tooltip {
+.internal-mainBody-featuredContent-container .internal-mainBody-featuredContent-container__inner {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.internal-mainBody-featuredContent-container .image,
+.internal-mainBody-featuredContent-container .content {
+  flex: 1 1 100%;
+}
+
+.internal-mainBody-featuredContent-container .image{
   position: relative;
-  display: inline-block;
+  background: #eee;
 }
 
-/* Tooltip text */
-.tooltip .tooltip-hover-content {
-  visibility: hidden;
-  width: 120px;
-  background-color: white;
-  text-align: center;
-  padding: 5px;
-  border-radius: 6px;
-  z-index: 99999;
+.internal-mainBody-featuredContent-container .image__inner {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  padding: 0;
 }
 
-.tooltip-content {
-  max-width: 450px;
-  max-height: 700px;
-  width: 80%;
-  line-height: 200px;
+.internal-mainBody-featuredContent-container .image img {
   position: absolute;
-  top: -200px;
-  right: -250px;
-  background-color: #f1c40f;
-  border-radius: 5px;
-  text-align: center;
-  z-index: 100000; /* 1px higher than the overlay layer */
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  display: block;
+  object-fit: cover;
 }
 
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip.hovered .tooltip-hover-content {
-  visibility: visible;
+.internal-mainBody-featuredContent-container .content {
+  width: 100%;
+  padding: 30px;
+}
+.internal-mainBody-featuredContent-container .content .fa-file-pdf-o {
+  font-size: 55px;
+  margin-top: 30px;
+}
+
+@media all and (min-width: 960px) {
+
+  .internal-mainBody-featuredContent-container .image__inner {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 0 0 100% 0;
+  }
+
+  .internal-mainBody-featuredContent-container .content,
+  .internal-mainBody-featuredContent-container .image {
+    flex: 1 1 50%;
+  }
+
+  .internal-mainBody-featuredContent-container .image {
+    flex: 1 1 auto;
+  }
 }
