@@ -1,4 +1,4 @@
-uuid: 6db8241e-0cbe-422e-90f8-d858b4c1baea
+uuid: 8f6f9457-40f7-44bb-8aa3-8cd7db3af69f
 langcode: en
 status: true
 dependencies:
@@ -9,48 +9,42 @@ dependencies:
     - field.field.paragraph.content_tab.field_tab_title
     - paragraphs.paragraphs_type.content_tab
   module:
-    - paragraphs
+    - entity_reference_revisions
 id: paragraph.content_tab.default
 targetEntityType: paragraph
 bundle: content_tab
 mode: default
 content:
   field_pdf_file:
-    type: entity_reference_paragraphs
+    type: entity_reference_revisions_entity_view
     weight: 4
+    label: hidden
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: open
-      add_mode: dropdown
-      form_display_mode: default
-      default_paragraph_type: ''
+      view_mode: default
+      link: ''
     third_party_settings: {  }
     region: content
   field_tab_anchor:
     weight: 1
+    label: hidden
     settings:
-      size: 60
-      placeholder: ''
+      link_to_entity: false
     third_party_settings: {  }
-    type: string_textfield
+    type: string
     region: content
   field_tab_description:
     weight: 3
-    settings:
-      rows: 5
-      placeholder: ''
+    label: hidden
+    settings: {  }
     third_party_settings: {  }
-    type: string_textarea
+    type: basic_string
     region: content
   field_tab_title:
     weight: 2
+    label: hidden
     settings:
-      size: 60
-      placeholder: ''
+      link_to_entity: false
     third_party_settings: {  }
-    type: string_textfield
+    type: string
     region: content
-hidden:
-  created: true
-  status: true
+hidden: {  }
