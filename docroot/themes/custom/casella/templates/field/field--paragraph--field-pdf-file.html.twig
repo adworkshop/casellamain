@@ -3,15 +3,14 @@
   {% set title = item.content['#paragraph'].field_link.0.title %}
   {% set field_image = item.content['#paragraph'].field_image %}
   {% set field_content_area = item.content['#paragraph'].field_content_area %}
-  <div class="internal-mainBody-featuredContent-container">
+  <div class="internal-mainBody-featuredContent-container field-pdf-file">
     <div class = "internal-mainBody-featuredContent-container__inner">
       <div class="image">
         <div class = "image__inner">
           {% if uri starts with 'http' %}
-            <a href="{{ uri }}" target="_blank">{{ drupal_image(field_image.0.value.target_id, 'max_400') }}</a>
-
+            <a href="{{ uri }}" target="_blank">{{ drupal_image(field_image.0.value.target_id, 'medium') }}</a>
           {% elseif uri starts with 'internal:' %}
-            <a href="{{ uri|slice(9) }}" target="_blank">{{ drupal_image(field_image.0.value.target_id, 'max_400') }}</a>
+            <a href="{{ uri|slice(9) }}" target="_blank">{{ drupal_image(field_image.0.value.target_id, 'medium') }}</a>
           {% endif %}
         </div>
       </div>
