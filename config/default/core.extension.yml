@@ -29,7 +29,6 @@ module:
   ctools: 0
   datetime: 0
   dblog: 0
-  devel_entity_update: 0
   diff: 0
   draggableviews: 0
   dynamic_page_cache: 0
