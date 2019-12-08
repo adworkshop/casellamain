@@ -1,0 +1,24 @@
+{%
+  set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  'featured-btnRow-IndBtn-container'
+]
+%}
+<div{{ attributes.addClass(classes) }}>
+  <div class="featured-btnRow-IndBtn-innerContainer">
+    <div class="featured-btnRow-IndBtn-wrapper">
+      <div class="field_modal_pdf" data-modal-title="{{ button_title }}">
+        <h3>{{ pdf_title }}</h3>
+        <p>{{ pdf_description }}</p>
+        {{ content.field_pdf_tooltip }}
+      </div>
+      <a data-modal-open>
+        <div class="featured-btnRow-IndBtn-icon"><span class="{{ link_class }}" aria-hidden="true"></span></div>
+        <div class="featured-btnRow-IndBtn-title">{{ button_title }}</div>
+      </a>
+    </div>
+  </div>
+</div>
+
