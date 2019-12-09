@@ -509,5 +509,6 @@ table#holidaySchedule > tbody > tr > th {
 
   .internal-mainBody-featuredContent-container.field-pdf-file .image {
     flex: 0 1 auto;
+    margin: 0;
   }
 }
