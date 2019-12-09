@@ -12,7 +12,7 @@ dependencies:
 id: exposedformlocation_townspage_1__town_search
 theme: casella
 region: node_content
-weight: -4
+weight: -21
 provider: null
 plugin: 'views_exposed_filter_block:location_towns-page_1'
 settings:

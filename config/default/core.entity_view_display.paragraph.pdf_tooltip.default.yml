@@ -18,14 +18,14 @@ mode: default
 content:
   field_content_area:
     weight: 2
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_image:
     weight: 1
-    label: above
+    label: hidden
     settings:
       image_style: ''
       image_link: ''
@@ -34,13 +34,13 @@ content:
     region: content
   field_link:
     weight: 0
-    label: above
+    label: hidden
     settings:
       trim_length: 80
+      target: _blank
       url_only: false
       url_plain: false
-      rel: ''
-      target: ''
+      rel: '0'
     third_party_settings: {  }
     type: link
     region: content

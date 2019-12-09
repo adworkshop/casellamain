@@ -1,0 +1,9 @@
+uuid: ebc0760b-9482-4103-9c7a-3ef8b8d3becc
+langcode: en
+status: true
+dependencies: {  }
+id: dos_and_donts_section
+label: 'Dos and Donts section'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,9 @@
+uuid: 957ddf24-d929-42ee-86a0-ad3117f03808
+langcode: en
+status: true
+dependencies: {  }
+id: fa_link_with_pdf_tooltip
+label: 'FA Link with PDF Tooltip'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

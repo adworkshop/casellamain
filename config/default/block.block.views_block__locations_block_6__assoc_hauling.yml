@@ -12,7 +12,7 @@ dependencies:
 id: views_block__locations_block_6__assoc_hauling
 theme: casella
 region: node_content
-weight: 0
+weight: -15
 provider: null
 plugin: 'views_block:locations-block_6'
 settings:

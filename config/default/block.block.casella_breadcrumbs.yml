@@ -11,7 +11,7 @@ _core:
 id: casella_breadcrumbs
 theme: casella
 region: node_content
-weight: -11
+weight: -24
 provider: null
 plugin: system_breadcrumb_block
 settings:

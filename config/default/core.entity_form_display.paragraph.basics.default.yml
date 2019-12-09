@@ -4,8 +4,9 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.basics.field_bin_comparisons
-    - field.field.paragraph.basics.field_recycle_items
+    - field.field.paragraph.basics.field_dos_and_donts_section
     - field.field.paragraph.basics.field_recycle_sidebar_items
+    - field.field.paragraph.basics.field_sidebar_section_title
     - field.field.paragraph.basics.field_tab_anchor
     - field.field.paragraph.basics.field_tab_description
     - field.field.paragraph.basics.field_tab_title
@@ -19,6 +20,30 @@ mode: default
 content:
   field_bin_comparisons:
     type: entity_reference_paragraphs
+    weight: 6
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_dos_and_donts_section:
+    type: entity_reference_paragraphs
+    weight: 3
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: dos_and_donts_section
+    third_party_settings: {  }
+    region: content
+  field_recycle_sidebar_items:
+    type: entity_reference_paragraphs
     weight: 5
     settings:
       title: Paragraph
@@ -29,29 +54,13 @@ content:
       default_paragraph_type: ''
     third_party_settings: {  }
     region: content
-  field_recycle_items:
-    type: entity_reference_paragraphs
-    weight: 3
-    settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: open
-      add_mode: dropdown
-      form_display_mode: default
-      default_paragraph_type: ''
-    third_party_settings: {  }
-    region: content
-  field_recycle_sidebar_items:
-    type: entity_reference_paragraphs
+  field_sidebar_section_title:
     weight: 4
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: open
-      add_mode: dropdown
-      form_display_mode: default
-      default_paragraph_type: ''
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
+    type: string_textfield
     region: content
   field_tab_anchor:
     weight: 0

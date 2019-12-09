@@ -12,7 +12,7 @@ dependencies:
 id: views_block__locations_block_5__post_search
 theme: casella
 region: node_middle_content
-weight: -21
+weight: -24
 provider: null
 plugin: 'views_block:locations-block_5'
 settings:

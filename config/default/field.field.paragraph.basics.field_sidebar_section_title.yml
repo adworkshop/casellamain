@@ -1,0 +1,19 @@
+uuid: 266ce7ac-28ce-432a-a705-f62e06384a4e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_sidebar_section_title
+    - paragraphs.paragraphs_type.basics
+id: paragraph.basics.field_sidebar_section_title
+field_name: field_sidebar_section_title
+entity_type: paragraph
+bundle: basics
+label: 'Sidebar Section Title'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

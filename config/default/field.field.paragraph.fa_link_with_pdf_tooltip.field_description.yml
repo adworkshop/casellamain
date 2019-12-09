@@ -1,0 +1,19 @@
+uuid: bba928cd-ce3a-412b-844c-946acac0817e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description
+    - paragraphs.paragraphs_type.fa_link_with_pdf_tooltip
+id: paragraph.fa_link_with_pdf_tooltip.field_description
+field_name: field_description
+entity_type: paragraph
+bundle: fa_link_with_pdf_tooltip
+label: 'PDF Tookit Description'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

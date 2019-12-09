@@ -12,7 +12,7 @@ dependencies:
 id: views_block__locations_block_1__holiday_list
 theme: casella
 region: node_content
-weight: -15
+weight: -27
 provider: null
 plugin: 'views_block:locations-block_1'
 settings:

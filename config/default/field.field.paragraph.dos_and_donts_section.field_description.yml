@@ -1,0 +1,19 @@
+uuid: b7b61052-83d6-4379-9ea8-1e71ca6891fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description
+    - paragraphs.paragraphs_type.dos_and_donts_section
+id: paragraph.dos_and_donts_section.field_description
+field_name: field_description
+entity_type: paragraph
+bundle: dos_and_donts_section
+label: Description
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

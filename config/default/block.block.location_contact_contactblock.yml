@@ -11,7 +11,7 @@ dependencies:
 id: location_contact_contactblock
 theme: casella
 region: node_content
-weight: 2
+weight: -11
 provider: null
 plugin: contact_block
 settings:
