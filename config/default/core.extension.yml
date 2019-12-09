@@ -24,6 +24,7 @@ module:
   contact_block: 0
   contact_emails: 0
   contact_storage: 0
+  content_synchronizer: 0
   contextual: 0
   crop: 0
   ctools: 0
