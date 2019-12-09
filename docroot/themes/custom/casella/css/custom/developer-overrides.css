@@ -454,6 +454,15 @@ table#holidaySchedule > tbody > tr > th {
   flex-wrap: wrap;
 }
 
+.internal-mainBody-featuredContent-container.field-pdf-file .internal-mainBody-featuredContent-container__inner h2 {
+  color: #4c9d2a;
+}
+
+.internal-mainBody-featuredContent-container.field-pdf-file .internal-mainBody-featuredContent-container__inner p {
+  font-size: 15px;
+  font-family: "Droid Serif", sans-serif;
+}
+
 .internal-mainBody-featuredContent-container.field-pdf-file .image,
 .internal-mainBody-featuredContent-container.field-pdf-file .content {
   flex: 1 1 100%;
@@ -461,7 +470,6 @@ table#holidaySchedule > tbody > tr > th {
 
 .internal-mainBody-featuredContent-container.field-pdf-file .image{
   position: relative;
-  background: #eee;
   margin: 20px 0;
 }
 
@@ -471,8 +479,12 @@ table#holidaySchedule > tbody > tr > th {
   padding: 0;
 }
 
+.internal-mainBody-featuredContent-container.field-pdf-file .image__inner a {
+  display: block;
+}
+
 .internal-mainBody-featuredContent-container.field-pdf-file .image img {
-  position: absolute;
+
 }
 
 .internal-mainBody-featuredContent-container.field-pdf-file .content {
@@ -482,7 +494,6 @@ table#holidaySchedule > tbody > tr > th {
 }
 .internal-mainBody-featuredContent-container.field-pdf-file .content .fa-file-pdf-o {
   font-size: 42px;
-  margin-top: 30px;
 }
 
 @media all and (min-width: 960px) {
@@ -497,6 +508,6 @@ table#holidaySchedule > tbody > tr > th {
   }
 
   .internal-mainBody-featuredContent-container.field-pdf-file .image {
-    flex: 1 1 auto;
+    flex: 0 1 auto;
   }
 }
