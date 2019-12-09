@@ -515,6 +515,15 @@ Author URI: http://www.adworkshop.com
 }
 
 /* JCJCJC -------------  */
+/* BASIC */
+/* JCJCJC -------------  */
+
+#tabbed-nav .news-indListing-container { }
+#tabbed-nav .news-indListing-container h2 { font-size: 2.5rem;}
+#tabbed-nav .news-indListing-container h2 a { color: #00263d; text-decoration: underline; transition: .5s ease color;}
+.no-touchevents #tabbed-nav .news-indListing-container h2 a:hover { color: #4c9d2a; text-decoration: none;}
+
+/* JCJCJC -------------  */
 /* POSTERS */
 /* JCJCJC -------------  */
 
@@ -582,12 +591,12 @@ div[data-quickedit-field-id='paragraph/21641/field_tab_anchor/en/default'] {
   display: none;
 }
 
-#tabbed-nav .news-indListing-container {
+#tabbed-nav #block-views-block-blog-block-2 .news-indListing-container {
 	position: relative;
 	padding: 0 30px;
 }
 
-#tabbed-nav .contextual-region {
+#tabbed-nav #block-views-block-blog-block-2 .contextual-region {
 	padding: 3rem 0;
 }
 
