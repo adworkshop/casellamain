@@ -606,24 +606,11 @@ div[data-quickedit-field-id='paragraph/21641/field_tab_anchor/en/default'] {
 #tabbed-nav .link--pdf i { margin: 0;}
 #tabbed-nav .link--pdf span { padding: 0 0 0 .65rem;}
 
-@media (min-width: 600px) {
-	#tabbed-nav #block-views-block-blog-block-2 .news-indListing-container {
-    padding-left: 0;
-	}
-}
 
-@media all and (min-width: 768px) {
-	#tabbed-nav #block-views-block-blog-block-2 .views-row {
-		width: 25%;
-	}
-}
-
-@media (min-width: 1200px) {
-  #tabbed-nav #block-views-block-blog-block-2 .views-row {
-    width: 86%;
-    margin: 0 auto;
-    padding: 0;
-  }
+#tabbed-nav #block-views-block-blog-block-2 .views-row {
+  width: 86%;
+  margin: 0 auto;
+  padding: 0;
 }
 
 /* JCJCJC ------------- */

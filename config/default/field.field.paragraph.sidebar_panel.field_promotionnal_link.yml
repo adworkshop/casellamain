@@ -1,0 +1,23 @@
+uuid: d3955d36-48f4-4874-8ed6-c2e8b5d315f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_promotionnal_link
+    - paragraphs.paragraphs_type.sidebar_panel
+  module:
+    - link
+id: paragraph.sidebar_panel.field_promotionnal_link
+field_name: field_promotionnal_link
+entity_type: paragraph
+bundle: sidebar_panel
+label: 'Promotionnal Link'
+description: 'This link will be on the image.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

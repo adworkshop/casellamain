@@ -4,12 +4,14 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.sidebar_panel.field_free_form_content
+    - field.field.paragraph.sidebar_panel.field_promotionnal_link
     - field.field.paragraph.sidebar_panel.field_section_image
     - image.style.thumbnail
     - paragraphs.paragraphs_type.sidebar_panel
   module:
     - field_group
     - image
+    - link
     - text
 third_party_settings:
   field_group:
@@ -17,6 +19,7 @@ third_party_settings:
       children:
         - field_section_image
         - field_free_form_content
+        - field_promotionnal_link
       parent_name: ''
       weight: 0
       format_type: details
@@ -38,6 +41,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
+  field_promotionnal_link:
+    weight: 3
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
     region: content
   field_section_image:
     weight: 1

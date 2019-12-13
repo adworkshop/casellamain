@@ -4,10 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.sidebar_panel.field_free_form_content
+    - field.field.paragraph.sidebar_panel.field_promotionnal_link
     - field.field.paragraph.sidebar_panel.field_section_image
     - paragraphs.paragraphs_type.sidebar_panel
   module:
     - image
+    - link
     - text
 id: paragraph.sidebar_panel.default
 targetEntityType: paragraph
@@ -20,6 +22,18 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
+  field_promotionnal_link:
+    weight: 2
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
     region: content
   field_section_image:
     weight: 0
