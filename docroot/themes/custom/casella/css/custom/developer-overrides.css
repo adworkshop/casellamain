@@ -512,3 +512,8 @@ table#holidaySchedule > tbody > tr > th {
     margin: 0;
   }
 }
+
+/* Hide the Toolkits tab for now. */
+#Toolkit {
+  display: none;
+}
