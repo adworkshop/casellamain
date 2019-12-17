@@ -203,7 +203,7 @@ Author URI: http://www.adworkshop.com
 .resources-listing-teaser {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 16px;
-  line-height: 2;
+  line-height: 1.5em;
   color: #fff;
 }
 
@@ -522,6 +522,7 @@ Author URI: http://www.adworkshop.com
 #tabbed-nav .news-indListing-container h2 { font-size: 2.5rem;}
 #tabbed-nav .news-indListing-container h2 a { color: #00263d; text-decoration: underline; transition: .5s ease color;}
 .no-touchevents #tabbed-nav .news-indListing-container h2 a:hover { color: #4c9d2a; text-decoration: none;}
+#tabbed-nav .bin-comparison-left .fa.fa-ban { color: #bb2828; opacity: .9; }
 
 /* JCJCJC -------------  */
 /* POSTERS */
