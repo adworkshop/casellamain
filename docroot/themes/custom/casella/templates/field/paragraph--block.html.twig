@@ -1,0 +1,18 @@
+{%
+  set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+]
+%}
+<div>
+  <div{{ attributes.addClass(classes) }}>
+    {{ content.field_tab_title }}
+    {{ content.field_tab_description }}
+    <div>
+      {{ content.field_block_reference }}
+    </div>
+  </div>
+</div>
+
+
