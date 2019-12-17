@@ -7,7 +7,10 @@ label: 'Recycle Better'
 weight: 9
 is_admin: null
 permissions:
+  - 'create recycle_better_page content'
+  - 'delete own recycle_better_page content'
   - 'edit any recycle_better_page content'
   - 'publish any node type recycle_better_page'
   - 'unpublish any node type recycle_better_page'
   - 'view any unpublished recycle_better_page content'
+  - 'view recycle_better_page revisions'
