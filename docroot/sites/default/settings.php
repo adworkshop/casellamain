@@ -743,9 +743,7 @@ if (file_exists('/var/www/site-php')) {
 
   $settings['cache']['bins']['bootstrap'] = 'cache.backend.memcache';
   $settings['cache']['bins']['config'] = 'cache.backend.memcache';
-}
 
-if (isset(AH_SITE_ENVIRONMENT)) {
   switch (AH_SITE_ENVIRONMENT) {
     case 'dev':
     case 'test':
