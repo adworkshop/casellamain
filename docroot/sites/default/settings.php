@@ -744,10 +744,7 @@ if (file_exists('/var/www/site-php')) {
   $settings['cache']['bins']['bootstrap'] = 'cache.backend.memcache';
   $settings['cache']['bins']['config'] = 'cache.backend.memcache';
 
-  echo '$_ENV[\'AH_SITE_ENVIRONMENT\'] = ' . $_ENV['AH_SITE_ENVIRONMENT'] . "\n";
-  echo '$_ENV[\'AH_NON_PRODUCTION\'] = ' . $_ENV['AH_NON_PRODUCTION'] . "\n";
-
-  switch (AH_SITE_ENVIRONMENT) {
+  switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     case 'dev':
     case 'test':
       assert_options(ASSERT_ACTIVE, TRUE);
