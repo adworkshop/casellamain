@@ -57,7 +57,10 @@ class BreadcrumbBuilder extends PathBasedBreadcrumbBuilder {
         $type = $node->getType();
 
         $baseNid = FALSE;
-        if ('job' == $type) {
+        if ('news' == $type) {
+          $breadcrumbs->addLink(Link::createFromRoute('News', 'casella_news.news'));
+        }
+        elseif ('job' == $type) {
           $baseNid = '696';
         }
         elseif ('information_post' == $type) {
