@@ -745,6 +745,40 @@ if (file_exists('/var/www/site-php')) {
   $settings['cache']['bins']['config'] = 'cache.backend.memcache';
 }
 
+if (isset(AH_SITE_ENVIRONMENT)) {
+  switch (AH_SITE_ENVIRONMENT) {
+    case 'dev':
+    case 'test':
+      assert_options(ASSERT_ACTIVE, TRUE);
+      \Drupal\Component\Assertion\Handle::register();
+
+      $settings['cache']['bins']['render'] = 'cache.backend.null';
+      $settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
+
+      error_reporting(E_ALL ^ E_DEPRECATED);
+
+      /**
+       * Enable local development services.
+       */
+      $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
+
+      /**
+       * Show all error messages, with backtrace information.
+       *
+       * In case the error level could not be fetched from the database, as for
+       * example the database connection failed, we rely only on this value.
+       */
+      $config['system.logging']['error_level'] = 'verbose';
+
+      /**
+       * Disable CSS and JS aggregation.
+       */
+      $config['system.performance']['css']['preprocess'] = FALSE;
+      $config['system.performance']['js']['preprocess'] = FALSE;
+      break;
+  }
+}
+
 /**
  * Load local development override configuration, if available.
  *
