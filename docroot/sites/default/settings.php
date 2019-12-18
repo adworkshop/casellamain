@@ -745,6 +745,8 @@ if (file_exists('/var/www/site-php')) {
   $settings['cache']['bins']['config'] = 'cache.backend.memcache';
 
   echo 'AH_SITE_ENVIRONMENT = ' . $AH_SITE_ENVIRONMENT . "\n";
+  echo 'AH_NON_PRODUCTION = ' . $AH_NON_PRODUCTION . "\n";
+
   switch (AH_SITE_ENVIRONMENT) {
     case 'dev':
     case 'test':
