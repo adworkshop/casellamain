@@ -11,7 +11,6 @@ entity_type: node
 type: datetime
 settings:
   datetime_type: datetime
-  timezone_storage: false
 module: datetime
 locked: false
 cardinality: 1
