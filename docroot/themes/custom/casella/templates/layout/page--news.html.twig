@@ -1,0 +1,8 @@
+page--news.html.twig
+{% if subsectionName != '' %}
+  {% include theme_path ~ "/templates/layout/page--subsection.html.twig" %}
+{% else %}
+  {% embed theme_path ~ "/templates/layout/page-default.html.twig" %}
+    {% block infoRegions %}{{ page.highlighted }}{% endblock %}
+  {% endembed %}
+{% endif %}

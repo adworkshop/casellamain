@@ -25,6 +25,7 @@ permissions:
   - 'bypass mollom protection'
   - 'bypass paragraphs type content access'
   - 'cacheflush clear cache'
+  - 'clear news feeds'
   - 'create full_width_promotion content'
   - 'create page content'
   - 'create sidebar_promotion content'

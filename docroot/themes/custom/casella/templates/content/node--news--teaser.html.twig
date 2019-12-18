@@ -1,0 +1,37 @@
+{#
+/**
+ * @file
+ * Theme override to present a feed item in an aggregator page.
+ *
+ * Available variables:
+ * - url: URL to the originating feed item.
+ * - title: Title of the feed item.
+ * - content: All field items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given element.
+ * - attributes: HTML attributes for the wrapper.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_aggregator_item()
+ */
+#}
+<div class="news-indListing-container">
+  <div class="news-indListing-colRight-container">
+    <div class="news-indListing-title-container">{{ title }}</div>
+    <div class="news-indListing-submissionDateTag-container">
+      <div class="news-indListing-submissionDate-wrapper">
+        <span class="fa fa-calendar" aria-hidden="true"></span> {{ content.field_publication_date.0 }}
+      </div>
+    </div>
+    <div class="news-indListing-teaser-container">
+      {{ content.body }}
+    </div>
+    <div class="news-indListing-btnContainer">
+      <a href="{{ path('entity.node.canonical', {'node': node.id}) }}" title="">Learn More</a>
+    </div>
+  </div>
+</div>

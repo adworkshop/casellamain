@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains ngrok.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function ngrok_drupal_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ngrok module.
+    case 'help.page.ngrok_drupal':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('This module resolves the issue of opening sessions while using ngrok. It dynamically replaces the cookie_domain value with the subdomain.ngrok.io value.') . '</p>';
+      return $output;
+
+    default:
+  }
+}

@@ -16,6 +16,7 @@ module:
   casella_custom: 0
   casella_feeds: 0
   casella_misc: 0
+  casella_news: 0
   ckeditor: 0
   color: 0
   comment: 0

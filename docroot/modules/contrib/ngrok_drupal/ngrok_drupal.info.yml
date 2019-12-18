@@ -1,0 +1,10 @@
+name: Ngrook for Drupal
+type: module
+description: This module resolves the issue of opening sessions while using ngrok. It dynamically replaces the cookie_domain value with the subdomain.ngrok.io value.
+core: 8.x
+package: Development
+
+# Information added by Drupal.org packaging script on 2019-09-05
+version: '8.x-1.1'
+project: 'ngrok_drupal'
+datestamp: 1567673594
