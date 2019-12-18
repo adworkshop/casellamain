@@ -33,6 +33,7 @@ class CasellaNewsController extends ControllerBase {
 
     $nids = \Drupal::entityQuery('node')
       ->condition('type','news')
+      ->condition('status','1')
       ->sort('field_publication_date', 'desc')
       ->range(0,10)
       ->execute();
