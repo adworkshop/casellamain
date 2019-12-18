@@ -301,3 +301,8 @@ blog:
     js/custom/blog.js: {}
   dependencies:
   - core/jquery
+
+recycle_better.jquery:
+  header: true
+  js:
+    //ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js: { type: external, minified: yes }
