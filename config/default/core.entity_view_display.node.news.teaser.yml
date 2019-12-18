@@ -5,7 +5,6 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.news.body
-    - field.field.node.news.feeds_item
     - field.field.node.news.field_publication_date
     - node.type.news
   module:
@@ -41,6 +40,5 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  feeds_item: true
   langcode: true
   search_api_excerpt: true
