@@ -1,0 +1,7 @@
+casella_news.news:
+  path: '/news'
+  defaults:
+    _controller: '\Drupal\casella_news\Controller\CasellaNewsController::list'
+    _title: 'News'
+  requirements:
+    _permission: 'access content'

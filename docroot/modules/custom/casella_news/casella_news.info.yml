@@ -1,0 +1,7 @@
+name: Casella News
+description: Creates a page for listing news and news aggregate together.
+package: Casella
+
+type: module
+core: 8.x
+project: 'casella_news'
