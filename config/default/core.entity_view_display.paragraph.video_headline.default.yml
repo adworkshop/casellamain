@@ -1,0 +1,33 @@
+uuid: 93568f95-34f9-43d3-8db1-6f632bfe512c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.video_headline.field_headline
+    - field.field.paragraph.video_headline.field_resource_panel_video
+    - paragraphs.paragraphs_type.video_headline
+  module:
+    - entity_reference_revisions
+id: paragraph.video_headline.default
+targetEntityType: paragraph
+bundle: video_headline
+mode: default
+content:
+  field_headline:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_resource_panel_video:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden: {  }

@@ -1,0 +1,19 @@
+uuid: 3b3c4796-288f-464d-8429-0206111df82e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_headline
+    - paragraphs.paragraphs_type.video_headline
+id: paragraph.video_headline.field_headline
+field_name: field_headline
+entity_type: paragraph
+bundle: video_headline
+label: Headline
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.videos_tab.field_resource_panel_video
     - field.field.paragraph.videos_tab.field_resource_panel_video_descr
     - field.field.paragraph.videos_tab.field_tab_anchor
     - field.field.paragraph.videos_tab.field_tab_description
     - field.field.paragraph.videos_tab.field_tab_title
+    - field.field.paragraph.videos_tab.field_video_section
     - paragraphs.paragraphs_type.videos_tab
   module:
     - entity_reference_revisions
@@ -17,15 +17,6 @@ targetEntityType: paragraph
 bundle: videos_tab
 mode: default
 content:
-  field_resource_panel_video:
-    weight: 4
-    label: hidden
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
-    region: content
   field_resource_panel_video_descr:
     weight: 3
     label: hidden
@@ -55,5 +46,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
+  field_video_section:
+    type: entity_reference_revisions_entity_view
+    weight: 4
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
     region: content
 hidden: {  }

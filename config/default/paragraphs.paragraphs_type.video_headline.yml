@@ -1,0 +1,9 @@
+uuid: e01566cf-c989-4854-ad9c-91f30d9554ed
+langcode: en
+status: true
+dependencies: {  }
+id: video_headline
+label: 'Video Headline'
+icon_uuid: null
+description: 'A headline text and many video panels under it.'
+behavior_plugins: {  }
