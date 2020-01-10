@@ -533,12 +533,11 @@ Author URI: http://www.adworkshop.com
 }
 
 #tabbed-nav .paragraph--type--video-headline {
-  padding: 5rem 0 0 0;
+  padding: 2rem 0 0 0;
 }
 
 #tabbed-nav .paragraph--type--video-headline h2 {
   margin: 0;
-  padding: 0 0 2rem 0;
 }
 
 #tabbed-nav .videos-listings-group > div {
@@ -551,7 +550,7 @@ Author URI: http://www.adworkshop.com
 	display: flex;
 	flex-wrap: wrap;
 	flex: 0 0 100%;
-	margin: 3rem 0 0 0;
+	margin: 2rem 0 0 0;
 	border: 1px solid #0a253e;
 	background-color: #0a253e;
 }
@@ -563,7 +562,16 @@ Author URI: http://www.adworkshop.com
 @media all and (min-width: 960px) {
 	#tabbed-nav .videos-listings-group > div > div {
 		flex: 0 0 45%;
-	}
+    margin: 3rem 0 0 0;
+  }
+  
+  #tabbed-nav .paragraph--type--video-headline h2 {
+    padding: 0 0 2rem 0;
+  }
+
+  #tabbed-nav .paragraph--type--video-headline {
+    padding: 5rem 0 0 0;
+  }
 }
 
 #tabbed-nav .start-of-videos-resources {
