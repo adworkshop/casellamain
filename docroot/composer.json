@@ -9,7 +9,8 @@
         "drupal/devel_entity_updates": "^1.0",
         "drupal/twig_tweak": "^2.4",
         "drupal/content_synchronizer": "^2.4",
-        "drupal/pathauto": "^1.6"
+        "drupal/pathauto": "^1.6",
+        "drupal/video_embed_field": "^2.2"
     },
     "replace": {
         "drupal/core": "^8.7"
