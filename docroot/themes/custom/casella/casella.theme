@@ -1943,7 +1943,7 @@ function casella_preprocess_video_embed_iframe(&$variables) {
 function casella_preprocess_video_embed_iframe__youtube(&$variables) {
   $variables['query']['autoplay'] = 0;
   $variables['query']['modestbranding'] = TRUE;
-  $variables['query']['controls'] = 0;
+  $variables['query']['controls'] = 1;
   $variables['query']['iv_load_policy'] = 3;
   $variables['query']['cc_load_policy'] = 0;
   $variables['query']['html5'] = TRUE;
