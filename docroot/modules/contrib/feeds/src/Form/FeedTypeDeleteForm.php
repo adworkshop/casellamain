@@ -22,7 +22,7 @@ class FeedTypeDeleteForm extends EntityConfirmFormBase {
    * {@inheritdoc}
    */
   public function getCancelUrl() {
-    return new Url('feeds.overview_types');
+    return new Url('entity.feeds_feed_type.collection');
   }
 
   /**
@@ -40,7 +40,7 @@ class FeedTypeDeleteForm extends EntityConfirmFormBase {
 
     $args = ['%type' => $this->entity->label()];
     $this->logger('feeds')->notice('Deleted feed type: %type.', $args);
-    drupal_set_message($this->t('%type has been deleted.', $args));
+    $this->messenger()->addMessage($this->t('%type has been deleted.', $args));
 
     $form_state->setRedirectUrl($this->getCancelUrl());
   }

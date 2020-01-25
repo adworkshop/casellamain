@@ -13,6 +13,9 @@ use Drupal\views\Plugin\views\field\UncacheableFieldHandlerTrait;
 use Drupal\views\ResultRow;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+/**
+ * Base class for diff view field plugins.
+ */
 class DiffPluginBase extends FieldPluginBase {
 
   use UncacheableFieldHandlerTrait;
@@ -62,16 +65,6 @@ class DiffPluginBase extends FieldPluginBase {
   }
 
   /**
-   * Returns the maximum possible age of cache items for this plugin.
-   *
-   * @return int
-   *   The maximum cache age in seconds.
-   */
-  public function getCacheMaxAge() {
-    return 0;
-  }
-
-  /**
    * {@inheritdoc}
    */
   public function getValue(ResultRow $row, $field = NULL) {
@@ -81,7 +74,7 @@ class DiffPluginBase extends FieldPluginBase {
   /**
    * {@inheritdoc}
    */
-  public function viewsForm(&$form, FormStateInterface $form_state) {
+  public function viewsForm(array &$form, FormStateInterface $form_state) {
     if (!empty($this->view->result)) {
       $form[$this->options['id']]['#tree'] = TRUE;
       foreach ($this->view->result as $row_index => $row) {

@@ -1,13 +1,8 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\cacheflush_ui\Form\CacheflushDeleteMultiple.
- */
-
 namespace Drupal\cacheflush_ui\Form;
 
-use Drupal\Core\Entity\EntityManagerInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\ConfirmFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
@@ -25,7 +20,7 @@ class CacheflushDeleteMultiple extends ConfirmFormBase {
    *
    * @var string[][]
    */
-  protected $cacheflushInfo = array();
+  protected $cacheflushInfo = [];
 
   /**
    * The tempstore factory.
@@ -46,10 +41,10 @@ class CacheflushDeleteMultiple extends ConfirmFormBase {
    *
    * @param \Drupal\user\PrivateTempStoreFactory $temp_store_factory
    *   The tempstore factory.
-   * @param \Drupal\Core\Entity\EntityManagerInterface $manager
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $manager
    *   The entity manager.
    */
-  public function __construct(PrivateTempStoreFactory $temp_store_factory, EntityManagerInterface $manager) {
+  public function __construct(PrivateTempStoreFactory $temp_store_factory, EntityTypeManagerInterface $manager) {
     $this->tempStoreFactory = $temp_store_factory;
     $this->storage = $manager->getStorage('cacheflush');
   }
@@ -59,7 +54,7 @@ class CacheflushDeleteMultiple extends ConfirmFormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-        $container->get('user.private_tempstore'), $container->get('entity.manager')
+      $container->get('user.private_tempstore'), $container->get('entity.manager')
     );
   }
 
@@ -95,9 +90,16 @@ class CacheflushDeleteMultiple extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $this->cacheflushInfo = $this->tempStoreFactory->get('cacheflush_multiple_delete_confirm')->get(\Drupal::currentUser()->id());
+
+    $this->cacheflushInfo = $this->tempStoreFactory->get('cacheflush_multiple_delete_confirm')
+      ->get(\Drupal::currentUser()->id());
+
     if (empty($this->cacheflushInfo)) {
-      return new RedirectResponse($this->getCancelUrl()->setAbsolute()->toString());
+      return new RedirectResponse(
+        $this->getCancelUrl()
+          ->setAbsolute()
+          ->toString()
+      );
     }
 
     $entities = $this->storage->loadMultiple(array_keys($this->cacheflushInfo));
@@ -107,7 +109,8 @@ class CacheflushDeleteMultiple extends ConfirmFormBase {
       foreach ($langcodes as $langcode) {
         $entity = $entities[$id]->getTranslation($langcode);
         $key = $id . ':' . $langcode;
-        $default_key = $id . ':' . $entity->getUntranslated()->language()->getId();
+        $default_key = $id . ':' . $entity->getUntranslated()->language()
+          ->getId();
 
         // If we have a translated entity we build a nested list of translations
         // that will be deleted.
@@ -134,10 +137,10 @@ class CacheflushDeleteMultiple extends ConfirmFormBase {
       }
     }
 
-    $form['cacheflush_items'] = array(
+    $form['cacheflush_items'] = [
       '#theme' => 'item_list',
       '#items' => $items,
-    );
+    ];
     $form = parent::buildForm($form, $form_state);
 
     return $form;
@@ -170,7 +173,8 @@ class CacheflushDeleteMultiple extends ConfirmFormBase {
 
       if ($delete_entities) {
         $this->storage->delete($delete_entities);
-        $this->logger('cacheflush')->notice('Deleted @count cacheflush entities.', array('@count' => count($delete_entities)));
+        $this->logger('cacheflush')
+          ->notice('Deleted @count cacheflush entities.', ['@count' => count($delete_entities)]);
       }
 
       if ($delete_translations) {
@@ -185,7 +189,8 @@ class CacheflushDeleteMultiple extends ConfirmFormBase {
         }
         if ($count) {
           $total_count += $count;
-          $this->logger('cacheflush')->notice('Deleted @count cacheflush translations.', array('@count' => $count));
+          $this->logger('cacheflush')
+            ->notice('Deleted @count cacheflush translations.', ['@count' => $count]);
         }
       }
 
@@ -193,7 +198,8 @@ class CacheflushDeleteMultiple extends ConfirmFormBase {
         drupal_set_message($this->formatPlural($total_count, 'Deleted 1 cacheflush entity.', 'Deleted @count cacheflush entities.'));
       }
 
-      $this->tempStoreFactory->get('cacheflush_multiple_delete_confirm')->delete(\Drupal::currentUser()->id());
+      $this->tempStoreFactory->get('cacheflush_multiple_delete_confirm')
+        ->delete(\Drupal::currentUser()->id());
     }
 
     $form_state->setRedirect('entity.cacheflush.collection');

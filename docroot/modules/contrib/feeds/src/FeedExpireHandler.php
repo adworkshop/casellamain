@@ -5,7 +5,7 @@ namespace Drupal\feeds;
 use Drupal\feeds\Event\ExpireEvent;
 use Drupal\feeds\Event\FeedsEvents;
 use Drupal\feeds\Event\InitEvent;
-use Drupal\feeds\FeedInterface;
+use Drupal\feeds\Exception\LockException;
 
 /**
  * Expires the items of a feed.
@@ -13,19 +13,22 @@ use Drupal\feeds\FeedInterface;
 class FeedExpireHandler extends FeedHandlerBase {
 
   /**
-   * {@inheritdoc}
+   * Starts a batch for expiring items.
+   *
+   * @param \Drupal\feeds\FeedInterface $feed
+   *   The feed for which to expire items.
    */
   public function startBatchExpire(FeedInterface $feed) {
     try {
       $feed->lock();
     }
     catch (LockException $e) {
-      drupal_set_message(t('The feed became locked before the expiring could begin.'), 'warning');
+      \Drupal::messenger()->addWarning(t('The feed became locked before the expiring could begin.'));
       return;
     }
     $feed->clearStates();
 
-    $ids = $feed->getType()->getProcessor()->getExpiredIds($feed);
+    $ids = $this->getExpiredIds($feed);
 
     if (!$ids) {
       $feed->unlock();
@@ -47,9 +50,29 @@ class FeedExpireHandler extends FeedHandlerBase {
     batch_set($batch);
   }
 
+  /**
+   * Returns feed item ID's to expire.
+   *
+   * @param \Drupal\feeds\FeedInterface $feed
+   *   The feed for which to get the expired item ID's.
+   *
+   * @return array
+   *   A list of item ID's.
+   */
+  protected function getExpiredIds(FeedInterface $feed) {
+    return $feed->getType()->getProcessor()->getExpiredIds($feed);
+  }
 
   /**
-   * {@inheritdoc}
+   * Expires a single item imported with the given feed.
+   *
+   * @param \Drupal\feeds\FeedInterface $feed
+   *   The feed for which to expire the item.
+   * @param int $item_id
+   *   The ID of the item to expire. Usually this is an entity ID.
+   *
+   * @return float
+   *   The progress being made on expiring.
    */
   public function expireItem(FeedInterface $feed, $item_id) {
     try {
@@ -57,7 +80,7 @@ class FeedExpireHandler extends FeedHandlerBase {
       $this->dispatchEvent(FeedsEvents::EXPIRE, new ExpireEvent($feed, $item_id));
     }
     catch (\RuntimeException $e) {
-      drupal_set_message($exception->getMessage(), 'error');
+      \Drupal::messenger()->addError($e->getMessage());
       $feed->clearStates();
       $feed->unlock();
     }
@@ -66,12 +89,20 @@ class FeedExpireHandler extends FeedHandlerBase {
       $feed->unlock();
       throw $e;
     }
+
+    return $feed->progressExpiring();
   }
 
+  /**
+   * Handles clean up tasks after expiring items is done.
+   *
+   * @param \Drupal\feeds\FeedInterface $feed
+   *   The feed for which items got expired.
+   */
   public function postExpire(FeedInterface $feed) {
     $state = $feed->getState(StateInterface::EXPIRE);
     if ($state->total) {
-      drupal_set_message(t('Expired @count items.', ['@count' => $state->total]));
+      \Drupal::messenger()->addStatus($this->t('Expired @count items.', ['@count' => $state->total]));
     }
     $feed->clearStates();
     $feed->save();

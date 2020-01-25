@@ -28,6 +28,7 @@ class Tab extends FieldGroupFormatterBase {
    * {@inheritdoc}
    */
   public function preRender(&$element, $rendering_object) {
+    parent::preRender($element, $rendering_object);
 
     $add = array(
       '#type' => 'details',
@@ -58,6 +59,11 @@ class Tab extends FieldGroupFormatterBase {
     if (!empty($this->group->parent_name)) {
       $add['#group'] = $this->group->parent_name;
       $add['#parents'] = array($add['#group']);
+    }
+
+    if ($this->getSetting('required_fields')) {
+      $element['#attached']['library'][] = 'field_group/formatter.tabs';
+      $element['#attached']['library'][] = 'field_group/core';
     }
 
     $element += $add;

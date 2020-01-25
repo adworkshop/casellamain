@@ -2,23 +2,31 @@
 
 namespace Drupal\Tests\feeds\Unit\Feeds\Target;
 
-use Drupal\Tests\feeds\Unit\FeedsUnitTestCase;
 use Drupal\feeds\FeedTypeInterface;
 use Drupal\feeds\Feeds\Target\Boolean;
 
 /**
  * @coversDefaultClass \Drupal\feeds\Feeds\Target\Boolean
- * @covers \Drupal\feeds\Feeds\Target\Boolean
  * @group feeds
  */
-class BooleanTest extends FeedsUnitTestCase {
+class BooleanTest extends FieldTargetTestBase {
 
-  public function test() {
+  /**
+   * {@inheritdoc}
+   */
+  protected function getTargetClass() {
+    return Boolean::class;
+  }
+
+  /**
+   * @covers ::prepareValue
+   */
+  public function testPrepareValue() {
     $method = $this->getMethod(Boolean::class, 'prepareTarget')->getClosure();
 
     $configuration = [
-      'feed_type' => $this->getMock(FeedTypeInterface::class),
-      'target_definition' =>  $method($this->getMockFieldDefinition()),
+      'feed_type' => $this->createMock(FeedTypeInterface::class),
+      'target_definition' => $method($this->getMockFieldDefinition()),
     ];
 
     $target = new Boolean($configuration, 'boolean', []);

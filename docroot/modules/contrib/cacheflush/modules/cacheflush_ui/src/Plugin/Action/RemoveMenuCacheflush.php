@@ -1,12 +1,8 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\cacheflush_ui\Plugin\Action\RemoveMenuCacheflush.
- */
-
 namespace Drupal\cacheflush_ui\Plugin\Action;
 
+use Drupal\cacheflush_ui\CacheflushUIConstantsInterface;
 use Drupal\Core\Action\ActionBase;
 use Drupal\Core\Session\AccountInterface;
 
@@ -35,7 +31,7 @@ class RemoveMenuCacheflush extends ActionBase {
    * {@inheritdoc}
    */
   public function execute($entity = NULL) {
-    $entity->menu = CACHEFLUSH_NO_MENU;
+    $entity->menu = CacheflushUIConstantsInterface::CACHEFLUSH_NO_MENU;
     $entity->save();
   }
 

@@ -3,20 +3,31 @@
 namespace Drupal\Tests\feeds\Unit\Feeds\Target;
 
 use Drupal\feeds\Feeds\Target\Email;
-use Drupal\Tests\feeds\Unit\FeedsUnitTestCase;
 
 /**
  * @coversDefaultClass \Drupal\feeds\Feeds\Target\Email
  * @group feeds
  */
-class EmailTest extends FeedsUnitTestCase {
+class EmailTest extends FieldTargetTestBase {
 
-  public function test() {
+  /**
+   * {@inheritdoc}
+   */
+  protected function getTargetClass() {
+    return Email::class;
+  }
+
+  /**
+   * Basic test for the email target.
+   *
+   * @covers ::prepareValue
+   */
+  public function testPrepareValue() {
     $method = $this->getMethod('Drupal\feeds\Feeds\Target\Email', 'prepareTarget')->getClosure();
 
     $configuration = [
-      'feed_type' => $this->getMock('Drupal\feeds\FeedTypeInterface'),
-      'target_definition' =>  $method($this->getMockFieldDefinition()),
+      'feed_type' => $this->createMock('Drupal\feeds\FeedTypeInterface'),
+      'target_definition' => $method($this->getMockFieldDefinition()),
     ];
     $target = new Email($configuration, 'email', []);
 

@@ -17,6 +17,9 @@ contact.form.*.third_party.contact_storage:
     maximum_submissions_user:
       type: integer
       label: 'Maximum submission limit per user'
+    page_autoreply_format:
+      type: string
+      label: 'Autoreply format'
 
 field.storage_settings.contact_storage_options_email:
   type: mapping
@@ -59,6 +62,6 @@ contact_storage.settings:
       type: boolean
       label: 'Whether the mail should be sent as HTML'
 
-action.configuration.message_delete_action:
+action.configuration.entity:delete_action:contact_message:
   type: action_configuration_default
-  label: 'Delete message configuration'
+  label: 'Delete contact message configuration'

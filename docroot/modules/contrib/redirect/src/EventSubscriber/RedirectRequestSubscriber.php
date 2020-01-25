@@ -2,13 +2,14 @@
 
 namespace Drupal\redirect\EventSubscriber;
 
+use Drupal\Component\Render\FormattableMarkup;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Core\Entity\EntityManagerInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Logger\RfcLogLevel;
-use Drupal\Core\Path\AliasManager;
+use Drupal\Core\Path\AliasManagerInterface;
 use Drupal\Core\PathProcessor\InboundPathProcessorInterface;
 use Drupal\Core\Routing\TrustedRedirectResponse;
 use Drupal\Core\Url;
@@ -51,9 +52,9 @@ class RedirectRequestSubscriber implements EventSubscriberInterface {
   protected $moduleHandler;
 
   /**
-   * @var \Drupal\Core\Entity\EntityManagerInterface
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
-  protected $entityManager;
+  protected $entityTypeManager;
 
   /**
    * @var \Drupal\redirect\RedirectChecker
@@ -81,24 +82,24 @@ class RedirectRequestSubscriber implements EventSubscriberInterface {
    *   The language manager service.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config
    *   The config.
-   * @param \Drupal\Core\Path\AliasManager $alias_manager
+   * @param \Drupal\Core\Path\AliasManagerInterface $alias_manager
    *   The alias manager service.
    * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
    *   The module handler service.
-   * @param \Drupal\Core\Entity\EntityManagerInterface $entity_manager
-   *   The entity manager service.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entity type manager.
    * @param \Drupal\redirect\RedirectChecker $checker
    *   The redirect checker service.
    * @param \Symfony\Component\Routing\RequestContext
    *   Request context.
    */
-  public function __construct(RedirectRepository $redirect_repository, LanguageManagerInterface $language_manager, ConfigFactoryInterface $config, AliasManager $alias_manager, ModuleHandlerInterface $module_handler, EntityManagerInterface $entity_manager, RedirectChecker $checker, RequestContext $context, InboundPathProcessorInterface $path_processor) {
+  public function __construct(RedirectRepository $redirect_repository, LanguageManagerInterface $language_manager, ConfigFactoryInterface $config, AliasManagerInterface $alias_manager, ModuleHandlerInterface $module_handler, EntityTypeManagerInterface $entity_type_manager, RedirectChecker $checker, RequestContext $context, InboundPathProcessorInterface $path_processor) {
     $this->redirectRepository = $redirect_repository;
     $this->languageManager = $language_manager;
     $this->config = $config->get('redirect.settings');
     $this->aliasManager = $alias_manager;
     $this->moduleHandler = $module_handler;
-    $this->entityManager = $entity_manager;
+    $this->entityTypeManager = $entity_type_manager;
     $this->checker = $checker;
     $this->context = $context;
     $this->pathProcessor = $path_processor;
@@ -126,10 +127,20 @@ class RedirectRequestSubscriber implements EventSubscriberInterface {
     // Get URL info and process it to be used for hash generation.
     parse_str($request->getQueryString(), $request_query);
 
-    // Do the inbound processing so that for example language prefixes are
-    // removed.
-    $path = $this->pathProcessor->processInbound($request->getPathInfo(), $request);
-    $path = ltrim($path, '/');
+    if (strpos($request->getPathInfo(), '/system/files/') === 0 && !$request->query->has('file')) {
+      // Private files paths are split by the inbound path processor and the
+      // relative file path is moved to the 'file' query string parameter. This
+      // is because the route system does not allow an arbitrary amount of
+      // parameters. We preserve the path as is returned by the request object.
+      // @see \Drupal\system\PathProcessor\PathProcessorFiles::processInbound()
+      $path = $request->getPathInfo();
+    }
+    else {
+      // Do the inbound processing so that for example language prefixes are
+      // removed.
+      $path = $this->pathProcessor->processInbound($request->getPathInfo(), $request);
+    }
+    $path = trim($path, '/');
 
     $this->context->fromRequest($request);
 
@@ -137,7 +148,7 @@ class RedirectRequestSubscriber implements EventSubscriberInterface {
       $redirect = $this->redirectRepository->findMatchingRedirect($path, $request_query, $this->languageManager->getCurrentLanguage()->getId());
     }
     catch (RedirectLoopException $e) {
-      \Drupal::logger('redirect')->warning($e->getMessage());
+      \Drupal::logger('redirect')->warning('Redirect loop identified at %path for redirect %rid', ['%path' => $e->getPath(), '%rid' => $e->getRedirectId()]);
       $response = new Response();
       $response->setStatusCode(503);
       $response->setContent('Service unavailable');
@@ -158,111 +169,6 @@ class RedirectRequestSubscriber implements EventSubscriberInterface {
       $response = new TrustedRedirectResponse($url->setAbsolute()->toString(), $redirect->getStatusCode(), $headers);
       $response->addCacheableDependency($redirect);
       $event->setResponse($response);
-    }
-  }
-
-  /**
-   * Detects a q=path/to/page style request and performs a redirect.
-   *
-   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
-   *   The Event to process.
-   */
-  public function redirectCleanUrls(GetResponseEvent $event) {
-    if (!$this->config->get('nonclean_to_clean') || $event->getRequestType() != HttpKernelInterface::MASTER_REQUEST) {
-      return;
-    }
-
-    $request = $event->getRequest();
-    $uri = $request->getUri();
-    if (strpos($uri, 'index.php')) {
-      $url = str_replace('/index.php', '', $uri);
-      $response = new TrustedRedirectResponse($url, 301);
-      $response->addCacheableDependency(CacheableMetadata::createFromRenderArray([])->addCacheTags(['rendered']));
-      $event->setResponse($response);
-    }
-  }
-
-  /**
-   * Detects a url with an ending slash (/) and removes it.
-   *
-   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
-   */
-  public function redirectDeslash(GetResponseEvent $event) {
-    if (!$this->config->get('deslash') || $event->getRequestType() != HttpKernelInterface::MASTER_REQUEST) {
-      return;
-    }
-
-    $path_info = $event->getRequest()->getPathInfo();
-    if (($path_info !== '/') && (substr($path_info, -1, 1) === '/')) {
-      $path_info = rtrim($path_info, '/');
-      try {
-        $path_info = $this->aliasManager->getPathByAlias($path_info);
-        $this->setResponse($event, Url::fromUri('internal:' . $path_info));
-      } catch (\Exception $e) {
-        watchdog_exception('redirect', $e, $e->getMessage(), [], RfcLogLevel::WARNING);
-      }
-    }
-  }
-
-  /**
-   * Redirects any path that is set as front page to the site root.
-   *
-   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
-   */
-  public function redirectFrontPage(GetResponseEvent $event) {
-    if (!$this->config->get('frontpage_redirect') || $event->getRequestType() != HttpKernelInterface::MASTER_REQUEST) {
-      return;
-    }
-
-    $request = $event->getRequest();
-    $path = $request->getPathInfo();
-
-    // Redirect only if the current path is not the root and this is the front
-    // page.
-    if ($this->isFrontPage($path)) {
-      $this->setResponse($event, Url::fromRoute('<front>'));
-    }
-  }
-
-  /**
-   * Normalizes the path aliases.
-   *
-   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
-   */
-  public function redirectNormalizeAliases(GetResponseEvent $event) {
-    if ($event->getRequestType() != HttpKernelInterface::MASTER_REQUEST || !$this->config->get('normalize_aliases') || !$path = $event->getRequest()->getPathInfo()) {
-      return;
-    }
-
-
-    $system_path = $this->aliasManager->getPathByAlias($path);
-    $alias = $this->aliasManager->getAliasByPath($system_path, $this->languageManager->getCurrentLanguage()
-      ->getId());
-    // If the alias defined in the system is not the same as the one via which
-    // the page has been accessed do a redirect to the one defined in the
-    // system.
-    if ($alias != $path) {
-      if ($url = \Drupal::pathValidator()->getUrlIfValid($alias)) {
-        $this->setResponse($event, $url);
-      }
-    }
-  }
-
-  /**
-   * Redirects forum taxonomy terms to correct forum path.
-   *
-   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
-   */
-  public function redirectForum(GetResponseEvent $event) {
-    $request = $event->getRequest();
-    if ($event->getRequestType() != HttpKernelInterface::MASTER_REQUEST || !$this->config->get('term_path_handler') || !$this->moduleHandler->moduleExists('forum') || !preg_match('/taxonomy\/term\/([0-9]+)$/', $request->getUri(), $matches)) {
-      return;
-    }
-
-    $term = $this->entityManager->getStorage('taxonomy_term')
-      ->load($matches[1]);
-    if (!empty($term) && $term->url() != $request->getPathInfo()) {
-      $this->setResponse($event, Url::fromUri('entity:taxonomy_term/' . $term->id()));
     }
   }
 
@@ -299,43 +205,8 @@ class RedirectRequestSubscriber implements EventSubscriberInterface {
     // This needs to run before RouterListener::onKernelRequest(), which has
     // a priority of 32. Otherwise, that aborts the request if no matching
     // route is found.
-    $events[KernelEvents::REQUEST][] = array('onKernelRequestCheckRedirect', 33);
-    $events[KernelEvents::REQUEST][] = array('redirectCleanUrls', 34);
-    $events[KernelEvents::REQUEST][] = array('redirectDeslash', 35);
-    $events[KernelEvents::REQUEST][] = array('redirectFrontPage', 36);
-    $events[KernelEvents::REQUEST][] = array(
-      'redirectNormalizeAliases',
-      37,
-    );
-    $events[KernelEvents::REQUEST][] = array('redirectForum', 38);
+    $events[KernelEvents::REQUEST][] = ['onKernelRequestCheckRedirect', 33];
     return $events;
-  }
-
-  /**
-   * Determine if the given path is the site's front page.
-   *
-   * @param string $path
-   *   The path to check.
-   *
-   * @return bool
-   *   Returns TRUE if the path is the site's front page.
-   */
-  protected function isFrontPage($path) {
-    // @todo PathMatcher::isFrontPage() doesn't work here for some reason.
-    $front = \Drupal::config('system.site')->get('page.front');
-
-    // Since deslash runs after the front page redirect, check and deslash here
-    // if enabled.
-    if ($this->config->get('deslash')) {
-      $path = rtrim($path, '/');
-    }
-
-    // This might be an alias.
-    $alias_path = \Drupal::service('path.alias_manager')->getPathByAlias($path);
-
-    return !empty($path)
-    // Path matches front or alias to front.
-    && (($path == $front) || ($alias_path == $front));
   }
 
 }

@@ -347,17 +347,22 @@ class ContactEmail extends ContentEntityBase implements ContactEmailInterface {
   public function getFormat(MessageInterface $message) {
     $body = $this->get('message');
 
+    // If body is empty, there is nothing to check.
+    if ($body->isEmpty()) {
+      return 'text/plain; charset=UTF-8; format=flowed; delsp=yes';
+    }
+
     // Default to html.
     $format = 'text/html';
 
     // Get selected format.
-    if ($filter_format = FilterFormat::load($body->format)) {
+    if (!empty($body->format) && $filter_format = FilterFormat::load($body->format)) {
 
       // If the selected format does not allow html, set the email as plain
       // text.
       $restrictions = $filter_format->getHtmlRestrictions();
 
-      if (!$restrictions['allowed']) {
+      if ($restrictions && !$restrictions['allowed']) {
         $format = 'text/plain; charset=UTF-8; format=flowed; delsp=yes';
       }
     }
@@ -370,7 +375,7 @@ class ContactEmail extends ContentEntityBase implements ContactEmailInterface {
    *
    * @param string $string
    *   The string value such as the subject or body.
-   * @param Drupal\contact\MessageInterface $message
+   * @param \Drupal\contact\MessageInterface $message
    *   The contact message.
    *
    * @return string
@@ -476,11 +481,11 @@ class ContactEmail extends ContentEntityBase implements ContactEmailInterface {
   /**
    * Get email address from the sender of the contact message.
    *
-   * @param Drupal\contact\MessageInterface $message
+   * @param \Drupal\contact\MessageInterface $message
    *   The contact message.
    *
-   * @return array
-   *   An array of emails.
+   * @return string
+   *   An email address.
    */
   protected function getEmailFromSenderMail(MessageInterface $message) {
     return $message->getSenderMail();
@@ -489,7 +494,7 @@ class ContactEmail extends ContentEntityBase implements ContactEmailInterface {
   /**
    * Get email address from a field.
    *
-   * @param Drupal\contact\MessageInterface $message
+   * @param \Drupal\contact\MessageInterface $message
    *   The contact message.
    * @param object $field
    *   The target field on the message.
@@ -518,13 +523,16 @@ class ContactEmail extends ContentEntityBase implements ContactEmailInterface {
   /**
    * Get email address from a field.
    *
-   * @param Drupal\contact\MessageInterface $message
+   * @param \Drupal\contact\MessageInterface $message
    *   The contact message.
    * @param object $field
    *   The target field on the message.
    *
    * @return array
    *   An array of emails.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   protected function getEmailFromReferencedField(MessageInterface $message, $field) {
     $results = [];

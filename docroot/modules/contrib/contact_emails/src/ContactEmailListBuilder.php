@@ -31,8 +31,11 @@ class ContactEmailListBuilder extends EntityListBuilder {
   public function buildRow(EntityInterface $entity) {
     /* @var $entity \Drupal\contact_emails\Entity\ContactEmailInterface */
 
+    /** @var \Drupal\contact\ContactFormInterface $contact_form */
+    $contact_form = $entity->get('contact_form')->entity;
+
     $row['id'] = $entity->id();
-    $row['contact_form'] = $entity->get('contact_form')->entity->label();
+    $row['contact_form'] = $contact_form ? $contact_form->label() : '';
     $row['subject'] = $entity->label();
     $row['recipients'] = $this->getRecipients($entity);
     $row['status'] = ($entity->get('status')->value) ? $this->t('Enabled') : $this->t('Disabled');
@@ -101,14 +104,14 @@ class ContactEmailListBuilder extends EntityListBuilder {
   /**
    * Get the description of recipient field value.
    *
-   * @param ContactEmailInterface $entity
+   * @param \Drupal\contact_emails\Entity\ContactEmailInterface $entity
    *   The email.
    * @param string $fieldName
    *   The field name.
    * @param string $fieldType
    *   The field type.
    *
-   * @return Drupal\Core\StringTranslation\TranslatableMarkup
+   * @return \Drupal\Core\StringTranslation\TranslatableMarkup
    *   The description of the field.
    */
   protected function recipientFieldValue(ContactEmailInterface $entity, $fieldName, $fieldType) {

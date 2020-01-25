@@ -3,6 +3,9 @@
 namespace Drupal\Tests\feeds\Unit;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\feeds\FeedHandlerBase;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * @coversDefaultClass \Drupal\feeds\FeedHandlerBase
@@ -10,13 +13,20 @@ use Drupal\Core\DependencyInjection\ContainerBuilder;
  */
 class FeedHandlerBaseTest extends FeedsUnitTestCase {
 
-  public function test() {
+  /**
+   * Tests if an instance of FeedHandlerBase can be created.
+   *
+   * @covers ::__construct
+   * @covers ::createInstance
+   */
+  public function testConstruct() {
     $container = new ContainerBuilder();
-    $container->set('event_dispatcher', $this->getMock('Symfony\Component\EventDispatcher\EventDispatcherInterface'));
+    $container->set('event_dispatcher', $this->createMock(EventDispatcherInterface::class));
 
-    $mock = $this->getMockForAbstractClass('Drupal\feeds\FeedHandlerBase', [], '', FALSE);
+    $mock = $this->getMockForAbstractClass(FeedHandlerBase::class, [], '', FALSE);
     $mock_class = get_class($mock);
-    $hander = $mock_class::createInstance($container, $this->getMock('Drupal\Core\Entity\EntityTypeInterface'));
+    $handler = $mock_class::createInstance($container, $this->createMock(EntityTypeInterface::class));
+    $this->assertInstanceOf(FeedHandlerBase::class, $handler);
   }
 
 }

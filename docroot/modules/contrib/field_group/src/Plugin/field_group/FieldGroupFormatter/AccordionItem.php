@@ -29,6 +29,7 @@ class AccordionItem extends FieldGroupFormatterBase {
    * {@inheritdoc}
    */
   public function preRender(&$element, $rendering_object) {
+    parent::preRender($element, $rendering_object);
 
     $element += array(
       '#type' => 'field_group_accordion_item',
@@ -44,6 +45,10 @@ class AccordionItem extends FieldGroupFormatterBase {
     $classes = $this->getClasses();
     if (!empty($classes)) {
       $element += array('#attributes' => array('class' => $classes));
+    }
+
+    if ($this->getSetting('required_fields')) {
+      $element['#attached']['library'][] = 'field_group/formatter.details';
     }
 
   }

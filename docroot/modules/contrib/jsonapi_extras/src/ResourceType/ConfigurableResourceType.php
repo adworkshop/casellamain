@@ -28,6 +28,8 @@ class ConfigurableResourceType extends ResourceType {
   protected $enhancerManager;
 
   /**
+   * The configuration factory.
+   *
    * @var \Drupal\Core\Config\ConfigFactoryInterface
    */
   protected $configFactory;
@@ -49,7 +51,12 @@ class ConfigurableResourceType extends ResourceType {
    *   The configuration factory.
    */
   public function __construct($entity_type_id, $bundle, $deserialization_target_class, JsonapiResourceConfig $resource_config, ResourceFieldEnhancerManager $enhancer_manager, ConfigFactoryInterface $config_factory) {
-    parent::__construct($entity_type_id, $bundle, $deserialization_target_class);
+    parent::__construct(
+      $entity_type_id,
+      $bundle,
+      $deserialization_target_class,
+      (bool) $resource_config->get('disabled')
+    );
 
     $this->jsonapiResourceConfig = $resource_config;
     $this->enhancerManager = $enhancer_manager;

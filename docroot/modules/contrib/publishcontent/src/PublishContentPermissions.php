@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\publishcontent\PublishContentPermissions
- */
-
 namespace Drupal\publishcontent;
 
 use Drupal\Node\Entity\NodeType;

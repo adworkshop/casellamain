@@ -1,15 +1,9 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\cacheflush_ui\CacheflushEntityListBuilder.
- */
-
 namespace Drupal\cacheflush_ui;
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityListBuilder;
-use Drupal\Core\Routing\LinkGeneratorTrait;
 
 /**
  * Defines a class to build a listing of Cacheflush entity entities.
@@ -17,8 +11,6 @@ use Drupal\Core\Routing\LinkGeneratorTrait;
  * @ingroup cacheflush_ui
  */
 class CacheflushEntityListBuilder extends EntityListBuilder {
-
-  use LinkGeneratorTrait;
 
   /**
    * {@inheritdoc}
@@ -32,7 +24,7 @@ class CacheflushEntityListBuilder extends EntityListBuilder {
    * {@inheritdoc}
    */
   public function buildRow(EntityInterface $entity) {
-    /* @var $entity \Drupal\cacheflush\Entity\CacheflushEntity */
+    /* @var $entity \Drupal\cacheflush_entity\Entity\CacheflushEntity */
     $row['id'] = $entity->id();
     return $row + parent::buildRow($entity);
   }

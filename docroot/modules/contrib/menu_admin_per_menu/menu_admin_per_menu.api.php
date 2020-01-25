@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Hooks specific to the Node module.
+ * Hooks provided by the Menu Admin per Menu module.
  */
 
 use Drupal\Core\Session\AccountInterface;

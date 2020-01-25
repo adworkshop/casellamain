@@ -2,26 +2,24 @@
 
 namespace Drupal\diff\Plugin\diff\Layout;
 
-use Drupal\Component\Utility\Xss;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Datetime\DateFormatter;
 use Drupal\Core\Entity\EntityDisplayRepositoryInterface;
-use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Link;
 use Drupal\Core\PhpStorage\PhpStorageFactory;
 use Drupal\Core\Render\RendererInterface;
-use Drupal\Core\Url;
 use Drupal\diff\Controller\PluginRevisionController;
 use Drupal\diff\DiffEntityComparison;
 use Drupal\diff\DiffEntityParser;
 use Drupal\diff\DiffLayoutBase;
-use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use HtmlDiffAdvancedInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
+ * Provides Visual Inline diff layout.
+ *
  * @DiffLayoutBuilder(
  *   id = "visual_inline",
  *   label = @Translation("Visual Inline"),
@@ -130,22 +128,11 @@ class VisualInlineDiffLayout extends DiffLayoutBase {
   /**
    * {@inheritdoc}
    */
-  public function build(EntityInterface $left_revision, EntityInterface $right_revision, EntityInterface $entity) {
+  public function build(ContentEntityInterface $left_revision, ContentEntityInterface $right_revision, ContentEntityInterface $entity) {
+    // Build the revisions data.
+    $build = $this->buildRevisionsData($left_revision, $right_revision);
+
     $this->entityTypeManager->getStorage($entity->getEntityTypeId())->resetCache([$entity->id()]);
-
-    // Show the revisions that are compared.
-    $build['diff_revisions'] = [
-      '#type' => 'item',
-      '#title' => $this->t('Comparing'),
-      '#weight' => 0,
-    ];
-    $build['diff_revisions']['left_revision'] = $this->buildRevisionLinkVisualInline($left_revision);
-    $build['diff_revisions']['left_revision']['#prefix'] = '<div class="comparation-flex-container">';
-    $build['diff_revisions']['left_revision']['#suffix'] = '</div>';
-    $build['diff_revisions']['right_revision'] = $this->buildRevisionLinkVisualInline($right_revision);
-    $build['diff_revisions']['right_revision']['#prefix'] = '<div class="comparation-flex-container">';
-    $build['diff_revisions']['right_revision']['#suffix'] = '</div>';
-
     // Build the view modes filter.
     $options = [];
     // Get all view modes for entity type.
@@ -173,18 +160,14 @@ class VisualInlineDiffLayout extends DiffLayoutBase {
     unset($options[$active_view_mode]);
     array_unshift($options, $filter);
 
-    $build['view_mode'] = [
+    $build['controls']['view_mode'] = [
       '#type' => 'item',
       '#title' => $this->t('View mode'),
-      '#weight' => 3,
-      '#prefix' => '<div class="diff-layout">',
-      '#suffix' => '</div>',
-    ];
-    $build['view_mode']['filter'] = [
-      '#type' => 'operations',
-      '#links' => $options,
-      '#prefix' => '<div class="diff-filter">',
-      '#suffix' => '</div>',
+      '#wrapper_attributes' => ['class' => 'diff-controls__item'],
+      'filter' => [
+        '#type' => 'operations',
+        '#links' => $options,
+      ],
     ];
 
     $view_builder = $this->entityTypeManager->getViewBuilder($entity->getEntityTypeId());
@@ -198,7 +181,7 @@ class VisualInlineDiffLayout extends DiffLayoutBase {
     unset($left_view['#cache']);
     unset($right_view['#cache']);
 
-    $html_1= $this->renderer->render($left_view);
+    $html_1 = $this->renderer->render($left_view);
     $html_2 = $this->renderer->render($right_view);
 
     $this->htmlDiff->setOldHtml($html_1);
@@ -212,65 +195,6 @@ class VisualInlineDiffLayout extends DiffLayoutBase {
 
     $build['#attached']['library'][] = 'diff/diff.visual_inline';
     return $build;
-  }
-
-  /**
-   * Build the revision link for visual inline layout.
-   *
-   * @param \Drupal\Core\Entity\EntityInterface $revision
-   *   A revision where to add a link.
-   *
-   * @return \Drupal\Core\GeneratedLink
-   *   Header link for a revision comparision.
-   */
-  protected function buildRevisionLinkVisualInline(EntityInterface $revision) {
-    $entity_type_id = $revision->getEntityTypeId();
-    if ($revision instanceof EntityRevisionLogInterface || $revision instanceof NodeInterface) {
-      $revision_log = '';
-
-      if ($revision instanceof EntityRevisionLogInterface) {
-        $revision_log = Xss::filter($revision->getRevisionLogMessage());
-      }
-      elseif ($revision instanceof NodeInterface) {
-        $revision_log = $revision->revision_log->value;
-      }
-      $user_id = $revision->getRevisionUserId();
-      $route_name = $entity_type_id != 'node' ? "entity.$entity_type_id.revisions_diff" : 'entity.node.revision';
-
-      $revision_link['date'] = [
-        '#type' => 'link',
-        '#title' => $this->date->format($revision->getRevisionCreationTime(), 'short'),
-        '#url' => Url::fromRoute($route_name, [
-          $entity_type_id => $revision->id(),
-          $entity_type_id . '_revision' => $revision->getRevisionId(),
-        ]),
-        '#prefix' => '<div class="comparation-flex-item-date">',
-        '#suffix' => '</div>',
-      ];
-
-      $revision_link['author'] = [
-        '#type' => 'link',
-        '#title' => $revision->getRevisionUser()->getDisplayName(),
-        '#url' => Url::fromUri(\Drupal::request()->getUriForPath('/user/' . $user_id)),
-        '#theme' => 'username',
-        '#account' => $revision->getRevisionUser(),
-        '#prefix' => '<div class="comparation-flex-item-author">',
-        '#suffix' => '</div>',
-      ];
-
-      if ($revision_log) {
-        $revision_link['message'] = [
-          '#type' => 'markup',
-          '#prefix' => '<div class="comparation-flex-item-message">',
-          '#suffix' => '</div>',
-          '#markup' => $revision_log,
-        ];
-      }
-    }
-    else {
-      $revision_link = Link::fromTextAndUrl($revision->label(), $revision->toUrl('revision'))->toString();
-    }
-    return $revision_link;
   }
 
 }

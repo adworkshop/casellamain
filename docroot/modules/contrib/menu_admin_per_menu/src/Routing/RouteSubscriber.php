@@ -1,13 +1,9 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\menu_admin_per_menu\Routing\RouteSubscriber.
- */
-
 namespace Drupal\menu_admin_per_menu\Routing;
 
 use Drupal\Core\Routing\RouteSubscriberBase;
+use Drupal\Core\Routing\RoutingEvents;
 use Symfony\Component\Routing\RouteCollection;
 
 /**
@@ -39,11 +35,24 @@ class RouteSubscriber extends RouteSubscriberBase {
 
         case 'entity.menu_link_content.canonical':
         case 'entity.menu_link_content.delete_form':
+        case 'entity.menu_link_content.content_translation_overview':
+        case 'entity.menu_link_content.content_translation_add':
+        case 'entity.menu_link_content.content_translation_edit':
+        case 'entity.menu_link_content.content_translation_delete':
           $route->setRequirements(['_custom_access' => '\Drupal\menu_admin_per_menu\Access\MenuAdminPerMenuAccess::menuItemAccess']);
           break;
 
       }
     }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getSubscribedEvents() {
+    // Run after content_translation, which has priority -210.
+    $events[RoutingEvents::ALTER] = ['onAlterRoutes', -220];
+    return $events;
   }
 
 }

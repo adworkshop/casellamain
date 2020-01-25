@@ -24,6 +24,7 @@ class Details extends FieldGroupFormatterBase {
    * {@inheritdoc}
    */
   public function preRender(&$element, $rendering_object) {
+    parent::preRender($element, $rendering_object);
 
     $element += array(
       '#type' => 'details',
@@ -46,6 +47,11 @@ class Details extends FieldGroupFormatterBase {
       $element += array(
         '#description' => $this->getSetting('description'),
       );
+    }
+
+    if ($this->getSetting('required_fields')) {
+      $element['#attached']['library'][] = 'field_group/formatter.details';
+      $element['#attached']['library'][] = 'field_group/core';
     }
 
     $element['#attached']['library'][] = 'field_group/formatter.details';

@@ -1,28 +1,30 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\cacheflush\Controller\CacheflushApi.
- */
-
 namespace Drupal\cacheflush\Controller;
 
-use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Drupal\cacheflush_entity\Entity\CacheflushEntity;
+use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\PhpStorage\PhpStorageFactory;
 
 /**
- * Returns responses for System Info routes.
+ * Returns responses for Cacheflush routes.
  */
-class CacheflushApi implements ContainerInjectionInterface {
+class CacheflushApi extends ControllerBase {
 
   /**
-   * {@inheritdoc}
+   * Drupal container.
+   *
+   * @var null|\Symfony\Component\DependencyInjection\ContainerInterface
    */
-  public static function create(ContainerInterface $container) {
-    return new static();
+  protected $container;
+
+  /**
+   * CacheflushApi constructor.
+   */
+  public function __construct() {
+    $this->container = \Drupal::getContainer();
   }
 
   /**
@@ -30,22 +32,22 @@ class CacheflushApi implements ContainerInjectionInterface {
    *
    * @see drupal_flush_all_caches()
    *
-   * @return RedirectResponse
+   * @return \Symfony\Component\HttpFoundation\RedirectResponse
    *   Redirect path.
    */
   public function clearAll() {
     drupal_flush_all_caches();
-    drupal_set_message(t('Cache cleared.'));
+    drupal_set_message($this->t('Cache cleared.'));
     return $this->redirectUrl();
   }
 
   /**
    * Clear cache preset by cacheflush entity id.
    *
-   * @param CacheflushEntity $cacheflush
+   * @param \Drupal\cacheflush_entity\Entity\CacheflushEntity $cacheflush
    *   Caheflush entity to run.
    *
-   * @return RedirectResponse
+   * @return \Symfony\Component\HttpFoundation\RedirectResponse
    *   Redirect path.
    */
   public function clearById(CacheflushEntity $cacheflush) {
@@ -56,13 +58,13 @@ class CacheflushApi implements ContainerInjectionInterface {
   /**
    * Based on settings decide witch clear cache function to be called.
    *
-   * @param CacheflushEntity $entity
+   * @param \Drupal\cacheflush_entity\Entity\CacheflushEntity $entity
    *   Preset id to do clear cache for.
    */
   public function clearPresetCache(CacheflushEntity $entity) {
     $this->checkError($entity);
 
-    \Drupal::moduleHandler()->invokeAll('cacheflush_before_clear', [$entity]);
+    $this->moduleHandler()->invokeAll('cacheflush_before_clear', [$entity]);
 
     $presets = $entity->getData();
     if ($presets) {
@@ -72,14 +74,16 @@ class CacheflushApi implements ContainerInjectionInterface {
             call_user_func_array($value['#name'], $value['#params']);
           }
           else {
-            \Drupal::logger('CACHEFLUSH')->warning(t("Function cannot be called: @name", array('@name' => $value['#name'])));
+            $this->getLogger('CACHEFLUSH')->warning(
+              $this->t("Function cannot be called: @name", ['@name' => $value['#name']])
+            );
           }
         }
       }
     }
 
-    drupal_set_message(t("All predefined cache options in @name was cleared.", array('@name' => $entity->getTitle())));
-    \Drupal::moduleHandler()->invokeAll('cacheflush_after_clear', [$entity]);
+    drupal_set_message($this->t("All predefined cache options in @name was cleared.", ['@name' => $entity->getTitle()]));
+    $this->moduleHandler()->invokeAll('cacheflush_after_clear', [$entity]);
   }
 
   /**
@@ -90,7 +94,7 @@ class CacheflushApi implements ContainerInjectionInterface {
    */
   public function getOptionList() {
     $bins = $this->createTabOptions();
-    $other = \Drupal::moduleHandler()->invokeAll('cacheflush_tabs_options');
+    $other = $this->moduleHandler()->invokeAll('cacheflush_tabs_options');
     return array_merge($bins, $other);
   }
 
@@ -101,19 +105,18 @@ class CacheflushApi implements ContainerInjectionInterface {
    *   Preset options.
    */
   public function createTabOptions() {
-    $container = \Drupal::getContainer();
     $core = array_flip($this->coreBinMapping());
-    foreach ($container->getParameter('cache_bins') as $service_id => $bin) {
-      $options[$bin] = array(
-        'description' => t('Storage for the cache API.'),
+    foreach ($this->container->getParameter('cache_bins') as $service_id => $bin) {
+      $options[$bin] = [
+        'description' => $this->t('Storage for the cache API.'),
         'category' => isset($core[$bin]) ? 'vertical_tabs_core' : 'vertical_tabs_custom',
-        'functions' => array(
-          '0' => array(
+        'functions' => [
+          '0' => [
             '#name' => '\Drupal\cacheflush\Controller\CacheflushApi::clearBinCache',
-            '#params' => array($service_id),
-          ),
-        ),
-      );
+            '#params' => [$service_id],
+          ],
+        ],
+      ];
     }
     return $options;
   }
@@ -125,9 +128,11 @@ class CacheflushApi implements ContainerInjectionInterface {
    *   Name of cache service.
    * @param string $function
    *   Function to be called.
+   * @param string $cid
+   *   Cache ID.
    */
   public function clearBinCache($service_id, $function = 'deleteAll', $cid = NULL) {
-    \Drupal::service($service_id)->{$function}($cid);
+    $this->container->get($service_id)->{$function}($cid);
   }
 
   /**
@@ -141,39 +146,41 @@ class CacheflushApi implements ContainerInjectionInterface {
    *   Function to be called.
    */
   public function clearStorageCache($type, $function = 'deleteAll') {
-    \Drupal\Core\PhpStorage\PhpStorageFactory::get($type)->{$function}();
+    PhpStorageFactory::get($type)->{$function}();
   }
 
   /**
    * Clear modules cache.
    */
   public function clearModuleCache() {
-    $module_handler = \Drupal::moduleHandler();
+    $module_handler = $this->moduleHandler();
 
     // Invalidate the container.
-    \Drupal::service('kernel')->invalidateContainer();
+    $this->container->get('kernel')->invalidateContainer();
 
     // Rebuild module and theme data.
     $module_data = system_rebuild_module_data();
     /** @var \Drupal\Core\Extension\ThemeHandlerInterface $theme_handler */
-    $theme_handler = \Drupal::service('theme_handler');
+    $theme_handler = $this->container->get('theme_handler');
     $theme_handler->refreshInfo();
     // In case the active theme gets requested later in the same request we need
     // to reset the theme manager.
-    \Drupal::theme()->resetActiveTheme();
+    $this->container->get('theme.manager')->resetActiveTheme();
 
     // Rebuild and reboot a new kernel. A simple DrupalKernel reboot is not
     // sufficient, since the list of enabled modules might have been adjusted
     // above due to changed code.
-    $files = array();
+    $files = [];
     foreach ($module_data as $name => $extension) {
       if ($extension->status) {
         $files[$name] = $extension;
       }
     }
-    \Drupal::service('kernel')->updateModules($module_handler->getModuleList(), $files);
+    $this->container->get('kernel')->updateModules(
+      $this->moduleHandler()->getModuleList(), $files
+    );
     // New container, new module handler.
-    $module_handler = \Drupal::moduleHandler();
+    $module_handler = $this->moduleHandler();
 
     // Ensure that all modules that are currently supposed to be enabled are
     // actually loaded.
@@ -186,7 +193,7 @@ class CacheflushApi implements ContainerInjectionInterface {
     // use it. Unlike regular usages of this function, the installer and update
     // scripts need to flush all caches during GET requests/page building.
     if (function_exists('_drupal_maintenance_theme')) {
-      \Drupal::theme()->resetActiveTheme();
+      $this->container->get('theme.manager')->resetActiveTheme();
       drupal_maintenance_theme();
     }
   }
@@ -195,7 +202,7 @@ class CacheflushApi implements ContainerInjectionInterface {
    * List of the core cache bin.
    */
   public function coreBinMapping() {
-    $core_bins = array(
+    $core_bins = [
       'bootstrap',
       'config',
       'data',
@@ -208,23 +215,23 @@ class CacheflushApi implements ContainerInjectionInterface {
       'migrate',
       'rest',
       'toolbar',
-    );
+    ];
     return $core_bins;
   }
 
   /**
    * Check if entity exists and is enabled.
    *
-   * @param CacheflushEntity $entity
-   *    Cacheflush entity.
+   * @param \Drupal\cacheflush_entity\Entity\CacheflushEntity $entity
+   *   Cacheflush entity.
    */
   private function checkError(CacheflushEntity $entity) {
     if (!$entity) {
-      drupal_set_message(t('Invalid entity ID.'), 'error');
+      drupal_set_message($this->t('Invalid entity ID.'), 'error');
       throw new HttpException('404');
     }
     if ($entity->getStatus() == 0) {
-      drupal_set_message(t('This entity is disabled.'), 'error');
+      drupal_set_message($this->t('This entity is disabled.'), 'error');
       throw new HttpException('403');
     }
   }
@@ -234,7 +241,7 @@ class CacheflushApi implements ContainerInjectionInterface {
    *
    * @global string $base_url
    *
-   * @return RedirectResponse
+   * @return \Symfony\Component\HttpFoundation\RedirectResponse
    *   Redirect path.
    */
   private function redirectUrl() {

@@ -10,6 +10,12 @@ use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\Validator\Exception\InvalidArgumentException;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityStorageInterface;
+use Drupal\Core\Url;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\OpenModalDialogCommand;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Image\ImageFactory;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Class FocalPointPreviewController.
@@ -19,15 +25,59 @@ use Drupal\Core\Entity\EntityStorageInterface;
 class FocalPointPreviewController extends ControllerBase {
 
   /**
+   * The image factory service.
+   *
+   * @var \Drupal\Core\Image\ImageFactory
+   */
+  protected $imageFactory;
+
+  /**
+   * The request service.
+   *
+   * @var \Symfony\Component\HttpFoundation\RequestStack
+   */
+  protected $request;
+
+  /**
+   * The file storage service.
+   *
+   * @var \Drupal\file\FileStorage
+   */
+  protected $fileStorage;
+
+  /**
+   * {@inheritdoc}
+   *
+   * @param \Drupal\Core\Image\ImageFactory $image_factory
+   *   The image_factory parameter.
+   * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
+   *   The request parameter.
+   */
+  public function __construct(ImageFactory $image_factory, RequestStack $request_stack) {
+    $this->imageFactory = $image_factory;
+    $this->request = $request_stack->getCurrentRequest();
+    $this->fileStorage = $this->entityTypeManager()->getStorage('file');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('image.factory'),
+      $container->get('request_stack')
+    );
+  }
+
+  /**
    * {@inheritdoc}
    *
    * @throws \Symfony\Component\Validator\Exception\InvalidArgumentException
    */
   public function content($fid, $focal_point_value) {
     $output = [];
-
-    $file = File::load($fid);
-    $image = \Drupal::service('image.factory')->get($file->getFileUri());
+    $file = $this->fileStorage->load($fid);
+    $image = $this->imageFactory->get($file->getFileUri());
     if (!$image->isValid()) {
       throw new InvalidArgumentException('The file with id = $fid is not an image.');
     }
@@ -46,7 +96,7 @@ class FocalPointPreviewController extends ControllerBase {
     $original_image = [
       '#theme' => 'image',
       '#uri' => $image->getSource(),
-      '#alt' => t('Focal Point Preview Image'),
+      '#alt' => $this->t('Focal Point Preview Image'),
       '#attributes' => [
         'id' => 'focal-point-preview-image',
       ],
@@ -63,7 +113,7 @@ class FocalPointPreviewController extends ControllerBase {
           'image' => [
             '#theme' => 'image',
             '#uri' => $url,
-            '#alt' => $this->t('Focal Point Preview: %label', array('%label' => $style_label)),
+            '#alt' => $this->t('Focal Point Preview: %label', ['%label' => $style_label]),
             '#attributes' => [
               'class' => ['focal-point-derivative-preview-image'],
             ],
@@ -74,19 +124,35 @@ class FocalPointPreviewController extends ControllerBase {
     }
     else {
       // There are no styles that use a focal point effect to preview.
-      drupal_set_message($this->t('You must have at least one <a href=":url">image styles</a> defined that uses a focal point effect in order to preview.', array(':url' => '/admin/config/media/image-styles')), 'warning');
+      $image_styles_url = Url::fromRoute('entity.image_style.collection')->toString();
+      $this->messenger()->addWarning(
+        $this->t('You must have at least one <a href=":url">image style</a> defined that uses a focal point effect in order to preview.',
+          [':url' => $image_styles_url]
+        )
+      );
     }
 
-    $output['focal_point_preview_page'] = array(
+    $output['focal_point_preview_page'] = [
       '#theme' => "focal_point_preview_page",
       "#original_image" => $original_image,
       '#derivative_images' => $derivative_images,
       '#focal_point' => $focal_point_value,
       '#preview_image_note' => $this->t('This preview image above may have been scaled to fit on the page.'),
       '#derivative_image_note' => $derivative_image_note,
+    ];
+
+    $html = render($output);
+
+    $options = [
+      'dialogClass' => 'popup-dialog-class',
+      'width' => '80%',
+    ];
+    $response = new AjaxResponse();
+    $response->addCommand(
+      new OpenModalDialogCommand($this->t('Images preview'), $html, $options)
     );
 
-    return $output;
+    return $response;
   }
 
   /**
@@ -102,15 +168,15 @@ class FocalPointPreviewController extends ControllerBase {
    * @param int $fid
    *   The file id for the image being previewed from the URL.
    *
-   * @return AccessResult
+   * @return \Drupal\Core\Access\AccessResult
    *   An AccessResult object defining if permission is granted or not.
    */
   public function access(AccountInterface $account, $fid) {
     $access = AccessResult::forbidden();
 
     // @todo: I should be able to use "magic args" to load the file directly.
-    $file = File::load($fid);
-    $image = \Drupal::service('image.factory')->get($file->getFileUri());
+    $file = $this->fileStorage->load($fid);
+    $image = $this->imageFactory->get($file->getFileUri());
     if (!$image->isValid()) {
       throw new InvalidArgumentException('The file with id = $fid is not an image.');
     }
@@ -118,7 +184,7 @@ class FocalPointPreviewController extends ControllerBase {
     // Check if there was a valid token provided in with the HTTP request so
     // that preview is available on a "create entity" form.
     if ($this->validTokenProvided()) {
-      $access = AccessResult::allowed();;
+      $access = AccessResult::allowed();
     }
 
     // If access has not yet been granted and the file module is enabled, check
@@ -126,7 +192,7 @@ class FocalPointPreviewController extends ControllerBase {
     // has access to edit.
     if (function_exists('file_get_file_references') && !$access->isAllowed()) {
       $references = file_get_file_references($file, NULL, EntityStorageInterface::FIELD_LOAD_REVISION, '');
-      foreach ($references as $field_name => $data) {
+      foreach ($references as $data) {
         foreach (array_keys($data) as $entity_type_id) {
           if ($account->hasPermission($entity_type_id . ".edit")) {
             $access = AccessResult::allowed();
@@ -148,9 +214,9 @@ class FocalPointPreviewController extends ControllerBase {
    */
   public function getFocalPointImageStyles() {
     // @todo: Can this be generated? See $imageEffectManager->getDefinitions();
-    $focal_point_effects = array('focal_point_crop', 'focal_point_scale_and_crop');
+    $focal_point_effects = ['focal_point_crop', 'focal_point_scale_and_crop'];
 
-    $styles_using_focal_point = array();
+    $styles_using_focal_point = [];
     $styles = $this->entityTypeManager()->getStorage('image_style')->loadMultiple();
     foreach ($styles as $image_style_id => $style) {
       foreach ($style->getEffects() as $effect) {
@@ -198,8 +264,13 @@ class FocalPointPreviewController extends ControllerBase {
    */
   protected function validTokenProvided() {
     try {
-      $token = \Drupal::request()->query->get('focal_point_token');
-      return FocalPointImageWidget::validatePreviewToken($token);
+      if (\Drupal::request()->query->has('focal_point_token')) {
+        $token = \Drupal::request()->query->get('focal_point_token');
+        return FocalPointImageWidget::validatePreviewToken($token);
+      }
+      else {
+        return FALSE;
+      }
     }
     catch (\InvalidArgumentException $e) {
       return FALSE;

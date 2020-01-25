@@ -3,20 +3,22 @@
 namespace Drupal\Tests\feeds\Unit\Feeds\Target;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;
-use Drupal\Tests\feeds\Unit\FeedsUnitTestCase;
-use Drupal\feeds\Feeds\Target\EntityReference;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Entity\Query\QueryFactory;
 use Drupal\Core\Entity\EntityFieldManagerInterface;
 use Drupal\Core\Entity\EntityRepositoryInterface;
+use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Entity\Query\QueryInterface;
+use Drupal\feeds\Exception\EmptyFeedException;
+use Drupal\feeds\Exception\ReferenceNotFoundException;
+use Drupal\feeds\Feeds\Target\EntityReference;
+use Drupal\feeds\FieldTargetDefinition;
 
 /**
  * @coversDefaultClass \Drupal\feeds\Feeds\Target\EntityReference
  * @group feeds
  */
-class EntityReferenceTest extends FeedsUnitTestCase {
+class EntityReferenceTest extends FieldTargetTestBase {
 
   /**
    * The entity type manager prophecy used in the test.
@@ -26,11 +28,11 @@ class EntityReferenceTest extends FeedsUnitTestCase {
   protected $entityTypeManager;
 
   /**
-   * Query factory used in the test.
+   * The entity storage prophecy used in the test.
    *
-   * @var \Prophecy\Prophecy\ProphecyInterface|\Drupal\Core\Entity\Query\QueryFactory
+   * @var \Prophecy\Prophecy\ProphecyInterface|\Drupal\Core\Entity\EntityStorageInterface
    */
-  protected $entityQueryFactory;
+  protected $entityStorage;
 
   /**
    * Field manager used in the test.
@@ -59,11 +61,15 @@ class EntityReferenceTest extends FeedsUnitTestCase {
   public function setUp() {
     parent::setUp();
 
+    // Entity type manager.
     $this->entityTypeManager = $this->prophesize(EntityTypeManagerInterface::class);
-    $this->entityQueryFactory = $this->prophesize(QueryFactory::class);
     $this->entityFieldManager = $this->prophesize(EntityFieldManagerInterface::class);
     $this->entityFieldManager->getFieldStorageDefinitions('referenceable_entity_type')->willReturn([]);
     $this->entityRepository = $this->prophesize(EntityRepositoryInterface::class);
+
+    // Entity storage (needed for entity query's).
+    $this->entityStorage = $this->prophesize(EntityStorageInterface::class);
+    $this->entityTypeManager->getStorage('referenceable_entity_type')->willReturn($this->entityStorage);
 
     // Made-up entity type that we are referencing to.
     $referenceable_entity_type = $this->prophesize(EntityTypeInterface::class);
@@ -86,10 +92,30 @@ class EntityReferenceTest extends FeedsUnitTestCase {
     $field_definition_mock->expects($this->once())->method('getSetting')->willReturn('referenceable_entity_type');
 
     $configuration = [
-      'feed_type' => $this->getMock('Drupal\feeds\FeedTypeInterface'),
+      'feed_type' => $this->createMock('Drupal\feeds\FeedTypeInterface'),
       'target_definition' => $method($field_definition_mock),
     ];
-    $this->targetPlugin = new EntityReference($configuration, 'entity_reference', [], $this->entityTypeManager->reveal(), $this->entityQueryFactory->reveal(), $this->entityFieldManager->reveal(), $this->entityRepository->reveal());
+    $this->targetPlugin = new EntityReference($configuration, 'entity_reference', [], $this->entityTypeManager->reveal(), $this->entityFieldManager->reveal(), $this->entityRepository->reveal());
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function getTargetClass() {
+    return EntityReference::class;
+  }
+
+  /**
+   * @covers ::prepareTarget
+   */
+  public function testPrepareTarget() {
+    $field_definition_mock = $this->getMockFieldDefinition();
+    $field_definition_mock->expects($this->once())
+      ->method('getSetting')
+      ->will($this->returnValue('referenceable_entity_type'));
+
+    $method = $this->getMethod($this->getTargetClass(), 'prepareTarget')->getClosure();
+    $this->assertInstanceof(FieldTargetDefinition::class, $method($field_definition_mock));
   }
 
   /**
@@ -101,7 +127,7 @@ class EntityReferenceTest extends FeedsUnitTestCase {
     $entity_query->range(0, 1)->willReturn($entity_query);
     $entity_query->condition("referenceable_entity_type label", 1)->willReturn($entity_query);
     $entity_query->execute()->willReturn([12, 13, 14]);
-    $this->entityQueryFactory->get('referenceable_entity_type')->willReturn($entity_query);
+    $this->entityStorage->getQuery()->willReturn($entity_query)->shouldBeCalled();
 
     $method = $this->getProtectedClosure($this->targetPlugin, 'prepareValue');
     $values = ['target_id' => 1];
@@ -112,20 +138,31 @@ class EntityReferenceTest extends FeedsUnitTestCase {
   /**
    * @covers ::prepareValue
    *
-   * Tests prepareValue() method without match.
-   *
-   * @expectedException \Drupal\feeds\Exception\EmptyFeedException
+   * Tests prepareValue() without passing values.
    */
   public function testPrepareValueEmptyFeed() {
+    $method = $this->getProtectedClosure($this->targetPlugin, 'prepareValue');
+    $values = ['target_id' => ''];
+    $this->setExpectedException(EmptyFeedException::class);
+    $method(0, $values);
+  }
+
+  /**
+   * @covers ::prepareValue
+   *
+   * Tests prepareValue() method without match.
+   */
+  public function testPrepareValueReferenceNotFound() {
     // Entity query.
     $entity_query = $this->prophesize(QueryInterface::class);
     $entity_query->range(0, 1)->willReturn($entity_query);
     $entity_query->condition("referenceable_entity_type label", 1)->willReturn($entity_query);
     $entity_query->execute()->willReturn([]);
-    $this->entityQueryFactory->get('referenceable_entity_type')->willReturn($entity_query);
+    $this->entityStorage->getQuery()->willReturn($entity_query)->shouldBeCalled();
 
     $method = $this->getProtectedClosure($this->targetPlugin, 'prepareValue');
     $values = ['target_id' => 1];
+    $this->setExpectedException(ReferenceNotFoundException::class);
     $method(0, $values);
   }
 

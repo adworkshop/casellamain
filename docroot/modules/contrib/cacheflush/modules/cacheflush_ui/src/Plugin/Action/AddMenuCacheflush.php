@@ -1,12 +1,8 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\cacheflush_ui\Plugin\Action\AddMenuCacheflush.
- */
-
 namespace Drupal\cacheflush_ui\Plugin\Action;
 
+use Drupal\cacheflush_ui\CacheflushUIConstantsInterface;
 use Drupal\Core\Action\ActionBase;
 use Drupal\Core\Session\AccountInterface;
 
@@ -35,7 +31,7 @@ class AddMenuCacheflush extends ActionBase {
    * {@inheritdoc}
    */
   public function execute($entity = NULL) {
-    $entity->menu = CACHEFLUSH_MENU;
+    $entity->menu = CacheflushUIConstantsInterface::CACHEFLUSH_MENU;
     $entity->save();
   }
 

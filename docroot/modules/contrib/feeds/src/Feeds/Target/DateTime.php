@@ -2,10 +2,7 @@
 
 namespace Drupal\feeds\Feeds\Target;
 
-use Drupal\Core\Datetime\DrupalDateTime;
-use Drupal\Core\Form\FormStateInterface;
-use Drupal\feeds\Plugin\Type\Target\ConfigurableTargetInterface;
-use Drupal\feeds\Plugin\Type\Target\FieldTargetBase;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 
 /**
  * Defines a datetime field mapper.
@@ -15,7 +12,7 @@ use Drupal\feeds\Plugin\Type\Target\FieldTargetBase;
  *   field_types = {"datetime"}
  * )
  */
-class DateTime extends FieldTargetBase implements ConfigurableTargetInterface {
+class DateTime extends DateTargetBase {
 
   /**
    * The datetime storage format.
@@ -29,7 +26,7 @@ class DateTime extends FieldTargetBase implements ConfigurableTargetInterface {
    */
   public function __construct(array $configuration, $plugin_id, array $plugin_definition) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
-    $this->storageFormat = $this->settings['datetime_type'] === 'date' ? DATETIME_DATE_STORAGE_FORMAT : DATETIME_DATETIME_STORAGE_FORMAT;
+    $this->storageFormat = $this->settings['datetime_type'] === 'date' ? DateTimeItemInterface::DATE_STORAGE_FORMAT : DateTimeItemInterface::DATETIME_STORAGE_FORMAT;
   }
 
   /**
@@ -49,23 +46,12 @@ class DateTime extends FieldTargetBase implements ConfigurableTargetInterface {
    *   A formatted date, in UTC time.
    */
   protected function prepareDateValue($value) {
-    $value = trim($value);
-
-    // This is a year value.
-    if (ctype_digit($value) && strlen($value) === 4) {
-      $value = 'January ' . $value;
-    }
-
-    if (is_numeric($value)) {
-      $date = DrupalDateTime::createFromTimestamp($value, $this->configuration['timezone']);
-    }
-    elseif (strtotime($value)) {
-      $date = new DrupalDateTime($value, $this->configuration['timezone']);
-    }
+    /** @var \Drupal\Core\Datetime\DrupalDateTime|null $date */
+    $date = $this->convertToDate($value);
 
     if (isset($date) && !$date->hasErrors()) {
       return $date->format($this->storageFormat, [
-        'timezone' => DATETIME_STORAGE_TIMEZONE,
+        'timezone' => DateTimeItemInterface::STORAGE_TIMEZONE,
       ]);
     }
     return '';
@@ -75,45 +61,7 @@ class DateTime extends FieldTargetBase implements ConfigurableTargetInterface {
    * {@inheritdoc}
    */
   public function defaultConfiguration() {
-    return ['timezone' => DATETIME_STORAGE_TIMEZONE];
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    $form['timezone'] = [
-      '#type' => 'select',
-      '#title' => $this->t('Timezone handling'),
-      '#options' => $this->getTimezoneOptions(),
-      '#default_value' => $this->configuration['timezone'],
-      '#description' => $this->t('This value will only be used if the timezone is missing.'),
-    ];
-
-    return $form;
-  }
-
-  /**
-   * Returns the timezone options.
-   *
-   * @return []
-   *   A map of timezone options.
-   */
-  public function getTimezoneOptions() {
-    return [
-      '__SITE__' => $this->t('Site default'),
-    ] + system_time_zones();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getSummary() {
-    $options = $this->getTimezoneOptions();
-
-    return $this->t('Default timezone: %zone', [
-      '%zone' => $options[$this->configuration['timezone']],
-    ]);
+    return ['timezone' => DateTimeItemInterface::STORAGE_TIMEZONE];
   }
 
 }

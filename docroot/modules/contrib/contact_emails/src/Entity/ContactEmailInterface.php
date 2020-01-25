@@ -16,7 +16,7 @@ interface ContactEmailInterface extends ContentEntityInterface, EntityChangedInt
   /**
    * Get the email subject.
    *
-   * @param MessageInterface $message
+   * @param \Drupal\contact\MessageInterface $message
    *   The contact message.
    *
    * @return string
@@ -27,7 +27,7 @@ interface ContactEmailInterface extends ContentEntityInterface, EntityChangedInt
   /**
    * Get the email body.
    *
-   * @param MessageInterface $message
+   * @param \Drupal\contact\MessageInterface $message
    *   The contact message.
    *
    * @return string
@@ -38,7 +38,7 @@ interface ContactEmailInterface extends ContentEntityInterface, EntityChangedInt
   /**
    * Get the email body format.
    *
-   * @param MessageInterface $message
+   * @param \Drupal\contact\MessageInterface $message
    *   The contact message.
    *
    * @return string
@@ -49,7 +49,7 @@ interface ContactEmailInterface extends ContentEntityInterface, EntityChangedInt
   /**
    * Get the email recipient(s).
    *
-   * @param MessageInterface $message
+   * @param \Drupal\contact\MessageInterface $message
    *   The contact message.
    *
    * @return array
@@ -60,7 +60,7 @@ interface ContactEmailInterface extends ContentEntityInterface, EntityChangedInt
   /**
    * Get the reply-to email address.
    *
-   * @param MessageInterface $message
+   * @param \Drupal\contact\MessageInterface $message
    *   The contact message.
    *
    * @return string

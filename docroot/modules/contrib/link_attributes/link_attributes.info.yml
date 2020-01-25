@@ -4,10 +4,10 @@ description: Provides a widget to allow settings of link attributes for menu lin
 # core: 8.x
 dependencies:
   - drupal:link
-  - drupal:menu_link_content
+  - drupal:system (>=8.4)
 
-# Information added by Drupal.org packaging script on 2016-12-16
-version: '8.x-1.0'
+# Information added by Drupal.org packaging script on 2019-07-24
+version: '8.x-1.9'
 core: '8.x'
 project: 'link_attributes'
-datestamp: 1481849585
+datestamp: 1564012689

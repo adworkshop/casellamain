@@ -4,8 +4,8 @@ description: 'Display a sitemap.'
 # core: 8.x
 configure: sitemap.settings
 
-# Information added by Drupal.org packaging script on 2016-08-23
-version: '8.x-1.2'
+# Information added by Drupal.org packaging script on 2018-11-08
+version: '8.x-1.5'
 core: '8.x'
 project: 'sitemap'
-datestamp: 1471963740
+datestamp: 1541693885

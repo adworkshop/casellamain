@@ -24,7 +24,21 @@ class FocalPointCropImageEffect extends FocalPointEffectBase {
   public function applyEffect(ImageInterface $image) {
     parent::applyEffect($image);
 
-    return $this->applyCrop($image);
+    $crop = $this->getCrop($image);
+    return $this->applyCrop($image, $crop);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function defaultConfiguration() {
+    // Include a `crop_type` so that the crop module can act on images
+    // generated using this effect.
+    // @see crop_file_url_alter()
+    // @see https://www.drupal.org/node/2929502
+    return parent::defaultConfiguration() + [
+      'crop_type' => 'focal_point',
+    ];
   }
 
 }

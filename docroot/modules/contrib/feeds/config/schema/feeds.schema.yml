@@ -11,6 +11,9 @@ feeds.feed_type.*:
     description:
       type: text
       label: 'Description'
+    help:
+      type: text
+      label: 'Help'
     import_period:
       type: integer
       label: 'The import period'
@@ -25,13 +28,24 @@ feeds.feed_type.*:
       label: 'Parser id'
     parser_configuration:
       label: 'Parser configuration'
-      type: mapping
+      type: feeds.parser.[%parent.parser]
     processor:
       type: string
       label: 'Processor id'
     processor_configuration:
       label: 'Processor configuration'
       type: feeds.processor.entity
+    custom_sources:
+      type: sequence
+      sequence:
+        type: mapping
+        mapping:
+          value:
+            type: string
+          label:
+            type: string
+          machine_name:
+            type: string
     mappings:
       type: sequence
       sequence:
@@ -66,6 +80,39 @@ field.field_settings.feeds_item:
       type: entity_reference_selection.[%parent.handler]
       label: 'Entity reference selection settings'
 
+# Field formatter configurations.
+field.formatter.settings.feeds_item_imported:
+  type: mapping
+  label: 'Feeds item imported display format settings'
+  mapping:
+    date_format:
+      type: string
+      label: 'Date format'
+    custom_date_format:
+      type: string
+      label: 'Custom date format'
+    timezone:
+      type: string
+      label: 'Time zone'
+
+field.formatter.settings.feeds_item_url:
+  type: mapping
+  label: 'Feeds item url display format settings'
+  mapping:
+    url_plain:
+      type: boolean
+      label: 'Display URL as plain text'
+
+field.formatter.settings.feeds_item_target_entity_view:
+  type: field.formatter.settings.entity_reference_entity_view
+
+field.formatter.settings.feeds_item_target_id:
+  type: field.formatter.settings.entity_reference_entity_id
+
+field.formatter.settings.feeds_item_target_label:
+  type: field.formatter.settings.entity_reference_label
+
+# Fetcher configurations.
 feeds.fetcher.http:
   type: mapping
   label: 'HTTP fetcher settings'
@@ -79,17 +126,65 @@ feeds.fetcher.http:
     request_timeout:
       type: integer
 
+feeds.fetcher.directory:
+  type: mapping
+  label: 'Directory fetcher settings'
+  mapping:
+    allowed_extensions:
+      type: string
+    allowed_schemes:
+      type: sequence
+      sequence:
+        type: string
+    recursive_scan:
+      type: boolean
+
+feeds.fetcher.upload:
+  type: mapping
+  label: 'Upload fetcher settings'
+  mapping:
+    allowed_extensions:
+      type: string
+    directory:
+      type: string
+
+# Parser configurations.
+feeds.parser.csv:
+  type: mapping
+  label: 'CSV parser settings'
+  mapping:
+    delimiter:
+      type: string
+    no_headers:
+      type: boolean
+    line_limit:
+      type: integer
+
+feeds.parser.opml:
+  type: mapping
+  label: 'OPML parser settings'
+
+feeds.parser.sitemap:
+  type: mapping
+  label: 'Sitemap XML parser settings'
+
+feeds.parser.syndication:
+  type: mapping
+  label: 'RSS/Atom parser settings'
+
+# Processor configurations.
 feeds.processor.entity:
   type: mapping
   label: 'Entity processor settings'
   mapping:
     values:
-      type: mapping
-      mapping:
-        type:
-          type: string
+      type: sequence
+      sequence:
+        type: ignore
     update_existing:
       type: integer
+    update_non_existent:
+      type: string
     skip_hash_check:
       type: boolean
     authorize:
@@ -100,3 +195,6 @@ feeds.processor.entity:
       type: boolean
     owner_id:
       type: integer
+
+feeds.processor.entity:*:
+  type: feeds.processor.entity

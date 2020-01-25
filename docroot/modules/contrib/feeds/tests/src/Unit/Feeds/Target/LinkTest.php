@@ -3,20 +3,29 @@
 namespace Drupal\Tests\feeds\Unit\Feeds\Target;
 
 use Drupal\feeds\Feeds\Target\Link;
-use Drupal\Tests\feeds\Unit\FeedsUnitTestCase;
 
 /**
  * @coversDefaultClass \Drupal\feeds\Feeds\Target\Link
  * @group feeds
  */
-class LinkTest extends FeedsUnitTestCase {
+class LinkTest extends FieldTargetTestBase {
 
+  /**
+   * {@inheritdoc}
+   */
+  protected function getTargetClass() {
+    return Link::class;
+  }
+
+  /**
+   * @covers ::prepareValue
+   */
   public function testPrepareValue() {
     $method = $this->getMethod('Drupal\feeds\Feeds\Target\Link', 'prepareTarget')->getClosure();
 
     $configuration = [
-      'feed_type' => $this->getMock('Drupal\feeds\FeedTypeInterface'),
-      'target_definition' =>  $method($this->getMockFieldDefinition()),
+      'feed_type' => $this->createMock('Drupal\feeds\FeedTypeInterface'),
+      'target_definition' => $method($this->getMockFieldDefinition()),
     ];
     $target = new Link($configuration, 'link', []);
 
@@ -30,16 +39,5 @@ class LinkTest extends FeedsUnitTestCase {
     $method(0, $values);
     $this->assertSame($values['uri'], 'http://example.com');
   }
-
-  // public function testPrepareTarget() {
-  //   $method = $this->getMethod('Drupal\feeds\Feeds\Target\Link', 'prepareTarget')->getClosure();
-  //   $targets = [
-  //     'properties' => [
-  //       'attributes' => [],
-  //     ],
-  //   ];
-  //   $method($targets);
-  //   $this->assertSame($targets, ['properties' => []]);
-  // }
 
 }

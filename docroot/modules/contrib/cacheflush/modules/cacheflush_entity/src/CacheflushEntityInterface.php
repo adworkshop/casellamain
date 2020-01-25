@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\cacheflush_entity\CacheflushEntityInterface.
- */
-
 namespace Drupal\cacheflush_entity;
 
 use Drupal\Core\Entity\ContentEntityInterface;

@@ -13,7 +13,7 @@
       $(context).find('.field-group-details').once('field-group-details').each(function () {
         var $this = $(this);
 
-        if ($this.is('.required-fields') && $this.find('[required]').length > 0) {
+        if ($this.is('.required-fields') && ($this.find('[required]').length > 0 || $this.find('.form-required').length > 0)) {
           $('summary', $this).first().addClass('form-required');
         }
       });

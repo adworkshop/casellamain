@@ -2,7 +2,7 @@
 
 namespace Drupal\feeds\Feeds\Processor\Form;
 
-use Drupal\Component\Utility\Unicode;
+use Drupal\Component\Plugin\ConfigurableInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\feeds\Plugin\Type\ExternalPluginFormBase;
 use Drupal\feeds\Plugin\Type\Processor\ProcessorInterface;
@@ -19,8 +19,8 @@ class DefaultEntityProcessorForm extends ExternalPluginFormBase {
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $tokens = [
-      '@entity' => Unicode::strtolower($this->plugin->entityTypeLabel()),
-      '@entities' => Unicode::strtolower($this->plugin->entityTypeLabelPlural()),
+      '@entity' => mb_strtolower($this->plugin->entityTypeLabel()),
+      '@entities' => mb_strtolower($this->plugin->entityTypeLabelPlural()),
     ];
 
     $form['update_existing'] = [
@@ -35,8 +35,38 @@ class DefaultEntityProcessorForm extends ExternalPluginFormBase {
       '#default_value' => $this->plugin->getConfiguration('update_existing'),
     ];
 
-    $times = [ProcessorInterface::EXPIRE_NEVER, 3600, 10800, 21600, 43200, 86400, 259200, 604800, 2592000, 2592000 * 3, 2592000 * 6, 31536000];
+    $times = [
+      ProcessorInterface::EXPIRE_NEVER,
+      3600,
+      10800,
+      21600,
+      43200,
+      86400,
+      259200,
+      604800,
+      2592000,
+      2592000 * 3,
+      2592000 * 6,
+      31536000,
+    ];
     $period = array_map([$this, 'formatExpire'], array_combine($times, $times));
+
+    $options = $this->getUpdateNonExistentActions();
+    $selected = $this->plugin->getConfiguration('update_non_existent');
+    if (!isset($options[$selected])) {
+      $options[$selected] = $this->t('@label (action no longer available)', [
+        '@label' => $selected,
+      ]);
+    }
+    if (!empty($options)) {
+      $form['update_non_existent'] = [
+        '#type' => 'select',
+        '#title' => $this->t('Previously imported items'),
+        '#description' => $this->t('Select what to do with items that were previously imported, but are now no longer in the feed.'),
+        '#options' => $options,
+        '#default_value' => $this->plugin->getConfiguration('update_non_existent'),
+      ];
+    }
 
     $form['expire'] = [
       '#type' => 'select',
@@ -112,6 +142,15 @@ class DefaultEntityProcessorForm extends ExternalPluginFormBase {
    */
   public function validateConfigurationForm(array &$form, FormStateInterface $form_state) {
     $form_state->setValue('owner_id', (int) $form_state->getValue('owner_id', 0));
+
+    // Check if the selected option for 'update_non_existent' is still available.
+    $options = $this->getUpdateNonExistentActions();
+    $selected = $form_state->getValue('update_non_existent');
+    if (!isset($options[$selected])) {
+      $form_state->setError($form['update_non_existent'], $this->t('The option %label is no longer available. Please select a different option.', [
+        '%label' => $selected,
+      ]));
+    }
   }
 
   /**
@@ -129,6 +168,66 @@ class DefaultEntityProcessorForm extends ExternalPluginFormBase {
     }
 
     return $this->t('after @time', ['@time' => \Drupal::service('date.formatter')->formatInterval($timestamp)]);
+  }
+
+  /**
+   * Get available actions to apply on the entity.
+   *
+   * @return array
+   *   A list of applicable actions.
+   */
+  protected function getUpdateNonExistentActions() {
+    $options = [];
+
+    $action_definitions = \Drupal::service('plugin.manager.action')->getDefinitionsByType($this->plugin->entityType());
+    foreach ($action_definitions as $id => $definition) {
+      // Filter out configurable actions.
+      $interfaces = class_implements($definition['class']);
+      if (isset($interfaces[ConfigurableInterface::class])) {
+        continue;
+      }
+      // @todo remove when Drupal 8 support has ended.
+      if (isset($interfaces['Drupal\Component\Plugin\ConfigurablePluginInterface'])) {
+        continue;
+      }
+
+      // Filter out actions that need confirmation.
+      if (!empty($definition['confirm_form_route_name'])) {
+        continue;
+      }
+
+      // Check for deprecated action plugins.
+      foreach ($this->getDeprecatedActionClasses() as $deprecated_class_name) {
+        if ($definition['class'] === $deprecated_class_name || is_subclass_of($definition['class'], $deprecated_class_name)) {
+          continue 2;
+        }
+      }
+
+      $options[$id] = $definition['label'];
+    }
+
+    return [
+      '_keep' => $this->t('Keep'),
+      '_delete' => $this->t('Delete'),
+    ] + $options;
+  }
+
+  /**
+   * Returns a list of classes from deprecated action plugins.
+   *
+   * @return string[]
+   *   An array of class names.
+   */
+  protected function getDeprecatedActionClasses() {
+    // @todo remove when Drupal 8 support has ended.
+    return [
+      'Drupal\comment\Plugin\Action\PublishComment',
+      'Drupal\comment\Plugin\Action\UnpublishComment',
+      'Drupal\comment\Plugin\Action\SaveComment',
+      'Drupal\node\Plugin\Action\PublishNode',
+      'Drupal\node\Plugin\Action\UnpublishNode',
+      'Drupal\node\Plugin\Action\SaveNode',
+    ];
   }
 
 }

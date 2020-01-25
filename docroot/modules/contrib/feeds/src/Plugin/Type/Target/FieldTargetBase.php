@@ -103,7 +103,7 @@ abstract class FieldTargetBase extends TargetBase {
       }
       catch (TargetValidationException $e) {
         // Validation failed.
-        drupal_set_message($e->getMessage(), 'error');
+        $this->addMessage($e->getFormattedMessage(), 'error');
       }
     }
 
@@ -124,11 +124,34 @@ abstract class FieldTargetBase extends TargetBase {
     }
   }
 
+  /**
+   * Constructs a base query which is used to find an existing entity.
+   *
+   * @return \Drupal\Core\Entity\Query\QueryInterface
+   *   An entity query.
+   *
+   * @see ::getUniqueValue()
+   */
   protected function getUniqueQuery() {
     return \Drupal::entityQuery($this->feedType->getProcessor()->entityType())
-      ->range(0, 1);
+      ->range(0, 1)->accessCheck(FALSE);
   }
 
+  /**
+   * Looks for an existing entity and returns an entity ID if found.
+   *
+   * @param \Drupal\feeds\FeedInterface $feed
+   *   The feed that is being processed.
+   * @param string $target
+   *   The ID of the field target plugin.
+   * @param string $key
+   *   The property of the field to search on.
+   * @param string $value
+   *   The value to look for.
+   *
+   * @return string|int|null
+   *   An entity ID, if found. Null otherwise.
+   */
   public function getUniqueValue(FeedInterface $feed, $target, $key, $value) {
     $base_fields = \Drupal::service('entity_field.manager')->getBaseFieldDefinitions($this->feedType->getProcessor()->entityType());
 
@@ -138,9 +161,88 @@ abstract class FieldTargetBase extends TargetBase {
     else {
       $field = "$target.$key";
     }
-    if ($result = $this->getUniqueQuery()->condition($field, $value)->execute()) {
+
+    // Construct "Unique" query.
+    $query = $this->getUniqueQuery()
+      ->condition($field, $value);
+
+    // Restrict search to the same bundle if the entity type we import for
+    // supports bundles.
+    $bundle_key = $this->feedType->getProcessor()->bundleKey();
+    if ($bundle_key) {
+      $query->condition($bundle_key, $this->feedType->getProcessor()->bundle());
+    }
+
+    // Execute "Unique" query.
+    if ($result = $query->execute()) {
       return reset($result);
     }
+  }
+
+  /**
+   * Returns the messenger to use.
+   *
+   * @return \Drupal\Core\Messenger\MessengerInterface
+   *   The messenger service.
+   */
+  protected function getMessenger() {
+    return \Drupal::messenger();
+  }
+
+  /**
+   * Adds a message.
+   *
+   * @param string|\Drupal\Component\Render\MarkupInterface $message
+   *   The translated message to be displayed to the user.
+   * @param string $type
+   *   (optional) The message's type.
+   * @param bool $repeat
+   *   (optional) If this is FALSE and the message is already set, then the
+   *   message won't be repeated. Defaults to FALSE.
+   */
+  protected function addMessage($message, $type = 'status', $repeat = FALSE) {
+    $this->getMessenger()->addMessage($message, $type, $repeat);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function calculateDependencies() {
+    $this->dependencies = parent::calculateDependencies();
+
+    // Add the configured field as a dependency.
+    $field_definition = $this->targetDefinition
+      ->getFieldDefinition();
+    if ($field_definition && $field_definition instanceof EntityInterface) {
+      $this->dependencies['config'][] = $field_definition->getConfigDependencyName();
+    }
+
+    return $this->dependencies;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function onDependencyRemoval(array $dependencies) {
+    // See if this target is responsible for any of the dependencies being
+    // removed. If this is the case, indicate that the mapping that uses this
+    // target needs to be removed from the feed type.
+    $remove = FALSE;
+    // Get all the current dependencies for this target.
+    $current_dependencies = $this->calculateDependencies();
+    foreach ($current_dependencies as $group => $dependency_list) {
+      // Check if any of the target dependencies match the dependencies being
+      // removed.
+      foreach ($dependency_list as $config_key) {
+        if (isset($dependencies[$group]) && array_key_exists($config_key, $dependencies[$group])) {
+          // This targets dependency matches a dependency being removed,
+          // indicate that mapping using this target needs to be removed.
+          $remove = TRUE;
+          break 2;
+        }
+      }
+    }
+    return $remove;
   }
 
 }

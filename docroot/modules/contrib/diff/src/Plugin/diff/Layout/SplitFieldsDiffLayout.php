@@ -4,7 +4,7 @@ namespace Drupal\diff\Plugin\diff\Layout;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Datetime\DateFormatter;
-use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\diff\DiffEntityComparison;
@@ -14,6 +14,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
+ * Provides Split fields diff layout.
+ *
  * @DiffLayoutBuilder(
  *   id = "split_fields",
  *   label = @Translation("Split fields"),
@@ -95,16 +97,17 @@ class SplitFieldsDiffLayout extends DiffLayoutBase {
   /**
    * {@inheritdoc}
    */
-  public function build(EntityInterface $left_revision, EntityInterface $right_revision, EntityInterface $entity) {
+  public function build(ContentEntityInterface $left_revision, ContentEntityInterface $right_revision, ContentEntityInterface $entity) {
+    // Build the revisions data.
+    $build = $this->buildRevisionsData($left_revision, $right_revision);
+
     $active_filter = $this->requestStack->getCurrentRequest()->query->get('filter') ?: 'raw';
-    $build['filter'] = [
+    $build['controls']['filter'] = [
       '#type' => 'item',
       '#title' => $this->t('Filter'),
-      '#weight' => 3,
-      '#prefix' => '<div class="diff-layout">',
-      '#suffix' => '</div>',
+      '#wrapper_attributes' => ['class' => 'diff-controls__item'],
+      'options' => $this->buildFilterNavigation($entity, $left_revision, $right_revision, 'split_fields', $active_filter),
     ];
-    $build['filter']['options'] = $this->buildFilterNavigation($entity, $left_revision, $right_revision, 'split_fields', $active_filter);
 
     // Build the diff comparison table.
     $diff_header = $this->buildTableHeader($left_revision, $right_revision);
@@ -146,6 +149,20 @@ class SplitFieldsDiffLayout extends DiffLayoutBase {
         $field['#data']['#right']
       );
 
+      // EXPERIMENTAL: Deal with magic thumbnail image data.
+      if (isset($field['#data']['#left_thumbnail'])) {
+        $field_diff_rows['#thumbnail'][1] = [
+          'data' => $field['#data']['#left_thumbnail'],
+          'class' => '',
+        ];
+      }
+      if (isset($field['#data']['#right_thumbnail'])) {
+        $field_diff_rows['#thumbnail'][3] = [
+          'data' => $field['#data']['#right_thumbnail'],
+          'class' => '',
+        ];
+      }
+
       $final_diff = [];
       $row_count_left = NULL;
       $row_count_right = NULL;
@@ -153,43 +170,55 @@ class SplitFieldsDiffLayout extends DiffLayoutBase {
       foreach ($field_diff_rows as $key => $value) {
         $show_left = FALSE;
         $show_right = FALSE;
-        if (isset($field_diff_rows[$key][1]['data']) && trim($field_diff_rows[$key][1]['data']['#markup']) != '') {
+        if (isset($field_diff_rows[$key][1]['data'])) {
           $show_left = TRUE;
           $row_count_left++;
         }
-        if (isset($field_diff_rows[$key][3]['data']) && trim($field_diff_rows[$key][3]['data']['#markup']) != '') {
+        if (isset($field_diff_rows[$key][3]['data'])) {
           $show_right = TRUE;
           $row_count_right++;
         }
         $final_diff[] = [
           'left-line-number' => [
             'data' => $show_left ? $row_count_left : NULL,
-            'class' => ['diff-line-number', isset($field_diff_rows[$key][1]['data']) ? $field_diff_rows[$key][1]['class'] : NULL],
+            'class' => [
+              'diff-line-number',
+              isset($field_diff_rows[$key][1]['data']) ? $field_diff_rows[$key][1]['class'] : NULL,
+            ],
           ],
-          'left-row-sign' =>[
+          'left-row-sign' => [
             'data' => isset($field_diff_rows[$key][0]['data']) ? $field_diff_rows[$key][0]['data'] : NULL,
-            'class' => [isset($field_diff_rows[$key][0]['class']) ? $field_diff_rows[$key][0]['class'] : NULL, isset($field_diff_rows[$key][1]['data']) ? $field_diff_rows[$key][1]['class'] : NULL],
+            'class' => [
+              isset($field_diff_rows[$key][0]['class']) ? $field_diff_rows[$key][0]['class'] : NULL,
+              isset($field_diff_rows[$key][1]['data']) ? $field_diff_rows[$key][1]['class'] : NULL,
+            ],
           ],
-          'left-row-data' =>[
+          'left-row-data' => [
             'data' => isset($field_diff_rows[$key][1]['data']) ? $field_diff_rows[$key][1]['data'] : NULL,
             'class' => isset($field_diff_rows[$key][1]['data']) ? $field_diff_rows[$key][1]['class'] : NULL,
           ],
-          'right-line-number' =>[
+          'right-line-number' => [
             'data' => $show_right ? $row_count_right : NULL,
-            'class' => ['diff-line-number', isset($field_diff_rows[$key][3]['data']) ? $field_diff_rows[$key][3]['class'] : NULL],
+            'class' => [
+              'diff-line-number',
+              isset($field_diff_rows[$key][3]['data']) ? $field_diff_rows[$key][3]['class'] : NULL,
+            ],
           ],
-          'right-row-sign' =>[
+          'right-row-sign' => [
             'data' => isset($field_diff_rows[$key][2]['data']) ? $field_diff_rows[$key][2]['data'] : NULL,
-            'class' => [isset($field_diff_rows[$key][2]['class']) ? $field_diff_rows[$key][2]['class'] : NULL, isset($field_diff_rows[$key][3]['data']) ? $field_diff_rows[$key][3]['class'] : NULL],
+            'class' => [
+              isset($field_diff_rows[$key][2]['class']) ? $field_diff_rows[$key][2]['class'] : NULL,
+              isset($field_diff_rows[$key][3]['data']) ? $field_diff_rows[$key][3]['class'] : NULL,
+            ],
           ],
-          'right-row-data' =>[
+          'right-row-data' => [
             'data' => isset($field_diff_rows[$key][3]['data']) ? $field_diff_rows[$key][3]['data'] : NULL,
             'class' => isset($field_diff_rows[$key][3]['data']) ? $field_diff_rows[$key][3]['class'] : NULL,
-          ]
+          ],
         ];
       }
 
-      // Add the field label to the table only if there are changes to that field.
+      // Add field label to the table only if there are changes to that field.
       if (!empty($final_diff) && !empty($field_label_row)) {
         $diff_rows[] = [$field_label_row];
       }
@@ -204,7 +233,7 @@ class SplitFieldsDiffLayout extends DiffLayoutBase {
         unset($diff_rows[$i]['left-line-number']);
         unset($diff_rows[$i]['right-line-number']);
       }
-      //Reduce the colspan.
+      // Reduce the colspan.
       $diff_header[0]['colspan'] = 2;
     }
 
@@ -227,15 +256,15 @@ class SplitFieldsDiffLayout extends DiffLayoutBase {
   /**
    * Build the header for the diff table.
    *
-   * @param \Drupal\Core\Entity\EntityInterface $left_revision
+   * @param \Drupal\Core\Entity\ContentEntityInterface $left_revision
    *   Revision from the left hand side.
-   * @param \Drupal\Core\Entity\EntityInterface $right_revision
+   * @param \Drupal\Core\Entity\ContentEntityInterface $right_revision
    *   Revision from the right hand side.
    *
    * @return array
    *   Header for Diff table.
    */
-  protected function buildTableHeader(EntityInterface $left_revision, EntityInterface $right_revision) {
+  protected function buildTableHeader(ContentEntityInterface $left_revision, ContentEntityInterface $right_revision) {
     $header = [];
     $header[] = [
       'data' => ['#markup' => $this->buildRevisionLink($left_revision)],

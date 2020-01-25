@@ -6,8 +6,8 @@ package: Administration
 dependencies:
   - menu_ui
 
-# Information added by Drupal.org packaging script on 2016-08-19
-version: '8.x-1.0-rc1'
+# Information added by Drupal.org packaging script on 2017-10-05
+version: '8.x-1.0'
 core: '8.x'
 project: 'menu_admin_per_menu'
-datestamp: 1471605543
+datestamp: 1507184951

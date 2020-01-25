@@ -2,7 +2,6 @@
 
 namespace Drupal\contact_emails;
 
-
 use Drupal\Core\Entity\ContentEntityStorageInterface;
 
 /**

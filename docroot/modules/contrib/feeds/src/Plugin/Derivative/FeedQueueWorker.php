@@ -24,8 +24,6 @@ class FeedQueueWorker extends DeriverBase implements ContainerDeriverInterface {
   /**
    * Constructs an FeedQueueWorker object.
    *
-   * @param string $base_plugin_id
-   *   The base plugin id.
    * @param \Drupal\Core\Entity\EntityStorageInterface $storage
    *   The entity manager.
    */
@@ -46,7 +44,11 @@ class FeedQueueWorker extends DeriverBase implements ContainerDeriverInterface {
   public function getDerivativeDefinitions($base_plugin_definition) {
     $derivatives = [];
     foreach ($this->storage->loadMultiple() as $feed_type) {
-      $derivatives[$feed_type->id()] = $base_plugin_definition;
+      $derivatives[$feed_type->id()] = [
+        'title' => t('Feed refresh: @feed_type_label', [
+          '@feed_type_label' => $feed_type->label(),
+        ]),
+      ] + $base_plugin_definition;
     }
 
     return $derivatives;

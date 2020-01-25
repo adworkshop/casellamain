@@ -1,12 +1,8 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\cacheflush_ui\Plugin\Action\UnpublishCacheflush.
- */
-
 namespace Drupal\cacheflush_ui\Plugin\Action;
 
+use Drupal\cacheflush_ui\CacheflushUIConstantsInterface;
 use Drupal\Core\Action\ActionBase;
 use Drupal\Core\Session\AccountInterface;
 
@@ -35,7 +31,7 @@ class UnpublishCacheflush extends ActionBase {
    * {@inheritdoc}
    */
   public function execute($entity = NULL) {
-    $entity->status = CACHEFLUSH_NOT_PUBLISHED;
+    $entity->status = CacheflushUIConstantsInterface::CACHEFLUSH_NOT_PUBLISHED;
     $entity->save();
   }
 

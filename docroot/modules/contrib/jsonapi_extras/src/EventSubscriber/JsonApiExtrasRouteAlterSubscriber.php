@@ -58,7 +58,7 @@ class JsonApiExtrasRouteAlterSubscriber implements EventSubscriberInterface {
     $collection->get('jsonapi.resource_list')
       ->setPath($path);
 
-    /** @var ConfigurableResourceType $resource_type */
+    /** @var \Drupal\jsonapi_extras\ResourceType\ConfigurableResourceType $resource_type */
     foreach ($this->resourceTypeRepository->all() as $resource_type) {
       // Overwrite routes.
       $paths = $this->getPathsForResourceType($resource_type, $prefix);

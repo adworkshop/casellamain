@@ -4,7 +4,6 @@ namespace Drupal\Tests\feeds\Unit\Feeds\Fetcher;
 
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\File\FileSystemInterface;
-use Drupal\Core\Form\FormState;
 use Drupal\Tests\feeds\Unit\FeedsUnitTestCase;
 use Drupal\feeds\FeedInterface;
 use Drupal\feeds\FeedTypeInterface;
@@ -16,7 +15,6 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
-use GuzzleHttp\Psr7\Stream;
 use Prophecy\Argument;
 
 /**
@@ -25,24 +23,45 @@ use Prophecy\Argument;
  */
 class HttpFetcherTest extends FeedsUnitTestCase {
 
+  /**
+   * The feed entity.
+   *
+   * @var \Drupal\feeds\FeedInterface
+   */
   protected $feed;
 
+  /**
+   * The Feeds fetcher plugin under test.
+   *
+   * @var \Drupal\feeds\Feeds\Fetcher\HttpFetcher
+   */
   protected $fetcher;
 
+  /**
+   * A mocked HTTP handler to use within the handler stack.
+   *
+   * @var \GuzzleHttp\Handler\MockHandler
+   */
   protected $mockHandler;
 
+  /**
+   * {@inheritdoc}
+   */
   public function setUp() {
     parent::setUp();
 
-    $feed_type = $this->getMock(FeedTypeInterface::class);
+    $feed_type = $this->createMock(FeedTypeInterface::class);
 
     $this->mockHandler = new MockHandler();
     $client = new Client(['handler' => HandlerStack::create($this->mockHandler)]);
-    $cache = $this->getMock(CacheBackendInterface::class);
+    $cache = $this->createMock(CacheBackendInterface::class);
 
     $file_system = $this->prophesize(FileSystemInterface::class);
     $file_system->tempnam(Argument::type('string'), Argument::type('string'))->will(function ($args) {
-      return tempnam($args[0], $args[1]);
+      // We suppress any notices as since PHP 7.1, this results into a warning
+      // when the temporary directory is not configured in php.ini. We are not
+      // interested in that artefact for this test.
+      return @tempnam($args[0], $args[1]);
     });
     $file_system->realpath(Argument::type('string'))->will(function ($args) {
       return realpath($args[0]);
@@ -56,6 +75,11 @@ class HttpFetcherTest extends FeedsUnitTestCase {
     $this->feed->getSource()->willReturn('http://example.com');
   }
 
+  /**
+   * Tests a successful fetch from a HTTP source.
+   *
+   * @covers ::fetch
+   */
   public function testFetch() {
     $this->mockHandler->append(new Response(200, [], 'test data'));
 
@@ -64,6 +88,9 @@ class HttpFetcherTest extends FeedsUnitTestCase {
   }
 
   /**
+   * Tests fetching from a HTTP source that returns a 304 (not modified).
+   *
+   * @covers ::fetch
    * @expectedException \Drupal\feeds\Exception\EmptyFeedException
    */
   public function testFetch304() {
@@ -72,6 +99,9 @@ class HttpFetcherTest extends FeedsUnitTestCase {
   }
 
   /**
+   * Tests fetching from a HTTP source that returns a 404 (not found).
+   *
+   * @covers ::fetch
    * @expectedException \RuntimeException
    */
   public function testFetch404() {
@@ -80,15 +110,21 @@ class HttpFetcherTest extends FeedsUnitTestCase {
   }
 
   /**
+   * Tests a fetch that fails.
+   *
+   * @covers ::fetch
    * @expectedException \RuntimeException
    */
   public function testFetchError() {
-    $this->mockHandler->append(new RequestException('', new Request(200, 'http://google.com')));
+    $this->mockHandler->append(new RequestException('', new Request('GET', 'http://google.com')));
     $this->fetcher->fetch($this->feed->reveal(), new State());
   }
 
+  /**
+   * @covers ::onFeedDeleteMultiple
+   */
   public function testOnFeedDeleteMultiple() {
-    $feed = $this->getMock(FeedInterface::class);
+    $feed = $this->createMock(FeedInterface::class);
     $feed->expects($this->exactly(3))
       ->method('getSource')
       ->will($this->returnValue('http://example.com'));
@@ -98,4 +134,3 @@ class HttpFetcherTest extends FeedsUnitTestCase {
   }
 
 }
-

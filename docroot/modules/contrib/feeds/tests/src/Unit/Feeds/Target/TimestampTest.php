@@ -3,20 +3,29 @@
 namespace Drupal\Tests\feeds\Unit\Feeds\Target;
 
 use Drupal\feeds\Feeds\Target\Timestamp;
-use Drupal\Tests\feeds\Unit\FeedsUnitTestCase;
 
 /**
  * @coversDefaultClass \Drupal\feeds\Feeds\Target\Timestamp
  * @group feeds
  */
-class TimestampTest extends FeedsUnitTestCase {
+class TimestampTest extends FieldTargetWithContainerTestBase {
 
-  public function test() {
-    $method = $this->getMethod('Drupal\feeds\Feeds\Target\Timestamp', 'prepareTarget')->getClosure();
+  /**
+   * {@inheritdoc}
+   */
+  protected function getTargetClass() {
+    return Timestamp::class;
+  }
+
+  /**
+   * @covers ::prepareValue
+   */
+  public function testPrepareValue() {
+    $method = $this->getMethod(Timestamp::class, 'prepareTarget')->getClosure();
     $target_definition = $method($this->getMockFieldDefinition());
 
     $configuration = [
-      'feed_type' => $this->getMock('Drupal\feeds\FeedTypeInterface'),
+      'feed_type' => $this->createMock('Drupal\feeds\FeedTypeInterface'),
       'target_definition' => $target_definition,
     ];
     $target = new Timestamp($configuration, 'timestamp', []);
@@ -30,7 +39,7 @@ class TimestampTest extends FeedsUnitTestCase {
     // Test year value.
     $values = ['value' => 2000];
     $method(0, $values);
-    $this->assertSame($values['value'], strtotime('January 2000'));
+    $this->assertSame($values['value'], strtotime('2000-01-01T00:00:00Z'));
 
     // Test invalid value.
     $values = ['value' => 'abc'];

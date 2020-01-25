@@ -17,14 +17,11 @@ table.feeds-admin-feed-type tr.disabled.odd {
 }
 
 /* Feeds edit form layout. */
-div.feeds-settings {
-}
-
 div.left-bar {
   float: left;
   position: relative;
   width: 240px;
-  border-right: 1px solid #DDD;
+  border-right: 1px solid #ddd;
   padding: 10px 10px 0 0;
 }
 
@@ -38,19 +35,15 @@ div.configuration-squeeze {
 }
 
 /* Container theming. */
-div.feeds-container {
-
-}
-
 div.feeds-container h4 {
   font-size: 1.2em;
   font-weight: bold;
 }
 
 div.feeds-container.plain {
-  background-color: #EEE;
-  border-bottom: 1px solid #DDD;
-  border-top: 2px solid #DDD;
+  background-color: #eee;
+  border-bottom: 1px solid #ddd;
+  border-top: 2px solid #ddd;
   padding: 5px;
   margin: 10px 0;
 }
@@ -96,11 +89,5 @@ ul.container-actions .form-item,
 ul.container-actions li form,
 ul.container-actions li form input {
   padding: 0;
-  margin: 0;
   display: inline;
-}
-
-/* Mapping form. */
-#center table form {
-  margin: 0;
 }

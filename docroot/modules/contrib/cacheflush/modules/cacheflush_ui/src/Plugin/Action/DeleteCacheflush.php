@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\cacheflush_ui\Plugin\Action\DeleteCacheflush.
- */
-
 namespace Drupal\cacheflush_ui\Plugin\Action;
 
 use Drupal\Core\Action\ActionBase;
@@ -50,7 +45,7 @@ class DeleteCacheflush extends ActionBase implements ContainerFactoryPluginInter
    *   The plugin implementation definition.
    * @param \Drupal\user\PrivateTempStoreFactory $temp_store_factory
    *   The tempstore factory.
-   * @param AccountInterface $current_user
+   * @param \Drupal\Core\Session\AccountInterface $current_user
    *   Current user.
    */
   public function __construct(array $configuration, $plugin_id, $plugin_definition, PrivateTempStoreFactory $temp_store_factory, AccountInterface $current_user) {
@@ -78,7 +73,7 @@ class DeleteCacheflush extends ActionBase implements ContainerFactoryPluginInter
    */
   public function executeMultiple(array $entities) {
     $info = [];
-    /** @var \Drupal\cacheflush\Entity\CacheflushEntity $cacheflush */
+    /** @var \Drupal\cacheflush_entity\Entity\CacheflushEntity $cacheflush */
     foreach ($entities as $cacheflush) {
       $langcode = $cacheflush->language()->getId();
       $info[$cacheflush->id()][$langcode] = $langcode;
@@ -90,14 +85,14 @@ class DeleteCacheflush extends ActionBase implements ContainerFactoryPluginInter
    * {@inheritdoc}
    */
   public function execute($object = NULL) {
-    $this->executeMultiple(array($object));
+    $this->executeMultiple([$object]);
   }
 
   /**
    * {@inheritdoc}
    */
   public function access($object, AccountInterface $account = NULL, $return_as_object = FALSE) {
-    /** @var \Drupal\cacheflush\Entity\CacheflushEntity $cacheflush */
+    /** @var \Drupal\cacheflush_entity\Entity\CacheflushEntity $cacheflush */
     return $object->access('delete', $account, $return_as_object);
   }
 

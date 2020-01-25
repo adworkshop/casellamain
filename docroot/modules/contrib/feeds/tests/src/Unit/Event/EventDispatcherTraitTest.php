@@ -12,9 +12,13 @@ use Symfony\Component\EventDispatcher\Event;
  */
 class EventDispatcherTraitTest extends FeedsUnitTestCase {
 
+  /**
+   * @covers ::getEventDispatcher
+   * @covers ::dispatchEvent
+   */
   public function test() {
     $mock = $this->getMockForTrait('Drupal\feeds\Event\EventDispatcherTrait');
-    $dispatcher = $this->getMock('Symfony\Component\EventDispatcher\EventDispatcherInterface');
+    $dispatcher = $this->createMock('Symfony\Component\EventDispatcher\EventDispatcherInterface');
 
     $container = new ContainerBuilder();
     $container->set('event_dispatcher', $dispatcher);

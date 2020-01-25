@@ -1,16 +1,10 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\crop\Form\CropTypeForm.
- */
-
 namespace Drupal\crop\Form;
 
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
-use Drupal\crop\Plugin\Validation\Constraint\RatioValidationConstraint;
+use Drupal\Core\Link;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 /**
@@ -27,13 +21,13 @@ class CropTypeForm extends EntityForm {
     $type = $this->entity;
     $form['#title'] = $this->operation == 'add' ? $this->t('Add crop type')
         :
-        $this->t('Edit %label crop type', array('%label' => $type->label()));
+        $this->t('Edit %label crop type', ['%label' => $type->label()]);
 
     $form['label'] = [
-      '#title' => t('Name'),
+      '#title' => $this->t('Name'),
       '#type' => 'textfield',
       '#default_value' => $type->label,
-      '#description' => t('The human-readable name of this crop type. This name must be unique.'),
+      '#description' => $this->t('The human-readable name of this crop type. This name must be unique.'),
       '#required' => TRUE,
       '#size' => 30,
     ];
@@ -47,22 +41,22 @@ class CropTypeForm extends EntityForm {
       ],
       // A crop type's machine name cannot be changed.
       '#disabled' => !$type->isNew(),
-      '#description' => t('A unique machine-readable name for this crop type. It must only contain lowercase letters, numbers, and underscores.'),
+      '#description' => $this->t('A unique machine-readable name for this crop type. It must only contain lowercase letters, numbers, and underscores.'),
     ];
 
     $form['description'] = [
-      '#title' => t('Description'),
+      '#title' => $this->t('Description'),
       '#type' => 'textarea',
       '#default_value' => $type->description,
-      '#description' => t('Describe this crop type.'),
+      '#description' => $this->t('Describe this crop type.'),
     ];
 
     $form['aspect_ratio'] = [
-      '#title' => t('Aspect Ratio'),
+      '#title' => $this->t('Aspect Ratio'),
       '#type' => 'textfield',
       '#default_value' => $type->aspect_ratio,
       '#attributes' => ['placeholder' => 'W:H'],
-      '#description' => t('Set an aspect ratio <b>eg: 16:9</b> or leave this empty for arbitrary aspect ratio'),
+      '#description' => $this->t('Set an aspect ratio <b>eg: 16:9</b> or leave this empty for arbitrary aspect ratio'),
     ];
 
     $form['soft_limit'] = [
@@ -93,7 +87,7 @@ class CropTypeForm extends EntityForm {
     $form['hard_limit'] = [
       '#type' => 'fieldset',
       '#title' => $this->t('Hard limit'),
-      '#description' => $this->t('Define crop size hard limit. User is not allowed to make a smaller selection then defined here.'),
+      '#description' => $this->t('Define crop size hard limit. User is not allowed to make a smaller selection than defined here.'),
     ];
 
     $form['hard_limit']['hard_limit_width'] = [
@@ -123,8 +117,8 @@ class CropTypeForm extends EntityForm {
    */
   protected function actions(array $form, FormStateInterface $form_state) {
     $actions = parent::actions($form, $form_state);
-    $actions['submit']['#value'] = t('Save crop type');
-    $actions['delete']['#value'] = t('Delete crop type');
+    $actions['submit']['#value'] = $this->t('Save crop type');
+    $actions['delete']['#value'] = $this->t('Delete crop type');
     return $actions;
   }
 
@@ -174,14 +168,14 @@ class CropTypeForm extends EntityForm {
 
     $status = $type->save();
 
-    $t_args = array('%name' => $type->label());
+    $t_args = ['%name' => $type->label()];
 
     if ($status == SAVED_UPDATED) {
-      drupal_set_message(t('The crop type %name has been updated.', $t_args));
+      drupal_set_message($this->t('The crop type %name has been updated.', $t_args));
     }
     elseif ($status == SAVED_NEW) {
-      drupal_set_message(t('The crop type %name has been added.', $t_args));
-      $context = array_merge($t_args, array('link' => $this->l(t('View'), new Url('crop.overview_types'))));
+      drupal_set_message($this->t('The crop type %name has been added.', $t_args));
+      $context = array_merge($t_args, ['link' => Link::createFromRoute($this->t('View'), 'crop.overview_types')->toString()]);
       $this->logger('crop')->notice('Added crop type %name.', $context);
     }
 

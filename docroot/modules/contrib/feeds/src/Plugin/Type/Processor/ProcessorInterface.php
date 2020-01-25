@@ -41,6 +41,20 @@ interface ProcessorInterface extends FeedsPluginInterface {
   const EXPIRE_NEVER = -1;
 
   /**
+   * Keep items that no longer exist in the feed.
+   *
+   * @var string
+   */
+  const KEEP_NON_EXISTENT = '_keep';
+
+  /**
+   * Delete items that no longer exist in the feed.
+   *
+   * @var string
+   */
+  const DELETE_NON_EXISTENT = '_delete';
+
+  /**
    * Processes the results from a parser.
    *
    * @param \Drupal\feeds\FeedInterface $feed
@@ -63,17 +77,17 @@ interface ProcessorInterface extends FeedsPluginInterface {
   public function postProcess(FeedInterface $feed, StateInterface $state);
 
   /**
-   * Deletes feed items older than REQUEST_TIME - $time.
-   *
-   * Do not invoke expire on a processor directly. This is called automatically
-   * after an import completes.
+   * Returns feed item ID's to expire.
    *
    * @param \Drupal\feeds\FeedInterface $feed
-   *   The feed to expire items for.
+   *   The feed for which to get the expired item ID's.
    * @param int $time
    *   (optional) All items produced by this configuration that are older than
-   *   REQUEST_TIME - $time should be deleted. If null, the processor should use
+   *   REQUEST_TIME - $time that are expired. If null, the processor should use
    *   internal configuration. Defaults to null.
+   *
+   * @return array
+   *   A list of item ID's.
    */
   public function getExpiredIds(FeedInterface $feed, $time = NULL);
 
@@ -102,6 +116,17 @@ interface ProcessorInterface extends FeedsPluginInterface {
    *   The number of items imported by this feed.
    */
   public function getItemCount(FeedInterface $feed);
+
+  /**
+   * Returns a list of ID's of entities that were imported.
+   *
+   * @param \Drupal\feeds\FeedInterface $feed
+   *   The feed to check fo imported entity ID's.
+   *
+   * @return array
+   *   A list of entity ID's.
+   */
+  public function getImportedItemIds(FeedInterface $feed);
 
   /**
    * Returns the label for feed items created.

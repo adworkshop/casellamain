@@ -16,88 +16,88 @@ function cacheflush_page_attachments(array &$page) {
  * Implements hook_cacheflush_tabs_options().
  */
 function cacheflush_cacheflush_tabs_options() {
-  $options = array(
-    'static' => array(
+  $options = [
+    'static' => [
       'description' => t('Reset all static caches.'),
       'category' => 'vertical_tabs_functions',
-      'functions' => array(
-        '0' => array(
+      'functions' => [
+        '0' => [
           '#name' => 'drupal_static_reset',
-          '#params' => array(),
-        ),
-      ),
-    ),
-    'asset' => array(
+          '#params' => [],
+        ],
+      ],
+    ],
+    'asset' => [
       'description' => t('Flush asset file caches.'),
       'category' => 'vertical_tabs_functions',
-      'functions' => array(
-        '0' => array(
+      'functions' => [
+        '0' => [
           '#name' => '\Drupal\cacheflush\Controller\CacheflushApi::clearBinCache',
-          '#params' => array('asset.css.collection_optimizer'),
-        ),
-        '1' => array(
+          '#params' => ['asset.css.collection_optimizer'],
+        ],
+        '1' => [
           '#name' => '\Drupal\cacheflush\Controller\CacheflushApi::clearBinCache',
-          '#params' => array('asset.js.collection_optimizer'),
-        ),
-        '2' => array(
+          '#params' => ['asset.js.collection_optimizer'],
+        ],
+        '2' => [
           '#name' => '_drupal_flush_css_js',
-          '#params' => array(),
-        ),
-      ),
-    ),
-    'kernel' => array(
+          '#params' => [],
+        ],
+      ],
+    ],
+    'kernel' => [
       'description' => t('Invalidate the container.'),
       'category' => 'vertical_tabs_functions',
-      'functions' => array(
-        '0' => array(
+      'functions' => [
+        '0' => [
           '#name' => '\Drupal\cacheflush\Controller\CacheflushApi::clearBinCache',
-          '#params' => array('kernel', 'invalidateContainer'),
-        ),
-      ),
-    ),
-    'twig' => array(
+          '#params' => ['kernel', 'invalidateContainer'],
+        ],
+      ],
+    ],
+    'twig' => [
       'description' => t('Wipe the Twig PHP Storage cache.'),
       'category' => 'vertical_tabs_functions',
-      'functions' => array(
-        '0' => array(
+      'functions' => [
+        '0' => [
           '#name' => '\Drupal\cacheflush\Controller\CacheflushApi::clearStorageCache',
-          '#params' => array('twig'),
-        ),
-      ),
-    ),
-    'plugin' => array(
+          '#params' => ['twig'],
+        ],
+      ],
+    ],
+    'plugin' => [
       'description' => t('Clear all plugin caches.'),
       'category' => 'vertical_tabs_functions',
-      'functions' => array(
-        '0' => array(
+      'functions' => [
+        '0' => [
           '#name' => '\Drupal\cacheflush\Controller\CacheflushApi::clearBinCache',
-          '#params' => array('plugin.cache_clearer', 'clearCachedDefinitions'),
-        ),
-      ),
-    ),
-    'module' => array(
+          '#params' => ['plugin.cache_clearer', 'clearCachedDefinitions'],
+        ],
+      ],
+    ],
+    'module' => [
       'description' => t('Rebuild module and theme data.'),
       'category' => 'vertical_tabs_functions',
-      'functions' => array(
-        '0' => array(
+      'functions' => [
+        '0' => [
           '#name' => '\Drupal\cacheflush\Controller\CacheflushApi::clearModuleCache',
-          '#params' => array(),
-        ),
-      ),
-    ),
+          '#params' => [],
+        ],
+      ],
+    ],
     // Rebuild the menu router based on all rebuilt data.
     // Important: This rebuild must happen last, so the menu router is
     // guaranteed to be based on up to date information.
-    'router' => array(
+    'router' => [
       'description' => t('Rebuild the menu router based on all rebuilt data.'),
       'category' => 'vertical_tabs_functions',
-      'functions' => array(
-        '0' => array(
+      'functions' => [
+        '0' => [
           '#name' => '\Drupal\cacheflush\Controller\CacheflushApi::clearBinCache',
-          '#params' => array('router.builder', 'rebuild'),
-        ),
-      ),
-    ),
-  );
+          '#params' => ['router.builder', 'rebuild'],
+        ],
+      ],
+    ],
+  ];
   return $options;
 }

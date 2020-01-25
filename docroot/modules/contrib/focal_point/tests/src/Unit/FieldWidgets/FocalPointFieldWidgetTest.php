@@ -9,6 +9,8 @@ use Drupal\Tests\UnitTestCase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Render\ElementInfoManagerInterface;
+use Drupal\Core\Image\ImageFactory;
+use Drupal;
 
 /**
  * @coversDefaultClass \Drupal\focal_point\Plugin\Field\FieldWidget\FocalPointImageWidget
@@ -19,6 +21,8 @@ class FocalPointFieldWidgetTest extends UnitTestCase {
 
   /**
    * A simple form element for testing.
+   *
+   * @var testElement
    */
   protected $testElement;
 
@@ -46,10 +50,10 @@ class FocalPointFieldWidgetTest extends UnitTestCase {
     \Drupal::setContainer($container->reveal());
 
     // Setup an image element for testing.
-    $this->testElement = array(
+    $this->testElement = [
       '#title' => 'some title',
-      '#parents' => array('field_image'),
-    );
+      '#parents' => ['field_image'],
+    ];
 
     // Setup a mock form state object for testing.
     // @todo: Figure out why using prophesize for this mock causes an exception.
@@ -83,8 +87,15 @@ class FocalPointFieldWidgetTest extends UnitTestCase {
       '#value' => $value,
     ];
 
-    // Create a focal point image widget and test the validate method.
-    $focalPointImageWidget = new FocalPointImageWidget(array(), array(), $this->prophesize(FieldDefinitionInterface::class)->reveal(), array(), array(), $this->prophesize(ElementInfoManagerInterface::class)->reveal());
+    // Create a focal point image widget and test the validate method. Note that
+    // an additional argument was added to the ImageWidget constructor in 8.5.
+    if (version_compare(Drupal::VERSION, '8.5', '<')) {
+      $focalPointImageWidget = new FocalPointImageWidget([], [], $this->prophesize(FieldDefinitionInterface::class)->reveal(), [], [], $this->prophesize(ElementInfoManagerInterface::class)->reveal());
+    }
+    else {
+      $focalPointImageWidget = new FocalPointImageWidget([], [], $this->prophesize(FieldDefinitionInterface::class)->reveal(), [], [], $this->prophesize(ElementInfoManagerInterface::class)->reveal(), $this->prophesize(ImageFactory::class)->reveal());
+    }
+
     $focalPointImageWidget::validateFocalPoint($element, $this->testFormState);
   }
 

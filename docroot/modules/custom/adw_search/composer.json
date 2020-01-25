@@ -1,6 +1,0 @@
-{
-    "name": "drupal/ADWSEARCH",
-    "description": "Performs common search tasks for Adworkshop sites.",
-    "type": "drupal-module",
-    "license": "GPL-2.0+"
-}
