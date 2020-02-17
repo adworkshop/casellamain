@@ -71,17 +71,10 @@
  */
 #}
 
-{# Check if we need withSidebar or noSidebarNav wrapper classes here. #}
-{% set hasPromos = content.field_sidebar_promotions|render|adw_strip_comments|trim != '' %}
-{% set hasNav = sidebar_nav.mainnavigation|render|adw_strip_comments|trim != '' or sidebar_nav.footer|render|adw_strip_comments|trim != ''  or sidebar_nav.mainnavigation_6|render|adw_strip_comments|trim != '' %}
 {% set hasBgVideo = content.field_background_video | render %}
 {% set wrapperClasses = '' %}
-{% if hasPromos or parentLogo or sidebar_nav %}
-  {% set wrapperClasses = ' withSidebar' %}
-
-  {% if not hasNav %}
-    {% set wrapperClasses = wrapperClasses ~ ' noSidebarNav' %}
-  {% endif %}
+{% if parentLogo %}
+  {% set wrapperClasses = wrapperClasses ~ ' noSidebarNav' %}
   {% if not logged_in %}
     {% set wrapperClasses = wrapperClasses ~ ' noPaddingTopBottom' %}
   {% endif %}
@@ -129,10 +122,8 @@
         {{ node_upper_content }}
 
         <!--Grid-->
-        <div class="internal-mainBody-layoutContainer{% if content.field_sidebar_promotions %} withSidebar{% endif %}">
+        <div class="internal-mainBody-layoutContainer">
       {% endblock %}
-
-      {% block left_sidebar %}{% endblock %}
 
       <!--Col - Content-->
       <div class="internal-mainBody-contentContainer">
@@ -182,38 +173,6 @@
 
         {% endblock %}
       </div>
-
-      {% block right_sidebar %}
-        {% if hasPromos or parentLogo or hasNav %}
-          <!--Col - Sidebar-->
-          <div class="internal-mainBody-sidebarContainer">
-
-            {% if parentLogo %}
-              <div class="sidebar-sectionSpecific-logo">
-                <a href="{{ parentLogoPath }}" title="">
-                  <img src="{{ parentLogo }}" alt="" />
-                </a>
-              </div>
-            {% endif %}
-
-            {% if sidebar_nav.mainnavigation|render|adw_strip_comments|trim %}
-              {{ sidebar_nav.mainnavigation }}
-            {% endif %}
-            {%  if sidebar_nav.footer|render|adw_strip_comments|trim %}
-              {{ sidebar_nav.footer }}
-            {% endif %}
-            {%  if sidebar_nav.mainnavigation_6|render|adw_strip_comments|trim %}
-
-              {{ sidebar_nav.mainnavigation_6 }}
-
-            {% endif %}
-
-            {{ content.field_sidebar_promotions }}
-
-          </div>
-          <!--END Col - Sidebar-->
-        {% endif %}
-      {% endblock %}
 
       </div>
       <!--END Grid-->
