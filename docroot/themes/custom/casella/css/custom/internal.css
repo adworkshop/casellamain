@@ -1687,8 +1687,8 @@ a.indLocation-holidayPanelOpen-close:hover {background: #FFF; border:2px solid #
 #tabbed-nav .internal-mainBody-featuredContent-container.field-pdf-file .internal-mainBody-featuredContent-container__inner p { font-size: 15px; font-family: "Droid Serif", sans-serif; }
 
 @media all and (min-width: 960px) {
-  #tabbed-nav .internal-mainBody-featuredContent-container.field-pdf-file .internal-mainBody-featuredContent-container__inner .image {}
-  #tabbed-nav .internal-mainBody-featuredContent-container.field-pdf-file .internal-mainBody-featuredContent-container__inner .content { order: 1; flex-grow: 0;}
+  :not(.id_20976) #tabbed-nav .internal-mainBody-featuredContent-container.field-pdf-file .internal-mainBody-featuredContent-container__inner .image {}
+  :not(.id_20976) #tabbed-nav .internal-mainBody-featuredContent-container.field-pdf-file .internal-mainBody-featuredContent-container__inner .content { order: -1; flex-grow: 0; padding: 0 2rem 0 0;}
 }
 
 #tabbed-nav .internal-mainBody-featuredContent-container.field-pdf-file .image,
