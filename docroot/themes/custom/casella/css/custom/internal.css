@@ -1682,13 +1682,13 @@ a.indLocation-holidayPanelOpen-close:hover {background: #FFF; border:2px solid #
 #tabbed-nav #block-views-block-blog-block-2 .views-row { width: 86%;  margin: 0 auto;  padding: 0;}
 
 /* Posters */
-#tabbed-nav .internal-mainBody-featuredContent-container.field-pdf-file .internal-mainBody-featuredContent-container__inner { display: flex; flex-wrap: wrap; }
+#tabbed-nav .internal-mainBody-featuredContent-container.field-pdf-file .internal-mainBody-featuredContent-container__inner { display: inline-flex; flex-wrap: wrap; padding: 1rem; background-color: #efefef;}
 #tabbed-nav .internal-mainBody-featuredContent-container.field-pdf-file .internal-mainBody-featuredContent-container__inner h2 { color: #4c9d2a; }
 #tabbed-nav .internal-mainBody-featuredContent-container.field-pdf-file .internal-mainBody-featuredContent-container__inner p { font-size: 15px; font-family: "Droid Serif", sans-serif; }
 
 @media all and (min-width: 960px) {
   :not(.id_20976) #tabbed-nav .internal-mainBody-featuredContent-container.field-pdf-file .internal-mainBody-featuredContent-container__inner .image {}
-  :not(.id_20976) #tabbed-nav .internal-mainBody-featuredContent-container.field-pdf-file .internal-mainBody-featuredContent-container__inner .content { order: -1; flex-grow: 0; padding: 0 2rem 0 0;}
+  :not(.id_20976) #tabbed-nav .internal-mainBody-featuredContent-container.field-pdf-file .internal-mainBody-featuredContent-container__inner .content { order: -1; flex-grow: 0; flex-shrink: 1; flex-basis: auto; width: auto;}
 }
 
 #tabbed-nav .internal-mainBody-featuredContent-container.field-pdf-file .image,
