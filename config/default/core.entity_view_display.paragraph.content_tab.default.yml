@@ -4,12 +4,13 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.content_tab.field_pdf_file
+    - field.field.paragraph.content_tab.field_pdf_tab_description
     - field.field.paragraph.content_tab.field_tab_anchor
-    - field.field.paragraph.content_tab.field_tab_description
     - field.field.paragraph.content_tab.field_tab_title
     - paragraphs.paragraphs_type.content_tab
   module:
     - entity_reference_revisions
+    - text
 id: paragraph.content_tab.default
 targetEntityType: paragraph
 bundle: content_tab
@@ -24,6 +25,13 @@ content:
       link: ''
     third_party_settings: {  }
     region: content
+  field_pdf_tab_description:
+    weight: 5
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
   field_tab_anchor:
     weight: 1
     label: hidden
@@ -31,13 +39,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-    region: content
-  field_tab_description:
-    weight: 3
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: basic_string
     region: content
   field_tab_title:
     weight: 2

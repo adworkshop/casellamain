@@ -1,0 +1,21 @@
+uuid: 64f20ae5-e6b2-4e41-854c-f4ba1c4b33d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_pdf_tab_description
+    - paragraphs.paragraphs_type.content_tab
+  module:
+    - text
+id: paragraph.content_tab.field_pdf_tab_description
+field_name: field_pdf_tab_description
+entity_type: paragraph
+bundle: content_tab
+label: 'PDF Tab Description'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
