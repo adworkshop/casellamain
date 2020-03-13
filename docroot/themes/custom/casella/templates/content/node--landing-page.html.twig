@@ -72,6 +72,187 @@
 #}
 
 <div class="home-headerPanel-container">
+
+<style>/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+
+/*STRUCTURE*/
+
+.ws-alert *:not(.globalWidth) {
+	display: block !important;
+	width: auto !important !important;
+	margin-bottom: 1rem !important;
+	height: auto !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	-webkit-box-sizing: border-box !important;
+	        box-sizing: border-box !important;
+	font-size: 1.2rem !important;
+	font-family: sans-serif !important;
+	text-align: left !important;
+}
+
+.ws-alert {}
+
+.ws-alert .ws-alert__inner {
+	display: -webkit-box !important;
+	display: -ms-flexbox !important;
+	display: flex !important;
+	margin: 0 auto !important;
+	padding-top: 1.25rem !important;
+	padding-bottom: 1.25rem !important;
+	-webkit-box-align: center !important;
+	    -ms-flex-align: center !important;
+	        align-items: center !important;
+	-webkit-box-pack: center !important;
+	    -ms-flex-pack: center !important;
+	        justify-content: center !important;
+}
+
+.ws-alert .ws-alert__inner>* {
+	display: -webkit-box !important;
+	display: -ms-flexbox !important;
+	display: flex !important;
+	-webkit-box-align: center !important;
+	    -ms-flex-align: center !important;
+	        align-items: center !important;
+	-webkit-box-pack: start !important;
+	    -ms-flex-pack: start !important;
+	        justify-content: flex-start !important;
+}
+
+.ws-alert .ws-alert__notice {
+	display: -webkit-box !important;
+	display: -ms-flexbox !important;
+	display: flex !important;
+	-ms-flex-wrap: wrap !important;
+	    flex-wrap: wrap !important;
+	-webkit-box-align: center !important;
+	    -ms-flex-align: center !important;
+	        align-items: center !important;
+	-webkit-box-pack: center !important;
+	    -ms-flex-pack: center !important;
+	        justify-content: center !important;
+	padding: 0 !important;
+	font-weight: bold !important;
+}
+
+.ws-alert .ws-alert__notice_icon {
+	display: -webkit-box !important;
+	display: -ms-flexbox !important;
+	display: flex !important;
+	-webkit-box-align: center !important;
+	    -ms-flex-align: center !important;
+	        align-items: center !important;
+	-webkit-box-pack: center !important;
+	    -ms-flex-pack: center !important;
+	        justify-content: center !important;
+	width: 1.75rem !important;
+	height: 1.75rem !important;
+	font-weight: bold !important;
+	font-size: 1rem !important;
+	border-radius: 10000000px;
+}
+
+.ws-alert .ws-alert__notice_text {
+	padding: .5rem !important;
+	font-size: 1rem !important;
+	font-weight: bold !important;
+}
+
+.ws-alert .ws-alert__copy {
+	padding: 0 0 0 1rem !important;
+}
+
+.ws-alert .ws-alert__copy * {
+	display: inline !important;
+}
+
+.ws-alert .ws-alert__cta {
+	padding: 0 0 0 1rem !important;
+}
+
+.ws-alert .ws-button {
+	-ms-flex-negative: 0 !important;
+	    flex-shrink: 0 !important;
+	padding: .5rem 1.25rem !important;
+	border-radius: 5px !important;
+	border: 2px solid black !important;
+	font-weight: bold !important;
+	text-decoration: none !important;
+	background-color: white !important;
+	color: black !important;
+	text-align: center !important;
+	-webkit-transition: .25s ease background-color, .25s ease color !important;
+	-o-transition: .25s ease background-color, .25s ease color !important;
+	transition: .25s ease background-color, .25s ease color !important;
+	letter-spacing: .025em !important;
+	font-size: 1rem !important;
+	line-height: .95em !important;
+  white-space: nowrap;
+}
+
+.ws-button:hover {
+	background-color: black !important;
+	color: white !important;
+}
+
+
+/*CLIENT SPECIFIC*/
+
+.ws-alert * {
+	color: black !important;
+	font-family: 'Gotham-Black', sans-serif !important;
+}
+
+.ws-alert {
+	background-color: white !important;
+}
+
+.ws-alert .ws-alert__inner {}
+
+.ws-alert .ws-alert__notice {}
+
+.ws-alert .ws-alert__notice_icon {
+	background-color: red !important;
+	color: white !important;
+}
+
+.ws-alert .ws-alert__notice_text {}
+
+.ws-alert .ws-alert__copy {}
+
+.ws-alert .ws-alert__cta {}
+
+.ws-alert .ws-button {
+	color: white !important;
+	border-color: #4c9d2a !important;
+	background-color: #4c9d2a !important;
+}
+
+.ws-alert .ws-button:hover {
+	background-color: white !important;
+	color: #4c9d2a !important;
+}
+
+@media all and (max-width: 960px) {
+	.home-headerPanel-container {
+		padding-top: 0 !important;
+	}
+	.ws-alert {
+		margin-bottom: 60px !important;
+	}
+}
+</style>
+
+<div class = "ws-alert">
+  <div class = "ws-alert__inner global-width globalWidth global_width">
+    <div class = "ws-alert__copy"><strong>Casella’s Response to COVID-19.</strong></div>
+    <div class = "ws-alert__cta">
+       <a class = "ws-button" href = "https://www.casella.com/covid-19-update">Learn more</a>
+    </div>
+  </div>
+</div>
+
   <div class="globalWidth">
     <h1>Casella</h1>
     {% if content.field_verticals_boxes|length %}
