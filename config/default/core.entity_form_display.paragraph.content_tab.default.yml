@@ -54,4 +54,5 @@ content:
     region: content
 hidden:
   created: true
+  field_tab_description: true
   status: true

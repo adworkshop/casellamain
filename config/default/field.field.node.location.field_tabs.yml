@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_tabs
     - node.type.location
     - paragraphs.paragraphs_type.case_studies
+    - paragraphs.paragraphs_type.content_tab
     - paragraphs.paragraphs_type.free_form
     - paragraphs.paragraphs_type.image_gallery
     - paragraphs.paragraphs_type.organics_updates
@@ -38,6 +39,7 @@ settings:
       services: services
       testimonials: testimonials
       video: video
+      content_tab: content_tab
     target_bundles_drag_drop:
       block_link_with_icon:
         weight: 28
@@ -105,10 +107,19 @@ settings:
       solution_resource:
         weight: 49
         enabled: false
+      basics:
+        weight: 49
+        enabled: false
+      bin_comparison_fields:
+        weight: 50
+        enabled: false
       testimonials:
         enabled: true
         weight: 50
       upper_button:
+        weight: 51
+        enabled: false
+      block:
         weight: 51
         enabled: false
       vertical:
@@ -117,7 +128,61 @@ settings:
       video:
         enabled: true
         weight: 53
+      calculator:
+        weight: 53
+        enabled: false
       waste_category:
         weight: 54
+        enabled: false
+      content_tab:
+        enabled: true
+        weight: 56
+      dos_and_donts_section:
+        weight: 57
+        enabled: false
+      employer:
+        weight: 59
+        enabled: false
+      fa_link_with_pdf:
+        weight: 63
+        enabled: false
+      fa_link_with_pdf_tooltip:
+        weight: 64
+        enabled: false
+      licenses:
+        weight: 72
+        enabled: false
+      pdf_tooltip:
+        weight: 75
+        enabled: false
+      resources:
+        weight: 78
+        enabled: false
+      resource_tips:
+        weight: 79
+        enabled: false
+      resource_toolkit_button:
+        weight: 80
+        enabled: false
+      resource_videos:
+        weight: 81
+        enabled: false
+      search_items:
+        weight: 82
+        enabled: false
+      sidebar_panel:
+        weight: 84
+        enabled: false
+      toolkits_tab:
+        weight: 89
+        enabled: false
+      two_column_panel:
+        weight: 90
+        enabled: false
+      videos_tab:
+        weight: 94
+        enabled: false
+      video_headline:
+        weight: 95
         enabled: false
 field_type: entity_reference_revisions
