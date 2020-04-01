@@ -5,15 +5,17 @@
   {% set field_content_area = item.content['#paragraph'].field_content_area %}
   <div class="internal-mainBody-featuredContent-container field-pdf-file">
     <div class = "internal-mainBody-featuredContent-container__inner">
-      <div class="image">
-        <div class = "image__inner">
-          {% if uri starts with 'http' %}
-            <a href="{{ uri }}" target="_blank">{{ drupal_image(field_image.0.value.target_id, 'medium') }}</a>
-          {% elseif uri starts with 'internal:' %}
-            <a href="{{ uri|slice(9) }}" target="_blank">{{ drupal_image(field_image.0.value.target_id, 'medium') }}</a>
-          {% endif %}
+      {%  if field_image.0 is defined %}
+        <div class="image">
+          <div class = "image__inner">
+            {% if uri starts with 'http' %}
+              <a href="{{ uri }}" target="_blank">{{ drupal_image(field_image.0.value.target_id, 'medium') }}</a>
+            {% elseif uri starts with 'internal:' %}
+              <a href="{{ uri|slice(9) }}" target="_blank">{{ drupal_image(field_image.0.value.target_id, 'medium') }}</a>
+            {% endif %}
+          </div>
         </div>
-      </div>
+      {% endif %}
       <div class="content">
         <h3>{{ title }}</h3>
         {{ field_content_area.0.value|raw }}

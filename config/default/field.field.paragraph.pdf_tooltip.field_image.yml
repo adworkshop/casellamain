@@ -20,7 +20,7 @@ entity_type: paragraph
 bundle: pdf_tooltip
 label: Image
 description: 'Image representing the PDF file. It could be the image of first page or part of it, for example.'
-required: true
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
@@ -30,8 +30,8 @@ settings:
   max_filesize: ''
   max_resolution: ''
   min_resolution: ''
-  alt_field: false
-  alt_field_required: false
+  alt_field: true
+  alt_field_required: true
   title_field: false
   title_field_required: false
   default_image:

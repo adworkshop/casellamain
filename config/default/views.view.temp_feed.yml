@@ -11,7 +11,6 @@ description: ''
 tag: ''
 base_table: aggregator_feed
 base_field: nid
-core: 8.x
 display:
   default:
     display_plugin: default
@@ -138,6 +137,7 @@ display:
       empty: {  }
       relationships: {  }
       arguments: {  }
+      display_extenders: {  }
     cache_metadata:
       max-age: -1
       contexts:
