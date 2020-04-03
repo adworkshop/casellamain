@@ -1,46 +1,165 @@
 <?php
 
-/**
- * @file
- * Definition of Drupal\acquia_connector\Tests\AcquiaConnectorModuleTest.
- */
+namespace Drupal\Tests\acquia_connector\Functional;
 
-namespace Drupal\acquia_connector\Tests;
-
-use Drupal\simpletest\WebTestBase;
+use Drupal\acquia_connector\Controller\StatusController;
 use Drupal\acquia_connector\Helper\Storage;
 use Drupal\acquia_connector\Subscription;
-use Drupal\acquia_connector\Controller\StatusController;
+use Drupal\Tests\BrowserTestBase;
 
 /**
  * Tests the functionality of the Acquia Connector module.
  *
  * @group Acquia connector
  */
-class AcquiaConnectorModuleTest extends WebTestBase {
-  protected $strictConfigSchema = FALSE;
+class AcquiaConnectorModuleTest extends BrowserTestBase {
 
-  protected $acqtestEmail       = 'TEST_networkuser@example.com';
-  protected $acqtestPass        = 'TEST_password';
-  protected $acqtestId          = 'TEST_AcquiaConnectorTestID';
-  protected $acqtestKey         = 'TEST_AcquiaConnectorTestKey';
-  protected $acqtestName        = 'test name';
+  /**
+   * Drupal 8.8 requires default theme to be specified.
+   *
+   * @var string
+   */
+  protected $defaultTheme = 'stark';
+
+  /**
+   * Test user e-mail.
+   *
+   * @var string
+   */
+  protected $acqtestEmail = 'TEST_networkuser@example.com';
+
+  /**
+   * Test user password.
+   *
+   * @var string
+   */
+  protected $acqtestPass = 'TEST_password';
+
+  /**
+   * Test user ID.
+   *
+   * @var string
+   */
+  protected $acqtestId = 'TEST_AcquiaConnectorTestID';
+
+  /**
+   * Test Acquia Connector key.
+   *
+   * @var string
+   */
+  protected $acqtestKey = 'TEST_AcquiaConnectorTestKey';
+
+  /**
+   * Test site name.
+   *
+   * @var string
+   */
+  protected $acqtestName = 'test name';
+
+  /**
+   * Test machine name.
+   *
+   * @var string
+   */
   protected $acqtestMachineName = 'test_name';
-  protected $acqtestExpiredId   = 'TEST_AcquiaConnectorTestIDExp';
-  protected $acqtestExpiredKey  = 'TEST_AcquiaConnectorTestKeyExp';
-  protected $acqtest503Id       = 'TEST_AcquiaConnectorTestID503';
-  protected $acqtest503Key      = 'TEST_AcquiaConnectorTestKey503';
-  protected $acqtestErrorId     = 'TEST_AcquiaConnectorTestIDErr';
-  protected $acqtestErrorKey    = 'TEST_AcquiaConnectorTestKeyErr';
+
+  /**
+   * Test Acquia Connector expired ID.
+   *
+   * @var string
+   */
+  protected $acqtestExpiredId = 'TEST_AcquiaConnectorTestIDExp';
+
+  /**
+   * Test Acquia Connector expired Key.
+   *
+   * @var string
+   */
+  protected $acqtestExpiredKey = 'TEST_AcquiaConnectorTestKeyExp';
+
+  /**
+   * Test Acquia Connector 503 ID.
+   *
+   * @var string
+   */
+  protected $acqtest503Id = 'TEST_AcquiaConnectorTestID503';
+
+  /**
+   * Test Acquia Connector 503 Key.
+   *
+   * @var string
+   */
+  protected $acqtest503Key = 'TEST_AcquiaConnectorTestKey503';
+
+  /**
+   * Test Acquia Connector ID with error.
+   *
+   * @var string
+   */
+  protected $acqtestErrorId = 'TEST_AcquiaConnectorTestIDErr';
+
+  /**
+   * Test Acquia Connector key with error.
+   *
+   * @var string
+   */
+  protected $acqtestErrorKey = 'TEST_AcquiaConnectorTestKeyErr';
+
+  /**
+   * Test privileged user.
+   *
+   * @var object
+   */
   protected $privilegedUser;
+
+  /**
+   * Test user with subscription.
+   *
+   * @var object
+   */
   protected $networkUser;
+
+  /**
+   * URL to get Acquia Cloud Free.
+   *
+   * @var string
+   */
   protected $cloudFreeUrl;
+
+  /**
+   * Module setup path.
+   *
+   * @var string
+   */
   protected $setupPath;
+
+  /**
+   * Module credentials path.
+   *
+   * @var string
+   */
   protected $credentialsPath;
+
+  /**
+   * Module settings path.
+   *
+   * @var string
+   */
   protected $settingsPath;
+
+  /**
+   * Module environment change path.
+   *
+   * @var string
+   */
   protected $environmentChangePath;
+
+  /**
+   * Drupal status report path.
+   *
+   * @var string
+   */
   protected $statusReportUrl;
-  protected $baseUrl;
 
   /**
    * Modules to enable.
@@ -60,7 +179,6 @@ class AcquiaConnectorModuleTest extends WebTestBase {
   public function setUp() {
     parent::setUp();
 
-    global $base_url;
     // Create and log in our privileged user.
     $this->privilegedUser = $this->drupalCreateUser([
       'administer site configuration',
@@ -82,9 +200,8 @@ class AcquiaConnectorModuleTest extends WebTestBase {
     $this->settingsPath = 'admin/config/system/acquia-connector';
     $this->environmentChangePath = '/admin/config/system/acquia-connector/environment-change';
     $this->statusReportUrl = 'admin/reports/status';
-    $this->baseUrl = $base_url;
 
-    \Drupal::configFactory()->getEditable('acquia_connector.settings')->set('spi.server', $base_url)->save();
+    \Drupal::configFactory()->getEditable('acquia_connector.settings')->set('spi.server', 'http://mock-spi-server')->save();
     \Drupal::configFactory()->getEditable('acquia_connector.settings')->set('spi.ssl_verify', FALSE)->save();
     \Drupal::configFactory()->getEditable('acquia_connector.settings')->set('spi.ssl_override', TRUE)->save();
   }
@@ -138,20 +255,14 @@ class AcquiaConnectorModuleTest extends WebTestBase {
         return 'Machine name field is required.';
 
       case 'first-connection':
-        return 'This is the first connection from this site, it may take awhile for it to appear on the Acquia Network.';
+        return 'This is the first connection from this site, it may take awhile for it to appear.';
     }
-  }
-
-  public function testAll() {
-    $this->_testAcquiaConnectorGetConnected();
-    $this->_testAcquiaConnectorSubscription();
-    $this->_testAcquiaConnectorSiteStatus();
   }
 
   /**
    * Test get connected.
    */
-  public function _testAcquiaConnectorGetConnected() {
+  public function testAcquiaConnectorGetConnectedTests() {
     // Check for call to get connected.
     $this->drupalGet('admin');
     $this->assertText($this->acquiaConnectorStrings('free'), 'The explanation of services text exists');
@@ -209,6 +320,7 @@ class AcquiaConnectorModuleTest extends WebTestBase {
     $this->drupalGet($this->setupPath);
     $this->drupalGet($this->settingsPath);
     $this->assertText($this->acquiaConnectorStrings('subscription'), 'Subscription connected with credentials');
+
     // Confirm menu reports active subscription.
     $this->drupalGet('admin');
     $this->assertText($this->acquiaConnectorStrings('menu-active'), 'Subscription active menu message appears');
@@ -217,6 +329,7 @@ class AcquiaConnectorModuleTest extends WebTestBase {
     $this->drupalPostForm($this->settingsPath, [], $submit_button);
     $this->assertText($this->acquiaConnectorStrings('site-name-required'), 'Name is required message appears');
     $this->assertText($this->acquiaConnectorStrings('site-machine-name-required'), 'Machine name is required message appears');
+
     // Acquia hosted sites.
     $edit_fields = [
       'acquia_dynamic_banner' => TRUE,
@@ -240,7 +353,7 @@ class AcquiaConnectorModuleTest extends WebTestBase {
     $this->drupalGet($this->settingsPath);
     $elements = $this->xpath('//input[@name=:name]', [':name' => 'machine_name']);
     foreach ($elements as $element) {
-      $this->assertIdentical((string) $element['disabled'], 'disabled', 'Machine name field is disabled.');
+      $this->assertIdentical($element->getAttribute('disabled'), 'disabled', 'Machine name field is disabled.');
     }
 
     $this->disconnectSite();
@@ -250,7 +363,7 @@ class AcquiaConnectorModuleTest extends WebTestBase {
   /**
    * Test Connector subscription methods.
    */
-  public function _testAcquiaConnectorSubscription() {
+  public function testAcquiaConnectorSubscriptionTests() {
     $subscription = new Subscription();
     // Starts as inactive.
     $is_active = $subscription->isActive();
@@ -258,7 +371,7 @@ class AcquiaConnectorModuleTest extends WebTestBase {
     // Confirm HTTP request count is 0 because without credentials no request
     // should have been made.
     $this->assertIdentical(\Drupal::state()->get('acquia_connector_test_request_count', 0), 0);
-    $check_subscription  = $subscription->update();
+    $check_subscription = $subscription->update();
     \Drupal::state()->resetCache();
     $this->assertFalse($check_subscription, 'Subscription is currently false.');
     // Confirm HTTP request count is still 0.
@@ -276,13 +389,13 @@ class AcquiaConnectorModuleTest extends WebTestBase {
     $is_active = $subscription->isActive();
     $this->assertFalse($is_active, 'Subscription is not active after failed attempt to connect.');
     $this->assertIdentical(\Drupal::state()->get('acquia_connector_test_request_count', 0), 1, 'Still have made only 1 HTTP request');
-    $check_subscription  = $subscription->update();
+    $check_subscription = $subscription->update();
     \Drupal::state()->resetCache();
     $this->assertFalse($check_subscription, 'Subscription is false after failed attempt to connect.');
     $this->assertIdentical(\Drupal::state()->get('acquia_connector_test_request_count', 0), 1, 'Still have made only 1 HTTP request');
     // Test default from acquia_agent_settings().
     $stored = \Drupal::config('acquia_connector.settings');
-    $current_subscription = $stored->get('subscription_data');
+    $current_subscription = \Drupal::state()->get('acquia_subscription_data');
     // Not identical since acquia_agent_has_credentials() causes stored to be
     // deleted.
     $this->assertNotIdentical($check_subscription, $current_subscription, 'Stored subscription data not same before connected subscription.');
@@ -330,7 +443,7 @@ class AcquiaConnectorModuleTest extends WebTestBase {
     $this->assertIdentical($check_subscription, 1200, 'Subscription is expired after connection with expired subscription.');
     $this->assertIdentical(\Drupal::state()->get('acquia_connector_test_request_count', 0), 4, '1 additional request made via acquia_agent_check_subscription().');
     $stored = \Drupal::config('acquia_connector.settings');
-    $current_subscription = $stored->get('subscription_data');
+    $current_subscription = \Drupal::state()->get('acquia_subscription_data');
     $this->assertIdentical($check_subscription, $current_subscription, 'Stored expected subscription data.');
     // Reset HTTP request counter;.
     \Drupal::state()->set('acquia_connector_test_request_count', 0);
@@ -355,7 +468,7 @@ class AcquiaConnectorModuleTest extends WebTestBase {
   /**
    * Tests the site status callback.
    */
-  public function _testAcquiaConnectorSiteStatus() {
+  public function testAcquiaConnectorSiteStatusTests() {
     $uuid = '0dee0d07-4032-44ea-a2f2-84182dc10d54';
     $test_url = "https://insight.acquia.com/node/uuid/{$uuid}/dashboard";
     $test_data = [
@@ -363,9 +476,9 @@ class AcquiaConnectorModuleTest extends WebTestBase {
       'href' => $test_url,
     ];
     // Set some sample test data.
-    \Drupal::configFactory()->getEditable('acquia_connector.settings')->set('subscription_data', $test_data)->save();
+    \Drupal::state()->set('acquia_subscription_data', $test_data);
     // Test StatusControllerTest::getIdFromSub.
-    $getIdFromSub = new StatusControllerTest();
+    $getIdFromSub = new StatusController();
     $key = $getIdFromSub->getIdFromSub($test_data);
     $this->assertIdentical($key, $uuid);
     // Add a 'uuid' key to the data and make sure that is returned.
@@ -377,20 +490,22 @@ class AcquiaConnectorModuleTest extends WebTestBase {
       'key' => hash('sha1', "{$key}:test"),
       'nonce' => 'test',
     ];
-    $json = $this->drupalGetAJAX('system/acquia-connector-status', ['query' => $query]);
+    $json = json_decode($this->drupalGet('system/acquia-connector-status', ['query' => $query]), TRUE);
     // Test the version.
     $this->assertIdentical($json['version'], '1.0', 'Correct API version found.');
     // Test invalid query string parameters for access.
     // A random key value should fail.
     $query['key'] = $this->randomString(16);
-    $this->drupalGetAJAX('system/acquia-connector-status', ['query' => $query]);
+    $this->drupalGet('system/acquia-connector-status', ['query' => $query]);
     $this->assertResponse(403);
   }
 
   /**
    * Tests the SPI change form.
+   *
+   * This should be a separate test.
    */
-  public function _testSpiChangeForm() {
+  public function testSpiChangeFormTests() {
     // Connect site on key and id.
     $edit_fields = [
       'acquia_identifier' => $this->acqtestId,
@@ -429,7 +544,7 @@ class AcquiaConnectorModuleTest extends WebTestBase {
     $expected_values = ['block', 'update', 'create'];
     foreach ($elements as $element) {
       $expected = array_shift($expected_values);
-      $this->assertIdentical((string) $element['value'], $expected);
+      $this->assertIdentical($element->getAttribute('value'), $expected);
     }
     // Test "block" the connector from sending data to NSPI.
     $edit_fields = [
@@ -437,7 +552,7 @@ class AcquiaConnectorModuleTest extends WebTestBase {
     ];
     $submit_button = 'Save configuration';
     $this->drupalPostForm($this->environmentChangePath, $edit_fields, $submit_button);
-    $this->assertText('This site has been disabled from sending profile data to Acquia Cloud.');
+    $this->assertText('This site has been disabled from sending profile data to Acquia.');
     $this->assertText('You have disabled your site from sending data to Acquia Cloud.');
     // Test unblock site.
     $this->clickLink('Enable this site');
@@ -493,7 +608,8 @@ class AcquiaConnectorModuleTest extends WebTestBase {
    */
   protected function disconnectSite() {
     $config = \Drupal::configFactory()->getEditable('acquia_connector.settings');
-    $config->clear('subscription_data')->set('subscription_data', ['active' => FALSE]);
+    \Drupal::state()->delete('acquia_subscription_data');
+    \Drupal::state()->set('acquia_subscription_data', ['active' => FALSE]);
     $config->save();
 
     $storage = new Storage();
@@ -502,22 +618,6 @@ class AcquiaConnectorModuleTest extends WebTestBase {
 
     \Drupal::state()->set('acquia_connector_test_request_count', 0);
     \Drupal::state()->resetCache();
-  }
-
-}
-
-/**
- * Class StatusControllerTest.
- *
- * @package Drupal\acquia_connector\Tests
- */
-class StatusControllerTest extends StatusController {
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getIdFromSub($sub_data) {
-    return parent::getIdFromSub($sub_data);
   }
 
 }
