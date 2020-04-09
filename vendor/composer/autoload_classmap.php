@@ -803,6 +803,7 @@ return array(
     'Drupal\\Core\\Config\\UnmetDependenciesException' => $baseDir . '/docroot/core/lib/Drupal/Core/Config/UnmetDependenciesException.php',
     'Drupal\\Core\\Config\\UnsupportedDataTypeConfigException' => $baseDir . '/docroot/core/lib/Drupal/Core/Config/UnsupportedDataTypeConfigException.php',
     'Drupal\\Core\\Controller\\ArgumentResolver\\Psr7RequestValueResolver' => $baseDir . '/docroot/core/lib/Drupal/Core/Controller/ArgumentResolver/Psr7RequestValueResolver.php',
+    'Drupal\\Core\\Controller\\ArgumentResolver\\RawParameterValueResolver' => $baseDir . '/docroot/core/lib/Drupal/Core/Controller/ArgumentResolver/RawParameterValueResolver.php',
     'Drupal\\Core\\Controller\\ArgumentResolver\\RouteMatchValueResolver' => $baseDir . '/docroot/core/lib/Drupal/Core/Controller/ArgumentResolver/RouteMatchValueResolver.php',
     'Drupal\\Core\\Controller\\ControllerBase' => $baseDir . '/docroot/core/lib/Drupal/Core/Controller/ControllerBase.php',
     'Drupal\\Core\\Controller\\ControllerResolver' => $baseDir . '/docroot/core/lib/Drupal/Core/Controller/ControllerResolver.php',

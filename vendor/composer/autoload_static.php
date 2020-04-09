@@ -1230,6 +1230,7 @@ class ComposerStaticInit94925354644aa232f1a91203b7e00446
         'Drupal\\Core\\Config\\UnmetDependenciesException' => __DIR__ . '/../..' . '/docroot/core/lib/Drupal/Core/Config/UnmetDependenciesException.php',
         'Drupal\\Core\\Config\\UnsupportedDataTypeConfigException' => __DIR__ . '/../..' . '/docroot/core/lib/Drupal/Core/Config/UnsupportedDataTypeConfigException.php',
         'Drupal\\Core\\Controller\\ArgumentResolver\\Psr7RequestValueResolver' => __DIR__ . '/../..' . '/docroot/core/lib/Drupal/Core/Controller/ArgumentResolver/Psr7RequestValueResolver.php',
+        'Drupal\\Core\\Controller\\ArgumentResolver\\RawParameterValueResolver' => __DIR__ . '/../..' . '/docroot/core/lib/Drupal/Core/Controller/ArgumentResolver/RawParameterValueResolver.php',
         'Drupal\\Core\\Controller\\ArgumentResolver\\RouteMatchValueResolver' => __DIR__ . '/../..' . '/docroot/core/lib/Drupal/Core/Controller/ArgumentResolver/RouteMatchValueResolver.php',
         'Drupal\\Core\\Controller\\ControllerBase' => __DIR__ . '/../..' . '/docroot/core/lib/Drupal/Core/Controller/ControllerBase.php',
         'Drupal\\Core\\Controller\\ControllerResolver' => __DIR__ . '/../..' . '/docroot/core/lib/Drupal/Core/Controller/ControllerResolver.php',
