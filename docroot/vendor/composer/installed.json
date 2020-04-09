@@ -1083,7 +1083,14 @@
                 "Doctrine\\Instantiator\\": "src/Doctrine/Instantiator/"
             }
         },
-        "notification-url": "https://packagist.org/downloads/",
+        "scripts": {
+            "pre-autoload-dump": [
+                "Drupal\\Core\\Composer\\Composer::preAutoloadDump"
+            ],
+            "post-autoload-dump": [
+                "Drupal\\Core\\Composer\\Composer::ensureHtaccess"
+            ]
+        },
         "license": [
             "MIT"
         ],
@@ -1137,7 +1144,6 @@
                 "Doctrine\\Common\\Lexer\\": "lib/Doctrine/Common/Lexer"
             }
         },
-        "notification-url": "https://packagist.org/downloads/",
         "license": [
             "MIT"
         ],
@@ -1210,7 +1216,6 @@
                 "Doctrine\\Persistence\\": "lib/Doctrine/Persistence"
             }
         },
-        "notification-url": "https://packagist.org/downloads/",
         "license": [
             "MIT"
         ],
@@ -1291,7 +1296,6 @@
                 "Doctrine\\Common\\": "lib/Doctrine/Common"
             }
         },
-        "notification-url": "https://packagist.org/downloads/",
         "license": [
             "MIT"
         ],
