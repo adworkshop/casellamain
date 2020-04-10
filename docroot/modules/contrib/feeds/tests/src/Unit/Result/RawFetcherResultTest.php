@@ -11,13 +11,19 @@ use Drupal\Tests\feeds\Unit\FeedsUnitTestCase;
  */
 class RawFetcherResultTest extends FeedsUnitTestCase {
 
-  public function testRaw() {
-    $result = new RawFetcherResult('raw text');
+  /**
+   * @covers ::getRaw
+   */
+  public function testGetRaw() {
+    $result = new RawFetcherResult('raw text', $this->getMockFileSystem());
     $this->assertSame($result->getRaw(), 'raw text');
   }
 
-  public function testFilePath() {
-    $result = new RawFetcherResult('raw text');
+  /**
+   * @covers ::getFilePath
+   */
+  public function testGetFilePath() {
+    $result = new RawFetcherResult('raw text', $this->getMockFileSystem());
     $this->assertSame(file_get_contents($result->getFilePath()), 'raw text');
 
     // Call again to see if exception is thrown.
@@ -25,4 +31,3 @@ class RawFetcherResultTest extends FeedsUnitTestCase {
   }
 
 }
-

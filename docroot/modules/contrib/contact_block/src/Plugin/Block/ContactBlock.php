@@ -122,7 +122,8 @@ class ContactBlock extends BlockBase implements ContainerFactoryPluginInterface 
         return AccessResult::forbidden();
       }
 
-      return AccessResult::allowedIfHasPermission($account, 'access user contact forms');
+      // Use the regular personal contact acces service to check.
+      return \Drupal::service('access_check.contact_personal')->access($user, $account);
     }
 
     // Access to other contact forms is equal to the permission of the
@@ -137,7 +138,7 @@ class ContactBlock extends BlockBase implements ContainerFactoryPluginInterface 
     $default_form = $this->configFactory->get('contact.settings')->get('default_form');
 
     return array(
-      'label' => t('Contact block'),
+      'label' => $this->t('Contact block'),
       'contact_form' => $default_form,
     );
   }
@@ -252,4 +253,5 @@ class ContactBlock extends BlockBase implements ContainerFactoryPluginInterface 
     }
     return $contact_message;
   }
+
 }

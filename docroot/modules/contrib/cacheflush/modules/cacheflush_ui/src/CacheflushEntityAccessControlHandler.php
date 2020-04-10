@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\cacheflush_ui\CacheflushEntityAccessControlHandler.
- */
-
 namespace Drupal\cacheflush_ui;
 
 use Drupal\Core\Entity\EntityAccessControlHandler;
@@ -15,7 +10,7 @@ use Drupal\Core\Access\AccessResult;
 /**
  * Access controller for the Cacheflush entity.
  *
- * @see \Drupal\cacheflush\Entity\CacheflushEntity.
+ * @see \Drupal\cacheflush_ui\Entity\CacheflushEntity.
  */
 class CacheflushEntityAccessControlHandler extends EntityAccessControlHandler {
 
@@ -64,7 +59,9 @@ class CacheflushEntityAccessControlHandler extends EntityAccessControlHandler {
    *   Return TRUE if access is granted.
    */
   protected function checkSingleToMany($any, $single, $account, $entity) {
-    return AccessResult::allowedIfHasPermission($account, $any)->orIf(AccessResult::allowedIfHasPermission($account, $single)->andIf($this->checkOwner($account, $entity)));
+    return AccessResult::allowedIfHasPermission($account, $any)
+      ->orIf(AccessResult::allowedIfHasPermission($account, $single)
+        ->andIf($this->checkOwner($account, $entity)));
   }
 
   /**
@@ -75,7 +72,7 @@ class CacheflushEntityAccessControlHandler extends EntityAccessControlHandler {
    * @param object $entity
    *   The entity object.
    *
-   * @return bool AccessResult
+   * @return \Drupal\Core\Access\AccessResult
    *   Access result.
    */
   protected function checkOwner($account, $entity) {

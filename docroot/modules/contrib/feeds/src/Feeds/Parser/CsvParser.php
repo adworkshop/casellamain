@@ -2,13 +2,10 @@
 
 namespace Drupal\feeds\Feeds\Parser;
 
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\feeds\Component\CsvParser as CsvFileParser;
 use Drupal\feeds\Exception\EmptyFeedException;
 use Drupal\feeds\FeedInterface;
 use Drupal\feeds\Feeds\Item\DynamicItem;
-use Drupal\feeds\Plugin\Type\Parser\ParserInterface;
-use Drupal\feeds\Plugin\Type\PluginBase;
 use Drupal\feeds\Result\FetcherResultInterface;
 use Drupal\feeds\Result\ParserResult;
 use Drupal\feeds\StateInterface;
@@ -18,22 +15,28 @@ use Drupal\feeds\StateInterface;
  *
  * @FeedsParser(
  *   id = "csv",
- *   title = "CSV (not working yet, do not use)",
+ *   title = "CSV",
  *   description = @Translation("Parse CSV files."),
  *   form = {
  *     "configuration" = "Drupal\feeds\Feeds\Parser\Form\CsvParserForm",
  *     "feed" = "Drupal\feeds\Feeds\Parser\Form\CsvParserFeedForm",
  *   },
  * )
- *
- * @todo Make mapping sources configurable, see https://www.drupal.org/node/2443471.
  */
-class CsvParser extends PluginBase implements ParserInterface {
+class CsvParser extends ParserBase {
 
   /**
    * {@inheritdoc}
    */
   public function parse(FeedInterface $feed, FetcherResultInterface $fetcher_result, StateInterface $state) {
+    // Get sources.
+    $sources = [];
+    foreach ($feed->getType()->getMappingSources() as $key => $info) {
+      if (isset($info['value']) && trim(strval($info['value'])) !== '') {
+        $sources[$info['value']] = $key;
+      }
+    }
+
     $feed_config = $feed->getConfigurationFor($this);
 
     if (!filesize($fetcher_result->getFilePath())) {
@@ -57,6 +60,10 @@ class CsvParser extends PluginBase implements ParserInterface {
 
       foreach ($row as $delta => $cell) {
         $key = isset($header[$delta]) ? $header[$delta] : $delta;
+        // Pick machine name of source, if one is found.
+        if (isset($sources[$key])) {
+          $key = $sources[$key];
+        }
         $item->set($key, $cell);
       }
 
@@ -68,6 +75,12 @@ class CsvParser extends PluginBase implements ParserInterface {
     $state->pointer = $parser->lastLinePos();
     $state->progress($state->total, $state->pointer);
 
+    // Set progress to complete if no more results are parsed. Can happen with
+    // empty lines in CSV.
+    if (!$result->count()) {
+      $state->setCompleted();
+    }
+
     return $result;
   }
 
@@ -76,6 +89,23 @@ class CsvParser extends PluginBase implements ParserInterface {
    */
   public function getMappingSources() {
     return [];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function configSourceLabel() {
+    return $this->t('CSV source');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function configSourceDescription() {
+    if ($this->getConfiguration('no_headers')) {
+      return $this->t('Enter which column number of the CSV file to use: 0, 1, 2, etc.');
+    }
+    return $this->t('Enter the exact CSV column name. This is case-sensitive.');
   }
 
   /**

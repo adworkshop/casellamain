@@ -25,12 +25,14 @@ services:
   diff.entity_comparison:
     class: Drupal\diff\DiffEntityComparison
     arguments: ['@config.factory', '@diff.diff.formatter','@plugin.manager.field.field_type', '@diff.entity_parser', '@plugin.manager.diff.builder']
+    calls:
+      - [setModerationInformation, ['@?content_moderation.moderation_information']]
 
   diff.html_diff:
     class: HtmlDiffAdvanced
 
   theme.negotiator.visual_diff:
     class: Drupal\diff\VisualDiffThemeNegotiator
-    arguments: ['@current_user', '@config.factory', '@entity.manager', '@router.admin_context']
+    arguments: ['@config.factory']
     tags:
       - { name: theme_negotiator, priority: 0 }

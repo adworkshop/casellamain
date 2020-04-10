@@ -3,20 +3,29 @@
 namespace Drupal\Tests\feeds\Unit\Feeds\Target;
 
 use Drupal\feeds\Feeds\Target\Integer;
-use Drupal\Tests\feeds\Unit\FeedsUnitTestCase;
 
 /**
  * @coversDefaultClass \Drupal\feeds\Feeds\Target\Integer
  * @group feeds
  */
-class IntegerTest extends FeedsUnitTestCase {
+class IntegerTest extends FieldTargetTestBase {
 
+  /**
+   * {@inheritdoc}
+   */
+  protected function getTargetClass() {
+    return Integer::class;
+  }
+
+  /**
+   * @covers ::prepareValue
+   */
   public function testPrepareValue() {
     $method = $this->getMethod('Drupal\feeds\Feeds\Target\Integer', 'prepareTarget')->getClosure();
 
     $configuration = [
-      'feed_type' => $this->getMock('Drupal\feeds\FeedTypeInterface'),
-      'target_definition' =>  $method($this->getMockFieldDefinition()),
+      'feed_type' => $this->createMock('Drupal\feeds\FeedTypeInterface'),
+      'target_definition' => $method($this->getMockFieldDefinition()),
     ];
     $target = new Integer($configuration, 'link', []);
 

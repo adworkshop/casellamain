@@ -3,7 +3,6 @@
 namespace Drupal\diff\Form;
 
 use Drupal\Component\Utility\Xss;
-use Drupal\Core\Entity\Query\QueryFactory;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
@@ -54,12 +53,14 @@ class RevisionOverviewForm extends FormBase {
   /**
    * The language manager.
    *
-   * @var \Drupal\Core\Language\LanguageManagerInterface $language_manager
+   * @var \Drupal\Core\Language\LanguageManagerInterface
    */
   protected $languageManager;
 
   /**
-   * Wrapper object for writing/reading simple configuration from diff.settings.yml
+   * Wrapper object for simple configuration from diff.settings.yml.
+   *
+   * @var \Drupal\Core\Config\ImmutableConfig
    */
   protected $config;
 
@@ -78,13 +79,6 @@ class RevisionOverviewForm extends FormBase {
   protected $entityComparison;
 
   /**
-   * The entity query factory service.
-   *
-   * @var \Drupal\Core\Entity\Query\QueryFactory
-   */
-  protected $entityQuery;
-
-  /**
    * Constructs a RevisionOverviewForm object.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
@@ -101,10 +95,8 @@ class RevisionOverviewForm extends FormBase {
    *   The diff layout service.
    * @param \Drupal\diff\DiffEntityComparison $entity_comparison
    *   The diff entity comparison service.
-   * @param \Drupal\Core\Entity\Query\QueryFactory $entity_query
-   *   The entity query factory.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, AccountInterface $current_user, DateFormatter $date, RendererInterface $renderer, LanguageManagerInterface $language_manager, DiffLayoutManager $diff_layout_manager, DiffEntityComparison $entity_comparison, QueryFactory $entity_query) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, AccountInterface $current_user, DateFormatter $date, RendererInterface $renderer, LanguageManagerInterface $language_manager, DiffLayoutManager $diff_layout_manager, DiffEntityComparison $entity_comparison) {
     $this->entityTypeManager = $entity_type_manager;
     $this->currentUser = $current_user;
     $this->date = $date;
@@ -113,7 +105,6 @@ class RevisionOverviewForm extends FormBase {
     $this->config = $this->config('diff.settings');
     $this->diffLayoutManager = $diff_layout_manager;
     $this->entityComparison = $entity_comparison;
-    $this->entityQuery = $entity_query;
   }
 
   /**
@@ -127,8 +118,7 @@ class RevisionOverviewForm extends FormBase {
       $container->get('renderer'),
       $container->get('language_manager'),
       $container->get('plugin.manager.diff.layout'),
-      $container->get('diff.entity_comparison'),
-      $container->get('entity.query')
+      $container->get('diff.entity_comparison')
     );
   }
 
@@ -154,17 +144,26 @@ class RevisionOverviewForm extends FormBase {
 
     $pagerLimit = $this->config->get('general_settings.revision_pager_limit');
 
-    $query = $this->entityQuery->get('node')
+    $query = $this->entityTypeManager->getStorage('node')->getQuery()
       ->condition($node->getEntityType()->getKey('id'), $node->id())
       ->pager($pagerLimit)
       ->allRevisions()
       ->sort($node->getEntityType()->getKey('revision'), 'DESC')
+      // Access to the content has already been verified. Disable query-level
+      // access checking so that revisions for unpublished content still
+      //appear.
+      ->accessCheck(FALSE)
       ->execute();
     $vids = array_keys($query);
 
     $revision_count = count($vids);
 
-    $build['#title'] = $has_translations ? $this->t('@langname revisions for %title', ['@langname' => $langname, '%title' => $node->label()]) : $this->t('Revisions for %title', ['%title' => $node->label()]);
+    $build['#title'] = $has_translations ? $this->t('@langname revisions for %title', [
+      '@langname' => $langname,
+      '%title' => $node->label(),
+    ]) : $this->t('Revisions for %title', [
+      '%title' => $node->label(),
+    ]);
     $build['nid'] = array(
       '#type' => 'hidden',
       '#value' => $node->id(),
@@ -213,15 +212,15 @@ class RevisionOverviewForm extends FormBase {
         if ($revision->hasTranslation($langcode) && $revision->getTranslation($langcode)->isRevisionTranslationAffected()) {
           $username = array(
             '#theme' => 'username',
-            '#account' => $revision->getRevisionAuthor(),
+            '#account' => $revision->getRevisionUser(),
           );
           $revision_date = $this->date->format($revision->getRevisionCreationTime(), 'short');
           // Use revision link to link to revisions that are not active.
           if ($vid != $node->getRevisionId()) {
-            $link = Link::fromTextAndUrl($revision_date, new Url('entity.node.revision', ['node' => $node->id(), 'node_revision' => $vid]))->toString();
+            $link = Link::fromTextAndUrl($revision_date, new Url('entity.node.revision', ['node' => $node->id(), 'node_revision' => $vid]));
           }
           else {
-            $link = $node->link($revision_date);
+            $link = $node->toLink($revision_date);
           }
 
           if ($vid == $default_revision) {
@@ -242,8 +241,11 @@ class RevisionOverviewForm extends FormBase {
               '#suffix' => '</em>',
               '#attributes' => array(
                 'class' => array('revision-current'),
-              )
+              ),
             );
+            $row['#attributes'] = [
+              'class' => ['revision-current'],
+            ];
           }
           else {
             $route_params = array(
@@ -263,7 +265,7 @@ class RevisionOverviewForm extends FormBase {
             if ($delete_permission) {
               $links['delete'] = array(
                 'title' => $this->t('Delete'),
-                'url' => Url::fromRoute('node.revision_delete_confirm', $route_params)
+                'url' => Url::fromRoute('node.revision_delete_confirm', $route_params),
               );
             }
 
@@ -273,7 +275,7 @@ class RevisionOverviewForm extends FormBase {
             $row = [
               'revision' => $this->buildRevision($link, $username, $revision, $previous_revision),
               'select_column_one' => $this->buildSelectColumn('radios_left', $vid,
-                isset ($vids[1]) ? $vids[1] : FALSE),
+                isset($vids[1]) ? $vids[1] : FALSE),
               'select_column_two' => $this->buildSelectColumn('radios_right', $vid, FALSE),
               'operations' => [
                 '#type' => 'operations',
@@ -291,7 +293,8 @@ class RevisionOverviewForm extends FormBase {
     if ($revision_count > 1) {
       $build['submit'] = array(
         '#type' => 'submit',
-        '#value' => t('Compare'),
+        '#button_type' => 'primary',
+        '#value' => t('Compare selected revisions'),
         '#attributes' => array(
           'class' => array(
             'diff-button',
@@ -302,18 +305,18 @@ class RevisionOverviewForm extends FormBase {
     $build['pager'] = array(
       '#type' => 'pager',
     );
-
+    $build['#attached']['library'][] = 'node/drupal.node.admin';
     return $build;
   }
 
   /**
    * Set column attributes and return config array.
    *
-   * @param $name
+   * @param string $name
    *   Name attribute.
-   * @param $return_val
+   * @param string $return_val
    *   Return value attribute.
-   * @param $default_val
+   * @param string $default_val
    *   Default value attribute.
    *
    * @return array
@@ -325,35 +328,36 @@ class RevisionOverviewForm extends FormBase {
       '#title_display' => 'invisible',
       '#name' => $name,
       '#return_value' => $return_val,
-      '#default_value' => $default_val
+      '#default_value' => $default_val,
     ];
   }
 
   /**
    * Set and return configuration for revision.
-   * @param $link
+   *
+   * @param \Drupal\Core\Link $link
    *   Link attribute.
-   * @param $username
+   * @param string $username
    *   Username attribute.
    * @param \Drupal\Core\Entity\ContentEntityInterface $revision
    *   Revision parameter for getRevisionDescription function.
-   * @param  \Drupal\Core\Entity\ContentEntityInterface $previous_revision
+   * @param \Drupal\Core\Entity\ContentEntityInterface $previous_revision
    *   (optional) Previous revision for getRevisionDescription function.
    *   Defaults to NULL.
    *
    * @return array
    *   Configuration for revision.
    */
-  protected function buildRevision($link, $username, ContentEntityInterface $revision, ContentEntityInterface $previous_revision = NULL) {
+  protected function buildRevision(Link $link, $username, ContentEntityInterface $revision, ContentEntityInterface $previous_revision = NULL) {
     return [
       '#type' => 'inline_template',
       '#template' => '{% trans %}{{ date }} by {{ username }}{% endtrans %}{% if message %}<p class="revision-log">{{ message }}</p>{% endif %}',
       '#context' => [
-        'date' => $link,
+        'date' => $link->toString(),
         'username' => $this->renderer->renderPlain($username),
         'message' => [
           '#markup' => $this->entityComparison->getRevisionDescription($revision, $previous_revision),
-          '#allowed_tags' => Xss::getHtmlTagList()
+          '#allowed_tags' => Xss::getAdminTagList(),
         ],
       ],
     ];

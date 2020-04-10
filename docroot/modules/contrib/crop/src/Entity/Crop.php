@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\crop\Entity\ImageCrop.
- */
-
 namespace Drupal\crop\Entity;
 
 use Drupal\Core\Entity\ContentEntityBase;
@@ -13,6 +8,7 @@ use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\crop\CropInterface;
 use Drupal\crop\EntityProviderNotFoundException;
+use Drupal\image\ImageStyleInterface;
 
 /**
  * Defines the crop entity class.
@@ -45,6 +41,11 @@ use Drupal\crop\EntityProviderNotFoundException;
  *     "revision" = "vid",
  *     "langcode" = "langcode",
  *     "uuid" = "uuid"
+ *   },
+ *   revision_metadata_keys = {
+ *     "revision_timestamp" = "revision_timestamp",
+ *     "revision_uid" = "revision_uid",
+ *     "revision_log" = "revision_log"
  *   },
  *   bundle_entity_type = "crop_type",
  *   permission_granularity = "entity_type",
@@ -134,16 +135,41 @@ class Crop extends ContentEntityBase implements CropInterface {
    * {@inheritdoc}
    */
   public static function findCrop($uri, $type) {
-    $query = \Drupal::entityQuery('crop')
-      ->condition('uri', $uri);
-    if ($type) {
-      $query->condition('type', $type);
-    }
-    $crop = $query->sort('cid')
-      ->range(0, 1)
-      ->execute();
+    return \Drupal::entityTypeManager()->getStorage('crop')->getCrop($uri, $type);
+  }
 
-    return $crop ? \Drupal::entityTypeManager()->getStorage('crop')->load(current($crop)) : NULL;
+  /**
+   * {@inheritdoc}
+   */
+  public static function getCropFromImageStyle($uri, ImageStyleInterface $image_style) {
+    $effects = [];
+    $crop = FALSE;
+
+    foreach ($image_style->getEffects() as $uuid => $effect) {
+      // Store the effects parameters for later use.
+      $effects[$effect->getPluginId()] = [
+        'uuid' => $uuid,
+        'provider' => $effect->getPluginDefinition()['provider'],
+      ];
+    }
+
+    if (isset($effects['crop_crop']) && $image_style->getEffects()
+        ->has($effects['crop_crop']['uuid'])) {
+      $type = $image_style->getEffect($effects['crop_crop']['uuid'])
+        ->getConfiguration()['data']['crop_type'];
+      $crop = self::findCrop($uri, $type);
+    }
+
+    // Fallback to use the provider as a fallback to check if provider name,
+    // match with crop types for modules non-based on "manual crop" effects.
+    if (!$crop) {
+      foreach ($effects as $effect) {
+        $provider = $effect['provider'];
+        $crop = self::findCrop($uri, $provider);
+      }
+    }
+
+    return $crop;
   }
 
   /**
@@ -160,7 +186,7 @@ class Crop extends ContentEntityBase implements CropInterface {
 
     // Try to set URI if not yet defined.
     if (empty($this->uri->value) && !empty($this->entity_type->value) && !empty($this->entity_id->value)) {
-      $entity = \Drupal::entityManager()->getStorage($this->entity_type->value)->load($this->entity_id->value);
+      $entity = \Drupal::entityTypeManager()->getStorage($this->entity_type->value)->load($this->entity_id->value);
       if ($uri = $this->provider()->uri($entity)) {
         $this->set('uri', $uri);
       }
@@ -185,9 +211,20 @@ class Crop extends ContentEntityBase implements CropInterface {
   /**
    * {@inheritdoc}
    */
-  public function save() {
-    parent::save();
-    image_path_flush($this->uri->value);
+  public function postSave(EntityStorageInterface $storage, $update = TRUE) {
+    parent::postSave($storage, $update);
+
+    // If you are manually generating your image derivatives instead of waiting
+    // for them to be generated on the fly, because you are using a cloud
+    // storage service (like S3), then you may not want your image derivatives
+    // to be flushed. If they are you could end up serving 404s during the time
+    // between the crop entity being saved and the image derivative being
+    // manually generated and pushed to your cloud storage service. In that
+    // case, set this configuration variable to false.
+    $flush_derivative_images = \Drupal::config('crop.settings')->get('flush_derivative_images');
+    if ($flush_derivative_images) {
+      image_path_flush($this->uri->value);
+    }
   }
 
   /**
@@ -291,14 +328,12 @@ class Crop extends ContentEntityBase implements CropInterface {
     $fields['revision_timestamp'] = BaseFieldDefinition::create('created')
       ->setLabel(t('Revision timestamp'))
       ->setDescription(t('The time that the current revision was created.'))
-      ->setQueryable(FALSE)
       ->setRevisionable(TRUE);
 
     $fields['revision_uid'] = BaseFieldDefinition::create('entity_reference')
       ->setLabel(t('Revision author ID'))
       ->setDescription(t('The user ID of the author of the current revision.'))
       ->setSetting('target_type', 'user')
-      ->setQueryable(FALSE)
       ->setRevisionable(TRUE);
 
     $fields['revision_log'] = BaseFieldDefinition::create('string_long')

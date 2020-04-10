@@ -5,8 +5,8 @@ description: Alters emailing to prevent send and output to browser for testing.
 dependencies:
   - contact_emails
 
-# Information added by Drupal.org packaging script on 2017-11-10
-version: '8.x-1.14'
+# Information added by Drupal.org packaging script on 2019-07-08
+version: '8.x-1.18'
 core: '8.x'
 project: 'contact_emails'
-datestamp: 1510299490
+datestamp: 1562571796

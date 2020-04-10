@@ -1,3 +1,4 @@
+uuid: 51f925bd-fb89-4260-b3b5-034a61d0d8db
 langcode: en
 status: true
 dependencies:
@@ -5,6 +6,8 @@ dependencies:
     - cacheflush_entity
     - cacheflush_ui
     - user
+_core:
+  default_config_hash: FoVrWHy8MudVUioA_fgZ3LFq7i-x7tMp1ZMl7R4ESL0
 id: cacheflush_content
 label: 'Cacheflush content'
 module: cacheflush_ui
@@ -663,7 +666,7 @@ display:
           group_type: group
           admin_label: ''
           operator: '='
-          value: true
+          value: '1'
           group: 1
           exposed: true
           expose:
@@ -711,7 +714,7 @@ display:
           group_type: group
           admin_label: ''
           operator: '='
-          value: true
+          value: '1'
           group: 1
           exposed: true
           expose:

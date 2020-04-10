@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\menu_admin_per_menu\Access\MenuAdminPerMenuAccess.
- */
 
 namespace Drupal\menu_admin_per_menu\Access;
 
@@ -22,14 +18,14 @@ class MenuAdminPerMenuAccess implements MenuAdminPerMenuAccessInterface {
    * {@inheritdoc}
    */
   public function getPerMenuPermissions(AccountInterface $account) {
-    $perms_menu = &drupal_static(__FUNCTION__, array());
+    $perms_menu = &drupal_static(__FUNCTION__, []);
 
     if (!$perms_menu) {
       $menus = menu_ui_get_menus();
       foreach ($menus as $name => $title) {
         $permission = 'administer ' . $name . ' menu items';
         if ($account->hasPermission($permission)) {
-          $perms_menu[$permission] = $permission;
+          $perms_menu[$permission] = $name;
         }
       }
       \Drupal::moduleHandler()->alter('menu_admin_per_menu_get_permissions', $perms_menu, $account);

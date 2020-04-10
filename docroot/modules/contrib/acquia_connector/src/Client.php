@@ -8,7 +8,6 @@ use Drupal\Component\Utility\Crypt;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Logger\LoggerChannelTrait;
 use Drupal\Core\Messenger\MessengerTrait;
-use Drupal\Core\State\StateInterface;
 use GuzzleHttp\Exception\RequestException;
 
 /**
@@ -50,24 +49,14 @@ class Client {
   protected $config;
 
   /**
-   * The state service.
-   *
-   * @var \Drupal\Core\State\StateInterface
-   */
-  protected $state;
-
-  /**
    * Client constructor.
    *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config
    *   Config Factory Interface.
-   * @param \Drupal\Core\State\StateInterface $state
-   *   The state service.
    */
-  public function __construct(ConfigFactoryInterface $config, StateInterface $state) {
+  public function __construct(ConfigFactoryInterface $config) {
     $this->config = $config->get('acquia_connector.settings');
     $this->server = $this->config->get('spi.server');
-    $this->state = $state;
 
     $this->headers = [
       'Content-Type' => 'application/json',
@@ -148,7 +137,7 @@ class Client {
     $body['identifier'] = $id;
     // There is an identifier and key, so attempt communication.
     $subscription = [];
-    $this->state->set('acquia_subscription_data.timestamp', \Drupal::time()->getRequestTime());
+    \Drupal::state()->set('acquia_subscription_data.timestamp', \Drupal::time()->getRequestTime());
 
     // Include version number information.
     acquia_connector_load_versions();
@@ -173,9 +162,9 @@ class Client {
       if (!empty($response['result']['authenticator']) && $this->validateResponse($key, $response['result'], $response['authenticator'])) {
         $subscription += $response['result']['body'];
         // Subscription activated.
-        if (is_numeric($this->state->get('acquia_subscription_data')) && is_array($response['result']['body'])) {
+        if (is_numeric($this->config->get('subscription_data')) && is_array($response['result']['body'])) {
           \Drupal::moduleHandler()->invokeAll('acquia_subscription_status', [$subscription]);
-          $this->state->set('acquia_subscription_data', $subscription);
+          \Drupal::configFactory()->getEditable('acquia_connector.settings')->set('subscription_data', $subscription)->save();
         }
         return $subscription;
       }

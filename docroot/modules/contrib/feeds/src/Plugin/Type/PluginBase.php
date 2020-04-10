@@ -3,8 +3,9 @@
 namespace Drupal\feeds\Plugin\Type;
 
 use Drupal\Core\Plugin\PluginBase as DrupalPluginBase;
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\feeds\FeedInterface;
+use Drupal\feeds\FeedTypeInterface;
+use Drupal\Core\Entity\DependencyTrait;
 
 /**
  * The base class for the fetcher, parser, and processor plugins.
@@ -14,6 +15,8 @@ use Drupal\feeds\FeedInterface;
  *   implemented by other interfaces. We're working on it.
  */
 abstract class PluginBase extends DrupalPluginBase implements FeedsPluginInterface {
+
+  use DependencyTrait;
 
   /**
    * The importer this plugin is working for.
@@ -47,7 +50,7 @@ abstract class PluginBase extends DrupalPluginBase implements FeedsPluginInterfa
    *   The plugin implementation definition.
    */
   public function __construct(array $configuration, $plugin_id, array $plugin_definition) {
-    assert('isset($configuration["feed_type"]) && $configuration["feed_type"] instanceof Drupal\feeds\FeedTypeInterface');
+    assert(isset($configuration["feed_type"]) && $configuration["feed_type"] instanceof FeedTypeInterface);
 
     $this->feedType = $configuration['feed_type'];
     unset($configuration['feed_type']);
@@ -95,7 +98,7 @@ abstract class PluginBase extends DrupalPluginBase implements FeedsPluginInterfa
    * {@inheritdoc}
    */
   public function calculateDependencies() {
-    return [];
+    return $this->dependencies;
   }
 
   /**
@@ -128,11 +131,13 @@ abstract class PluginBase extends DrupalPluginBase implements FeedsPluginInterfa
   /**
    * Renders a link to a route given a route name and its parameters.
    *
-   * @see \Drupal\Core\Utility\LinkGeneratorInterface::generate() for details
-   *   on the arguments, usage, and possible exceptions.
+   * See \Drupal\Core\Utility\LinkGeneratorInterface::generate() for details
+   * on the arguments, usage, and possible exceptions.
    *
    * @return string
    *   An HTML string containing a link to the given route and parameters.
+   *
+   * @see \Drupal\Core\Utility\LinkGeneratorInterface::generate()
    */
   protected function l($text, $route_name, array $parameters = [], array $options = []) {
     return $this->linkGenerator()->generate($text, $route_name, $parameters, $options);
@@ -141,11 +146,13 @@ abstract class PluginBase extends DrupalPluginBase implements FeedsPluginInterfa
   /**
    * Generates a URL or path for a specific route based on the given parameters.
    *
-   * @see \Drupal\Core\Routing\UrlGeneratorInterface::generateFromRoute() for
-   *   details on the arguments, usage, and possible exceptions.
+   * See \Drupal\Core\Routing\UrlGeneratorInterface::generateFromRoute() for
+   * details on the arguments, usage, and possible exceptions.
    *
    * @return string
    *   The generated URL for the given route.
+   *
+   * @see \Drupal\Core\Routing\UrlGeneratorInterface::generateFromRoute()
    */
   protected function url($route_name, $route_parameters = [], $options = []) {
     return $this->urlGenerator()->generateFromRoute($route_name, $route_parameters, $options);
@@ -180,7 +187,7 @@ abstract class PluginBase extends DrupalPluginBase implements FeedsPluginInterfa
   /**
    * Returns the service container.
    *
-   * @return \Symfony\Component\DependencyInjection\ContainerInterface $container
+   * @return \Symfony\Component\DependencyInjection\ContainerInterface
    *   The service container.
    */
   private function container() {

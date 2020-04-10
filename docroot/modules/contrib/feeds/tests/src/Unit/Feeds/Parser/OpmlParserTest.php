@@ -12,30 +12,61 @@ use Drupal\Tests\feeds\Unit\FeedsUnitTestCase;
  */
 class OpmlParserTest extends FeedsUnitTestCase {
 
+  /**
+   * The Feeds parser plugin under test.
+   *
+   * @var \Drupal\feeds\Feeds\Parser\OpmlParser
+   */
   protected $parser;
+
+  /**
+   * The feed type entity.
+   *
+   * @var \Drupal\feeds\FeedTypeInterface
+   */
   protected $feedType;
+
+  /**
+   * The feed entity.
+   *
+   * @var \Drupal\feeds\FeedInterface
+   */
   protected $feed;
+
+  /**
+   * The state object.
+   *
+   * @var \Drupal\feeds\StateInterface
+   */
   protected $state;
 
+  /**
+   * {@inheritdoc}
+   */
   public function setUp() {
     parent::setUp();
 
-    $this->feedType = $this->getMock('Drupal\feeds\FeedTypeInterface');
+    $this->feedType = $this->createMock('Drupal\feeds\FeedTypeInterface');
     $configuration = ['feed_type' => $this->feedType];
     $this->parser = new OpmlParser($configuration, 'sitemap', []);
     $this->parser->setStringTranslation($this->getStringTranslationStub());
 
-    $this->feed = $this->getMock('Drupal\feeds\FeedInterface');
+    $this->feed = $this->createMock('Drupal\feeds\FeedInterface');
     $this->feed->expects($this->any())
       ->method('getType')
       ->will($this->returnValue($this->feedType));
 
-    $this->state = $this->getMock('Drupal\feeds\StateInterface');
+    $this->state = $this->createMock('Drupal\feeds\StateInterface');
   }
 
-  public function testFetch() {
+  /**
+   * Tests parsing an OPML file that succeeds.
+   *
+   * @covers ::parse
+   */
+  public function testParse() {
     $file = dirname(dirname(dirname(dirname(dirname(dirname(__FILE__)))))) . '/tests/resources/opml-example.xml';
-    $fetcher_result = new RawFetcherResult(file_get_contents($file));
+    $fetcher_result = new RawFetcherResult(file_get_contents($file), $this->getMockFileSystem());
 
     $result = $this->parser->parse($this->feed, $fetcher_result, $this->state);
     $this->assertSame(count($result), 13);
@@ -45,16 +76,21 @@ class OpmlParserTest extends FeedsUnitTestCase {
   }
 
   /**
+   * Tests parsing an empty feed.
+   *
+   * @covers ::parse
    * @expectedException \Drupal\feeds\Exception\EmptyFeedException
    */
   public function testEmptyFeed() {
-    $this->parser->parse($this->feed, new RawFetcherResult(''), $this->state);
+    $this->parser->parse($this->feed, new RawFetcherResult('', $this->getMockFileSystem()), $this->state);
   }
 
+  /**
+   * @covers ::getMappingSources
+   */
   public function testGetMappingSources() {
     // Not really much to test here.
     $this->assertSame(count($this->parser->getMappingSources()), 5);
   }
 
 }
-

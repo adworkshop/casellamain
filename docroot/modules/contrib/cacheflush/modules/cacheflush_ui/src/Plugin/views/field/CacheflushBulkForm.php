@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\cacheflush_ui\Plugin\views\field\CacheflushBulkForm.
- */
-
 namespace Drupal\cacheflush_ui\Plugin\views\field;
 
 use Drupal\system\Plugin\views\field\BulkForm;

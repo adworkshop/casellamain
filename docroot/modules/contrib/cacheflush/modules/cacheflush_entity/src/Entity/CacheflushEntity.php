@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\cacheflush_entity\Entity\CacheflushEntity.
- */
-
 namespace Drupal\cacheflush_entity\Entity;
 
 use Drupal\Core\Entity\EntityStorageInterface;
@@ -40,9 +35,9 @@ class CacheflushEntity extends ContentEntityBase implements CacheflushEntityInte
    */
   public static function preCreate(EntityStorageInterface $storage_controller, array &$values) {
     parent::preCreate($storage_controller, $values);
-    $values += array(
+    $values += [
       'uid' => \Drupal::currentUser()->id(),
-    );
+    ];
   }
 
   /**
@@ -133,53 +128,49 @@ class CacheflushEntity extends ContentEntityBase implements CacheflushEntityInte
    */
   public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
     $fields['id'] = BaseFieldDefinition::create('integer')
-        ->setLabel(t('ID'))
-        ->setDescription(t('The ID of the Cacheflush entity.'))
-        ->setReadOnly(TRUE)
-        ->setSetting('unsigned', TRUE)
-        ->setSetting('not null', TRUE);
+      ->setLabel(t('ID'))
+      ->setDescription(t('The ID of the Cacheflush entity.'))
+      ->setReadOnly(TRUE)
+      ->setSetting('unsigned', TRUE)
+      ->setSetting('not null', TRUE);
 
     $fields['uuid'] = BaseFieldDefinition::create('uuid')
-        ->setLabel(t('UUID'))
-        ->setDescription(t('The UUID of the Cacheflush entity.'))
-        ->setReadOnly(TRUE);
+      ->setLabel(t('UUID'))
+      ->setDescription(t('The UUID of the Cacheflush entity.'))
+      ->setReadOnly(TRUE);
 
     $fields['title'] = BaseFieldDefinition::create('string')
-        ->setLabel(t('Title'))
-        ->setDescription(t('The title of the Cacheflush entity.'))
-        ->setSettings(array(
-      'max_length' => 80,
-      'text_processing' => 0,
-      'not null' => TRUE,
-    ));
+      ->setLabel(t('Title'))
+      ->setDescription(t('The title of the Cacheflush entity.'))
+      ->setSettings([
+        'max_length' => 80,
+        'text_processing' => 0,
+        'not null' => TRUE,
+      ]);
 
     $fields['uid'] = BaseFieldDefinition::create('entity_reference')
-        ->setLabel(t('Authored by'))
-        ->setDescription(t('The user ID of author of the Cacheflush entity.'))
-        ->setRevisionable(TRUE)
-        ->setSetting('target_type', 'user')
-        ->setSetting('handler', 'default');
+      ->setLabel(t('Authored by'))
+      ->setDescription(t('The user ID of author of the Cacheflush entity.'))
+      ->setRevisionable(TRUE)
+      ->setSetting('target_type', 'user')
+      ->setSetting('handler', 'default');
 
     $fields['status'] = BaseFieldDefinition::create('boolean')
-        ->setLabel(t('Status'))
-        ->setDefaultValue(0)
-        ->setDescription(t('The Status of the Cacheflush entity.'));
+      ->setLabel(t('Status'))
+      ->setDefaultValue(0)
+      ->setDescription(t('The Status of the Cacheflush entity.'));
 
     $fields['data'] = BaseFieldDefinition::create('map')
-        ->setLabel(t('Status'))
-        ->setDescription(t('The Status of the Cacheflush entity.'));
-
-    $fields['langcode'] = BaseFieldDefinition::create('language')
-        ->setLabel(t('Language code'))
-        ->setDescription(t('The language code for the Cacheflush entity.'));
+      ->setLabel(t('Status'))
+      ->setDescription(t('The Status of the Cacheflush entity.'));
 
     $fields['created'] = BaseFieldDefinition::create('created')
-        ->setLabel(t('Created'))
-        ->setDescription(t('The time that the entity was created.'));
+      ->setLabel(t('Created'))
+      ->setDescription(t('The time that the entity was created.'));
 
     $fields['changed'] = BaseFieldDefinition::create('changed')
-        ->setLabel(t('Changed'))
-        ->setDescription(t('The time that the entity was last edited.'));
+      ->setLabel(t('Changed'))
+      ->setDescription(t('The time that the entity was last edited.'));
 
     return $fields;
   }

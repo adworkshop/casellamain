@@ -27,14 +27,14 @@ class ContactEmails {
   /**
    * Drupal\Core\Entity\EntityFieldManagerInterface definition.
    *
-   * @var \Drupal\Core\Entity\EntityFieldManagerInterface;
+   * @var \Drupal\Core\Entity\EntityFieldManagerInterface
    */
   protected $entityFieldManager;
 
   /**
    * Drupal\Core\Entity\EntityTypeBundleInfoInterface definition.
    *
-   * @var \Drupal\Core\Entity\EntityTypeBundleInfoInterface;
+   * @var \Drupal\Core\Entity\EntityTypeBundleInfoInterface
    */
   protected $entityTypeBundleInfo;
 
@@ -59,6 +59,9 @@ class ContactEmails {
    *
    * @return array
    *   An array of contact form ids that have at least 1 email.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   protected function getContactFormsWithEmails($from_cache = TRUE) {
     $cid = 'contact_emails:contact_forms_with_emails';
@@ -93,6 +96,9 @@ class ContactEmails {
    *
    * This should be called whenever a contact email is created, updated, or
    * deleted.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function rebuildCache() {
 
@@ -150,7 +156,7 @@ class ContactEmails {
    * @return array
    *   The new array of available fields.
    */
-  protected function getEmailField($available_fields, $field) {
+  protected function getEmailField(array $available_fields, $field) {
     $available_fields[$field->getName()] = $field->getLabel();
     return $available_fields;
   }
@@ -166,7 +172,7 @@ class ContactEmails {
    * @return array
    *   The new array of available fields.
    */
-  protected function getEntityReferenceEmailFields($available_fields, $field) {
+  protected function getEntityReferenceEmailFields(array $available_fields, $field) {
     $settings = $field->getSettings();
 
     // Get all bundles for given target type and filter by selected target

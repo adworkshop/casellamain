@@ -5,7 +5,7 @@ namespace Drupal\contact_emails\Form;
 use Drupal\contact\Entity\ContactForm;
 use Drupal\contact_emails\ContactEmails;
 use Drupal\Core\Entity\ContentEntityForm;
-use Drupal\Core\Entity\EntityManagerInterface;
+use Drupal\Core\Entity\EntityRepositoryInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -24,7 +24,7 @@ class ContactEmailForm extends ContentEntityForm {
   /**
    * {@inheritdoc}
    */
-  public function __construct(EntityManagerInterface $entity_manager, ContactEmails $contactEmails) {
+  public function __construct(EntityRepositoryInterface $entity_manager, ContactEmails $contactEmails) {
     parent::__construct($entity_manager);
 
     $this->contactEmails = $contactEmails;
@@ -35,7 +35,7 @@ class ContactEmailForm extends ContentEntityForm {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('entity.manager'),
+      $container->get('entity.repository'),
       $container->get('contact_emails.helper')
     );
   }
@@ -296,7 +296,7 @@ class ContactEmailForm extends ContentEntityForm {
   public function save(array $form, FormStateInterface $form_state) {
     parent::save($form, $form_state);
 
-    drupal_set_message($this->t('Saved the %label contact email.', [
+    $this->messenger()->addMessage($this->t('Saved the %label contact email.', [
       '%label' => $this->entity->label(),
     ]));
 
@@ -346,6 +346,9 @@ class ContactEmailForm extends ContentEntityForm {
 
   /**
    * {@inheritdoc}
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $values = $form_state->getValues();
@@ -357,7 +360,7 @@ class ContactEmailForm extends ContentEntityForm {
     // first time.
     $has_emails = $storage->hasContactEmails($values['contact_form'][0]['target_id'], TRUE);
     if (!$has_emails && $this->entity->isNew()) {
-      drupal_set_message($this->t('The default contact email from the form settings has been disabled and your new email has replaced it.'), 'warning');
+      $this->messenger()->addWarning($this->t('The default contact email from the form settings has been disabled and your new email has replaced it.'));
     }
 
     // Save the contact email and rebuild the cache.

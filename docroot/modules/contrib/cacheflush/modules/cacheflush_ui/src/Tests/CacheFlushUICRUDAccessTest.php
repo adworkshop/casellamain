@@ -1,20 +1,16 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\cacheflush_ui\Tests\CacheFlushUICRUDAccessTest.
- */
-
 namespace Drupal\cacheflush_ui\Tests;
 
 use Drupal\cacheflush\Controller\CacheflushApi;
+use Drupal\simpletest\WebTestBase;
 
 /**
  * Test cacheflush UI access on links and interface.
  *
  * @group cacheflush
  */
-class CacheFlushUICRUDAccessTest extends \Drupal\simpletest\WebTestBase {
+class CacheFlushUICRUDAccessTest extends WebTestBase {
 
   /**
    * Modules to enable.
@@ -28,14 +24,14 @@ class CacheFlushUICRUDAccessTest extends \Drupal\simpletest\WebTestBase {
    *
    * @var array
    */
-  protected $urls = array(
+  protected $urls = [
     'admin' => 'admin/structure/cacheflush',
     'new' => 'admin/structure/cacheflush/add',
     'clear' => 'admin/cacheflush/clear/',
     'view' => 'cacheflush/',
     'edit' => 'cacheflush/[ID]/edit',
     'delete' => 'cacheflush/[ID]/delete',
-  );
+  ];
 
   /**
    * Sets up the test.
@@ -43,7 +39,7 @@ class CacheFlushUICRUDAccessTest extends \Drupal\simpletest\WebTestBase {
   public function setUp() {
     parent::setUp();
 
-    $role1 = array(
+    $role1 = [
       'cacheflush clear cache',
       'cacheflush administer',
       'cacheflush clear any',
@@ -51,32 +47,32 @@ class CacheFlushUICRUDAccessTest extends \Drupal\simpletest\WebTestBase {
       'cacheflush view any',
       'cacheflush edit any',
       'cacheflush delete any',
-    );
+    ];
     $this->admin_user = $this->drupalCreateUser($role1);
 
-    $role2 = array(
+    $role2 = [
       'cacheflush clear cache',
       'cacheflush clear own',
       'cacheflush create new',
       'cacheflush view own',
       'cacheflush edit own',
       'cacheflush delete own',
-    );
+    ];
     $this->logged_user = $this->drupalCreateUser($role2);
 
-    $role3 = array(
+    $role3 = [
       'cacheflush administer',
       'cacheflush view own',
       'cacheflush edit own',
       'cacheflush delete own',
-    );
+    ];
     $this->interface_user = $this->drupalCreateUser($role3);
 
-    $role4 = array(
+    $role4 = [
       'cacheflush administer',
       'cacheflush view any',
       'cacheflush edit own',
-    );
+    ];
     $this->interface_user2 = $this->drupalCreateUser($role4);
   }
 

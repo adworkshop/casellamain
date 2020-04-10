@@ -1,23 +1,24 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\Publishcontent\Controller\PublishContentPublishEntity
- */
-
 namespace Drupal\publishcontent\Controller;
 
-use \Drupal\node\NodeInterface;
-use \Symfony\Component\HttpFoundation\RedirectResponse;
-use \Drupal\Core\Url;
+use Drupal\node\NodeInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Core\Url;
 
+/**
+ * Toggles node status.
+ */
 class PublishContentPublishEntity {
 
   /**
    * Toggle node status.
    *
-   * @param NodeInterface $node
-   * @return RedirectResponse
+   * @param \Drupal\node\NodeInterface $node
+   *   Node being toggled.
+   *
+   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   *   Redirect to the previous page.
    */
   public function toggleEntityStatus(NodeInterface $node) {
     $node->setPublished(!$node->isPublished());

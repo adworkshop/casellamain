@@ -11,6 +11,11 @@ use Drupal\contact_emails\ContactEmailsTestBase;
  */
 class ContactEmailsRecipientTest extends ContactEmailsTestBase {
 
+  /**
+   * An array of modules to activate.
+   *
+   * @var array
+   */
   public static $modules = [
     'contact',
     'contact_storage',
@@ -21,6 +26,8 @@ class ContactEmailsRecipientTest extends ContactEmailsTestBase {
 
   /**
    * Test default functionality to email address.
+   *
+   * @throws \Exception
    */
   public function testSendToDefault() {
     $this->setSiteMail();
@@ -48,6 +55,8 @@ class ContactEmailsRecipientTest extends ContactEmailsTestBase {
 
   /**
    * Test field functionality to email address.
+   *
+   * @throws \Exception
    */
   public function testSendToField() {
     $this->addEmailFieldToContactForm();
@@ -77,6 +86,8 @@ class ContactEmailsRecipientTest extends ContactEmailsTestBase {
 
   /**
    * Test form submitter functionality to email address.
+   *
+   * @throws \Exception
    */
   public function testSendToFormSubmitter() {
     // Add the email.
@@ -102,6 +113,8 @@ class ContactEmailsRecipientTest extends ContactEmailsTestBase {
 
   /**
    * Test manual functionality to email address.
+   *
+   * @throws \Exception
    */
   public function testSendToManual() {
     // Add the email.

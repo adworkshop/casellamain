@@ -11,6 +11,11 @@ use Drupal\contact_emails\ContactEmailsTestBase;
  */
 class ContactEmailsReplyToReferenceTest extends ContactEmailsTestBase {
 
+  /**
+   * An array of modules to activate.
+   *
+   * @var array
+   */
   public static $modules = [
     'contact',
     'contact_storage',
@@ -22,6 +27,8 @@ class ContactEmailsReplyToReferenceTest extends ContactEmailsTestBase {
 
   /**
    * Test referenced field functionality reply-to email address.
+   *
+   * @throws \Exception
    */
   public function testReplyToReferencedField() {
     $this->addContactFormWithEmailFieldForReferencing();

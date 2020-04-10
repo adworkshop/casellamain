@@ -9,13 +9,13 @@ use Solarium\Core\Client\Response;
 use Solarium\Core\Event\Events;
 use Solarium\Core\Event\postExecuteRequest;
 use Solarium\Core\Event\preExecuteRequest;
-use Solarium\Core\Plugin\AbstractPlugin;
+use Solarium\Core\Plugin\Plugin;
 use Solarium\Exception\HttpException;
 
 /**
  * Extends Solarium plugin: authenticate, etc.
  */
-class SearchSubscriber extends AbstractPlugin {
+class SearchSubscriber extends Plugin {
 
   /**
    * Solarium client.
@@ -48,7 +48,8 @@ class SearchSubscriber extends AbstractPlugin {
   /**
    * {@inheritdoc}
    */
-  public function initPluginType() {
+  public function initPlugin($client, $options) {
+    $this->client = $client;
     $dispatcher = $this->client->getEventDispatcher();
     $dispatcher->addListener(Events::PRE_EXECUTE_REQUEST, [$this, 'preExecuteRequest']);
     $dispatcher->addListener(Events::POST_EXECUTE_REQUEST, [$this, 'postExecuteRequest']);
@@ -260,7 +261,7 @@ class SearchSubscriber extends AbstractPlugin {
     $salt = \Drupal::config('acquia_search.settings')->get('derived_key_salt');
     if (!$salt) {
       // If the variable doesn't exist, set it using the subscription data.
-      $subscription = \Drupal::state()->get('acquia_subscription_data');
+      $subscription = \Drupal::config('acquia_connector.settings')->get('subscription_data');
       if (isset($subscription['derived_key_salt'])) {
         \Drupal::configFactory()->getEditable('acquia_search.settings')->set('derived_key_salt', $subscription['derived_key_salt'])->save();
         $salt = $subscription['derived_key_salt'];

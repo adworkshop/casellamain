@@ -13,6 +13,11 @@ use Drupal\Tests\BrowserTestBase;
 class AcquiaConnectorSearchTest extends BrowserTestBase {
 
   /**
+   * {@inheritdoc}
+   */
+  protected $strictConfigSchema = FALSE;
+
+  /**
    * Acquia subscription ID.
    *
    * @var string
@@ -66,7 +71,6 @@ class AcquiaConnectorSearchTest extends BrowserTestBase {
     'toolbar',
     'acquia_connector_test',
     'node',
-    'views',
   ];
 
   /**
@@ -113,6 +117,7 @@ class AcquiaConnectorSearchTest extends BrowserTestBase {
     $this->drupalPostForm('admin/config/system/acquia-connector/credentials', $edit_fields, $submit_button);
 
     \Drupal::service('module_installer')->install(['acquia_search']);
+    drupal_flush_all_caches();
   }
 
   /**

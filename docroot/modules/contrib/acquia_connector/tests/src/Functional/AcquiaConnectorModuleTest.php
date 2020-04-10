@@ -22,6 +22,11 @@ class AcquiaConnectorModuleTest extends BrowserTestBase {
   protected $defaultTheme = 'stark';
 
   /**
+   * {@inheritdoc}
+   */
+  protected $strictConfigSchema = FALSE;
+
+  /**
    * Test user e-mail.
    *
    * @var string
@@ -395,7 +400,7 @@ class AcquiaConnectorModuleTest extends BrowserTestBase {
     $this->assertIdentical(\Drupal::state()->get('acquia_connector_test_request_count', 0), 1, 'Still have made only 1 HTTP request');
     // Test default from acquia_agent_settings().
     $stored = \Drupal::config('acquia_connector.settings');
-    $current_subscription = \Drupal::state()->get('acquia_subscription_data');
+    $current_subscription = $stored->get('subscription_data');
     // Not identical since acquia_agent_has_credentials() causes stored to be
     // deleted.
     $this->assertNotIdentical($check_subscription, $current_subscription, 'Stored subscription data not same before connected subscription.');
@@ -443,7 +448,7 @@ class AcquiaConnectorModuleTest extends BrowserTestBase {
     $this->assertIdentical($check_subscription, 1200, 'Subscription is expired after connection with expired subscription.');
     $this->assertIdentical(\Drupal::state()->get('acquia_connector_test_request_count', 0), 4, '1 additional request made via acquia_agent_check_subscription().');
     $stored = \Drupal::config('acquia_connector.settings');
-    $current_subscription = \Drupal::state()->get('acquia_subscription_data');
+    $current_subscription = $stored->get('subscription_data');
     $this->assertIdentical($check_subscription, $current_subscription, 'Stored expected subscription data.');
     // Reset HTTP request counter;.
     \Drupal::state()->set('acquia_connector_test_request_count', 0);
@@ -476,7 +481,7 @@ class AcquiaConnectorModuleTest extends BrowserTestBase {
       'href' => $test_url,
     ];
     // Set some sample test data.
-    \Drupal::state()->set('acquia_subscription_data', $test_data);
+    \Drupal::configFactory()->getEditable('acquia_connector.settings')->set('subscription_data', $test_data)->save();
     // Test StatusControllerTest::getIdFromSub.
     $getIdFromSub = new StatusController();
     $key = $getIdFromSub->getIdFromSub($test_data);
@@ -608,8 +613,7 @@ class AcquiaConnectorModuleTest extends BrowserTestBase {
    */
   protected function disconnectSite() {
     $config = \Drupal::configFactory()->getEditable('acquia_connector.settings');
-    \Drupal::state()->delete('acquia_subscription_data');
-    \Drupal::state()->set('acquia_subscription_data', ['active' => FALSE]);
+    $config->clear('subscription_data')->set('subscription_data', ['active' => FALSE]);
     $config->save();
 
     $storage = new Storage();

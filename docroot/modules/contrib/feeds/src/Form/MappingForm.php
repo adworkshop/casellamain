@@ -6,6 +6,7 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\feeds\FeedTypeInterface;
+use Drupal\feeds\Plugin\Type\MappingPluginFormInterface;
 use Drupal\feeds\Plugin\Type\Target\ConfigurableTargetInterface;
 
 /**
@@ -30,7 +31,7 @@ class MappingForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function getFormID() {
+  public function getFormId() {
     return 'feeds_mapping_form';
   }
 
@@ -47,10 +48,14 @@ class MappingForm extends FormBase {
       $this->sourceOptions[$key] = $info['label'];
     }
     $this->sourceOptions = $this->sortOptions($this->sourceOptions);
+    $this->sourceOptions = [
+      '__new' => $this->t('New source...'),
+      '----' => '----',
+    ] + $this->sourceOptions;
 
     $target_options = [];
     foreach ($targets as $key => $target) {
-      $target_options[$key] = $target->getLabel();
+      $target_options[$key] = $target->getLabel() . ' (' . $key . ')';
     }
     $target_options = $this->sortOptions($target_options);
 
@@ -66,7 +71,7 @@ class MappingForm extends FormBase {
           break;
 
         default:
-          drupal_set_message($this->t('Your changes will not be saved until you click the <em>Save</em> button at the bottom of the page.'), 'warning');
+          $this->messenger()->addWarning($this->t('Your changes will not be saved until you click the <em>Save</em> button at the bottom of the page.'));
           break;
       }
     }
@@ -118,6 +123,9 @@ class MappingForm extends FormBase {
 
     $form['mappings'] = $table;
 
+    // Legend explaining source and target elements.
+    $form['legendset'] = $this->buildLegend($form, $form_state);
+
     $form['actions'] = ['#type' => 'actions'];
     $form['actions']['submit'] = [
       '#type' => 'submit',
@@ -125,13 +133,41 @@ class MappingForm extends FormBase {
       '#button_type' => 'primary',
     ];
 
+    // Allow plugins to hook into the mapping form.
+    foreach ($feed_type->getPlugins() as $plugin) {
+      if ($plugin instanceof MappingPluginFormInterface) {
+        $plugin->mappingFormAlter($form, $form_state);
+      }
+    }
+
     return $form;
   }
 
   /**
+   * Builds a single mapping row.
    *
+   * @param array $form
+   *   The complete mapping form.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the complete form.
+   * @param array $mapping
+   *   A single configured mapper, which is expected to consist of the
+   *   following:
+   *   - map
+   *     An array of target subfield => source field.
+   *   - target
+   *     The name of the target plugin.
+   *   - unique
+   *     (optional) An array of subfield => enabled as unique.
+   *   - settings
+   *     (optional) An array of settings for the target.
+   * @param int $delta
+   *   The index number of the mapping.
+   *
+   * @return array
+   *   The form structure for a single mapping row.
    */
-  protected function buildRow($form, $form_state, $mapping, $delta) {
+  protected function buildRow(array $form, FormStateInterface $form_state, array $mapping, $delta) {
     $ajax_delta = -1;
     $triggering_element = (array) $form_state->getTriggeringElement() + ['#op' => ''];
     if ($triggering_element['#op'] === 'configure') {
@@ -151,20 +187,53 @@ class MappingForm extends FormBase {
         continue;
       }
       $row['map'][$column] = [
-        '#type' => 'select',
-        '#options' => $this->sourceOptions,
-        '#default_value' => $source,
-        '#empty_option' => $this->t('- Select a source -'),
-        '#attributes' => ['class' => ['feeds-table-select-list']],
+        'select' => [
+          '#type' => 'select',
+          '#options' => $this->sourceOptions,
+          '#default_value' => $source,
+          '#empty_option' => $this->t('- Select a source -'),
+          '#attributes' => ['class' => ['feeds-table-select-list']],
+        ],
+        '__new' => [
+          '#type' => 'container',
+          '#states' => [
+            'visible' => [
+              ':input[name="mappings[' . $delta . '][map][' . $column . '][select]"]' => ['value' => '__new'],
+            ],
+          ],
+          'value' => [
+            '#type' => 'textfield',
+            '#states' => [
+              'visible' => [
+                ':input[name="mappings[' . $delta . '][map][' . $column . '][select]"]' => ['value' => '__new'],
+              ],
+            ],
+          ],
+          'machine_name' => [
+            '#type' => 'machine_name',
+            '#machine_name' => [
+              'exists' => [$this->feedType, 'customSourceExists'],
+              'source' => ['mappings', $delta, 'map', $column, '__new', 'value'],
+              'standalone' => TRUE,
+              'label' => '',
+            ],
+            '#default_value' => '',
+            '#required' => FALSE,
+            '#disabled' => '',
+          ],
+        ],
       ];
 
-      $label = Html::escape($this->targets[$mapping['target']]->getLabel());
+      $label = Html::escape($this->targets[$mapping['target']]->getLabel() . ' (' . $mapping['target'] . ')');
 
       if (count($mapping['map']) > 1) {
-        $label .= ': ' . $this->targets[$mapping['target']]->getPropertyLabel($column);
+        $desc = $this->targets[$mapping['target']]->getPropertyLabel($column);
       }
       else {
-        $label .= ': ' . $this->targets[$mapping['target']]->getDescription();
+        $desc = $this->targets[$mapping['target']]->getDescription();
+      }
+      if ($desc) {
+        $label .= ': ' . $desc;
       }
       $row['targets']['#items'][] = $label;
     }
@@ -262,7 +331,70 @@ class MappingForm extends FormBase {
   }
 
   /**
+   * Builds legend which explains source and target elements.
+   *
+   * @param array $form
+   *   The complete mapping form.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the complete form.
+   *
+   * @return array
+   *   The legend form element.
+   */
+  protected function buildLegend(array $form, FormStateInterface $form_state) {
+    $element = [
+      '#type' => 'details',
+      '#title' => $this->t('Legend'),
+      'sources' => [
+        '#caption' => $this->t('Sources'),
+        '#type' => 'table',
+        '#header' => [
+          $this->t('Name'),
+          $this->t('Machine name'),
+          $this->t('Description'),
+        ],
+        '#rows' => [],
+      ],
+      'targets' => [
+        '#caption' => $this->t('Targets'),
+        '#type' => 'table',
+        '#header' => [
+          $this->t('Name'),
+          $this->t('Machine name'),
+          $this->t('Description'),
+        ],
+        '#rows' => [],
+      ],
+    ];
+
+    foreach ($this->feedType->getMappingSources() as $key => $info) {
+      $element['sources']['#rows'][$key] = [
+        'label' => $info['label'],
+        'name' => $key,
+        'description' => isset($info['description']) ? $info['description'] : NULL,
+      ];
+    }
+    asort($element['sources']['#rows']);
+
+    /** @var \Drupal\feeds\TargetDefinitionInterface $definition */
+    foreach ($this->targets as $key => $definition) {
+      $element['targets']['#rows'][$key] = [
+        'label' => $definition->getLabel(),
+        'name' => $key,
+        'description' => $definition->getDescription(),
+      ];
+    }
+
+    return $element;
+  }
+
+  /**
    * Processes the form state, populating the mappings on the feed type.
+   *
+   * @param array $form
+   *   The complete mapping form.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the complete form.
    */
   protected function processFormState(array $form, FormStateInterface $form_state) {
     // Process any plugin configuration.
@@ -273,7 +405,18 @@ class MappingForm extends FormBase {
 
     $mappings = $this->feedType->getMappings();
     foreach (array_filter((array) $form_state->getValue('mappings', [])) as $delta => $mapping) {
-      $mappings[$delta]['map'] = $mapping['map'];
+      foreach ($mapping['map'] as $column => $value) {
+        if ($value['select'] == '__new') {
+          // Add a new source.
+          $this->feedType->addCustomSource($value['__new']['machine_name'], [
+            'label' => $value['__new']['value'],
+          ] + $value['__new']);
+          $mappings[$delta]['map'][$column] = $value['__new']['machine_name'];
+        }
+        else {
+          $mappings[$delta]['map'][$column] = $value['select'];
+        }
+      }
       if (isset($mapping['unique'])) {
         $mappings[$delta]['unique'] = array_filter($mapping['unique']);
       }
@@ -308,6 +451,14 @@ class MappingForm extends FormBase {
       $this->feedType->getTargetPlugin($delta)->validateConfigurationForm($form, $form_state);
       $form_state->setRebuild();
     }
+    else {
+      // Allow plugins to validate the mapping form.
+      foreach ($this->feedType->getPlugins() as $plugin) {
+        if ($plugin instanceof MappingPluginFormInterface) {
+          $plugin->mappingFormValidate($form, $form_state);
+        }
+      }
+    }
   }
 
   /**
@@ -315,6 +466,14 @@ class MappingForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->processFormState($form, $form_state);
+
+    // Allow plugins to hook into the mapping form.
+    foreach ($this->feedType->getPlugins() as $plugin) {
+      if ($plugin instanceof MappingPluginFormInterface) {
+        $plugin->mappingFormSubmit($form, $form_state);
+      }
+    }
+
     $this->feedType->save();
   }
 
@@ -347,6 +506,9 @@ class MappingForm extends FormBase {
 
   /**
    * Callback for ajax requests.
+   *
+   * @return array
+   *   The form element to return.
    */
   public static function ajaxCallback(array $form, FormStateInterface $form_state) {
     return $form;
@@ -354,6 +516,9 @@ class MappingForm extends FormBase {
 
   /**
    * Page title callback.
+   *
+   * @return string
+   *   The title of the mapping page.
    */
   public function mappingTitle(FeedTypeInterface $feeds_feed_type) {
     return $this->t('Mappings @label', ['@label' => $feeds_feed_type->label()]);

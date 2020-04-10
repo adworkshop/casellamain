@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\cacheflush_ui\Entity\Form\CacheflushEntityDeleteForm.
- */
-
 namespace Drupal\cacheflush_ui\Entity\Form;
 
 use Drupal\Core\Entity\ContentEntityConfirmFormBase;
@@ -17,11 +12,12 @@ use Drupal\Core\Url;
  * @ingroup xerox
  */
 class CacheflushEntityDeleteForm extends ContentEntityConfirmFormBase {
+
   /**
    * {@inheritdoc}
    */
   public function getQuestion() {
-    return $this->t('Are you sure you want to delete entity %name?', array('%name' => $this->entity->label()));
+    return $this->t('Are you sure you want to delete entity %name?', ['%name' => $this->entity->label()]);
   }
 
   /**
@@ -48,9 +44,9 @@ class CacheflushEntityDeleteForm extends ContentEntityConfirmFormBase {
       $this->t('content @type: deleted @label.',
         [
           '@type' => $this->entity->bundle(),
-          '@label' => $this->entity->label()
+          '@label' => $this->entity->label(),
         ]
-        )
+      )
     );
 
     $form_state->setRedirectUrl($this->getCancelUrl());

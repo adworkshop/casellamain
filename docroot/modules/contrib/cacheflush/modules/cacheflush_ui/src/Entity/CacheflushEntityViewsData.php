@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\cacheflush_ui\Entity\CacheflushEntityViewsData.
- */
-
 namespace Drupal\cacheflush_ui\Entity;
 
 use Drupal\views\EntityViewsData;
@@ -21,13 +16,13 @@ class CacheflushEntityViewsData extends EntityViewsData implements EntityViewsDa
   public function getViewsData() {
     $data = parent::getViewsData();
 
-    $data['cacheflush']['cacheflush_bulk_form'] = array(
+    $data['cacheflush']['cacheflush_bulk_form'] = [
       'title' => t('Cacheflush operations bulk form'),
       'help' => t('Add a form element that lets you run operations on multiple entities.'),
-      'field' => array(
+      'field' => [
         'id' => 'cacheflush_bulk_form',
-      ),
-    );
+      ],
+    ];
 
     return $data;
   }

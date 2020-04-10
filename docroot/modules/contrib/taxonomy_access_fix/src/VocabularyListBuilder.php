@@ -5,6 +5,7 @@ namespace Drupal\taxonomy_access_fix;
 use Drupal;
 use Drupal\taxonomy\VocabularyListBuilder as VocabularyListBuilderBase;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\taxonomy_access_fix\TaxonomyAccessFixPermissions;
 
 class VocabularyListBuilder extends VocabularyListBuilderBase {
 
@@ -13,14 +14,12 @@ class VocabularyListBuilder extends VocabularyListBuilderBase {
    */
   public function load() {
     $entities = parent::load();
-
     // Remove vocabularies the current user doesn't have any access for.
     foreach ($entities as $id => $entity) {
-      if (!taxonomy_access_fix_access('list terms', $entity)) {
+      if (!TaxonomyAccessFixPermissions::fixAccess('list terms', $entity)) {
         unset($entities[$id]);
       }
     }
-
     return $entities;
   }
 
@@ -32,7 +31,6 @@ class VocabularyListBuilder extends VocabularyListBuilderBase {
     if (!Drupal::currentUser()->hasPermission('administer taxonomy')) {
       unset($this->weightKey);
     }
-
     return parent::render();
   }
 
@@ -41,11 +39,9 @@ class VocabularyListBuilder extends VocabularyListBuilderBase {
    */
   public function getOperations(EntityInterface $entity) {
     $operations = parent::getOperations($entity);
-
-    if (!taxonomy_access_fix_access('add terms', $entity)) {
+    if (!TaxonomyAccessFixPermissions::fixAccess('add terms', $entity)) {
       unset($operations['add']);
     }
-
     return $operations;
   }
 

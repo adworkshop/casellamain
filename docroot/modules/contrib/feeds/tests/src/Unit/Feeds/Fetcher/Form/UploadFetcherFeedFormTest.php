@@ -13,7 +13,6 @@ use Drupal\feeds\Plugin\Type\FeedsPluginInterface;
 use Drupal\file\FileInterface;
 use Drupal\file\FileStorageInterface;
 use Drupal\file\FileUsage\FileUsageInterface;
-use Prophecy\Argument;
 
 /**
  * @coversDefaultClass \Drupal\feeds\Feeds\Fetcher\Form\UploadFetcherFeedForm
@@ -21,7 +20,14 @@ use Prophecy\Argument;
  */
 class UploadFetcherFeedFormTest extends FeedsUnitTestCase {
 
-  public function test() {
+  /**
+   * Tests the feed form.
+   *
+   * @covers ::buildConfigurationForm
+   * @covers ::validateConfigurationForm
+   * @covers ::submitConfigurationForm
+   */
+  public function testFeedForm() {
     $file = $this->prophesize(FileInterface::class);
 
     $file_storage = $this->prophesize(FileStorageInterface::class);
@@ -52,10 +58,13 @@ class UploadFetcherFeedFormTest extends FeedsUnitTestCase {
     $feed = $this->prophesize(FeedInterface::class);
     $feed->getConfigurationFor($plugin->reveal())
       ->willReturn(['fid' => 1, 'usage_id' => 'foo']);
-    $feed->setConfigurationFor($plugin->reveal(), ['fid' => 1, 'usage_id' => 'foo'])
-      ->willReturn(NULL);
+    $feed->setConfigurationFor($plugin->reveal(), [
+      'fid' => 1,
+      'usage_id' => 'foo',
+    ])->shouldBeCalled();
 
     $form = $form_object->buildConfigurationForm([], $form_state, $feed->reveal());
+    $this->assertInternalType('array', $form);
 
     $form_object->validateConfigurationForm($form, $form_state, $feed->reveal());
 
@@ -65,4 +74,3 @@ class UploadFetcherFeedFormTest extends FeedsUnitTestCase {
   }
 
 }
-

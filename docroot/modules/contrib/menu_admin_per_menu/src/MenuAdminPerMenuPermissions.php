@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\menu_admin_per_menu\MenuAdminPerMenuPermissions.
- */
 
 namespace Drupal\menu_admin_per_menu;
 

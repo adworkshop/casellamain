@@ -11,6 +11,9 @@ use Drupal\feeds\StateInterface;
  */
 class StateTest extends FeedsUnitTestCase {
 
+  /**
+   * Tests public progress property.
+   */
   public function testProgress() {
     $state = new State();
     $state->progress(10, 10);

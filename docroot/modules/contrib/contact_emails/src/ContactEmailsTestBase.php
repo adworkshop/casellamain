@@ -3,6 +3,7 @@
 namespace Drupal\contact_emails;
 
 use Drupal\simpletest\WebTestBase;
+use Drupal\user\UserInterface;
 
 /**
  * Base class for contact emails tests.
@@ -10,7 +11,16 @@ use Drupal\simpletest\WebTestBase;
 class ContactEmailsTestBase extends WebTestBase {
 
   /**
+   * The admin user.
+   *
+   * @var bool|UserInterface
+   */
+  protected $adminUser = FALSE;
+
+  /**
    * {@inheritdoc}
+   *
+   * @throws \Drupal\Core\Entity\EntityStorageException
    */
   public function setUp() {
     parent::setUp();
@@ -20,6 +30,8 @@ class ContactEmailsTestBase extends WebTestBase {
 
   /**
    * Creates the admin user and logs in.
+   *
+   * @throws \Drupal\Core\Entity\EntityStorageException
    */
   protected function createUserAndLogin() {
     // Create the user.
@@ -29,6 +41,8 @@ class ContactEmailsTestBase extends WebTestBase {
 
   /**
    * Creates a base contact form for use in all tests.
+   *
+   * @throws \Exception
    */
   protected function createBaseContactForm() {
     // Create a contact form.
@@ -55,6 +69,8 @@ class ContactEmailsTestBase extends WebTestBase {
 
   /**
    * Helper function to add an email field to the contact form.
+   *
+   * @throws \Exception
    */
   protected function addEmailFieldToContactForm() {
     // Add the field.
@@ -77,6 +93,8 @@ class ContactEmailsTestBase extends WebTestBase {
 
   /**
    * Helper function to create additional contact form to test referencing.
+   *
+   * @throws \Exception
    */
   protected function addContactFormWithEmailFieldForReferencing() {
     // Create a contact form.

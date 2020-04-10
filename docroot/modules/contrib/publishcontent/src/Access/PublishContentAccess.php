@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\publishcontent\Access\PublishContentAccess
- */
-
 namespace Drupal\publishcontent\Access;
 
 use Drupal\Core\Access\AccessResult;
@@ -13,22 +8,31 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\node\NodeInterface;
 use Drupal\publishcontent\PublishContentPermissions as Perm;
 
+/**
+ * Access class checking the permissions for publishing and unpublishing.
+ */
 class PublishContentAccess implements AccessInterface {
 
   /**
-   * @var AccountInterface
+   * The account performing the action.
+   *
+   * @var \Drupal\Core\Session\AccountInterface
    */
-  private $account;
+  protected $account;
 
   /**
-   * @var NodeInterface
+   * The node that the action is performed on.
+   *
+   * @var \Drupal\node\NodeInterface
    */
-  private $node;
+  protected $node;
 
   /**
+   * The arguments passed to the helper class.
+   *
    * @var array
    */
-  private $arguments;
+  protected $arguments;
 
   /**
    * {@inheritdoc}
@@ -60,7 +64,7 @@ class PublishContentAccess implements AccessInterface {
   }
 
   /**
-   * Helper method to check permission of user from Drupal\publishcontent\PublishContentPermissions
+   * Helper method to check permission of user.
    */
   public function checkPermission($permission) {
     return $this->account->hasPermission(Perm::getPermission($permission, $this->arguments));
@@ -74,7 +78,7 @@ class PublishContentAccess implements AccessInterface {
   }
 
   /**
-   * Access unpublish any content
+   * Access unpublish any content.
    */
   public function accessUnpublishAny() {
     return $this->account->hasPermission('unpublish any content');
@@ -84,14 +88,14 @@ class PublishContentAccess implements AccessInterface {
    * Access publish content which you have access to edit for.
    */
   public function accessPublishEditable() {
-    return ($this->account->hasPermission('publish editable content') && $this->node->access('edit', $this->account));
+    return ($this->account->hasPermission('publish editable content') && $this->node->access('update', $this->account));
   }
 
   /**
    * Access unpublish content which you have access to edit for.
    */
   public function accessUnpublishEditable() {
-    return ($this->account->hasPermission('unpublish editable content') && $this->node->access('edit', $this->account));
+    return ($this->account->hasPermission('unpublish editable content') && $this->node->access('update', $this->account));
   }
 
   /**
@@ -112,28 +116,28 @@ class PublishContentAccess implements AccessInterface {
    * Access publish own content of specified type (bundle).
    */
   public function accessPublishOwnType() {
-    return ($this->checkPermission(Perm::PUBLISH_OWN_TYPE) && $this->node->getOwner() == $this->account->id());
+    return ($this->checkPermission(Perm::PUBLISH_OWN_TYPE) && $this->node->getOwnerId() == $this->account->id());
   }
 
   /**
    * Access unpublish own content of specified type (bundle).
    */
   public function accessUnpublishOwnType() {
-    return ($this->checkPermission(Perm::UNPUBLISH_OWN_TYPE) && $this->node->getOwner() == $this->account->id());
+    return ($this->checkPermission(Perm::UNPUBLISH_OWN_TYPE) && $this->node->getOwnerId() == $this->account->id());
   }
 
   /**
    * Access publish content of specified which you have access to edit for.
    */
   public function accessPublishEditableType() {
-    return ($this->checkPermission(Perm::PUBLISH_EDITABLE_TYPE) && $this->node->access('edit', $this->account));
+    return ($this->checkPermission(Perm::PUBLISH_EDITABLE_TYPE) && $this->node->access('update', $this->account));
   }
 
   /**
    * Access unpublish content of specified which you have access to edit for.
    */
   public function accessUnpublishEditableType() {
-    return ($this->checkPermission(Perm::UNPUBLISH_EDITABLE_TYPE) && $this->node->access('edit', $this->account));
+    return ($this->checkPermission(Perm::UNPUBLISH_EDITABLE_TYPE) && $this->node->access('update', $this->account));
   }
 
 }

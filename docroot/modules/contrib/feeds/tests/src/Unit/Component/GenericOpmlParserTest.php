@@ -11,6 +11,9 @@ use Drupal\Tests\feeds\Unit\FeedsUnitTestCase;
  */
 class GenericOpmlParserTest extends FeedsUnitTestCase {
 
+  /**
+   * Basic tests for the generic OPML parser.
+   */
   public function test() {
     $file = dirname(dirname(dirname(dirname(dirname(__FILE__))))) . '/tests/resources/opml-example.xml';
     $parser = new GenericOpmlParser(file_get_contents($file));

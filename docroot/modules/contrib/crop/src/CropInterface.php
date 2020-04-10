@@ -1,18 +1,15 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\crop\CropInterface.
- */
-
 namespace Drupal\crop;
 
 use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\image\ImageStyleInterface;
 
 /**
  * Provides an interface defining the crop entity.
  */
 interface CropInterface extends ContentEntityInterface {
+
   /**
    * Gets position of crop's center.
    *
@@ -53,7 +50,7 @@ interface CropInterface extends ContentEntityInterface {
    * @return \Drupal\crop\CropInterface
    *   Crop object this is being called on.
    */
-   public function setSize($width, $height);
+  public function setSize($width, $height);
 
   /**
    * Gets crop anchor (top-left corner of crop area).
@@ -81,7 +78,7 @@ interface CropInterface extends ContentEntityInterface {
    *   URI of image to check for.
    * @param string $type
    *   (Optional) Type of crop. Function will check across all available types
-   *   if ommitted.
+   *   if omitted.
    *
    * @return bool
    *   Boolean TRUE if crop exists and FALSE if not.
@@ -100,5 +97,18 @@ interface CropInterface extends ContentEntityInterface {
    *   Crop entity or NULL if crop doesn't exist.
    */
   public static function findCrop($uri, $type);
+
+  /**
+   * Retrieve crop from given image style.
+   *
+   * @param string $uri
+   *   URI of the image.
+   * @param \Drupal\image\ImageStyleInterface $image_style
+   *   The image style.
+   *
+   * @return \Drupal\crop\CropInterface|null
+   *   Crop entity used by effect 'crop_crop' or NULL if crop doesn't exist.
+   */
+  public static function getCropFromImageStyle($uri, ImageStyleInterface $image_style);
 
 }

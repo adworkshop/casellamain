@@ -15,12 +15,12 @@ use Drupal\imce\Imce;
  * Implements hook_theme().
  */
 function imce_theme() {
-  return array(
-    'imce_page' => array(
+  return [
+    'imce_page' => [
       'render element' => 'page',
       'function' => 'imce_page_render',
-    ),
-  );
+    ],
+  ];
 }
 
 /**
@@ -35,10 +35,10 @@ function imce_page_render($variables) {
  */
 function imce_file_download($uri) {
   if (Imce::accessFileUri($uri, \Drupal::currentUser())) {
-    return array(
+    return [
       'Content-type' => \Drupal::service('file.mime_type.guesser')->guess($uri),
       'Content-Length' => filesize($uri),
-    );
+    ];
   }
 }
 
@@ -68,8 +68,15 @@ function imce_field_widget_form_alter(&$element, FormStateInterface $form_state,
     if (Imce::access(\Drupal::currentUser(), $scheme)) {
       $element['#scheme'] = $scheme;
       $class = 'Drupal\imce\ImceFileField';
-      $element['#process'][] = array($class, 'processWidget');
-      $element['#file_value_callbacks'][] = array($class, 'setWidgetValue');
+      $element['#process'][] = [$class, 'processWidget'];
+      // Make sure default value callbacks are added
+      if (empty($element['#file_value_callbacks'])) {
+        $info = \Drupal::service('element_info')->getInfo($element['#type']);
+        if (!empty($info['#file_value_callbacks'])) {
+          $element['#file_value_callbacks'] = $info['#file_value_callbacks'];
+        }
+      }
+      $element['#file_value_callbacks'][] = [$class, 'setWidgetValue'];
     }
   }
 }
@@ -96,5 +103,16 @@ function imce_process_url_element(&$element, $type = 'link') {
     $element['#attributes']['class'][] = 'imce-url-input';
     $element['#attributes']['data-imce-type'] = $type;
     $element['#attached']['library'][] = 'imce/drupal.imce.input';
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for filter_format_form.
+ */
+function imce_form_filter_format_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if (isset($form['editor']['settings']['subform']['plugins']['drupalimage']['image_upload']['status'])) {
+    $desc = &$form['editor']['settings']['subform']['plugins']['drupalimage']['image_upload']['status']['#description'];
+    $str = t('Disable to use IMCE file browser.');
+    $desc = $desc ? $desc . ' ' . $str : $str;
   }
 }

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\cacheflush_ui\Entity\Form\CacheflushEntitySettingsForm.
- */
-
 namespace Drupal\cacheflush_ui\Entity\Form;
 
 use Drupal\Core\Form\FormBase;

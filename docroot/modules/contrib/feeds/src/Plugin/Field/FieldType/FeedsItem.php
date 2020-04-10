@@ -5,6 +5,8 @@ namespace Drupal\feeds\Plugin\Field\FieldType;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem;
 use Drupal\Core\TypedData\DataDefinition;
+use Drupal\Core\Url;
+use Drupal\feeds\FeedsItemInterface;
 
 /**
  * Plugin implementation of the 'feeds_item' field type.
@@ -12,16 +14,34 @@ use Drupal\Core\TypedData\DataDefinition;
  * @FieldType(
  *   id = "feeds_item",
  *   label = @Translation("Feed"),
- *   description = @Translation("Blah blah blah."),
+ *   description = @Translation("Feeds import metadata."),
  *   instance_settings = {
  *     "title" = "1"
  *   },
- *   default_widget = "hidden",
- *   default_formatter = "hidden",
- *   no_ui = true
+ *   default_formatter = "feeds_item_url",
+ *   no_ui = TRUE,
+ *   list_class = "\Drupal\Core\Field\EntityReferenceFieldItemList",
  * )
  */
-class FeedsItem extends EntityReferenceItem {
+class FeedsItem extends EntityReferenceItem implements FeedsItemInterface {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getUrl() {
+    return Url::fromUri($this->url);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setValue($values, $notify = TRUE) {
+    if (isset($values['url']) && empty($values['url'])) {
+      // Set url explicitly to NULL to prevent validation errors.
+      $values['url'] = NULL;
+    }
+    return parent::setValue($values, $notify);
+  }
 
   /**
    * {@inheritdoc}
@@ -29,7 +49,6 @@ class FeedsItem extends EntityReferenceItem {
   public static function defaultStorageSettings() {
     return ['target_type' => 'feeds_feed'] + parent::defaultStorageSettings();
   }
-
 
   /**
    * {@inheritdoc}
@@ -106,7 +125,10 @@ class FeedsItem extends EntityReferenceItem {
    * {@inheritdoc}
    */
   public function preSave() {
-    $this->url = trim($this->url);
+    if (is_string($this->url)) {
+      // Only trim if url is a string.
+      $this->url = trim($this->url);
+    }
     $this->guid = trim($this->guid);
     $this->imported = (int) $this->imported;
   }

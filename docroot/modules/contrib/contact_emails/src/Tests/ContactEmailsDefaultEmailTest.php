@@ -11,6 +11,11 @@ use Drupal\contact_emails\ContactEmailsTestBase;
  */
 class ContactEmailsDefaultEmailTest extends ContactEmailsTestBase {
 
+  /**
+   * An array of modules to activate.
+   *
+   * @var array
+   */
   public static $modules = [
     'contact',
     'contact_storage',
@@ -20,6 +25,8 @@ class ContactEmailsDefaultEmailTest extends ContactEmailsTestBase {
 
   /**
    * Test default functionality of sending an email.
+   *
+   * @throws \Exception
    */
   public function testSendEmail() {
     // Add the email.

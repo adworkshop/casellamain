@@ -1,17 +1,11 @@
 <?php
 
-/**
- * @file
- * Definition of Drupal\Publishcontent\Plugin\Views\field\PublishContentNode
- */
-
 namespace Drupal\Publishcontent\Plugin\Views\field;
 
-use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
 use Drupal\views\Plugin\views\field\FieldPluginBase;
 use Drupal\views\ResultRow;
-use Drupal\Core\Url;
-use Drupal\Core\Link;
 
 /**
  * Field handler to flag the node type.
@@ -32,26 +26,14 @@ class PublishContentNode extends FieldPluginBase {
   /**
    * {@inheritdoc}
    */
-  protected function defineOptions() {
-    return parent::defineOptions();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function buildOptionsForm(&$form, FormStateInterface $form_state) {
-    parent::buildOptionsForm($form, $form_state);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function render(ResultRow $values) {
     $id = $values->_entity->id();
     $url = Url::fromRoute('entity.node.publish', ['node' => $id]);
     $text = $values->_entity->isPublished() ? $this->t('Unpublish') : $this->t('Publish');
     $link = Link::fromTextAndUrl($text, $url);
 
-    return $this->getRenderer()->render($link->toRenderable());
+    $render_array = $link->toRenderable();
+    return $this->getRenderer()->render($render_array);
   }
+
 }

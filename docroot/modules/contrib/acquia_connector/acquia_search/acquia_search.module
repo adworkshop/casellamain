@@ -79,7 +79,7 @@ function acquia_search_acquia_subscription_status($subscription = FALSE) {
  */
 function acquia_search_get_search_host(array $subscription = []) {
   if (empty($subscription)) {
-    $subscription = \Drupal::state()->get('acquia_subscription_data');
+    $subscription = \Drupal::config('acquia_connector.settings')->get('subscription_data');
   }
 
   $search_host = \Drupal::config('acquia_search.settings')->get('host');
@@ -199,31 +199,27 @@ function acquia_search_should_set_read_only_mode() {
  * Implements hook_search_api_server_load().
  *
  * Flag when a certain server should be enforcing read-only mode.
- *
- * @throws \Drupal\search_api\SearchApiException
  */
 function acquia_search_search_api_server_load($entities) {
   $acquia_servers = array_filter($entities, function ($server) {
-    /** @var \Drupal\search_api\Entity\Server $server */
     return acquia_search_is_acquia_server($server->getBackendConfig());
   });
 
   $core_service = acquia_search_get_core_service();
 
-  /** @var \Drupal\search_api\Entity\Server $server */
   foreach ($acquia_servers as $server) {
-    /** @var \Drupal\search_api_solr\Plugin\search_api\backend\SearchApiSolrBackend $backend */
-    $backend = $server->getBackend();
-    $connector_config = $backend->getSolrConnector()->getConfiguration();
+    /** @var \Drupal\search_api\Entity\Server $server */
+    $backend_config = $server->getBackendConfig();
+
     // Set a list of eligible cores.
-    $connector_config['acquia_search_possible_cores'] = $core_service->getListOfPossibleCores();
-    unset($connector_config['overridden_by_acquia_search']);
+    $backend_config['acquia_search_possible_cores'] = $core_service->getListOfPossibleCores();
+    unset($backend_config['overridden_by_acquia_search']);
 
     if (acquia_search_should_set_read_only_mode()) {
-      $connector_config['overridden_by_acquia_search'] = ACQUIA_SEARCH_AUTO_OVERRIDE_READ_ONLY;
+      $backend_config['overridden_by_acquia_search'] = ACQUIA_SEARCH_AUTO_OVERRIDE_READ_ONLY;
     }
 
-    $backend->getSolrConnector()->setConfiguration($connector_config);
+    $server->setBackendConfig($backend_config);
   }
 }
 
@@ -287,7 +283,7 @@ function acquia_search_search_api_index_load($entities) {
       // Set this index to read-only mode.
       $index->set('read_only', TRUE);
       // Flag this index as having been altered by this module.
-      \Drupal::state()->set('acquia_search_index.' . $index->id() . '.overridden_by_acquia_search', ACQUIA_SEARCH_AUTO_OVERRIDE_READ_ONLY);
+      $index->setOption('overridden_by_acquia_search', ACQUIA_SEARCH_AUTO_OVERRIDE_READ_ONLY);
     }
   }
 }
@@ -567,7 +563,7 @@ function acquia_search_get_core_service() {
     $ah_db_name = $options['database'];
   }
 
-  $subscription = \Drupal::state()->get('acquia_subscription_data');
+  $subscription = \Drupal::config('acquia_connector.settings')->get('subscription_data');
 
   $available_cores = [];
   if (!empty($subscription['heartbeat_data']['search_cores'])) {

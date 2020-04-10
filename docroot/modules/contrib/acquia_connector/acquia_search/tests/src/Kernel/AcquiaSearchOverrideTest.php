@@ -312,9 +312,11 @@ class AcquiaSearchOverrideTest extends KernelTestBase {
     $storage = new Storage();
     $storage->setIdentifier($acquia_identifier);
 
-    \Drupal::state()->set('acquia_subscription_data', [
-      'heartbeat_data' => ['search_cores' => $available_cores],
-    ]);
+    \Drupal::configFactory()->getEditable('acquia_connector.settings')
+      ->set('subscription_data', [
+        'heartbeat_data' => ['search_cores' => $available_cores],
+      ])
+      ->save();
 
   }
 

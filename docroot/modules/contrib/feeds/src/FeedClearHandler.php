@@ -5,8 +5,6 @@ namespace Drupal\feeds;
 use Drupal\feeds\Event\ClearEvent;
 use Drupal\feeds\Event\FeedsEvents;
 use Drupal\feeds\Event\InitEvent;
-use Drupal\feeds\FeedInterface;
-use Drupal\feeds\StateInterface;
 
 /**
  * Deletes the items of a feed.
@@ -34,7 +32,12 @@ class FeedClearHandler extends FeedHandlerBase {
   }
 
   /**
-   * {@inheritdoc}
+   * Deletes all items from a feed.
+   *
+   * @param \Drupal\feeds\FeedInterface $feed
+   *   The feed entity from which to delete all items.
+   * @param array $context
+   *   Status of the batch.
    */
   public function clear(FeedInterface $feed, array &$context) {
     try {

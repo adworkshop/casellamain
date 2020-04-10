@@ -45,13 +45,12 @@ class Subscription {
    */
   public function update(array $params = []) {
     $config = \Drupal::configFactory()->getEditable('acquia_connector.settings');
-    $current_subscription = \Drupal::state()->get('acquia_subscription_data');
+    $current_subscription = $config->get('subscription_data');
     $subscription = FALSE;
 
     if (!self::hasCredentials()) {
       // If there is not an identifier or key, delete any old subscription data.
-      \Drupal::state()->delete('acquia_subscription_data');
-      \Drupal::state()->set('acquia_subscription_data', ['active' => FALSE]);
+      $config->clear('subscription_data')->set('subscription_data', ['active' => FALSE])->save();
     }
     else {
       // Get our subscription data.
@@ -79,9 +78,7 @@ class Subscription {
       }
       if ($subscription) {
         \Drupal::moduleHandler()->invokeAll('acquia_subscription_status', [$subscription]);
-        if ($subscription != $current_subscription) {
-          \Drupal::state()->set('acquia_subscription_data', $subscription);
-        }
+        $config->set('subscription_data', $subscription)->save();
       }
     }
 
@@ -104,7 +101,7 @@ class Subscription {
     // Subscription cannot be active if we have no credentials.
     if (self::hasCredentials()) {
       $config = \Drupal::config('acquia_connector.settings');
-      $subscription = \Drupal::state()->get('acquia_subscription_data');
+      $subscription = $config->get('subscription_data');
 
       $subscription_timestamp = \Drupal::state()->get('acquia_subscription_data.timestamp');
       // Make sure we have data at least once per day.

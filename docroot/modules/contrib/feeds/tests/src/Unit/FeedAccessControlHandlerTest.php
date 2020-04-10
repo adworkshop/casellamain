@@ -11,25 +11,48 @@ use Drupal\feeds\FeedAccessControlHandler;
  */
 class FeedAccessControlHandlerTest extends FeedsUnitTestCase {
 
+  /**
+   * Metadata class for the feed entity type.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeInterface
+   */
   protected $entityType;
+
+  /**
+   * The handler to test.
+   *
+   * @var \Drupal\feeds\FeedAccessControlHandler
+   */
   protected $controller;
+
+  /**
+   * The Drupal module handler.
+   *
+   * @var \Drupal\Core\Extension\ModuleHandlerInterface
+   */
   protected $moduleHandler;
 
+  /**
+   * {@inheritdoc}
+   */
   public function setUp() {
     parent::setUp();
-    $this->entityType = $this->getMock('\Drupal\Core\Entity\EntityTypeInterface');
+    $this->entityType = $this->createMock('\Drupal\Core\Entity\EntityTypeInterface');
     $this->entityType->expects($this->once())
       ->method('id')
       ->will($this->returnValue('feeds_feed'));
     $this->controller = new FeedAccessControlHandler($this->entityType);
-    $this->moduleHandler = $this->getMock('\Drupal\Core\Extension\ModuleHandlerInterface');
+    $this->moduleHandler = $this->createMock('\Drupal\Core\Extension\ModuleHandlerInterface');
     $this->moduleHandler->expects($this->any())
       ->method('invokeAll')
       ->will($this->returnValue([]));
     $this->controller->setModuleHandler($this->moduleHandler);
   }
 
-  public function test() {
+  /**
+   * @covers ::access
+   */
+  public function testAccess() {
     $feed = $this->getMockBuilder('\Drupal\feeds\FeedInterface')
       ->disableOriginalConstructor()
       ->getMock();
@@ -40,7 +63,7 @@ class FeedAccessControlHandlerTest extends FeedsUnitTestCase {
       ->method('language')
       ->will($this->returnValue(new Language()));
 
-    $account = $this->getMock('\Drupal\Core\Session\AccountInterface');
+    $account = $this->createMock('\Drupal\Core\Session\AccountInterface');
 
     $this->assertFalse($this->controller->access($feed, 'beep', $account));
     $this->assertFalse($this->controller->access($feed, 'unlock', $account));
@@ -57,7 +80,7 @@ class FeedAccessControlHandlerTest extends FeedsUnitTestCase {
     $this->assertTrue($this->controller->access($feed, 'clear', $account));
     $this->assertTrue($this->controller->access($feed, 'view', $account));
 
-    $account = $this->getMock('\Drupal\Core\Session\AccountInterface');
+    $account = $this->createMock('\Drupal\Core\Session\AccountInterface');
 
     $account->expects($this->exactly(2))
       ->method('hasPermission')
@@ -69,8 +92,11 @@ class FeedAccessControlHandlerTest extends FeedsUnitTestCase {
     $this->assertTrue($this->controller->access($feed, 'delete', $account));
   }
 
+  /**
+   * @covers ::createAccess
+   */
   public function testCheckCreateAccess() {
-    $account = $this->getMock('\Drupal\Core\Session\AccountInterface');
+    $account = $this->createMock('\Drupal\Core\Session\AccountInterface');
 
     $account->expects($this->exactly(2))
       ->method('hasPermission')
@@ -83,7 +109,7 @@ class FeedAccessControlHandlerTest extends FeedsUnitTestCase {
 
     $this->controller->resetCache();
 
-    $account = $this->getMock('\Drupal\Core\Session\AccountInterface');
+    $account = $this->createMock('\Drupal\Core\Session\AccountInterface');
     $account->expects($this->exactly(2))
       ->method('hasPermission')
       ->with($this->logicalOr(

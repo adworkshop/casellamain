@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Cache\Cache;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_cacheflush_ui_tabs().
@@ -24,14 +25,14 @@ function cacheflush_advanced_cacheflush_ui_tabs() {
 /**
  * Implements hook_form_FORM_ID_alter().
  */
-function cacheflush_advanced_form_cacheflush_add_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+function cacheflush_advanced_form_cacheflush_add_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   _cacheflush_advanced_form($form, $form_state);
 }
 
 /**
  * Implements hook_form_FORM_ID_alter().
  */
-function cacheflush_advanced_form_cacheflush_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+function cacheflush_advanced_form_cacheflush_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   _cacheflush_advanced_form($form, $form_state, 'edit');
 }
 
@@ -40,13 +41,13 @@ function cacheflush_advanced_form_cacheflush_edit_form_alter(&$form, \Drupal\Cor
  */
 function _cacheflush_advanced_form(&$form, &$form_state, $op = 'add') {
 
-  $form['vertical_tabs_advance']['cacheflush_advanced_table'] = array(
+  $form['vertical_tabs_advance']['cacheflush_advanced_table'] = [
     '#type' => 'table',
     '#header' => [t('Cache ID'), t('Service'), t('Operations')],
-    '#attributes' => array(
+    '#attributes' => [
       'id' => 'cacheflush-advanced-settings-table',
-    ),
-  );
+    ],
+  ];
 
   // Add new row button.
   $form['vertical_tabs_advance']['advance_add'] = [
@@ -61,7 +62,7 @@ function _cacheflush_advanced_form(&$form, &$form_state, $op = 'add') {
     ],
   ];
 
-  $form['vertical_tabs_advance']['note'] = array(
+  $form['vertical_tabs_advance']['note'] = [
     '#type' => 'item',
     '#title' => t('Note'),
     '#weight' => -10,
@@ -69,7 +70,7 @@ function _cacheflush_advanced_form(&$form, &$form_state, $op = 'add') {
     '<ul><li>' . t('<b>Cache ID ($cid)</b>: The cache ID to delete.') .
     '</li><li>' . t('<b>Bin</b>: Cache service.') .
     '</li></ul>',
-  );
+  ];
 
   $trigger = $form_state->getTriggeringElement();
   if (isset($trigger)) {
@@ -85,7 +86,7 @@ function _cacheflush_advanced_form(&$form, &$form_state, $op = 'add') {
     if (isset($table_elements)) {
       foreach ($table_elements as $key => $value) {
         _cacheflush_advanced_table_row(
-            $form['vertical_tabs_advance']['cacheflush_advanced_table'], $key, $value['cid'], $value['table']
+          $form['vertical_tabs_advance']['cacheflush_advanced_table'], $key, $value['cid'], $value['table']
         );
       }
     }
@@ -193,7 +194,7 @@ function cacheflush_advanced_tab_validation($tab, $form, $form_state) {
         elseif (!empty($value['cid'])) {
           $storage['presets']['advanced']['functions'][$key] = [
             '#name' => '\Drupal\cacheflush\Controller\CacheflushApi::clearBinCache',
-            '#params' => array($bins[$value['table']], 'delete', $value['cid']),
+            '#params' => [$bins[$value['table']], 'delete', $value['cid']],
           ];
         }
       }

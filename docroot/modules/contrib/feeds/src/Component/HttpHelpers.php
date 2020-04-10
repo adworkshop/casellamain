@@ -2,8 +2,6 @@
 
 namespace Drupal\feeds\Component;
 
-use Drupal\feeds\Component\XmlParserTrait;
-
 /**
  * Various helpers for dealing with HTTP data.
  *
@@ -21,7 +19,8 @@ class HttpHelpers {
    * @param string $relation
    *   The type of relation to find.
    *
-   * @return string|false The link, or false.
+   * @return string|false
+   *   The link, or false.
    */
   public static function findLinkHeader(array $headers, $relation) {
     $headers = array_change_key_case($headers);
@@ -83,7 +82,8 @@ class HttpHelpers {
    * @param string $relation
    *   The relation to find.
    *
-   * @return string|false The relation, or false.
+   * @return string|false
+   *   The relation, or false.
    */
   public static function findRelationFromXml($xml, $relation) {
     // Check if $xml has length.

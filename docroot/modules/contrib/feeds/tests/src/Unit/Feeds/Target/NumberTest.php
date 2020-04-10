@@ -3,20 +3,29 @@
 namespace Drupal\Tests\feeds\Unit\Feeds\Target;
 
 use Drupal\feeds\Feeds\Target\Number;
-use Drupal\Tests\feeds\Unit\FeedsUnitTestCase;
 
 /**
  * @coversDefaultClass \Drupal\feeds\Feeds\Target\Number
  * @group feeds
  */
-class NumberTest extends FeedsUnitTestCase {
+class NumberTest extends FieldTargetTestBase {
 
+  /**
+   * {@inheritdoc}
+   */
+  protected function getTargetClass() {
+    return Number::class;
+  }
+
+  /**
+   * @covers ::prepareValue
+   */
   public function testPrepareValue() {
     $method = $this->getMethod('Drupal\feeds\Feeds\Target\Number', 'prepareTarget')->getClosure();
 
     $configuration = [
-      'feed_type' => $this->getMock('Drupal\feeds\FeedTypeInterface'),
-      'target_definition' =>  $method($this->getMockFieldDefinition()),
+      'feed_type' => $this->createMock('Drupal\feeds\FeedTypeInterface'),
+      'target_definition' => $method($this->getMockFieldDefinition()),
     ];
     $target = new Number($configuration, 'link', []);
 

@@ -5,6 +5,8 @@
  * Contains install and update hooks.
  */
 
+use Drupal\Core\Entity\Sql\SqlContentEntityStorage;
+use Drupal\Core\Url;
 use Drupal\Core\Config\InstallStorage;
 use Drupal\Core\Config\FileStorage;
 use Drupal\Core\Field\BaseFieldDefinition;
@@ -13,17 +15,20 @@ use Drupal\Core\Field\BaseFieldDefinition;
  * Implements hook_install().
  */
 function contact_storage_install() {
-  $entity_manager = \Drupal::entityManager();
-  $entity_type = $entity_manager->getDefinition('contact_message');
+  $entity_definition_update_manager = \Drupal::entityDefinitionUpdateManager();
+  $original_contact_message = $entity_definition_update_manager->getEntityType('contact_message');
+  $original_contact_form = \Drupal::entityTypeManager()->getDefinition('contact_form');
+  $entity_type_contact_message = clone $original_contact_message;
+  $entity_definition_update_manager->uninstallEntityType($original_contact_message);
 
-  // Recreate the original entity type definition, in order to notify the
-  // manager of what changed. The change of storage backend will trigger
-  // schema installation.
-  // @see contact_storage_test_entity_type_alter()
-  $original = clone $entity_type;
-  $original->setStorageClass('Drupal\Core\Entity\ContentEntityNullStorage');
-
-  $entity_manager->onEntityTypeUpdate($entity_type, $original);
+  // Update the entity type definition and make it use the default SQL storage.
+  // @see contact_storage_entity_type_alter()
+  $entity_types = [
+    'contact_message' => $entity_type_contact_message,
+    'contact_form' => $original_contact_form,
+  ];
+  contact_storage_entity_type_alter($entity_types);
+  $entity_definition_update_manager->installEntityType($entity_types['contact_message']);
   _contact_storage_ensure_fields();
 }
 
@@ -57,11 +62,17 @@ function contact_storage_update_8002() {
 
   // Save the bulk delete action to config.
   $config_install_path = $module_handler->getModule('contact_storage')->getPath() . '/' . InstallStorage::CONFIG_INSTALL_DIRECTORY;
-  $storage = new FileStorage($config_install_path);
-  $entity_type_manager
-    ->getStorage('action')
-    ->create($storage->read('system.action.message_delete_action'))
-    ->save();
+
+  // Create action if it doesn't exist.
+  $action_storage = $entity_type_manager->getStorage('action');
+  $action = $action_storage->load('message_delete_action');
+  if (!$action) {
+    $storage = new FileStorage($config_install_path);
+    $entity_type_manager
+      ->getStorage('action')
+      ->create($storage->read('system.action.message_delete_action'))
+      ->save();
+  }
 }
 
 /**
@@ -95,7 +106,7 @@ function contact_storage_update_8200() {
       $config = $config_factory->getEditable($name);
       $config->clear('third_party_settings.contact_storage.redirect_uri');
       try {
-        $url = '/' . \Drupal\Core\Url::fromUri($redirect_page)->getInternalPath();
+        $url = '/' . Url::fromUri($redirect_page)->getInternalPath();
       }
       catch (Exception $e) {
         continue;
@@ -105,5 +116,25 @@ function contact_storage_update_8200() {
       }
       $config->save();
     }
+  }
+}
+
+/**
+ * Enables the options module as it is now a dependency.
+ */
+function contact_storage_update_8201() {
+  \Drupal::service('module_installer')->install(['options']);
+}
+
+/**
+ * Fix the last installed definition for the 'contact_message' entity type.
+ */
+function contact_storage_update_8202() {
+  $entity_type = \Drupal::entityDefinitionUpdateManager()->getEntityType('contact_message');
+  $keys = $entity_type->getKeys();
+  if (empty($keys['langcode'])) {
+    $keys['langcode'] = 'langcode';
+    $entity_type->set('entity_keys', $keys);
+    \Drupal::entityDefinitionUpdateManager()->updateEntityType($entity_type);
   }
 }

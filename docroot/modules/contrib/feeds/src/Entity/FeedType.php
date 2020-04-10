@@ -2,12 +2,12 @@
 
 namespace Drupal\feeds\Entity;
 
-use Drupal\Component\Utility\Html;
 use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityWithPluginCollectionInterface;
 use Drupal\feeds\Feeds\FeedsSingleLazyPluginCollection;
 use Drupal\feeds\FeedTypeInterface;
+use Drupal\feeds\Plugin\DependentWithRemovalPluginInterface;
 use Drupal\feeds\Plugin\Type\LockableInterface;
 use Drupal\feeds\Plugin\Type\Target\ConfigurableTargetInterface;
 
@@ -39,9 +39,26 @@ use Drupal\feeds\Plugin\Type\Target\ConfigurableTargetInterface;
  *     "uuid" = "uuid",
  *     "status" = "status"
  *   },
+ *   config_export = {
+ *     "id",
+ *     "label",
+ *     "description",
+ *     "help",
+ *     "import_period",
+ *     "fetcher",
+ *     "fetcher_configuration",
+ *     "parser",
+ *     "parser_configuration",
+ *     "processor",
+ *     "processor_configuration",
+ *     "custom_sources",
+ *     "mappings"
+ *   },
  *   links = {
+ *     "collection" = "/admin/structure/feeds",
  *     "add-form" = "/admin/structure/feeds/add",
  *     "edit-form" = "/admin/structure/feeds/manage/{feeds_feed_type}",
+ *     "mapping" = "/admin/structure/feeds/manage/{feeds_feed_type}/mapping",
  *     "delete-form" = "/admin/structure/feeds/manage/{feeds_feed_type}/delete"
  *   },
  *   admin_permission = "administer feeds"
@@ -71,6 +88,13 @@ class FeedType extends ConfigEntityBundleBase implements FeedTypeInterface, Enti
   protected $description;
 
   /**
+   * Help information shown to the user when creating a Feed of this type.
+   *
+   * @var string
+   */
+  protected $help;
+
+  /**
    * The import period.
    *
    * @var int
@@ -80,9 +104,9 @@ class FeedType extends ConfigEntityBundleBase implements FeedTypeInterface, Enti
   /**
    * The types of plugins we support.
    *
-   * @todo Make this dynamic?
-   *
    * @var array
+   *
+   * @todo Make this dynamic?
    */
   protected $pluginTypes = ['fetcher', 'parser', 'processor'];
 
@@ -136,6 +160,13 @@ class FeedType extends ConfigEntityBundleBase implements FeedTypeInterface, Enti
   protected $mappings = [];
 
   /**
+   * The list of custom sources.
+   *
+   * @var array
+   */
+  protected $custom_sources = [];
+
+  /**
    * The list of sources.
    *
    * @var array
@@ -143,7 +174,7 @@ class FeedType extends ConfigEntityBundleBase implements FeedTypeInterface, Enti
   protected $sources;
 
   /**
-   * The list of targets;
+   * The list of targets.
    *
    * @var array
    */
@@ -175,6 +206,23 @@ class FeedType extends ConfigEntityBundleBase implements FeedTypeInterface, Enti
   /**
    * {@inheritdoc}
    */
+  public function __sleep() {
+    $vars = parent::__sleep();
+
+    // Do not serialize pluginCollection as this can contain a
+    // \Drupal\Core\Entity\EntityType instance which can contain a
+    // stringTranslation object that is not serializable.
+    // @see https://www.drupal.org/project/drupal/issues/2893029
+    $vars = array_flip($vars);
+    unset($vars['pluginCollection']);
+    $vars = array_flip($vars);
+
+    return $vars;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function set($property_name, $value) {
     // Remove mappings when processor changes.
     if ($property_name === 'processor' && $this->processor !== $value) {
@@ -188,6 +236,13 @@ class FeedType extends ConfigEntityBundleBase implements FeedTypeInterface, Enti
    */
   public function getDescription() {
     return $this->description;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getHelp() {
+    return $this->help;
   }
 
   /**
@@ -223,17 +278,17 @@ class FeedType extends ConfigEntityBundleBase implements FeedTypeInterface, Enti
   public function getMappingSources() {
     if ($this->sources === NULL) {
       $this->sources = $this->getParser()->getMappingSources();
-      $definitions = \Drupal::service('plugin.manager.feeds.source')->getDefinitions();
+      $definitions = $this->getSourcePluginManager()->getDefinitions();
 
       foreach ($definitions as $definition) {
         $class = $definition['class'];
         $class::sources($this->sources, $this, $definition);
       }
 
-      \Drupal::moduleHandler()->alter('feeds_sources', $this->sources, $this);
+      $this->alter('feeds_sources', $this->sources);
     }
 
-    return $this->sources;
+    return $this->sources + $this->custom_sources;
   }
 
   /**
@@ -292,6 +347,59 @@ class FeedType extends ConfigEntityBundleBase implements FeedTypeInterface, Enti
    */
   public function removeMappings() {
     $this->mappings = [];
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getMappedSources() {
+    $sources = [];
+
+    foreach ($this->getMappings() as $mapping) {
+      foreach ($mapping['map'] as $column => $source) {
+        if ($source === '') {
+          // Skip empty sources.
+          continue;
+        }
+        $sources[$source] = $source;
+      }
+    }
+
+    return $sources;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function addCustomSource($name, array $source) {
+    $this->custom_sources[$name] = $source;
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getCustomSource($name) {
+    if (!isset($this->custom_sources[$name])) {
+      return NULL;
+    }
+    return $this->custom_sources[$name];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function customSourceExists($name) {
+    return isset($this->custom_sources[$name]);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function removeCustomSource($name) {
+    unset($this->custom_sources[$name]);
+    return $this;
   }
 
   /**
@@ -380,8 +488,11 @@ class FeedType extends ConfigEntityBundleBase implements FeedTypeInterface, Enti
 
       // The source is a plugin.
       if (isset($sources[$source]['id'])) {
-        $configuration = ['feed_type' => $this];
-        $this->sourcePlugins[$source] = \Drupal::service('plugin.manager.feeds.source')->createInstance($sources[$source]['id'], $configuration);
+        $configuration = [
+          'feed_type' => $this,
+          'source' => $source,
+        ];
+        $this->sourcePlugins[$source] = $this->getSourcePluginManager()->createInstance($sources[$source]['id'], $configuration);
       }
       else {
         $this->sourcePlugins[$source] = FALSE;
@@ -399,7 +510,7 @@ class FeedType extends ConfigEntityBundleBase implements FeedTypeInterface, Enti
 
     $options = [];
     foreach ($manager->getDefinitions() as $id => $definition) {
-      $options[$id] = Html::escape($definition['title']);
+      $options[$id] = $definition['title'];
     }
 
     return $options;
@@ -498,6 +609,78 @@ class FeedType extends ConfigEntityBundleBase implements FeedTypeInterface, Enti
     $properties = parent::toArray();
     $properties['mappings'] = $this->mappings;
     return $properties;
+  }
+
+  /**
+   * Returns the source plugin manager.
+   *
+   * @return \Drupal\feeds\Plugin\Type\FeedsPluginManager
+   *   The source plugin manager.
+   */
+  protected function getSourcePluginManager() {
+    return \Drupal::service('plugin.manager.feeds.source');
+  }
+
+  /**
+   * Wrapper around \Drupal\Core\Extension\ModuleHandlerInterface::alter().
+   *
+   * @param string|array $type
+   *   A string describing the type of the alterable $data or an array if
+   *   hook_TYPE_alter() needs to be invoked for each value in the array.
+   * @param mixed $data
+   *   The variable to be altered.
+   *
+   * @see \Drupal\Core\Extension\ModuleHandlerInterface::alter()
+   */
+  protected function alter($type, &$data) {
+    return \Drupal::moduleHandler()->alter($type, $data, $this);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function calculateDependencies() {
+    parent::calculateDependencies();
+
+    // Calculate plugin dependencies for each target plugin.
+    // @todo support other plugin types as well.
+    foreach ($this->getMappings() as $delta => $mapping) {
+      $plugin = $this->getTargetPlugin($delta);
+      $this->calculatePluginDependencies($plugin);
+    }
+
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function onDependencyRemoval(array $dependencies) {
+    $changed = FALSE;
+
+    // Don't intervene if the feeds module is removed.
+    if (isset($dependencies['module']) && in_array('feeds', $dependencies['module'])) {
+      return FALSE;
+    }
+
+    // Check each target plugin for if they want to do something on dependency
+    // removal.
+    foreach ($this->getMappings() as $delta => $mapping) {
+      $plugin = $this->getTargetPlugin($delta);
+      if ($plugin instanceof DependentWithRemovalPluginInterface) {
+        if ($plugin->onDependencyRemoval($dependencies)) {
+          $this->removeMapping($delta);
+          $changed = TRUE;
+        }
+      }
+    }
+
+    if ($changed) {
+      // Force a recalculation of the dependencies if we made changes.
+      $this->calculateDependencies();
+    }
+
+    return $changed;
   }
 
 }

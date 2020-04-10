@@ -5,7 +5,7 @@ namespace Drupal\feeds\Component;
 /**
  * Parses an RFC 4180 style CSV file.
  *
- * http://tools.ietf.org/html/rfc4180
+ * @see http://tools.ietf.org/html/rfc4180
  */
 class CsvParser implements \Iterator {
 
@@ -117,7 +117,7 @@ class CsvParser implements \Iterator {
   }
 
   /**
-   * Destructs a CsvParser object,
+   * Destructs a CsvParser object.
    */
   public function __destruct() {
     if (is_resource($this->handle)) {
@@ -284,7 +284,7 @@ class CsvParser implements \Iterator {
    * @return array
    *   The list of cells in the CSV row.
    */
-  protected function parseLine($line, $in_quotes = FALSE, $field = '', $fields = []) {
+  protected function parseLine($line, $in_quotes = FALSE, $field = '', array $fields = []) {
     $line_length = strlen($line);
 
     // Traverse the line byte-by-byte.
@@ -326,6 +326,12 @@ class CsvParser implements \Iterator {
     // next line. Check that we're not at the end of a malformed file.
     if ($in_quotes && $line = $this->readLine()) {
       $fields = $this->parseLine($line, $in_quotes, $field, $fields);
+    }
+
+    // If we're not in quoted after the line is read but the field contains
+    // data, we are processing a line that did not end.
+    if (!$in_quotes && $field) {
+      $fields[] = $field;
     }
 
     return $fields;

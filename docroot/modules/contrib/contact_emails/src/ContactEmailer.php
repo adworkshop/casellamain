@@ -2,10 +2,12 @@
 
 namespace Drupal\contact_emails;
 
+use Drupal\Component\Utility\EmailValidatorInterface;
+use Drupal\contact_emails\Entity\ContactEmailInterface;
 use Drupal\Core\Mail\MailManagerInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Session\AccountProxy;
-use Egulias\EmailValidator\EmailValidator;
 
 /**
  * Class ContactEmailerServiceProvider.
@@ -40,7 +42,7 @@ class ContactEmailer {
   /**
    * Egulias\EmailValidator\EmailValidator definition.
    *
-   * @var \Egulias\EmailValidator\EmailValidator;
+   * @var \Egulias\EmailValidator\EmailValidator
    */
   protected $emailValidator;
 
@@ -59,18 +61,38 @@ class ContactEmailer {
   protected $contactMessage;
 
   /**
+   * Drupal messenger.
+   *
+   * @var \Drupal\Core\Messenger\MessengerInterface
+   */
+  protected $messenger;
+
+  /**
    * Constructor.
+   *
+   * @param \Drupal\Core\Mail\MailManagerInterface $plugin_manager_mail
+   *   MailManagerInterface.
+   * @param \Drupal\contact_emails\ContactEmails $contact_emails
+   *   ContactEmails.
+   * @param \Drupal\Core\Session\AccountProxy $current_user
+   *   AccountProxy.
+   * @param \Drupal\Component\Utility\EmailValidatorInterface $email_validator
+   *   EmailValidatorInterface.
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+   *   MessengerInterface.
    */
   public function __construct(
     MailManagerInterface $plugin_manager_mail,
     ContactEmails $contact_emails,
     AccountProxy $current_user,
-    EmailValidator $email_validator
+    EmailValidatorInterface $email_validator,
+    MessengerInterface $messenger
   ) {
     $this->mailManager = $plugin_manager_mail;
     $this->contactEmails = $contact_emails;
     $this->currentUser = $current_user;
     $this->emailValidator = $email_validator;
+    $this->messenger = $messenger;
   }
 
   /**
@@ -86,6 +108,9 @@ class ContactEmailer {
 
   /**
    * Send the emails.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function sendEmails() {
     /** @var \Drupal\contact_emails\ContactEmailStorageInterface $storage */
@@ -103,17 +128,18 @@ class ContactEmailer {
           $error = $this->t('Unable to determine who to send the message to for for email id @id', [
             '@id' => $email->id(),
           ]);
-          drupal_set_message($error, 'warning', FALSE);
+          $this->messenger->addWarning($error);
           continue;
         }
 
         $params['subject'] = $email->getSubject($this->contactMessage);
         $params['format'] = $email->getFormat($this->contactMessage);
         $params['message'] = $email->getBody($this->contactMessage);
+        $params['contact_message'] = $this->contactMessage;
 
         // Final prep and send.
-        $langcode = $this->currentUser->getPreferredLangcode();
-        $this->mailManager->mail($module, $key, $to, $langcode, $params, $reply_to, TRUE);
+        $language_code = $this->currentUser->getPreferredLangcode();
+        $this->mailManager->mail($module, $key, $to, $language_code, $params, $reply_to, TRUE);
       }
     }
   }
@@ -127,7 +153,7 @@ class ContactEmailer {
    * @return string
    *   The to string to be used by the mail manager.
    */
-  protected function getTo($email) {
+  protected function getTo(ContactEmailInterface $email) {
     $to = $this->removeInvalidEmails($email->getRecipients($this->contactMessage));
     return implode(', ', $to);
   }
@@ -141,7 +167,7 @@ class ContactEmailer {
    * @return array
    *   An array of valid emails.
    */
-  protected function removeInvalidEmails($emails) {
+  protected function removeInvalidEmails(array $emails) {
     $valid_emails = [];
     foreach ($emails as $email) {
       if ($this->emailValidator->isValid($email)) {
@@ -151,9 +177,10 @@ class ContactEmailer {
         $error = $this->t('The following email does not appear to be valid and was not sent to: @email', [
           '@email' => $email,
         ]);
-        drupal_set_message($error, 'warning', FALSE);
+        $this->messenger->addWarning($error);
       }
     }
     return $valid_emails;
   }
+
 }

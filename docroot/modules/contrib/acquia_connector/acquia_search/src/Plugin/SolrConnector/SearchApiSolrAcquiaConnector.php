@@ -28,6 +28,13 @@ use Solarium\Exception\HttpException;
 class SearchApiSolrAcquiaConnector extends SolrConnectorPluginBase {
 
   /**
+   * Event Dispatcher.
+   *
+   * @var bool|\Symfony\Component\EventDispatcher\EventDispatcherInterface
+   */
+  protected $eventDispatcher = FALSE;
+
+  /**
    * {@inheritdoc}
    */
   protected function handleHttpException(HttpException $e, Endpoint $endpoint) {

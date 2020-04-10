@@ -2,8 +2,9 @@
 
 namespace Drupal\feeds\EventSubscriber;
 
-use Drupal\Core\Url as CoreUrl;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\Url as CoreUrl;
 use Drupal\feeds\Component\HttpHelpers;
 use Drupal\feeds\Event\DeleteFeedsEvent;
 use Drupal\feeds\Event\FeedsEvents;
@@ -20,6 +21,8 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  * Event listener for PubSubHubbub subscriptions.
  */
 class PubSubHubbub implements EventSubscriberInterface {
+
+  use StringTranslationTrait;
 
   /**
    * The subscription storage controller.
@@ -50,6 +53,9 @@ class PubSubHubbub implements EventSubscriberInterface {
 
   /**
    * Subscribes to a feed.
+   *
+   * @param \Drupal\feeds\Event\FetchEvent $event
+   *   The fetch event.
    */
   public function onPostFetch(FetchEvent $event) {
     $feed = $event->getFeed();
@@ -109,22 +115,38 @@ class PubSubHubbub implements EventSubscriberInterface {
     }
   }
 
+  /**
+   * Subscribes a subscription to a hub in a batch.
+   *
+   * @param \Drupal\feeds\FeedInterface $feed
+   *   The feed to which the subscription is linked.
+   * @param \Drupal\feeds\SubscriptionInterface $subscription
+   *   The subscription to subscribe.
+   */
   protected function subscribe(FeedInterface $feed, SubscriptionInterface $subscription) {
     $subscription->subscribe();
 
     $batch = [
-      'title' => t('Subscribing to: %title', ['%title' => $feed->label()]),
-      'init_message' => t('Subscribing to: %title', ['%title' => $feed->label()]),
+      'title' => $this->t('Subscribing to: %title', ['%title' => $feed->label()]),
+      'init_message' => $this->t('Subscribing to: %title', ['%title' => $feed->label()]),
       'operations' => [
         ['Drupal\feeds\EventSubscriber\PubSubHubbub::runSubscribeBatch', [$subscription]],
       ],
-      'progress_message' => t('Subscribing: %title', ['%title' => $feed->label()]),
-      'error_message' => t('An error occored while subscribing to %title.', ['%title' => $feed->label()]),
+      'progress_message' => $this->t('Subscribing: %title', ['%title' => $feed->label()]),
+      'error_message' => $this->t('An error occored while subscribing to %title.', ['%title' => $feed->label()]),
     ];
 
     batch_set($batch);
   }
 
+  /**
+   * Unsubscribes a subscription from a hub in a batch.
+   *
+   * @param \Drupal\feeds\FeedInterface $feed
+   *   The feed to which the subscription is linked.
+   * @param \Drupal\feeds\SubscriptionInterface $subscription
+   *   The subscription to unsubscribe.
+   */
   protected function unsubscribe(FeedInterface $feed, SubscriptionInterface $subscription = NULL) {
     if (!$subscription) {
       return;
@@ -133,18 +155,29 @@ class PubSubHubbub implements EventSubscriberInterface {
     $subscription->unsubscribe();
 
     $batch = [
-      'title' => t('Unsubscribing from: %title', ['%title' => $feed->label()]),
-      'init_message' => t('Unsubscribing from: %title', ['%title' => $feed->label()]),
+      'title' => $this->t('Unsubscribing from: %title', ['%title' => $feed->label()]),
+      'init_message' => $this->t('Unsubscribing from: %title', ['%title' => $feed->label()]),
       'operations' => [
         ['Drupal\feeds\EventSubscriber\PubSubHubbub::runSubscribeBatch', [$subscription]],
       ],
-      'progress_message' => t('Unsubscribing: %title', ['%title' => $feed->label()]),
-      'error_message' => t('An error occored while unsubscribing from %title.', ['%title' => $feed->label()]),
+      'progress_message' => $this->t('Unsubscribing: %title', ['%title' => $feed->label()]),
+      'error_message' => $this->t('An error occored while unsubscribing from %title.', ['%title' => $feed->label()]),
     ];
 
     batch_set($batch);
   }
 
+  /**
+   * Subscribes to or unsubscribes from a hub.
+   *
+   * This method is used as callback for a batch.
+   *
+   * @param \Drupal\feeds\SubscriptionInterface $subscription
+   *   The subscription entity.
+   *
+   * @see ::subscribe
+   * @see ::unsubscribe
+   */
   public static function runSubscribeBatch(SubscriptionInterface $subscription) {
     switch ($subscription->getState()) {
       case 'subscribing':
@@ -228,6 +261,8 @@ class PubSubHubbub implements EventSubscriberInterface {
    *
    * @param \Drupal\feeds\Result\FetcherResultInterface $fetcher_result
    *   The fetcher result.
+   * @param string $relation
+   *   The type of relation to find.
    *
    * @return string|null
    *   The hub URL or null if one wasn't found.
@@ -244,6 +279,9 @@ class PubSubHubbub implements EventSubscriberInterface {
 
   /**
    * Deletes subscriptions when feeds are deleted.
+   *
+   * @param \Drupal\feeds\Event\DeleteFeedsEvent $event
+   *   The delete event.
    */
   public function onDeleteMultipleFeeds(DeleteFeedsEvent $event) {
     $subscriptions = $this->storage->loadMultiple(array_keys($event->getFeeds()));

@@ -4,6 +4,8 @@ namespace Drupal\feeds;
 
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityChangedInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\feeds\Feeds\Item\ItemInterface;
 use Drupal\feeds\Plugin\Type\FeedsPluginInterface;
 use Drupal\user\EntityOwnerInterface;
 
@@ -99,6 +101,17 @@ interface FeedInterface extends ContentEntityInterface, EntityChangedInterface, 
   public function setQueuedTime($queued);
 
   /**
+   * Imports the whole feed at once.
+   *
+   * This does not batch. It assumes that the input is small enough to not need
+   * it.
+   *
+   * @throws \Exception
+   *   Re-throws any exception that bubbles up.
+   */
+  public function import();
+
+  /**
    * Starts importing a feed via the batch API.
    *
    * @throws \Exception
@@ -150,12 +163,24 @@ interface FeedInterface extends ContentEntityInterface, EntityChangedInterface, 
   public function startBatchExpire();
 
   /**
+   * Dispatches an entity event.
+   *
+   * @param string $event
+   *   The event to invoke.
+   * @param \Drupal\Core\Entity\EntityInterface $entity
+   *   The entity being inserted or updated.
+   * @param \Drupal\feeds\Feeds\Item\ItemInterface $item
+   *   The item that is being processed.
+   */
+  public function dispatchEntityEvent($event, EntityInterface $entity, ItemInterface $item);
+
+  /**
    * Cleans up after an import.
    */
   public function finishImport();
 
   /**
-   * Cleans up after feed items have been delted.
+   * Cleans up after feed items have been deleted.
    */
   public function finishClear();
 
@@ -184,12 +209,26 @@ interface FeedInterface extends ContentEntityInterface, EntityChangedInterface, 
   public function progressImporting();
 
   /**
+   * Reports progress on cleaning.
+   *
+   * @return float
+   *   A float between 0 and 1. 1 = StateInterface::BATCH_COMPLETE.
+   */
+  public function progressCleaning();
+
+  /**
    * Reports progress on clearing.
+   *
+   * @return float
+   *   A float between 0 and 1. 1 = StateInterface::BATCH_COMPLETE.
    */
   public function progressClearing();
 
   /**
    * Reports progress on expiry.
+   *
+   * @return float
+   *   A float between 0 and 1. 1 = StateInterface::BATCH_COMPLETE.
    */
   public function progressExpiring();
 
@@ -208,17 +247,23 @@ interface FeedInterface extends ContentEntityInterface, EntityChangedInterface, 
   public function getState($stage);
 
   /**
-   * @todo
+   * Sets a state object for a given stage.
+   *
+   * @param string $stage
+   *   One of StateInterface::FETCH, StateInterface::PARSE,
+   *   StateInterface::PROCESS or StateInterface::CLEAR.
+   * @param \Drupal\feeds\StateInterface|null $state
+   *   A state object or null to unset the state for the given stage.
    */
-  public function setState($stage, $state);
+  public function setState($stage, StateInterface $state = NULL);
 
   /**
-   * @todo
+   * Clears all state objects for the feed.
    */
   public function clearStates();
 
   /**
-   * @todo
+   * Saves all state objects on the key/value collection of the feed.
    */
   public function saveStates();
 
@@ -260,7 +305,7 @@ interface FeedInterface extends ContentEntityInterface, EntityChangedInterface, 
    * Inactive feeds do not get imported.
    *
    * @return bool
-   *   Tur if the feed is active.
+   *   True if the feed is active.
    */
   public function isActive();
 

@@ -1,20 +1,16 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\cacheflush_ui\Tests\CacheFlushTest.
- */
-
 namespace Drupal\cacheflush_ui\Tests;
 
 use Drupal\cacheflush\Controller\CacheflushApi;
+use Drupal\simpletest\WebTestBase;
 
 /**
  * Test the UI CRUD.
  *
  * @group cacheflush
  */
-class CacheFlushUICRUD extends \Drupal\simpletest\WebTestBase {
+class CacheFlushUICRUD extends WebTestBase {
 
   /**
    * Modules to enable.
@@ -71,7 +67,8 @@ class CacheFlushUICRUD extends \Drupal\simpletest\WebTestBase {
       }
     }
 
-    $checkboxes = CacheflushApi::create(\Drupal::getContainer())->getOptionList();
+    $checkboxes = CacheflushApi::create(\Drupal::getContainer())
+      ->getOptionList();
     if ($checkboxes) {
       foreach ($checkboxes as $key => $value) {
         $this->assertFieldByName($value['category'] . "[$key]");
@@ -116,7 +113,9 @@ class CacheFlushUICRUD extends \Drupal\simpletest\WebTestBase {
 
     $this->drupalPostForm('cacheflush/' . $entities[0]->id() . '/edit', $data2, t('Save'));
 
-    \Drupal::entityManager()->getStorage('cacheflush')->resetCache([$entities[0]->id()]);
+    \Drupal::entityTypeManager()
+      ->getStorage('cacheflush')
+      ->resetCache([$entities[0]->id()]);
     $entities = array_values(cacheflush_load_multiple_by_properties(['title' => 'UpdatedEntityTitle']));
     $this->assertEqual($entities[0]->getTitle(), 'UpdatedEntityTitle', 'Entity successfully updated.');
 

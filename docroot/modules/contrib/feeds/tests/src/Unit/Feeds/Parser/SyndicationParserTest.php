@@ -8,6 +8,7 @@ use Drupal\feeds\Feeds\Parser\SyndicationParser;
 use Drupal\feeds\Result\RawFetcherResult;
 use Drupal\feeds\State;
 use Drupal\Tests\feeds\Unit\FeedsUnitTestCase;
+use Zend\Feed\Reader\StandaloneExtensionManager;
 
 /**
  * @coversDefaultClass \Drupal\feeds\Feeds\Parser\SyndicationParser
@@ -15,11 +16,39 @@ use Drupal\Tests\feeds\Unit\FeedsUnitTestCase;
  */
 class SyndicationParserTest extends FeedsUnitTestCase {
 
+  /**
+   * The Feeds parser plugin under test.
+   *
+   * @var \Drupal\feeds\Feeds\Parser\SyndicationParser
+   */
   protected $parser;
+
+  /**
+   * The feed type entity.
+   *
+   * @var \Drupal\feeds\FeedTypeInterface
+   */
   protected $feedType;
+
+  /**
+   * The feed entity.
+   *
+   * @var \Drupal\feeds\FeedInterface
+   */
   protected $feed;
+
+  /**
+   * The state object.
+   *
+   * @var \Drupal\feeds\StateInterface
+   */
   protected $state;
 
+  /**
+   * A list of syndication readers.
+   *
+   * @var array
+   */
   protected $readerExtensions = [
     'feed.reader.dublincoreentry' => 'Zend\Feed\Reader\Extension\DublinCore\Entry',
     'feed.reader.dublincorefeed' => 'Zend\Feed\Reader\Extension\DublinCore\Feed',
@@ -34,36 +63,45 @@ class SyndicationParserTest extends FeedsUnitTestCase {
     'feed.reader.georssentry' => 'Drupal\feeds\Zend\Extension\Georss\Entry',
   ];
 
+  /**
+   * {@inheritdoc}
+   */
   public function setUp() {
     parent::setUp();
 
     $container = new ContainerBuilder();
     $manager = new ZfExtensionManagerSfContainer('feed.reader.');
+    $manager->setContainer($container);
+    $manager->setStandalone(StandaloneExtensionManager::class);
 
     foreach ($this->readerExtensions as $key => $class) {
       $container->set($key, new $class());
     }
 
-    $manager->setContainer($container);
     $container->set('feed.bridge.reader', $manager);
     \Drupal::setContainer($container);
 
-    $this->feedType = $this->getMock('Drupal\feeds\FeedTypeInterface');
+    $this->feedType = $this->createMock('Drupal\feeds\FeedTypeInterface');
     $configuration = ['feed_type' => $this->feedType];
     $this->parser = new SyndicationParser($configuration, 'syndication', []);
     $this->parser->setStringTranslation($this->getStringTranslationStub());
 
     $this->state = new State();
 
-    $this->feed = $this->getMock('Drupal\feeds\FeedInterface');
+    $this->feed = $this->createMock('Drupal\feeds\FeedInterface');
     $this->feed->expects($this->any())
       ->method('getType')
       ->will($this->returnValue($this->feedType));
   }
 
-  public function testFetch() {
-    $file = dirname(dirname(dirname(dirname(dirname(dirname(__FILE__)))))) . '/tests/resources/googlenewstz.rss2';
-    $fetcher_result = new RawFetcherResult(file_get_contents($file));
+  /**
+   * Tests parsing a RSS feed that succeeds.
+   *
+   * @covers ::parse
+   */
+  public function testParse() {
+    $file = $this->resourcesPath() . '/rss/googlenewstz.rss2';
+    $fetcher_result = new RawFetcherResult(file_get_contents($file), $this->getMockFileSystem());
 
     $result = $this->parser->parse($this->feed, $fetcher_result, $this->state);
     $this->assertSame(count($result), 6);
@@ -72,25 +110,33 @@ class SyndicationParserTest extends FeedsUnitTestCase {
   }
 
   /**
+   * Tests parsing an invalid feed.
+   *
+   * @covers ::parse
    * @expectedException \RuntimeException
    */
   public function testInvalidFeed() {
-    $fetcher_result = new RawFetcherResult('beep boop');
+    $fetcher_result = new RawFetcherResult('beep boop', $this->getMockFileSystem());
     $result = $this->parser->parse($this->feed, $fetcher_result, $this->state);
   }
 
   /**
+   * Tests parsing an empty feed.
+   *
+   * @covers ::parse
    * @expectedException \Drupal\feeds\Exception\EmptyFeedException
    */
   public function testEmptyFeed() {
-    $result = new RawFetcherResult('');
+    $result = new RawFetcherResult('', $this->getMockFileSystem());
     $this->parser->parse($this->feed, $result, $this->state);
   }
 
+  /**
+   * @covers ::getMappingSources
+   */
   public function testGetMappingSources() {
     // Not really much to test here.
     $this->assertSame(count($this->parser->getMappingSources()), 16);
   }
 
 }
-

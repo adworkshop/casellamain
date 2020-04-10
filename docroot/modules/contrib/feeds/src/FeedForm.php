@@ -4,14 +4,13 @@ namespace Drupal\feeds;
 
 use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\Entity\ContentEntityForm;
-use Drupal\Core\Entity\EntityManagerInterface;
+use Drupal\Core\Entity\EntityRepositoryInterface;
 use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
 use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\feeds\Plugin\PluginFormFactory;
 use Drupal\feeds\Plugin\Type\FeedsPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 
 /**
  * Form controller for the feed edit forms.
@@ -26,10 +25,10 @@ class FeedForm extends ContentEntityForm {
   protected $formFactory;
 
   /**
-   * Constructs an FeedTypeForm object.
+   * Constructs a new FeedForm object.
    *
-   * @param \Drupal\Core\Entity\EntityManagerInterface $entity_manager
-   *   The entity manager.
+   * @param \Drupal\Core\Entity\EntityRepositoryInterface $entity_repository
+   *   The entity repository service.
    * @param \Drupal\feeds\Plugin\PluginFormFactory $factory
    *   The form factory.
    * @param \Drupal\Core\Entity\EntityTypeBundleInfoInterface $entity_type_bundle_info
@@ -37,8 +36,8 @@ class FeedForm extends ContentEntityForm {
    * @param \Drupal\Component\Datetime\TimeInterface $time
    *   The time service.
    */
-  public function __construct(EntityManagerInterface $entity_manager, PluginFormFactory $factory, EntityTypeBundleInfoInterface $entity_type_bundle_info = NULL, TimeInterface $time = NULL) {
-    parent::__construct($entity_manager, $entity_type_bundle_info, $time);
+  public function __construct(EntityRepositoryInterface $entity_repository, PluginFormFactory $factory, EntityTypeBundleInfoInterface $entity_type_bundle_info = NULL, TimeInterface $time = NULL) {
+    parent::__construct($entity_repository, $entity_type_bundle_info, $time);
     $this->formFactory = $factory;
   }
 
@@ -46,19 +45,11 @@ class FeedForm extends ContentEntityForm {
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
-    // Compatibility with Drupal 8.2.x.
-    try {
-      $datetime = $container->get('datetime.time');
-    }
-    catch (ServiceNotFoundException $e) {
-      $datetime = NULL;
-    }
-
     return new static(
-      $container->get('entity.manager'),
+      $container->get('entity.repository'),
       $container->get('feeds_plugin_form_factory'),
       $container->get('entity_type.bundle.info'),
-      $datetime
+      $container->get('datetime.time')
     );
   }
 
@@ -135,7 +126,7 @@ class FeedForm extends ContentEntityForm {
       $element['submit']['#dropbutton'] = 'save';
       $element['import'] = $element['submit'];
       $element['import']['#dropbutton'] = 'save';
-      $element['import']['#value'] = t('Save and import');
+      $element['import']['#value'] = $this->t('Save and import');
       $element['import']['#weight'] = 0;
       $element['import']['#submit'][] = '::import';
     }
@@ -222,17 +213,17 @@ class FeedForm extends ContentEntityForm {
 
     if ($insert) {
       $this->logger('feeds')->notice('@type: added %title.', $context);
-      drupal_set_message($this->t('%title has been created.', $t_args));
+      $this->messenger()->addMessage($this->t('%title has been created.', $t_args));
     }
     else {
       $this->logger('feeds')->notice('@type: updated %title.', $context);
-      drupal_set_message($this->t('%title has been updated.', $t_args));
+      $this->messenger()->addMessage($this->t('%title has been updated.', $t_args));
     }
 
     if (!$feed->id()) {
       // In the unlikely case something went wrong on save, the feed will be
       // rebuilt and feed form redisplayed the same way as in preview.
-      drupal_set_message($this->t('The feed could not be saved.'), 'error');
+      $this->messenger()->addError($this->t('The feed could not be saved.'));
       $form_state->setRebuild();
       return;
     }
@@ -248,9 +239,9 @@ class FeedForm extends ContentEntityForm {
   /**
    * Form submission handler for the 'import' action.
    *
-   * @param $form
+   * @param array $form
    *   An associative array containing the structure of the form.
-   * @param $form_state
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The current state of the form.
    */
   public function import(array $form, FormStateInterface $form_state) {
@@ -259,6 +250,20 @@ class FeedForm extends ContentEntityForm {
     return $feed;
   }
 
+  /**
+   * Returns whether or not the plugin implements a form for the given type.
+   *
+   * @param \Drupal\feeds\Plugin\Type\FeedsPluginInterface $plugin
+   *   The Feeds plugin.
+   * @param string $operation
+   *   The type of form to check for. See
+   *   \Drupal\feeds\Plugin\PluginFormFactory::hasForm() for more information.
+   *
+   * @return bool
+   *   True if the plugin implements a form of the given type. False otherwise.
+   *
+   * @see \Drupal\feeds\Plugin\PluginFormFactory::hasForm()
+   */
   protected function pluginHasForm(FeedsPluginInterface $plugin, $operation) {
     return $this->formFactory->hasForm($plugin, $operation);
   }

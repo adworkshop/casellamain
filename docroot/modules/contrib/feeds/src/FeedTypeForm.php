@@ -7,10 +7,13 @@ use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\HtmlCommand;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Config\Entity\ConfigEntityStorageInterface;
+use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\RendererInterface;
+use Drupal\Core\Url;
 use Drupal\feeds\Ajax\SetHashCommand;
 use Drupal\feeds\Plugin\PluginFormFactory;
 use Drupal\feeds\Plugin\Type\FeedsPluginInterface;
@@ -37,14 +40,36 @@ class FeedTypeForm extends EntityForm {
   protected $formFactory;
 
   /**
-   * Constructs an FeedTypeForm object.
+   * Provides a service to handle various date related functionality.
+   *
+   * @var \Drupal\Core\Datetime\DateFormatterInterface
+   */
+  protected $dateFormatter;
+
+  /**
+   * Turns a render array into a HTML string.
+   *
+   * @var \Drupal\Core\Render\RendererInterface
+   */
+  protected $renderer;
+
+  /**
+   * Constructs a new FeedTypeForm object.
    *
    * @param \Drupal\Core\Config\Entity\ConfigEntityStorageInterface $feed_type_storage
    *   The feed type storage controller.
+   * @param \Drupal\feeds\Plugin\PluginFormFactory $factory
+   *   The form factory.
+   * @param \Drupal\Core\Datetime\DateFormatterInterface $date_formatter
+   *   The services of date.
+   * @param \Drupal\Core\Render\RendererInterface $renderer
+   *   The render object.
    */
-  public function __construct(ConfigEntityStorageInterface $feed_type_storage, PluginFormFactory $factory) {
+  public function __construct(ConfigEntityStorageInterface $feed_type_storage, PluginFormFactory $factory, DateFormatterInterface $date_formatter, RendererInterface $renderer) {
     $this->feedTypeStorage = $feed_type_storage;
     $this->formFactory = $factory;
+    $this->dateFormatter = $date_formatter;
+    $this->renderer = $renderer;
   }
 
   /**
@@ -53,7 +78,9 @@ class FeedTypeForm extends EntityForm {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('entity_type.manager')->getStorage('feeds_feed_type'),
-      $container->get('feeds_plugin_form_factory')
+      $container->get('feeds_plugin_form_factory'),
+      $container->get('date.formatter'),
+      $container->get('renderer')
     );
   }
 
@@ -101,6 +128,12 @@ class FeedTypeForm extends EntityForm {
       '#description' => $this->t('A description of this feed type.'),
       '#default_value' => $this->entity->getDescription(),
     ];
+    $form['basics']['help'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('Explanation or submission guidelines'),
+      '#default_value' => $this->entity->getHelp(),
+      '#description' => $this->t('This text will be displayed at the top of the feed when creating or editing a feed of this type.'),
+    ];
 
     $form['plugin_settings'] = [
       '#type' => 'vertical_tabs',
@@ -117,10 +150,21 @@ class FeedTypeForm extends EntityForm {
       '#tree' => FALSE,
     ];
 
-    $times = [900, 1800, 3600, 10800, 21600, 43200, 86400, 259200, 604800, 2419200];
+    $times = [
+      900,
+      1800,
+      3600,
+      10800,
+      21600,
+      43200,
+      86400,
+      259200,
+      604800,
+      2419200,
+    ];
 
-    $period = array_map(function($time) {
-      return \Drupal::service('date.formatter')->formatInterval($time);
+    $period = array_map(function ($time) {
+      return $this->dateFormatter->formatInterval($time);
     }, array_combine($times, $times));
 
     foreach ($period as &$p) {
@@ -129,19 +173,28 @@ class FeedTypeForm extends EntityForm {
 
     $period = [
       FeedTypeInterface::SCHEDULE_NEVER => $this->t('Off'),
-      0 => $this->t('As often as possible'),
+      FeedTypeInterface::SCHEDULE_CONTINUOUSLY => $this->t('As often as possible'),
     ] + $period;
 
+    $cron_required = [
+      '#type' => 'link',
+      '#url' => Url::fromUri('https://www.drupal.org/docs/user_guide/en/security-cron.html'),
+      '#title' => $this->t('Requires cron to be configured.'),
+      '#attributes' => [
+        'target' => '_new',
+      ],
+    ];
     $form['feed_type_settings']['import_period'] = [
       '#type' => 'select',
       '#title' => $this->t('Import period'),
       '#options' => $period,
-      '#description' => $this->t('Choose how often a feed should be imported.'),
+      '#description' => $this->t('Choose how often a feed should be imported.') . ' ' . $this->renderer->renderRoot($cron_required),
       '#default_value' => $this->entity->getImportPeriod(),
     ];
 
     foreach ($this->entity->getPlugins() as $type => $plugin) {
       $options = $this->entity->getPluginOptionsList($type);
+      natcasesort($options);
 
       $form[$type . '_wrapper'] = [
         '#type' => 'container',
@@ -205,6 +258,23 @@ class FeedTypeForm extends EntityForm {
     $form_state->setValue($type . '_configuration', $plugin_state->getValues());
 
     return parent::form($form, $form_state);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function actions(array $form, FormStateInterface $form_state) {
+    $actions = parent::actions($form, $form_state);
+
+    if ($this->entity->isNew()) {
+      $actions['submit']['#value'] = $this->t('Save and add mappings');
+      $actions['submit']['#submit'][] = '::toMapping';
+    }
+    else {
+      $actions['submit']['#value'] = $this->t('Save feed type');
+    }
+
+    return $actions;
   }
 
   /**
@@ -282,14 +352,20 @@ class FeedTypeForm extends EntityForm {
   public function save(array $form, FormStateInterface $form_state) {
     $this->entity->save();
     $form_state->setRedirect('entity.feeds_feed_type.edit_form', ['feeds_feed_type' => $this->entity->id()]);
-    drupal_set_message($this->t('Your changes have been saved.'));
+    $this->messenger()->addStatus($this->t('Your changes have been saved.'));
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function toMapping(array &$form, FormStateInterface $form_state) {
+    $form_state->setRedirectUrl($this->entity->toUrl('mapping'));
   }
 
   /**
    * Sends an ajax response.
    */
   public function ajaxCallback(array $form, FormStateInterface $form_state) {
-    $renderer = \Drupal::service('renderer');
     $type = $form_state->getTriggeringElement()['#plugin_type'];
 
     $response = new AjaxResponse();
@@ -301,8 +377,8 @@ class FeedTypeForm extends EntityForm {
     }
 
     // Update the forms.
-    $plugin_settings = $renderer->renderRoot($form['plugin_settings']);
-    $advanced_settings = $renderer->renderRoot($form[$type . '_wrapper']['advanced']);
+    $plugin_settings = $this->renderer->renderRoot($form['plugin_settings']);
+    $advanced_settings = $this->renderer->renderRoot($form[$type . '_wrapper']['advanced']);
     $response->addCommand(new ReplaceCommand('#feeds-ajax-form-wrapper', $plugin_settings));
     $response->addCommand(new ReplaceCommand('#feeds-plugin-' . $type . '-advanced', $advanced_settings));
 
@@ -312,7 +388,7 @@ class FeedTypeForm extends EntityForm {
 
     // Display status messages.
     $status_messages = ['#type' => 'status_messages'];
-    $output = $renderer->renderRoot($status_messages);
+    $output = $this->renderer->renderRoot($status_messages);
     if (!empty($output)) {
       $response->addCommand(new HtmlCommand('.region-messages', $output));
     }
@@ -325,10 +401,10 @@ class FeedTypeForm extends EntityForm {
    *
    * @param string|array $key
    *   The form state key.
-   * @param FormStateInterface $form_state
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The form state to copy values from.
    *
-   * @return FormStateInterface
+   * @return \Drupal\Core\Form\FormStateInterface
    *   A new form state object.
    *
    * @see FormStateInterface::getValue()
@@ -348,6 +424,20 @@ class FeedTypeForm extends EntityForm {
     }
   }
 
+  /**
+   * Returns whether or not the plugin implements a form for the given type.
+   *
+   * @param \Drupal\feeds\Plugin\Type\FeedsPluginInterface $plugin
+   *   The Feeds plugin.
+   * @param string $operation
+   *   The type of form to check for. See
+   *   \Drupal\feeds\Plugin\PluginFormFactory::hasForm() for more information.
+   *
+   * @return bool
+   *   True if the plugin implements a form of the given type. False otherwise.
+   *
+   * @see \Drupal\feeds\Plugin\PluginFormFactory::hasForm()
+   */
   protected function pluginHasForm(FeedsPluginInterface $plugin, $operation) {
     return $this->formFactory->hasForm($plugin, $operation);
   }

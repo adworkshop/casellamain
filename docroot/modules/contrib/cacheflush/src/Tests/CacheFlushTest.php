@@ -1,23 +1,21 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\cacheflush\Tests\CacheFlushTest.
- */
-
 namespace Drupal\cacheflush\Tests;
 
 use Drupal\cacheflush\Controller\CacheflushApi;
+use Drupal\simpletest\WebTestBase;
 
 /**
  * Test cacheflush API.
  *
  * @group cacheflush
  */
-class CacheFlushTest extends \Drupal\simpletest\WebTestBase {
+class CacheFlushTest extends WebTestBase {
 
   /**
    * User of test.
+   *
+   * @var \Drupal\Core\Session\AccountInterface|bool
    */
   protected $testUser;
 
@@ -33,7 +31,7 @@ class CacheFlushTest extends \Drupal\simpletest\WebTestBase {
    */
   protected function setUp() {
     parent::setUp(self::$modules);
-    $this->testUser = $this->drupalCreateUser(array('cacheflush clear cache'));
+    $this->testUser = $this->drupalCreateUser(['cacheflush clear cache']);
   }
 
   /**
@@ -68,9 +66,15 @@ class CacheFlushTest extends \Drupal\simpletest\WebTestBase {
 
     $this->createTestEntitys();
 
-    $enabled = array_values(cacheflush_load_multiple_by_properties(array('title' => 'Enabled', 'status' => 1)));
+    $enabled = array_values(cacheflush_load_multiple_by_properties([
+      'title' => 'Enabled',
+      'status' => 1,
+    ]));
     $this->assertEqual($enabled[0]->getTitle(), 'Enabled', 'Created and loaded entity: enabled.');
-    $disabled = array_values(cacheflush_load_multiple_by_properties(array('title' => 'Disabled', 'status' => 0)));
+    $disabled = array_values(cacheflush_load_multiple_by_properties([
+      'title' => 'Disabled',
+      'status' => 0,
+    ]));
     $this->assertEqual($disabled[0]->getTitle(), 'Disabled', 'Created and loaded entity: disabled.');
 
     $this->drupalLogin($this->testUser);
@@ -96,23 +100,24 @@ class CacheFlushTest extends \Drupal\simpletest\WebTestBase {
    * Create cacheflush test entities.
    */
   public function createTestEntitys() {
-    $data = array();
-    foreach (CacheflushApi::create(\Drupal::getContainer())->getOptionList() as $key => $value) {
+    $data = [];
+    foreach (CacheflushApi::create(\Drupal::getContainer())
+      ->getOptionList() as $key => $value) {
       $data[$key]['functions'] = $value['functions'];
     }
     $data = serialize($data);
 
-    $entity = cacheflush_create(array(
+    $entity = cacheflush_create([
       'title' => 'Enabled',
       'status' => 1,
       'data' => $data,
-    ));
+    ]);
     $entity->save();
-    $entity = cacheflush_create(array(
+    $entity = cacheflush_create([
       'title' => 'Disabled',
       'status' => 0,
       'data' => $data,
-    ));
+    ]);
     $entity->save();
   }
 

@@ -32,7 +32,11 @@ display:
         type: tag
         options: {  }
       query:
-        type: search_views_query
+        type: views_query
+        options:
+          bypass_access: false
+          skip_access: false
+          parse_mode: terms
       exposed_form:
         type: basic
         options:

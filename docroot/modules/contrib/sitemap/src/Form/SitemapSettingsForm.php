@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\sitemap\Form\SitemapSettingsForm.
- */
-
 namespace Drupal\sitemap\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
@@ -134,7 +129,7 @@ class SitemapSettingsForm extends ConfigFormBase {
     }
 
     // Build list of menus.
-    $menus = Menu::loadMultiple();
+    $menus = $this->getMenus();
     $menu_options = array();
     foreach ($menus as $id => $menu) {
       $menu_options[$id] = $menu->label();
@@ -151,7 +146,7 @@ class SitemapSettingsForm extends ConfigFormBase {
     // Build list of vocabularies.
     if ($this->moduleHandler->moduleExists('taxonomy')) {
       $vocab_options = array();
-      $vocabularies = Vocabulary::loadMultiple();
+      $vocabularies = $this->getVocabularies();
       foreach ($vocabularies as $vocabulary) {
         $vocab_options[$vocabulary->id()] = $vocabulary->label();
         $sitemap_ordering['vocabularies_' . $vocabulary->id()] = $vocabulary->label();
@@ -200,6 +195,25 @@ class SitemapSettingsForm extends ConfigFormBase {
         '#attributes' => ['class' => ['draggable']],
       );
     }
+    // Re-order content drag-and-drop items based on pre-existing config.
+    asort($sitemap_order_defaults);
+    foreach ($sitemap_order_defaults as $content_id => $weight) {
+      if (isset($form['sitemap_content']['order'][$content_id])) {
+        $item = $form['sitemap_content']['order'][$content_id];
+        unset($form['sitemap_content']['order'][$content_id]);
+        $form['sitemap_content']['order'][$content_id] = $item;
+      }
+    }
+    // Re-add new config items.
+    $new = array_diff_key($sitemap_ordering, $sitemap_order_defaults);
+    foreach ($new as $content_id => $content_title) {
+      $item = $form['sitemap_content']['order'][$content_id];
+      unset($form['sitemap_content']['order'][$content_id]);
+      $form['sitemap_content']['order'][$content_id] = $item;
+    }
+
+
+
     $form['#attached']['library'][] = 'sitemap/sitemap.admin';
 
     $form['sitemap_options'] = [
@@ -247,9 +261,9 @@ class SitemapSettingsForm extends ConfigFormBase {
     );
     $form['sitemap_options']['sitemap_css_options']['css'] = array(
       '#type' => 'checkbox',
-      '#title' => $this->t('Do not include sitemap CSS file'),
+      '#title' => $this->t('Include sitemap CSS file'),
       '#default_value' => $config->get('css'),
-      '#description' => $this->t("If you don't want to load the included CSS file you can check this box. To learn how to override or specify the CSS at the theme level, visit the @documentation_page.", array('@documentation_page' => $this->l($this->t("documentation page"), Url::fromUri('https://www.drupal.org/node/2615568')))),
+      '#description' => $this->t("Select this box if you wish to load the CSS file included with the module. To learn how to override or specify the CSS at the theme level, visit the @documentation_page.", array('@documentation_page' => $this->l($this->t("documentation page"), Url::fromUri('https://www.drupal.org/node/2615568')))),
     );
 
     if ($this->moduleHandler->moduleExists('book')) {
@@ -307,6 +321,12 @@ class SitemapSettingsForm extends ConfigFormBase {
         '#default_value' => $config->get('show_count'),
         '#description' => $this->t('When enabled, this option will show the number of nodes in each taxonomy term.'),
       ];
+      $form['sitemap_taxonomy_options']['vocabulary_show_links'] = [
+        '#type' => 'checkbox',
+        '#title' => $this->t("Show links for taxonomy terms even if they don't contain any nodes"),
+        '#default_value' => $config->get('vocabulary_show_links'),
+        '#description' => $this->t('When enabled, this option will turn every taxonomy term into a link.'),
+      ];
       $form['sitemap_taxonomy_options']['vocabulary_depth'] = [
         '#type' => 'textfield',
         '#title' => $this->t('Vocabulary depth'),
@@ -351,6 +371,7 @@ class SitemapSettingsForm extends ConfigFormBase {
       'show_vocabularies',
       'show_description',
       'show_count',
+      'vocabulary_show_links',
       'vocabulary_depth',
       'term_threshold',
       'forum_threshold',
@@ -369,7 +390,13 @@ class SitemapSettingsForm extends ConfigFormBase {
     // Save config.
     foreach ($keys as $key) {
       if ($form_state->hasValue($key)) {
-        $config->set(is_string($key) ? $key : implode('.', $key), $form_state->getValue($key));
+        if ($key == 'order') {
+          $order = $form_state->getValue($key);
+          asort($order);
+          $config->set(is_string($key) ? $key : implode('.', $key), $order);
+        } else {
+          $config->set(is_string($key) ? $key : implode('.', $key), $form_state->getValue($key));
+        }
       }
     }
     $config->save();
@@ -384,6 +411,24 @@ class SitemapSettingsForm extends ConfigFormBase {
    */
   protected function getEditableConfigNames() {
     return ['sitemap.settings'];
+  }
+
+  /**
+   * Helper function to get all menus.
+   *
+   * @return \Drupal\Core\Entity\EntityInterface[]|\Drupal\system\Entity\Menu[]
+   */
+  protected function getMenus() {
+    return Menu::loadMultiple();
+  }
+
+  /**
+   * Helper function to get all vocabularies.
+   *
+   * @return \Drupal\Core\Entity\EntityInterface[]|\Drupal\taxonomy\Entity\Vocabulary[]
+   */
+  protected function getVocabularies() {
+    return Vocabulary::loadMultiple();
   }
 
 }

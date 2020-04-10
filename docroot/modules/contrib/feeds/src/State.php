@@ -68,6 +68,17 @@ class State implements StateInterface {
 
   /**
    * The list of messages to display to the user.
+   *
+   * Each entry on the array is expected to have the following values:
+   * - message (string|\Drupal\Component\Render\MarkupInterface): the translated
+   *   message to be displayed to the user;
+   * - type (string): the message's type. These values are supported:
+   *   - 'status'
+   *   - 'warning'
+   *   - 'error'
+   * - repeat (bool): whether or not showing the same message more than once.
+   *
+   * @var array
    */
   protected $messages = [];
 
@@ -76,7 +87,7 @@ class State implements StateInterface {
    */
   public function progress($total, $progress) {
     if ($progress > $total || $total === $progress) {
-      $this->progress = StateInterface::BATCH_COMPLETE;
+      $this->setCompleted();
     }
     elseif ($total) {
       $this->progress = (float) ($progress / $total);
@@ -85,8 +96,15 @@ class State implements StateInterface {
       }
     }
     else {
-      $this->progress = StateInterface::BATCH_COMPLETE;
+      $this->setCompleted();
     }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setCompleted() {
+    $this->progress = StateInterface::BATCH_COMPLETE;
   }
 
   /**
@@ -105,7 +123,23 @@ class State implements StateInterface {
    */
   public function displayMessages() {
     foreach ($this->messages as $message) {
-      drupal_set_message($message['message'], $message['type'], $message['repeat']);
+      \Drupal::messenger()->addMessage($message['message'], $message['type'], $message['repeat']);
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function logMessages(FeedInterface $feed) {
+    foreach ($this->messages as $message) {
+      switch ($message['type']) {
+        case 'status':
+          $message['type'] = 'info';
+          break;
+      }
+      \Drupal::logger('feeds')->log($message['type'], $message['message'], [
+        'feed' => $feed,
+      ]);
     }
   }
 

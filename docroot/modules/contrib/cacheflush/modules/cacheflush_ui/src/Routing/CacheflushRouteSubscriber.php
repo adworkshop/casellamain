@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\cacheflush_ui\Routing\CacheflushRouteSubscriber.
- */
-
 namespace Drupal\cacheflush_ui\Routing;
 
 use Drupal\Core\Routing\RouteSubscriberBase;

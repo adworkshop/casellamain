@@ -1,5 +1,4 @@
 # Schema for the configuration files of the Sitemap module.
-
 sitemap.settings:
   type: config_object
   label: 'Sitemap settings'
@@ -46,6 +45,9 @@ sitemap.settings:
     show_count:
       type: boolean
       label: 'Show node count by taxonomy term flag'
+    vocabulary_show_links:
+      type: boolean
+      label: "Show links for taxonomy terms even if they don't contain any nodes"
     vocabulary_depth:
       type: integer
       label: 'Vocabulary depth'
@@ -66,7 +68,7 @@ sitemap.settings:
       label: 'RSS depth'
     css:
       type: boolean
-      label: 'Exclude css file flag'
+      label: 'Include css file flag'
     order:
       type: sequence
       label: 'Sitemap order'
@@ -76,3 +78,11 @@ sitemap.settings:
 sitemap.order.*:
   type: integer
   label: 'Weight'
+
+system.menu.*.third_party.sitemap:
+  type: mapping
+  label: 'Menu customizations'
+  mapping:
+    sitemap_display_name:
+      type: text
+      label: 'Sitemap display name'
