@@ -152,6 +152,10 @@ AddEncoding gzip svgz
   RewriteCond %{REQUEST_URI} !/core/modules/statistics/statistics.php$
   # Deny access to any other PHP files that do not match the rules above.
   # Specifically, disallow autoload.php from being served directly.
+
+  # Allow the hardcoded sustainability subsite.
+  RewriteCond %{REQUEST_URI} !/sustainability/*
+
   RewriteRule "^(.+/.*|autoload)\.php($|/)" - [F]
 
   # Rules to correctly serve gzip compressed CSS and JS files.
