@@ -154,7 +154,7 @@ AddEncoding gzip svgz
   # Specifically, disallow autoload.php from being served directly.
 
   # Allow the hardcoded sustainability subsite.
-  RewriteCond %{REQUEST_URI} !/sustainability/*
+  # RewriteCond %{REQUEST_URI} !/sustainability/*
 
   RewriteRule "^(.+/.*|autoload)\.php($|/)" - [F]
 
