@@ -23,6 +23,7 @@ dependencies:
     - 'taxonomy_term:job_status:044020c6-de1f-4225-b251-1937c1796e4c'
     - 'taxonomy_term:job_status:0bcbfa58-e41c-4e17-86df-6184406b077d'
   module:
+    - better_exposed_filters
     - datetime
     - node
     - taxonomy
@@ -80,9 +81,9 @@ display:
             first: '« First'
             last: 'Last »'
           expose:
-            items_per_page: false
+            items_per_page: true
             items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options: '10, 25, 50, 100'
             items_per_page_options_all: false
             items_per_page_options_all_label: '- All -'
             offset: false
@@ -102,13 +103,14 @@ display:
           columns:
             nid: nid
             title: title
+            field_location: field_location
             field_city: field_city
             field_state: field_state
+            field_date_posted: field_date_posted
+            field_job_categories: field_job_categories
             field_job_status: field_job_status
-            path: path
-            field_override_location: field_override_location
-            field_override_location_state: field_override_location_state
-            field_override_location_value: field_override_location_value
+            status: status
+            edit_node: edit_node
           info:
             nid:
               sortable: true
@@ -118,6 +120,13 @@ display:
               empty_column: false
               responsive: ''
             title:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_location:
               sortable: true
               default_sort_order: asc
               align: ''
@@ -138,6 +147,18 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
+            field_date_posted:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_job_categories:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
             field_job_status:
               sortable: false
               default_sort_order: asc
@@ -145,35 +166,21 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            path:
+            status:
               sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            field_override_location:
+            edit_node:
               sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            field_override_location_state:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_override_location_value:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-          default: '-1'
+          default: title
           empty_table: false
       row:
         type: fields
@@ -2388,12 +2395,123 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: views_autocomplete_filters_string
+        field_date_posted_value:
+          id: field_date_posted_value
+          table: node__field_date_posted
+          field: field_date_posted_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_date_posted_value_op
+            label: 'Date Posted - Start'
+            description: ''
+            use_operator: false
+            operator: field_date_posted_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_date_posted_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              client_admin: '0'
+              organics: '0'
+              earthlife: '0'
+              customer_care: '0'
+              human_resources: '0'
+              user_admin: '0'
+              recycle_better: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: datetime
+        field_date_posted_value_1:
+          id: field_date_posted_value_1
+          table: node__field_date_posted
+          field: field_date_posted_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_date_posted_value_1_op
+            label: 'Date Posted - End'
+            description: ''
+            use_operator: false
+            operator: field_date_posted_value_1_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_date_posted_value_1
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              client_admin: '0'
+              organics: '0'
+              earthlife: '0'
+              customer_care: '0'
+              human_resources: '0'
+              user_admin: '0'
+              recycle_better: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: datetime
       defaults:
         filters: false
         filter_groups: false
         fields: false
         relationships: false
         sorts: false
+        use_ajax: false
+        exposed_form: false
+        footer: false
       filter_groups:
         operator: AND
         groups:
@@ -3052,6 +3170,77 @@ display:
             label: ''
           granularity: minute
           plugin_id: datetime
+      use_ajax: true
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          input_required: false
+          text_input_required: 'Select any filter and click on Apply to see results'
+          bef:
+            general:
+              allow_secondary: false
+              secondary_label: 'Posted Date Options'
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_hide: false
+            status:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            field_job_categories_target_id:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            field_job_status_target_id:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            title:
+              bef_format: default
+              more_options:
+                is_secondary: false
+                placeholder_text: ''
+            field_date_posted_value:
+              bef_format: bef_datepicker
+              more_options:
+                is_secondary: false
+                placeholder_text: ''
+            field_date_posted_value_1:
+              bef_format: bef_datepicker
+              more_options:
+                is_secondary: false
+                placeholder_text: ''
+          text_input_required_format: basic_html
+      footer:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          content: 'Displaying @start - @end of @total'
+          plugin_id: result
     cache_metadata:
       max-age: -1
       contexts:
