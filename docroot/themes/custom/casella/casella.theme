@@ -1552,23 +1552,22 @@ function casella_preprocess_node(&$variables) {
     $variables['link_icon'] = $icon ? $icon[0]['value'] : FALSE;
 
 
-    if (isset($variables['node']->_referringItem)) {
-      if ($variables['node']->_referringItem->getEntity()) {
-        if ($variables['node']->_referringItem->getEntity()->getEntityTypeId() === 'paragraph') {
-          $variables['attributes']['class'][] = 'internal-indInteractivePanel-gridColRight';
+    if (isset($variables['node']->_referringItem)
+        && $variables['node']->_referringItem->getEntity() 
+        && $variables['node']->_referringItem->getEntity()->getEntityTypeId() === 'paragraph'
+    ) {
+      $variables['attributes']['class'][] = 'internal-indInteractivePanel-gridColRight';
 
-          $variables['customClasses'] = array(
-            'wrapper' => 'internal-indInteractivePanel-gridColRight-fullPromo-wrapper',
-            'reducedWrapper' => 'internal-indInteractivePanel-gridColRight-wrapper',
-            'columnWrapper' => 'internal-indInteractivePanel-fullPromo-colWrapper',
-            'contentContainer' => 'internal-indInteractivePanel-fullPromo-col-content-container',
-            'contentButton' => 'internal-indInteractivePanel-fullPromo-col-content-btn',
-            'titleWrapper' => 'internal-indInteractivePanel-fullPromo-title',
-            'imageWrapper' => 'internal-indInteractivePanel-fullPromo-col-image-container',
-            'bodyWrapper' => 'internal-indInteractivePanel-fullPromo-col-content-wrapper',
-          );
-        }
-      }
+      $variables['customClasses'] = array(
+        'wrapper' => 'internal-indInteractivePanel-gridColRight-fullPromo-wrapper',
+        'reducedWrapper' => 'internal-indInteractivePanel-gridColRight-wrapper',
+        'columnWrapper' => 'internal-indInteractivePanel-fullPromo-colWrapper',
+        'contentContainer' => 'internal-indInteractivePanel-fullPromo-col-content-container',
+        'contentButton' => 'internal-indInteractivePanel-fullPromo-col-content-btn',
+        'titleWrapper' => 'internal-indInteractivePanel-fullPromo-title',
+        'imageWrapper' => 'internal-indInteractivePanel-fullPromo-col-image-container',
+        'bodyWrapper' => 'internal-indInteractivePanel-fullPromo-col-content-wrapper',
+      );
     }
     // If the referring item is a paragraph this is outputting in the zozo tabs.
     // if ('paragraph' == $variables['node']->_referringItem->getEntity()->getEntityTypeId()) {
