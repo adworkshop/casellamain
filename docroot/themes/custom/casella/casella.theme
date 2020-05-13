@@ -1551,10 +1551,10 @@ function casella_preprocess_node(&$variables) {
     $icon = $variables['node']->get('field_icon')->getValue();
     $variables['link_icon'] = $icon ? $icon[0]['value'] : FALSE;
 
-
-    if (isset($variables['node']->_referringItem)
-        && $variables['node']->_referringItem->getEntity() 
-        && $variables['node']->_referringItem->getEntity()->getEntityTypeId() === 'paragraph'
+    if (
+      isset($variables['node']->_referringItem)
+      && $variables['node']->_referringItem->getEntity() 
+      && $variables['node']->_referringItem->getEntity()->getEntityTypeId() === 'paragraph'
     ) {
       $variables['attributes']['class'][] = 'internal-indInteractivePanel-gridColRight';
 
@@ -1580,7 +1580,7 @@ function casella_preprocess_node(&$variables) {
 
       $variables['customClasses'] = array(
         'wrapper' => 'internal-sidebarFullPromo-wrapper',
-        'reducedWrapper' => '',
+        'reducedWrapper' => 'internal-indInteractivePanel-gridColRight-wrapper',
         'columnWrapper' => 'internal-sidebarFullPromo-colWrapper',
         'contentContainer' => 'internal-sidebarFullPromo-col-content-container',
         'contentButton' => 'internal-sidebarFullPromo-col-content-btn',
