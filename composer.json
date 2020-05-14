@@ -127,6 +127,11 @@
                 "type:npm-asset"
             ]
         },
+        "drupal-scaffold": {
+            "excludes": [
+                ".htaccess"
+            ]
+        },
         "merge-plugin": {
             "include": [
                 "docroot/modules/custom/*/composer.json"
