@@ -8,6 +8,7 @@ use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\user\UserInterface;
 
 /**
@@ -19,9 +20,11 @@ use Drupal\user\UserInterface;
  *   id = "export_entity",
  *   label = @Translation("Export entity"),
  *   handlers = {
- *     "view_builder" = "Drupal\content_synchronizer\Entity\ExportEntityViewBuilder",
+ *     "view_builder" =
+ *   "Drupal\content_synchronizer\Entity\ExportEntityViewBuilder",
  *     "list_builder" = "Drupal\content_synchronizer\ExportEntityListBuilder",
- *     "views_data" = "Drupal\content_synchronizer\Entity\ExportEntityViewsData",
+ *     "views_data" =
+ *   "Drupal\content_synchronizer\Entity\ExportEntityViewsData",
  *
  *     "form" = {
  *       "default" = "Drupal\content_synchronizer\Form\ExportEntityForm",
@@ -29,7 +32,8 @@ use Drupal\user\UserInterface;
  *       "edit" = "Drupal\content_synchronizer\Form\ExportEntityForm",
  *       "delete" = "Drupal\content_synchronizer\Form\ExportEntityDeleteForm",
  *     },
- *     "access" = "Drupal\content_synchronizer\ExportEntityAccessControlHandler",
+ *     "access" =
+ *   "Drupal\content_synchronizer\ExportEntityAccessControlHandler",
  *     "route_provider" = {
  *       "html" = "Drupal\content_synchronizer\ExportEntityHtmlRouteProvider",
  *     },
@@ -57,6 +61,7 @@ use Drupal\user\UserInterface;
 class ExportEntity extends ContentEntityBase implements ExportEntityInterface {
 
   use EntityChangedTrait;
+  use StringTranslationTrait;
 
   const TABLE_ITEMS = "content_synchronizer_export_items";
   const FIELD_EXPORT_ID = "export_id";
@@ -66,7 +71,7 @@ class ExportEntity extends ContentEntityBase implements ExportEntityInterface {
   /**
    * The list of entity to export.
    *
-   * @var array
+   * @var array|null
    */
   protected $entitiesList;
 
@@ -245,6 +250,9 @@ class ExportEntity extends ContentEntityBase implements ExportEntityInterface {
 
   /**
    * Remove entity from the export entity list.
+   *
+   * @param \Drupal\Core\Entity\EntityInterface $entity
+   *   The entity.
    */
   public function removeEntity(EntityInterface $entity) {
     \Drupal::database()->delete(self::TABLE_ITEMS)
@@ -273,7 +281,9 @@ class ExportEntity extends ContentEntityBase implements ExportEntityInterface {
       $this->entitiesList = [];
       foreach ($result->fetchAll() as $item) {
         $this->entitiesList[$item->{self::FIELD_ENTITY_TYPE} . '_' . $item->{self::FIELD_ENTITY_ID}] =
-          \Drupal::entityTypeManager()->getStorage($item->{self::FIELD_ENTITY_TYPE})->load($item->{self::FIELD_ENTITY_ID});
+          \Drupal::entityTypeManager()
+            ->getStorage($item->{self::FIELD_ENTITY_TYPE})
+            ->load($item->{self::FIELD_ENTITY_ID});
       }
     }
     return $this->entitiesList;

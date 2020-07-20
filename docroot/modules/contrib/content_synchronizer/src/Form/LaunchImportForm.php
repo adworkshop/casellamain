@@ -13,16 +13,6 @@ use Drupal\Core\Form\FormStateInterface;
  */
 class LaunchImportForm extends FormBase {
 
-
-  const CREATION_ACTION_LABEL = 'Action on entity creation';
-  const CREATION_ACTION_PUBLISH_LABEL = 'Publish created content';
-  const CREATION_ACTION_UNPUBLISH_LABEL = 'Do not publish created content';
-
-  const UPDATE_ACTION_LABEL = 'Action on entity update';
-  const UPDATE_ACTION_SYSTEMATIC_LABEL = 'Always update existing entity with importing content';
-  const UPDATE_ACTION_IF_RECENT_LABEL = 'Update existing entity with importing content only if the last change date of importing content is more recent than the last change date of the corresponding existing entity';
-  const UPDATE_ACTION_NO_UPDATE_LABEL = 'Do not update existing content';
-
   /**
    * The import entity.
    *
@@ -49,21 +39,21 @@ class LaunchImportForm extends FormBase {
       // Settings.
       $form['settings'] = [
         '#type'  => 'fieldset',
-        '#title' => t('Settings'),
+        '#title' => $this->t('Settings'),
       ];
 
       $form['settings']['creationType'] = [
         '#type'          => 'radios',
-        '#title'         => t(static::CREATION_ACTION_LABEL),
+        '#title'         => $this->t('Action on entity creation'),
         '#options'       => static::getCreateOptions(),
-        '#default_value' => ImportProcessor::PUBLICATION_PUBLISH
+        '#default_value' => ImportProcessor::DEFAULT_PUBLICATION_TYPE,
       ];
 
       $form['settings']['updateType'] = [
         '#type'          => 'radios',
-        '#title'         => t(static::UPDATE_ACTION_LABEL),
+        '#title'         => $this->t('Action on entity update'),
         '#options'       => static::getUpdateOptions(),
-        '#default_value' => ImportProcessor::UPDATE_IF_RECENT
+        '#default_value' => ImportProcessor::DEFAULT_UPDATE_TYPE,
       ];
     }
 
@@ -73,7 +63,7 @@ class LaunchImportForm extends FormBase {
 
       $form['launch'] = [
         '#type'        => 'submit',
-        '#value'       => t('Import selected entities'),
+        '#value'       => $this->t('Import selected entities'),
         '#button_type' => 'primary',
       ];
     }
@@ -89,8 +79,8 @@ class LaunchImportForm extends FormBase {
    */
   public static function getCreateOptions() {
     return [
-      ImportProcessor::PUBLICATION_PUBLISH   => t(static::CREATION_ACTION_PUBLISH_LABEL),
-      ImportProcessor::PUBLICATION_UNPUBLISH => t(static::CREATION_ACTION_UNPUBLISH_LABEL),
+      ImportProcessor::PUBLICATION_PUBLISH   => t('Publish created content'),
+      ImportProcessor::PUBLICATION_UNPUBLISH => t('Do not publish created content'),
     ];
   }
 
@@ -102,9 +92,9 @@ class LaunchImportForm extends FormBase {
    */
   public static function getUpdateOptions() {
     return [
-      ImportProcessor::UPDATE_SYSTEMATIC => t(static::UPDATE_ACTION_SYSTEMATIC_LABEL),
-      ImportProcessor::UPDATE_IF_RECENT  => t(static::UPDATE_ACTION_IF_RECENT_LABEL),
-      ImportProcessor::UPDATE_NO_UPDATE  => t(static::UPDATE_ACTION_NO_UPDATE_LABEL),
+      ImportProcessor::UPDATE_SYSTEMATIC => t('Always update existing entity with importing content'),
+      ImportProcessor::UPDATE_IF_RECENT  => t('Update existing entity only if the last change date of new content is more recent than the last change date of the corresponding existing entity'),
+      ImportProcessor::UPDATE_NO_UPDATE  => t('Do not update existing content'),
     ];
   }
 
@@ -119,8 +109,9 @@ class LaunchImportForm extends FormBase {
       array_intersect_key($this->import->getRootsEntities(), array_flip($form_state->getUserInput()['entities_to_import'])),
       [
         $this,
-      'onBatchEnd'
-    ], $form_state->getValue('creationType'), $form_state->getValue('updateType'));
+        'onBatchEnd',
+      ],
+      $form_state->getValue('creationType'), $form_state->getValue('updateType'));
   }
 
   /**
@@ -138,14 +129,13 @@ class LaunchImportForm extends FormBase {
     $build = [
       '#theme'         => 'entities_list_table',
       '#entities'      => $rootEntities,
-      '#status_or_bundle' => t('status'),
+      '#status_or_bundle' => $this->t('status'),
       '#checkbox_name' => 'entities_to_import[]',
-      '#title'         => t('Entities to import'),
+      '#title'         => $this->t('Entities to import'),
       '#attached'      => [
-        'library' => ['content_synchronizer/list']
-      ]
+        'library' => ['content_synchronizer/list'],
+      ],
     ];
-
     $form['entities_list'] = $build;
   }
 

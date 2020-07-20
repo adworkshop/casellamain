@@ -4,11 +4,14 @@ namespace Drupal\content_synchronizer\Processors;
 
 use Drupal\content_synchronizer\Base\BatchProcessorBase;
 use Drupal\content_synchronizer\Entity\ImportEntity;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 
 /**
  * Batch Import.
  */
 class BatchImportProcessor extends BatchProcessorBase {
+
+  use StringTranslationTrait;
 
   /**
    * The entities to import.
@@ -31,11 +34,11 @@ class BatchImportProcessor extends BatchProcessorBase {
    * @param string $updateType
    *   The update entity type.
    */
-  public function import(ImportEntity $import, array $entitiesToImport, $finishCallBack = NULL, $creationType = ImportProcessor::PUBLICATION_UNPUBLISH, $updateType = ImportProcessor::UPDATE_IF_RECENT) {
+  public function import(ImportEntity $import, array $entitiesToImport, $finishCallBack = NULL, $creationType = ImportProcessor::DEFAULT_PUBLICATION_TYPE, $updateType = ImportProcessor::DEFAULT_UPDATE_TYPE) {
     $operations = $this->getBatchOperations($import, $entitiesToImport, $finishCallBack, $creationType, $updateType);
 
     $batch = [
-      'title'      => t('Importing entities...'),
+      'title'      => $this->t('Importing entities...'),
       'operations' => $operations,
       'finished'   => get_called_class() . '::onFinishBatchProcess',
     ];
@@ -53,7 +56,7 @@ class BatchImportProcessor extends BatchProcessorBase {
   /**
    * {@inheritdoc}
    */
-  protected function getBatchOperations(ImportEntity $import, array $entitiesToImport, $finishCallBack = NULL, $creationType = ImportProcessor::PUBLICATION_UNPUBLISH, $updateType = ImportProcessor::UPDATE_IF_RECENT) {
+  protected function getBatchOperations(ImportEntity $import, array $entitiesToImport, $finishCallBack = NULL, $creationType = ImportProcessor::DEFAULT_PUBLICATION_TYPE, $updateType = ImportProcessor::DEFAULT_UPDATE_TYPE) {
     $operations = [];
 
     foreach ($entitiesToImport as $data) {

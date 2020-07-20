@@ -15,7 +15,7 @@ class ImportEvent extends Event {
   /**
    * The imported entity.
    *
-   * @var \Drupal\Core\Entity\Entity
+   * @var \Drupal\Core\Entity\EntityInterface
    */
   protected $entity;
 
@@ -29,7 +29,7 @@ class ImportEvent extends Event {
   /**
    * Return the entity.
    *
-   * @return \Drupal\Core\Entity\Entity
+   * @return \Drupal\Core\Entity\EntityInterface
    *   THe entity.
    */
   public function getEntity() {

@@ -8,8 +8,8 @@ use Drupal\content_synchronizer\Processors\ExportProcessor;
 use Drupal\content_synchronizer\Processors\ImportProcessor;
 use Drupal\content_synchronizer\Service\EntityPublisher;
 use Drupal\content_synchronizer\Service\GlobalReferenceManager;
-use Drupal\Core\Plugin\PluginBase;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Plugin\PluginBase;
 use Drupal\Core\Entity\ContentEntityType;
 use Drupal\content_synchronizer\Processors\Type\TypeProcessorPluginManager;
 
@@ -23,6 +23,11 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
   const EXPORT_HOOK = 'content_synchronizer_export_data';
   const IMPORT_HOOK = 'content_synchronizer_import_entity';
 
+  /**
+   * Ids not to export.
+   *
+   * @var array
+   */
   protected $propertyIdsNotToExport = [
     'status',
     'revision',
@@ -30,7 +35,7 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
     'revision_uid',
     'revision_log',
     'revision_translation_affected',
-    'created',
+    // 'created',
     // 'uuid',.
     'id',
   ];
@@ -91,13 +96,17 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
       else {
         $dataToExport = [];
         foreach ($this->getEntityTranslations($entityToExport) as $languageId => $translation) {
-          // Tag the current entity has exporting in order to avoid circular dependencies.
+
+          // Tag the current entity has exporting in order to avoid
+          // circular dependencies.
           $translation->contentSynchronizerIsExporting = TRUE;
-          $dataToExport[self::KEY_TRANSLATIONS][$languageId] = $this->getDataToExport($translation);
+          $dataToExport[self::KEY_TRANSLATIONS][$languageId] =
+            $this->getDataToExport($translation);
 
           // Add changed time.
           if (method_exists($translation, 'getChangedTime')) {
-            $dataToExport[self::KEY_TRANSLATIONS][$languageId][ExportEntityWriter::FIELD_CHANGED] = $translation->getChangedTime();
+            $dataToExport[self::KEY_TRANSLATIONS][$languageId][ExportEntityWriter::FIELD_CHANGED] =
+              $translation->getChangedTime();
           }
 
           // Custom alter data.
@@ -124,7 +133,7 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
    */
   public function getDefaultLanguageData(array $data, $filterOnEntityDefinition = TRUE) {
     if (count($data[self::KEY_TRANSLATIONS]) > 1) {
-      foreach ($data[self::KEY_TRANSLATIONS] as $languageId => $translationData) {
+      foreach ($data[self::KEY_TRANSLATIONS] as $translationData) {
         if (array_key_exists('default_langcode', $translationData) && $translationData['default_langcode'][0]['value'] == 1) {
           return $translationData;
         }
@@ -136,11 +145,18 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
 
     if ($filterOnEntityDefinition) {
       // Filter on reference data field.
-      $fieldDefinitions =
+      $entityTypeId = $this->getGlobalReferenceManager()
+        ->getEntityTypeFromGid($data[ExportEntityWriter::FIELD_GID]);
+
+      // Get the bundle of the entity.
+      $entityDefinition =
         \Drupal::entityTypeManager()
-          ->getStorage($this->getGlobalReferenceManager()
-            ->getEntityTypeFromGid($data[ExportEntityWriter::FIELD_GID]))
-          ->getFieldStorageDefinitions();
+          ->getDefinition($entityTypeId);
+      $bundleKey = $entityDefinition->getKey('bundle');
+      $bundle = $defaultData[$bundleKey];
+
+      // Get field definitions.
+      $fieldDefinitions = \Drupal::service('entity_field.manager')->getFieldDefinitions($entityTypeId, $bundle);
 
       return array_intersect_key($defaultData, $fieldDefinitions);
     }
@@ -182,7 +198,6 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
    *   The data to import.
    */
   protected function createNewTranslation($languageId, EntityInterface $existingEntity, array $dataToImport = []) {
-    // If the entity is translatable.
     if ($existingEntity->isTranslatable()) {
       if ($existingEntity->language()->getId() == $languageId) {
         return $existingEntity;
@@ -193,17 +208,7 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
         return $translation;
       }
     }
-    else {
-      /* If the entity is not translatable we create a default translation if the curent language is the default one. */
-      if( $existingEntity->isDefaultTranslation() ){
-        return $existingEntity;
-      }
-    }
-
-    // If the entity is not translatable and the current languageId is not the entity default language,
-    // then it seems that configuration is not the same as the export environement
-    // sor the translation is not imported.
-    return NULL;
+    return $existingEntity;
   }
 
   /**
@@ -216,7 +221,7 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
     $gid = $dataToImport[ExportEntityWriter::FIELD_GID];
     $uuid = $dataToImport[ExportEntityWriter::FIELD_UUID];
 
-    // If the entity has already been imported then we don't have to do it again.
+    // If the entity has already been imported, we don't have to do it again.
     $import = ImportProcessor::getCurrentImportProcessor()->getImport();
     if ($import->gidHasAlreadyBeenImported($gid)) {
       return $this->getGlobalReferenceManager()->getEntityByGid($gid);
@@ -384,7 +389,7 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
    * @param \Drupal\Core\Entity\EntityInterface $entityToExport
    *   The entity to export.
    *
-   * @return array
+   * @return array|bool
    *   The data to export.
    */
   public function getDataToExport(EntityInterface $entityToExport) {
@@ -474,7 +479,6 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
 
     // Update data for each translation.
     foreach ($data[self::KEY_TRANSLATIONS] as $languageId => $translationData) {
-      // If the translation does not already exists, we create it into the translation data.
       if (!array_key_exists($languageId, $alreadyExistingEntityTranslations)) {
         if ($translation = $this->createNewTranslation($languageId, $entityToImport, $translationData)) {
           $alreadyExistingEntityTranslations[$languageId] = $translation;
@@ -484,8 +488,6 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
         }
       }
 
-      // The entities that were not existing before the import are now created (but not saved)
-      // so they are now entities to update.
       $entityToUpdate = $alreadyExistingEntityTranslations[$languageId];
 
       // Parse each property of the entity.

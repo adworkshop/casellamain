@@ -3,10 +3,10 @@
 namespace Drupal\content_synchronizer\Plugin\content_synchronizer\type_processor;
 
 use Drupal\content_synchronizer\Processors\ImportProcessor;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\TypedData\TypedData;
 use Drupal\content_synchronizer\Processors\Type\TypeProcessorBase;
 use Drupal\file\Entity\File;
-use Drupal\Core\Entity\EntityInterface;
 
 /**
  * Plugin implementation For the type processor .
@@ -23,7 +23,7 @@ class FieldItemListProcessor extends TypeProcessorBase {
    */
   public function getExportedData(TypedData $propertyData) {
     $data = [];
-    foreach ($propertyData as $order => $value) {
+    foreach ($propertyData as $value) {
       $data[] = $value->getValue();
     }
 

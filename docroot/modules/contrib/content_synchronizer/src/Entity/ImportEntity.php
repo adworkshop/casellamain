@@ -2,6 +2,7 @@
 
 namespace Drupal\content_synchronizer\Entity;
 
+use Drupal\Component\Utility\Environment;
 use Drupal\content_synchronizer\Base\JsonWriterTrait;
 use Drupal\content_synchronizer\Processors\ExportEntityWriter;
 use Drupal\content_synchronizer\Service\GlobalReferenceManager;
@@ -11,10 +12,10 @@ use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\File\FileSystem;
 use Drupal\file\Entity\File;
 use Drupal\user\UserInterface;
 use Drupal\Core\Url;
-use Drupal\Core\Entity\EntityInterface;
 
 /**
  * Defines the Import entity.
@@ -77,8 +78,20 @@ class ImportEntity extends ContentEntityBase implements ImportEntityInterface {
 
   const ENTITY_FIELD_IMPORTING_STATUS = 'status';
 
+  const ARCHIVE_DESTINATION = 'private://content_synchronizer';
+
+  /**
+   * Entity Type data.
+   *
+   * @var array
+   */
   protected $entityTypeData = [];
 
+  /**
+   * Root entities.
+   *
+   * @var array
+   */
   protected $rootEntities;
 
 
@@ -185,7 +198,7 @@ class ImportEntity extends ContentEntityBase implements ImportEntityInterface {
   /**
    * Return the Archive file.
    *
-   * @return \Drupal\file\Entity\File
+   * @return \Drupal\file\Entity\File|null
    *   THe archive file.
    */
   public function getArchive() {
@@ -258,7 +271,7 @@ class ImportEntity extends ContentEntityBase implements ImportEntityInterface {
     $extension = 'gz';
     $validators = [
       'file_validate_extensions' => [$extension],
-      'file_validate_size'       => [file_upload_max_size()],
+      'file_validate_size'       => [Environment::getUploadMaxSize()],
     ];
 
     $fields[self::FIELD_ARCHIVE] = BaseFieldDefinition::create('file')
@@ -296,6 +309,20 @@ class ImportEntity extends ContentEntityBase implements ImportEntityInterface {
       ->setDefaultValue(self::STATUS_NOT_STARTED);
 
     return $fields;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function save() {
+    $name = $this->getName();
+    if (empty($name)) {
+      /** @var \Drupal\file\Entity\File $file */
+      $file = $this->get(static::FIELD_ARCHIVE)->referencedEntities()[0];
+      $this->setName(basename($file->getFileUri()));
+    }
+
+    return parent::save();
   }
 
   /**
@@ -353,7 +380,7 @@ class ImportEntity extends ContentEntityBase implements ImportEntityInterface {
    *   THe archive files path.
    */
   public function getArchiveFilesPath() {
-    return ExportEntityWriter::GENERATOR_DIR . 'import/' . $this->id();
+    return ExportEntityWriter::getGeneratorDir() . 'import/' . $this->id();
   }
 
   /**
@@ -398,7 +425,12 @@ class ImportEntity extends ContentEntityBase implements ImportEntityInterface {
    *   THe gid.
    */
   public function gidIsCurrentlyImporting($gid) {
-    return $this->getEntityDataFromGid($gid)[self::ENTITY_FIELD_IMPORTING_STATUS] == self::STATUS_RUNNING;
+    $entityData = $this->getEntityDataFromGid($gid);
+    $result = FALSE;
+    if ($entityData && array_key_exists(self::ENTITY_FIELD_IMPORTING_STATUS, $entityData)) {
+      $result = $entityData[self::ENTITY_FIELD_IMPORTING_STATUS] == self::STATUS_RUNNING;
+    }
+    return $result;
   }
 
   /**
@@ -408,7 +440,12 @@ class ImportEntity extends ContentEntityBase implements ImportEntityInterface {
    *   The gid.
    */
   public function gidHasAlreadyBeenImported($gid) {
-    return $this->getEntityDataFromGid($gid)[self::ENTITY_FIELD_IMPORTING_STATUS] == self::STATUS_DONE;
+    $entityData = $this->getEntityDataFromGid($gid);
+    $result = FALSE;
+    if ($entityData && array_key_exists(self::ENTITY_FIELD_IMPORTING_STATUS, $entityData)) {
+      $result = $entityData[self::ENTITY_FIELD_IMPORTING_STATUS] == self::STATUS_DONE;
+    }
+    return $result;
   }
 
   /**
@@ -455,13 +492,14 @@ class ImportEntity extends ContentEntityBase implements ImportEntityInterface {
     // Get file and zip file path.
     if ($file = $this->getArchive()) {
       if ($zipUrl = $file->getFileUri()) {
-        $realPathUrl = \Drupal::service('file_system')
-          ->realpath($zipUrl);
+        /** @var \Drupal\Core\File\FileSystem $fileSystem */
+        $fileSystem = \Drupal::service('file_system');
+        $realPathUrl = $fileSystem->realpath($zipUrl);
 
         // Get the destination dir path.
         $dir = $this->getArchiveFilesPath();
         if (!is_dir($dir)) {
-          file_prepare_directory($dir, FILE_CREATE_DIRECTORY);
+          $fileSystem->prepareDirectory($dir, FileSystem::CREATE_DIRECTORY);
         }
 
         $archiver = new ArchiveTar($realPathUrl, 'gz');
@@ -480,18 +518,6 @@ class ImportEntity extends ContentEntityBase implements ImportEntityInterface {
    */
   public function preSave(EntityStorageInterface $storage) {
     $this->removeArchive();
-
-    // We add a default name.
-    if( !$this->label() ){
-      if (!$this->archive->isEmpty()) {
-        $this->setName($this->archive->referencedEntities()[0]->label());
-      }
-      elseif( $dateFormatter = \Drupal::service('date.formatter') )
-      {
-        $this->setName($dateFormatter->format($this->getCreatedTime()));
-      }
-    }
-
     parent::preSave($storage);
   }
 
@@ -499,9 +525,7 @@ class ImportEntity extends ContentEntityBase implements ImportEntityInterface {
    * Remove unzipped archive.
    */
   public function removeArchive() {
-    /** @var \Drupal\Core\File\FileSystemInterface $fileSystem */
-    $fileSystem = \Drupal::service('file_system');
-    $fileSystem->deleteRecursive($this->getArchiveFilesPath());
+    $this->fileSystem()->deleteRecursive($this->getArchiveFilesPath());
   }
 
 }

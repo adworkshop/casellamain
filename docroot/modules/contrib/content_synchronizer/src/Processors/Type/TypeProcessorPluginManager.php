@@ -13,6 +13,11 @@ class TypeProcessorPluginManager extends DefaultPluginManager {
   const SERVICE_NAME = 'plugin.manager.content_synchronizer.type_processor';
   const PACKAGE_NAME = 'type_processor';
 
+  /**
+   * Instances.
+   *
+   * @var array
+   */
   static private $instances = [];
 
   /**
@@ -39,7 +44,8 @@ class TypeProcessorPluginManager extends DefaultPluginManager {
         return self::createInstance($pluginId, []);
       }
     }
-    return NULL;
+
+    return new DefaultTypeProcessor();
   }
 
   /**

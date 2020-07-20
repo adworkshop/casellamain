@@ -7,11 +7,10 @@ use Drupal\content_synchronizer\Processors\BatchExportProcessor;
 use Drupal\content_synchronizer\Processors\ExportEntityWriter;
 use Drupal\content_synchronizer\Service\ArchiveDownloader;
 use Drupal\content_synchronizer\Service\ExportManager;
-use Drupal\Core\Entity\EntityManagerInterface;
 use Drupal\Core\Form\ConfirmFormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\Core\Url;
-use Drupal\user\PrivateTempStoreFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -34,7 +33,7 @@ class ExportConfirmForm extends ConfirmFormBase {
   /**
    * The tempstore factory.
    *
-   * @var \Drupal\user\PrivateTempStoreFactory
+   * @var \Drupal\Core\TempStore\PrivateTempStoreFactory
    */
   protected $tempStoreFactory;
 
@@ -53,18 +52,16 @@ class ExportConfirmForm extends ConfirmFormBase {
   protected $exportManager;
 
   /**
-   * Constructs a DeleteMultiple form object.
+   * ExportConfirmForm constructor.
    *
-   * @param \Drupal\user\PrivateTempStoreFactory $temp_store_factory
+   * @param \Drupal\Core\TempStore\PrivateTempStoreFactory $tempStoreFactory
    *   The tempstore factory.
-   * @param \Drupal\Core\Entity\EntityManagerInterface $manager
-   *   The entity manager.
+   * @param \Drupal\content_synchronizer\Service\ExportManager $exportManager
+   *   The export manager.
    */
-  public function __construct(PrivateTempStoreFactory $temp_store_factory, EntityManagerInterface $manager) {
-    $this->tempStoreFactory = $temp_store_factory;
-    $this->storage = $manager->getStorage('node');
-
-    $this->exportManager = \Drupal::service(ExportManager::SERVICE_NAME);
+  public function __construct(PrivateTempStoreFactory $tempStoreFactory, ExportManager $exportManager) {
+    $this->tempStoreFactory = $tempStoreFactory;
+    $this->exportManager = $exportManager;
   }
 
   /**
@@ -72,8 +69,8 @@ class ExportConfirmForm extends ConfirmFormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('user.private_tempstore'),
-      $container->get('entity.manager')
+      $container->get('tempstore.private'),
+      $container->get(ExportManager::SERVICE_NAME)
     );
   }
 
@@ -81,7 +78,7 @@ class ExportConfirmForm extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function getQuestion() {
-    $this->t('Export entity');
+    return $this->t('Export entity');
   }
 
   /**
@@ -111,13 +108,13 @@ class ExportConfirmForm extends ConfirmFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form['content_synchronizer'] = [
       '#type'  => 'fieldset',
-      '#title' => t('Export'),
+      '#title' => $this->t('Export'),
     ];
 
     $form['content_synchronizer']['quick_export'] = [
       '#type'        => 'submit',
-      '#value'       => t('Export entity'),
-      '#description' => t('Download the entity .zip file with dependencies'),
+      '#value'       => $this->t('Export entity'),
+      '#description' => $this->t('Download the entity .zip file with dependencies'),
       '#button_type' => 'primary',
       '#submit'      => [[$this, 'onQuickExport']],
     ];
@@ -126,13 +123,13 @@ class ExportConfirmForm extends ConfirmFormBase {
     if (!empty($exportsListOptions)) {
       $form['content_synchronizer']['exports_list'] = [
         '#type'    => 'checkboxes',
-        '#title'   => t('Or add the entity to an existing export'),
+        '#title'   => $this->t('Or add the entity to an existing export'),
         '#options' => $exportsListOptions,
       ];
 
       $form['content_synchronizer']['add_to_export'] = [
         '#type'   => 'submit',
-        '#value'  => t('Add to the choosen export'),
+        '#value'  => $this->t('Add to the export'),
         '#submit' => [[$this, 'onAddToExport']],
       ];
     }
@@ -149,7 +146,6 @@ class ExportConfirmForm extends ConfirmFormBase {
    *   The form state.
    */
   public function onQuickExport(array &$form, FormStateInterface $formState) {
-
     $entities = $this->getEntities();
 
     $writer = new ExportEntityWriter();
@@ -167,7 +163,7 @@ class ExportConfirmForm extends ConfirmFormBase {
    */
   public function onBatchEnd($archiveUri) {
     $redirectUrl = $this->getTmpStoredData('url');
-    \Drupal::service(ArchiveDownloader::SERVICE_NAME)
+    ArchiveDownloader::me()
       ->redirectWithArchivePath($redirectUrl, $archiveUri);
   }
 
@@ -194,7 +190,6 @@ class ExportConfirmForm extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-
   }
 
   /**

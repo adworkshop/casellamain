@@ -4,6 +4,7 @@ namespace Drupal\content_synchronizer\Processors;
 
 use Drupal\content_synchronizer\Entity\ImportEntity;
 use Drupal\content_synchronizer\Processors\Entity\EntityProcessorPluginManager;
+use Drupal\Core\Entity\EntityInterface;
 
 /**
  * Import processor.
@@ -13,10 +14,12 @@ class ImportProcessor {
   const PUBLICATION_REVISION = 'publication_revision';
   const PUBLICATION_UNPUBLISH = 'publication_unpublish';
   const PUBLICATION_PUBLISH = 'publication_publish';
+  const DEFAULT_PUBLICATION_TYPE = 'publication_publish';
 
   const UPDATE_SYSTEMATIC = 'update_systematic';
   const UPDATE_IF_RECENT = 'update_if_recent';
   const UPDATE_NO_UPDATE = 'update_no_update';
+  const DEFAULT_UPDATE_TYPE = 'update_if_recent';
 
   /**
    * The current import processor.
@@ -39,7 +42,18 @@ class ImportProcessor {
    */
   protected $entityProcessorPluginManager;
 
+  /**
+   * Creation type.
+   *
+   * @var string
+   */
   protected $creationType;
+
+  /**
+   * Update type.
+   *
+   * @var string
+   */
   protected $updateType;
 
   /**
@@ -53,15 +67,18 @@ class ImportProcessor {
   /**
    * Import the entity from the root data of the import.
    */
-  public function importEntityFromRootData(array $rootData) {
+  public function importEntityFromRootData(array $rootData): EntityInterface {
     self::$currentImportProcessor = $this;
+    $entity = NULL;
 
     // Get the plugin of the entity :
     /** @var \Drupal\content_synchronizer\Processors\Entity\EntityProcessorBase $plugin */
     $plugin = $this->entityProcessorPluginManager->getInstanceByEntityType($rootData[ExportEntityWriter::FIELD_ENTITY_TYPE_ID]);
     if ($entityData = $this->import->getEntityDataFromGid($rootData[ExportEntityWriter::FIELD_GID])) {
-      $plugin->import($entityData);
+      $entity = $plugin->import($entityData);
     }
+
+    return $entity;
   }
 
   /**

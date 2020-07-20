@@ -34,7 +34,7 @@ class ExportManager {
    * @param \Drupal\Core\Entity\EntityInterface $entity
    *   The entity.
    *
-   * @return \Drupal\content_synchronizer\Entity\ExportEntity
+   * @return array
    *   THe list of exports.
    */
   public function getEntitiesExport(EntityInterface $entity) {

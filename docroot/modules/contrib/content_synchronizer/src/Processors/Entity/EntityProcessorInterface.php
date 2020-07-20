@@ -22,7 +22,7 @@ interface EntityProcessorInterface extends PluginInspectionInterface {
    * @param \Drupal\Core\Entity\EntityInterface $entityToExport
    *   The entity to export.
    *
-   * @return array
+   * @return array|bool
    *   The entity data to export.
    */
   public function getDataToExport(EntityInterface $entityToExport);
@@ -38,7 +38,7 @@ interface EntityProcessorInterface extends PluginInspectionInterface {
   /**
    * Return the entity to import.
    *
-   * @return \Drupal\Core\Entity\Entity
+   * @return \Drupal\Core\Entity\EntityInterface
    *   The entity to import.
    */
   public function getEntityToImport(array $data, EntityInterface $existingEntity);

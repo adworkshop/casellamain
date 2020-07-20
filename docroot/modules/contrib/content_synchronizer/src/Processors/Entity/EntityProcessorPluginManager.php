@@ -13,6 +13,11 @@ class EntityProcessorPluginManager extends DefaultPluginManager {
   const SERVICE_NAME = 'plugin.manager.content_synchronizer.entity_processor';
   const PACKAGE_NAME = 'entity_processor';
 
+  /**
+   * Instances.
+   *
+   * @var array
+   */
   static private $instances = [];
 
   /**
@@ -28,6 +33,8 @@ class EntityProcessorPluginManager extends DefaultPluginManager {
 
     $this->alterInfo('content_synchronizer_entity_processor_info');
     $this->setCacheBackend($cache_backend, 'content_synchronizer_entity_processor_info');
+
+    $this->cacheTags[] = self::PACKAGE_NAME;
   }
 
   /**

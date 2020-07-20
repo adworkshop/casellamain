@@ -47,13 +47,8 @@ formatter.tabs:
   version: VERSION
   js:
     formatters/tabs/tabs.js: {}
-
-formatter.details:
-  version: VERSION
-  js:
-    formatters/details/details.js: {}
   dependencies:
-    - field_group/core
+    - core/modernizr
 
 element.horizontal_tabs:
   version: VERSION
@@ -65,3 +60,4 @@ element.horizontal_tabs:
       formatters/tabs/horizontal-tabs.css: {}
   dependencies:
     - core/drupal.collapse
+    - core/modernizr

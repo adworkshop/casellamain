@@ -1,6 +1,7 @@
 services:
   content_synchronizer.entity_export_form_builder:
     class: \Drupal\content_synchronizer\Service\EntityExportFormBuilder
+    arguments: ['@content_synchronizer.export_manager', '@request_stack']
 
   content_synchronizer.export_manager:
     class: \Drupal\content_synchronizer\Service\ExportManager
@@ -10,10 +11,15 @@ services:
 
   content_synchronizer.entity_publisher:
     class: \Drupal\content_synchronizer\Service\EntityPublisher
+    arguments: ['@module_handler', '@uuid']
 
   content_synchronizer.archive_downloader:
     class: \Drupal\content_synchronizer\Service\ArchiveDownloader
+    arguments: ['@current_user']
 
+  content_synchronizer.manager:
+    class: Drupal\content_synchronizer\Service\ContentSynchronizerManager
+    arguments: ['@date.formatter', '@file_system', '@entity_type.manager', '@app.root']
 
   # PLUGIN MANAGER :
   plugin.manager.content_synchronizer.entity_processor:

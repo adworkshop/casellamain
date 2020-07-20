@@ -12,15 +12,20 @@ use Drupal\Core\Field\EntityReferenceFieldItemList;
 use Drupal\content_synchronizer\Processors\Type\TypeProcessorBase;
 
 /**
- * Plugin implementation For the type processor .
+ * Plugin implementation For the type processor.
  *
  * @TypeProcessor(
- *   id = "content_synchronizer_entity_reference_field_item_list_type_processor",
+ *   id = "cs_entity_reference_field_item_list_type_processor",
  *   fieldType = "Drupal\Core\Field\EntityReferenceFieldItemList"
  * )
  */
 class EntityReferenceFieldItemListProcessor extends TypeProcessorBase {
 
+  /**
+   * List of dependencies.
+   *
+   * @var array
+   */
   static protected $dependenciesBuffer = [];
 
   /**
@@ -51,8 +56,8 @@ class EntityReferenceFieldItemListProcessor extends TypeProcessorBase {
     /** @var \Drupal\content_synchronizer\Processors\Entity\EntityProcessorPluginManager $entityProcessorManager */
     $entityProcessorManager = \Drupal::service(EntityProcessorPluginManager::SERVICE_NAME);
 
-    /** @var \Drupal\Core\Entity\EntityInterface $entity */
     $order = 0;
+    /** @var \Drupal\Core\Entity\Entity $entity */
     foreach ($propertyData->referencedEntities() as $entity) {
       /** @var \Drupal\content_synchronizer\Processors\Entity\EntityProcessorBase $plugin */
       $plugin = $entityProcessorManager->getInstanceByEntityType($entity->getEntityTypeId());
@@ -96,7 +101,8 @@ class EntityReferenceFieldItemListProcessor extends TypeProcessorBase {
 
       foreach ($data[$propertyId] as $order => $entityGid) {
 
-        // If the entity to reference is currently importing, then we cannot add it to the reference because it probably do not have an id yet.
+        // If the entity to reference is currently importing, then we cannot
+        // add it to the reference because it probably do not have an id yet.
         if ($import->gidIsCurrentlyImporting($entityGid)) {
           $referenceField->appendItem(NULL);
           $this->addDependencie($entityGid, $referenceField, $order);

@@ -2,7 +2,6 @@
 
 namespace Drupal\content_synchronizer\Processors;
 
-use Cocur\Slugify\Slugify;
 use Drupal\content_synchronizer\Base\JsonWriterTrait;
 use Drupal\Core\Archiver\ArchiveTar;
 use Drupal\Core\Entity\EntityInterface;
@@ -17,8 +16,6 @@ class ExportEntityWriter {
   const TYPE_EXTENSION = '.json';
   const EXPORT_EXTENSION = '.tar.gz';
   const ROOT_FILE_NAME = 'root';
-  const GENERATOR_DIR = 'temporary://content_synchronizer/';
-
 
   const FIELD_GID = 'gid';
   const FIELD_UUID = 'uuid';
@@ -27,20 +24,45 @@ class ExportEntityWriter {
   const FIELD_ENTITY_ID = 'entity_id';
   const FIELD_LABEL = 'label';
 
+  /**
+   * Generator dir.
+   *
+   * @var string
+   */
+  protected static $generatorDir = NULL;
+
+  /**
+   * The id of the entity.
+   *
+   * @var string
+   */
   protected $id;
 
   /**
-   * Slugifier.
-   *
-   * @var \Cocur\Slugify\Slugify
+   * Return the entity label.
    */
-  protected $slugifier;
+  public static function getEntityLabel(EntityInterface $entity) {
+    return $entity->label();
+  }
 
   /**
-   * ExportEntityWriter constructor.
+   * Return the generator dir.
+   *
+   * @return string
+   *   The generator dir.
    */
-  public function __construct() {
-    $this->slugifier = new Slugify();
+  public static function getGeneratorDir() {
+    if (!static::$generatorDir) {
+      static::$generatorDir = 'temporary://content_synchronizer';
+      try {
+        static::$generatorDir .= '_' . exec('whoami') . '/';
+      }
+      catch (\Exception $e) {
+        static::$generatorDir .= '/';
+      }
+    }
+
+    return static::$generatorDir;
   }
 
   /**
@@ -54,7 +76,7 @@ class ExportEntityWriter {
    * Return the directory path.
    */
   public function getDirPath() {
-    return self::GENERATOR_DIR . 'export/' . $this->id;
+    return static::getGeneratorDir() . 'export/' . $this->id;
   }
 
   /**
@@ -66,11 +88,14 @@ class ExportEntityWriter {
    *   The data to export.
    */
   public function write(EntityInterface $entityToExport, array $dataToExport) {
-    if (array_key_exists('gid', $dataToExport) && $gid = $dataToExport['gid']) {
+    if (array_key_exists('gid', $dataToExport)
+      && $gid = $dataToExport['gid']
+    ) {
 
       // Get the previous exported entities :
       if ($allExportedData = $this->getExportedData($entityToExport)) {
-        // If the current entity has already been exported, the writer don't do anything.
+        // If the current entity has already been exported, the writer don't
+        // do anything.
         if (array_key_exists($gid, $allExportedData)) {
           return;
         }
@@ -127,13 +152,6 @@ class ExportEntityWriter {
   }
 
   /**
-   * Return the entity label.
-   */
-  public static function getEntityLabel(EntityInterface $entity) {
-    return $entity->label();
-  }
-
-  /**
    * Return the file path of the type of the entity.
    */
   public function getExpotedDataTypeFilePath(EntityInterface $entity) {
@@ -151,16 +169,16 @@ class ExportEntityWriter {
    * Zip the generated files.
    */
   public function archiveFiles() {
-    $path = \Drupal::service('file_system')
-      ->realpath($this->getDirPath());
+    /** @var \Drupal\Core\File\FileSystem $fileSystem */
+    $fileSystem = \Drupal::service('file_system');
+    $path = $fileSystem->realpath($this->getDirPath());
 
     $archivePath = $path . static::EXPORT_EXTENSION;
+    if (file_exists($archivePath)) {
+      $fileSystem->delete($archivePath);
+    }
 
-    /** @var \Drupal\Core\File\FileSystemInterface $fileSystem */
-    $fileSystem = \Drupal::service('file_system');
-    $fileSystem->delete($archivePath);
     $archiver = new ArchiveTar($archivePath, 'gz');
-
     $this->addRepToArchive($path, '', $archiver);
   }
 
@@ -194,6 +212,7 @@ class ExportEntityWriter {
    */
   public function getArchiveUri() {
     $archivePath = $this->getArchivePath();
+
     if (file_exists($archivePath)) {
       return $archivePath;
     }

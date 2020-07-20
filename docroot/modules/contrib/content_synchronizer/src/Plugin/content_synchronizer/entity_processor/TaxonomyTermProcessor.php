@@ -44,7 +44,7 @@ class TaxonomyTermProcessor extends EntityProcessorBase {
     $dispatcher = \Drupal::service('event_dispatcher');
     $dispatcher->addListener(ImportEvent::ON_ENTITY_IMPORTER, [
       $this,
-      'onImportedEntity'
+      'onImportedEntity',
     ]);
   }
 
@@ -65,7 +65,8 @@ class TaxonomyTermProcessor extends EntityProcessorBase {
       $import = $importProcessor->getImport();
 
       foreach ($defaultLanguageData['parents'] as $parentGid) {
-        // If the entity to reference is currently importing, then we cannot add it to the reference because it probably do not have an id yet.
+        // If the entity to reference is currently importing, then we cannot
+        // add it to the reference because it probably do not have an id yet.
         if ($import->gidIsCurrentlyImporting($parentGid)) {
           $this->addParentDependencie($data, $parentGid);
         }

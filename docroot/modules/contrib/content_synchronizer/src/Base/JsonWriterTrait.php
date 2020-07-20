@@ -2,10 +2,20 @@
 
 namespace Drupal\content_synchronizer\Base;
 
+use Drupal\Core\File\FileSystem;
+use Drupal\file\Entity\File;
+
 /**
  * Json writer tool.
  */
 trait JsonWriterTrait {
+
+  /**
+   * File System.
+   *
+   * @var \Drupal\Core\File\FileSystem
+   */
+  protected $fileSystem;
 
   /**
    * Save json in the destination file.
@@ -18,7 +28,13 @@ trait JsonWriterTrait {
     $dir = implode('/', $dir);
     $this->createDirectory($dir);
 
-    file_save_data(json_encode($data), $destination, FILE_EXISTS_REPLACE);
+    $this->fileSystem()->prepareDirectory($dir, FileSystem::CHMOD_DIRECTORY);
+    $uri = $this->fileSystem()->saveData(json_encode($data), $destination, FileSystem::EXISTS_REPLACE);
+
+    File::create([
+      'uri' => $uri,
+      'status' => FILE_STATUS_PERMANENT,
+    ])->save();
   }
 
   /**
@@ -36,7 +52,7 @@ trait JsonWriterTrait {
    */
   protected function createDirectory($dir) {
     if (!is_dir($dir)) {
-      file_prepare_directory($dir, FILE_CREATE_DIRECTORY);
+      $this->fileSystem()->prepareDirectory($dir, FileSystem::CREATE_DIRECTORY);
     }
   }
 
@@ -54,6 +70,16 @@ trait JsonWriterTrait {
     }
 
     return $root . '/' . $fileName;
+  }
+
+  /**
+   * Return file system.
+   *
+   * @return \Drupal\Core\File\FileSystem|mixed
+   *   The file system.
+   */
+  public function fileSystem() {
+    return \Drupal::service('file_system');
   }
 
 }

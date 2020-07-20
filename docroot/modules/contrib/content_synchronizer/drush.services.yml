@@ -3,4 +3,4 @@ services:
     class: \Drupal\content_synchronizer\Commands\ContentSynchronizerCommands
     tags:
       - { name: drush.command }
-    arguments: ['@date.formatter', '@file_system']
+    arguments: ['@content_synchronizer.manager']

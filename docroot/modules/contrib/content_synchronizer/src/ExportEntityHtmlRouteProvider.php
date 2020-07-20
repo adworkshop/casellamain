@@ -43,6 +43,7 @@ class ExportEntityHtmlRouteProvider extends AdminHtmlRouteProvider {
    *   The generated route, if available.
    */
   protected function getCollectionRoute(EntityTypeInterface $entity_type) {
+    $route = NULL;
     if ($entity_type->hasLinkTemplate('collection') && $entity_type->hasListBuilderClass()) {
       $entity_type_id = $entity_type->id();
       $route = new Route($entity_type->getLinkTemplate('collection'));
@@ -53,9 +54,8 @@ class ExportEntityHtmlRouteProvider extends AdminHtmlRouteProvider {
         ])
         ->setRequirement('_permission', 'access export entity overview')
         ->setOption('_admin_route', TRUE);
-
-      return $route;
     }
+    return $route;
   }
 
   /**
@@ -68,6 +68,7 @@ class ExportEntityHtmlRouteProvider extends AdminHtmlRouteProvider {
    *   The generated route, if available.
    */
   protected function getSettingsFormRoute(EntityTypeInterface $entity_type) {
+    $route = NULL;
     if (!$entity_type->getBundleEntityType()) {
       $route = new Route("/admin/structure/{$entity_type->id()}/settings");
       $route
@@ -77,9 +78,8 @@ class ExportEntityHtmlRouteProvider extends AdminHtmlRouteProvider {
         ])
         ->setRequirement('_permission', $entity_type->getAdminPermission())
         ->setOption('_admin_route', TRUE);
-
-      return $route;
     }
+    return $route;
   }
 
 }

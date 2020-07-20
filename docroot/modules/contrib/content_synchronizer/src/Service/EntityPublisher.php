@@ -2,9 +2,11 @@
 
 namespace Drupal\content_synchronizer\Service;
 
+use Drupal\Component\Uuid\UuidInterface;
 use Drupal\content_synchronizer\Processors\Entity\EntityProcessorBase;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\content_synchronizer\Processors\ImportProcessor;
+use Drupal\Core\Extension\ModuleHandlerInterface;
 
 /**
  * THe entity publsher service.
@@ -14,17 +16,53 @@ class EntityPublisher {
   const SERVICE_NAME = 'content_synchronizer.entity_publisher';
 
   /**
+   * Module Handler.
+   *
+   * @var \Drupal\Core\Extension\ModuleHandlerInterface
+   */
+  protected $moduleHandler;
+
+  /**
+   * Uuid.
+   *
+   * @var \Drupal\Component\Uuid\UuidInterface
+   */
+  protected $uuid;
+
+  /**
+   * EntityPublisher constructor.
+   *
+   * @param \Drupal\Core\Extension\ModuleHandlerInterface $moduleHandler
+   *   The module handler.
+   * @param \Drupal\Component\Uuid\UuidInterface $uuid
+   *   THe uuid handler.
+   */
+  public function __construct(ModuleHandlerInterface $moduleHandler, UuidInterface $uuid) {
+    $this->moduleHandler = $moduleHandler;
+    $this->uuid = $uuid;
+  }
+
+  /**
    * Save the entity after import.
    *
    * If the entity is revisionable, it creates a new revision.
    * If the entity is new and is a root entity, then it is unpublished.
+   *
+   * @param \Drupal\Core\Entity\EntityInterface $entity
+   *   The entity to save.
+   * @param string $gid
+   *   The gid of the entity.
+   * @param \Drupal\Core\Entity\EntityInterface $existingEntity
+   *   The existing entity.
+   * @param array $dataToImport
+   *   The data to import.
    */
-  public function saveEntity(EntityInterface $entity, $gid = NULL, $existingEntity = NULL, array $dataToImport = []) {
+  public function saveEntity(EntityInterface $entity, $gid = NULL, EntityInterface $existingEntity = NULL, array $dataToImport = []) {
 
     // Alter entity before import.
     $entityDataToImport = array_key_exists('translations', $dataToImport) ? $dataToImport['translations'][$entity->language()
       ->getId()] : $dataToImport;
-    \Drupal::moduleHandler()
+    $this->moduleHandler
       ->alter(EntityProcessorBase::IMPORT_HOOK, $entity, $existingEntity, $entityDataToImport);
 
     // Try to create a new revision of the current entity.
@@ -110,7 +148,7 @@ class EntityPublisher {
   protected function defaultSave(EntityInterface $entity, EntityInterface $existingEntity = NULL) {
     if ($this->haveToSave($entity, $existingEntity)) {
       if (is_null($entity->uuid())) {
-        $entity->uuid = \Drupal::service('uuid')->generate();
+        $entity->uuid = $this->uuid->generate();
       }
 
       $entity->save();

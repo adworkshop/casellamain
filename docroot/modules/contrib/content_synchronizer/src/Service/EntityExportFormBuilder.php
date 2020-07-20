@@ -5,18 +5,36 @@ namespace Drupal\content_synchronizer\Service;
 use Drupal\content_synchronizer\Entity\ExportEntity;
 use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
 use Drupal\Core\Entity\ContentEntityBase;
-use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityForm;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Url;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * The entity export form builder.
  */
 class EntityExportFormBuilder {
 
+  use StringTranslationTrait;
+
   const SERVICE_NAME = "content_synchronizer.entity_export_form_builder";
   const ARCHIVE_PARAMS = 'archive';
+
+  /**
+   * Export Manager.
+   *
+   * @var \Drupal\content_synchronizer\Service\ExportManager
+   */
+  protected $exportManager;
+
+  /**
+   * Request.
+   *
+   * @var \Symfony\Component\HttpFoundation\Request
+   */
+  protected $request;
 
   /**
    * The current url.
@@ -26,7 +44,20 @@ class EntityExportFormBuilder {
   protected $currentUrl;
 
   /**
-   * Add the export submform in the entity edition form, if the entity is exportable.
+   * EntityExportFormBuilder constructor.
+   *
+   * @param \Drupal\content_synchronizer\Service\ExportManager $exportManager
+   *   The export manager.
+   * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
+   *   The requeststack.
+   */
+  public function __construct(ExportManager $exportManager, RequestStack $requestStack) {
+    $this->exportManager = $exportManager;
+    $this->request = $requestStack->getCurrentRequest();
+  }
+
+  /**
+   * Add the export form in the entity edit form, if the entity is exportable.
    */
   public function addExportFields(array &$form, FormStateInterface $formState) {
     if ($this->isEntityEditForm($form, $formState)) {
@@ -54,7 +85,7 @@ class EntityExportFormBuilder {
         $entity = $formObject->getEntity();
         if (strpos(get_class($entity), 'content_synchronizer') === FALSE) {
           if ($objectId = $entity->id()) {
-            return isset($objectId);
+            return $objectId !== NULL;
           }
         }
       }
@@ -88,14 +119,14 @@ class EntityExportFormBuilder {
 
     $form['content_synchronizer'] = [
       '#type'   => 'details',
-      '#title'  => $isBundle ? t('Export all entities of @bundle bundle', ['@bundle' => $entity->label()]) : t('Export'),
+      '#title'  => $isBundle ? $this->t('Export all entities of @bundle bundle', ['@bundle' => $entity->label()]) : $this->t('Export'),
       '#group'  => 'advanced',
-      '#weight' => '100'
+      '#weight' => '100',
     ];
 
     // Init labels.
-    $quickExportButton = $isBundle ? t('Export entities') : t('Export entity');
-    $addToExportButton = $isBundle ? t('Or add the entities to an existing export') : t('Or add the entity to an existing export');
+    $quickExportButton = $isBundle ? $this->t('Export entities') : $this->t('Export entity');
+    $addToExportButton = $isBundle ? $this->t('Or add the entities to an existing export') : $this->t('Or add the entity to an existing export');
 
     $form['content_synchronizer']['quick_export'] = [
       '#markup' => '<a href="' . $this->getQuickExportUrl($entity) . '" class="button button--primary">' . $quickExportButton . '</a>',
@@ -112,7 +143,7 @@ class EntityExportFormBuilder {
 
       $form['content_synchronizer']['add_to_export'] = [
         '#type'   => 'submit',
-        '#value'  => t('Add to the choosen export'),
+        '#value'  => $this->t('Add to the export'),
         '#submit' => [get_called_class() . '::onAddToExport'],
       ];
     }

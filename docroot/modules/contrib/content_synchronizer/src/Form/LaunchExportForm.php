@@ -9,6 +9,8 @@ use Drupal\content_synchronizer\Service\EntityExportFormBuilder;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Launch Export Form.
@@ -22,7 +24,31 @@ class LaunchExportForm extends FormBase {
    */
   protected $export;
 
+  /**
+   * Current url.
+   *
+   * @var string
+   */
   protected $currentUrl;
+
+  /**
+   * LaunchExportForm constructor.
+   *
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   *   The request.
+   */
+  public function __construct(Request $request) {
+    $this->currentUrl = $request->getRequestUri();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('request_stack')->getCurrentRequest()
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -45,13 +71,13 @@ class LaunchExportForm extends FormBase {
     if (array_key_exists('entities_list', $form)) {
       $form['launch'] = [
         '#type'        => 'submit',
-        '#value'       => t('Launch export'),
-        '#button_type' => 'primary'
+        '#value'       => $this->t('Launch export'),
+        '#button_type' => 'primary',
       ];
 
       $form['deleteEntities'] = [
         '#type'   => 'submit',
-        '#value'  => t('Remove selected entities from export list'),
+        '#value'  => $this->t('Remove selected entities from export list'),
         '#submit' => ['::removeSelectedEntities'],
       ];
     }
@@ -79,15 +105,13 @@ class LaunchExportForm extends FormBase {
     $entitiesToExport = array_intersect_key($this->export->getEntitiesList(), array_flip($entitiesToExport));
 
     if (!empty($entitiesToExport)) {
-      $this->currentUrl = \Drupal::request()->getRequestUri();
-
       $writer = new ExportEntityWriter();
       $writer->initFromId($this->export->label());
 
       $batchExportProcessor = new BatchExportProcessor($writer);
       $batchExportProcessor->exportEntities($entitiesToExport, [
         $this,
-        'onBatchEnd'
+        'onBatchEnd',
       ]);
     }
   }
@@ -97,8 +121,7 @@ class LaunchExportForm extends FormBase {
    */
   public function onBatchEnd($archiveUri) {
     $redirectUrl = $this->currentUrl;
-    \Drupal::service(ArchiveDownloader::SERVICE_NAME)
-      ->redirectWithArchivePath($redirectUrl, $archiveUri);
+    ArchiveDownloader::me()->redirectWithArchivePath($redirectUrl, $archiveUri);
   }
 
   /**
@@ -113,15 +136,14 @@ class LaunchExportForm extends FormBase {
         '#entities'         => $rootEntities,
         '#status_or_bundle' => 'bundle',
         '#checkbox_name'    => 'entities_to_export[]',
-        '#title'            => t('Entities to export'),
+        '#title'            => $this->t('Entities to export'),
         '#attached'         => [
-          'library' => ['content_synchronizer/list']
-        ]
+          'library' => ['content_synchronizer/list'],
+        ],
       ];
 
       $form['entities_list'] = $build;
     }
-
   }
 
   /**
@@ -130,7 +152,7 @@ class LaunchExportForm extends FormBase {
   public function getRootsEntities() {
     $data = [];
 
-    /** @var \Drupal\Core\Entity\EntityInterface $entity */
+    /** @var \Drupal\Core\Entity\Entity $entity */
     foreach ($this->export->getEntitiesList() as $key => $entity) {
       $data[$key] = [
         "entity_type_id" => $entity->getEntityTypeId(),
@@ -152,9 +174,7 @@ class LaunchExportForm extends FormBase {
    *   The build form array.
    */
   protected function addDownloadIframe(array &$form) {
-    if ($archiveUri = \Drupal::request()
-      ->get(EntityExportFormBuilder::ARCHIVE_PARAMS)
-    ) {
+    if ($archiveUri = static::getRequestParam()) {
       if (file_exists($archiveUri)) {
         $form['archive'] = [
           '#type'       => 'html_tag',
@@ -166,6 +186,16 @@ class LaunchExportForm extends FormBase {
         ];
       }
     }
+  }
+
+  /**
+   * Return request.
+   *
+   * @return mixed|\Symfony\Component\HttpFoundation\Request
+   *   The value of the param.
+   */
+  public static function getRequestParam() {
+    return \Drupal::request()->get(EntityExportFormBuilder::ARCHIVE_PARAMS);
   }
 
 }

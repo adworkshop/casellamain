@@ -48,8 +48,7 @@ class FileFieldItemListProcessor extends TypeProcessorBase {
    * {@inheritdoc}
    */
   public function initImportedEntity(EntityInterface $entityToImport, $propertyId, array $data) {
-
-    /** @var \Drupal\Core\Entity\EntityReferenceFieldItemList $referenceField */
+    /** @var \Drupal\Core\Field\EntityReferenceFieldItemListInterface $referenceField */
     $referenceField = $entityToImport->get($propertyId);
 
     // Empty previous references.

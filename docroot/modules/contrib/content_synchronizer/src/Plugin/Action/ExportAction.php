@@ -5,9 +5,9 @@ namespace Drupal\content_synchronizer\Plugin\Action;
 use Drupal\content_synchronizer\Form\ExportConfirmForm;
 use Drupal\content_synchronizer\Service\ExportManager;
 use Drupal\Core\Action\ActionBase;
-use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -24,7 +24,7 @@ class ExportAction extends ActionBase implements ContainerFactoryPluginInterface
   /**
    * The tempstore object.
    *
-   * @var \Drupal\user\SharedTempStore
+   * @var \Drupal\Core\TempStore\PrivateTempStore
    */
   protected $tempStore;
 
@@ -45,12 +45,12 @@ class ExportAction extends ActionBase implements ContainerFactoryPluginInterface
   /**
    * {@inheritdoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, $temp_store_factory = NULL, AccountInterface $current_user = NULL) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, PrivateTempStoreFactory $temp_store_factory = NULL, AccountInterface $current_user = NULL, ExportManager $exportManager) {
     $this->currentUser = $current_user;
     $this->tempStore = $temp_store_factory->get(ExportConfirmForm::FORM_ID);
 
     parent::__construct($configuration, $plugin_id, $plugin_definition);
-    $this->exportManager = \Drupal::service(ExportManager::SERVICE_NAME);
+    $this->exportManager = $exportManager;
   }
 
   /**
@@ -66,7 +66,7 @@ class ExportAction extends ActionBase implements ContainerFactoryPluginInterface
   public function executeMultiple(array $entities) {
     $info = [
       'url'      => \Drupal::request()->getRequestUri(),
-      'entities' => []
+      'entities' => [],
     ];
     /** @var \Drupal\Core\Entity\EntityInterface $entity */
     foreach ($entities as $entity) {
@@ -90,8 +90,9 @@ class ExportAction extends ActionBase implements ContainerFactoryPluginInterface
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get('user.private_tempstore'),
-      $container->get('current_user')
+      $container->get('tempstore.private'),
+      $container->get('current_user'),
+      $container->get(ExportManager::SERVICE_NAME)
     );
   }
 

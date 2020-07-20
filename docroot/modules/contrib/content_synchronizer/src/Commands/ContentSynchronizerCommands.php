@@ -2,177 +2,159 @@
 
 namespace Drupal\content_synchronizer\Commands;
 
-use Drupal\Core\Datetime\DateFormatter;
-use Drupal\Core\File\FileSystem;
+use Drupal\content_synchronizer\Form\LaunchImportForm;
+use Drupal\content_synchronizer\Processors\ImportProcessor;
+use Drupal\content_synchronizer\Service\ContentSynchronizerManager;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drush\Commands\DrushCommands;
-use Drupal\content_synchronizer\Entity\ImportEntity;
-use Drupal\content_synchronizer\Processors\ExportEntityWriter;
-use Drupal\content_synchronizer\Entity\ExportEntity;
-use Drupal\content_synchronizer\Processors\ExportProcessor;
-use Drupal\content_synchronizer\Processors\ImportProcessor;
-use Drupal\content_synchronizer\Form\LaunchImportForm;
 
 /**
  * A Drush commandfile.
- *
- * In addition to this file, you need a drush.services.yml
- * in root of your module, and a composer.json file that provides the name
- * of the services file to use.
- *
- * See these files for an example of injecting Drupal services:
- *   - http://cgit.drupalcode.org/devel/tree/src/Commands/DevelCommands.php
- *   - http://cgit.drupalcode.org/devel/tree/drush.services.yml
  */
 class ContentSynchronizerCommands extends DrushCommands {
 
   use StringTranslationTrait;
 
   /**
-   * Date formatter.
+   * The Content Synchronizer manager.
    *
-   * @var \Drupal\Core\Datetime\DateFormatter
+   * @var \Drupal\content_synchronizer\Service\ContentSynchronizerManager
    */
-  protected $dateFormatter;
-
-  /**
-   * File System.
-   *
-   * @var \Drupal\Core\File\FileSystem
-   */
-  protected $fileSystem;
+  protected $contentSynchronizerManager;
 
   /**
    * ContentSynchronizerCommands constructor.
+   *
+   * @param \Drupal\content_synchronizer\Service\ContentSynchronizerManager $contentSynchronizerManager
+   *   The content synchronizer manager.
    */
-  public function __construct(DateFormatter $dateFormatter, FileSystem $fileSystem) {
-    $this->dateFormatter = $dateFormatter;
-    $this->fileSystem = $fileSystem;
+  public function __construct(ContentSynchronizerManager $contentSynchronizerManager) {
+    $this->contentSynchronizerManager = $contentSynchronizerManager;
   }
 
   /**
-   * Create an import from passed .zip file.
+   * Force temporary files cleaning.
    *
-   * @param string $path
-   *   Optional. The cache bin to fetch from.
-   * @param array $options
-   *   An associative array of options whose values come from cli, aliases,
-   *   config, etc.
-   *
-   * @option as_function
-   *   if this command will call as a function, in this case, return
-   *   ImportEntity Id.
-   *
-   * @command content:synchronizer-create-import
-   * @aliases csci,content-synchronizer-create-import
-   *
-   * @return int
-   *   The import id.
-   */
-  public function synchronizerCreateImport($path, array $options = ['as_function' => FALSE]) {
-    if (file_exists($path)) {
-      $extensionData = explode('.', $path);
-      if (end($extensionData) == 'gz') {
-        if ($file = file_save_data(file_get_contents($path))) {
-          $name = strip_tags($this->t('Drush import - %date', [
-            '%date' => $this->dateFormatter->format(time())
-          ]));
-          $ie = ImportEntity::create(
-            [
-              'name'                      => $name,
-              ImportEntity::FIELD_ARCHIVE => $file
-            ]
-          );
-          $ie->save();
-          $this->logger->notice($this->t('The import has been created')
-            ->__toString());
-        }
-      }
-      else {
-        $this->logger->error($this->t('The file is not a .zip archive')
-          ->__toString());
-      }
-    }
-    else {
-      $this->logger->error($this->t('No file found')->__toString());
-    }
-
-    if ($options['as_function'] == TRUE) {
-      return $ie->id();
-    }
-  }
-
-  /**
-   * Delete temporary files.
+   * @usage content:synchronizer-clean-temporary-files
+   *   Usage description
    *
    * @command content:synchronizer-clean-temporary-files
-   * @aliases csctf,content-synchronizer-clean-temporary-files
+   * @aliases csctf
    */
-  public function synchronizerCleanTemporaryFiles() {
-    $path = $this->fileSystem->realpath(ExportEntityWriter::GENERATOR_DIR);
-    /** @var \Drupal\Core\File\FileSystemInterface $fileSystem */
-    $fileSystem = \Drupal::service('file_system');
-    foreach (glob($path . '/*') as $file) {
-      if (is_dir($file)) {
-        $fileSystem->deleteRecursive($file);
-      }
+  public function cleanTemporaryFiles() {
+    $deletedFiles = $this->contentSynchronizerManager->cleanTemporaryFiles();
+    foreach ($deletedFiles as $file) {
+      $this->logger->notice($this->t('@file has been deleted', ['@file' => $file]));
     }
   }
 
   /**
    * Launch the export of the passed ID.
    *
-   * @param int $exportId
+   * @param int|bool $exportId
    *   The export id.
-   * @param string $destination
+   * @param string|bool $destination
    *   File to create.
    *
    * @command content:synchronizer-launch-export
-   * @aliases cslex,content-synchronizer-launch-export
+   * @aliases cslex
    */
-  public function synchronizerLaunchExport($exportId, $destination = '') {
-    if ($export = ExportEntity::load($exportId)) {
-
-      $entitiesToExport = $export->getEntitiesList();
-      $writer = new ExportEntityWriter();
-      $writer->initFromId($export->label());
-      $processor = new ExportProcessor($writer);
-
-      // Loop for log.
-      $count = count($entitiesToExport);
-      foreach (array_values($entitiesToExport) as $key => $entity) {
-        try {
-          $processor->exportEntity($entity);
-          $status = $this->t('Exported');
-        }
-        catch (\Exception $error) {
-          $this->logger->error($error->getMessage());
-          $status = $this->t('Error');
-        }
-        $this->logger->notice($this->t('[@key/@count] - "@label" - @status',
-          [
-            '@key'    => $key + 1,
-            '@count'  => $count,
-            '@label'  => ExportEntityWriter::getEntityLabel($entity),
-            '@status' => $status,
-          ])->__toString());
-      }
-
-      // Deplace archive.
-      $tempArchive = $path = $this->fileSystem->realpath($processor->closeProcess());
-      if ($destination == '') {
-        $destination = './' . basename($tempArchive);
-      }
-
-      rename($tempArchive, $destination);
-
-      $this->logger->notice($this->t('Archive file : @destination', ['@destination' => $destination])
-        ->__toString());
-    }
+  public function launchExport($exportId = FALSE, $destination = FALSE) {
+    // Init user choice.
+    $exportId = $exportId ?: $this->io()->ask(
+      $this->t('Export Id ?'),
+      NULL,
+      [$this->contentSynchronizerManager, 'exportIdExists']
+    );
+    $destination = $destination ?: $this->io()->ask(
+      $this->t('Generated tar.gz path'),
+      '', [$this, 'canBeNull']);
+    $this->logExportData(
+      $this->contentSynchronizerManager->launchExport($exportId, $destination)
+    );
   }
 
   /**
-   * Launch the import of the passed ID.
+   * Export an entity into a tar.gz.
+   *
+   * @param string $entityTypeId
+   *   The entity type id.
+   * @param int $id
+   *   The id of the entity.
+   * @param string $destination
+   *   The destination.
+   *
+   * @command content:synchronizer-export-entity
+   * @aliases cseex
+   */
+  public function exportEntity($entityTypeId = NULL, $id = NULL, $destination = '') {
+    // Init user choice.
+    $entityTypeId = $entityTypeId ?: $this->io()->ask(
+      $this->t('Entity type Id ?'),
+      'node',
+      [$this->contentSynchronizerManager, 'entityTypeExists']
+    );
+    $id = $id ?: $this->io()->ask(
+      $this->t('Entity Id ?'),
+      NULL,
+      function ($value) use ($entityTypeId) {
+        return $this->contentSynchronizerManager->entityExists($value, $entityTypeId);
+      }
+    );
+    $destination = $destination ?: $this->io()->ask(
+      $this->t('Generated tar.gz path'),
+      '',
+      [$this, 'canBeNull']);
+
+    $this->logExportData(
+      $this->contentSynchronizerManager->exportEntity($entityTypeId, $id, $destination)
+    );
+  }
+
+  /**
+   * Log the result of an export.
+   *
+   * @param array $exportData
+   *   Export data.
+   */
+  protected function logExportData(array $exportData) {
+    foreach ($exportData['entities'] as $exportedEntity) {
+      $this->logger->notice($this->t('[@key/@count] - "@label" - @status', $exportedEntity));
+    }
+
+    $this->logger->notice($this->t('@destination has been created', ['@destination' => $exportData['destination']]));
+  }
+
+  /**
+   * Create an Import Entity from the tar.gz file absolute path.
+   *
+   * @param string $absolutePath
+   *   Argument description.
+   *
+   * @usage content:synchronizer-create-import absolute path
+   *   Usage description
+   *
+   * @command content:synchronizer-create-import
+   * @aliases csci
+   *
+   * @return \Drupal\content_synchronizer\Entity\ImportEntityInterface|int|string|null
+   *   The ImportEntity generated.
+   *
+   * @throws \Drupal\Core\Entity\EntityStorageException
+   */
+  public function createImport($absolutePath = NULL) {
+    $absolutePath = $absolutePath ?: $this->io()->ask(
+      $this->t('File to import ?'),
+      '',
+      [$this->contentSynchronizerManager, 'tarGzExists']
+    );
+    $ie = $this->contentSynchronizerManager->createImportFromTarGzFilePath($absolutePath);
+    $this->logger->notice($this->t('Import Entity has been created (ID : @ieId)', ['@ieId' => $ie->id()]));
+    return $ie;
+  }
+
+  /**
+   * Launch the import of the import entity ID.
    *
    * @param int $importId
    *   The import id.
@@ -190,107 +172,105 @@ class ContentSynchronizerCommands extends DrushCommands {
    *
    * @throws \Exception
    */
-  public function synchronizerLaunchImport($importId, array $options = [
-    'publish' => '',
-    'update'  => ''
+  public function launchImport($importId, array $options = [
+    'publish' => FALSE,
+    'update'  => FALSE,
   ]) {
-    if ($import = ImportEntity::load($importId)) {
 
-      if (!in_array('publication_' . $options['publish'], array_keys(LaunchImportForm::getCreateOptions()))) {
-        $message = "Publish option must be in : publish|unpublish";
-        throw new \Exception($message);
-      }
-      if (!in_array('update_' . $options['update'], array_keys(LaunchImportForm::getUpdateOptions()))) {
-        $message = "Update option must be in : systematic|if_recent|no_update";
-        throw new \Exception($message);
-      }
-
-      $createType = 'publication_' . $options['publish'];
-      $updateType = 'update_' . $options['update'];
-      $importProcessor = new ImportProcessor($import);
-      $importProcessor->setCreationType($createType);
-      $importProcessor->setUpdateType($updateType);
-
-      // Loop for logs.
-      $rootEntities = $import->getRootsEntities();
-      $count = count($rootEntities);
-      foreach ($rootEntities as $key => $rootEntityData) {
-        try {
-          $importProcessor->importEntityFromRootData($rootEntityData);
-          $status = array_key_exists('edit_url', $rootEntityData) ? $this->t('Updated') : $this->t('Created');
-        }
-        catch (\Exception $error) {
-          $this->logger->error($error->getMessage());
-          $status = $this->t('Error');
-        }
-
-        $this->logger->notice($this->t('[@key/@count] - "@label" - @status',
-          [
-            '@key'    => $key + 1,
-            '@count'  => $count,
-            '@status' => $status,
-            '@label'  => $rootEntityData['label'],
-          ])->__toString());
-      }
-
-      // Close process.
-      $import->removeArchive();
+    // Publish option.
+    if (!$options['publish']) {
+      $options['publish'] = $this->choice(
+        $this->t('Action on entity creation'),
+        LaunchImportForm::getCreateOptions(),
+        ImportProcessor::DEFAULT_PUBLICATION_TYPE);
+    }
+    // Update option.
+    if (!$options['update']) {
+      $options['update'] = $this->choice(
+        $this->t('Action on entity update'),
+        LaunchImportForm::getUpdateOptions(),
+        ImportProcessor::DEFAULT_UPDATE_TYPE);
     }
 
+    $this->logImportData(
+      $this->contentSynchronizerManager->launchImport($importId, $options['publish'], $options['update'])
+    );
   }
 
   /**
-   * Export all : bind together create Export, attach all node in & cslex.
+   * Launch the import of the import entity ID.
    *
-   * @param string $destination
-   *   Destination file.
+   * @param string $absolutePath
+   *   The import id.
+   * @param array $options
+   *   An associative array of options whose values come from cli, aliases,
+   *   config, etc.
    *
-   * @command content:synchronizer-export-all
-   * @aliases csexall
-   */
-  public function synchronizerAllExport($destination = '') {
-
-    // 1 : create export.
-    $exportEntity = ExportEntity::create(['name' => 'export-all']);
-    $exportEntity->save();
-    $exportId = $exportEntity->id();
-
-    // 2 : add all nodes / taxo.
-    foreach (['node', 'taxonomy_term'] as $entity_type) {
-      $ids = \Drupal::entityQuery($entity_type)->execute();
-      $entities = \Drupal::entityTypeManager()
-        ->getStorage($entity_type)
-        ->loadMultiple($ids);
-      foreach ($entities as $entity) {
-        $exportEntity->addEntity($entity);
-      }
-    }
-
-    // 3 : make export.
-    $this->synchronizerLaunchExport($exportId, $destination);
-  }
-
-  /**
-   * Import from zip : bind together csci & cslim.
+   * @option publish
+   *   Autopublish imported content :  publish|unpublish
+   * @option update
+   *   Update stategy :  systematic|if_recent|no_update
    *
-   * @param string $file_path
-   *   Zip file path.
-   *
-   * @command content:synchronizer-import-zip
-   * @aliases csimzip
+   * @command content:synchronizer-launch-import
+   * @aliases cscli
    *
    * @throws \Exception
    */
-  public function synchronizerImportZip($file_path) {
+  public function createAndLaunchImport($absolutePath = NULL, array $options = [
+    'publish' => FALSE,
+    'update'  => FALSE,
+  ]) {
+    if ($import = $this->createImport($absolutePath)) {
+      $this->launchImport($import->id(), $options);
+    }
+  }
 
-    // 1 : create export.
-    $importId = $this->synchronizerCreateImport($file_path, ['as_function' => TRUE]);
+  /**
+   * Log import data.
+   *
+   * @param array $importData
+   *   The import data.
+   */
+  protected function logImportData(array $importData) {
+    foreach ($importData['entities'] as $datum) {
+      $this->logger->notice($this->t('[@key/@count] - "@label" - @status (@url)', $datum));
+    }
+  }
 
-    // 2 : add all nodes of all node-types.
-    $this->synchronizerLaunchImport($importId, [
-      'publish' => 'publish',
-      'update'  => 'systematic'
-    ]);
+  /**
+   * Ask and return user choice.
+   *
+   * @param string $question
+   *   The question.
+   * @param array $options
+   *   THe options.
+   * @param string $defaultValue
+   *   The default value.
+   *
+   * @return string
+   *   The user selection.
+   *
+   * @throws \Drush\Exceptions\UserAbortException
+   */
+  protected function choice($question, array $options, $defaultValue): string {
+    return $this->io()->choice(
+      $question,
+      $options,
+      array_search($defaultValue, array_keys($options)) + 1
+    );
+  }
+
+  /**
+   * Validator can be null.
+   *
+   * @param string $value
+   *   The value.
+   *
+   * @return string
+   *   The value.
+   */
+  public function canBeNull($value) {
+    return $value;
   }
 
 }

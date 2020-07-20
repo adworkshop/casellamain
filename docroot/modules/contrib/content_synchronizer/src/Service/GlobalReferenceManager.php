@@ -30,7 +30,7 @@ class GlobalReferenceManager {
    * @param \Drupal\Core\Entity\EntityInterface $entity
    *   The entity.
    *
-   * @return string
+   * @return string|null
    *   The gid.
    */
   public function getEntityGlobalId(EntityInterface $entity) {
@@ -107,8 +107,7 @@ class GlobalReferenceManager {
    *   The entity type id.
    */
   public function getEntityTypeFromGid($gid) {
-    list($time, $entityTypeId, $entityLocalId) = explode('.', $gid);
-
+    $entityTypeId = explode('.', $gid)[1];
     return $entityTypeId;
   }
 

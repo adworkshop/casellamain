@@ -3,6 +3,7 @@
 namespace Drupal\content_synchronizer\Service;
 
 use Drupal\content_synchronizer\Processors\ExportEntityWriter;
+use Drupal\Core\Session\AccountProxyInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\user\Entity\User;
 
@@ -16,6 +17,33 @@ class ArchiveDownloader {
   const SERVICE_NAME = 'content_synchronizer.archive_downloader';
 
   const ARCHIVE_PARAMS = 'cs_archive';
+
+  /**
+   * Retourne le singleton.
+   *
+   * @return static
+   *   Le singleton.
+   */
+  public static function me() {
+    return \Drupal::service(static::SERVICE_NAME);
+  }
+
+  /**
+   * Current User.
+   *
+   * @var \Drupal\Core\Session\AccountProxyInterface
+   */
+  protected $currentUser;
+
+  /**
+   * ArchiveDownloader constructor.
+   *
+   * @param \Drupal\Core\Session\AccountProxyInterface $currentUser
+   *   The current user.
+   */
+  public function __construct(AccountProxyInterface $currentUser) {
+    $this->currentUser = $currentUser;
+  }
 
   /**
    * Donwload archive by adding js library.
@@ -38,8 +66,7 @@ class ArchiveDownloader {
    *   True if can download.
    */
   public function canDownload() {
-    $account = \Drupal::currentUser();
-    return User::load($account->id())
+    return User::load($this->currentUser->id())
       ->hasPermission('add export entity entities');
   }
 
@@ -52,7 +79,7 @@ class ArchiveDownloader {
    *   The archiev url.
    */
   public function redirectWithArchivePath($redirectUrl, $archiveUri) {
-    $path = str_replace(ExportEntityWriter::GENERATOR_DIR, '', $archiveUri);
+    $path = str_replace(ExportEntityWriter::getGeneratorDir(), '', $archiveUri);
     $redirectUrl .= "#" . static::ARCHIVE_PARAMS . '=' . urlencode($path);
 
     $redirect = new RedirectResponse($redirectUrl);

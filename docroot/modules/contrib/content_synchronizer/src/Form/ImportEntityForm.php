@@ -2,8 +2,13 @@
 
 namespace Drupal\content_synchronizer\Form;
 
+use Drupal\Component\Datetime\TimeInterface;
+use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Entity\ContentEntityForm;
+use Drupal\Core\Entity\EntityRepositoryInterface;
+use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Form controller for Import edit forms.
@@ -11,6 +16,33 @@ use Drupal\Core\Form\FormStateInterface;
  * @ingroup content_synchronizer
  */
 class ImportEntityForm extends ContentEntityForm {
+
+  /**
+   * The date formatter.
+   *
+   * @var \Drupal\Core\Datetime\DateFormatterInterface
+   */
+  protected $dateFormatter;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct(EntityRepositoryInterface $entity_repository, EntityTypeBundleInfoInterface $entity_type_bundle_info = NULL, TimeInterface $time = NULL, DateFormatterInterface $dateFormatter = NULL) {
+    parent::__construct($entity_repository, $entity_type_bundle_info, $time);
+    $this->dateFormatter = $dateFormatter;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('entity.repository'),
+      $container->get('entity_type.bundle.info'),
+      $container->get('datetime.time'),
+      $container->get('date.formatter')
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -21,9 +53,8 @@ class ImportEntityForm extends ContentEntityForm {
     /* @var $entity \Drupal\content_synchronizer\Entity\ImportEntity */
     $entity = $form_state->getFormObject()->getEntity();
 
-    $defaultName = $entity ? $entity->label() : t('Import - %date', [
-      '%date' => \Drupal::service('date.formatter')
-        ->format(time())
+    $defaultName = $entity ? $entity->label() : $this->t('Import - %date', [
+      '%date' => $this->dateFormatter->format(time()),
     ]);
     $form['name']['widget'][0]['value']['#default_value'] = $defaultName;
 
@@ -41,18 +72,18 @@ class ImportEntityForm extends ContentEntityForm {
 
     switch ($status) {
       case SAVED_NEW:
-        \Drupal::messenger()
-          ->addMessage($this->t('Created the %label Import.', [
-            '%label' => $entity->label(),
-          ]));
+        $this->messenger()->addMessage($this->t('Created the %label Import.', [
+          '%label' => $entity->label(),
+        ]));
         break;
 
       default:
-        \Drupal::messenger()->addMessage($this->t('Saved the %label Import.', [
+        $this->messenger()->addMessage($this->t('Saved the %label Import.', [
           '%label' => $entity->label(),
         ]));
     }
     $form_state->setRedirect('entity.import_entity.canonical', ['import_entity' => $entity->id()]);
+    return $status;
   }
 
 }

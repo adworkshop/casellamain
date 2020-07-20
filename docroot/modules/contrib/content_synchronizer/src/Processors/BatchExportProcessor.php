@@ -3,11 +3,14 @@
 namespace Drupal\content_synchronizer\Processors;
 
 use Drupal\content_synchronizer\Base\BatchProcessorBase;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 
 /**
  * BatchExport processor.
  */
 class BatchExportProcessor extends BatchProcessorBase {
+
+  use StringTranslationTrait;
 
   /**
    * The writer service.
@@ -42,7 +45,7 @@ class BatchExportProcessor extends BatchProcessorBase {
     $operations = $this->getBatchOperations($entities, $finishCallback);
 
     $batch = [
-      'title'      => t('Exporting entities...'),
+      'title'      => $this->t('Exporting entities...'),
       'operations' => $operations,
       'finished'   => get_called_class() . '::onFinishBatchProcess',
     ];
@@ -55,7 +58,7 @@ class BatchExportProcessor extends BatchProcessorBase {
    */
   protected function getBatchOperations(array $entities, $finishCallback = NULL) {
     $operations = [];
-    /** @var \Drupal\Core\Entity\EntityInterface $entity */
+    /** @var \Drupal\Core\Entity\Entity $entity */
     foreach ($entities as $entity) {
       $operations[] = [
         get_called_class() . '::processBatchOperation',

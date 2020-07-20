@@ -22,8 +22,18 @@ class FileProcessor extends EntityProcessorBase implements EntityProcessorInterf
   use JsonWriterTrait;
   const DIR_ASSETS = "assets";
 
-
+  /**
+   * Export assets directory path.
+   *
+   * @var string
+   */
   protected $exportAssetsDirPath;
+
+  /**
+   * Import assets directory path.
+   *
+   * @var string
+   */
   protected $importAssetsDirPath;
 
   /**
@@ -74,10 +84,10 @@ class FileProcessor extends EntityProcessorBase implements EntityProcessorInterf
    *
    * @param array $data
    *   The data to import.
-   * @param \Drupal\Core\Entity\Entity|null $entityToImport
+   * @param \Drupal\Core\Entity\EntityInterface|null $entityToImport
    *   The entity to import.
    *
-   * @return \Drupal\Core\Entity\Entity|\Drupal\Core\Entity\Entity\null|\Drupal\Core\Entity\EntityInterface
+   * @return \Drupal\Core\Entity\EntityInterface|null
    *   The entity to import.
    */
   public function getEntityToImport(array $data, EntityInterface $entityToImport = NULL) {
@@ -93,9 +103,10 @@ class FileProcessor extends EntityProcessorBase implements EntityProcessorInterf
           list($root, $destination) = [$file->getFileUri(), '/'];
         }
 
-        $destination = $this->createDirTreeForFileDest($destination, $root);
+        $this->createDirTreeForFileDest($destination, $root);
 
-        if ($result = copy($assetsFile, $file->getFileUri())) {
+        $result = copy($assetsFile, $file->getFileUri());
+        if ($result) {
           return $file;
         }
       }

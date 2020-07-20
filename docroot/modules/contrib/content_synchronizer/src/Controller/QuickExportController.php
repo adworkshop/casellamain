@@ -18,6 +18,11 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class QuickExportController {
 
+  /**
+   * The admin url.
+   *
+   * @var string
+   */
   protected $url = '/admin/content';
 
   /**
@@ -36,7 +41,7 @@ class QuickExportController {
       ->toString();
 
     if ($request->query->has('entityTypeId') && $request->query->has('entityId')) {
-      /** @var Drupal\Core\Entity\EntityInterface $entity */
+      /** @var \Drupal\Core\Entity\EntityInterface $entity */
       $entity = \Drupal::entityTypeManager()
         ->getStorage($request->query->get('entityTypeId'))
         ->load($request->query->get('entityId'));
@@ -49,7 +54,7 @@ class QuickExportController {
       if ($entity instanceof ConfigEntityBundleBase) {
         $batchExportProcessor->exportEntities(EntityExportFormBuilder::getEntitiesFromBundle($entity), [
           $this,
-          'onBatchEnd'
+          'onBatchEnd',
         ]);
       }
       else {

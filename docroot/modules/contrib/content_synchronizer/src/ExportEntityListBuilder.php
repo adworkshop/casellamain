@@ -4,7 +4,7 @@ namespace Drupal\content_synchronizer;
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityListBuilder;
-use Drupal\Core\Routing\LinkGeneratorTrait;
+use Drupal\Core\Link;
 use Drupal\Core\Url;
 
 /**
@@ -13,8 +13,6 @@ use Drupal\Core\Url;
  * @ingroup content_synchronizer
  */
 class ExportEntityListBuilder extends EntityListBuilder {
-
-  use LinkGeneratorTrait;
 
   /**
    * {@inheritdoc}
@@ -31,7 +29,7 @@ class ExportEntityListBuilder extends EntityListBuilder {
   public function buildRow(EntityInterface $entity) {
     /* @var $entity \Drupal\content_synchronizer\Entity\ExportEntity */
     $row['id'] = $entity->id();
-    $row['name'] = $this->l(
+    $row['name'] = Link::fromTextAndUrl(
       $entity->label(),
       new Url(
         'entity.export_entity.canonical', [
@@ -49,13 +47,13 @@ class ExportEntityListBuilder extends EntityListBuilder {
     $operations = parent::getOperations($entity);
     $operations['view'] =
       [
-        'title'  => t('Export'),
+        'title'  => $this->t('Export'),
         'weight' => 1,
         'url'    => new Url(
           'entity.export_entity.canonical', [
             'export_entity' => $entity->id(),
           ]
-        )
+        ),
       ];
 
     usort($operations, function ($a, $b) {

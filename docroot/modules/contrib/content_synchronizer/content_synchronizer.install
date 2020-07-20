@@ -28,10 +28,10 @@ function content_synchronizer_get_schema() {
         'not null' => TRUE,
       ],
       'entity_type' => [
-        'type'    => 'varchar',
-        'size'    => 'normal',
-        'length'  => 100,
-        'default' => '',
+        'type'     => 'varchar',
+        'size'     => 'normal',
+        'length'   => 100,
+        'default'  => '',
         'not null' => TRUE,
       ],
     ],
@@ -42,9 +42,9 @@ function content_synchronizer_get_schema() {
     'description' => 'Table for export items',
     'fields'      => [
       'export_id'   => [
-        'type'    => 'int',
-        'default' => 0,
-        'size'    => 'normal',
+        'type'     => 'int',
+        'default'  => 0,
+        'size'     => 'normal',
         'not null' => TRUE,
       ],
       'entity_id'   => [
@@ -55,10 +55,10 @@ function content_synchronizer_get_schema() {
         'not null' => TRUE,
       ],
       'entity_type' => [
-        'type'    => 'varchar',
-        'size'    => 'normal',
-        'length'  => 100,
-        'default' => '',
+        'type'     => 'varchar',
+        'size'     => 'normal',
+        'length'   => 100,
+        'default'  => '',
         'not null' => TRUE,
       ],
     ],
@@ -102,7 +102,11 @@ function content_synchronizer_uninstall() {
   foreach (content_synchronizer_get_schema() as $table => $definition) {
     try {
       if (\Drupal::database()->schema()->tableExists($table)) {
-        \Drupal::database()->schema()->dropTable($table);
+        try {
+          \Drupal::database()->schema()->dropTable($table);
+        }
+        catch (\Exception $e) {
+        }
       }
     }
     catch (\Exception $e) {

@@ -13,8 +13,6 @@ use Drupal\user\EntityOwnerInterface;
  */
 interface ExportEntityInterface extends ContentEntityInterface, EntityChangedInterface, EntityOwnerInterface {
 
-  // Add get/set methods for your configuration properties here.
-
   /**
    * Gets the Export entity name.
    *
@@ -67,7 +65,7 @@ interface ExportEntityInterface extends ContentEntityInterface, EntityChangedInt
    * Sets the published status of a Export entity.
    *
    * @param bool $published
-   *   TRUE to set this Export entity to published, FALSE to set it to unpublished.
+   *   TRUE to set this Export entity to published, FALSE to set it unpublished.
    *
    * @return \Drupal\content_synchronizer\Entity\ExportEntityInterface
    *   The called Export entity entity.

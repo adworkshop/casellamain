@@ -4,7 +4,6 @@ namespace Drupal\content_synchronizer\Plugin\content_synchronizer\entity_process
 
 use Drupal\content_synchronizer\Processors\Entity\EntityProcessorBase;
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\node\Entity\Node;
 
 /**
  * Plugin implementation of the 'accordion' formatter.
