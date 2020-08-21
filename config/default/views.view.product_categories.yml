@@ -664,6 +664,7 @@ display:
         filter_groups: false
         sorts: false
         pager: false
+        title: false
       filters:
         vid:
           id: vid
@@ -786,6 +787,7 @@ display:
         type: none
         options:
           offset: 0
+      title: 'Select your product type:'
     cache_metadata:
       max-age: -1
       contexts:
