@@ -12,7 +12,7 @@ dependencies:
     - paragraphs.paragraphs_type.slider_image
   module:
     - field_group
-    - image
+    - focal_point
     - link
 third_party_settings:
   field_group:
@@ -31,6 +31,7 @@ third_party_settings:
         required_fields: true
         classes: ''
         id: ''
+      region: content
 id: paragraph.slider_image.default
 targetEntityType: paragraph
 bundle: slider_image
@@ -57,8 +58,10 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
-    type: image_image
+    type: image_focal_point
     region: content
   field_link:
     weight: 4

@@ -10,7 +10,7 @@ dependencies:
     - paragraphs.paragraphs_type.bin_comparison_fields
   module:
     - field_group
-    - image
+    - focal_point
 third_party_settings:
   field_group:
     group_donts_list:
@@ -25,6 +25,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Donts List'
+      region: content
     group_dos_list:
       children:
         - field_comparison_dos
@@ -37,6 +38,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Dos List'
+      region: content
 id: paragraph.bin_comparison_fields.default
 targetEntityType: paragraph
 bundle: bin_comparison_fields
@@ -47,8 +49,10 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
-    type: image_image
+    type: image_focal_point
     region: content
   field_comparison_donts:
     weight: 2

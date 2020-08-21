@@ -27,6 +27,7 @@ third_party_settings:
         classes: ''
         open: false
       label: 'Toolkit Button Fields'
+      region: content
 id: paragraph.fa_link_with_pdf.default
 targetEntityType: paragraph
 bundle: fa_link_with_pdf

@@ -23,6 +23,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: Content
+      region: content
 id: paragraph.faq_category.default
 targetEntityType: paragraph
 bundle: faq_category

@@ -10,6 +10,7 @@ permissions:
   - 'add terms in post_categories'
   - 'administer menu'
   - 'administer organics menu items'
+  - 'administer redirect settings'
   - 'administer redirects'
   - 'create information_post content'
   - 'create service content'

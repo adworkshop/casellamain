@@ -1,10 +1,16 @@
 uuid: 4500411e-bfd5-4e14-8f5c-37d63592c056
 langcode: en
 status: true
-dependencies: {  }
-label: 'Casella Pages'
+dependencies:
+  config:
+    - field.field.node.page.body
+    - node.type.page
+  module:
+    - node
 id: casella_pages
+label: 'Casella Pages'
 description: 'import main casella site page titles and body'
+help: null
 import_period: -1
 fetcher: upload
 fetcher_configuration:
@@ -21,6 +27,9 @@ processor_configuration:
   skip_hash_check: false
   values:
     type: page
+  update_non_existent: _keep
+  owner_feed_author: false
+custom_sources: {  }
 mappings:
   -
     target: title

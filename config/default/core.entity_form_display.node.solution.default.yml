@@ -39,6 +39,7 @@ third_party_settings:
         id: ''
         required_fields: true
       label: Tabs
+      region: content
     group_promotions:
       children:
         - field_sidebar_promotions
@@ -53,6 +54,7 @@ third_party_settings:
         id: ''
         required_fields: true
       label: Promotions
+      region: content
     group_media:
       children:
         - field_slider_images
@@ -67,6 +69,7 @@ third_party_settings:
         id: ''
         required_fields: true
       label: Media
+      region: content
     group_solution_resources:
       children:
         - field_solution_resources
@@ -80,6 +83,7 @@ third_party_settings:
         id: ''
         required_fields: true
       label: 'Solution Resources'
+      region: content
     group_additional_content:
       children:
         - group_solution_resources
@@ -94,6 +98,7 @@ third_party_settings:
         classes: ''
         direction: vertical
       label: 'Additional Content'
+      region: content
 id: node.solution.default
 targetEntityType: node
 bundle: solution
@@ -256,6 +261,11 @@ content:
       size: 60
       placeholder: ''
       match_limit: 10
+    third_party_settings: {  }
+    region: content
+  url_redirects:
+    weight: 50
+    settings: {  }
     third_party_settings: {  }
     region: content
 hidden:

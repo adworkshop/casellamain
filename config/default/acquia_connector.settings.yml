@@ -11,13 +11,7 @@ spi:
   server: 'https://nspi.acquia.com'
   ssl_override: false
   ssl_verify: true
-  def_vars:
-    preprocess_css:
-      optional: 0
-      description: ''
   def_waived_vars: {  }
-  def_timestamp: 1374783288
-  new_optional_data: 1
   admin_priv: 1
   send_node_user: 1
   send_watchdog: 1
@@ -49,6 +43,11 @@ spi:
   site_uuid: df86b380-66ac-4bd8-9e69-e083b8bf8365
   site_environment: prod
   env_detection_enabled: true
+  def_timestamp: 1374783288
+  def_vars:
+    preprocess_css:
+      optional: 0
+      description: ''
 mapping:
   acquia_spi_send_node_user:
     - acquia_connector.settings

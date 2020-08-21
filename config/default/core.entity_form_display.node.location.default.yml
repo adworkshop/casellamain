@@ -60,6 +60,7 @@ third_party_settings:
         classes: ''
         open: false
       label: 'Location Address and Contact Info'
+      region: content
     group_holiday_schedule:
       children:
         - field_schedule_title
@@ -73,6 +74,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Holiday Schedule'
+      region: content
     group_alert:
       children:
         - field_alert_title
@@ -87,6 +89,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: Alert
+      region: content
     group_waste_categories:
       children:
         - field_acceptable_waste
@@ -100,6 +103,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Accepted/Unaccepted Waste Categories'
+      region: content
     group_additional_content:
       children:
         - group_tabs
@@ -112,6 +116,7 @@ third_party_settings:
         classes: ''
         direction: vertical
       label: 'Additional Content'
+      region: content
     group_tabs:
       children:
         - field_tabs
@@ -125,6 +130,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Tabs
+      region: content
     group_media:
       children:
         - field_slider_images
@@ -138,6 +144,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Media
+      region: content
 id: node.location.default
 targetEntityType: node
 bundle: location
@@ -415,6 +422,11 @@ content:
       size: 60
       placeholder: ''
       match_limit: 10
+    third_party_settings: {  }
+    region: content
+  url_redirects:
+    weight: 50
+    settings: {  }
     third_party_settings: {  }
     region: content
 hidden:

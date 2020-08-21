@@ -21,6 +21,7 @@ permissions:
   - 'administer menu'
   - 'administer nodes'
   - 'administer organics menu items'
+  - 'administer redirect settings'
   - 'administer redirects'
   - 'administer shortcuts'
   - 'administer taxonomy'

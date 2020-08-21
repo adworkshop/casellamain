@@ -2,11 +2,24 @@ uuid: af7a62de-f198-4964-872e-6e566e6d02c8
 langcode: en
 status: true
 dependencies:
+  config:
+    - core.base_field_override.taxonomy_term.towns_cities.name
+    - field.field.taxonomy_term.towns_cities.feeds_item
+    - field.field.taxonomy_term.towns_cities.field_city
+    - field.field.taxonomy_term.towns_cities.field_latitude
+    - field.field.taxonomy_term.towns_cities.field_longitude
+    - field.field.taxonomy_term.towns_cities.field_published
+    - field.field.taxonomy_term.towns_cities.field_service_location
+    - field.field.taxonomy_term.towns_cities.field_state
+    - field.field.taxonomy_term.towns_cities.field_zip_code
+    - taxonomy.vocabulary.towns_cities
   module:
     - casella_feeds
-label: Towns
+    - taxonomy
 id: towns
+label: Towns
 description: ''
+help: null
 import_period: 21600
 fetcher: http
 fetcher_configuration:
@@ -25,6 +38,9 @@ processor_configuration:
     vid: towns_cities
   owner_id: 0
   authorize: false
+  update_non_existent: _keep
+  owner_feed_author: false
+custom_sources: {  }
 mappings:
   -
     target: name

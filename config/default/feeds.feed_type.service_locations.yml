@@ -2,11 +2,25 @@ uuid: e36f2f53-1af2-4225-84d9-52eb3fe56308
 langcode: en
 status: true
 dependencies:
+  config:
+    - core.base_field_override.node.location.status
+    - core.base_field_override.node.location.title
+    - field.field.node.location.feeds_item
+    - field.field.node.location.field_city
+    - field.field.node.location.field_latitude
+    - field.field.node.location.field_location_category
+    - field.field.node.location.field_longitude
+    - field.field.node.location.field_state
+    - field.field.node.location.field_street_address
+    - field.field.node.location.field_zip
+    - node.type.location
   module:
     - casella_feeds
-label: 'Service Locations'
+    - node
 id: service_locations
+label: 'Service Locations'
 description: ''
+help: null
 import_period: 21600
 fetcher: http
 fetcher_configuration:
@@ -25,6 +39,9 @@ processor_configuration:
   skip_hash_check: true
   values:
     type: location
+  update_non_existent: _keep
+  owner_feed_author: false
+custom_sources: {  }
 mappings:
   -
     target: title

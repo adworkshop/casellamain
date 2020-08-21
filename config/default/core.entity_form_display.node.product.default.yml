@@ -32,7 +32,7 @@ dependencies:
   module:
     - field_group
     - file
-    - image
+    - focal_point
     - link
     - metatag
     - paragraphs
@@ -55,6 +55,7 @@ third_party_settings:
         classes: ''
         id: ''
         required_fields: true
+      region: content
     group_sidebar:
       children:
         - field_promotion_link
@@ -70,6 +71,7 @@ third_party_settings:
         classes: ''
         id: ''
         required_fields: true
+      region: content
     group_media:
       children:
         - field_image
@@ -87,6 +89,7 @@ third_party_settings:
         classes: ''
         id: ''
         required_fields: true
+      region: content
     group_tabs:
       children:
         - field_tabs
@@ -100,6 +103,7 @@ third_party_settings:
         id: ''
         required_fields: true
       label: Tabs
+      region: content
     group_additional_content:
       children:
         - group_content
@@ -114,6 +118,7 @@ third_party_settings:
         classes: ''
         direction: vertical
       label: 'Additional Content'
+      region: content
 id: node.product.default
 targetEntityType: node
 bundle: product
@@ -206,16 +211,20 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
-    type: image_image
+    type: image_focal_point
     region: content
   field_images:
     weight: 9
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
-    type: image_image
+    type: image_focal_point
     region: content
   field_meta_tag:
     weight: 36
@@ -240,8 +249,10 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
-    type: image_image
+    type: image_focal_point
     region: content
   field_promotion_link:
     weight: 33
@@ -345,6 +356,11 @@ content:
       size: 60
       placeholder: ''
       match_limit: 10
+    third_party_settings: {  }
+    region: content
+  url_redirects:
+    weight: 50
+    settings: {  }
     third_party_settings: {  }
     region: content
 hidden:

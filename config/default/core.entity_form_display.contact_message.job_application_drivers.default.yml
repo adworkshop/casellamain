@@ -62,6 +62,7 @@ third_party_settings:
         id: ''
         classes: job-indListing-form-personalInfo-container
       label: 'Personal Information'
+      region: content
     group_title_wrapper:
       children:
         - field_job_title
@@ -80,6 +81,7 @@ third_party_settings:
         speed: fast
         required_fields: true
       label: 'Title Wrapper'
+      region: content
     group_con:
       children:
         - field_city
@@ -100,6 +102,7 @@ third_party_settings:
         speed: fast
         required_fields: true
       label: 'Contact Container'
+      region: content
     group_request_for_check_of_drivi:
       children:
         - field_licenses
@@ -113,6 +116,7 @@ third_party_settings:
         required_fields: true
         description: ''
       label: 'Request for Check of Driving Record'
+      region: content
     group_authorization:
       children:
         - field_please_authorize
@@ -128,6 +132,7 @@ third_party_settings:
         required_fields: true
         description: ''
       label: Authorization
+      region: content
     group_employment_past_10_years_:
       children:
         - field_employers
@@ -141,6 +146,7 @@ third_party_settings:
         id: ''
         classes: 'job-employers-accordion job-employers-paragraph-fieldset'
       label: Employment
+      region: content
 id: contact_message.job_application_drivers.default
 targetEntityType: contact_message
 bundle: job_application_drivers

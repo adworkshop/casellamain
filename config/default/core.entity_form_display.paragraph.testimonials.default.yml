@@ -22,6 +22,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: Content
+      region: content
 id: paragraph.testimonials.default
 targetEntityType: paragraph
 bundle: testimonials

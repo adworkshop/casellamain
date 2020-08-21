@@ -1,10 +1,18 @@
 uuid: 4bf00a16-99e1-4238-a295-e6ad52d0db4d
 langcode: en
 status: true
-dependencies: {  }
-label: 'Case Studies'
+dependencies:
+  config:
+    - core.base_field_override.node.case_study.title
+    - field.field.node.case_study.body
+    - field.field.node.case_study.field_teaser
+    - node.type.case_study
+  module:
+    - node
 id: case_studies
+label: 'Case Studies'
 description: 'an import of all case studies'
+help: null
 import_period: -1
 fetcher: upload
 fetcher_configuration:
@@ -21,6 +29,9 @@ processor_configuration:
   skip_hash_check: false
   values:
     type: case_study
+  update_non_existent: _keep
+  owner_feed_author: false
+custom_sources: {  }
 mappings:
   -
     target: title

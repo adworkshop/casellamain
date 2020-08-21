@@ -1,10 +1,20 @@
 uuid: 573460af-5eee-4701-956f-b79fc12fd504
 langcode: en
 status: true
-dependencies: {  }
-label: Testimonials
+dependencies:
+  config:
+    - core.base_field_override.node.testimonial.created
+    - core.base_field_override.node.testimonial.title
+    - field.field.node.testimonial.feeds_item
+    - field.field.node.testimonial.field_attribution
+    - field.field.node.testimonial.field_quotation
+    - node.type.testimonial
+  module:
+    - node
 id: testimonials
+label: Testimonials
 description: 'import from casellaorganics.com'
+help: null
 import_period: -1
 fetcher: upload
 fetcher_configuration:
@@ -21,6 +31,9 @@ processor_configuration:
   skip_hash_check: false
   values:
     type: testimonial
+  update_non_existent: _keep
+  owner_feed_author: false
+custom_sources: {  }
 mappings:
   -
     target: title

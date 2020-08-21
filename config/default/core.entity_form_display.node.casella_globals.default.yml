@@ -36,6 +36,7 @@ third_party_settings:
         required_fields: true
         description: ''
       label: 'Header Nav Elements'
+      region: content
     group_footer_elements:
       children:
         - field_footer_statement
@@ -49,6 +50,7 @@ third_party_settings:
         required_fields: true
         description: ''
       label: 'Footer Elements'
+      region: content
     group_service_location_elements:
       children:
         - field_acceptable_waste_intro
@@ -63,6 +65,7 @@ third_party_settings:
         required_fields: true
         description: ''
       label: 'Service Location Elements'
+      region: content
 id: node.casella_globals.default
 targetEntityType: node
 bundle: casella_globals
@@ -188,6 +191,11 @@ content:
       size: 60
       placeholder: ''
       match_limit: 10
+    third_party_settings: {  }
+    region: content
+  url_redirects:
+    weight: 50
+    settings: {  }
     third_party_settings: {  }
     region: content
 hidden:

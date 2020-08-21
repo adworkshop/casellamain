@@ -19,7 +19,7 @@ dependencies:
   module:
     - datetime
     - field_group
-    - image
+    - focal_point
     - metatag
     - paragraphs
     - path
@@ -41,6 +41,7 @@ third_party_settings:
         id: ''
         classes: ''
       label: 'Featured Media'
+      region: content
     group_teaser_conent:
       children:
         - field_blog_teaser
@@ -55,6 +56,7 @@ third_party_settings:
         description: 'Content to be displayed on the blog listing and archive pages.'
         required_fields: true
       label: 'Teaser Conent'
+      region: content
 id: node.blog_post.default
 targetEntityType: node
 bundle: blog_post
@@ -83,8 +85,10 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
-    type: image_image
+    type: image_focal_point
     region: content
   field_blog_tags:
     weight: 6
@@ -105,8 +109,10 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
-    type: image_image
+    type: image_focal_point
     region: content
   field_date_posted:
     weight: 1
@@ -196,5 +202,10 @@ content:
       match_limit: 10
     region: content
     third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    settings: {  }
+    third_party_settings: {  }
+    region: content
 hidden:
   field_add_this: true

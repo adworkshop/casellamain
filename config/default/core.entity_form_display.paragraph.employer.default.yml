@@ -30,6 +30,7 @@ third_party_settings:
         required_fields: true
         description: ''
       label: Employers
+      region: content
 id: paragraph.employer.default
 targetEntityType: paragraph
 bundle: employer

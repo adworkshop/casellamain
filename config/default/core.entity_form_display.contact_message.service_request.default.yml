@@ -34,6 +34,7 @@ third_party_settings:
         required_fields: false
         description: ''
       label: 'Personal Information'
+      region: content
     group_contact_information:
       children:
         - field_service_address
@@ -50,6 +51,7 @@ third_party_settings:
         required_fields: false
         description: ''
       label: 'Contact Information'
+      region: content
 id: contact_message.service_request.default
 targetEntityType: contact_message
 bundle: service_request

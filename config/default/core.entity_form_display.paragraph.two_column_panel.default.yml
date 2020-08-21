@@ -10,7 +10,7 @@ dependencies:
     - paragraphs.paragraphs_type.two_column_panel
   module:
     - field_group
-    - image
+    - focal_point
     - text
 third_party_settings:
   field_group:
@@ -29,6 +29,7 @@ third_party_settings:
         classes: ''
         open: false
       label: 'Recycle Item Fields'
+      region: content
 id: paragraph.two_column_panel.default
 targetEntityType: paragraph
 bundle: two_column_panel
@@ -47,8 +48,10 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
-    type: image_image
+    type: image_focal_point
     region: content
   field_section_title:
     weight: 2

@@ -20,7 +20,7 @@ dependencies:
   module:
     - datetime
     - field_group
-    - image
+    - focal_point
     - metatag
     - path
     - text
@@ -39,6 +39,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: Teaser
+      region: content
 id: node.information_post.default
 targetEntityType: node
 bundle: information_post
@@ -100,8 +101,10 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
-    type: image_image
+    type: image_focal_point
     region: content
   field_meta_tag:
     weight: 27
@@ -132,8 +135,10 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
-    type: image_image
+    type: image_focal_point
     region: content
   langcode:
     type: language_select
@@ -175,6 +180,11 @@ content:
       size: 60
       placeholder: ''
       match_limit: 10
+    third_party_settings: {  }
+    region: content
+  url_redirects:
+    weight: 50
+    settings: {  }
     third_party_settings: {  }
     region: content
 hidden:

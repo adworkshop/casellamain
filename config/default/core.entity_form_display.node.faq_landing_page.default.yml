@@ -31,6 +31,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Upper Buttons'
+      region: content
 id: node.faq_landing_page.default
 targetEntityType: node
 bundle: faq_landing_page
@@ -146,6 +147,11 @@ content:
       size: 60
       placeholder: ''
       match_limit: 10
+    third_party_settings: {  }
+    region: content
+  url_redirects:
+    weight: 50
+    settings: {  }
     third_party_settings: {  }
     region: content
 hidden:

@@ -2,11 +2,23 @@ uuid: bba4758f-0578-482e-b55d-82abe9a72224
 langcode: en
 status: true
 dependencies:
+  config:
+    - core.base_field_override.node.job.status
+    - core.base_field_override.node.job.title
+    - field.field.node.job.body
+    - field.field.node.job.feeds_item
+    - field.field.node.job.field_date_posted
+    - field.field.node.job.field_job_categories
+    - field.field.node.job.field_job_status
+    - field.field.node.job.field_location
+    - node.type.job
   module:
     - casella_feeds
-label: Jobs
+    - node
 id: jobs
+label: Jobs
 description: ''
+help: null
 import_period: -1
 fetcher: upload
 fetcher_configuration:
@@ -23,6 +35,9 @@ processor_configuration:
   skip_hash_check: true
   values:
     type: job
+  update_non_existent: _keep
+  owner_feed_author: false
+custom_sources: {  }
 mappings:
   -
     target: title

@@ -33,6 +33,7 @@ third_party_settings:
         required_fields: true
         description: ''
       label: 'Personal Information'
+      region: content
     group_personal_info_wrapper:
       children:
         - field_first_name
@@ -53,6 +54,7 @@ third_party_settings:
         speed: fast
         required_fields: true
       label: 'Personal Information Wrapper'
+      region: content
     group_inquiry:
       children:
         - group_inquiry_wrapper
@@ -67,6 +69,7 @@ third_party_settings:
         required_fields: true
         description: ''
       label: Inquiry
+      region: content
     group_inquiry_wrapper:
       children:
         - field_purpose
@@ -84,6 +87,7 @@ third_party_settings:
         speed: fast
         required_fields: true
       label: 'inquiry wrapper'
+      region: content
     group_contact_information:
       children:
         - field_address
@@ -98,6 +102,7 @@ third_party_settings:
         id: ''
         classes: contactUs-contactInformation
       label: 'Contact Information'
+      region: content
     group_city_state_wrapper:
       children:
         - field_city
@@ -116,6 +121,7 @@ third_party_settings:
         speed: fast
         required_fields: true
       label: 'city/state wrapper'
+      region: content
     group_zip_phone_wrapper:
       children:
         - field_zip
@@ -134,6 +140,7 @@ third_party_settings:
         speed: fast
         required_fields: true
       label: 'Zip/Phone wrapper'
+      region: content
 id: contact_message.service_location_contact_form.default
 targetEntityType: contact_message
 bundle: service_location_contact_form

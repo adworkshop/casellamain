@@ -28,6 +28,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: Content
+      region: content
 id: paragraph.case_studies.default
 targetEntityType: paragraph
 bundle: case_studies

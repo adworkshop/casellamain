@@ -26,7 +26,7 @@ dependencies:
     - node.type.service
   module:
     - field_group
-    - image
+    - focal_point
     - metatag
     - paragraphs
     - path
@@ -49,6 +49,7 @@ third_party_settings:
         id: ''
         required_fields: true
       label: Teaser
+      region: content
     group_tabs:
       children:
         - field_tabs
@@ -62,6 +63,7 @@ third_party_settings:
         id: ''
         required_fields: true
       label: Tabs
+      region: content
     group_promotions:
       children:
         - field_sidebar_promotions
@@ -76,6 +78,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Promotions
+      region: content
     group_media:
       children:
         - field_slider_images
@@ -90,6 +93,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Media
+      region: content
     group_additional_content:
       children:
         - group_teaser
@@ -104,6 +108,7 @@ third_party_settings:
         classes: ''
         direction: vertical
       label: 'Additional Content'
+      region: content
 id: node.service.default
 targetEntityType: node
 bundle: service
@@ -181,8 +186,10 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
-    type: image_image
+    type: image_focal_point
     region: content
   field_meta_tag:
     weight: 26
@@ -243,8 +250,10 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
-    type: image_image
+    type: image_focal_point
     region: content
   field_teaser_title:
     weight: 19
@@ -302,6 +311,11 @@ content:
       size: 60
       placeholder: ''
       match_limit: 10
+    third_party_settings: {  }
+    region: content
+  url_redirects:
+    weight: 50
+    settings: {  }
     third_party_settings: {  }
     region: content
 hidden:

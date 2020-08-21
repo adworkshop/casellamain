@@ -10,7 +10,7 @@ dependencies:
     - paragraphs.paragraphs_type.sidebar_panel
   module:
     - field_group
-    - image
+    - focal_point
     - link
     - text
 third_party_settings:
@@ -29,6 +29,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Sidebar Items'
+      region: content
 id: paragraph.sidebar_panel.default
 targetEntityType: paragraph
 bundle: sidebar_panel
@@ -55,8 +56,10 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
-    type: image_image
+    type: image_focal_point
     region: content
 hidden:
   created: true

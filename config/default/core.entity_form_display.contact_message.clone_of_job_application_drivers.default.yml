@@ -78,6 +78,7 @@ third_party_settings:
         id: ''
         classes: job-indListing-form-personalInfo-container
       label: 'Personal Information'
+      region: content
     group_title_wrapper:
       children:
         - field_job_title
@@ -96,6 +97,7 @@ third_party_settings:
         speed: fast
         required_fields: true
       label: 'Title Wrapper'
+      region: content
     group_con:
       children:
         - field_city
@@ -117,6 +119,7 @@ third_party_settings:
         speed: fast
         required_fields: true
       label: 'Contact Container'
+      region: content
     group_former_employment_last_10:
       children:
         - group_employers
@@ -131,6 +134,7 @@ third_party_settings:
         id: ''
         classes: hide-for-now
       label: 'Employment (Past 10 years)'
+      region: content
     group_employer:
       children:
         - field_former_employer
@@ -148,6 +152,7 @@ third_party_settings:
         id: ''
         classes: ''
       label: Employer
+      region: content
     group_employer3:
       children: {  }
       parent_name: group_former_employment_last_10
@@ -159,6 +164,7 @@ third_party_settings:
         required_fields: true
         description: ''
       label: Employer
+      region: content
     group_request_for_check_of_drivi:
       children:
         - group_licenses
@@ -172,6 +178,7 @@ third_party_settings:
         required_fields: true
         description: ''
       label: 'Request for Check of Driving Record'
+      region: content
     group_license:
       children:
         - field_state_license
@@ -188,6 +195,7 @@ third_party_settings:
         id: ''
         classes: ''
       label: License
+      region: content
     group_authorization:
       children:
         - field_please_authorize
@@ -203,6 +211,7 @@ third_party_settings:
         required_fields: true
         description: ''
       label: Authorization
+      region: content
     group_employers:
       children:
         - group_employer
@@ -218,6 +227,7 @@ third_party_settings:
         id: ''
         classes: job-employers-accordion
       label: Employers
+      region: content
     group_employer_2:
       children:
         - field_former_employer2
@@ -234,6 +244,7 @@ third_party_settings:
         id: ''
         classes: ''
       label: Employer
+      region: content
     group_employer_3:
       children:
         - field_former_employer3
@@ -250,6 +261,7 @@ third_party_settings:
         id: ''
         classes: ''
       label: Employer
+      region: content
     group_employer_4:
       children:
         - field_former_employer4
@@ -266,6 +278,7 @@ third_party_settings:
         id: ''
         classes: ''
       label: Employer
+      region: content
     group_licenses:
       children:
         - group_license
@@ -281,6 +294,7 @@ third_party_settings:
         id: ''
         classes: job-employers-accordion
       label: Licenses
+      region: content
     group_license2:
       children:
         - field_state_license2
@@ -297,6 +311,7 @@ third_party_settings:
         id: ''
         classes: ''
       label: License
+      region: content
     group_license3:
       children:
         - field_state_license3
@@ -313,6 +328,7 @@ third_party_settings:
         id: ''
         classes: ''
       label: License
+      region: content
     group_license4:
       children:
         - field_state_license4
@@ -329,6 +345,7 @@ third_party_settings:
         id: ''
         classes: ''
       label: License
+      region: content
     group_employment_past_10_years_:
       children:
         - field_employers
@@ -341,6 +358,7 @@ third_party_settings:
         required_fields: true
         description: ''
       label: 'Employment (Past 10 years)'
+      region: content
 id: contact_message.clone_of_job_application_drivers.default
 targetEntityType: contact_message
 bundle: clone_of_job_application_drivers

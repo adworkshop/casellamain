@@ -13,7 +13,7 @@ dependencies:
     - paragraphs.paragraphs_type.free_form
   module:
     - field_group
-    - image
+    - focal_point
     - text
 third_party_settings:
   field_group:
@@ -33,6 +33,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: Content
+      region: content
 id: paragraph.free_form.default
 targetEntityType: paragraph
 bundle: free_form
@@ -51,8 +52,10 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
-    type: image_image
+    type: image_focal_point
     region: content
   field_promotion:
     weight: 6

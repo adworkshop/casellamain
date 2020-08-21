@@ -7,7 +7,7 @@ dependencies:
     - image.style.thumbnail
     - taxonomy.vocabulary.product_tags
   module:
-    - image
+    - focal_point
     - text
 id: taxonomy_term.product_tags.default
 targetEntityType: taxonomy_term
@@ -27,8 +27,10 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
-    type: image_image
+    type: image_focal_point
     region: content
   name:
     type: string_textfield
@@ -38,6 +40,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     region: content
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 100
+    region: content
+    third_party_settings: {  }
 hidden:
   langcode: true
   path: true

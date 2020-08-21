@@ -11,7 +11,7 @@ dependencies:
     - image.style.thumbnail
     - node.type.sidebar_promotion
   module:
-    - image
+    - focal_point
     - link
     - text
 id: node.sidebar_promotion.default
@@ -48,8 +48,10 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
-    type: image_image
+    type: image_focal_point
     region: content
   field_link:
     weight: 4
@@ -101,6 +103,11 @@ content:
       size: 60
       placeholder: ''
       match_limit: 10
+    third_party_settings: {  }
+    region: content
+  url_redirects:
+    weight: 50
+    settings: {  }
     third_party_settings: {  }
     region: content
 hidden:

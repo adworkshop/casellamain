@@ -2,11 +2,15 @@ uuid: 98648b20-ef15-402a-a0c7-6e0c756913ec
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.location
   module:
     - casella_feeds
-label: Holidays
+    - node
 id: holidays
+label: Holidays
 description: ''
+help: null
 import_period: 21600
 fetcher: http
 fetcher_configuration:
@@ -26,4 +30,6 @@ processor_configuration:
   values:
     type: location
   owner_feed_author: false
+  update_non_existent: _keep
+custom_sources: {  }
 mappings: {  }

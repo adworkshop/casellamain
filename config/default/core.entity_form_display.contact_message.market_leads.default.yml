@@ -36,6 +36,7 @@ third_party_settings:
         required_fields: true
         description: ''
       label: 'Personal Information'
+      region: content
     group_contact_information:
       children:
         - field_ml_address
@@ -51,6 +52,7 @@ third_party_settings:
         required_fields: true
         description: ''
       label: 'Contact Information'
+      region: content
 id: contact_message.market_leads.default
 targetEntityType: contact_message
 bundle: market_leads

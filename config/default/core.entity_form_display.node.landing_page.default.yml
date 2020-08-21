@@ -34,6 +34,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: Verticals
+      region: content
     group_service_links:
       children:
         - field_service_links
@@ -46,6 +47,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Service Links'
+      region: content
     group_industry_links:
       children:
         - field_industry_links
@@ -58,6 +60,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Industry Links'
+      region: content
 id: node.landing_page.default
 targetEntityType: node
 bundle: landing_page
@@ -202,6 +205,11 @@ content:
       size: 60
       placeholder: ''
       match_limit: 10
+    third_party_settings: {  }
+    region: content
+  url_redirects:
+    weight: 50
+    settings: {  }
     third_party_settings: {  }
     region: content
 hidden:

@@ -2,11 +2,28 @@ uuid: ec6a01b5-66e2-4ee7-bea1-e6d0395cd4ac
 langcode: en
 status: true
 dependencies:
+  config:
+    - core.base_field_override.node.location.status
+    - core.base_field_override.node.location.title
+    - field.field.node.location.feeds_item
+    - field.field.node.location.field_assoc_hauling
+    - field.field.node.location.field_city
+    - field.field.node.location.field_dropoff_hours
+    - field.field.node.location.field_latitude
+    - field.field.node.location.field_location_category
+    - field.field.node.location.field_longitude
+    - field.field.node.location.field_phone_number
+    - field.field.node.location.field_state
+    - field.field.node.location.field_street_address
+    - field.field.node.location.field_zip
+    - node.type.location
   module:
     - casella_feeds
-label: 'Service Locations - Drop offs'
+    - node
 id: service_locations_drop_offs
+label: 'Service Locations - Drop offs'
 description: ''
+help: null
 import_period: 21600
 fetcher: http
 fetcher_configuration:
@@ -25,6 +42,9 @@ processor_configuration:
   skip_hash_check: true
   values:
     type: location
+  update_non_existent: _keep
+  owner_feed_author: false
+custom_sources: {  }
 mappings:
   -
     target: feeds_item

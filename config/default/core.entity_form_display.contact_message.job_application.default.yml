@@ -38,6 +38,7 @@ third_party_settings:
         id: ''
         classes: job-indListing-form-personalInfo-container
       label: 'Personal Information'
+      region: content
     group_application_details:
       children:
         - group_application_details_wrappe
@@ -55,6 +56,7 @@ third_party_settings:
         id: ''
         classes: job-indListing-form-applicationDetails-container
       label: 'Application Details'
+      region: content
     group_title_wrapper:
       children:
         - field_job_title
@@ -73,6 +75,7 @@ third_party_settings:
         speed: fast
         required_fields: true
       label: 'Title Wrapper'
+      region: content
     group_con:
       children:
         - field_job_email
@@ -91,6 +94,7 @@ third_party_settings:
         speed: fast
         required_fields: true
       label: 'Contact Container'
+      region: content
     group_application_details_wrappe:
       children:
         - field_application
@@ -110,6 +114,7 @@ third_party_settings:
         speed: fast
         required_fields: true
       label: 'Application Details Wrapper'
+      region: content
 id: contact_message.job_application.default
 targetEntityType: contact_message
 bundle: job_application
