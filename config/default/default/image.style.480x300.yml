@@ -1,0 +1,16 @@
+uuid: eccc7269-5675-4523-9be9-9185980f0246
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: 480x300
+label: 480x300
+effects:
+  6666accc-173f-4af8-81d4-99c83da96b1e:
+    uuid: 6666accc-173f-4af8-81d4-99c83da96b1e
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 480
+      height: 300

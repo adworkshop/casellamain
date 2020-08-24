@@ -1,0 +1,19 @@
+uuid: b3a16a81-77a6-4b8b-b817-ace73a35df32
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_waste_description
+    - paragraphs.paragraphs_type.waste_category
+id: paragraph.waste_category.field_waste_description
+field_name: field_waste_description
+entity_type: paragraph
+bundle: waste_category
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

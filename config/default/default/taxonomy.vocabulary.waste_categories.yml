@@ -1,0 +1,9 @@
+uuid: b310ffde-11bd-4a38-a35e-0316ff296b81
+langcode: en
+status: true
+dependencies: {  }
+name: 'Waste Categories'
+vid: waste_categories
+description: ''
+hierarchy: 0
+weight: 0

@@ -1,0 +1,65 @@
+uuid: 5d7d5e1a-2537-4f65-865f-ee746faa88b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.subsection_homepage.body
+    - field.field.node.subsection_homepage.field_breadcrumb_override
+    - field.field.node.subsection_homepage.field_description
+    - field.field.node.subsection_homepage.field_earthlife_description
+    - field.field.node.subsection_homepage.field_earthlife_image
+    - field.field.node.subsection_homepage.field_earthlife_link
+    - field.field.node.subsection_homepage.field_earthlife_links
+    - field.field.node.subsection_homepage.field_earthlife_title
+    - field.field.node.subsection_homepage.field_full_width_promotion
+    - field.field.node.subsection_homepage.field_h1_override
+    - field.field.node.subsection_homepage.field_icon
+    - field.field.node.subsection_homepage.field_link
+    - field.field.node.subsection_homepage.field_meta_tag
+    - field.field.node.subsection_homepage.field_promotion_description
+    - field.field.node.subsection_homepage.field_promotion_image
+    - field.field.node.subsection_homepage.field_promotion_link
+    - field.field.node.subsection_homepage.field_subsection
+    - field.field.node.subsection_homepage.field_subtitle
+    - field.field.node.subsection_homepage.field_title
+    - node.type.subsection_homepage
+  module:
+    - text
+    - user
+id: node.subsection_homepage.teaser
+targetEntityType: node
+bundle: subsection_homepage
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_breadcrumb_override: true
+  field_description: true
+  field_earthlife_description: true
+  field_earthlife_image: true
+  field_earthlife_link: true
+  field_earthlife_links: true
+  field_earthlife_title: true
+  field_full_width_promotion: true
+  field_h1_override: true
+  field_icon: true
+  field_link: true
+  field_meta_tag: true
+  field_promotion_description: true
+  field_promotion_image: true
+  field_promotion_link: true
+  field_subsection: true
+  field_subtitle: true
+  field_title: true
+  langcode: true

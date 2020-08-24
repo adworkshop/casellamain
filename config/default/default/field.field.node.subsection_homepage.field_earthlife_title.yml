@@ -1,0 +1,19 @@
+uuid: 2bbcdbb7-7e59-4a3c-a547-85c16087b149
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_earthlife_title
+    - node.type.subsection_homepage
+id: node.subsection_homepage.field_earthlife_title
+field_name: field_earthlife_title
+entity_type: node
+bundle: subsection_homepage
+label: 'Earthlife Title'
+description: 'The title of the lower earthlife panel'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

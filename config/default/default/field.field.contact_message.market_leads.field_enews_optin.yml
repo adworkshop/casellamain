@@ -1,0 +1,23 @@
+uuid: 82115a72-2b1c-4b01-ad80-46521cc74c8e
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.market_leads
+    - field.storage.contact_message.field_enews_optin
+id: contact_message.market_leads.field_enews_optin
+field_name: field_enews_optin
+entity_type: contact_message
+bundle: market_leads
+label: 'I would like to receive communications from Casella'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

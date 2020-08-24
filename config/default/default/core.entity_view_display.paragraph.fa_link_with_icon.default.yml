@@ -1,0 +1,31 @@
+uuid: 9ce75324-c18d-42f4-9b04-2b8011cc217c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.fa_link_with_icon.field_fa_icon
+    - field.field.paragraph.fa_link_with_icon.field_icon_link
+    - paragraphs.paragraphs_type.fa_link_with_icon
+  module:
+    - link
+id: paragraph.fa_link_with_icon.default
+targetEntityType: paragraph
+bundle: fa_link_with_icon
+mode: default
+content:
+  field_icon_link:
+    weight: 0
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+hidden:
+  created: true
+  field_fa_icon: true
+  uid: true

@@ -1,0 +1,23 @@
+uuid: 0a8b45dd-8502-4b49-bfd2-3f3a47a04190
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_link
+    - paragraphs.paragraphs_type.image_with_caption
+  module:
+    - link
+id: paragraph.image_with_caption.field_link
+field_name: field_link
+entity_type: paragraph
+bundle: image_with_caption
+label: Link
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

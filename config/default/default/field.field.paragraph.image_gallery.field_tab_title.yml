@@ -1,0 +1,19 @@
+uuid: ad1f0dcf-9a9c-4f18-9e7b-08107e36d13a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tab_title
+    - paragraphs.paragraphs_type.image_gallery
+id: paragraph.image_gallery.field_tab_title
+field_name: field_tab_title
+entity_type: paragraph
+bundle: image_gallery
+label: 'Tab Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

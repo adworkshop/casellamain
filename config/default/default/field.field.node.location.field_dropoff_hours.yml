@@ -1,0 +1,21 @@
+uuid: 0b5cbba4-6820-4d24-9cf0-369f0c134e9d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dropoff_hours
+    - node.type.location
+  module:
+    - text
+id: node.location.field_dropoff_hours
+field_name: field_dropoff_hours
+entity_type: node
+bundle: location
+label: 'Drop-off Hours'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

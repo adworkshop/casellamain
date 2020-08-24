@@ -1,0 +1,21 @@
+uuid: 3642702f-bcb7-4c9f-835c-347f8a7e8dbf
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.service_location_contact_form
+    - field.storage.contact_message.field_state
+  module:
+    - options
+id: contact_message.service_location_contact_form.field_state
+field_name: field_state
+entity_type: contact_message
+bundle: service_location_contact_form
+label: 'State: *'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,20 @@
+uuid: 2e3f7641-4d83-4950-933a-64f51afad3f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.towns_cities
+  module:
+    - text
+id: taxonomy_term.towns_cities.description
+field_name: description
+entity_type: taxonomy_term
+bundle: towns_cities
+label: Description
+description: 'A description of the term.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

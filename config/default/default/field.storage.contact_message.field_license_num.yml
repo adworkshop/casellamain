@@ -1,0 +1,21 @@
+uuid: 7cc8fe80-2f1b-4950-ae54-30607168b47a
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+id: contact_message.field_license_num
+field_name: field_license_num
+entity_type: contact_message
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

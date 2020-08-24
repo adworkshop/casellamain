@@ -1,0 +1,16 @@
+uuid: ec536eeb-202f-4eca-8ecc-f92d877c173b
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.faq_question
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: paragraph.faq_question
+target_entity_type_id: paragraph
+target_bundle: faq_question
+default_langcode: site_default
+language_alterable: false

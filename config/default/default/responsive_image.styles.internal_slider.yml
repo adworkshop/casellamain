@@ -1,0 +1,58 @@
+uuid: e37888fa-f6c0-4ad8-9651-32cfb758c238
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.1200x540
+    - image.style.1400x630
+    - image.style.1800x810
+    - image.style.2200x990
+    - image.style.480x216
+    - image.style.768x346
+  theme:
+    - casella
+id: internal_slider
+label: 'Internal Slider'
+image_style_mappings:
+  -
+    breakpoint_id: casella.1800
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 2200x990
+  -
+    breakpoint_id: bartik.1400
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 1800x810
+  -
+    breakpoint_id: casella.1200
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 1400x630
+  -
+    breakpoint_id: bartik.1024
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 1200x540
+  -
+    breakpoint_id: casella.960
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 1200x540
+  -
+    breakpoint_id: bartik.768
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 1200x540
+  -
+    breakpoint_id: casella.480
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 768x346
+  -
+    breakpoint_id: casella.mobile
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 480x216
+breakpoint_group: casella
+fallback_image_style: 480x216

@@ -1,0 +1,21 @@
+uuid: 6a85fc28-c86b-4728-bba8-23dad23a1863
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_free_form_content
+    - paragraphs.paragraphs_type.free_form
+  module:
+    - text
+id: paragraph.free_form.field_free_form_content
+field_name: field_free_form_content
+entity_type: paragraph
+bundle: free_form
+label: 'Free Form Content'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

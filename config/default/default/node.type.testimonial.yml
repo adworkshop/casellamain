@@ -1,0 +1,17 @@
+uuid: 462fca45-6bfa-4b4b-b3e7-39974ed19cc5
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Testimonial
+type: testimonial
+description: 'Assignable to the testimonial tab type.'
+help: 'The admin title helps identify the quotation in the back end, and will never be shown on the front of the site.'
+new_revision: true
+preview_mode: 1
+display_submitted: false

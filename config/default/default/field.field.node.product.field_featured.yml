@@ -1,0 +1,23 @@
+uuid: ed6fcfb1-e110-4c2f-ac47-4a68522c8862
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_featured
+    - node.type.product
+id: node.product.field_featured
+field_name: field_featured
+entity_type: node
+bundle: product
+label: Featured
+description: 'Check this box to feature this product on the Earthlife Homepage'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

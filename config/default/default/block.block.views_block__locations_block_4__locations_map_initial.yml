@@ -1,0 +1,30 @@
+uuid: d155ab6d-0d96-4ca2-94f1-bebc6ab325c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.locations
+  module:
+    - system
+    - views
+  theme:
+    - casella
+id: views_block__locations_block_4__locations_map_initial
+theme: casella
+region: node_content
+weight: -1
+provider: null
+plugin: 'views_block:locations-block_4'
+settings:
+  id: 'views_block:locations-block_4'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/2051
+    negate: false
+    context_mapping: {  }

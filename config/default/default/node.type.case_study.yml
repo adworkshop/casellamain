@@ -1,0 +1,17 @@
+uuid: a1037627-73cb-414b-8dfb-29317c09c99e
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Case Study'
+type: case_study
+description: 'Showcase a service or event. Page level content that can be reference in tabs on other page level content.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

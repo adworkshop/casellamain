@@ -1,0 +1,18 @@
+uuid: 1385f308-154a-41df-85c1-745f6cd91a65
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.product_category
+id: node.product_category.changed
+field_name: changed
+entity_type: node
+bundle: product_category
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

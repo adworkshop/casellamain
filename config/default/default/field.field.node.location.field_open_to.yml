@@ -1,0 +1,19 @@
+uuid: 49fe93d7-ffa0-41cd-908e-d96f128898b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_open_to
+    - node.type.location
+id: node.location.field_open_to
+field_name: field_open_to
+entity_type: node
+bundle: location
+label: 'Open To'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

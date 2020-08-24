@@ -1,0 +1,19 @@
+uuid: 120df72d-3e09-4450-a0a8-55a237d169b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_earthlife_sidebar_intro
+    - node.type.casella_globals
+id: node.casella_globals.field_earthlife_sidebar_intro
+field_name: field_earthlife_sidebar_intro
+entity_type: node
+bundle: casella_globals
+label: 'Earthlife Sidebar Intro'
+description: 'Text displayed above the Earthlife products sidebar.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

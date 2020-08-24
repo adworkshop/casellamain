@@ -1,0 +1,19 @@
+uuid: 4d3815f0-8a58-4dbb-a5ee-6e559cb3c8c4
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_lower_content
+field_name: field_lower_content
+entity_type: paragraph
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

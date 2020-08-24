@@ -1,0 +1,20 @@
+uuid: 3a4c2f0d-3b71-4ee2-a36f-093c664ca689
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_hiring_managers
+field_name: field_hiring_managers
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

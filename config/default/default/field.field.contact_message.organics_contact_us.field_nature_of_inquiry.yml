@@ -1,0 +1,21 @@
+uuid: 72434de4-0e06-4cb0-aed6-5fe781748b57
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.organics_contact_us
+    - field.storage.contact_message.field_nature_of_inquiry
+  module:
+    - options
+id: contact_message.organics_contact_us.field_nature_of_inquiry
+field_name: field_nature_of_inquiry
+entity_type: contact_message
+bundle: organics_contact_us
+label: 'Nature of Inquiry:*'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

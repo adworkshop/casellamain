@@ -1,0 +1,20 @@
+abs_urls: false
+roles_profiles:
+  user_admin:
+    public: admin
+  human_resources:
+    public: admin
+  customer_care:
+    public: admin
+  earthlife:
+    public: admin
+  organics:
+    public: admin
+  client_admin:
+    public: admin
+  administrator:
+    public: admin
+  authenticated:
+    public: admin
+_core:
+  default_config_hash: 6Wk4BLqlH9PdR3lPJohO4Ek3-uRJAgdfrVT4qWYXVMY

@@ -1,0 +1,6 @@
+uuid: bcac71b9-2e29-4aae-b490-85c46497a483
+langcode: en
+status: true
+dependencies: {  }
+id: slider_image
+label: 'Slider Image'

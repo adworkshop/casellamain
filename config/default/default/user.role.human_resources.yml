@@ -1,0 +1,33 @@
+uuid: 33f084bc-535c-4bfe-a4de-357fa93af3b4
+langcode: en
+status: true
+dependencies: {  }
+id: human_resources
+label: 'Human Resources'
+weight: 7
+is_admin: null
+permissions:
+  - 'add terms in hiring_managers'
+  - 'add terms in job_category'
+  - 'add terms in job_status'
+  - 'administer contact forms'
+  - 'administer menu'
+  - 'create job content'
+  - 'create url aliases'
+  - 'delete any job content'
+  - 'delete terms in hiring_managers'
+  - 'delete terms in job_category'
+  - 'delete terms in job_status'
+  - 'edit any casella_globals content'
+  - 'edit any job content'
+  - 'edit terms in hiring_managers'
+  - 'edit terms in job_category'
+  - 'edit terms in job_status'
+  - 'publish any node type job'
+  - 'reorder terms in hiring_managers'
+  - 'reorder terms in job_category'
+  - 'reorder terms in job_status'
+  - 'revert job revisions'
+  - 'translate job node'
+  - 'unpublish any node type job'
+  - 'view job revisions'

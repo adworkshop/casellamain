@@ -1,0 +1,22 @@
+uuid: 31aae753-f44b-410e-8586-6ad516135ce4
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.holiday
+id: paragraph.holiday.status
+field_name: status
+entity_type: paragraph
+bundle: holiday
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

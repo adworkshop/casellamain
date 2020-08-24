@@ -1,0 +1,19 @@
+uuid: b7864188-5939-4beb-9748-6fac5943a165
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_icon
+    - paragraphs.paragraphs_type.upper_button
+id: paragraph.upper_button.field_icon
+field_name: field_icon
+entity_type: paragraph
+bundle: upper_button
+label: Icon
+description: 'Temporary solution until full icon select is implemented. To select an icon go to http://fontawesome.io/icons/ and find the icon you would like to use. Click on it and copy the icon tag from the details page. The tag will look like fa-[icon name here], for example the tag from http://fontawesome.io/icon/viadeo/ is fa-viadeo.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

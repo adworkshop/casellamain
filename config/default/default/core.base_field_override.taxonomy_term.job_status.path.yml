@@ -1,0 +1,20 @@
+uuid: 306f3021-3553-449c-934c-205fa6b975cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.job_status
+  module:
+    - path
+id: taxonomy_term.job_status.path
+field_name: path
+entity_type: taxonomy_term
+bundle: job_status
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

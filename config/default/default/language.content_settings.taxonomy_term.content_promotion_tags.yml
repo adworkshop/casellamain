@@ -1,0 +1,11 @@
+uuid: 8b8f73f4-a4a4-43c0-a4e0-d1291e6dc1b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.content_promotion_tags
+id: taxonomy_term.content_promotion_tags
+target_entity_type_id: taxonomy_term
+target_bundle: content_promotion_tags
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,19 @@
+uuid: 51c61b2d-2772-4f32-840c-10183e2fff9d
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.market_leads
+    - field.storage.contact_message.field_ml_email
+id: contact_message.market_leads.field_ml_email
+field_name: field_ml_email
+entity_type: contact_message
+bundle: market_leads
+label: 'Email:*'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

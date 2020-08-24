@@ -1,0 +1,15 @@
+uuid: 88d796ab-0624-4722-9197-2082169481c5
+langcode: en
+status: true
+dependencies: {  }
+name: 300x
+label: 300x
+effects:
+  f57b8fff-db1b-400d-9603-6bf6e1fe7a75:
+    uuid: f57b8fff-db1b-400d-9603-6bf6e1fe7a75
+    id: image_scale
+    weight: 1
+    data:
+      width: 300
+      height: null
+      upscale: false

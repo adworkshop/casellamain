@@ -1,0 +1,21 @@
+uuid: 5f7f123b-e941-4d98-b7aa-f21b7da2996d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_veterans_career_email
+    - node.type.casella_globals
+id: node.casella_globals.field_veterans_career_email
+field_name: field_veterans_career_email
+entity_type: node
+bundle: casella_globals
+label: 'Veterans Career Email'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: matt@militarytalentsource.com
+default_value_callback: ''
+settings: {  }
+field_type: email

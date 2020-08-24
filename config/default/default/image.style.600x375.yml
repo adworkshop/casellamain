@@ -1,0 +1,16 @@
+uuid: e5b7337b-2243-4fb1-b5cf-bbf5a383ece4
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: 600x375
+label: 600x375
+effects:
+  a1bef23a-fde3-4aa5-a7b2-467f3104b9a3:
+    uuid: a1bef23a-fde3-4aa5-a7b2-467f3104b9a3
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 600
+      height: 375

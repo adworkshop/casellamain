@@ -1,0 +1,23 @@
+uuid: 2315f13f-5bda-4e93-bacb-79b057cf98e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_published
+    - taxonomy.vocabulary.towns_cities
+id: taxonomy_term.towns_cities.field_published
+field_name: field_published
+entity_type: taxonomy_term
+bundle: towns_cities
+label: Hidden
+description: 'Check this box to remove the town from the location search and service location output. This is handled automatically by the feed importer.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

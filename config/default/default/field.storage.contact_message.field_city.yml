@@ -1,0 +1,21 @@
+uuid: 7cefb0fa-7e7c-4ebe-9194-e2e07b1caa83
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+id: contact_message.field_city
+field_name: field_city
+entity_type: contact_message
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

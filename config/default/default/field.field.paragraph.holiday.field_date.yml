@@ -1,0 +1,21 @@
+uuid: 959667e2-af60-471c-8496-724386ce1ccf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_date
+    - paragraphs.paragraphs_type.holiday
+  module:
+    - datetime
+id: paragraph.holiday.field_date
+field_name: field_date
+entity_type: paragraph
+bundle: holiday
+label: Date
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

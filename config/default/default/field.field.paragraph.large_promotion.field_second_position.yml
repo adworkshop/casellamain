@@ -1,0 +1,23 @@
+uuid: df831608-b2a4-4a03-9bb5-f0a4333848a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_second_position
+    - paragraphs.paragraphs_type.large_promotion
+  module:
+    - options
+id: paragraph.large_promotion.field_second_position
+field_name: field_second_position
+entity_type: paragraph
+bundle: large_promotion
+label: 'Secondary Title Position'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: bottom
+default_value_callback: ''
+settings: {  }
+field_type: list_string

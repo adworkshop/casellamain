@@ -1,0 +1,40 @@
+uuid: 4bf00a16-99e1-4238-a295-e6ad52d0db4d
+langcode: en
+status: true
+dependencies: {  }
+label: 'Case Studies'
+id: case_studies
+description: 'an import of all case studies'
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'public://feeds'
+parser: syndication
+parser_configuration: {  }
+processor: 'entity:node'
+processor_configuration:
+  update_existing: 1
+  expire: -1
+  owner_id: 1
+  authorize: true
+  skip_hash_check: false
+  values:
+    type: case_study
+mappings:
+  -
+    target: title
+    map:
+      value: title
+    unique: {  }
+  -
+    target: body
+    map:
+      value: description
+      summary: ''
+    settings:
+      format: basic_html
+  -
+    target: field_teaser
+    map:
+      value: description

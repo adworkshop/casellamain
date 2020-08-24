@@ -1,0 +1,22 @@
+uuid: 1d998cf7-2413-4e72-b047-1e885bf1fded
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.sidebar_promotion
+id: node.sidebar_promotion.status
+field_name: status
+entity_type: node
+bundle: sidebar_promotion
+label: 'Publishing status'
+description: 'A boolean indicating whether the node is published.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

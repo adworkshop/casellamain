@@ -1,0 +1,28 @@
+uuid: 5ba214e6-2b45-4fe3-91db-cfdab393db22
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_testimonials
+    - node.type.testimonial
+    - paragraphs.paragraphs_type.testimonials
+id: paragraph.testimonials.field_testimonials
+field_name: field_testimonials
+entity_type: paragraph
+bundle: testimonials
+label: Testimonials
+description: 'Start typing the title of a piece of content to select it.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      testimonial: testimonial
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

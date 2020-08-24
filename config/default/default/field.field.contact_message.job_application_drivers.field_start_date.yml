@@ -1,0 +1,21 @@
+uuid: f9888f11-1663-4229-8b4d-ac91b211f0d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.job_application_drivers
+    - field.storage.contact_message.field_start_date
+  module:
+    - datetime
+id: contact_message.job_application_drivers.field_start_date
+field_name: field_start_date
+entity_type: contact_message
+bundle: job_application_drivers
+label: 'Start Date'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

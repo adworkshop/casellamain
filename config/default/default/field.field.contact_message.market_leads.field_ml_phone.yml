@@ -1,0 +1,19 @@
+uuid: bce144cd-dd97-4b8b-b8cb-c623a251b135
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.market_leads
+    - field.storage.contact_message.field_ml_phone
+id: contact_message.market_leads.field_ml_phone
+field_name: field_ml_phone
+entity_type: contact_message
+bundle: market_leads
+label: 'Phone:'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,16 @@
+uuid: 80b68254-de96-4952-817f-5cc5b65505c9
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: 240x160
+label: 240x160
+effects:
+  520b5c8c-f5f9-46fe-bdf0-5f831cc68992:
+    uuid: 520b5c8c-f5f9-46fe-bdf0-5f831cc68992
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 240
+      height: 160

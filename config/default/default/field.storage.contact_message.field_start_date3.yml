@@ -1,0 +1,20 @@
+uuid: b1248c68-047d-4b64-a079-3d0c5f949b39
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+    - datetime
+id: contact_message.field_start_date3
+field_name: field_start_date3
+entity_type: contact_message
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

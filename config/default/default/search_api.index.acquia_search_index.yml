@@ -1,0 +1,300 @@
+uuid: cd40e8ff-4ec8-4cc3-90c6-ecc28c89423b
+langcode: en
+status: false
+dependencies:
+  config:
+    - field.storage.node.body
+    - field.storage.node.field_h1_override
+    - field.storage.node.field_hero_text
+    - field.storage.node.field_job_categories
+    - field.storage.node.field_job_status
+    - field.storage.node.field_location
+    - field.storage.node.field_business_desc
+    - field.storage.node.field_home_desc
+    - field.storage.node.field_org_desc
+    - field.storage.node.field_location_category
+    - field.storage.node.field_upper_content
+    - field.storage.node.field_product_category
+    - field.storage.node.field_product_tags
+  module:
+    - taxonomy
+    - node
+    - search_api
+_core:
+  default_config_hash: '-ggwZpvT2-Ey1fqPkREitA6TGI_m5dTHD9vZm9FrlSQ'
+id: acquia_search_index
+name: 'Acquia Search Solr Index'
+description: ''
+read_only: false
+field_settings:
+  body:
+    label: Body
+    datasource_id: 'entity:node'
+    property_path: body
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.body
+  field_business_desc:
+    label: 'Business Description'
+    datasource_id: 'entity:node'
+    property_path: field_business_desc
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_business_desc
+  field_h1_override:
+    label: 'H1 Override'
+    datasource_id: 'entity:node'
+    property_path: field_h1_override
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_h1_override
+  field_hero_text:
+    label: 'Hero Text'
+    datasource_id: 'entity:node'
+    property_path: field_hero_text
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_hero_text
+  field_home_desc:
+    label: 'Home Description'
+    datasource_id: 'entity:node'
+    property_path: field_home_desc
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_home_desc
+  field_location_category:
+    label: 'Location Category'
+    datasource_id: 'entity:node'
+    property_path: field_location_category
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_location_category
+  field_org_desc:
+    label: 'Organization Description'
+    datasource_id: 'entity:node'
+    property_path: field_org_desc
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_org_desc
+  field_upper_content:
+    label: 'Upper Content'
+    datasource_id: 'entity:node'
+    property_path: field_upper_content
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_upper_content
+  name:
+    label: 'Job Categories » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_job_categories:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_job_categories
+      module:
+        - taxonomy
+  name_1:
+    label: 'Job Status » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_job_status:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_job_status
+      module:
+        - taxonomy
+  name_2:
+    label: 'Product Tags » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_product_tags:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_product_tags
+      module:
+        - taxonomy
+  node_grants:
+    label: 'Node access information'
+    property_path: search_api_node_grants
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
+  status:
+    label: null
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    indexed_locked: true
+    type_locked: true
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+  title_1:
+    label: 'Location/Company » Content » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_location:entity:title'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_location
+      module:
+        - node
+  title_2:
+    label: 'Product Category » Content » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_product_category:entity:title'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_product_category
+      module:
+        - node
+  uid:
+    label: null
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    indexed_locked: true
+    type_locked: true
+processor_settings:
+  add_url:
+    plugin_id: add_url
+    settings: {  }
+  aggregated_field:
+    plugin_id: aggregated_field
+    settings: {  }
+  content_access:
+    plugin_id: content_access
+    settings:
+      weights:
+        preprocess_query: -10
+  html_filter:
+    plugin_id: html_filter
+    settings:
+      fields:
+        - body
+        - field_hero_text
+        - field_business_desc
+        - field_home_desc
+        - field_org_desc
+        - field_upper_content
+      title: false
+      alt: false
+      tags:
+        h1: 5
+        h2: 3
+        h3: 2
+        strong: 2
+        b: 2
+        em: 1
+        u: 1
+      weights:
+        preprocess_index: -10
+        preprocess_query: -10
+  ignorecase:
+    plugin_id: ignorecase
+    settings:
+      fields:
+        - body
+        - title
+        - field_h1_override
+        - field_hero_text
+        - name
+        - name_1
+        - title_1
+        - field_business_desc
+        - field_home_desc
+        - field_org_desc
+        - field_location_category
+        - field_upper_content
+        - title_2
+        - name_2
+      weights:
+        preprocess_index: -10
+        preprocess_query: -10
+  node_status:
+    plugin_id: node_status
+    settings: {  }
+  rendered_item:
+    plugin_id: rendered_item
+    settings: {  }
+  tokenizer:
+    plugin_id: tokenizer
+    settings:
+      fields:
+        - body
+        - title
+        - field_h1_override
+        - field_hero_text
+        - field_business_desc
+        - field_home_desc
+        - field_org_desc
+        - field_upper_content
+      spaces: ''
+      overlap_cjk: 1
+      minimum_word_size: '3'
+      weights:
+        preprocess_index: -6
+        preprocess_query: -6
+  transliteration:
+    plugin_id: transliteration
+    settings:
+      fields:
+        - body
+        - title
+        - field_h1_override
+        - field_hero_text
+        - name
+        - name_1
+        - title_1
+        - field_business_desc
+        - field_home_desc
+        - field_org_desc
+        - field_location_category
+        - field_upper_content
+        - title_2
+        - name_2
+      weights:
+        preprocess_index: -10
+        preprocess_query: -10
+options:
+  index_directly: false
+  cron_limit: 50
+  processors:
+    language:
+      status: '1'
+      weight: -50
+      settings: {  }
+      processorPluginId: language
+datasource_settings:
+  'entity:node':
+    plugin_id: 'entity:node'
+    settings:
+      bundles:
+        default: true
+        selected:
+          - case_study
+          - casella_globals
+          - content_promotions
+          - full_width_promotion
+          - sidebar_promotion
+          - testimonial
+      languages:
+        default: true
+        selected: {  }
+tracker_settings:
+  default:
+    plugin_id: default
+    settings: {  }
+server: null

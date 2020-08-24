@@ -41,7 +41,7 @@ spi:
   site_name: 'Casella: prod'
   site_machine_name: b1cf2220_a4c7_48b1_81d4_c846c26189dd__casella
   site_uuid: df86b380-66ac-4bd8-9e69-e083b8bf8365
-  site_environment: prod
+  site_environment: null
   env_detection_enabled: true
   def_timestamp: 1374783288
   def_vars:

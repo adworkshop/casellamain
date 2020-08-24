@@ -1,0 +1,11 @@
+uuid: 7ec5c6db-318d-4d32-a3dc-401a2d73f943
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.job_application
+id: contact_message.job_application
+target_entity_type_id: contact_message
+target_bundle: job_application
+default_langcode: site_default
+language_alterable: false

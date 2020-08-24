@@ -1,0 +1,22 @@
+uuid: d12777b3-078a-47f0-a472-8ebee1b96312
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: earthlife_products
+label: 'Earthlife Products'
+type: 'canonical_entities:node'
+pattern: '[node:product_category-path]/[node:title]'
+selection_criteria:
+  d38b6d98-c703-4060-97d9-3b4fff117770:
+    id: node_type
+    bundles:
+      product: product
+    negate: false
+    context_mapping:
+      node: node
+    uuid: d38b6d98-c703-4060-97d9-3b4fff117770
+selection_logic: and
+weight: -9
+relationships: {  }

@@ -1,0 +1,21 @@
+uuid: 6f78e081-e13c-4610-8b93-98ee547b9556
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.job_application
+    - field.storage.contact_message.field_status
+  module:
+    - options
+id: contact_message.job_application.field_status
+field_name: field_status
+entity_type: contact_message
+bundle: job_application
+label: Status
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

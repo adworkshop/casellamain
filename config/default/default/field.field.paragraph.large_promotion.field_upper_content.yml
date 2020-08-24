@@ -1,0 +1,19 @@
+uuid: ebdff35e-02b6-4e0a-aca5-5a5150724e36
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_upper_content
+    - paragraphs.paragraphs_type.large_promotion
+id: paragraph.large_promotion.field_upper_content
+field_name: field_upper_content
+entity_type: paragraph
+bundle: large_promotion
+label: 'Upper Content'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

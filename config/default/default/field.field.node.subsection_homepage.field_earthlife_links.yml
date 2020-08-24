@@ -1,0 +1,75 @@
+uuid: 42068883-4ce8-4daf-ae05-7503c9d968a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_earthlife_links
+    - node.type.subsection_homepage
+    - paragraphs.paragraphs_type.earthlink_link
+  module:
+    - entity_reference_revisions
+id: node.subsection_homepage.field_earthlife_links
+field_name: field_earthlife_links
+entity_type: node
+bundle: subsection_homepage
+label: 'Earthlife Links'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      earthlink_link: earthlink_link
+    target_bundles_drag_drop:
+      case_studies:
+        weight: 17
+        enabled: false
+      earthlink_link:
+        enabled: true
+        weight: 18
+      faq_category:
+        weight: 19
+        enabled: false
+      faq_question:
+        weight: 20
+        enabled: false
+      free_form:
+        weight: 21
+        enabled: false
+      image_gallery:
+        weight: 22
+        enabled: false
+      image_with_caption:
+        weight: 23
+        enabled: false
+      large_promotion:
+        weight: 24
+        enabled: false
+      products:
+        weight: 25
+        enabled: false
+      recommendation:
+        weight: 26
+        enabled: false
+      slider_image:
+        weight: 27
+        enabled: false
+      solution_resource:
+        weight: 28
+        enabled: false
+      testimonials:
+        weight: 29
+        enabled: false
+      upper_button:
+        weight: 30
+        enabled: false
+      vertical:
+        weight: 31
+        enabled: false
+      video:
+        weight: 32
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,14 @@
+uuid: 6ee2bc17-f553-42d1-82bd-ba5ba7b0b05f
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.organics
+  module:
+    - user
+id: user_add_role_action.organics
+label: 'Add the Organics role to the selected users'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: organics

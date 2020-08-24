@@ -1,0 +1,21 @@
+uuid: a50427f3-eadc-425f-98ed-8f62a409603f
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.organics_contact_us
+    - field.storage.contact_message.field_contact_method
+  module:
+    - options
+id: contact_message.organics_contact_us.field_contact_method
+field_name: field_contact_method
+entity_type: contact_message
+bundle: organics_contact_us
+label: 'Preferred Contact Method'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

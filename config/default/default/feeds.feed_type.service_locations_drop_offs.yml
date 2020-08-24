@@ -1,0 +1,96 @@
+uuid: ec6a01b5-66e2-4ee7-bea1-e6d0395cd4ac
+langcode: en
+status: true
+dependencies:
+  module:
+    - casella_feeds
+label: 'Service Locations - Drop offs'
+id: service_locations_drop_offs
+description: ''
+import_period: 21600
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: casella_service_locations_advanced
+parser_configuration: {  }
+processor: 'entity:node'
+processor_configuration:
+  update_existing: 2
+  expire: -1
+  owner_id: 1
+  authorize: false
+  skip_hash_check: true
+  values:
+    type: location
+mappings:
+  -
+    target: feeds_item
+    map:
+      url: ''
+      guid: guid
+    unique:
+      guid: '1'
+  -
+    target: title
+    map:
+      value: title
+    unique: {  }
+  -
+    target: field_street_address
+    map:
+      value: street
+    unique: {  }
+  -
+    target: field_city
+    map:
+      value: city
+    unique: {  }
+  -
+    target: field_state
+    map:
+      value: state
+    unique: {  }
+  -
+    target: field_zip
+    map:
+      value: zip
+    unique: {  }
+  -
+    target: field_latitude
+    map:
+      value: lat
+    unique: {  }
+  -
+    target: field_longitude
+    map:
+      value: lng
+    unique: {  }
+  -
+    target: status
+    map:
+      value: published
+  -
+    target: field_phone_number
+    map:
+      value: phone
+    unique: {  }
+  -
+    target: field_dropoff_hours
+    map:
+      value: hours
+    settings:
+      format: plain_text
+  -
+    target: field_location_category
+    map:
+      value: type
+  -
+    target: field_assoc_hauling
+    map:
+      target_id: serviceReference
+    settings:
+      reference_by: title
+      autocreate: 0

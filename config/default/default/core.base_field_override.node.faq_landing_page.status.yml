@@ -1,0 +1,22 @@
+uuid: 24a27843-ca96-4cf1-915c-57ed4c97b826
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.faq_landing_page
+id: node.faq_landing_page.status
+field_name: status
+entity_type: node
+bundle: faq_landing_page
+label: 'Publishing status'
+description: 'A boolean indicating whether the node is published.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

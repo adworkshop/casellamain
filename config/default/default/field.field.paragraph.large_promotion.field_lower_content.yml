@@ -1,0 +1,19 @@
+uuid: 6e2cdbc9-afb9-4447-8197-752442f578df
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_lower_content
+    - paragraphs.paragraphs_type.large_promotion
+id: paragraph.large_promotion.field_lower_content
+field_name: field_lower_content
+entity_type: paragraph
+bundle: large_promotion
+label: 'Lower Content'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

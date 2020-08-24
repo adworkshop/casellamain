@@ -1,0 +1,14 @@
+uuid: 6ce72822-b894-4787-bb0f-4eaab7612556
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.customer_care
+  module:
+    - user
+id: user_add_role_action.customer_care
+label: 'Add the Customer Care role to the selected users'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: customer_care

@@ -1,0 +1,21 @@
+uuid: 65ac6257-806d-478d-99d1-887dcd1ebb3f
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.organics_contact_us
+    - field.storage.contact_message.field_title
+  module:
+    - options
+id: contact_message.organics_contact_us.field_title
+field_name: field_title
+entity_type: contact_message
+bundle: organics_contact_us
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

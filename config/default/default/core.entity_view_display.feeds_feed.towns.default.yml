@@ -1,0 +1,42 @@
+uuid: c0e4f624-24b3-41f2-9ab7-908033c21a3b
+langcode: en
+status: true
+dependencies:
+  config:
+    - feeds.feed_type.towns
+  module:
+    - feeds
+    - user
+id: feeds_feed.towns.default
+targetEntityType: feeds_feed
+bundle: towns
+mode: default
+content:
+  imported:
+    label: inline
+    type: timestamp_ago
+    weight: 1
+    settings:
+      future_format: '@interval hence'
+      past_format: '@interval ago'
+      granularity: 2
+    third_party_settings: {  }
+    region: content
+  next:
+    label: inline
+    type: timestamp
+    weight: 1
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+    region: content
+  source:
+    label: inline
+    type: feeds_uri_link
+    weight: -3
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

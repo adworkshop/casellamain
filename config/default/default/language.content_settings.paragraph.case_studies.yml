@@ -1,0 +1,16 @@
+uuid: 3bcf69c1-7c78-495d-a743-78f7775838b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.case_studies
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: paragraph.case_studies
+target_entity_type_id: paragraph
+target_bundle: case_studies
+default_langcode: site_default
+language_alterable: true

@@ -1,0 +1,19 @@
+uuid: fdd87fbb-11f5-45dc-ab0c-7d478f5bc590
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hero_text
+    - node.type.job
+id: node.job.field_hero_text
+field_name: field_hero_text
+entity_type: node
+bundle: job
+label: 'Hero Text'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,28 @@
+uuid: ca6d82a8-00f7-4724-8aea-64c4d00f1fe6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_promotion_category
+    - node.type.content_promotions
+    - taxonomy.vocabulary.content_promotion_tags
+id: node.content_promotions.field_promotion_category
+field_name: field_promotion_category
+entity_type: node
+bundle: content_promotions
+label: 'Promotion Category'
+description: 'Select the applicable categories, which are output on their respective pages.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      content_promotion_tags: content_promotion_tags
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

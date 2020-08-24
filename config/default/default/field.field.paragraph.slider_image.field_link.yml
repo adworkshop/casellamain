@@ -1,0 +1,23 @@
+uuid: 56d08659-508b-4e93-bb7d-144407d95e76
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_link
+    - paragraphs.paragraphs_type.slider_image
+  module:
+    - link
+id: paragraph.slider_image.field_link
+field_name: field_link
+entity_type: paragraph
+bundle: slider_image
+label: Link
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

@@ -1,0 +1,28 @@
+uuid: d4cd7291-d3d0-440e-aa8e-f63688f703db
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_products
+    - node.type.product
+    - paragraphs.paragraphs_type.products
+id: paragraph.products.field_products
+field_name: field_products
+entity_type: paragraph
+bundle: products
+label: Products
+description: 'Display up to 6 products. Only the top 6 published products selected will display. Start typing the title of a piece of content to select it.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      product: product
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

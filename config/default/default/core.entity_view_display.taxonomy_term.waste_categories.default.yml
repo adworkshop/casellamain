@@ -1,0 +1,30 @@
+uuid: ecd60bb7-c1c3-450d-b762-49d6f27b3c58
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.waste_categories.field_description
+    - taxonomy.vocabulary.waste_categories
+  module:
+    - text
+id: taxonomy_term.waste_categories.default
+targetEntityType: taxonomy_term
+bundle: waste_categories
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_description:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+hidden:
+  langcode: true

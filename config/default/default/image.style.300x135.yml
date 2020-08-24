@@ -1,0 +1,16 @@
+uuid: f98ca440-4e0c-4351-915d-796c4f9c1391
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: 300x135
+label: 300x135
+effects:
+  44000f0d-401c-4407-8672-a895db0a4335:
+    uuid: 44000f0d-401c-4407-8672-a895db0a4335
+    id: focal_point_scale_and_crop
+    weight: 2
+    data:
+      width: 300
+      height: 135

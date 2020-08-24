@@ -1,0 +1,19 @@
+uuid: 33a3859d-2f69-4674-9109-b8b541949069
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_upper_content
+    - node.type.service
+id: node.service.field_upper_content
+field_name: field_upper_content
+entity_type: node
+bundle: service
+label: 'Upper Content'
+description: 'Content to be displayed above the body content with a slightly more prominent style.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

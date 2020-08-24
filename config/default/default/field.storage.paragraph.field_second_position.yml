@@ -1,0 +1,27 @@
+uuid: aff7381d-79e7-47c7-af96-b96a32ad2b13
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_second_position
+field_name: field_second_position
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: top
+      label: Above
+    -
+      value: bottom
+      label: Below
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,45 @@
+uuid: 37723d4f-31ba-45c0-8c0b-62f9d6d995aa
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+    - options
+id: contact_message.field_purpose
+field_name: field_purpose
+entity_type: contact_message
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: residential
+      label: 'Request for residential service'
+    -
+      value: commercial
+      label: 'Request for commercial service'
+    -
+      value: dumpster
+      label: 'Request for dumpster rental'
+    -
+      value: waste_analysis
+      label: 'Free Waste Analysis'
+    -
+      value: service_issue
+      label: 'Report a service issue'
+    -
+      value: billing
+      label: 'Billing question'
+    -
+      value: more_info
+      label: 'More information required'
+    -
+      value: contact
+      label: 'Please contact me'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

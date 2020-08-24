@@ -1,0 +1,9 @@
+uuid: 36040430-f28f-4ef6-9a8b-a817246c05ef
+langcode: en
+status: true
+dependencies: {  }
+name: 'Earthlife Product Tags'
+vid: product_tags
+description: ''
+hierarchy: 0
+weight: 0

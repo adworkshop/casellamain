@@ -1,0 +1,176 @@
+uuid: 0b8d5aa7-3081-43bd-993f-bfdb4e5d5492
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.page.body
+    - field.field.node.page.feeds_item
+    - field.field.node.page.field_2_column
+    - field.field.node.page.field_add_this
+    - field.field.node.page.field_breadcrumb_override
+    - field.field.node.page.field_full_width
+    - field.field.node.page.field_full_width_promotion
+    - field.field.node.page.field_h1_override
+    - field.field.node.page.field_hero_text
+    - field.field.node.page.field_location_category
+    - field.field.node.page.field_logo
+    - field.field.node.page.field_meta_tags
+    - field.field.node.page.field_post_category
+    - field.field.node.page.field_sidebar_promotions
+    - field.field.node.page.field_slider_images
+    - field.field.node.page.field_subsection
+    - field.field.node.page.field_tabs
+    - field.field.node.page.field_upper_content
+    - field.field.node.page.field_veterans_career_page
+    - node.type.page
+    - responsive_image.styles.inline_logo
+  module:
+    - entity_reference_revisions
+    - metatag
+    - responsive_image
+    - text
+    - user
+_core:
+  default_config_hash: oZ-7vpIJxjxL2up9B5KrJGD0lazQ9aN0P-fIPo6OrSU
+id: node.page.default
+targetEntityType: node
+bundle: page
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_2_column:
+    weight: 4
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_add_this:
+    weight: 5
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_breadcrumb_override:
+    weight: 12
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_full_width:
+    weight: 6
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_full_width_promotion:
+    weight: 8
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_h1_override:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_hero_text:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_logo:
+    weight: 11
+    label: hidden
+    settings:
+      responsive_image_style: inline_logo
+      image_link: ''
+    third_party_settings: {  }
+    type: responsive_image
+    region: content
+  field_meta_tags:
+    weight: 15
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
+  field_post_category:
+    weight: 13
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: entity_reference_entity_id
+    region: content
+  field_sidebar_promotions:
+    weight: 10
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_slider_images:
+    type: entity_reference_revisions_entity_view
+    weight: 7
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_tabs:
+    type: entity_reference_revisions_entity_view
+    weight: 9
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_upper_content:
+    weight: 14
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  links:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  feeds_item: true
+  field_location_category: true
+  field_subsection: true
+  field_veterans_career_page: true
+  langcode: true

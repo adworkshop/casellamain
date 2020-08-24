@@ -1,0 +1,19 @@
+uuid: 4ca28bed-d9c9-4ba3-abdf-f23ab4839e80
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_email_address
+    - taxonomy.vocabulary.hiring_managers
+id: taxonomy_term.hiring_managers.field_email_address
+field_name: field_email_address
+entity_type: taxonomy_term
+bundle: hiring_managers
+label: 'Email Address'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

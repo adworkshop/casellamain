@@ -1,0 +1,17 @@
+uuid: 6ceb9d03-e34e-440c-bc0d-a112c66cfe43
+langcode: en
+status: true
+dependencies:
+  module:
+    - casella_misc
+    - serialization
+    - user
+id: casellaavailablecareers
+plugin_id: casellaavailablecareers
+granularity: method
+configuration:
+  GET:
+    supported_formats:
+      - xml
+    supported_auth:
+      - cookie

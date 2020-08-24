@@ -1,0 +1,22 @@
+uuid: 3456fdf5-fb69-49a2-9c4b-2ba1e739e145
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: organics_updates
+label: 'Organics Updates'
+type: 'canonical_entities:node'
+pattern: '[node:organics_updates-path]/[node:title]'
+selection_criteria:
+  da0b30e7-264e-40b2-9bf2-c723da4bf7d0:
+    id: node_type
+    bundles:
+      information_post: information_post
+    negate: false
+    context_mapping:
+      node: node
+    uuid: da0b30e7-264e-40b2-9bf2-c723da4bf7d0
+selection_logic: and
+weight: -6
+relationships: {  }

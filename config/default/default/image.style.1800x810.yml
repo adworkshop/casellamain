@@ -1,0 +1,16 @@
+uuid: c500dca1-aa8c-4076-86a6-012a91b77923
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: 1800x810
+label: 1800x810
+effects:
+  8ee27c83-2c75-4125-92ba-33e43f04a028:
+    uuid: 8ee27c83-2c75-4125-92ba-33e43f04a028
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1800
+      height: 810

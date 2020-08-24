@@ -1,0 +1,21 @@
+uuid: 039f9c4f-29bf-4ba1-b083-1cebff493785
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_h1_override
+field_name: field_h1_override
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
