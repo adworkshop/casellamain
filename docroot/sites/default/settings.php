@@ -718,7 +718,7 @@ ini_set ('display_errors', '0');
 if (file_exists('/var/www/site-php')) {
 }
 //$config_directories['vcs'] = $app_root . '../config/default' . basename($site_path);
-$config_directories['config_sync_directory'] = '../config/default';
+$config_directories['vcs'] = '../config/default';
 
 // <DDSETTINGS>
 // Please don't edit anything between <DDSETTINGS> tags.
@@ -790,3 +790,4 @@ if (file_exists('/var/www/site-php')) {
 if (file_exists(__DIR__ . '/settings.local.php')) {
   include __DIR__ . '/settings.local.php';
 }
+
