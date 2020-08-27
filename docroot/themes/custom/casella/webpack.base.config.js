@@ -3,8 +3,8 @@ const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   entry: {
-    'contactForm': ['./src/contactForm.js', './src/contactForm.css']
-    // 'casella': ['./src/casella.ts', './src/casella.css']
+    'contactForm': ['./src/contactForm.js', './src/contactForm.css'],
+    'casella': ['./src/casella.ts', './src/casella.css']
   },
 
   output: {

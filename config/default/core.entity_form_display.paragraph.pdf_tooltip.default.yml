@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.pdf_tooltip.field_content_area
+    - field.field.paragraph.pdf_tooltip.field_download_form
     - field.field.paragraph.pdf_tooltip.field_image
     - field.field.paragraph.pdf_tooltip.field_link
     - image.style.thumbnail
@@ -24,6 +25,16 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
+  field_download_form:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   field_image:
     weight: 1

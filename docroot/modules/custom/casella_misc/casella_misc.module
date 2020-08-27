@@ -895,3 +895,22 @@ function casella_misc_node_view(array &$build, \Drupal\Core\Entity\EntityInterfa
     }
   }
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function casella_misc_form_contact_message_toolkit_download_form_form_alter(&$form, FormStateInterface $form_state) {
+  foreach (array_keys($form['actions']) as $action) {
+    if ($action != 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+      $form['actions'][$action]['#submit'][] = 'casella_misc_form_contact_message_toolkit_download_form_form_submit';
+    }
+  }
+}
+
+function casella_misc_form_contact_message_toolkit_download_form_form_submit($form, FormStateInterface $form_state) {
+  $pdf_url = $form_state->getValue('field_pdf');
+  $form_state->setRedirectUrl(Url::fromUri('internal:'.$pdf_url[0]['value']));
+}

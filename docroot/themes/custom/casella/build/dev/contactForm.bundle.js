@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -102,21 +102,6 @@ module.exports = path.Array.from;
 
 /***/ }),
 
-/***/ "./node_modules/core-js/es/array/some.js":
-/*!***********************************************!*\
-  !*** ./node_modules/core-js/es/array/some.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(/*! ../../modules/es.array.some */ "./node_modules/core-js/modules/es.array.some.js");
-var entryUnbind = __webpack_require__(/*! ../../internals/entry-unbind */ "./node_modules/core-js/internals/entry-unbind.js");
-
-module.exports = entryUnbind('Array', 'some');
-
-
-/***/ }),
-
 /***/ "./node_modules/core-js/features/array/from.js":
 /*!*****************************************************!*\
   !*** ./node_modules/core-js/features/array/from.js ***!
@@ -125,20 +110,6 @@ module.exports = entryUnbind('Array', 'some');
 /***/ (function(module, exports, __webpack_require__) {
 
 var parent = __webpack_require__(/*! ../../es/array/from */ "./node_modules/core-js/es/array/from.js");
-
-module.exports = parent;
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/features/array/some.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/core-js/features/array/some.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var parent = __webpack_require__(/*! ../../es/array/some */ "./node_modules/core-js/es/array/some.js");
 
 module.exports = parent;
 
@@ -288,173 +259,6 @@ module.exports = {
   // `Array.prototype.indexOf` method
   // https://tc39.github.io/ecma262/#sec-array.prototype.indexof
   indexOf: createMethod(false)
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/array-iteration.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/core-js/internals/array-iteration.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/core-js/internals/function-bind-context.js");
-var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "./node_modules/core-js/internals/indexed-object.js");
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
-var arraySpeciesCreate = __webpack_require__(/*! ../internals/array-species-create */ "./node_modules/core-js/internals/array-species-create.js");
-
-var push = [].push;
-
-// `Array.prototype.{ forEach, map, filter, some, every, find, findIndex }` methods implementation
-var createMethod = function (TYPE) {
-  var IS_MAP = TYPE == 1;
-  var IS_FILTER = TYPE == 2;
-  var IS_SOME = TYPE == 3;
-  var IS_EVERY = TYPE == 4;
-  var IS_FIND_INDEX = TYPE == 6;
-  var NO_HOLES = TYPE == 5 || IS_FIND_INDEX;
-  return function ($this, callbackfn, that, specificCreate) {
-    var O = toObject($this);
-    var self = IndexedObject(O);
-    var boundFunction = bind(callbackfn, that, 3);
-    var length = toLength(self.length);
-    var index = 0;
-    var create = specificCreate || arraySpeciesCreate;
-    var target = IS_MAP ? create($this, length) : IS_FILTER ? create($this, 0) : undefined;
-    var value, result;
-    for (;length > index; index++) if (NO_HOLES || index in self) {
-      value = self[index];
-      result = boundFunction(value, index, O);
-      if (TYPE) {
-        if (IS_MAP) target[index] = result; // map
-        else if (result) switch (TYPE) {
-          case 3: return true;              // some
-          case 5: return value;             // find
-          case 6: return index;             // findIndex
-          case 2: push.call(target, value); // filter
-        } else if (IS_EVERY) return false;  // every
-      }
-    }
-    return IS_FIND_INDEX ? -1 : IS_SOME || IS_EVERY ? IS_EVERY : target;
-  };
-};
-
-module.exports = {
-  // `Array.prototype.forEach` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.foreach
-  forEach: createMethod(0),
-  // `Array.prototype.map` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.map
-  map: createMethod(1),
-  // `Array.prototype.filter` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.filter
-  filter: createMethod(2),
-  // `Array.prototype.some` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.some
-  some: createMethod(3),
-  // `Array.prototype.every` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.every
-  every: createMethod(4),
-  // `Array.prototype.find` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.find
-  find: createMethod(5),
-  // `Array.prototype.findIndex` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.findIndex
-  findIndex: createMethod(6)
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/array-method-is-strict.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/core-js/internals/array-method-is-strict.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
-
-module.exports = function (METHOD_NAME, argument) {
-  var method = [][METHOD_NAME];
-  return !!method && fails(function () {
-    // eslint-disable-next-line no-useless-call,no-throw-literal
-    method.call(null, argument || function () { throw 1; }, 1);
-  });
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/array-method-uses-to-length.js":
-/*!***********************************************************************!*\
-  !*** ./node_modules/core-js/internals/array-method-uses-to-length.js ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
-
-var defineProperty = Object.defineProperty;
-var cache = {};
-
-var thrower = function (it) { throw it; };
-
-module.exports = function (METHOD_NAME, options) {
-  if (has(cache, METHOD_NAME)) return cache[METHOD_NAME];
-  if (!options) options = {};
-  var method = [][METHOD_NAME];
-  var ACCESSORS = has(options, 'ACCESSORS') ? options.ACCESSORS : false;
-  var argument0 = has(options, 0) ? options[0] : thrower;
-  var argument1 = has(options, 1) ? options[1] : undefined;
-
-  return cache[METHOD_NAME] = !!method && !fails(function () {
-    if (ACCESSORS && !DESCRIPTORS) return true;
-    var O = { length: -1 };
-
-    if (ACCESSORS) defineProperty(O, 1, { enumerable: true, get: thrower });
-    else O[1] = 1;
-
-    method.call(O, argument0, argument1);
-  });
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/array-species-create.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/core-js/internals/array-species-create.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
-var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
-
-var SPECIES = wellKnownSymbol('species');
-
-// `ArraySpeciesCreate` abstract operation
-// https://tc39.github.io/ecma262/#sec-arrayspeciescreate
-module.exports = function (originalArray, length) {
-  var C;
-  if (isArray(originalArray)) {
-    C = originalArray.constructor;
-    // cross-realm fallback
-    if (typeof C == 'function' && (C === Array || isArray(C.prototype))) C = undefined;
-    else if (isObject(C)) {
-      C = C[SPECIES];
-      if (C === null) C = undefined;
-    }
-  } return new (C === undefined ? Array : C)(length === 0 ? 0 : length);
 };
 
 
@@ -854,25 +658,6 @@ var EXISTS = isObject(document) && isObject(document.createElement);
 
 module.exports = function (it) {
   return EXISTS ? document.createElement(it) : {};
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/entry-unbind.js":
-/*!********************************************************!*\
-  !*** ./node_modules/core-js/internals/entry-unbind.js ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
-var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/core-js/internals/function-bind-context.js");
-
-var call = Function.call;
-
-module.exports = function (CONSTRUCTOR, METHOD, length) {
-  return bind(call, global[CONSTRUCTOR].prototype[METHOD], length);
 };
 
 
@@ -1284,24 +1069,6 @@ var ArrayPrototype = Array.prototype;
 // check on default Array iterator
 module.exports = function (it) {
   return it !== undefined && (Iterators.Array === it || ArrayPrototype[ITERATOR] === it);
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/is-array.js":
-/*!****************************************************!*\
-  !*** ./node_modules/core-js/internals/is-array.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
-
-// `IsArray` abstract operation
-// https://tc39.github.io/ecma262/#sec-isarray
-module.exports = Array.isArray || function isArray(arg) {
-  return classof(arg) == 'Array';
 };
 
 
@@ -2273,34 +2040,6 @@ $({ target: 'Array', stat: true, forced: INCORRECT_ITERATION }, {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.array.some.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/core-js/modules/es.array.some.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
-var $some = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/core-js/internals/array-iteration.js").some;
-var arrayMethodIsStrict = __webpack_require__(/*! ../internals/array-method-is-strict */ "./node_modules/core-js/internals/array-method-is-strict.js");
-var arrayMethodUsesToLength = __webpack_require__(/*! ../internals/array-method-uses-to-length */ "./node_modules/core-js/internals/array-method-uses-to-length.js");
-
-var STRICT_METHOD = arrayMethodIsStrict('some');
-var USES_TO_LENGTH = arrayMethodUsesToLength('some');
-
-// `Array.prototype.some` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.some
-$({ target: 'Array', proto: true, forced: !STRICT_METHOD || !USES_TO_LENGTH }, {
-  some: function some(callbackfn /* , thisArg */) {
-    return $some(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
-  }
-});
-
-
-/***/ }),
-
 /***/ "./node_modules/core-js/modules/es.string.iterator.js":
 /*!************************************************************!*\
   !*** ./node_modules/core-js/modules/es.string.iterator.js ***!
@@ -2388,296 +2127,10 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./src/auto-complete.js":
-/*!******************************!*\
-  !*** ./src/auto-complete.js ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-/*
-    JavaScript autoComplete v1.0.4
-    Copyright (c) 2014 Simon Steinberger / Pixabay
-    GitHub: https://github.com/Pixabay/JavaScript-autoComplete
-    License: http://www.opensource.org/licenses/mit-license.php
-*/
-var autoComplete = function () {
-  // "use strict";
-  function autoComplete(options) {
-    if (!document.querySelector) return; // helpers
-
-    function hasClass(el, className) {
-      return el.classList ? el.classList.contains(className) : new RegExp('\\b' + className + '\\b').test(el.className);
-    }
-
-    function addEvent(el, type, handler) {
-      if (el.attachEvent) el.attachEvent('on' + type, handler);else el.addEventListener(type, handler);
-    }
-
-    function removeEvent(el, type, handler) {
-      // if (el.removeEventListener) not working in IE11
-      if (el.detachEvent) el.detachEvent('on' + type, handler);else el.removeEventListener(type, handler);
-    }
-
-    function live(elClass, event, cb, context) {
-      addEvent(context || document, event, function (e) {
-        var found,
-            el = e.target || e.srcElement;
-
-        while (el && !(found = hasClass(el, elClass))) {
-          el = el.parentElement;
-        }
-
-        if (found) cb.call(el, e);
-      });
-    }
-
-    var o = {
-      selector: 0,
-      source: 0,
-      minChars: 3,
-      delay: 150,
-      offsetLeft: 0,
-      offsetTop: 1,
-      cache: 1,
-      menuClass: '',
-      renderItem: function renderItem(item, search) {
-        // escape special characters
-        search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-        var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
-        return '<div class="autocomplete-suggestion" data-val="' + item + '">' + item.replace(re, "<b>$1</b>") + '</div>';
-      },
-      onSelect: function onSelect(e, term, item) {}
-    };
-
-    for (var k in options) {
-      if (options.hasOwnProperty(k)) o[k] = options[k];
-    } // init
-
-
-    var elems = _typeof(o.selector) == 'object' ? [o.selector] : document.querySelectorAll(o.selector);
-
-    for (var i = 0; i < elems.length; i++) {
-      var that = elems[i]; // create suggestions container "sc"
-
-      that.sc = document.createElement('div');
-      that.sc.className = 'autocomplete-suggestions ' + o.menuClass;
-      that.autocompleteAttr = that.getAttribute('autocomplete');
-      that.setAttribute('autocomplete', 'off');
-      that.cache = {};
-      that.last_val = '';
-
-      that.updateSC = function (resize, next) {
-        var rect = that.getBoundingClientRect();
-        that.sc.style.left = Math.round(rect.left + (window.pageXOffset || document.documentElement.scrollLeft) + o.offsetLeft) + 'px';
-        that.sc.style.top = Math.round(rect.bottom + (window.pageYOffset || document.documentElement.scrollTop) + o.offsetTop) + 'px';
-        that.sc.style.width = Math.round(rect.right - rect.left) + 'px'; // outerWidth
-
-        if (!resize) {
-          that.sc.style.display = 'block';
-
-          if (!that.sc.maxHeight) {
-            that.sc.maxHeight = parseInt((window.getComputedStyle ? getComputedStyle(that.sc, null) : that.sc.currentStyle).maxHeight);
-          }
-
-          if (!that.sc.suggestionHeight) that.sc.suggestionHeight = that.sc.querySelector('.autocomplete-suggestion').offsetHeight;
-          if (that.sc.suggestionHeight) if (!next) that.sc.scrollTop = 0;else {
-            var scrTop = that.sc.scrollTop,
-                selTop = next.getBoundingClientRect().top - that.sc.getBoundingClientRect().top;
-            if (selTop + that.sc.suggestionHeight - that.sc.maxHeight > 0) that.sc.scrollTop = selTop + that.sc.suggestionHeight + scrTop - that.sc.maxHeight;else if (selTop < 0) that.sc.scrollTop = selTop + scrTop;
-          }
-        }
-      };
-
-      addEvent(window, 'resize', that.updateSC);
-      document.body.appendChild(that.sc);
-      live('autocomplete-suggestion', 'mouseleave', function (e) {
-        var sel = that.sc.querySelector('.autocomplete-suggestion.selected');
-        if (sel) setTimeout(function () {
-          sel.className = sel.className.replace('selected', '');
-        }, 20);
-      }, that.sc);
-      live('autocomplete-suggestion', 'mouseover', function (e) {
-        var sel = that.sc.querySelector('.autocomplete-suggestion.selected');
-        if (sel) sel.className = sel.className.replace('selected', '');
-        this.className += ' selected';
-      }, that.sc);
-      live('autocomplete-suggestion', 'mousedown', function (e) {
-        if (hasClass(this, 'autocomplete-suggestion')) {
-          // else outside click
-          var v = this.getAttribute('data-val');
-          that.value = v;
-          o.onSelect(e, v, this);
-          that.sc.style.display = 'none';
-        }
-      }, that.sc);
-
-      that.blurHandler = function () {
-        try {
-          var over_sb = document.querySelector('.autocomplete-suggestions:hover');
-        } catch (e) {
-          var over_sb = 0;
-        }
-
-        if (!over_sb) {
-          that.last_val = that.value;
-          that.sc.style.display = 'none';
-          setTimeout(function () {
-            that.sc.style.display = 'none';
-          }, 350); // hide suggestions on fast input
-        } else if (that !== document.activeElement) setTimeout(function () {
-          that.focus();
-        }, 20);
-      };
-
-      addEvent(that, 'blur', that.blurHandler);
-
-      var suggest = function suggest(data) {
-        var val = that.value;
-        that.cache[val] = data;
-
-        if (data.length && val.length >= o.minChars) {
-          var s = '';
-
-          for (var i = 0; i < data.length; i++) {
-            s += o.renderItem(data[i], val);
-          }
-
-          that.sc.innerHTML = s;
-          that.updateSC(0);
-        } else that.sc.style.display = 'none';
-      };
-
-      that.keydownHandler = function (e) {
-        var key = window.event ? e.keyCode : e.which; // down (40), up (38)
-
-        if ((key == 40 || key == 38) && that.sc.innerHTML) {
-          var next,
-              sel = that.sc.querySelector('.autocomplete-suggestion.selected');
-
-          if (!sel) {
-            next = key == 40 ? that.sc.querySelector('.autocomplete-suggestion') : that.sc.childNodes[that.sc.childNodes.length - 1]; // first : last
-
-            next.className += ' selected';
-            that.value = next.getAttribute('data-val');
-          } else {
-            next = key == 40 ? sel.nextSibling : sel.previousSibling;
-
-            if (next) {
-              sel.className = sel.className.replace('selected', '');
-              next.className += ' selected';
-              that.value = next.getAttribute('data-val');
-            } else {
-              sel.className = sel.className.replace('selected', '');
-              that.value = that.last_val;
-              next = 0;
-            }
-          }
-
-          that.updateSC(0, next);
-          return false;
-        } // esc
-        else if (key == 27) {
-            that.value = that.last_val;
-            that.sc.style.display = 'none';
-          } // enter
-          else if (key == 13 || key == 9) {
-              var sel = that.sc.querySelector('.autocomplete-suggestion.selected');
-
-              if (sel && that.sc.style.display != 'none') {
-                o.onSelect(e, sel.getAttribute('data-val'), sel);
-                setTimeout(function () {
-                  that.sc.style.display = 'none';
-                }, 20);
-              }
-            }
-      };
-
-      addEvent(that, 'keydown', that.keydownHandler);
-
-      that.keyupHandler = function (e) {
-        var key = window.event ? e.keyCode : e.which;
-
-        if (!key || (key < 35 || key > 40) && key != 13 && key != 27) {
-          var val = that.value;
-
-          if (val.length >= o.minChars) {
-            if (val != that.last_val) {
-              that.last_val = val;
-              clearTimeout(that.timer);
-
-              if (o.cache) {
-                if (val in that.cache) {
-                  suggest(that.cache[val]);
-                  return;
-                } // no requests if previous suggestions were empty
-
-
-                for (var i = 1; i < val.length - o.minChars; i++) {
-                  var part = val.slice(0, val.length - i);
-
-                  if (part in that.cache && !that.cache[part].length) {
-                    suggest([]);
-                    return;
-                  }
-                }
-              }
-
-              that.timer = setTimeout(function () {
-                o.source(val, suggest);
-              }, o.delay);
-            }
-          } else {
-            that.last_val = val;
-            that.sc.style.display = 'none';
-          }
-        }
-      };
-
-      addEvent(that, 'keyup', that.keyupHandler);
-
-      that.focusHandler = function (e) {
-        that.last_val = '\n';
-        that.keyupHandler(e);
-      };
-
-      if (!o.minChars) addEvent(that, 'focus', that.focusHandler);
-    } // public destroy method
-
-
-    this.destroy = function () {
-      for (var i = 0; i < elems.length; i++) {
-        var that = elems[i];
-        removeEvent(window, 'resize', that.updateSC);
-        removeEvent(that, 'blur', that.blurHandler);
-        removeEvent(that, 'focus', that.focusHandler);
-        removeEvent(that, 'keydown', that.keydownHandler);
-        removeEvent(that, 'keyup', that.keyupHandler);
-        if (that.autocompleteAttr) that.setAttribute('autocomplete', that.autocompleteAttr);else that.removeAttribute('autocomplete');
-        document.body.removeChild(that.sc);
-        that = null;
-      }
-    };
-  }
-
-  return autoComplete;
-}();
-
-(function () {
-  if (true) !(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
-    return autoComplete;
-  }).call(exports, __webpack_require__, exports, module),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));else {}
-})();
-
-/***/ }),
-
-/***/ "./src/casella.css":
-/*!*************************!*\
-  !*** ./src/casella.css ***!
-  \*************************/
+/***/ "./src/contactForm.css":
+/*!*****************************!*\
+  !*** ./src/contactForm.css ***!
+  \*****************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2685,403 +2138,106 @@ var autoComplete = function () {
 
 /***/ }),
 
-/***/ "./src/casella.ts":
-/*!************************!*\
-  !*** ./src/casella.ts ***!
-  \************************/
+/***/ "./src/contactForm.js":
+/*!****************************!*\
+  !*** ./src/contactForm.js ***!
+  \****************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_features_array_some__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/features/array/some */ "./node_modules/core-js/features/array/some.js");
-/* harmony import */ var core_js_features_array_some__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_features_array_some__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_features_array_from__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/features/array/from */ "./node_modules/core-js/features/array/from.js");
-/* harmony import */ var core_js_features_array_from__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_features_array_from__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _auto_complete__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auto-complete */ "./src/auto-complete.js");
-/* harmony import */ var _auto_complete__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_auto_complete__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_calculator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/calculator */ "./src/components/calculator.ts");
-/* harmony import */ var _pdfModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pdfModal */ "./src/pdfModal.js");
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+/* harmony import */ var core_js_features_array_from__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/features/array/from */ "./node_modules/core-js/features/array/from.js");
+/* harmony import */ var core_js_features_array_from__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_features_array_from__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var tingle_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tingle.js */ "./node_modules/tingle.js/dist/tingle.min.js");
+/* harmony import */ var tingle_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(tingle_js__WEBPACK_IMPORTED_MODULE_1__);
 
 
-
-
-
-
-var defaultOptions = {
-  minChars: 1,
-  delay: 150,
-  offsetLeft: 0,
-  offsetTop: 1,
-  cache: true,
-  menuClass: ''
-};
-var stateOptions = {
-  hiddenClass: 'is-hidden'
-};
-
-var Autocompleter = /*#__PURE__*/function () {
-  // private selector: string = 'input[type="search"]';
-  function Autocompleter(selector) {
-    _classCallCheck(this, Autocompleter);
-
-    _defineProperty(this, "valid", void 0);
-
-    _defineProperty(this, "searchItemsForm", void 0);
-
-    _defineProperty(this, "choices", void 0);
-
-    _defineProperty(this, "matches", []);
-
-    _defineProperty(this, "options", void 0);
-
-    this.selector = selector;
-    this.valid = this.checkValidity();
-    this.searchItemsForm = document.getElementById('sidebar-items-search-form-recycle');
-    this.addListener();
-    this.addFormListener();
-    this.renderNoMatchesAlert();
-    this.renderMatchesAlert();
-    this.choices = ['Cardboard', 'Boxboard', 'Dry-food boxes', 'Egg Cartons', 'Paper Rolls', 'Envelopes', 'Paper Bags', 'Office Paper', 'Catalogs', 'Junk Mail', 'Periodicals', 'Plastic Bottles', 'Plastic Jugs', 'Plastic Tubs', 'Plastic Lids', 'Aluminum Foil', 'Aluminum Cans', 'Glass Jars', 'Glass Bottles']; // this.matches = [];
-
-    this.options = Object.assign({}, defaultOptions);
-  }
-
-  _createClass(Autocompleter, [{
-    key: "checkValidity",
-    value: function checkValidity() {
-      return document.querySelector(this.selector) instanceof HTMLElement;
-    }
-  }, {
-    key: "addFormListener",
-    value: function addFormListener() {
-      var searchItemsForm = this.searchItemsForm;
-
-      if (searchItemsForm instanceof HTMLFormElement) {
-        searchItemsForm.addEventListener('submit', function (event) {
-          event.preventDefault();
-        });
-      }
-    }
-  }, {
-    key: "addListener",
-    value: function addListener() {
-      var _this = this;
-
-      if (!this.valid) {
-        return false;
-      }
-
-      var searchElem = document.querySelector(this.selector);
-      searchElem.addEventListener('blur', function (event) {
-        event.target.value = '';
-      });
-      searchElem.addEventListener('input', function (event) {
-        if (event.target.value.length === 0) {
-          Autocompleter.hideElementById('ac-no-matches');
-        } else {
-          Autocompleter.hideElementById('ac-has-matches');
-        }
-      });
-      searchElem.addEventListener('keydown', function (event) {
-        // let whichKey = event.keyCode;
-        // let allowedKeysRange = range(65, 90);
-
-        /* if ( !allowedKeysRange.includes(whichKey) ) {
-          return false;
-        } */
-        setTimeout(function () {
-          var matchesContainer = document.querySelector('.autocomplete-suggestions');
-          var hasMatchesContainer = document.querySelector('.autocomplete-has-suggestions');
-          var noMatchesContainer = document.querySelector('.autocomplete-no-suggestions');
-
-          if (matchesContainer && matchesContainer.style.display === 'block') {
-            if (noMatchesContainer) {
-              noMatchesContainer.classList.add('is-hidden');
-            }
-          } else if (matchesContainer && matchesContainer.style.display === 'none' && searchElem.value !== '') {
-            if (noMatchesContainer && noMatchesContainer.classList.contains('is-hidden')) {
-              noMatchesContainer.classList.remove('is-hidden');
-            }
-          } else if (searchElem.value === '') {
-            if (noMatchesContainer) {
-              noMatchesContainer.classList.add('is-hidden');
-            }
-          }
-        }, _this.options.delay + 100);
-      });
-    }
-  }, {
-    key: "setOption",
-    value: function setOption(optionName, optionValue) {
-      if (defaultOptions.hasOwnProperty(optionName)) {
-        this.options[optionName] = optionValue;
-      }
-    }
-  }, {
-    key: "renderNoMatchesAlert",
-    value: function renderNoMatchesAlert() {
-      var selectorElem = document.querySelector(this.selector),
-          position = 'afterend',
-          markup;
-      markup = "<div id=\"ac-no-matches\" class=\"autocomplete-no-suggestions no-suggestions is-hidden\"><span class=\"fa fa-ban\" aria-hidden=\"true\"></span><p>Sorry, this is not allowed, but <a href=\"/contact-us\">click here</a> for more information</p></div>";
-      selectorElem.insertAdjacentHTML(position, markup);
-    }
-  }, {
-    key: "renderMatchesAlert",
-    value: function renderMatchesAlert() {
-      var selectorElem = document.querySelector('.form-actions'),
-          position = 'afterbegin',
-          markup;
-      markup = "<div id=\"ac-has-matches\" class=\"autocomplete-has-suggestions is-hidden\"><span class=\"fa fa-check-circle\" aria-hidden=\"true\"></span><p>These are good to go!</p></div>";
-      setTimeout(function () {
-        selectorElem.insertAdjacentHTML(position, markup);
-      }, 500);
-    }
-  }, {
-    key: "makeAutoComplete",
-    value: function makeAutoComplete() {
-      var _ = this;
-
-      return new _auto_complete__WEBPACK_IMPORTED_MODULE_2___default.a({
-        selector: this.selector,
-        minChars: 1,
-        source: function source(term, suggest) {
-          term = term.toLowerCase();
-
-          if (_.choices.some(function (choice) {
-            return choice.toLowerCase().indexOf(term) !== -1;
-          })) {
-            Autocompleter.hideElementById('ac-no-matches');
-            _.matches = _.choices.filter(function (choice) {
-              return choice.toLowerCase().indexOf(term) !== -1;
-            });
-          } else {
-            Autocompleter.showElementById('ac-no-matches');
-          }
-
-          suggest(_.matches);
-          _.matches = [];
-        },
-        renderItem: function renderItem(item, search) {
-          search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-          var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
-          return "<div class=\"autocomplete-suggestion\" data-val=\"".concat(item, "\">").concat(item.replace(re, '<b>$1</b>'), "</div>");
-        },
-        onSelect: function onSelect(event, term, item) {
-          Autocompleter.showElementById('ac-has-matches', term);
-        }
-      });
-    }
-  }], [{
-    key: "hideElementById",
-    value: function hideElementById(elemId) {
-      if (document.getElementById(elemId)) {
-        var elem = document.getElementById(elemId);
-
-        if (!elem.classList.contains(stateOptions.hiddenClass)) {
-          elem.classList.add(stateOptions.hiddenClass);
-        }
-      }
-    }
-  }, {
-    key: "showElementById",
-    value: function showElementById(elemId) {
-      var term = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-      if (document.getElementById(elemId)) {
-        var elem = document.getElementById(elemId);
-
-        if (term) {
-          elem.innerHTML = "<span class=\"fa fa-check-circle\" aria-hidden=\"true\"></span><p><strong>".concat(term, "</strong> can be recycled!</p>");
-        }
-
-        elem.classList.remove(stateOptions.hiddenClass);
-      }
-    }
-  }]);
-
-  return Autocompleter;
-}();
-
-new Autocompleter('input[type="search"]').makeAutoComplete();
-
-/***/ }),
-
-/***/ "./src/components/calculator.ts":
-/*!**************************************!*\
-  !*** ./src/components/calculator.ts ***!
-  \**************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-/*jslint es6 */
-var Calculator = /*#__PURE__*/function () {
-  function Calculator() {
-    _classCallCheck(this, Calculator);
-
-    _defineProperty(this, "calculatorElement", void 0);
-
-    _defineProperty(this, "calculatorResultsElement", void 0);
-
-    _defineProperty(this, "calculatorResultsBodyElement", void 0);
-
-    _defineProperty(this, "calcSizeOfBin", void 0);
-
-    _defineProperty(this, "calcSetOutFreq", void 0);
-
-    _defineProperty(this, "formIsValid", true);
-
-    this.calculatorElement = document.getElementById('js-calculator-form');
-    this.calculatorResultsElement = document.getElementById('js-calculator-form-results');
-    this.calculatorResultsBodyElement = document.getElementById('js-result-body-container');
-    this.calcSizeOfBin = document.getElementById('calc_size_of_bin');
-    this.calcSetOutFreq = document.getElementById('calc_frequency_setout');
-    this.addFormListener();
-  }
-
-  _createClass(Calculator, [{
-    key: "addFormListener",
-    value: function addFormListener() {
-      var _this = this;
-
-      try {
-        this.calculatorElement.addEventListener('submit', function (event) {
-          event.preventDefault();
-
-          if (_this.validateForm()) {
-            _this.showResults();
-          }
-        });
-      } catch (e) {
-        console.warn(e, 'exception raised');
-      }
-    }
-  }, {
-    key: "showResults",
-    value: function showResults() {
-      var calcSizeOfBin = this.calcSizeOfBin,
-          calcSetOutFreq = this.calcSetOutFreq;
-      this.calculatorResultsElement.classList.remove('is-hidden');
-      var calcString = "<p><strong>Size of Bin (in gallons)</strong>: ".concat(calcSizeOfBin.value, "<br />");
-      calcString += "<strong>Frequency of Set-out (per week)</strong>: ".concat(calcSetOutFreq.value, "</p>");
-      calcString += "<p>".concat(calcSizeOfBin.value, " * ").concat(calcSetOutFreq.value, " / 100 = ").concat(Calculator.calculateValues(+calcSizeOfBin.value, +calcSetOutFreq.value), " megaWattJoules");
-      this.calculatorResultsBodyElement.innerHTML = calcString;
-      this.formIsValid = true;
-    }
-  }, {
-    key: "validateForm",
-    value: function validateForm() {
-      var calcSizeOfBin = this.calcSizeOfBin,
-          calcSetOutFreq = this.calcSetOutFreq;
-      this.formIsValid = true;
-
-      if (calcSizeOfBin.classList.contains('is-invalid')) {
-        calcSizeOfBin.classList.remove('is-invalid');
-      }
-
-      if (calcSetOutFreq.classList.contains('is-invalid')) {
-        calcSetOutFreq.classList.remove('is-invalid');
-      }
-
-      if (calcSizeOfBin.value === '') {
-        calcSizeOfBin.classList.add('is-invalid');
-        this.formIsValid = false;
-      }
-
-      if (calcSetOutFreq.value === '') {
-        calcSetOutFreq.classList.add('is-invalid');
-        this.formIsValid = false;
-      }
-
-      return this.formIsValid;
-    }
-  }], [{
-    key: "calculateValues",
-    value: function calculateValues(sizeOfBin, setOutFreq) {
-      return (+sizeOfBin * setOutFreq / 100).toFixed(4);
-    }
-  }]);
-
-  return Calculator;
-}();
-
-/* harmony default export */ __webpack_exports__["default"] = (new Calculator());
-
-/***/ }),
-
-/***/ "./src/pdfModal.js":
-/*!*************************!*\
-  !*** ./src/pdfModal.js ***!
-  \*************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var tingle_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tingle.js */ "./node_modules/tingle.js/dist/tingle.min.js");
-/* harmony import */ var tingle_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tingle_js__WEBPACK_IMPORTED_MODULE_0__);
-
-var modal = new tingle_js__WEBPACK_IMPORTED_MODULE_0___default.a.modal({
+var modal = new tingle_js__WEBPACK_IMPORTED_MODULE_1___default.a.modal({
   closeMethods: ['overlay', 'button', 'escape'],
   closeLabel: 'Close'
 });
-$('[data-modal-open]').each(function (index, button) {
-  initializeModal(button);
-});
+var contactFormElem = document.getElementById('contact-message-job-application-drivers-form');
 
-function initializeModal(button) {
-  $(button).click(function (event) {
-    event.preventDefault();
-    var closestModal = $(button).siblings('[data-modal-title]');
-    var elemForModal = closestModal.length > 0 ? closestModal.get(0) : button.previousElementSibling;
+if (modal) {
+  modal.setContent('<p>Please fill out license field.</p>');
+}
 
-    if (elemForModal) {
-      modal.setContent(elemForModal.innerHTML);
-      $(modal.modal).find('[data-modal-open]').each(function (index, button) {
-        initializeModal(button);
-      });
+if (contactFormElem) {
+  var getRequiredFields = function getRequiredFields() {
+    return Array.from(contactFormElem.elements).filter(function (elem) {
+      return elem.hasAttribute('required') || elem.classList.contains('required');
+    });
+  };
+
+  var toggleFieldClass = function toggleFieldClass(field, validity) {
+    if (field.classList.contains('is-invalid')) {
+      if (validity) {
+        field.classList.remove('is-invalid');
+      }
+    } else {
+      if (!field.classList.contains('is-invalid')) {
+        field.classList.add('is-invalid');
+      }
     }
+  };
 
-    modal.open();
+  contactFormElem.addEventListener('submit', function (event) {
+    /*console.log(event, 'event');
+    let valid = true;
+    let reqFields = getRequiredFields();
+     reqFields.forEach(field => {
+      if (field.nodeName === 'INPUT' || field.nodeName === 'SELECT') {
+        if (field.value === '') {
+          valid = false;
+          toggleFieldClass(field, valid);
+        } else {
+          toggleFieldClass(field, true);
+        }
+      }
+    });
+     if (!valid) {
+      event.preventDefault();
+      if (modal) {
+        modal.open();
+      }
+    }*/
+    var licenseField = contactFormElem.elements['field_licenses[0][subform][field_license_][0][value]'];
 
-    if (!button.classList.contains('processed-listener')) {
-      button.classList.add('processed-listener');
+    if (licenseField.value === '') {
+      event.preventDefault();
+
+      if (modal) {
+        modal.open();
+      }
+    } else {
+      if (licenseField && licenseField.value) {
+        if (licenseField.value.length < 3) {
+          event.preventDefault();
+
+          if (modal) {
+            modal.open();
+          }
+        }
+      }
     }
   });
 }
 
 /***/ }),
 
-/***/ 1:
-/*!************************************************!*\
-  !*** multi ./src/casella.ts ./src/casella.css ***!
-  \************************************************/
+/***/ 0:
+/*!********************************************************!*\
+  !*** multi ./src/contactForm.js ./src/contactForm.css ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./src/casella.ts */"./src/casella.ts");
-module.exports = __webpack_require__(/*! ./src/casella.css */"./src/casella.css");
+__webpack_require__(/*! ./src/contactForm.js */"./src/contactForm.js");
+module.exports = __webpack_require__(/*! ./src/contactForm.css */"./src/contactForm.css");
 
 
 /***/ })
 
 /******/ });
-//# sourceMappingURL=casella.bundle.js.map
+//# sourceMappingURL=contactForm.bundle.js.map

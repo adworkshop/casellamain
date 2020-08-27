@@ -1,0 +1,19 @@
+uuid: 5bf26b5a-795c-4ba0-9d40-61ea27ca7c80
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.toolkit_download_form
+    - field.storage.contact_message.field_ml_email
+id: contact_message.toolkit_download_form.field_ml_email
+field_name: field_ml_email
+entity_type: contact_message
+bundle: toolkit_download_form
+label: 'Email Address:*'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

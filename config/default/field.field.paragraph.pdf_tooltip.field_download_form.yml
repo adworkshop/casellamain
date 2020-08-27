@@ -1,0 +1,23 @@
+uuid: 934366b1-36ba-4eb9-9f1f-b857175474d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_download_form
+    - paragraphs.paragraphs_type.pdf_tooltip
+id: paragraph.pdf_tooltip.field_download_form
+field_name: field_download_form
+entity_type: paragraph
+bundle: pdf_tooltip
+label: 'Download Form'
+description: 'If a form is selected then users will be required to fill it out before they can download the PDF. <b>Should be set to "Toolkit Download Form (toolkit_download_form)" for the download functionality to work correctly.</b>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:contact_form'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: entity_reference

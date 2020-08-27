@@ -5,21 +5,29 @@ const modal = new tingle.modal({
   closeLabel: 'Close'
 });
 
-let modalTriggers = document.querySelectorAll('[data-modal-open]');
+$('[data-modal-open]').each(function(index, button) {
+  initializeModal(button);
+});
 
-if (modalTriggers) {
-  Array.from(modalTriggers).forEach(button => {
-    button.addEventListener('click', event => {
-      event.preventDefault();
+function initializeModal(button) {
+  $(button).click(event => {
+    event.preventDefault();
 
-      let elemForModal = button.previousElementSibling;
-      if (elemForModal) {
-        modal.setContent(elemForModal.innerHTML);
-      }
-      modal.open();
-      if ( !button.classList.contains('processed-listener') ) {
-        button.classList.add('processed-listener');
-      }
-    });
+    let closestModal = $(button).siblings('[data-modal-title]');
+    let elemForModal = closestModal.length > 0 ? closestModal.get(0) : button.previousElementSibling;
+
+    if (elemForModal) {
+      modal.setContent(elemForModal.innerHTML);
+
+      $(modal.modal).find('[data-modal-open]').each(function (index, button) {
+        initializeModal(button);
+      });
+    }
+
+    modal.open();
+
+    if (!button.classList.contains('processed-listener')) {
+      button.classList.add('processed-listener');
+    }
   });
 }
