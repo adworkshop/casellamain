@@ -911,6 +911,7 @@ function casella_misc_form_contact_message_toolkit_download_form_form_alter(&$fo
 }
 
 function casella_misc_form_contact_message_toolkit_download_form_form_submit($form, FormStateInterface $form_state) {
-  $pdf_url = $form_state->getValue('field_pdf');
-  $form_state->setRedirectUrl(Url::fromUri('internal:'.$pdf_url[0]['value']));
+  $pdf_field = $form_state->getValue('field_pdf');
+  $pdf_url = urldecode(urldecode($pdf_field[0]['value']));
+  $form_state->setRedirectUrl(Url::fromUri('internal:'.$pdf_url));
 }
