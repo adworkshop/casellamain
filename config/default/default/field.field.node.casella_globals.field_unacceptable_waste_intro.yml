@@ -1,0 +1,19 @@
+uuid: d509b9b2-8c01-45a7-a409-a96a33708eba
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_unacceptable_waste_intro
+    - node.type.casella_globals
+id: node.casella_globals.field_unacceptable_waste_intro
+field_name: field_unacceptable_waste_intro
+entity_type: node
+bundle: casella_globals
+label: 'Unacceptable Waste Introduction'
+description: 'This text will display above the unacceptable waste categories on any location to which an unacceptable waste category has been assigned.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,23 @@
+uuid: 389c2978-2316-4c19-a2c2-37b4d9afbdad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_full_width
+    - node.type.service
+id: node.service.field_full_width
+field_name: field_full_width
+entity_type: node
+bundle: service
+label: 'Full Width Slider'
+description: 'Check this box to make the photo slider full width. '
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'Full Width Slider'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,21 @@
+uuid: b628606c-80ae-4b81-86be-890657e7f14e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_alert_end_date
+    - node.type.location
+  module:
+    - datetime
+id: node.location.field_alert_end_date
+field_name: field_alert_end_date
+entity_type: node
+bundle: location
+label: 'Alert End Date'
+description: 'The alert will no longer display after the selected time. Leave this field empty to display the alert indefinitely.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

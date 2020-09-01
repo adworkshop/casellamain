@@ -1,0 +1,28 @@
+uuid: b93d9546-244b-4860-aaed-d60c7fec288e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_waste_category
+    - paragraphs.paragraphs_type.waste_category
+    - taxonomy.vocabulary.waste_categories
+id: paragraph.waste_category.field_waste_category
+field_name: field_waste_category
+entity_type: paragraph
+bundle: waste_category
+label: Category
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      waste_categories: waste_categories
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

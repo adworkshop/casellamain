@@ -1,0 +1,38 @@
+uuid: 01377653-8d9f-4641-b296-03911e3a41b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.locations
+  module:
+    - node
+    - system
+    - views
+  theme:
+    - casella
+id: views_block__locations_block_8__cat_links
+theme: casella
+region: node_content
+weight: 0
+provider: null
+plugin: 'views_block:locations-block_8'
+settings:
+  id: 'views_block:locations-block_8'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      page: page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+  request_path:
+    id: request_path
+    pages: /node/2051
+    negate: false
+    context_mapping: {  }

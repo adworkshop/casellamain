@@ -1,0 +1,22 @@
+uuid: 03a298e6-7eaf-4f5f-82a8-09cd57d09f20
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.full_width_promotion
+id: node.full_width_promotion.status
+field_name: status
+entity_type: node
+bundle: full_width_promotion
+label: 'Publishing status'
+description: 'A boolean indicating whether the node is published.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

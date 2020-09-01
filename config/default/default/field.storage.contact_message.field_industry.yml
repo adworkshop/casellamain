@@ -1,0 +1,48 @@
+uuid: 0625c077-b266-4e08-832b-c8cfc109ae90
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+    - options
+id: contact_message.field_industry
+field_name: field_industry
+entity_type: contact_message
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: chains
+      label: 'Chains & Multi-Site Retailers'
+    -
+      value: construction_remediation
+      label: 'Construction & Remediation'
+    -
+      value: healthcare
+      label: Healthcare
+    -
+      value: schools
+      label: 'Higher Education & Schools'
+    -
+      value: industrial
+      label: Industrial
+    -
+      value: municipalities
+      label: Municipalities
+    -
+      value: property_management
+      label: 'Property Management'
+    -
+      value: resorts
+      label: Resorts
+    -
+      value: small_business
+      label: 'Small Business'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

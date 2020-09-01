@@ -1,0 +1,32 @@
+uuid: 0c40a537-c3ac-4aa2-b07f-6f7d9820f13e
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.hr
+  module:
+    - node
+    - views
+  theme:
+    - casella
+id: views_block__hr_block_2
+theme: casella
+region: node_content
+weight: -3
+provider: null
+plugin: 'views_block:hr-block_2'
+settings:
+  id: 'views_block:hr-block_2'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      location: location
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

@@ -1,0 +1,24 @@
+uuid: 60939ca9-318e-4388-854f-2edd0d0e27cd
+langcode: en
+status: true
+dependencies: {  }
+id: customer_care
+label: 'Customer Care'
+weight: 6
+is_admin: null
+permissions:
+  - 'add terms in towns_cities'
+  - 'create location content'
+  - 'delete any location content'
+  - 'delete terms in towns_cities'
+  - 'edit any faq_landing_page content'
+  - 'edit any location content'
+  - 'edit terms in towns_cities'
+  - 'publish any node type location'
+  - 'reorder terms in towns_cities'
+  - 'revert location revisions'
+  - 'translate faq_landing_page node'
+  - 'translate location node'
+  - 'unpublish any node type location'
+  - 'view faq_landing_page revisions'
+  - 'view location revisions'

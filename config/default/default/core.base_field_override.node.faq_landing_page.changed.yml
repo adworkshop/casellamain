@@ -1,0 +1,18 @@
+uuid: 31e4f75e-8cd7-4178-ac19-2bb670a2b290
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.faq_landing_page
+id: node.faq_landing_page.changed
+field_name: changed
+entity_type: node
+bundle: faq_landing_page
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

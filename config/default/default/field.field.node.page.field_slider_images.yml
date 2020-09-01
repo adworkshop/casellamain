@@ -1,0 +1,39 @@
+uuid: 6c51d981-9998-45d9-a216-41db638c204f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_slider_images
+    - node.type.page
+    - paragraphs.paragraphs_type.slider_image
+  module:
+    - entity_reference_revisions
+id: node.page.field_slider_images
+field_name: field_slider_images
+entity_type: node
+bundle: page
+label: 'Slider Images'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      slider_image: slider_image
+    target_bundles_drag_drop:
+      image_with_caption:
+        weight: 5
+        enabled: false
+      large_promotion:
+        weight: 6
+        enabled: false
+      slider_image:
+        enabled: true
+        weight: 7
+      vertical:
+        weight: 8
+        enabled: false
+field_type: entity_reference_revisions

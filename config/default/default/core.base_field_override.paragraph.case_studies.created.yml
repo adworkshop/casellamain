@@ -1,0 +1,18 @@
+uuid: b53d6772-a773-4c4c-af2f-04caa05cf91a
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.case_studies
+id: paragraph.case_studies.created
+field_name: created
+entity_type: paragraph
+bundle: case_studies
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

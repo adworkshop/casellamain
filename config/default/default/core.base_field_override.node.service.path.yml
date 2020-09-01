@@ -1,0 +1,20 @@
+uuid: 536f423e-5753-4b1b-993f-88ff80b093f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.service
+  module:
+    - path
+id: node.service.path
+field_name: path
+entity_type: node
+bundle: service
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

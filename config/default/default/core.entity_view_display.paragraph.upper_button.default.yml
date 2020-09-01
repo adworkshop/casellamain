@@ -1,0 +1,36 @@
+uuid: bf822f07-65c6-4709-8d7b-0b709c80db2e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.upper_button.field_icon
+    - field.field.paragraph.upper_button.field_link
+    - field.field.paragraph.upper_button.field_short_description
+    - field.field.paragraph.upper_button.field_title
+    - paragraphs.paragraphs_type.upper_button
+id: paragraph.upper_button.default
+targetEntityType: paragraph
+bundle: upper_button
+mode: default
+content:
+  field_short_description:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  created: true
+  field_icon: true
+  field_link: true
+  uid: true

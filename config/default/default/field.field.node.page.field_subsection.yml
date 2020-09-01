@@ -1,0 +1,21 @@
+uuid: 48947b12-03a7-42fa-b35e-f636053bea1b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subsection
+    - node.type.page
+  module:
+    - options
+id: node.page.field_subsection
+field_name: field_subsection
+entity_type: node
+bundle: page
+label: Subsection
+description: 'The subsection selection drives the sub-theme selection for this content and any of its children in the main navigation.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

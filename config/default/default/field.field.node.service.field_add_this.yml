@@ -1,0 +1,23 @@
+uuid: 27a27758-d6f8-4ed9-981a-3b3871fe5344
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_add_this
+    - node.type.service
+id: node.service.field_add_this
+field_name: field_add_this
+entity_type: node
+bundle: service
+label: 'Add This'
+description: 'Check this box to include the Add This sharing widget.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Include Add This'
+  off_label: 'Off'
+field_type: boolean

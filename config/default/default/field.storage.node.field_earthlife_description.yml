@@ -1,0 +1,19 @@
+uuid: cef1fe07-646d-4426-84f6-569f09cb0997
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_earthlife_description
+field_name: field_earthlife_description
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

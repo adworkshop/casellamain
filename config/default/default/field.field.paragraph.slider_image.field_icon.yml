@@ -1,0 +1,19 @@
+uuid: 79df6882-3e50-42cc-bd7e-620559ddc817
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_icon
+    - paragraphs.paragraphs_type.slider_image
+id: paragraph.slider_image.field_icon
+field_name: field_icon
+entity_type: paragraph
+bundle: slider_image
+label: Icon
+description: 'Temporary solution until full icon select is implemented. To select an icon go to http://fontawesome.io/icons/ and find the icon you would like to use. Click on it and copy the icon tag from the details page. The tag will look like fa-[icon name here], for example the tag from http://fontawesome.io/icon/viadeo/ is fa-viadeo.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

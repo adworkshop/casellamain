@@ -1,0 +1,19 @@
+uuid: 14e8febb-2109-4fa0-a504-4dbb823efa78
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_teaser
+    - node.type.case_study
+id: node.case_study.field_teaser
+field_name: field_teaser
+entity_type: node
+bundle: case_study
+label: Teaser
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

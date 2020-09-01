@@ -1,0 +1,15 @@
+uuid: 9ffb1cd7-8fef-41ce-85e9-f8db75c432d5
+langcode: en
+status: true
+dependencies: {  }
+name: max_768
+label: 'max 768'
+effects:
+  7626c9dd-0ea8-484d-a1b2-9c0e380f61d5:
+    uuid: 7626c9dd-0ea8-484d-a1b2-9c0e380f61d5
+    id: image_scale
+    weight: 1
+    data:
+      width: 768
+      height: null
+      upscale: false

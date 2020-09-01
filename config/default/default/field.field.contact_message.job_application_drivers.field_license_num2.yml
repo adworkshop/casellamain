@@ -1,0 +1,19 @@
+uuid: 64c6dc6e-85dc-468a-96ae-730ec0ea2f99
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.job_application_drivers
+    - field.storage.contact_message.field_license_num2
+id: contact_message.job_application_drivers.field_license_num2
+field_name: field_license_num2
+entity_type: contact_message
+bundle: job_application_drivers
+label: 'License #'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

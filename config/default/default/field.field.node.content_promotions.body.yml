@@ -1,0 +1,22 @@
+uuid: f9d3032a-abe0-4325-8efc-20fd70b46309
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.content_promotions
+  module:
+    - text
+id: node.content_promotions.body
+field_name: body
+entity_type: node
+bundle: content_promotions
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

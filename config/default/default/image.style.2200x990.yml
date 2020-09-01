@@ -1,0 +1,16 @@
+uuid: e9c023e5-c3eb-4d39-a4c5-979327fee29f
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: 2200x990
+label: 2200x990
+effects:
+  70899d50-a069-4431-921e-78c8d00bbcd7:
+    uuid: 70899d50-a069-4431-921e-78c8d00bbcd7
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 2200
+      height: 990

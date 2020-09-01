@@ -1,0 +1,11 @@
+uuid: 23a767a7-dd8b-4f4e-9db1-d0134fda931e
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.casella_globals
+id: node.casella_globals
+target_entity_type_id: node
+target_bundle: casella_globals
+default_langcode: site_default
+language_alterable: false

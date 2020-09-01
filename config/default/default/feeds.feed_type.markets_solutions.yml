@@ -1,0 +1,36 @@
+uuid: 54798b8a-45c6-4da4-81c2-8b4b754a81c6
+langcode: en
+status: true
+dependencies: {  }
+label: 'Markets > Solutions'
+id: markets_solutions
+description: 'an import of old Market content to the new Solutions'
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt xml'
+  directory: 'public://feeds'
+parser: syndication
+parser_configuration: {  }
+processor: 'entity:node'
+processor_configuration:
+  update_existing: 1
+  expire: -1
+  owner_id: 0
+  authorize: true
+  skip_hash_check: false
+  values:
+    type: solution
+mappings:
+  -
+    target: body
+    map:
+      value: description
+      summary: ''
+    settings:
+      format: basic_html
+  -
+    target: title
+    map:
+      value: title
+    unique: {  }

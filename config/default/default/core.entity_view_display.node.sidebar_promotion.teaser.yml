@@ -1,0 +1,29 @@
+uuid: 419827b3-8357-42b9-8800-16cff64185fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.sidebar_promotion.body
+    - field.field.node.sidebar_promotion.field_icon
+    - field.field.node.sidebar_promotion.field_image
+    - field.field.node.sidebar_promotion.field_link
+    - field.field.node.sidebar_promotion.field_title
+    - node.type.sidebar_promotion
+  module:
+    - user
+id: node.sidebar_promotion.teaser
+targetEntityType: node
+bundle: sidebar_promotion
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  body: true
+  field_icon: true
+  field_image: true
+  field_link: true
+  field_title: true
+  langcode: true

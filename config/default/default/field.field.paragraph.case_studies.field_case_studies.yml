@@ -1,0 +1,28 @@
+uuid: 82af2787-3843-4c48-af89-70412b39b922
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_case_studies
+    - node.type.case_study
+    - paragraphs.paragraphs_type.case_studies
+id: paragraph.case_studies.field_case_studies
+field_name: field_case_studies
+entity_type: paragraph
+bundle: case_studies
+label: 'Case Studies'
+description: 'Display up to 6 case studies. Only the top 6 published studies selected will display. Start typing the title of a piece of content to select it.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      case_study: case_study
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

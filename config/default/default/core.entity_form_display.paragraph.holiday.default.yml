@@ -1,0 +1,66 @@
+uuid: 62031c3f-d3a8-43a4-8c65-12feac8ed1e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.holiday.field_date
+    - field.field.paragraph.holiday.field_guid
+    - field.field.paragraph.holiday.field_published
+    - field.field.paragraph.holiday.field_service_schedule
+    - field.field.paragraph.holiday.field_service_status
+    - field.field.paragraph.holiday.field_title
+    - paragraphs.paragraphs_type.holiday
+  module:
+    - datetime
+id: paragraph.holiday.default
+targetEntityType: paragraph
+bundle: holiday
+mode: default
+content:
+  field_date:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_guid:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_published:
+    weight: 4
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_service_schedule:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_service_status:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

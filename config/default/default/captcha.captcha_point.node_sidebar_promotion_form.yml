@@ -1,0 +1,7 @@
+uuid: 906743dc-aefa-40c0-a6e2-e933d8e0e48d
+langcode: en
+status: false
+dependencies: {  }
+formId: node_sidebar_promotion_form
+captchaType: default
+label: null

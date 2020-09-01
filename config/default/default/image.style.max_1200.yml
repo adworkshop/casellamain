@@ -1,0 +1,15 @@
+uuid: 8ad12525-20ef-47dd-b2fe-4b1d23d9c43b
+langcode: en
+status: true
+dependencies: {  }
+name: max_1200
+label: 'max 1200'
+effects:
+  206469ad-dead-4b1c-a2b4-db58f513fad2:
+    uuid: 206469ad-dead-4b1c-a2b4-db58f513fad2
+    id: image_scale
+    weight: 1
+    data:
+      width: 1200
+      height: null
+      upscale: false

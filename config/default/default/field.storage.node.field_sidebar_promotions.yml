@@ -1,0 +1,19 @@
+uuid: 82c4a9ab-4b50-4c10-9213-49d6e9de3391
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_sidebar_promotions
+field_name: field_sidebar_promotions
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

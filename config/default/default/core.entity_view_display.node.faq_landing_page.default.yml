@@ -1,0 +1,86 @@
+uuid: eaff31ed-34ff-49c3-973b-b5e9252a4338
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.faq_landing_page.body
+    - field.field.node.faq_landing_page.field_faqs
+    - field.field.node.faq_landing_page.field_h1_override
+    - field.field.node.faq_landing_page.field_hero_text
+    - field.field.node.faq_landing_page.field_meta_tag
+    - field.field.node.faq_landing_page.field_sidebar_promotions
+    - field.field.node.faq_landing_page.field_upper_buttons
+    - node.type.faq_landing_page
+  module:
+    - entity_reference_revisions
+    - metatag
+    - text
+    - user
+id: node.faq_landing_page.default
+targetEntityType: node
+bundle: faq_landing_page
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_faqs:
+    type: entity_reference_revisions_entity_view
+    weight: 6
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_h1_override:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_hero_text:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_meta_tag:
+    weight: 7
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
+  field_sidebar_promotions:
+    weight: 5
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_upper_buttons:
+    type: entity_reference_revisions_entity_view
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

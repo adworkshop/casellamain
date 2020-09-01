@@ -1,0 +1,199 @@
+uuid: 754636eb-58cd-4fcf-a27d-89754a272cd7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.location.body
+    - field.field.node.location.feeds_item
+    - field.field.node.location.field_acceptable_waste
+    - field.field.node.location.field_alert_content
+    - field.field.node.location.field_alert_end_date
+    - field.field.node.location.field_alert_title
+    - field.field.node.location.field_assoc_hauling
+    - field.field.node.location.field_city
+    - field.field.node.location.field_dropoff_hours
+    - field.field.node.location.field_holiday_schedule
+    - field.field.node.location.field_latitude
+    - field.field.node.location.field_location_category
+    - field.field.node.location.field_longitude
+    - field.field.node.location.field_meta_tag
+    - field.field.node.location.field_open_to
+    - field.field.node.location.field_phone_number
+    - field.field.node.location.field_schedule_title
+    - field.field.node.location.field_sidebar_promotions
+    - field.field.node.location.field_state
+    - field.field.node.location.field_street_address
+    - field.field.node.location.field_unacceptable_waste
+    - field.field.node.location.field_zip
+    - node.type.location
+  module:
+    - entity_reference_revisions
+    - metatag
+    - options
+    - text
+    - user
+id: node.location.default
+targetEntityType: node
+bundle: location
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_acceptable_waste:
+    type: entity_reference_revisions_entity_view
+    weight: 15
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_alert_content:
+    weight: 14
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_alert_title:
+    type: string
+    weight: 13
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_assoc_hauling:
+    weight: 18
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_city:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_dropoff_hours:
+    weight: 17
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_latitude:
+    weight: 6
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_location_category:
+    weight: 12
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+  field_longitude:
+    weight: 7
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_meta_tag:
+    weight: 20
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
+  field_open_to:
+    weight: 19
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_phone_number:
+    weight: 8
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_schedule_title:
+    weight: 9
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_sidebar_promotions:
+    weight: 11
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_state:
+    weight: 4
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_street_address:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_unacceptable_waste:
+    type: entity_reference_revisions_entity_view
+    weight: 16
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_zip:
+    weight: 5
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  feeds_item: true
+  field_alert_end_date: true
+  field_holiday_schedule: true
+  langcode: true

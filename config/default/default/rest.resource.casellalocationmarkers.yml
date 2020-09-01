@@ -1,0 +1,17 @@
+uuid: 0a6ab6f1-5fb5-4378-bf5c-6061b21a3844
+langcode: en
+status: true
+dependencies:
+  module:
+    - casella_misc
+    - serialization
+    - user
+id: casellalocationmarkers
+plugin_id: casellalocationmarkers
+granularity: method
+configuration:
+  GET:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie

@@ -1,0 +1,35 @@
+uuid: fedb79e7-f473-479c-b28f-b900441f15df
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.fa_link_with_icon.field_fa_icon
+    - field.field.paragraph.fa_link_with_icon.field_icon_link
+    - paragraphs.paragraphs_type.fa_link_with_icon
+  module:
+    - link
+id: paragraph.fa_link_with_icon.default
+targetEntityType: paragraph
+bundle: fa_link_with_icon
+mode: default
+content:
+  field_fa_icon:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_icon_link:
+    weight: 0
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

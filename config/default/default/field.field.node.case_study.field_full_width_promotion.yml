@@ -1,0 +1,28 @@
+uuid: 8e884d2c-c0e9-43aa-92c3-8e86d556db63
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_full_width_promotion
+    - node.type.case_study
+    - node.type.full_width_promotion
+id: node.case_study.field_full_width_promotion
+field_name: field_full_width_promotion
+entity_type: node
+bundle: case_study
+label: 'Full Width Promotion'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      full_width_promotion: full_width_promotion
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,19 @@
+uuid: 8fa67240-a7f3-4856-85b1-96b89a062ab8
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.service_request
+    - field.storage.contact_message.field_service_city
+id: contact_message.service_request.field_service_city
+field_name: field_service_city
+entity_type: contact_message
+bundle: service_request
+label: 'City: *'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

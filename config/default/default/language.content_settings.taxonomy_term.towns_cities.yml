@@ -1,0 +1,16 @@
+uuid: 6e5e847a-5475-4ddf-8091-3f91afeb67bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.towns_cities
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+id: taxonomy_term.towns_cities
+target_entity_type_id: taxonomy_term
+target_bundle: towns_cities
+default_langcode: site_default
+language_alterable: false

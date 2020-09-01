@@ -1,0 +1,20 @@
+uuid: 33dc20df-6f48-40ee-a9f4-a589fa607f6c
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+    - datetime
+id: contact_message.field_expiration_date3
+field_name: field_expiration_date3
+entity_type: contact_message
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

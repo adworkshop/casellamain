@@ -1,0 +1,14 @@
+uuid: ef7a17c2-0ab9-45ca-be00-62d943704876
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: default_title
+label: 'Default Title'
+type: 'canonical_entities:node'
+pattern: '[node:menu-link:parents:join-path]/[node:title]'
+selection_criteria: {  }
+selection_logic: and
+weight: -4
+relationships: {  }

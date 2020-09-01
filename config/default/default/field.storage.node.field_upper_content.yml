@@ -1,0 +1,19 @@
+uuid: 329ed409-443d-401b-be87-d9a72c8561a1
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_upper_content
+field_name: field_upper_content
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

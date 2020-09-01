@@ -1,0 +1,27 @@
+uuid: 7f363253-3620-4471-885c-f0cf9242c051
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.earthlife
+  module:
+    - menu_block
+  theme:
+    - casella
+id: earthlife
+theme: casella
+region: sidebar_nav
+weight: 0
+provider: null
+plugin: 'menu_block:earthlife'
+settings:
+  id: 'menu_block:earthlife'
+  label: 'Earthlife navigation - sidebar'
+  provider: menu_block
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand: 0
+  parent: 'earthlife:'
+  suggestion: main_sidebar
+visibility: {  }

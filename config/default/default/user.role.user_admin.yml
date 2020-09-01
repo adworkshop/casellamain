@@ -1,0 +1,13 @@
+uuid: 256868c5-18ee-4fea-a591-983a2f59b746
+langcode: en
+status: true
+dependencies: {  }
+id: user_admin
+label: 'User Admin'
+weight: 8
+is_admin: null
+permissions:
+  - 'administer menu'
+  - 'administer permissions'
+  - 'administer users'
+  - 'create url aliases'

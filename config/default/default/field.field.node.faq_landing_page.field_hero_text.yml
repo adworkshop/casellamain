@@ -1,0 +1,19 @@
+uuid: 9cdd9b59-7f5d-450b-b70c-d1494e80adc8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hero_text
+    - node.type.faq_landing_page
+id: node.faq_landing_page.field_hero_text
+field_name: field_hero_text
+entity_type: node
+bundle: faq_landing_page
+label: 'Hero Text'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

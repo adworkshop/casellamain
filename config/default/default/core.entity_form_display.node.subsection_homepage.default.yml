@@ -1,0 +1,276 @@
+uuid: eea7935f-4c03-4043-9e30-160d2363b275
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.subsection_homepage.body
+    - field.field.node.subsection_homepage.field_breadcrumb_override
+    - field.field.node.subsection_homepage.field_description
+    - field.field.node.subsection_homepage.field_earthlife_description
+    - field.field.node.subsection_homepage.field_earthlife_image
+    - field.field.node.subsection_homepage.field_earthlife_link
+    - field.field.node.subsection_homepage.field_earthlife_links
+    - field.field.node.subsection_homepage.field_earthlife_title
+    - field.field.node.subsection_homepage.field_full_width_promotion
+    - field.field.node.subsection_homepage.field_h1_override
+    - field.field.node.subsection_homepage.field_icon
+    - field.field.node.subsection_homepage.field_link
+    - field.field.node.subsection_homepage.field_meta_tag
+    - field.field.node.subsection_homepage.field_promotion_description
+    - field.field.node.subsection_homepage.field_promotion_image
+    - field.field.node.subsection_homepage.field_promotion_link
+    - field.field.node.subsection_homepage.field_subsection
+    - field.field.node.subsection_homepage.field_subtitle
+    - field.field.node.subsection_homepage.field_title
+    - image.style.thumbnail
+    - node.type.subsection_homepage
+  module:
+    - field_group
+    - image
+    - link
+    - metatag
+    - paragraphs
+    - path
+    - text
+third_party_settings:
+  field_group:
+    group_organics:
+      children:
+        - field_promotion_image
+        - field_subtitle
+        - field_description
+        - field_link
+        - field_icon
+        - field_title
+        - field_promotion_description
+        - field_promotion_link
+      parent_name: ''
+      weight: 4
+      format_type: details
+      format_settings:
+        id: organics
+        classes: ''
+        open: false
+        required_fields: true
+      label: Organics
+    group_earthlife:
+      children:
+        - field_earthlife_link
+        - field_earthlife_title
+        - field_earthlife_description
+        - field_earthlife_links
+        - field_earthlife_image
+      parent_name: ''
+      weight: 5
+      format_type: details
+      format_settings:
+        id: earthlife
+        classes: ''
+        open: false
+        required_fields: true
+      label: Earthlife
+id: node.subsection_homepage.default
+targetEntityType: node
+bundle: subsection_homepage
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 3
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  created:
+    type: datetime_timestamp
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_breadcrumb_override:
+    weight: 26
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_description:
+    weight: 15
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_earthlife_description:
+    weight: 11
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_earthlife_image:
+    weight: 13
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_earthlife_link:
+    weight: 9
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_earthlife_links:
+    type: entity_reference_paragraphs
+    weight: 12
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+    region: content
+  field_earthlife_title:
+    weight: 10
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_full_width_promotion:
+    weight: 27
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_h1_override:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_icon:
+    weight: 17
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_link:
+    weight: 16
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_meta_tag:
+    weight: 28
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
+    region: content
+  field_promotion_description:
+    weight: 19
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_promotion_image:
+    weight: 13
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_promotion_link:
+    weight: 20
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_subsection:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_subtitle:
+    weight: 14
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_title:
+    weight: 18
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  langcode:
+    type: language_select
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  path:
+    type: path
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 120
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  translation:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  uid:
+    type: entity_reference_autocomplete
+    weight: 7
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  promote: true
+  sticky: true

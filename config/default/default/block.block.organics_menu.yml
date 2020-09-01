@@ -1,0 +1,27 @@
+uuid: e402f1e9-aa26-473c-9a8a-9e5d17d90fcb
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.organics
+  module:
+    - menu_block
+  theme:
+    - casella
+id: organics_menu
+theme: casella
+region: node_content
+weight: 0
+provider: null
+plugin: 'menu_block:organics'
+settings:
+  id: 'menu_block:organics'
+  label: 'Organics Menu Block'
+  provider: menu_block
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand: 0
+  parent: 'organics:'
+  suggestion: main
+visibility: {  }

@@ -1,0 +1,16 @@
+uuid: 64eaac67-013f-44c9-883c-2365ffd36770
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.upper_button
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: paragraph.upper_button
+target_entity_type_id: paragraph
+target_bundle: upper_button
+default_langcode: site_default
+language_alterable: false

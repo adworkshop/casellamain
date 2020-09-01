@@ -1,0 +1,19 @@
+uuid: 66c57c13-698b-4baa-8206-4e25a81f0ad8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_charges_warning
+    - node.type.casella_globals
+id: node.casella_globals.field_charges_warning
+field_name: field_charges_warning
+entity_type: node
+bundle: casella_globals
+label: 'Charges Warning'
+description: 'The charges warning will display on all transfer station service locations.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,74 @@
+uuid: bba4758f-0578-482e-b55d-82abe9a72224
+langcode: en
+status: true
+dependencies:
+  module:
+    - casella_feeds
+label: Jobs
+id: jobs
+description: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'public://feeds'
+parser: casella_jobs
+parser_configuration: {  }
+processor: 'entity:node'
+processor_configuration:
+  update_existing: 0
+  expire: -1
+  owner_id: 1
+  authorize: true
+  skip_hash_check: true
+  values:
+    type: job
+mappings:
+  -
+    target: title
+    map:
+      value: title
+    unique: {  }
+  -
+    target: body
+    map:
+      value: description
+      summary: ''
+    settings:
+      format: basic_html
+  -
+    target: field_date_posted
+    map:
+      value: pubDate
+  -
+    target: feeds_item
+    map:
+      url: ''
+      guid: guid
+    unique:
+      guid: '1'
+  -
+    target: field_location
+    map:
+      target_id: locationName
+    settings:
+      reference_by: title
+      autocreate: false
+  -
+    target: status
+    map:
+      value: published
+  -
+    target: field_job_status
+    map:
+      target_id: status
+    settings:
+      reference_by: name
+      autocreate: '1'
+  -
+    target: field_job_categories
+    map:
+      target_id: category
+    settings:
+      reference_by: name
+      autocreate: '1'

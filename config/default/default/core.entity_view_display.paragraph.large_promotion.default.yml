@@ -1,0 +1,85 @@
+uuid: ac51f8df-0ce2-4ccb-afd5-2f5dfbf88713
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.large_promotion.field_icon
+    - field.field.paragraph.large_promotion.field_link
+    - field.field.paragraph.large_promotion.field_logo
+    - field.field.paragraph.large_promotion.field_lower_content
+    - field.field.paragraph.large_promotion.field_second_position
+    - field.field.paragraph.large_promotion.field_secondary_title
+    - field.field.paragraph.large_promotion.field_title
+    - field.field.paragraph.large_promotion.field_upper_content
+    - paragraphs.paragraphs_type.large_promotion
+  module:
+    - image
+    - link
+    - options
+id: paragraph.large_promotion.default
+targetEntityType: paragraph
+bundle: large_promotion
+mode: default
+content:
+  field_link:
+    weight: 5
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_logo:
+    weight: 6
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_lower_content:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_second_position:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_secondary_title:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_upper_content:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+hidden:
+  created: true
+  field_icon: true
+  uid: true

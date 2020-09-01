@@ -1,0 +1,32 @@
+uuid: 8e190ee4-d789-4a77-8d1f-9248fe5d1faf
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.locations
+  module:
+    - ctools
+    - views
+  theme:
+    - casella
+id: views_block__locations_block_6__assoc_hauling
+theme: casella
+region: node_content
+weight: 0
+provider: null
+plugin: 'views_block:locations-block_6'
+settings:
+  id: 'views_block:locations-block_6'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      location: location
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

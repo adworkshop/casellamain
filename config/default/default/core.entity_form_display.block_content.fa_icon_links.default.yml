@@ -1,0 +1,40 @@
+uuid: 377a5871-ae82-4cc0-bd50-58c896e258ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.fa_icon_links
+    - field.field.block_content.fa_icon_links.field_fa_icon_links
+  module:
+    - paragraphs
+id: block_content.fa_icon_links.default
+targetEntityType: block_content
+bundle: fa_icon_links
+mode: default
+content:
+  field_fa_icon_links:
+    type: entity_reference_paragraphs
+    weight: 4
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+    region: content
+  info:
+    type: string_textfield
+    weight: -5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  langcode:
+    type: language_select
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

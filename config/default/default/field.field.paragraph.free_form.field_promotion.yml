@@ -1,0 +1,28 @@
+uuid: 93c4d48e-3076-4dbc-96a2-d58c50dad41d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_promotion
+    - node.type.sidebar_promotion
+    - paragraphs.paragraphs_type.free_form
+id: paragraph.free_form.field_promotion
+field_name: field_promotion
+entity_type: paragraph
+bundle: free_form
+label: Promotion
+description: 'Start typing the title of a piece of content to select it.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      sidebar_promotion: sidebar_promotion
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

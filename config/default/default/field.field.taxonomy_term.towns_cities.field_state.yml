@@ -1,0 +1,21 @@
+uuid: 1268e6f8-3332-4834-b772-4806f57d9439
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_state
+    - taxonomy.vocabulary.towns_cities
+  module:
+    - options
+id: taxonomy_term.towns_cities.field_state
+field_name: field_state
+entity_type: taxonomy_term
+bundle: towns_cities
+label: State
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

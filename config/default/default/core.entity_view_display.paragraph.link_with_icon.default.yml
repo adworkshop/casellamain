@@ -1,0 +1,31 @@
+uuid: ce2f5c2b-9075-47cd-bb7e-b7bc940dc9ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.link_with_icon.field_icon_link
+    - field.field.paragraph.link_with_icon.field_link_class
+    - paragraphs.paragraphs_type.link_with_icon
+  module:
+    - link
+id: paragraph.link_with_icon.default
+targetEntityType: paragraph
+bundle: link_with_icon
+mode: default
+content:
+  field_icon_link:
+    weight: 1
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+hidden:
+  created: true
+  field_link_class: true
+  uid: true

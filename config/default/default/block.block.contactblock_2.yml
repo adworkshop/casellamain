@@ -1,0 +1,31 @@
+uuid: a1f01ba2-4073-4b70-b06e-09501502d99f
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.job_application_drivers
+  module:
+    - contact_block
+    - node
+  theme:
+    - casella
+id: contactblock_2
+theme: casella
+region: form_container_drivers
+weight: 0
+provider: null
+plugin: contact_block
+settings:
+  id: contact_block
+  label: 'Contact block'
+  provider: contact_block
+  label_display: '0'
+  contact_form: job_application_drivers
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      job: job
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

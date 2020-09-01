@@ -1,0 +1,19 @@
+uuid: 7aa3f511-a0a2-49db-8320-8c581fc8bf04
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_online_bill_pay
+field_name: field_online_bill_pay
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

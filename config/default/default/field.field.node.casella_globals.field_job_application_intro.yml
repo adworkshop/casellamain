@@ -1,0 +1,19 @@
+uuid: 6cf118ef-203e-4e05-a0ec-72a59bdaf6ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_job_application_intro
+    - node.type.casella_globals
+id: node.casella_globals.field_job_application_intro
+field_name: field_job_application_intro
+entity_type: node
+bundle: casella_globals
+label: 'Job Application Introduction'
+description: 'Intro text/disclaimer shown above the Job Application form when toggled open.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

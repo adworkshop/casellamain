@@ -1,0 +1,27 @@
+uuid: d359b5fe-b6cd-46df-bfcd-857cb1049808
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.organics
+  module:
+    - menu_block
+  theme:
+    - casella
+id: organics
+theme: casella
+region: sidebar_nav
+weight: 0
+provider: null
+plugin: 'menu_block:organics'
+settings:
+  id: 'menu_block:organics'
+  label: 'Organics navigation - sidebar'
+  provider: menu_block
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand: 1
+  parent: 'organics:'
+  suggestion: main_sidebar
+visibility: {  }

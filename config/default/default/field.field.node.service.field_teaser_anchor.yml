@@ -1,0 +1,19 @@
+uuid: c569c983-7d5b-41e8-9416-4d605dd9f934
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_teaser_anchor
+    - node.type.service
+id: node.service.field_teaser_anchor
+field_name: field_teaser_anchor
+entity_type: node
+bundle: service
+label: 'Teaser Anchor'
+description: 'The text in the teaser read more button.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

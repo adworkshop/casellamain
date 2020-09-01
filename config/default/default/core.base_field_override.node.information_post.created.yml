@@ -1,0 +1,18 @@
+uuid: d21baf25-31e4-411d-a9f2-c6a1950e1006
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.information_post
+id: node.information_post.created
+field_name: created
+entity_type: node
+bundle: information_post
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

@@ -1,0 +1,11 @@
+uuid: 76f0a6e9-cf38-4c6f-ad83-a6e6ea69f1eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.waste_categories
+id: taxonomy_term.waste_categories
+target_entity_type_id: taxonomy_term
+target_bundle: waste_categories
+default_langcode: site_default
+language_alterable: false

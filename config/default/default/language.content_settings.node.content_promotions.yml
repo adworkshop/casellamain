@@ -1,0 +1,11 @@
+uuid: cd5c60ad-8610-482a-af4f-afaf0c0d211c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.content_promotions
+id: node.content_promotions
+target_entity_type_id: node
+target_bundle: content_promotions
+default_langcode: site_default
+language_alterable: false

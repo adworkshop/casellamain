@@ -1,0 +1,16 @@
+uuid: 9b0dddb2-e176-48b2-92e0-b37e72692a6d
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.post_categories
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+id: taxonomy_term.post_categories
+target_entity_type_id: taxonomy_term
+target_bundle: post_categories
+default_langcode: site_default
+language_alterable: false

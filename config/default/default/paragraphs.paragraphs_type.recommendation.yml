@@ -1,0 +1,6 @@
+uuid: 2da38816-a8de-4429-a73f-21e7280d4bc1
+langcode: en
+status: true
+dependencies: {  }
+id: recommendation
+label: Recommendation

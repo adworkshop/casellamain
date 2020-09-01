@@ -1,0 +1,28 @@
+uuid: 7e325d88-0210-44ed-88e2-ca057eaadac4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_promotion
+    - node.type.sidebar_promotion
+    - paragraphs.paragraphs_type.video
+id: paragraph.video.field_promotion
+field_name: field_promotion
+entity_type: paragraph
+bundle: video
+label: Promotion
+description: 'Start typing the title of a piece of content to select it.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      sidebar_promotion: sidebar_promotion
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

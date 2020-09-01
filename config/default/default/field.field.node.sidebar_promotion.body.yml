@@ -1,0 +1,22 @@
+uuid: 4fa08648-895c-4c2a-93ed-4bf3278d620c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.sidebar_promotion
+  module:
+    - text
+id: node.sidebar_promotion.body
+field_name: body
+entity_type: node
+bundle: sidebar_promotion
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

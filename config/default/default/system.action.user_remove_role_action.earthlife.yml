@@ -1,0 +1,14 @@
+uuid: 34e6cd1f-3c61-41c4-a96a-4abc52ec3ed5
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.earthlife
+  module:
+    - user
+id: user_remove_role_action.earthlife
+label: 'Remove the Earthlife role from the selected users'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: earthlife

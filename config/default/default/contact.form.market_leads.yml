@@ -1,0 +1,21 @@
+uuid: bc452627-6bf4-441c-a8ce-68f3b265f8c5
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact_storage
+third_party_settings:
+  contact_storage:
+    redirect_uri: ''
+    submit_text: 'Send message'
+    show_preview: true
+    disabled_form_message: 'This contact form has been disabled.'
+    maximum_submissions_user: 0
+id: market_leads
+label: 'Drive Toward Zero Waste'
+recipients:
+  - marketing@casella.com
+reply: ''
+weight: 0
+message: ''
+redirect: ''

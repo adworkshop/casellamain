@@ -1,0 +1,21 @@
+uuid: 0c880f64-299c-466f-a92e-4bafaf06d44b
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.market_leads
+    - field.storage.contact_message.field_ml_state
+  module:
+    - options
+id: contact_message.market_leads.field_ml_state
+field_name: field_ml_state
+entity_type: contact_message
+bundle: market_leads
+label: 'State:*'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

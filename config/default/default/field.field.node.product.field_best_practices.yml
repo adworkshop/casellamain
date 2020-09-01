@@ -1,0 +1,21 @@
+uuid: 81d13e05-6de8-4cd5-9b7b-92eec43a28b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_best_practices
+    - node.type.product
+  module:
+    - text
+id: node.product.field_best_practices
+field_name: field_best_practices
+entity_type: node
+bundle: product
+label: 'Best Practices'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

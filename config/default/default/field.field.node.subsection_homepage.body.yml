@@ -1,0 +1,22 @@
+uuid: 690e8ac1-b323-4ced-a73b-3df843229dfb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.subsection_homepage
+  module:
+    - text
+id: node.subsection_homepage.body
+field_name: body
+entity_type: node
+bundle: subsection_homepage
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

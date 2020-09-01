@@ -1,0 +1,54 @@
+uuid: 4017dec4-0969-4480-95ca-2219b35cc4dc
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.case_studies.field_case_studies
+    - field.field.paragraph.case_studies.field_promotion
+    - field.field.paragraph.case_studies.field_tab_anchor
+    - field.field.paragraph.case_studies.field_tab_description
+    - field.field.paragraph.case_studies.field_tab_title
+    - paragraphs.paragraphs_type.case_studies
+id: paragraph.case_studies.preview
+targetEntityType: paragraph
+bundle: case_studies
+mode: preview
+content:
+  field_case_studies:
+    weight: 3
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_promotion:
+    weight: 4
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_tab_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_tab_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  created: true
+  field_tab_anchor: true
+  uid: true

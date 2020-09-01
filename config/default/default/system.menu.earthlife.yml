@@ -1,0 +1,8 @@
+uuid: 199461d3-5fcb-4335-bdf2-ade46421a150
+langcode: en
+status: true
+dependencies: {  }
+id: earthlife
+label: Earthlife
+description: ''
+locked: false

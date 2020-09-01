@@ -1,0 +1,23 @@
+uuid: de95e884-791f-4c5b-b0cd-48641cba1966
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.organics_contact_us
+    - field.storage.contact_message.field_enews_optin
+id: contact_message.organics_contact_us.field_enews_optin
+field_name: field_enews_optin
+entity_type: contact_message
+bundle: organics_contact_us
+label: 'I would like to receive news from Casella'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
