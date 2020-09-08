@@ -17,6 +17,7 @@ custom-css:
       css/custom/developer-overrides.css: {}
       css/custom/video.css: {}
       css/custom/adw-menu.css: {}
+      css/custom/career.css: {}
 
 jquery-migrate:
   version: 1.x

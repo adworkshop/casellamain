@@ -1,0 +1,31 @@
+<div class="c-career-panel">
+<h2 class="c-career-panel--container-title">{{ content.field_title }}</h2>
+  {% if content.field_image_align.0['#markup'] == 'left' %}
+    <div class="c-career-panel--left">
+      <div class="c-career-panel--media">
+        {{ content.field_image }}
+        {{ content.field_career_video }}
+      </div>
+      <div class="c-career-panel--text">
+        <h3>{{ content.field_section_title }}</h3>
+        <div class="c-career-panel--body">
+        {{ content.field_content_area }}
+        </div>
+      </div>
+    </div>
+  {% else %}
+  <div class="c-career-panel--right">
+    <div class="c-career-panel--text">
+      <h3>{{ content.field_section_title }}</h3>
+      <div class="c-career-panel--body">
+        {{ content.field_content_area }}
+      </div>
+    </div>
+    <div class="c-career-panel--media">
+      {{ content.field_image }}
+      {{ content.field_career_video }}
+    </div>
+  </div>
+  {% endif %}
+
+</div>

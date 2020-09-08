@@ -1,0 +1,7 @@
+<div class="c-pg-career-icons--container">
+
+    {% for key, item in content.field_career_icons if key|first != '#' %}
+      {{ content.field_career_icons[key] }}
+    {% endfor %}
+
+</div>

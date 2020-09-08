@@ -1,0 +1,14 @@
+{% set background_color = content.field_career_panel_color.0['#markup'] %}
+
+<div class="c-career--cta {{ background_color }}">
+  <h2 class="c-career--cta-title">{{ content.field_title }}</h2>
+  <div class="c-career--cta-text">{{ content.field_description }}</div>
+  {% if content.field_link is not empty %}
+  <div class="c-career--cta-button">{{ content.field_link }}</div>
+  {% endif %}
+  {%  if content.field_career_category_links|render %}
+    <div class="c-career--category-links">
+      {{ content.field_career_category_links }}
+    </div>
+  {% endif %}
+</div>

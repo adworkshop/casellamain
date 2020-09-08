@@ -6,19 +6,26 @@
   'featured-btnRow-IndBtn-container'
 ]
 %}
+
+
+<div class = "pg__container l_grid {{ content.field_pg_columns[0]['#markup'] }}">
+
 <div{{ attributes.addClass(classes) }}>
   <div class="featured-btnRow-IndBtn-innerContainer">
     <div class="featured-btnRow-IndBtn-wrapper">
       <div class="field_modal_pdf" data-modal-title="{{ button_title }}">
         <h2>{{ pdf_title }}</h2>
         <p>{{ pdf_description }}</p>
-        {{ content.field_pdf_tooltip }}
+        {% for key, item in content.field_pdf_tooltip if key|first != '#' %}
+          <section class="pdf-tooltip-{{ key + 1 }}">{{ item }}</section>
+        {% endfor %}
       </div>
-      <a data-modal-open>
+      <div>
         <div class="featured-btnRow-IndBtn-icon"><span class="{{ link_class }}" aria-hidden="true"></span></div>
         <div class="featured-btnRow-IndBtn-title">{{ button_title }}</div>
-      </a>
+      </div>
     </div>
   </div>
 </div>
+<div>{{ content.field_contact }}</div>
 

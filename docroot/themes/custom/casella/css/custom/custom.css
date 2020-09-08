@@ -75,7 +75,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   overflow: hidden;
   visibility: hidden;
   width: 0;
-  height: 0; 
+  height: 0;
   }
   .clearfix:after, .cf:after {clear: both;}
   .clearfix, .cf {zoom: 1;}
@@ -88,7 +88,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   width: 0;
   height: 0;
   }
-	
+
 /* ======================================================= */
 /*   BASE STYLES                                           */
 /* ======================================================= */
@@ -99,70 +99,70 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   }
-  
+
   * {text-rendering: optimizeLegibility;}
   html.touch * {text-rendering: optimizeSpeed;}
-  
+
   html {
   image-rendering: -moz-crisp-edges;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   }
-  
+
   body {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 15px;
   font-weight:400;
   line-height: 1;
   color: #606060;
-  background: #FFF;	
+  background: #FFF;
   overflow-x: hidden;
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
-  font-weight: normal;	
+  font-weight: normal;
   }
   h1 {font-family: 'Gotham-Black'; line-height:1;}
   h2 {font-family: 'Gotham-Black'; line-height: 1.3;}
   h3 {font-family: 'Gotham-Black'; line-height: 1.3;}
   h4 {font-family: 'Gotham-Bold'; line-height: 1.3;}
   h5 {}
-  
+
   p {margin: 0 0 20px 0; -webkit-hyphens: none; -moz-hyphens: none;}
   img {image-rendering: optimizeQuality; -ms-interpolation-mode: bicubic;}
-  
+
   a {
-  -webkit-transition: color .2s ease-in-out;	
+  -webkit-transition: color .2s ease-in-out;
   -moz-transition: color .2s ease-in-out;
   -o-transition: color .2s ease-in-out;
   -ms-transition: color .2s ease-in-out;
-  transition: color .2s ease-in-out;	
+  transition: color .2s ease-in-out;
   }
-  
-  a, a:link, a:visited, a:active, a:hover, img, a img { 
-  border: none; 
+
+  a, a:link, a:visited, a:active, a:hover, img, a img {
+  border: none;
   outline: none;
   text-decoration:none;
-  }	
-  
+  }
+
   b, strong {font-weight: 700;}
   em {font-style: italic;}
   sup {font-size: 40%; vertical-align: top;}
-  
+
   .hiddenBtn {opacity:.1; pointer-events: none;}
-  
+
   ::-webkit-selection {background: rgba(0, 0, 0, 0.2); color: #fff; text-shadow: none; }
   ::-moz-selection {background: rgba(0, 0, 0, 0.2); color: #fff; text-shadow: none; }
   ::selection {background: rgba(0, 0, 0, 0.2); color: #fff; text-shadow :none; }
-  
+
 /* ======================================================= */
 /*   MISC/GLOBAL SHARED ELEMENTS                           */
-/* ======================================================= */	
+/* ======================================================= */
   .inline-block-grid-parent {font-size: 0;}
   .globalWidth {position: relative; padding: 0 30px;}
   .addThis-container {margin:25px 0 0;}
-  
+
   .btnIconWrapper {margin:0 5px 0 0;}
   .earthlifeTitle {font-family: 'Gotham-BlackItalic';}
 	.sectionMenu-search-wrapper__txt {margin: 0 0 0 5px; font-family: 'Gotham-Bold';}
@@ -219,7 +219,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	a.inline-btn__grey:hover,
 	.internal-mainBody-generalTxt-container a.inline-btn__grey:hover {color: #666; background: #FFF; border: 2px solid #e4e4e4;}
 
-	
+
 	a.inline-btn__arrow,
 	.internal-mainBody-generalTxt-container a.inline-btn__arrow {
 	color: #0a253e;
@@ -243,16 +243,16 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	color: #4c9d2a;
 	}
 
-  
+
   /*RoyalSlider*/
   .rsUni, .rsUni .rsOverflow, .rsUni .rsSlide, .rsUni .rsVideoFrameHolder, .rsUni .rsThumbs {background: #FFF !important;}
-    
+
 /* ======================================================= */
 /*                       NAVIGATION                        */
-/* ======================================================= */   
+/* ======================================================= */
   #generalNav {
-  position: relative; width: 100%; background: #FFF; z-index: 4000; top: 0; border-bottom: 3px solid #f1f2f2;
-  -webkit-transition: all .5s ease-in-out;	
+  position: relative; width: 100%; background: #FFF; z-index: 99; top: 0; border-bottom: 3px solid #f1f2f2;
+  -webkit-transition: all .5s ease-in-out;
   -moz-transition: all .5s ease-in-out;
   -o-transition: all .5s ease-in-out;
   -ms-transition: all .5s ease-in-out;
@@ -260,19 +260,19 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   }
   .navContainer {
   width: 100%; position: relative; margin: 0 auto;
-  -webkit-transition: all .5s ease-in-out;	
+  -webkit-transition: all .5s ease-in-out;
   -moz-transition: all .5s ease-in-out;
   -o-transition: all .5s ease-in-out;
   -ms-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
   max-width: 100%;
   }
-  
+
   .navInnerContainer {width: 100%; margin: 0 auto; position: relative;}
   .headerLogo {display: inline-block; line-height: 0; position: relative; padding: 18px 0 15px 30px;}
   .headerLogo a {
   display: inline-block; opacity:1;
-  -webkit-transition: all .5s ease-in-out;	
+  -webkit-transition: all .5s ease-in-out;
   -moz-transition: all .5s ease-in-out;
   -o-transition: all .5s ease-in-out;
   -ms-transition: all .5s ease-in-out;
@@ -280,7 +280,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   }
   .headerLogo a:hover {opacity:.5;}
   #generalNav #casella_logo {width: 120px; height:32px; fill: #606060;}
-  
+
   a.navigationSearchAction {display: none; font-size: 13px; color: #bbb;}
   a.navigationSearchAction span {
   font-family: 'Source Sans Pro', sans-serif;
@@ -297,7 +297,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   }
   a.navigationSearchAction:hover, a.navigationSearchAction span:hover {color: #095909;}
   a.navigationSearchAction .searchIcon {display: none;}
-  
+
   /*Global Nav*/
   .navGlobal-container {
   position:relative; background:#004a87; padding:20px 30px; z-index:1;
@@ -309,7 +309,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	.navGlobal-indCTABtn-Container.customerCare {border-right:1px solid #fff; border-right:1px solid rgba(255,255,255,.2); padding:0 15px 0 0; margin:0 15px 0 0;}
   a.navGlobal-indCTABtn {
   display:inline-block; font-size:9.75px; font-family: 'Gotham-Bold'; text-transform:uppercase; color:#FFF; cursor:pointer;
-  -webkit-transition: all .3s ease-in-out;	
+  -webkit-transition: all .3s ease-in-out;
   -moz-transition: all .3s ease-in-out;
   -o-transition: all .3s ease-in-out;
   -ms-transition: all .3s ease-in-out;
@@ -333,10 +333,10 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   .mobile__billpay a {color:#fff; font-size:12px; font-weight:normal; font-family: 'Gotham-Bold'; display:inline-block; padding:15px 0;}
   .mobile__billpay a:hover {color: #70a1c9;}
   .mobile__billpay a span {color: #70a1c9;}
-  
+
 /* ======================================================= */
 /*                      SEARCH PANEL                       */
-/* ======================================================= */	  
+/* ======================================================= */
   .searchFormPanelContainer {position: fixed; top:0; z-index: 5000; width: 100%; height: 100%; background: #0a253e; background: rgba(10, 37, 62,.98); display:none;}
   .searchFormPanelInnerContainer {width: 86%; max-width: 1440px; margin: 0 auto; padding: 0; height: 100%;}
   .searchFormPanelWrapper {
@@ -356,23 +356,23 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   .searchFormPanelButtonWrappers {display:table-cell; vertical-align:middle; width: 110px; text-align: right;}
   a.searchPanel_close {font-family: 'Gotham-Bold'; font-weight: normal; color:#3788cb; font-size: 15px; padding: 0 20px; background: #004a87; height: 56px; line-height: 56px; border:2px solid #004a87;-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; margin:0 0 0 10px; display:none;}
   a.searchPanel_close:hover {color: #FFF; background:none;}
-  
+
 /* ======================================================= */
 /*   FOOTER                                                */
-/* ======================================================= */	  
+/* ======================================================= */
   .footer-container {background:#001a2a;}
   .footer-upperRegion-container {padding:50px 0;}
   .footer-lowerRegion-container {background:#00101b; position:relative; border-top:1px solid #084061; width:100%; padding:0 0 50px;}
-  
+
   /*Quote*/
   .footer-quote {font-family: 'Droid Serif', serif; font-style:italic; color: #FFF; text-align: center; max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 17px;}
-  
+
   /*Social*/
   .footer-socialContainer {text-align: center; margin:20px 0 0;}
   .footer-socialContainer ul li {display:inline-block; text-align:center;}
   .footer-socialContainer ul li a {color:#FFF; font-size:25px; margin:0 1px;}
   .footer-socialContainer ul li a:hover {color:#76bd22;}
-  
+
   /*Footer Nav*/
   .footer-lowerNav-container {text-align:center; padding:50px 0;}
   .footer-lowerNav-container ul li {display:inline-block;}
@@ -382,13 +382,13 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   .footer-lowerNav-container ul li a:hover {color: #4c9d2a;}
   div.footer-lowerNav-container ul {display: none;}
   div.footer-lowerNav-container select {display: inline-block;}
-  
+
   /*Attribute*/
   .footer-attribute {font-size:13px; text-align:center; color:#d3d3d3;}
-  
+
 /* ======================================================= */
 /*   BASIC FORM ELEMENTS AND FORM OVERRIDES                */
-/* ======================================================= */		  
+/* ======================================================= */
   pre {overflow: auto;}
   code, kbd, pre, samp {font-family: monospace, monospace; font-size: 1em;}
   button, input, optgroup, select, textarea {margin: 0; font: inherit; color: inherit;}
@@ -464,8 +464,8 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   fieldset[disabled] .radio-inline,
   fieldset[disabled] .checkbox,
   fieldset[disabled] .checkbox-inline {cursor: not-allowed;}
-  
-  
+
+
   .description {font-family: 'Source Sans Pro', sans-serif; font-size: 13px; font-weight:400; font-style:italic;  margin: .5rem 0 0; line-height:1.5;}
   .description ol, .description ul {margin-left: 15px; margin-bottom: 15px;}
   .description ol {list-style: decimal;}
@@ -545,7 +545,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	border-top: 1px solid #45596c;
 	}
 
-  
+
   /**************************************
   *
   * Selects & Inputs
@@ -569,15 +569,15 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   appearance: none;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
-  border-radius: 0;	
-  -webkit-transition: all linear 0.2s;	
+  border-radius: 0;
+  -webkit-transition: all linear 0.2s;
   -moz-transition: all linear 0.2s;
   -o-transition: all linear 0.2s;
   -ms-transition: all linear 0.2s;
   transition: all linear 0.2s;
   }
   select:focus {color: #666; background-color: #FFF;}
-  
+
   textarea,
   input[type="text"],
   input[type="password"],
@@ -594,28 +594,28 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   input[type="tel"],
   input[type="color"] {
   margin: 0;
-  padding: 12px;	
+  padding: 12px;
   width: 100%;
   font-size: 14px;
   font-weight: 400;
   color: #777;
   vertical-align: middle;
   outline: none;
-  border: 1px solid #E8E8E8;	
+  border: 1px solid #E8E8E8;
   background: #FFFFFF;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
-  border-radius: 0;	
-  -webkit-transition: all 0.2s linear;	
+  border-radius: 0;
+  -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
   -o-transition: all 0.2s linear;
   -ms-transition: all 0.2s linear;
   transition: all 0.2s linear;
   }
-  
+
   textarea {line-height: 1.7; resize: vertical;}
   textarea:focus,
   input[type="text"]:focus,
@@ -632,10 +632,10 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   input[type="search"]:focus,
   input[type="tel"]:focus,
   input[type="color"]:focus {
-  color: #222;	
+  color: #222;
   background-color: none;
   }
-  
+
   input[type="file"],
   input[type="image"],
   input[type="submit"],
@@ -645,7 +645,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   input[type="checkbox"] {
   width: auto;
   }
-  
+
   button.searchSubmit {
   height: 55px;
   line-height: 53px;
@@ -666,7 +666,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   border:2px solid #fff;
   background:none;
   }
-  
+
   .locationSearchWrapper {position:relative;}
   button.locationSearchSubmit {
   height: 60px;
@@ -690,13 +690,13 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   }
   label.locationSearchLabel {color:#FFF; margin-bottom:8px;}
   input.locationSearchField {height:60px; line-height:60px;}
-  
+
   input[type="submit"] {
   font-family: 'Gotham-Bold'; font-size:16px; color:#FFF; display:inline-block; background:#004a87; padding: 20px 20px 18px;
-  border: 2px solid #004a87; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; outline:none; 
+  border: 2px solid #004a87; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; outline:none;
   }
   input[type="submit"]:hover {
-  border: 2px solid #004a87; background:#FFF; color:#004a87;  
+  border: 2px solid #004a87; background:#FFF; color:#004a87;
   }
 
 	.contact-form {line-height:1.5;}
@@ -782,53 +782,53 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	.sitemap ul.sitemap-menu li > ul > li > ul >li:before {content: "\f105"; font-family: 'FontAwesome'; left: -1.25em; top: .2em; position: absolute; color:#aaa; font-size:80%;}
 
 	.sitemap ul.sitemap-menu li > ul > li > ul > li > ul > li  a {font-weight:normal; font-style:italic;}
-  
+
 /* ======================================================= */
 /*   MEDIA QUERIES                                         */
-/* ======================================================= */	
+/* ======================================================= */
   @media all and (min-width: 320px) {}
-  
-  @media all and (min-width: 480px) {}  
-  
+
+  @media all and (min-width: 480px) {}
+
   @media all and (min-width: 600px) {
   /* Global */
   .globalWidth {padding: 0 40px;}
-  
+
   /*Navigation*/
   .headerLogo {padding: 18px 0 15px 40px;}
   .searchFormPanelFormContainer form {padding: 30px 40px 27px;}
   .navGlobal-container {padding:25px 40px;}
 	.navGlobal-indCTABtn-iconWrapper {display:inline-block; vertical-align:baseline; line-height: 0; margin:0 5px 0 0;}
-    
+
   .mobile__billpay {text-align:center;}
   }
-  
+
   @media all and (min-width: 768px) {
   /*Footer*/
   div.footer-lowerNav-container ul {display: block;}
-  div.footer-lowerNav-container select {display: none;}  
+  div.footer-lowerNav-container select {display: none;}
   }
-  
+
   @media all and (min-width: 840px) {}
-  
+
 	@media all and (min-width: 960px) {
 	/*Breadcrumb Over-Ride*/
 	.sectionMenu-breadCrumb-container.not-subsection {display:block;}
 	}
-  
+
   @media all and (min-width: 1024px) {}
-  
+
   @media all and (min-width: 1100px) {}
-  
+
   @media all and (min-width: 1200px) {
   /* Global */
   .globalWidth {width:86%; margin:0 auto; padding:0;}
-    
+
   /*Navigation*/
   #generalNav {position:fixed;}
   .navContainer {width: 86%; padding:0;}
   .navInnerContainer {height: 135px;
-  -webkit-transition: all .5s ease-in-out;	
+  -webkit-transition: all .5s ease-in-out;
   -moz-transition: all .5s ease-in-out;
   -o-transition: all .5s ease-in-out;
   -ms-transition: all .5s ease-in-out;
@@ -839,7 +839,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   #generalNav #casella_logo {width: 240px; height:65px; -webkit-transition: all .5s ease-in-out; -moz-transition: all .5s ease-in-out; -o-transition: all .5s ease-in-out; -ms-transition: all .5s ease-in-out; transition: all .5s ease-in-out;}
   #generalNav.scrollIn #casella_logo {width: 110px; height:30px;}
   #generalNav .headerLogo {bottom:35px; -webkit-transition: all .5s ease-in-out; -moz-transition: all .5s ease-in-out; -o-transition: all .5s ease-in-out; -ms-transition: all .5s ease-in-out; transition: all .5s ease-in-out;}
-  #generalNav.scrollIn .headerLogo {bottom:13px;} 
+  #generalNav.scrollIn .headerLogo {bottom:13px;}
   #generalNav.scrollIn .navGlobal-container {top:-100px;}
   .navGlobal-container {position:absolute; top:0; right:0; background:#004a87; padding:8px 7% 8px 10px;}
   .navGlobal-wrapper {margin: 0 50px 0 0; font-size:0;}
@@ -849,9 +849,9 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   #generalNav.scrollIn nav#mainMenu {bottom: 5px;}
   #generalNav nav#mainMenu ul.adwMenu > li ul li ul li ul {display: none !important;}
   #generalNav nav#mainMenu ul.adwMenu > li ul li ul li span.openChild {display: none !important;}
-    
+
   .mobile__billpay {display:none;}
-  
+
   /*Search Panel*/
   .searchFormPanelFormContainer form {display:block; margin:30px 0 0; padding:0; border-top:0; background: none;}
   .searchFormPanelSearchField {display:block;}
@@ -864,13 +864,13 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   }
   .searchFormPanelSearchField input[type="text"]:focus {color:#4dadfc;}
   }
-  
+
   @media all and (min-width: 1400px) {}
-  
+
   @media all and (min-width: 1600px) {}
-  
+
   @media all and (min-width: 1800px) {}
-  
+
   @media only screen and (max-width: 1199px)  {
   /*Search Panel*/
   .searchFormPanelContainer {display: none !important;}

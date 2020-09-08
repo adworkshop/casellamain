@@ -538,7 +538,7 @@ function casella_preprocess_field(&$variables) {
         break;
     }
   }
-  elseif ($variables['element']['#bundle'] == 'full_width_promotion') {
+  elseif ($variables['element']['#bundle'] == 'full_width_promotion' || $variables['element']['#bundle'] == 'career') {
     switch ($variables['element']['#field_name']) {
       case 'field_title':
         $variables['attributes']['class'][] = 'internal-fullWidthPromo-title';
@@ -1553,7 +1553,7 @@ function casella_preprocess_node(&$variables) {
 
     if (
       isset($variables['node']->_referringItem)
-      && $variables['node']->_referringItem->getEntity() 
+      && $variables['node']->_referringItem->getEntity()
       && $variables['node']->_referringItem->getEntity()->getEntityTypeId() === 'paragraph'
     ) {
       $variables['attributes']['class'][] = 'internal-indInteractivePanel-gridColRight';
