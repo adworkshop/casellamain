@@ -1,0 +1,21 @@
+uuid: ae892ac7-0e49-4923-85d5-f0f7435efbae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content_area
+    - paragraphs.paragraphs_type.career_panels
+  module:
+    - text
+id: paragraph.career_panels.field_content_area
+field_name: field_content_area
+entity_type: paragraph
+bundle: career_panels
+label: 'Content Area'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,19 @@
+uuid: aff6a917-3d54-4184-bec7-398e5dbe71e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.career_icons
+id: paragraph.career_icons.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: career_icons
+label: Title
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

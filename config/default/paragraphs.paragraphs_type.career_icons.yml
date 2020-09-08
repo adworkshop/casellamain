@@ -1,0 +1,10 @@
+uuid: 86734a80-7966-4acf-954f-e9d2232908fe
+langcode: en
+status: true
+dependencies: {  }
+id: career_icons
+label: 'Career Icons'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

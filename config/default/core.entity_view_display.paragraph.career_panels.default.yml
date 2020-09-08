@@ -1,0 +1,71 @@
+uuid: 248f2424-f145-4d80-88c3-c7add48236ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.career_panels.field_content_area
+    - field.field.paragraph.career_panels.field_image
+    - field.field.paragraph.career_panels.field_image_align
+    - field.field.paragraph.career_panels.field_title
+    - field.field.paragraph.career_panels.field_vimeo_embed
+    - field.field.paragraph.career_panels.field_youtube_id
+    - image.style.400x250
+    - paragraphs.paragraphs_type.career_panels
+  module:
+    - image
+    - options
+    - text
+id: paragraph.career_panels.default
+targetEntityType: paragraph
+bundle: career_panels
+mode: default
+content:
+  field_content_area:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_image:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: 400x250
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_image_align:
+    weight: 5
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_vimeo_embed:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_youtube_id:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  search_api_excerpt: true

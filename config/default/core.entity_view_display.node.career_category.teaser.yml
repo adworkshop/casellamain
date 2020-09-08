@@ -1,0 +1,42 @@
+uuid: 834085f2-e195-4737-8677-2baf726b88d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.career_category.body
+    - field.field.node.career_category.field_career_apply_cta
+    - field.field.node.career_category.field_career_icons
+    - field.field.node.career_category.field_career_page_elements
+    - field.field.node.career_category.field_hero_text
+    - field.field.node.career_category.field_tabs
+    - node.type.career_category
+  module:
+    - text
+    - user
+id: node.career_category.teaser
+targetEntityType: node
+bundle: career_category
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_career_apply_cta: true
+  field_career_icons: true
+  field_career_page_elements: true
+  field_hero_text: true
+  field_tabs: true
+  langcode: true
+  search_api_excerpt: true

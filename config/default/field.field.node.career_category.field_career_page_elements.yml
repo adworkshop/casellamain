@@ -1,0 +1,175 @@
+uuid: b0055a47-95eb-40ce-980a-065a74275c31
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_career_page_elements
+    - node.type.career_category
+    - paragraphs.paragraphs_type.career_panels
+  module:
+    - entity_reference_revisions
+id: node.career_category.field_career_page_elements
+field_name: field_career_page_elements
+entity_type: node
+bundle: career_category
+label: 'Page Elements'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      career_panels: career_panels
+    target_bundles_drag_drop:
+      basics:
+        weight: 50
+        enabled: false
+      bin_comparison_fields:
+        weight: 51
+        enabled: false
+      block:
+        weight: 52
+        enabled: false
+      block_link_with_icon:
+        weight: 53
+        enabled: false
+      calculator:
+        weight: 54
+        enabled: false
+      case_studies:
+        weight: 55
+        enabled: false
+      content_chunk:
+        weight: 56
+        enabled: false
+      content_tab:
+        weight: 57
+        enabled: false
+      dos_and_donts_section:
+        weight: 58
+        enabled: false
+      earthlink_link:
+        weight: 59
+        enabled: false
+      employer:
+        weight: 60
+        enabled: false
+      faq_category:
+        weight: 61
+        enabled: false
+      faq_question:
+        weight: 62
+        enabled: false
+      fa_link_with_icon:
+        weight: 63
+        enabled: false
+      fa_link_with_pdf:
+        weight: 64
+        enabled: false
+      fa_link_with_pdf_tooltip:
+        weight: 65
+        enabled: false
+      free_form:
+        weight: 66
+        enabled: false
+      holiday:
+        weight: 67
+        enabled: false
+      image_gallery:
+        weight: 68
+        enabled: false
+      image_with_caption:
+        weight: 69
+        enabled: false
+      inline_image:
+        weight: 70
+        enabled: false
+      inline_video:
+        weight: 71
+        enabled: false
+      large_promotion:
+        weight: 72
+        enabled: false
+      licenses:
+        weight: 73
+        enabled: false
+      link_with_icon:
+        weight: 74
+        enabled: false
+      organics_updates:
+        weight: 75
+        enabled: false
+      pdf_tooltip:
+        weight: 76
+        enabled: false
+      products:
+        weight: 77
+        enabled: false
+      recommendation:
+        weight: 78
+        enabled: false
+      resources:
+        weight: 79
+        enabled: false
+      resource_tips:
+        weight: 80
+        enabled: false
+      resource_toolkit_button:
+        weight: 81
+        enabled: false
+      resource_videos:
+        weight: 82
+        enabled: false
+      search_items:
+        weight: 83
+        enabled: false
+      services:
+        weight: 84
+        enabled: false
+      sidebar_panel:
+        weight: 85
+        enabled: false
+      slider_image:
+        weight: 86
+        enabled: false
+      social_link:
+        weight: 87
+        enabled: false
+      solution_resource:
+        weight: 88
+        enabled: false
+      testimonials:
+        weight: 89
+        enabled: false
+      toolkits_tab:
+        weight: 90
+        enabled: false
+      two_column_panel:
+        weight: 91
+        enabled: false
+      upper_button:
+        weight: 92
+        enabled: false
+      vertical:
+        weight: 93
+        enabled: false
+      video:
+        weight: 94
+        enabled: false
+      videos_tab:
+        weight: 95
+        enabled: false
+      video_headline:
+        weight: 96
+        enabled: false
+      waste_category:
+        weight: 97
+        enabled: false
+      career_panels:
+        enabled: true
+        weight: 98
+field_type: entity_reference_revisions

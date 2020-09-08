@@ -1,0 +1,181 @@
+uuid: 4cfbd9a0-a4c3-4ffe-8852-65429a9b6b08
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_career_icons
+    - node.type.career_category
+    - paragraphs.paragraphs_type.career_icon_container
+  module:
+    - entity_reference_revisions
+id: node.career_category.field_career_icons
+field_name: field_career_icons
+entity_type: node
+bundle: career_category
+label: 'Career Icons'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      career_icon_container: career_icon_container
+    target_bundles_drag_drop:
+      basics:
+        weight: 52
+        enabled: false
+      bin_comparison_fields:
+        weight: 53
+        enabled: false
+      block:
+        weight: 54
+        enabled: false
+      block_link_with_icon:
+        weight: 55
+        enabled: false
+      calculator:
+        weight: 56
+        enabled: false
+      career_icon_container:
+        enabled: true
+        weight: 57
+      career_icons:
+        weight: 58
+        enabled: false
+      career_panels:
+        weight: 59
+        enabled: false
+      case_studies:
+        weight: 60
+        enabled: false
+      content_chunk:
+        weight: 61
+        enabled: false
+      content_tab:
+        weight: 62
+        enabled: false
+      dos_and_donts_section:
+        weight: 63
+        enabled: false
+      earthlink_link:
+        weight: 64
+        enabled: false
+      employer:
+        weight: 65
+        enabled: false
+      fa_link_with_icon:
+        weight: 66
+        enabled: false
+      fa_link_with_pdf:
+        weight: 67
+        enabled: false
+      fa_link_with_pdf_tooltip:
+        weight: 68
+        enabled: false
+      faq_category:
+        weight: 69
+        enabled: false
+      faq_question:
+        weight: 70
+        enabled: false
+      free_form:
+        weight: 71
+        enabled: false
+      holiday:
+        weight: 72
+        enabled: false
+      image_gallery:
+        weight: 73
+        enabled: false
+      image_with_caption:
+        weight: 74
+        enabled: false
+      inline_image:
+        weight: 75
+        enabled: false
+      inline_video:
+        weight: 76
+        enabled: false
+      large_promotion:
+        weight: 77
+        enabled: false
+      licenses:
+        weight: 78
+        enabled: false
+      link_with_icon:
+        weight: 79
+        enabled: false
+      organics_updates:
+        weight: 80
+        enabled: false
+      pdf_tooltip:
+        weight: 81
+        enabled: false
+      products:
+        weight: 82
+        enabled: false
+      recommendation:
+        weight: 83
+        enabled: false
+      resource_tips:
+        weight: 84
+        enabled: false
+      resource_toolkit_button:
+        weight: 85
+        enabled: false
+      resource_videos:
+        weight: 86
+        enabled: false
+      resources:
+        weight: 87
+        enabled: false
+      search_items:
+        weight: 88
+        enabled: false
+      services:
+        weight: 89
+        enabled: false
+      sidebar_panel:
+        weight: 90
+        enabled: false
+      slider_image:
+        weight: 91
+        enabled: false
+      social_link:
+        weight: 92
+        enabled: false
+      solution_resource:
+        weight: 93
+        enabled: false
+      testimonials:
+        weight: 94
+        enabled: false
+      toolkits_tab:
+        weight: 95
+        enabled: false
+      two_column_panel:
+        weight: 96
+        enabled: false
+      upper_button:
+        weight: 97
+        enabled: false
+      vertical:
+        weight: 98
+        enabled: false
+      video:
+        weight: 99
+        enabled: false
+      video_headline:
+        weight: 100
+        enabled: false
+      videos_tab:
+        weight: 101
+        enabled: false
+      waste_category:
+        weight: 102
+        enabled: false
+field_type: entity_reference_revisions

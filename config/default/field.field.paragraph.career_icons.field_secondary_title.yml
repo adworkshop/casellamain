@@ -1,0 +1,19 @@
+uuid: 474d076a-2e11-4f9d-a31a-b22171828daf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_secondary_title
+    - paragraphs.paragraphs_type.career_icons
+id: paragraph.career_icons.field_secondary_title
+field_name: field_secondary_title
+entity_type: paragraph
+bundle: career_icons
+label: 'Secondary Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

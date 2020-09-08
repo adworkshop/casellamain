@@ -1,0 +1,21 @@
+uuid: 9aac7854-4348-4695-807d-65b842327ac6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image_align
+    - paragraphs.paragraphs_type.career_panels
+  module:
+    - options
+id: paragraph.career_panels.field_image_align
+field_name: field_image_align
+entity_type: paragraph
+bundle: career_panels
+label: 'Image/Video Align'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

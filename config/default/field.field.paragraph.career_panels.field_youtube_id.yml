@@ -1,0 +1,19 @@
+uuid: 81be3d80-e182-4261-b165-f209ef6b8af1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_youtube_id
+    - paragraphs.paragraphs_type.career_panels
+id: paragraph.career_panels.field_youtube_id
+field_name: field_youtube_id
+entity_type: paragraph
+bundle: career_panels
+label: 'Youtube ID'
+description: "Please enter the YouTube video ID. This is the string of 11 characters at the end of the YouTube URL of the video after the ?v=. Given the example URL below, the video ID you would enter would be <em><strong>S_U6UuFLEGQ</strong></em>\r\nE.g. https://www.youtube.com/watch?v=S_U6UuFLEGQ"
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

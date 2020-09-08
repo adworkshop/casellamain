@@ -1,0 +1,29 @@
+uuid: 68998187-160e-4d03-91d3-19425b80559e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.career_icon_container.field_career_icons
+    - paragraphs.paragraphs_type.career_icon_container
+  module:
+    - paragraphs
+id: paragraph.career_icon_container.default
+targetEntityType: paragraph
+bundle: career_icon_container
+mode: default
+content:
+  field_career_icons:
+    type: entity_reference_paragraphs
+    weight: 0
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  status: true

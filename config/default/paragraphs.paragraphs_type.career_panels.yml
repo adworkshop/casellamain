@@ -1,0 +1,10 @@
+uuid: 7191464b-3209-4a46-bfad-9dda6630421a
+langcode: en
+status: true
+dependencies: {  }
+id: career_panels
+label: 'Career Panels'
+icon_uuid: null
+icon_default: null
+description: 'Career panels contain a panel that includes a title, with an image or video and side text.'
+behavior_plugins: {  }

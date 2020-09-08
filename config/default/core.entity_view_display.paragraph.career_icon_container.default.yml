@@ -1,0 +1,25 @@
+uuid: 028a8114-c361-4236-97ed-ff56b4747a6f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.career_icon_container.field_career_icons
+    - paragraphs.paragraphs_type.career_icon_container
+  module:
+    - entity_reference_revisions
+id: paragraph.career_icon_container.default
+targetEntityType: paragraph
+bundle: career_icon_container
+mode: default
+content:
+  field_career_icons:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  search_api_excerpt: true

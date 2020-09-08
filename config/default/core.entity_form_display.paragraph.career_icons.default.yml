@@ -1,0 +1,41 @@
+uuid: 8ff649a2-74d9-4129-b926-1440154aec65
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.career_icons.field_fa_icon
+    - field.field.paragraph.career_icons.field_secondary_title
+    - field.field.paragraph.career_icons.field_title
+    - paragraphs.paragraphs_type.career_icons
+id: paragraph.career_icons.default
+targetEntityType: paragraph
+bundle: career_icons
+mode: default
+content:
+  field_fa_icon:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_secondary_title:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
