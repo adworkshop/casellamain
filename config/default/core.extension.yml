@@ -70,6 +70,7 @@ module:
   publishcontent: 0
   quickedit: 0
   rdf: 0
+  readmore: 0
   recaptcha: 0
   redirect: 0
   responsive_image: 0

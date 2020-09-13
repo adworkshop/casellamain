@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.fa_link_with_pdf_tooltip.field_button_title
+    - field.field.paragraph.fa_link_with_pdf_tooltip.field_contact
     - field.field.paragraph.fa_link_with_pdf_tooltip.field_description
     - field.field.paragraph.fa_link_with_pdf_tooltip.field_fa_icon
     - field.field.paragraph.fa_link_with_pdf_tooltip.field_pdf_tooltip
@@ -23,6 +24,16 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
+  field_contact:
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   field_description:
     weight: 3

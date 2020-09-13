@@ -1527,6 +1527,7 @@ function casella_preprocess_node(&$variables) {
 
   // Snag the tab titles for the tabs array.
   $variables['tab_anchors'] = getTabPanelAnchors($variables);
+  //$variables['tab_anchors_2'] = getTabPanelAnchorsPg($variables);
 
   if (!in_array($variables['node']->getType(), array('full_width_promotion', 'sidebar_promotion', 'testimonial'))) {
     $pageLevel = array(
@@ -2169,4 +2170,64 @@ function casella_preprocess_field__paragraph__field_free_form_content__resource_
   //dpm($variables['element']['#object']);
   // $paragraph = $variables['paragraph'];
   // dpm($paragraph);
+}
+
+
+
+/**
+ * Helper function to snag the tab titles from a set of tabs.
+ *
+ * @param $variables
+ * @return array();
+ */
+/*function getTabPanelAnchorsPg($variables) {
+  $titles = array();
+  if (!$variables['paragraph']->hasField('field_career_tabs_content')) {
+    return $titles;
+  }
+
+  $tabs = $variables['paragraph']->get('field_career_tabs_content');
+  if (!$tabs || !$tabs->count()) {
+    return $titles;
+  }
+
+  $entities = $tabs->referencedEntities();
+  foreach ($entities as $entity) {
+    $title = getTabPanelAnchor2($entity);
+    if ($title != '') {
+      $titles[] = $title;
+    }
+  }
+
+  return $titles;
+}*/
+
+/**
+ * Helper function to pull the tab anchor out of an entity.
+ *
+ * @param $entity
+ * @return string
+ */
+function getTabPanelAnchor2($entity) {
+  $tab_anchor = $entity->get('field_tab_anchor');
+  if ($tab_anchor) {
+    $tab_anchor = $tab_anchor->getValue();
+    if ($tab_anchor[0]['value'] != '') {
+      return $tab_anchor[0]['value'];
+    }
+  }
+
+  if (!$entity->hasField('field_tab_title')) {
+    return '';
+  }
+
+  $title = $entity->get('field_tab_title');
+  if ($title) {
+    $title = $title->getValue();
+    if ($title[0]['value'] != '') {
+      return $title[0]['value'];
+    }
+  }
+
+  return '';
 }

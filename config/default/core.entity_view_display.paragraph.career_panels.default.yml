@@ -3,32 +3,50 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.career_panels.field_career_video
     - field.field.paragraph.career_panels.field_content_area
     - field.field.paragraph.career_panels.field_image
     - field.field.paragraph.career_panels.field_image_align
+    - field.field.paragraph.career_panels.field_section_title
     - field.field.paragraph.career_panels.field_title
-    - field.field.paragraph.career_panels.field_vimeo_embed
-    - field.field.paragraph.career_panels.field_youtube_id
     - image.style.400x250
     - paragraphs.paragraphs_type.career_panels
   module:
     - image
     - options
-    - text
+    - readmore
+    - video_embed_field
 id: paragraph.career_panels.default
 targetEntityType: paragraph
 bundle: career_panels
 mode: default
 content:
-  field_content_area:
-    weight: 4
+  field_career_video:
+    weight: 5
     label: hidden
-    settings: {  }
+    settings:
+      responsive: true
+      width: 854
+      height: 480
+      autoplay: false
     third_party_settings: {  }
-    type: text_default
+    type: video_embed_field_video
+    region: content
+  field_content_area:
+    weight: 3
+    label: hidden
+    settings:
+      trim_length: '500'
+      trim_on_break: '1'
+      show_readmore: '1'
+      show_readless: '1'
+      ellipsis: '1'
+      wordsafe: '1'
+    third_party_settings: {  }
+    type: readmore
     region: content
   field_image:
-    weight: 1
+    weight: 2
     label: hidden
     settings:
       image_style: 400x250
@@ -37,30 +55,22 @@ content:
     type: image
     region: content
   field_image_align:
-    weight: 5
+    weight: 4
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: list_key
     region: content
+  field_section_title:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   field_title:
     weight: 0
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_vimeo_embed:
-    weight: 3
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_youtube_id:
-    weight: 2
     label: hidden
     settings:
       link_to_entity: false

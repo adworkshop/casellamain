@@ -5,13 +5,16 @@ dependencies:
   config:
     - field.field.node.career_category.body
     - field.field.node.career_category.field_career_apply_cta
+    - field.field.node.career_category.field_career_hero_image
     - field.field.node.career_category.field_career_icons
     - field.field.node.career_category.field_career_page_elements
     - field.field.node.career_category.field_hero_text
     - field.field.node.career_category.field_tabs
+    - image.style.1400x630
     - node.type.career_category
   module:
     - entity_reference_revisions
+    - image
     - text
     - user
 id: node.career_category.default
@@ -34,6 +37,15 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
+  field_career_hero_image:
+    weight: 108
+    label: hidden
+    settings:
+      image_style: 1400x630
+      image_link: ''
+    third_party_settings: {  }
+    type: image
     region: content
   field_career_icons:
     type: entity_reference_revisions_entity_view

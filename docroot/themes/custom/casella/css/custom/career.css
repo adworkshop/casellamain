@@ -40,7 +40,7 @@
 }
 /* CTA BLUE BACKGROUND */
 .c-career--cta.blue { background-color: #0a253e; }
-.c-career--cta.blue .c-career--cta-title {color: #fff;}
+.c-career--cta.blue .c-career--cta-title {color: #4c9d2a;}
 .c-career--cta.blue .c-career--cta-text {color: #fff;}
 .c-career--cta.blue .c-career--cta-button a {
   background-color: #4c9d2a;
@@ -58,17 +58,18 @@
   text-transform: uppercase;
   font-size: 40px!important;
   line-height: 1;
-  padding-bottom: 12px;
+  margin-bottom: 20px;
 }
 
 .c-career--cta-text {
   font-size: 18px;
   line-height: 1.2;
   padding-bottom: 24px;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .c-career--cta-button a {
-  font-size: 12px;
+  font-size: 14px;
   color: #4c9d2a;
   display: inline-block;
   background: #fff;
@@ -78,6 +79,7 @@
   -moz-border-radius: 5px;
   border-radius: 5px;
   text-transform: uppercase;
+  font-family: 'Gotham-Bold'
 }
 
 .c-career--container .paragraph--type--content-chunk {
@@ -206,15 +208,21 @@
   display: block;
 
 }
+
+.career-page .internal-fullWidthPromo-teaser {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+}
 .career-page .internal-fullWidthPromo-contentWrapper {
   background: rgba(10, 37, 62, .5);
   padding: 3%;
   margin: 0 10% 0 25%;
   text-align: left;
 }
-.career-page .internal-fullWidthPromo-title {
-  color: #fff;
+.career-page h1.internal-fullWidthPromo-title {
+  color: #4c9d2a;
   text-transform: uppercase;
+  font-size: 55px;
 }
 
 .career-page.category .internal-fullWidthPromo-contentWrapper {
@@ -254,4 +262,50 @@ h2.c-career--image-panel-title {
   text-transform: uppercase;
   font-size: 40px!important;
   line-height: 1;
+}
+
+/*Career links flexbox 3 columns */
+.c-career--link-container {
+  margin-top: 20px;
+}
+.c-career--link-container ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-left: 0;
+  /*display: grid;
+  margin-bottom: 24px;
+  grid-gap: 24px;
+  grid-auto-rows: max-content;*/
+}
+
+li.c-career--link-items {
+  flex: 0 32%;
+  text-align: left;
+  padding-top: 15px;
+  margin-bottom: 2%;
+  height: 50px;
+  background-color: #4c9d2a;
+  border-radius: 5px;
+  position:relative
+  /*grid-template-columns: repeat(3, 1fr);*/
+}
+
+li.c-career--link-items a {
+  padding-left: 12px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: Gotham-Bold;
+}
+
+li.c-career--link-items:after {
+  position: absolute;
+  right: 12px;
+  -webkit-font-smoothing: antialiased;
+  font-family: "FontAwesome";
+  content: '\f08e';
+  color: #fff;
+  padding-left: 12px;
+  font-weight: 900;
+  font-size: 18px;
 }

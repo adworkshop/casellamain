@@ -10,7 +10,7 @@ field_name: field_title
 entity_type: paragraph
 bundle: career_panels
 label: Title
-description: ''
+description: 'Large full width title, for example use with first panel if you want a large full width title for several panels.'
 required: false
 translatable: true
 default_value: {  }

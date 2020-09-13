@@ -40,6 +40,18 @@ settings:
       calculator:
         weight: 54
         enabled: false
+      career_cta:
+        weight: 58
+        enabled: false
+      career_icon_container:
+        weight: 60
+        enabled: false
+      career_icons:
+        weight: 59
+        enabled: false
+      career_panels:
+        enabled: true
+        weight: 98
       case_studies:
         weight: 55
         enabled: false
@@ -58,12 +70,6 @@ settings:
       employer:
         weight: 60
         enabled: false
-      faq_category:
-        weight: 61
-        enabled: false
-      faq_question:
-        weight: 62
-        enabled: false
       fa_link_with_icon:
         weight: 63
         enabled: false
@@ -72,6 +78,12 @@ settings:
         enabled: false
       fa_link_with_pdf_tooltip:
         weight: 65
+        enabled: false
+      faq_category:
+        weight: 61
+        enabled: false
+      faq_question:
+        weight: 62
         enabled: false
       free_form:
         weight: 66
@@ -112,9 +124,6 @@ settings:
       recommendation:
         weight: 78
         enabled: false
-      resources:
-        weight: 79
-        enabled: false
       resource_tips:
         weight: 80
         enabled: false
@@ -123,6 +132,9 @@ settings:
         enabled: false
       resource_videos:
         weight: 82
+        enabled: false
+      resources:
+        weight: 79
         enabled: false
       search_items:
         weight: 83
@@ -160,16 +172,13 @@ settings:
       video:
         weight: 94
         enabled: false
-      videos_tab:
-        weight: 95
-        enabled: false
       video_headline:
         weight: 96
+        enabled: false
+      videos_tab:
+        weight: 95
         enabled: false
       waste_category:
         weight: 97
         enabled: false
-      career_panels:
-        enabled: true
-        weight: 98
 field_type: entity_reference_revisions

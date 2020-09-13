@@ -58,12 +58,6 @@ settings:
       employer:
         weight: 59
         enabled: false
-      faq_category:
-        weight: 60
-        enabled: false
-      faq_question:
-        weight: 61
-        enabled: false
       fa_link_with_icon:
         weight: 62
         enabled: false
@@ -72,6 +66,12 @@ settings:
         enabled: false
       fa_link_with_pdf_tooltip:
         weight: 64
+        enabled: false
+      faq_category:
+        weight: 60
+        enabled: false
+      faq_question:
+        weight: 61
         enabled: false
       free_form:
         enabled: true
@@ -112,9 +112,6 @@ settings:
       recommendation:
         weight: 77
         enabled: false
-      resources:
-        weight: 78
-        enabled: false
       resource_tips:
         weight: 79
         enabled: false
@@ -123,6 +120,9 @@ settings:
         enabled: false
       resource_videos:
         weight: 81
+        enabled: false
+      resources:
+        weight: 78
         enabled: false
       search_items:
         weight: 82
@@ -160,11 +160,11 @@ settings:
       video:
         weight: 93
         enabled: false
-      videos_tab:
-        weight: 94
-        enabled: false
       video_headline:
         weight: 95
+        enabled: false
+      videos_tab:
+        weight: 94
         enabled: false
       waste_category:
         weight: 96

@@ -306,7 +306,9 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   .navGlobal-wrapper {margin: 0; font-size:0;}
   .navGlobal-indCTABtn-Container {display:inline-block; vertical-align:top;}
   .navGlobal-indCTABtn-Container.billPay,
-	.navGlobal-indCTABtn-Container.customerCare {border-right:1px solid #fff; border-right:1px solid rgba(255,255,255,.2); padding:0 15px 0 0; margin:0 15px 0 0;}
+	.navGlobal-indCTABtn-Container.customerCare,
+  .navGlobal-indCTABtn-Container.investorRelations {border-right:1px solid #fff; border-right:1px solid rgba(255,255,255,.2); padding:0 15px 0 0; margin:0 15px 0 0;}
+{border-right:1px solid #fff; border-right:1px solid rgba(255,255,255,.2); padding:0 15px 0 0; margin:0 15px 0 0;}
   a.navGlobal-indCTABtn {
   display:inline-block; font-size:9.75px; font-family: 'Gotham-Bold'; text-transform:uppercase; color:#FFF; cursor:pointer;
   -webkit-transition: all .3s ease-in-out;
@@ -320,11 +322,15 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   .navGlobal-indCTABtn-Container.billPay .navGlobal-indCTABtn-iconWrapper {width:35px; height:19px;}
   .navGlobal-indCTABtn-Container.customerCare .navGlobal-indCTABtn-iconWrapper {width:19px; height:19px;}
 	.navGlobal-indCTABtn-Container.investorRelations .navGlobal-indCTABtn-iconWrapper {width:25px; height:19px;}
-  .navGlobal-indCTABtn-iconWrapper img {width:100%; max-width:100%; height:auto;}
+  .navGlobal-indCTABtn-Container.careers .navGlobal-indCTABtn-iconWrapper {width:19px; height:19px;}
+
+.navGlobal-indCTABtn-iconWrapper img {width:100%; max-width:100%; height:auto;}
   .navGlobal-indCTABtn-txtWrapper {display:inline-block; vertical-align:baseline;}
   .navGlobal-indCTABtn-txtWrapper span {display:block;}
+  .careers .navGlobal-indCTABtn-txtWrapper {display:inline-block; vertical-align:top; padding-top: 12px;}
 
-	/*small business upper nav override*/
+
+/*small business upper nav override*/
 	nav#mainMenu ul.adwMenu > li > ul > li a[data-drupal-link-system-path="node/286"] {background: #004a87; color: #fff;}
 	nav#mainMenu ul.adwMenu > li > ul > li a[data-drupal-link-system-path="node/286"]:hover {background: #0a253e; color: #7abf23;}
 
@@ -334,6 +340,11 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   .mobile__billpay a:hover {color: #70a1c9;}
   .mobile__billpay a span {color: #70a1c9;}
 
+  /*Careers*/
+  .careers .navGlobal-indCTABtn-txtWrapper {
+  vertical-align: top;
+  padding-top: 6px;
+}
 /* ======================================================= */
 /*                      SEARCH PANEL                       */
 /* ======================================================= */
@@ -842,7 +853,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   #generalNav.scrollIn .headerLogo {bottom:13px;}
   #generalNav.scrollIn .navGlobal-container {top:-100px;}
   .navGlobal-container {position:absolute; top:0; right:0; background:#004a87; padding:8px 7% 8px 10px;}
-  .navGlobal-wrapper {margin: 0 50px 0 0; font-size:0;}
+  .navGlobal-wrapper {margin: 0 25px 0 0; font-size:0;}
   a.navigationSearchAction {width: auto; margin: 0 0 0 40px; display:inline-block;}
   a.navigationSearchAction span {display: none;}
   a.navigationSearchAction .searchIcon {display: block; margin: 0 0 8px;}
