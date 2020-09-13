@@ -1,0 +1,17 @@
+uuid: e3cf6194-68e3-4b28-9003-3a215281a31b
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: career_full_width
+label: 'Career Full Width'
+effects:
+  5237d541-d1f8-46d7-925f-e31e6a4a69cf:
+    uuid: 5237d541-d1f8-46d7-925f-e31e6a4a69cf
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1400
+      height: 300
+      crop_type: focal_point

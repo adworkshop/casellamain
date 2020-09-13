@@ -1,0 +1,35 @@
+uuid: 68218467-ebe0-443a-98b7-484682608196
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.careers
+  module:
+    - ctools
+    - menu_block
+  theme:
+    - casella
+id: careers
+theme: casella
+region: sidebar_nav
+weight: 0
+provider: null
+plugin: 'menu_block:careers'
+settings:
+  id: 'menu_block:careers'
+  label: Careers
+  provider: menu_block
+  label_display: visible
+  level: 1
+  depth: 0
+  expand: 0
+  parent: 'careers:'
+  suggestion: careers
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      career: career
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

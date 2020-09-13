@@ -1,0 +1,19 @@
+uuid: 82e2e015-6ed0-44bd-a7b8-9ec8484eccef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_section_title
+    - paragraphs.paragraphs_type.career_panels
+id: paragraph.career_panels.field_section_title
+field_name: field_section_title
+entity_type: paragraph
+bundle: career_panels
+label: 'Panel Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

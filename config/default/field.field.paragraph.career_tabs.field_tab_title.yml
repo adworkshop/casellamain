@@ -1,0 +1,19 @@
+uuid: 08b5ef6e-3bbf-40e7-b332-016c7588edd7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tab_title
+    - paragraphs.paragraphs_type.career_tabs
+id: paragraph.career_tabs.field_tab_title
+field_name: field_tab_title
+entity_type: paragraph
+bundle: career_tabs
+label: 'Tab Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

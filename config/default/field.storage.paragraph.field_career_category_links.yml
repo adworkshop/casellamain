@@ -1,0 +1,19 @@
+uuid: 6f4b075b-5b80-4c56-89aa-8a733de3298a
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - paragraphs
+id: paragraph.field_career_category_links
+field_name: field_career_category_links
+entity_type: paragraph
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

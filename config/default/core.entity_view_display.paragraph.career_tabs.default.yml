@@ -1,0 +1,32 @@
+uuid: a999e735-ed97-4a99-b5df-d94188c44024
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.career_tabs.field_tab_anchor
+    - field.field.paragraph.career_tabs.field_tab_description
+    - field.field.paragraph.career_tabs.field_tab_title
+    - paragraphs.paragraphs_type.career_tabs
+id: paragraph.career_tabs.default
+targetEntityType: paragraph
+bundle: career_tabs
+mode: default
+content:
+  field_tab_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_tab_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  field_tab_anchor: true
+  search_api_excerpt: true

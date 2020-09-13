@@ -1,0 +1,35 @@
+uuid: cd208cb9-1eb3-4699-a9fd-c4b661d0b8f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.career_image_panel.field_image
+    - field.field.paragraph.career_image_panel.field_title
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.career_image_panel
+  module:
+    - image
+id: paragraph.career_image_panel.default
+targetEntityType: paragraph
+bundle: career_image_panel
+mode: default
+content:
+  field_image:
+    weight: 1
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

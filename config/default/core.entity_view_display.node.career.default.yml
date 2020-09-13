@@ -1,0 +1,61 @@
+uuid: 034bd272-5656-4d97-9315-124dfc01281a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.career.body
+    - field.field.node.career.field_career_hero_image
+    - field.field.node.career.field_career_page_elements
+    - field.field.node.career.field_description
+    - image.style.1400x630
+    - node.type.career
+  module:
+    - entity_reference_revisions
+    - image
+    - text
+    - user
+id: node.career.default
+targetEntityType: node
+bundle: career
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_career_hero_image:
+    weight: 4
+    label: hidden
+    settings:
+      image_style: 1400x630
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_career_page_elements:
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_description:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  search_api_excerpt: true

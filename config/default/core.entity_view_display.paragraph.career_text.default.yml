@@ -1,0 +1,45 @@
+uuid: e0dfff17-eaca-461d-8ef5-930e7eb2f9d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.career_text.field_career_video
+    - field.field.paragraph.career_text.field_paragraph_long_text
+    - field.field.paragraph.career_text.field_title
+    - paragraphs.paragraphs_type.career_text
+  module:
+    - text
+    - video_embed_field
+id: paragraph.career_text.default
+targetEntityType: paragraph
+bundle: career_text
+mode: default
+content:
+  field_career_video:
+    weight: 3
+    label: hidden
+    settings:
+      responsive: true
+      width: 854
+      height: 480
+      autoplay: false
+    third_party_settings: {  }
+    type: video_embed_field_video
+    region: content
+  field_paragraph_long_text:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  search_api_excerpt: true

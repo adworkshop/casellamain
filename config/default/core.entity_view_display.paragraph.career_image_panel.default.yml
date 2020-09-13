@@ -1,0 +1,35 @@
+uuid: e5bbd42f-d193-4eba-a4db-f511083a4867
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.career_image_panel.field_image
+    - field.field.paragraph.career_image_panel.field_title
+    - image.style.career_full_width
+    - paragraphs.paragraphs_type.career_image_panel
+  module:
+    - image
+id: paragraph.career_image_panel.default
+targetEntityType: paragraph
+bundle: career_image_panel
+mode: default
+content:
+  field_image:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: career_full_width
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  search_api_excerpt: true

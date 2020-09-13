@@ -1,0 +1,10 @@
+uuid: 052f69dd-606f-49ea-a4a3-6c3ab000f39f
+langcode: en
+status: true
+dependencies: {  }
+id: career_tabs_wrapper
+label: 'Career Tabs Wrapper'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,25 @@
+uuid: 28540266-59d4-459a-abfc-57a0dc43e791
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_career_video
+    - paragraphs.paragraphs_type.career_text
+  module:
+    - video_embed_field
+id: paragraph.career_text.field_career_video
+field_name: field_career_video
+entity_type: paragraph
+bundle: career_text
+label: Video
+description: "<strong>For YouTube, copy in url:</strong> https://www.youtube.com/watch?v=LdvboQQWUc8\r\n<strong>For Vimeo, copy in url:</strong> https://vimeo.com/96917080\r\n"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_providers:
+    vimeo: vimeo
+    youtube: youtube
+    youtube_playlist: '0'
+field_type: video_embed_field

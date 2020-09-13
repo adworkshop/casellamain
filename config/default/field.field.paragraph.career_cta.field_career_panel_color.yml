@@ -1,0 +1,23 @@
+uuid: 0b6ed4b3-47b5-4601-8851-affc83e925f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_career_panel_color
+    - paragraphs.paragraphs_type.career_cta
+  module:
+    - options
+id: paragraph.career_cta.field_career_panel_color
+field_name: field_career_panel_color
+entity_type: paragraph
+bundle: career_cta
+label: 'Panel Background Color'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: blue
+default_value_callback: ''
+settings: {  }
+field_type: list_string

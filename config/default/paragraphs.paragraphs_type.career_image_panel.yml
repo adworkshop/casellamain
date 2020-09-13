@@ -1,0 +1,10 @@
+uuid: 9062c620-8966-483f-b3d5-8d2808a703f4
+langcode: en
+status: true
+dependencies: {  }
+id: career_image_panel
+label: 'Career Full Width Image Panel'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

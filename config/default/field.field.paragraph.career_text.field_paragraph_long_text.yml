@@ -1,0 +1,21 @@
+uuid: d7b4c411-6164-47f2-b5b6-40451e55238d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_paragraph_long_text
+    - paragraphs.paragraphs_type.career_text
+  module:
+    - text
+id: paragraph.career_text.field_paragraph_long_text
+field_name: field_paragraph_long_text
+entity_type: paragraph
+bundle: career_text
+label: Content
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

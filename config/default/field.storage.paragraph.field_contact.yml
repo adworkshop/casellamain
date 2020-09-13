@@ -1,0 +1,20 @@
+uuid: b218d8cb-9e71-4cdf-bbf3-19b6fc8f14ce
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+    - paragraphs
+id: paragraph.field_contact
+field_name: field_contact
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: contact_form
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

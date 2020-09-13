@@ -1,0 +1,10 @@
+uuid: 59a70389-e779-4572-960f-2a205f216ad1
+langcode: en
+status: true
+dependencies: {  }
+id: career_text
+label: 'Career Text Block'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,205 @@
+uuid: c0fda085-434a-4f59-ad48-c69a0a1ad7df
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_career_tabs_content
+    - paragraphs.paragraphs_type.career_tabs
+    - paragraphs.paragraphs_type.career_tabs_wrapper
+  module:
+    - entity_reference_revisions
+id: paragraph.career_tabs_wrapper.field_career_tabs_content
+field_name: field_career_tabs_content
+entity_type: paragraph
+bundle: career_tabs_wrapper
+label: 'Tabs Content'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      career_tabs: career_tabs
+    target_bundles_drag_drop:
+      a11y_paragraphs_tab_content:
+        weight: 60
+        enabled: false
+      a11y_paragraphs_tabs_panel:
+        weight: 61
+        enabled: false
+      a11y_paragraphs_tabs_wrapper:
+        weight: 62
+        enabled: false
+      basics:
+        weight: 63
+        enabled: false
+      bin_comparison_fields:
+        weight: 64
+        enabled: false
+      block:
+        weight: 65
+        enabled: false
+      block_link_with_icon:
+        weight: 66
+        enabled: false
+      calculator:
+        weight: 67
+        enabled: false
+      career_cta:
+        weight: 68
+        enabled: false
+      career_icon_container:
+        weight: 69
+        enabled: false
+      career_icons:
+        weight: 70
+        enabled: false
+      career_image_panel:
+        weight: 71
+        enabled: false
+      career_panels:
+        weight: 72
+        enabled: false
+      career_tabs:
+        enabled: true
+        weight: 73
+      career_tabs_wrapper:
+        weight: 74
+        enabled: false
+      career_text:
+        weight: 75
+        enabled: false
+      case_studies:
+        weight: 76
+        enabled: false
+      content_chunk:
+        weight: 77
+        enabled: false
+      content_tab:
+        weight: 78
+        enabled: false
+      dos_and_donts_section:
+        weight: 79
+        enabled: false
+      earthlink_link:
+        weight: 80
+        enabled: false
+      employer:
+        weight: 81
+        enabled: false
+      fa_link_with_icon:
+        weight: 82
+        enabled: false
+      fa_link_with_pdf:
+        weight: 83
+        enabled: false
+      fa_link_with_pdf_tooltip:
+        weight: 84
+        enabled: false
+      faq_category:
+        weight: 85
+        enabled: false
+      faq_question:
+        weight: 86
+        enabled: false
+      free_form:
+        weight: 87
+        enabled: false
+      holiday:
+        weight: 88
+        enabled: false
+      image_gallery:
+        weight: 89
+        enabled: false
+      image_with_caption:
+        weight: 90
+        enabled: false
+      inline_image:
+        weight: 91
+        enabled: false
+      inline_video:
+        weight: 92
+        enabled: false
+      large_promotion:
+        weight: 93
+        enabled: false
+      licenses:
+        weight: 94
+        enabled: false
+      link_with_icon:
+        weight: 95
+        enabled: false
+      organics_updates:
+        weight: 96
+        enabled: false
+      pdf_tooltip:
+        weight: 97
+        enabled: false
+      products:
+        weight: 98
+        enabled: false
+      recommendation:
+        weight: 99
+        enabled: false
+      resource_tips:
+        weight: 100
+        enabled: false
+      resource_toolkit_button:
+        weight: 101
+        enabled: false
+      resource_videos:
+        weight: 102
+        enabled: false
+      resources:
+        weight: 103
+        enabled: false
+      search_items:
+        weight: 104
+        enabled: false
+      services:
+        weight: 105
+        enabled: false
+      sidebar_panel:
+        weight: 106
+        enabled: false
+      slider_image:
+        weight: 107
+        enabled: false
+      social_link:
+        weight: 108
+        enabled: false
+      solution_resource:
+        weight: 109
+        enabled: false
+      testimonials:
+        weight: 110
+        enabled: false
+      toolkits_tab:
+        weight: 111
+        enabled: false
+      two_column_panel:
+        weight: 112
+        enabled: false
+      upper_button:
+        weight: 113
+        enabled: false
+      vertical:
+        weight: 114
+        enabled: false
+      video:
+        weight: 115
+        enabled: false
+      video_headline:
+        weight: 116
+        enabled: false
+      videos_tab:
+        weight: 117
+        enabled: false
+      waste_category:
+        weight: 118
+        enabled: false
+field_type: entity_reference_revisions

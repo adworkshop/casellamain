@@ -1,0 +1,25 @@
+uuid: 4d7db0d9-37ea-4a60-8876-ea2f4c2cc426
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.career_tabs_wrapper.field_career_tabs_content
+    - paragraphs.paragraphs_type.career_tabs_wrapper
+  module:
+    - entity_reference_revisions
+id: paragraph.career_tabs_wrapper.default
+targetEntityType: paragraph
+bundle: career_tabs_wrapper
+mode: default
+content:
+  field_career_tabs_content:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  search_api_excerpt: true

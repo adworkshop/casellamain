@@ -1,0 +1,10 @@
+uuid: e3454d58-4128-4a6e-bef7-a2cd1926911a
+langcode: en
+status: true
+dependencies: {  }
+id: career_tabs
+label: 'Career Tabs'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }
