@@ -117,11 +117,16 @@
 
 .c-career-panel {
   clear: both;
-  margin-bottom: 48px;
+  margin: 24px;
   padding: 1% 10% 1% 25%;
   display: table;
   table-layout: fixed;
+
+}
+
+.c-career-panel--left, c-career-panel--right {
   border-bottom: 1px solid #e2e2e2;
+  padding-bottom: 24px;
 }
 
 .c-career-panel--left .c-career-panel--media {
@@ -139,16 +144,19 @@
 
 .c-career-panel--body p {
   color: #0a253e;
+  font-family: 'Source Sans Pro', sans-serif;
+  line-height: 1.2;
+  font-size: 16px;
 }
 
 .c-career-panel--text h3 {
-  font-family: 'Source Sans Pro', sans-serif;
-  color: #0a253e;
+  font-family: 'Gotham-Black';
+  color: #4c9d2a;
   text-transform: capitalize;
   font-size: 20px;
-  font-weight: 600;
   margin-bottom: 24px;
 }
+
 .c-career-panel--right .c-career-panel--media{
   display: table-cell;
   vertical-align: top;
