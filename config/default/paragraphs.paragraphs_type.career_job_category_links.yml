@@ -1,0 +1,10 @@
+uuid: 4ca92b2a-7f2e-456d-b05c-83d39e3ffab8
+langcode: en
+status: true
+dependencies: {  }
+id: career_job_category_links
+label: 'Career Job Category Links'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

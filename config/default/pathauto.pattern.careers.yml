@@ -1,0 +1,22 @@
+uuid: 53e1f4cc-c94e-433b-9f15-d656128c825e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: careers
+label: Careers
+type: 'canonical_entities:node'
+pattern: '/careers/[node:title]'
+selection_criteria:
+  54090aeb-7a09-47bb-92a7-b4f626fe8e3c:
+    id: node_type
+    bundles:
+      career: career
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 54090aeb-7a09-47bb-92a7-b4f626fe8e3c
+selection_logic: and
+weight: -5
+relationships: {  }

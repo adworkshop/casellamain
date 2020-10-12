@@ -1,0 +1,33 @@
+uuid: e209ea6e-9eff-471e-be45-4cdf089fff0a
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.careers
+  module:
+    - menu_block
+    - system
+  theme:
+    - casella
+id: careers_menu
+theme: casella
+region: header
+weight: 0
+provider: null
+plugin: 'menu_block:careers'
+settings:
+  id: 'menu_block:careers'
+  label: Careers
+  provider: menu_block
+  label_display: '0'
+  level: 1
+  depth: 3
+  expand: 0
+  parent: 'careers:'
+  suggestion: careers
+visibility:
+  request_path:
+    id: request_path
+    pages: "/careers\r\n/careers/*"
+    negate: false
+    context_mapping: {  }

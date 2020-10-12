@@ -1,0 +1,52 @@
+uuid: 6e3f0673-7621-46c1-9f84-36eae358e024
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.career_job_category_links.field_career_category_links
+    - field.field.paragraph.career_job_category_links.field_career_search_link
+    - field.field.paragraph.career_job_category_links.field_description
+    - field.field.paragraph.career_job_category_links.field_title
+    - paragraphs.paragraphs_type.career_job_category_links
+  module:
+    - link
+id: paragraph.career_job_category_links.default
+targetEntityType: paragraph
+bundle: career_job_category_links
+mode: default
+content:
+  field_career_category_links:
+    weight: 2
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_career_search_link:
+    weight: 3
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_description:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
