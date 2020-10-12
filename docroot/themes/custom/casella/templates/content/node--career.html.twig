@@ -81,9 +81,10 @@
 {% block preTitleSection %}{% endblock %}
 
 {% block titleSection %}
+  {% if content.field_career_hero_image|render is not empty %}
   <div class="career-hero">
     {{ content.field_career_hero_image }}
-  </div>
+
 
   <div class="internal-fullWidthPromo-contentContainer career-page">
     <div class="globalWidth">
@@ -95,6 +96,33 @@
       </div>
     </div>
   </div>
+</div>
+  {% else %}
+    <div class="internal-headerPanel-container">
+      <div class="globalWidth">
+        {% block title %}
+          <h1>{{ title }}</h1>
+
+          {{ content.field_description }}
+
+          {% block heroBreadcrumbs %}
+            {% if breadcrumbOverride %}
+              <div class="sectionMenu-breadCrumb-container cf{% if not subsection %} not-subsection{% endif %}">
+                <div class="globalWidth">
+                  <div class="sectionMenu-breadCrumb-wrapper">
+                    {{ breadcrumbOverride }}
+                  </div>
+                </div>
+              </div>
+            {% else %}
+              <!--Breadcrumbs-->
+              {{ node_content.casella_breadcrumbs }}
+            {% endif %}
+          {% endblock %}
+        {% endblock %}
+      </div>
+    </div>
+  {% endif %}
 
 {% endblock %}
 

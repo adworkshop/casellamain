@@ -1340,6 +1340,10 @@ function casella_preprocess_block(&$variables) {
     $variables['attributes']['class'][] = 'menuContainer';
     $variables['attributes']['id'] = 'mainMenu';
   }
+  elseif ('careers_menu' == $variables['elements']['#id']) {
+    $variables['attributes']['class'][] = 'menuContainer';
+    $variables['attributes']['id'] = 'mainMenu';
+  }
   elseif (in_array($variables['elements']['#id'], array('mainnavigation_2', 'mainnavigation_3', 'organics_menu', 'earthlife_menu'))) {
     $variables['attributes']['class'][] = 'menuContainer';
     $variables['attributes']['id'] = 'sectionMenu';
