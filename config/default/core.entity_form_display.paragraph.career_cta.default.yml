@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.career_cta.field_career_category_links
     - field.field.paragraph.career_cta.field_career_panel_color
     - field.field.paragraph.career_cta.field_description
     - field.field.paragraph.career_cta.field_link
@@ -16,14 +15,6 @@ targetEntityType: paragraph
 bundle: career_cta
 mode: default
 content:
-  field_career_category_links:
-    weight: 4
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-    type: link_default
-    region: content
   field_career_panel_color:
     weight: 0
     settings: {  }

@@ -8,10 +8,12 @@ dependencies:
     - paragraphs.paragraphs_type.career_cta
     - paragraphs.paragraphs_type.career_icon_container
     - paragraphs.paragraphs_type.career_image_panel
+    - paragraphs.paragraphs_type.career_job_category_links
     - paragraphs.paragraphs_type.career_panels
     - paragraphs.paragraphs_type.career_tabs_wrapper
     - paragraphs.paragraphs_type.career_text
     - paragraphs.paragraphs_type.content_chunk
+    - paragraphs.paragraphs_type.inline_image
   module:
     - entity_reference_revisions
 id: node.career.field_career_page_elements
@@ -35,17 +37,10 @@ settings:
       career_image_panel: career_image_panel
       content_chunk: content_chunk
       career_text: career_text
+      career_job_category_links: career_job_category_links
       career_tabs_wrapper: career_tabs_wrapper
+      inline_image: inline_image
     target_bundles_drag_drop:
-      a11y_paragraphs_tab_content:
-        weight: 59
-        enabled: false
-      a11y_paragraphs_tabs_panel:
-        weight: 58
-        enabled: false
-      a11y_paragraphs_tabs_wrapper:
-        weight: 114
-        enabled: false
       basics:
         weight: 53
         enabled: false
@@ -73,6 +68,9 @@ settings:
       career_image_panel:
         enabled: true
         weight: 62
+      career_job_category_links:
+        enabled: true
+        weight: 67
       career_panels:
         enabled: true
         weight: 61
@@ -131,8 +129,8 @@ settings:
         weight: 76
         enabled: false
       inline_image:
+        enabled: true
         weight: 77
-        enabled: false
       inline_video:
         weight: 78
         enabled: false
