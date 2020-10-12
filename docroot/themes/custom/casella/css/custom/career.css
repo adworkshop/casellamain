@@ -446,6 +446,7 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
 
   .career-page .internal-fullWidthPromo-contentWrapper {
     padding: 0 15%;
+    margin: 0;
   }
   .career-page h1.internal-fullWidthPromo-title {
     color: #fff;
