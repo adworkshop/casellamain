@@ -71,14 +71,14 @@
 .c-career--cta-title {
   font-family: 'Gotham-Black';
   text-transform: uppercase;
-  font-size: 40px!important;
-  line-height: 1;
+  font-size: 36px!important;
+  line-height: 40px;
   margin-bottom: 20px;
 }
 
 .c-career--cta-text {
-  font-size: 18px;
-  line-height: 1.2;
+  font-size: 16px;
+  line-height: 20px;
   padding-bottom: 24px;
   font-family: 'Droid Serif', serif;
 }
@@ -94,9 +94,9 @@
   border-radius: 5px;
   text-transform: uppercase;
   font-family: 'Gotham-Bold';
-  width: 200px;
-  height: 60px;
-  line-height: 58px;
+  width: 170px;
+  height: 50px;
+  line-height: 48px;
   text-align: center;
 }
 
@@ -304,10 +304,11 @@ h2.c-career--image-panel-title {
   padding: 0 3%;
 }
 .c-career--search {
-  height: 50px;
+  height: 44px;
   display: block;
   margin-top: 48px;
   position: relative;
+  line-height: 44px;
 }
 
 li.c-career--link-items {
@@ -334,6 +335,11 @@ li.c-career--link-items a, .c-career--search a {
   line-height: 50px;
   vertical-align: middle;
 }
+
+.c-career--search a {
+  line-height: 44px;
+}
+
 li.c-career--link-items a:hover, .c-career--search a:hover {
   background-color: #fff;
   border: 2px solid #4c9d2a;
@@ -401,10 +407,14 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
   }
 
   .c-career--search {
-    height: 50px;
+    height: 44px;
     display: block;
     margin-top: 24px;
     position: relative;
+  }
+
+  .c-career--search a {
+    line-height: 44px;
   }
 
   .c-career--cta, .c-career--categories {
@@ -436,7 +446,7 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
     width: 100%;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(9, 37, 62, 0.25);
     color: white;
     display: flex;
     align-items: center;
@@ -454,11 +464,13 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
     /*margin: 0 0 5px;*/
     font-size: 55px;
     text-align: left;
+    line-height: 53px;
   }
   .career-page .internal-fullWidthPromo-teaser {
     font-family: 'Droid Serif', serif;
-    font-size: 30px;
+    font-size: 24px;
     text-align: left;
-    line-height: 1.2;
+    line-height: 28px;
+    max-width: 600px;
   }
 }
