@@ -14,7 +14,7 @@ third_party_settings:
 id: toolkit_download_form
 label: 'Toolkit Download Form'
 recipients:
-  - erik.saulnier@troyweb.com
+  - toolkits@casella.com
 reply: ''
 weight: 0
 message: ''
