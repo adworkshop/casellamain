@@ -421,9 +421,9 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
     padding: 48px 15%;
   }
   .career-hero {
-    /*margin-top: 64px;*/
+    margin-top: 64px;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     position: relative;
     background-size: cover;
     background-position: 50% 50%;
@@ -434,7 +434,7 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
     left: 0;
     padding: 0!important;
     position: fixed;
-    top: 0;
+    top: 50px;
     width: 100%;
     z-index: -1;
   }
