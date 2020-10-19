@@ -508,7 +508,6 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
 }
 
 .c-career--container .internal-interActiveContent-container .z-tabs.flat.horizontal.top > ul.z-tabs-nav {
-  width: 70%;
   margin: 0 auto;
   background: #fff;
 }
@@ -517,24 +516,31 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
   background: #fff;
 }
 .c-career--container .z-tabs-desktop {
-  margin: 0 15%;
+  /*margin: 0 15%;*/
 }
 
 .c-career--container .internal-interActiveContent-container .z-tabs.flat.horizontal.top > ul.z-tabs-nav {
   padding: 0;
 }
 
-.c-career--container .z-tabs.flat.horizontal.top > ul.z-tabs-nav > li.z-active {
-  border-bottom: 6px solid #4C9D2A;
-}
+
 
 .c-career--container .internal-interActiveContent-container .z-tabs.flat.contained > ul > li a,
 .c-career--container .internal-interActiveContent-container .z-tabs.flat.clean > ul > li {
   color: black;
 }
 .c-career--container .z-tabs.flat > ul.z-tabs-desktop > li {
-  border-bottom: 6px solid #4C9D2A;
+  /*border-bottom: 6px solid #4C9D2A;*/
   border-right: 1px solid #C4C4C4;
+}
+
+.c-career--container .z-tabs.flat > ul.z-tabs-desktop > li:last-child {
+  border-right: none;
+}
+
+.c-career--container .internal-interActiveContent-container .z-tabs.flat.xxlarge > ul > li > a {
+  padding: 25px 30px 20px;
+  border-bottom: 6px solid #4C9D2A;
 }
 
 .c-career--container .internal-interActiveContent-container .z-tabs.flat.flat-nephritis > ul.z-tabs-nav > li.z-active > a {
@@ -552,6 +558,10 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
 
 .c-career--container .z-container .c-career-panel--right {
   border-bottom: none;
+}
+
+.internal-interActiveContent-container .z-tabs.horizontal.responsive > ul.z-tabs-desktop > li > a {
+  background: #fff;
 }
 
 @media (min-width: 1200px) {
