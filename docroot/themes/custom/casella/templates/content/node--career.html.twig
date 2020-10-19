@@ -154,6 +154,10 @@
                   </div>
                 {% endfor %}
                 {{ content.field_pg_tabs }}
+
+                {% if tab_anchors|length %}
+                  {% include "/" ~ theme_path ~ "/templates/includes/tab-panels.html.twig" %}
+                {% endif %}
               </div>
             {% endblock %}
           </div>
@@ -162,9 +166,6 @@
 </div>
 
 
-{% if tab_anchors|length %}
-  {% include "/" ~ theme_path ~ "/templates/includes/tab-panels.html.twig" %}
-{% endif %}
 
 
 

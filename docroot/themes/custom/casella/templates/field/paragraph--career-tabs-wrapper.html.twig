@@ -1,5 +1,5 @@
 {{ attach_library('casella/jquery.zozotabs') }}
-{% set tab_anchor = content.field_career_tabs_content %}
+
 <!--Interactive Content-->
 <div class="internal-interActiveContent-container">
 
@@ -17,7 +17,7 @@
       <li id="Regional"><a>Regional</a></li>#}
 
 
-      {% for tab_anchor in tab_anchors_2 %}
+      {% for tab_anchor in tab_anchors %}
         <li id="{{ tab_anchor|adw_machine_name }}"><a>{{ tab_anchor }}</a></li>
       {% endfor %}
     </ul>
