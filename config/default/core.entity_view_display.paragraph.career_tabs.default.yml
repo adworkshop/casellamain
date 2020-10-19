@@ -3,15 +3,41 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.career_tabs.field_career_video
+    - field.field.paragraph.career_tabs.field_image
     - field.field.paragraph.career_tabs.field_tab_anchor
     - field.field.paragraph.career_tabs.field_tab_description
     - field.field.paragraph.career_tabs.field_tab_title
+    - image.style.400x210
     - paragraphs.paragraphs_type.career_tabs
+  module:
+    - image
+    - video_embed_field
 id: paragraph.career_tabs.default
 targetEntityType: paragraph
 bundle: career_tabs
 mode: default
 content:
+  field_career_video:
+    weight: 2
+    label: hidden
+    settings:
+      responsive: true
+      width: 854
+      height: 480
+      autoplay: true
+    third_party_settings: {  }
+    type: video_embed_field_video
+    region: content
+  field_image:
+    weight: 3
+    label: hidden
+    settings:
+      image_style: 400x210
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
   field_tab_description:
     weight: 1
     label: hidden

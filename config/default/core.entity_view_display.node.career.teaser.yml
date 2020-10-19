@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.career.field_career_hero_image
     - field.field.node.career.field_career_page_elements
     - field.field.node.career.field_description
+    - field.field.node.career.field_tabs
     - node.type.career
   module:
     - text
@@ -34,5 +35,6 @@ hidden:
   field_career_hero_image: true
   field_career_page_elements: true
   field_description: true
+  field_tabs: true
   langcode: true
   search_api_excerpt: true

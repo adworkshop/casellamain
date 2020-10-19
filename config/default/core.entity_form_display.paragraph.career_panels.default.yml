@@ -7,12 +7,14 @@ dependencies:
     - field.field.paragraph.career_panels.field_content_area
     - field.field.paragraph.career_panels.field_image
     - field.field.paragraph.career_panels.field_image_align
+    - field.field.paragraph.career_panels.field_link
     - field.field.paragraph.career_panels.field_section_title
     - field.field.paragraph.career_panels.field_title
     - image.style.thumbnail
     - paragraphs.paragraphs_type.career_panels
   module:
     - image
+    - link
     - text
     - video_embed_field
 id: paragraph.career_panels.default
@@ -47,6 +49,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
+  field_link:
+    weight: 6
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
     region: content
   field_section_title:
     weight: 1

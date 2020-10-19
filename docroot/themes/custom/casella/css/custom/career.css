@@ -68,6 +68,10 @@
   color: #fff;
 }
 
+.c-career--cta.blue.footer h2.c-career--cta-title {
+  color: #fff;
+}
+
 .c-career--cta-title {
   font-family: 'Gotham-Black';
   text-transform: uppercase;
@@ -544,6 +548,10 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
   text-transform: uppercase;
   font-size: 24px;
   margin-bottom: 6px;
+}
+
+.c-career--container .z-container .c-career-panel--right {
+  border-bottom: none;
 }
 
 @media (min-width: 1200px) {

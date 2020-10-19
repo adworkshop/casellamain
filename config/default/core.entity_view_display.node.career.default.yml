@@ -7,7 +7,8 @@ dependencies:
     - field.field.node.career.field_career_hero_image
     - field.field.node.career.field_career_page_elements
     - field.field.node.career.field_description
-    - image.style.1400x630
+    - field.field.node.career.field_tabs
+    - image.style.1200x540
     - node.type.career
   module:
     - entity_reference_revisions
@@ -30,7 +31,7 @@ content:
     weight: 4
     label: hidden
     settings:
-      image_style: 1400x630
+      image_style: 1200x540
       image_link: ''
     third_party_settings: {  }
     type: image
@@ -50,6 +51,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
+  field_tabs:
+    weight: 5
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
     region: content
   links:
     weight: 0

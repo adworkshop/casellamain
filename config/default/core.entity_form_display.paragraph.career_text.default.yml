@@ -4,10 +4,13 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.career_text.field_career_video
+    - field.field.paragraph.career_text.field_image
     - field.field.paragraph.career_text.field_paragraph_long_text
     - field.field.paragraph.career_text.field_title
+    - image.style.thumbnail
     - paragraphs.paragraphs_type.career_text
   module:
+    - image
     - text
     - video_embed_field
 id: paragraph.career_text.default
@@ -20,6 +23,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: video_embed_field_textfield
+    region: content
+  field_image:
+    weight: 4
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
     region: content
   field_paragraph_long_text:
     weight: 1

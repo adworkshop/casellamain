@@ -10,6 +10,7 @@ dependencies:
     - paragraphs.paragraphs_type.career_image_panel
     - paragraphs.paragraphs_type.career_job_category_links
     - paragraphs.paragraphs_type.career_panels
+    - paragraphs.paragraphs_type.career_tabs
     - paragraphs.paragraphs_type.career_tabs_wrapper
     - paragraphs.paragraphs_type.career_text
     - paragraphs.paragraphs_type.content_chunk
@@ -38,6 +39,7 @@ settings:
       content_chunk: content_chunk
       career_text: career_text
       career_job_category_links: career_job_category_links
+      career_tabs: career_tabs
       career_tabs_wrapper: career_tabs_wrapper
       inline_image: inline_image
     target_bundles_drag_drop:
@@ -75,8 +77,8 @@ settings:
         enabled: true
         weight: 61
       career_tabs:
+        enabled: true
         weight: 72
-        enabled: false
       career_tabs_wrapper:
         enabled: true
         weight: 74
