@@ -39,6 +39,7 @@
   text-align: left;
 }
 
+
 /* CAREER CATEGORY LINKS */
 .c-career--categories { background-color: #0a253e; }
 .c-career--categories .c-career--cta-title {color: #4c9d2a;}
@@ -146,11 +147,10 @@
 
 .c-career-panel {
   clear: both;
-  margin: 24px;
-  padding: 1% 15% 1% 15%;
+  margin: 24px 0;
+  padding: 1% 5%;
   display: table;
   table-layout: fixed;
-
 }
 
 .c-career-panel--left, .c-career-panel--right {
@@ -159,10 +159,7 @@
 }
 
 .c-career-panel--left .c-career-panel--media {
-  display: table-cell;
-  vertical-align: top;
-  width: 45%;
-  padding-right: 24px;
+  display: block;
 }
 
 .c-career-panel--media img {
@@ -170,9 +167,7 @@
 }
 
 .c-career-panel--text {
-  display: table-cell;
-  vertical-align: top;
-  width: 45%;
+  display: block;
 }
 
 .c-career-panel--body p {
@@ -203,10 +198,7 @@
 }
 
 .c-career-panel--right .c-career-panel--media {
-  display: table-cell;
-  vertical-align: top;
-  width: 45%;
-  padding-left: 24px;
+  display: block;
 }
 
 .c-pg-career-icons--container {
@@ -399,7 +391,7 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
   font-weight: 900;
   font-size: 20px;
 }
-@media all and (min-width: 768px) {
+@media all and (min-width: 1024px) {
   .c-career--link-container ul {
     display: flex;
     flex-wrap: wrap;
@@ -499,12 +491,21 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
     line-height: 28px;
     max-width: 600px;
   }
+  .c-career-panel {
+    padding: 1% 15% 1% 15%;
+  }
 }
 
 /* TABS */
 .c-career--container .internal-interActiveContent-container {
   background: #fff;
-  padding: 0 15%;
+  padding: 0 5%;
+}
+@media (min-width: 820px) {
+  .c-career--container .internal-interActiveContent-container {
+    background: #fff;
+    padding: 0 15%;
+  }
 }
 
 .c-career--container .internal-interActiveContent-container .z-tabs.flat.horizontal.top > ul.z-tabs-nav {
@@ -560,8 +561,54 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
   border-bottom: none;
 }
 
-.internal-interActiveContent-container .z-tabs.horizontal.responsive > ul.z-tabs-desktop > li > a {
+.c-career--container .internal-interActiveContent-container .z-tabs.horizontal.responsive > ul.z-tabs-desktop > li > a {
   background: #fff;
+}
+
+.c-career--container .internal-interActiveContent-container .internal-indInteractivePanelContainer {
+  padding: 30px 0px 45px;
+}
+
+@media (min-width: 600px) {
+
+  .c-career--container .internal-interActiveContent-container .internal-indInteractivePanelContainer {
+    padding: 40px 12px 55px;
+  }
+  .c-career-panel {
+    clear: both;
+    margin: 24px 0;
+    padding: 1% 5%;
+    display: table;
+    table-layout: fixed;
+  }
+
+  .c-career-panel--left, .c-career-panel--right {
+    border-bottom: 1px solid #e2e2e2;
+    padding-bottom: 24px;
+  }
+
+  .c-career-panel--left .c-career-panel--media {
+    display: table-cell;
+    vertical-align: top;
+    width: 45%;
+    padding-right: 24px;
+  }
+  .c-career-panel--right .c-career-panel--media {
+    display: table-cell;
+    vertical-align: top;
+    width: 45%;
+    padding-left: 24px;
+  }
+
+  .c-career-panel--media img {
+    width: 100%;
+  }
+
+  .c-career-panel--text {
+    display: table-cell;
+    vertical-align: top;
+    width: 45%;
+  }
 }
 
 @media (min-width: 1200px) {
