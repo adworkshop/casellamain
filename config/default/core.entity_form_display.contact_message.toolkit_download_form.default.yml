@@ -1,0 +1,82 @@
+uuid: 4404abdb-7975-4684-916c-217305191b3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.toolkit_download_form
+    - field.field.contact_message.toolkit_download_form.field_ml_company
+    - field.field.contact_message.toolkit_download_form.field_ml_email
+    - field.field.contact_message.toolkit_download_form.field_ml_first_name
+    - field.field.contact_message.toolkit_download_form.field_ml_last_name
+    - field.field.contact_message.toolkit_download_form.field_ml_phone
+    - field.field.contact_message.toolkit_download_form.field_ml_title
+    - field.field.contact_message.toolkit_download_form.field_pdf
+id: contact_message.toolkit_download_form.default
+targetEntityType: contact_message
+bundle: toolkit_download_form
+mode: default
+content:
+  field_ml_company:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_ml_email:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  field_ml_first_name:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_ml_last_name:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_ml_phone:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_ml_title:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_pdf:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  copy: true
+  langcode: true
+  mail: true
+  message: true
+  name: true
+  preview: true
+  subject: true

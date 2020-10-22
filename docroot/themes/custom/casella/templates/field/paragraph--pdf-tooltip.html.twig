@@ -1,0 +1,37 @@
+{% set uri = content.field_link.0['#url'] %}
+{% set title = content.field_link.0['#title'] %}
+{% set field_image = content.field_image.0['#item'] %}
+{% set field_content_area = content.field_content_area %}
+{% set download_form = content.field_download_form %}
+{% set link = (uri starts with 'internal:') ? uri|slice(9) : uri %}
+
+<div class="internal-mainBody-featuredContent-container field-pdf-file">
+  <div class="internal-mainBody-featuredContent-container__inner">
+    <div class="image">
+      <div class="image__inner">
+        {{ drupal_image(field_image.target_id, 'medium') }}</a>
+      </div>
+    </div>
+    <div class="content">
+      <h2>{{ title }}</h2>
+      {{ field_content_area }}
+      {% if download_form.0 is not empty %}
+        <div class="download-form-modal" data-modal-title="{{ title }}">
+          <h2>Download {{ title }}</h2>
+          {{ download_form }}
+          <script>
+            $('div[data-modal-title="{{ title }}"] .js-form-item-field-pdf-0-value').hide();
+            $('div[data-modal-title="{{ title }}"] input[name="field_pdf[0][value]"]').attr('value', '{{link}}');
+          </script>
+        </div>
+        <div data-modal-open class="link--pdf">
+          <a><i class="fa fa-file-pdf-o" aria-hidden="true"></i><span>View PDF</span></a>
+        </div>
+      {% else %}
+        <div class="link--pdf">
+          <a href="{{ link }}" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i><span>View PDF</span></a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

@@ -447,8 +447,3 @@ table#holidaySchedule > tbody > tr > th {
 .locationMapHolidaySchedule-container .locationMap-listView-container {
   padding: 0 0 50px 0;
 }
-
-/* Hide the Toolkits tab for now. */
-#Toolkits {
-  display: none;
-}
