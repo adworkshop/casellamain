@@ -8,7 +8,6 @@ dependencies:
     - paragraphs.paragraphs_type.a11y_paragraphs_tabs_wrapper
     - paragraphs.paragraphs_type.career_accolades_container
     - paragraphs.paragraphs_type.career_cta
-    - paragraphs.paragraphs_type.career_icon_container
     - paragraphs.paragraphs_type.career_image_panel
     - paragraphs.paragraphs_type.career_job_category_links
     - paragraphs.paragraphs_type.career_panels
@@ -34,7 +33,6 @@ settings:
       career_panels: career_panels
       career_text: career_text
       career_image_panel: career_image_panel
-      career_icon_container: career_icon_container
       career_accolades_container: career_accolades_container
       career_job_category_links: career_job_category_links
       a11y_paragraphs_tabs_wrapper: a11y_paragraphs_tabs_wrapper
@@ -73,8 +71,8 @@ settings:
         enabled: true
         weight: 58
       career_icon_container:
-        enabled: true
         weight: 62
+        enabled: false
       career_icons:
         weight: 75
         enabled: false
