@@ -144,20 +144,16 @@
               {% include theme_path ~ "/templates/includes/unpublished-notice.html.twig" %}
             {% endif %}
             {{ help }}
+
             {% block bodyContent %}
               <div class="c-career--container">
-
 
                 {% for key, item in content.field_career_page_elements if key|first != '#' %}
                   <div class="pg-career--item-{{ key + 1 }}">
                     {{ item }}
                   </div>
                 {% endfor %}
-                {{ content.field_pg_tabs }}
 
-                {% if tab_anchors|length %}
-                  {% include "/" ~ theme_path ~ "/templates/includes/tab-panels.html.twig" %}
-                {% endif %}
               </div>
             {% endblock %}
           </div>

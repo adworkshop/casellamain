@@ -21,6 +21,9 @@
         {% if not subsection %}
           <li><a href="/" title=""><span class="fa fa-home" aria-hidden="true"></span></a></li>
         {% endif %}
+        {% if node_type == 'career' %}
+          <li><a href="/careers" title="">Careers</a></li>
+        {% endif %}
         {% for item in breadcrumb %}
           <li>
             {% if item.url %}

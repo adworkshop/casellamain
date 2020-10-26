@@ -1,0 +1,14 @@
+name: A11Y Paragraphs Tabs
+type: module
+description: Adds a paragraph component/type for Tabs that comply to Accessibility (A11Y) standards.
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: Paragraphs
+dependencies:
+  - paragraphs:paragraphs
+  - drupal:text
+
+# Information added by Drupal.org packaging script on 2020-04-15
+version: '8.x-1.11'
+project: 'a11y_paragraphs_tabs'
+datestamp: 1586965002

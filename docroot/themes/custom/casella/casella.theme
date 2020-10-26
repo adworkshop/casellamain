@@ -5,6 +5,8 @@
  * Functions to support theming in the Casella Resource Solutions.
  */
 
+use Drupal\node\Entity\Node;
+
 /**
  * Implements hook_theme_suggestions_HOOK_alter() for field templates;
  *
@@ -1133,7 +1135,8 @@ function casella_preprocess_paragraph(&$variables) {
 
 function casella_preprocess_breadcrumb(&$variables) {
   $variables['theme_path'] = drupal_get_path('theme', 'casella');
-
+  $node = \Drupal::routeMatch()->getParameter('node');
+  $variables['node_type'] = $node->bundle();
   // Check if this is a subsection.
   $casellaGlobals = &drupal_static('casellaGlobals');
   $variables['subsection'] = isset($casellaGlobals['subsection'][0]['value']);
