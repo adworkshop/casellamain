@@ -612,10 +612,10 @@
 	}
 	
 	/* -- Navigation: Last Element Flip*/
-	nav#mainMenu ul.adwMenu > li.tierMenu.last ul {
+	/* nav#mainMenu ul.adwMenu > li.tierMenu.last ul {
 	right: 0;
 	text-align:right;
-	}
+	} */
 	
 	nav#sectionMenu ul.adwMenu > li.tierMenu.last ul {
 	right: 0;
