@@ -1,10 +1,10 @@
-uuid: 780b2280-b6fb-4a57-901f-b079e176a9cf
+uuid: be5cab16-b894-471a-aa01-2600e350e3b5
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_career_hero_image
-    - node.type.career_category
+    - field.storage.paragraph.field_image
+    - paragraphs.paragraphs_type.career_accolades
   module:
     - content_translation
     - image
@@ -14,11 +14,11 @@ third_party_settings:
       alt: alt
       title: title
       file: '0'
-id: node.career_category.field_career_hero_image
-field_name: field_career_hero_image
-entity_type: node
-bundle: career_category
-label: 'Hero Image'
+id: paragraph.career_accolades.field_image
+field_name: field_image
+entity_type: paragraph
+bundle: career_accolades
+label: Image
 description: ''
 required: false
 translatable: true

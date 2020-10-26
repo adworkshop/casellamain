@@ -1,0 +1,30 @@
+uuid: d8fd31fd-7f46-47f6-bf68-0d86f99a0eb2
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_career_title_color
+field_name: field_career_title_color
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: blue
+      label: Blue
+    -
+      value: green
+      label: Green
+    -
+      value: white
+      label: White
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

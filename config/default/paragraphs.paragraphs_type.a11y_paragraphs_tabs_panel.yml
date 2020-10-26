@@ -1,0 +1,17 @@
+uuid: 2bcbf1e3-6379-4710-af2a-94a2fcfb9249
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
+_core:
+  default_config_hash: 35oCh_MCmIM0A3U7zLZHxQ2BUYfboQbPxQX6NfL_yNo
+id: a11y_paragraphs_tabs_panel
+label: 'Career Tab'
+icon_uuid: null
+icon_default: null
+description: 'Create tabs that comply to Accessibility (A11Y) standards and on mobile it becomes an accordion.'
+behavior_plugins: {  }

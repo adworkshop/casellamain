@@ -1,0 +1,17 @@
+uuid: df755d22-3685-4c11-bdb9-bcfbce4b46cd
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
+_core:
+  default_config_hash: fzN86znID-9S-OOiu85pkdTeyi4jKfa1yVPi9x-zd6o
+id: a11y_paragraphs_tabs_wrapper
+label: 'Career Tabs'
+icon_uuid: null
+icon_default: null
+description: 'Adds a wrapper for the A11Y Paragraphs Tabs Panel paragraph. This in turn creates tabs that comply to Accessibility (A11Y) standards and on mobile it becomes an accordion.'
+behavior_plugins: {  }

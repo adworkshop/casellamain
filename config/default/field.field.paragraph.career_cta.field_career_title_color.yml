@@ -1,0 +1,23 @@
+uuid: e93c4f58-fbdb-4483-a77f-bacb052eb9d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_career_title_color
+    - paragraphs.paragraphs_type.career_cta
+  module:
+    - options
+id: paragraph.career_cta.field_career_title_color
+field_name: field_career_title_color
+entity_type: paragraph
+bundle: career_cta
+label: 'Career Title Color'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: green
+default_value_callback: ''
+settings: {  }
+field_type: list_string

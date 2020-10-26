@@ -1,8 +1,9 @@
-uuid: c279f130-d951-4d2b-8295-904718188c8b
+uuid: 1bc98851-7123-4b5e-9bf8-47d710023981
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.paragraph.alternate
     - field.field.paragraph.career_panels.field_career_video
     - field.field.paragraph.career_panels.field_content_area
     - field.field.paragraph.career_panels.field_image
@@ -15,22 +16,21 @@ dependencies:
     - paragraphs.paragraphs_type.career_panels
   module:
     - image
-    - link
     - text
     - video_embed_field
-id: paragraph.career_panels.default
+id: paragraph.career_panels.alternate
 targetEntityType: paragraph
 bundle: career_panels
-mode: default
+mode: alternate
 content:
   field_career_video:
-    weight: 4
+    weight: 3
     settings: {  }
     third_party_settings: {  }
     type: video_embed_field_textfield
     region: content
   field_content_area:
-    weight: 2
+    weight: 1
     settings:
       rows: 5
       placeholder: ''
@@ -38,37 +38,25 @@ content:
     type: text_textarea
     region: content
   field_image:
-    weight: 3
+    weight: 2
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
     region: content
-  field_image_align:
-    weight: 0
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  field_link:
-    weight: 5
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-    type: link_default
-    region: content
   field_section_title:
-    type: string_textfield
-    weight: 1
-    region: content
+    weight: 0
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    type: string_textfield
+    region: content
 hidden:
   created: true
+  field_image_align: true
+  field_link: true
   field_title: true
   paragraph_view_mode: true
   status: true

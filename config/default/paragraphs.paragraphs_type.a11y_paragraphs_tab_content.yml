@@ -1,0 +1,17 @@
+uuid: 2955fb75-8c28-4dd4-afc0-9dd492c90d93
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
+_core:
+  default_config_hash: ihES30hnk67wMqFz9YNCpuRQ_bCeRomIMwdMi8m1ZoU
+id: a11y_paragraphs_tab_content
+label: 'zA11Y Paragraphs Tab Content'
+icon_uuid: null
+icon_default: null
+description: 'Adds a text field to your A11Y Paragraphs Tabs Content Panel.'
+behavior_plugins: {  }

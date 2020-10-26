@@ -1,0 +1,21 @@
+uuid: fceb8087-85fd-40b4-8df9-c98ba953f4bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.paragraph_view_mode
+    - paragraphs.paragraphs_type.career_panels
+  module:
+    - paragraph_view_mode
+id: paragraph.career_panels.paragraph_view_mode
+field_name: paragraph_view_mode
+entity_type: paragraph
+bundle: career_panels
+label: 'Paragraph view mode'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: paragraph_view_mode

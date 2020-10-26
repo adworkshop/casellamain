@@ -1,9 +1,14 @@
 uuid: 052f69dd-606f-49ea-a4a3-6c3ab000f39f
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
 id: career_tabs_wrapper
-label: 'Career Tabs Wrapper'
+label: 'zz-oldCareer Tabs Wrapper'
 icon_uuid: null
 icon_default: null
 description: ''

@@ -1,0 +1,19 @@
+uuid: 183f015d-539f-4b76-993f-3024090f1195
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.career_accolades_container
+id: paragraph.career_accolades_container.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: career_accolades_container
+label: Title
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

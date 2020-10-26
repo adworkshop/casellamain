@@ -1,20 +1,19 @@
-uuid: 124e1ef2-c90b-4eb6-9c6d-645a448253ce
+uuid: 61e01b53-dfab-405b-8985-e5099c25ae35
 langcode: en
 status: true
 dependencies:
   module:
     - entity_reference_revisions
-    - node
     - paragraphs
-id: node.field_career_apply_cta
-field_name: field_career_apply_cta
-entity_type: node
+id: paragraph.field_career_accolades_items
+field_name: field_career_accolades_items
+entity_type: paragraph
 type: entity_reference_revisions
 settings:
   target_type: paragraph
 module: entity_reference_revisions
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

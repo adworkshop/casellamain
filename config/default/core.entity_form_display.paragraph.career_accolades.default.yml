@@ -1,0 +1,35 @@
+uuid: 9c82efee-97bc-423b-af57-40ca1ea5b23b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.career_accolades.field_image
+    - field.field.paragraph.career_accolades.field_short_description
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.career_accolades
+  module:
+    - image
+id: paragraph.career_accolades.default
+targetEntityType: paragraph
+bundle: career_accolades
+mode: default
+content:
+  field_image:
+    weight: 1
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_short_description:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

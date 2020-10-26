@@ -1,0 +1,48 @@
+uuid: bd36dbfc-0417-4ef1-80db-4847600f993e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.a11y_paragraphs_tabs_panel.field_a11y_para_tabs_tab_content
+    - field.field.paragraph.a11y_paragraphs_tabs_panel.field_tab_title
+    - paragraphs.paragraphs_type.a11y_paragraphs_tabs_panel
+  module:
+    - paragraphs
+_core:
+  default_config_hash: dh_5pyodAeFWZ5v1PTS7TCmP8IG_2CE8Mor_T3Dd-T8
+id: paragraph.a11y_paragraphs_tabs_panel.default
+targetEntityType: paragraph
+bundle: a11y_paragraphs_tabs_panel
+mode: default
+content:
+  field_a11y_para_tabs_tab_content:
+    weight: 1
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: alternate
+      default_paragraph_type: career_panels
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+    type: paragraphs
+    region: content
+  field_tab_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

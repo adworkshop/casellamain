@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.career_cta.field_career_panel_color
+    - field.field.paragraph.career_cta.field_career_title_color
     - field.field.paragraph.career_cta.field_description
     - field.field.paragraph.career_cta.field_link
     - field.field.paragraph.career_cta.field_title
@@ -18,6 +19,13 @@ mode: default
 content:
   field_career_panel_color:
     weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+  field_career_title_color:
+    weight: 4
     label: hidden
     settings: {  }
     third_party_settings: {  }

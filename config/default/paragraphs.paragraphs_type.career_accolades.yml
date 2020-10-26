@@ -1,0 +1,10 @@
+uuid: 14478475-c0a5-4017-b7d0-ba6c553cb711
+langcode: en
+status: true
+dependencies: {  }
+id: career_accolades
+label: 'Career Accolades Items'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

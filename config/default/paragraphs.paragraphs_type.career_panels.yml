@@ -1,7 +1,12 @@
 uuid: 7191464b-3209-4a46-bfad-9dda6630421a
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: true
 id: career_panels
 label: 'Career Panels'
 icon_uuid: null

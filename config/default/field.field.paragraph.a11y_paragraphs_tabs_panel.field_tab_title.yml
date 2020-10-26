@@ -1,0 +1,19 @@
+uuid: 8a8576a8-87c4-45f0-882e-2bda4c3b2c38
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tab_title
+    - paragraphs.paragraphs_type.a11y_paragraphs_tabs_panel
+id: paragraph.a11y_paragraphs_tabs_panel.field_tab_title
+field_name: field_tab_title
+entity_type: paragraph
+bundle: a11y_paragraphs_tabs_panel
+label: 'Tab Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

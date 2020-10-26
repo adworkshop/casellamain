@@ -1,18 +1,20 @@
-uuid: b0055a47-95eb-40ce-980a-065a74275c31
+uuid: 80a188d0-8e2d-44da-9f6c-e879135a839a
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_career_page_elements
-    - node.type.career_category
+    - field.storage.paragraph.field_a11y_para_tabs_tab_content
+    - paragraphs.paragraphs_type.a11y_paragraphs_tabs_panel
     - paragraphs.paragraphs_type.career_panels
   module:
     - entity_reference_revisions
-id: node.career_category.field_career_page_elements
-field_name: field_career_page_elements
-entity_type: node
-bundle: career_category
-label: 'Page Elements'
+_core:
+  default_config_hash: 5KtYvkbXvOouo7QE5COxrcTX50xvpjrWA_XxlbaD9NE
+id: paragraph.a11y_paragraphs_tabs_panel.field_a11y_para_tabs_tab_content
+field_name: field_a11y_para_tabs_tab_content
+entity_type: paragraph
+bundle: a11y_paragraphs_tabs_panel
+label: 'Tab Content'
 description: ''
 required: false
 translatable: false
@@ -25,160 +27,190 @@ settings:
     target_bundles:
       career_panels: career_panels
     target_bundles_drag_drop:
+      a11y_paragraphs_tab_content:
+        weight: 6
+        enabled: false
+      a11y_paragraphs_tabs_panel:
+        weight: 3
+        enabled: false
+      a11y_paragraphs_tabs_wrapper:
+        weight: 4
+        enabled: false
       basics:
-        weight: 50
+        weight: 66
         enabled: false
       bin_comparison_fields:
-        weight: 51
+        weight: 67
         enabled: false
       block:
-        weight: 52
+        weight: 68
         enabled: false
       block_link_with_icon:
-        weight: 53
+        weight: 69
         enabled: false
       calculator:
-        weight: 54
+        weight: 70
+        enabled: false
+      career_accolades:
+        weight: 71
+        enabled: false
+      career_accolades_container:
+        weight: 72
         enabled: false
       career_cta:
-        weight: 58
+        weight: 73
         enabled: false
       career_icon_container:
-        weight: 60
+        weight: 75
         enabled: false
       career_icons:
-        weight: 59
+        weight: 74
+        enabled: false
+      career_image_panel:
+        weight: 76
+        enabled: false
+      career_job_category_links:
+        weight: 77
         enabled: false
       career_panels:
         enabled: true
-        weight: 98
-      case_studies:
-        weight: 55
-        enabled: false
-      content_chunk:
-        weight: 56
-        enabled: false
-      content_tab:
-        weight: 57
-        enabled: false
-      dos_and_donts_section:
-        weight: 58
-        enabled: false
-      earthlink_link:
-        weight: 59
-        enabled: false
-      employer:
-        weight: 60
-        enabled: false
-      fa_link_with_icon:
-        weight: 63
-        enabled: false
-      fa_link_with_pdf:
-        weight: 64
-        enabled: false
-      fa_link_with_pdf_tooltip:
-        weight: 65
-        enabled: false
-      faq_category:
-        weight: 61
-        enabled: false
-      faq_question:
-        weight: 62
-        enabled: false
-      free_form:
-        weight: 66
-        enabled: false
-      holiday:
-        weight: 67
-        enabled: false
-      image_gallery:
-        weight: 68
-        enabled: false
-      image_with_caption:
-        weight: 69
-        enabled: false
-      inline_image:
-        weight: 70
-        enabled: false
-      inline_video:
-        weight: 71
-        enabled: false
-      large_promotion:
-        weight: 72
-        enabled: false
-      licenses:
-        weight: 73
-        enabled: false
-      link_with_icon:
-        weight: 74
-        enabled: false
-      organics_updates:
-        weight: 75
-        enabled: false
-      pdf_tooltip:
-        weight: 76
-        enabled: false
-      products:
-        weight: 77
-        enabled: false
-      recommendation:
         weight: 78
-        enabled: false
-      resource_tips:
-        weight: 80
-        enabled: false
-      resource_toolkit_button:
-        weight: 81
-        enabled: false
-      resource_videos:
-        weight: 82
-        enabled: false
-      resources:
+      career_tabs:
         weight: 79
         enabled: false
-      search_items:
+      career_tabs_wrapper:
+        weight: 80
+        enabled: false
+      career_text:
+        weight: 81
+        enabled: false
+      case_studies:
+        weight: 82
+        enabled: false
+      content_chunk:
         weight: 83
         enabled: false
-      services:
+      content_tab:
         weight: 84
         enabled: false
-      sidebar_panel:
+      dos_and_donts_section:
         weight: 85
         enabled: false
-      slider_image:
+      earthlink_link:
         weight: 86
         enabled: false
-      social_link:
+      employer:
         weight: 87
         enabled: false
-      solution_resource:
-        weight: 88
-        enabled: false
-      testimonials:
-        weight: 89
-        enabled: false
-      toolkits_tab:
+      fa_link_with_icon:
         weight: 90
         enabled: false
-      two_column_panel:
+      fa_link_with_pdf:
         weight: 91
         enabled: false
-      upper_button:
+      fa_link_with_pdf_tooltip:
         weight: 92
         enabled: false
-      vertical:
+      faq_category:
+        weight: 88
+        enabled: false
+      faq_question:
+        weight: 89
+        enabled: false
+      free_form:
         weight: 93
         enabled: false
-      video:
+      holiday:
         weight: 94
         enabled: false
-      video_headline:
-        weight: 96
-        enabled: false
-      videos_tab:
+      image_gallery:
         weight: 95
         enabled: false
-      waste_category:
+      image_with_caption:
+        weight: 96
+        enabled: false
+      inline_image:
         weight: 97
+        enabled: false
+      inline_video:
+        weight: 98
+        enabled: false
+      large_promotion:
+        weight: 99
+        enabled: false
+      licenses:
+        weight: 100
+        enabled: false
+      link_with_icon:
+        weight: 101
+        enabled: false
+      organics_updates:
+        weight: 102
+        enabled: false
+      pdf_tooltip:
+        weight: 103
+        enabled: false
+      products:
+        weight: 104
+        enabled: false
+      recommendation:
+        weight: 105
+        enabled: false
+      resource_tips:
+        weight: 107
+        enabled: false
+      resource_toolkit_button:
+        weight: 108
+        enabled: false
+      resource_videos:
+        weight: 109
+        enabled: false
+      resources:
+        weight: 106
+        enabled: false
+      search_items:
+        weight: 110
+        enabled: false
+      services:
+        weight: 111
+        enabled: false
+      sidebar_panel:
+        weight: 112
+        enabled: false
+      slider_image:
+        weight: 113
+        enabled: false
+      social_link:
+        weight: 114
+        enabled: false
+      solution_resource:
+        weight: 115
+        enabled: false
+      testimonials:
+        weight: 116
+        enabled: false
+      toolkits_tab:
+        weight: 117
+        enabled: false
+      two_column_panel:
+        weight: 118
+        enabled: false
+      upper_button:
+        weight: 119
+        enabled: false
+      vertical:
+        weight: 120
+        enabled: false
+      video:
+        weight: 121
+        enabled: false
+      video_headline:
+        weight: 123
+        enabled: false
+      videos_tab:
+        weight: 122
+        enabled: false
+      waste_category:
+        weight: 124
         enabled: false
 field_type: entity_reference_revisions

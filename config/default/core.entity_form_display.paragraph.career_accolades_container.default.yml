@@ -1,0 +1,45 @@
+uuid: df6e243f-a412-4ee4-86fc-66ecc0d2bde7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.career_accolades_container.field_career_accolades_items
+    - field.field.paragraph.career_accolades_container.field_title
+    - paragraphs.paragraphs_type.career_accolades_container
+  module:
+    - paragraphs
+id: paragraph.career_accolades_container.default
+targetEntityType: paragraph
+bundle: career_accolades_container
+mode: default
+content:
+  field_career_accolades_items:
+    type: paragraphs
+    weight: 1
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: career_accolades_container
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
