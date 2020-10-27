@@ -931,9 +931,6 @@ function casella_preprocess_paragraph(&$variables) {
     case 'vertical':
       $variables['attributes']['class'][] = 'home-resourceGrid-indWrapper';
       break;
-    case 'career_tabs_wrapper':
-      $pg_tab = $variables['paragraph']->get('field_career_tabs_content')->getValue();
-      break;
     case 'large_promotion':
       $variables['attributes']['class'][] = 'home-gridDisplay-leftCol-indContainer';
 
@@ -1537,7 +1534,6 @@ function casella_preprocess_node(&$variables) {
 
   // Snag the tab titles for the tabs array.
   $variables['tab_anchors'] = getTabPanelAnchors($variables);
-  $variables['tab_anchors_pg'] = getTabPanelAnchorsPg($variables);
 
   if (!in_array($variables['node']->getType(), array('full_width_promotion', 'sidebar_promotion', 'testimonial'))) {
     $pageLevel = array(
@@ -2182,71 +2178,3 @@ function casella_preprocess_field__paragraph__field_free_form_content__resource_
   // dpm($paragraph);
 }
 
-
-/**
- * Helper function to snag the tab titles from a set of tabs.
- *
- * @param $variables
- * @return array();
- */
-function getTabPanelAnchorsPg($variables) {
-  $node = $variables['node'];
-  switch ($node->getType()) {
-    case 'careers':
-      $my_paragraph = null;
-      $titles = array();
-      foreach ($node->get('field_career_page_elements') as $paragraph) {
-        if ($paragraph->entity->getType() == 'career_tabs_wrapper') { // Change to your paragraph type
-          $my_paragraph = $paragraph->entity;
-        }
-      }
-
-      $tabs = $my_paragraph->field_career_tabs_content->value;
-
-      if (!$tabs || !$tabs->count()) {
-        return $titles;
-      }
-
-      $entities = $tabs->referencedEntities();
-      foreach ($entities as $entity) {
-        $title = getTabPanelAnchorPg($entity);
-        if ($title != '') {
-          $titles[] = $title;
-        }
-      }
-
-      return $titles;
-      break;
-  }
-
-}
-
-/**
- * Helper function to pull the tab anchor out of an entity.
- *
- * @param $entity
- * @return string
- */
-function getTabPanelAnchorPg($entity) {
-  $tab_anchor_pg = $entity->get('field_tab_anchor');
-  if ($tab_anchor_pg) {
-    $tab_anchor_pg = $tab_anchor_pg->getValue();
-    if ($tab_anchor_pg[0]['value'] != '') {
-      return $tab_anchor_pg[0]['value'];
-    }
-  }
-
-  if (!$entity->hasField('field_tab_title')) {
-    return '';
-  }
-
-  $title = $entity->get('field_tab_title');
-  if ($title) {
-    $title = $title->getValue();
-    if ($title[0]['value'] != '') {
-      return $title[0]['value'];
-    }
-  }
-
-  return '';
-}
