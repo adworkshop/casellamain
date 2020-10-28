@@ -1,8 +1,30 @@
-
+{% set order = content.field_career_text_order.0['#markup'] %}
 
 <div class="c-career--text-block white">
+  {% if content.field_title.value %}
   <div class="c-career--section-title blue">{{ content.field_title }}</div>
-  <div class="c-career--text">{{ content.field_paragraph_long_text }}</div>
-  <div class="c-career--video">{{ content.field_career_video }}</div>
-  <div class="c-career--image">{{ content.field_image }}</div>
+  {% endif %}
+{% if order == 'text' %}
+  {% if content.field_paragraph_long_text|render|striptags|trim %}
+    <div class="c-career--text top">{{ content.field_paragraph_long_text }}</div>
+  {% endif %}
+  {% if content.field_career_video|render %}
+    <div class="c-career--video">{{ content.field_career_video }}</div>
+  {% endif %}
+  {% if content.field_image|render %}
+    <div class="c-career--image">{{ content.field_image }}</div>
+  {% endif %}
+{% elseif order == 'image' %}
+  {% if content.field_career_video|render %}
+    <div class="c-career--video">{{ content.field_career_video }}</div>
+  {% endif %}
+  {% if content.field_image|render %}
+    <div class="c-career--image">{{ content.field_image }}</div>
+  {% endif %}
+  {% if content.field_paragraph_long_text|render|striptags|trim %}
+    <div class="c-career--text bottom">{{ content.field_paragraph_long_text }}</div>
+  {% endif %}
+{% endif %}
 </div>
+
+

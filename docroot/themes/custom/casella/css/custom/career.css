@@ -150,6 +150,16 @@
   color: #fff;
 }
 
+/* TEXT BLOCKS WITH IMAGES AND VIDEOS */
+
+.c-career--text.top {
+  margin-bottom: 36px;
+}
+
+.c-career--text.bottom {
+  margin-top: 36px;
+}
+
 /* ZEBRA PARAGRAPHS */
 
 .c-career-panel {
