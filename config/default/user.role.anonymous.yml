@@ -31,6 +31,8 @@ permissions:
   - 'view paragraph content block'
   - 'view paragraph content block_link_with_icon'
   - 'view paragraph content calculator'
+  - 'view paragraph content career_accolades'
+  - 'view paragraph content career_accolades_container'
   - 'view paragraph content career_cta'
   - 'view paragraph content career_icon_container'
   - 'view paragraph content career_icons'

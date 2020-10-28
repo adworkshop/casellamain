@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.paragraph.alternate
+    - field.field.paragraph.career_text.field_career_text_order
     - field.field.paragraph.career_text.field_career_video
     - field.field.paragraph.career_text.field_image
     - field.field.paragraph.career_text.field_paragraph_long_text
@@ -43,5 +44,6 @@ content:
     region: content
 hidden:
   created: true
+  field_career_text_order: true
   field_title: true
   status: true

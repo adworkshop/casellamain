@@ -1,0 +1,23 @@
+uuid: 38beebb6-f08a-458f-97bb-9b03255b186f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_career_text_order
+    - paragraphs.paragraphs_type.career_text
+  module:
+    - options
+id: paragraph.career_text.field_career_text_order
+field_name: field_career_text_order
+entity_type: paragraph
+bundle: career_text
+label: 'Field Order'
+description: 'Indicate if you want the text or the image/video to display first.'
+required: true
+translatable: false
+default_value:
+  -
+    value: text
+default_value_callback: ''
+settings: {  }
+field_type: list_string

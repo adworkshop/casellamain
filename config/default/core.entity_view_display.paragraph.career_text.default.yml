@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.career_text.field_career_text_order
     - field.field.paragraph.career_text.field_career_video
     - field.field.paragraph.career_text.field_image
     - field.field.paragraph.career_text.field_paragraph_long_text
@@ -11,6 +12,7 @@ dependencies:
     - paragraphs.paragraphs_type.career_text
   module:
     - image
+    - options
     - text
     - video_embed_field
 id: paragraph.career_text.default
@@ -18,6 +20,13 @@ targetEntityType: paragraph
 bundle: career_text
 mode: default
 content:
+  field_career_text_order:
+    weight: 5
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
   field_career_video:
     weight: 3
     label: hidden
