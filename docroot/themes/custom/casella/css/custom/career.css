@@ -437,8 +437,13 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
   }
   .career-hero {
     margin-top: 64px;
-
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    /* Text styles */
+    text-align: center;
     position: relative;
     flex: 1;
     /*background-size: cover;
@@ -447,12 +452,12 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
   }
   .career-hero img {
     background: #818181;
-    height: 100%;
+
     left: 0;
     padding: 0!important;
     position: fixed;
     top: 50px;
-    width: 100%;
+
     z-index: -1;
   }
   .internal-fullWidthPromo-contentContainer.career-page {
