@@ -1,7 +1,6 @@
 {% set order = content.field_career_text_order.0['#markup'] %}
 
 <div class="c-career--text-block white">
-  <div class="c-career--container-inner">
     {% if content.field_title.value %}
     <div class="c-career--section-title blue">{{ content.field_title }}</div>
     {% endif %}
@@ -26,7 +25,6 @@
         <div class="c-career--text bottom">{{ content.field_paragraph_long_text }}</div>
       {% endif %}
     {% endif %}
-  </div>
 </div>
 
 
