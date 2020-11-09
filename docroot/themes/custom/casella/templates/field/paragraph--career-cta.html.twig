@@ -2,9 +2,11 @@
 {% set title_color = content.field_career_title_color.0['#markup'] %}
 
 <div class="c-career--cta {{ background_color }}">
-  <div class="c-career--section-title {{ title_color }}">{{ content.field_title }}</div>
-  <div class="c-career--cta-text">{{ content.field_description }}</div>
-  {% if content.field_link is not empty %}
-  <div class="c-career--cta-button">{{ content.field_link }}</div>
-  {% endif %}
+  <div class="c-career--container-inner">
+    <div class="c-career--section-title {{ title_color }}">{{ content.field_title }}</div>
+    <div class="c-career--cta-text">{{ content.field_description }}</div>
+    {% if content.field_link is not empty %}
+    <div class="c-career--cta-button">{{ content.field_link }}</div>
+    {% endif %}
+  </div>
 </div>

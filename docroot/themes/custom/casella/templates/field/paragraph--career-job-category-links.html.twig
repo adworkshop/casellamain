@@ -1,12 +1,14 @@
 {% set background_color = content.field_career_panel_color.0['#markup'] %}
 
 <div class="c-career--categories">
-  <h2 class="c-career--section-title green">{{ content.field_title }}</h2>
-  <div class="c-career--cta-text">{{ content.field_description }}</div>
-    <div class="c-career--category-links">
-      {{ content.field_career_category_links }}
+  <div class="c-career--container-inner">
+    <h2 class="c-career--section-title green">{{ content.field_title }}</h2>
+    <div class="c-career--cta-text">{{ content.field_description }}</div>
+      <div class="c-career--category-links">
+        {{ content.field_career_category_links }}
+      </div>
+    <div class="c-career--search">
+      {{ content.field_career_search_link }}
     </div>
-  <div class="c-career--search">
-    {{ content.field_career_search_link }}
   </div>
 </div>

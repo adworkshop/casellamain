@@ -8,7 +8,7 @@ dependencies:
     - field.field.paragraph.career_tabs.field_tab_anchor
     - field.field.paragraph.career_tabs.field_tab_description
     - field.field.paragraph.career_tabs.field_tab_title
-    - image.style.400x210
+    - image.style.420x220
     - paragraphs.paragraphs_type.career_tabs
   module:
     - image
@@ -33,7 +33,7 @@ content:
     weight: 3
     label: hidden
     settings:
-      image_style: 400x210
+      image_style: 420x220
       image_link: ''
     third_party_settings: {  }
     type: image

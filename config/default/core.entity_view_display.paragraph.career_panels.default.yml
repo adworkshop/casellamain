@@ -11,7 +11,7 @@ dependencies:
     - field.field.paragraph.career_panels.field_section_title
     - field.field.paragraph.career_panels.field_title
     - field.field.paragraph.career_panels.paragraph_view_mode
-    - image.style.400x210
+    - image.style.420x220
     - paragraphs.paragraphs_type.career_panels
   module:
     - image
@@ -46,7 +46,7 @@ content:
     weight: 2
     label: hidden
     settings:
-      image_style: 400x210
+      image_style: 420x220
       image_link: ''
     third_party_settings: {  }
     type: image
