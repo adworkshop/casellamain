@@ -434,8 +434,8 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
     text-align: right;
   }
 
-  .c-career-panel--media img {
-    width: 80%;
+  .c-career-panel--media img, .c-career-panel--media .video-embed-field-responsive-video {
+    max-width: 420px;
   }
 
   .c-career-panel--right .c-career-panel--text {
