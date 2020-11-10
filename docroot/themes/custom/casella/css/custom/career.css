@@ -48,10 +48,10 @@
 
 .career-hero--image {
   background: #818181;
-  height: 100%;
+  height: 180px;
   left: 0;
   padding: 0!important;
-  position: fixed;
+  /*position: fixed;*/
   top: 140px;
   width: 100%;
   z-index: -1;
@@ -436,6 +436,10 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
   padding-right: 3px;
 }
 
+.a11y-paragraphs-tabs__wrapper .tabs-panel:not(:first-of-type) {
+  border-top: 1px solid #7abf23;
+}
+
 .a11y-paragraphs-tabs__wrapper .c-career--container-inner {
   padding: 0 5%;
   margin-bottom: 24px;
@@ -446,6 +450,64 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
 
 @media (min-width: 600px) {
 
+  .career-hero {
+    margin-top: 0;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    height: 300px;
+  }
+  .career-hero--image {
+    position: absolute;
+    top: 0;
+  }
+  .career-hero--image::after {
+    content: "";
+    position: absolute;
+    top: -64px;
+    left: 0;
+    width: 100%;
+    height: 110%;
+    background-color: rgba(9, 37, 62, 0.25);
+  }
+
+  .career-hero img {
+    background: #818181;
+    left: 0;
+    padding: 0!important;
+    position: absolute;
+    top: 0px;
+    z-index: -1;
+  }
+
+  .internal-fullWidthPromo-contentContainer.career-page {
+    background: none;
+    display: block;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    color: #fff;
+  }
+
+  .career-page .internal-fullWidthPromo-contentWrapper {
+    padding: 0;
+    margin: 0;
+  }
+  .career-page h1.internal-fullWidthPromo-title {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 55px;
+    text-align: left;
+    line-height: 53px;
+  }
+  .career-page .internal-fullWidthPromo-teaser {
+    font-family: 'Droid Serif', serif;
+    font-size: 24px;
+    text-align: left;
+    line-height: 28px;
+    max-width: 600px;
+  }
   .c-career-panel {
     clear: both;
     padding: 0 5%;
@@ -495,67 +557,15 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
 
 
 @media all and (min-width: 768px) {
-
   .career-hero {
     margin-top: 64px;
-    text-align: center;
-    position: relative;
-    width: 100%;
-    height: 640px;
   }
-  .career-hero--image::after {
-    content: "";
-    position: absolute;
-    top: -64px;
-    left: 0;
-    width: 100%;
-    height: 110%;
-    background-color: rgba(9, 37, 62, 0.25);
+  .career-hero--image {
+    top: 100px;
   }
-
-  .career-hero img {
-    background: #818181;
-    left: 0;
-    padding: 0!important;
-    position: absolute;
-    top: 0px;
-    z-index: -1;
-  }
-
-  .internal-fullWidthPromo-contentContainer.career-page {
-    background: none;
-    display: block;
-    position: absolute;
-    /*height: 100%;*/
-    width: 100%;
-    top: 0;
-    left: 0;
-    /*background: rgba(9, 37, 62, 0.25);*/
-    color: white;
-    /*display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;*/
-  }
-
   .career-page .internal-fullWidthPromo-contentWrapper {
     padding: 10%;
     margin: 0;
-  }
-  .career-page h1.internal-fullWidthPromo-title {
-    color: #fff;
-    text-transform: uppercase;
-    /*margin: 0 0 5px;*/
-    font-size: 55px;
-    text-align: left;
-    line-height: 53px;
-  }
-  .career-page .internal-fullWidthPromo-teaser {
-    font-family: 'Droid Serif', serif;
-    font-size: 24px;
-    text-align: left;
-    line-height: 28px;
-    max-width: 600px;
   }
   .c-career--section-title {
     margin: 0 0 20px;
@@ -573,6 +583,7 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
     margin-top: 48px;
     border-top: none;
   }
+
   .c-career--cta, .c-career--categories, .c-career--accolades {
     margin: 0;
     padding: 36px 5% 36px;
@@ -607,6 +618,14 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
 }
 
 @media all and (min-width: 1200px) {
+  .career-hero {
+    margin-top: 140px;
+    height: 640px;
+  }
+  .career-hero--image {
+    position: fixed;
+    top: 64px;
+  }
   .c-career--cta, .c-career--categories, .c-career--text-block, .c-career--accolades, .a11y-paragraphs-tabs__wrapper  {
     padding: 48px 0;
 
