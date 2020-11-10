@@ -83,8 +83,9 @@
 {% block titleSection %}
   {% if content.field_career_hero_image|render is not empty %}
   <div class="career-hero">
+    <div class="career-hero--image">
     {{ content.field_career_hero_image }}
-
+    </div>
 
   <div class="internal-fullWidthPromo-contentContainer career-page">
     <div class="globalWidth">
@@ -98,7 +99,7 @@
   </div>
 </div>
   {% else %}
-    <div class="internal-headerPanel-container">
+    <div class="internal-headerPanel-container career-page-alt">
       <div class="globalWidth">
         {% block title %}
           <h1>{{ title }}</h1>
