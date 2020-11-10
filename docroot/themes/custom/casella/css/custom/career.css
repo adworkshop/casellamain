@@ -441,20 +441,6 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
   margin-bottom: 24px;
 }
 
-@media (min-width: 768px) {
-  .a11y-paragraphs-tabs__wrapper .tabs-allowed .tabs-tab-list {
-    border-bottom: 6px solid #76bd22;
-  }
-  .a11y-paragraphs-tabs__wrapper .tabs-allowed .tabs-panel {
-    margin-top: 48px;
-    border-top: none;
-  }
-  .c-career--cta, .c-career--categories, .c-career--accolades {
-    margin: 0;
-    padding: 36px 5% 36px;
-    text-align: left;
-  }
-}
 
 /* MEDIA QUERIES */
 
@@ -504,6 +490,9 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
     padding: 0;
   }
 }
+
+
+
 
 @media all and (min-width: 768px) {
 
@@ -577,6 +566,44 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
   .c-career--text-block {
     margin: 24px 0;
   }
+  .a11y-paragraphs-tabs__wrapper .tabs-allowed .tabs-tab-list {
+    border-bottom: 6px solid #76bd22;
+  }
+  .a11y-paragraphs-tabs__wrapper .tabs-allowed .tabs-panel {
+    margin-top: 48px;
+    border-top: none;
+  }
+  .c-career--cta, .c-career--categories, .c-career--accolades {
+    margin: 0;
+    padding: 36px 5% 36px;
+    text-align: left;
+  }
+
+
+  .c-career--link-container ul, .c-career--accolades-container ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  li.c-career--link-items, li.c-career--accolades-items {
+    flex: 0 0 31%;
+    text-align: left;
+    padding-top: 15px;
+    margin-bottom: 2%;
+    margin-right: 6px;
+    height: 50px;
+    position: relative;
+  }
+  li.c-career--accolades-items {
+    height: 100%;
+  }
+
+  .c-career--accolades-desc, .c-career--accolades-image {
+    text-align: center;
+    margin-top: 24px;
+  }
 }
 
 @media all and (min-width: 1200px) {
@@ -602,31 +629,6 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
   }
   .c-career--tab-content .c-career-panel {
     padding: 0;
-  }
-
-  .c-career--link-container ul, .c-career--accolades-container ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 0;
-  }
-
-  li.c-career--link-items, li.c-career--accolades-items {
-    flex: 0 0 31%;
-    text-align: left;
-    padding-top: 15px;
-    margin-bottom: 2%;
-    margin-right: 6px;
-    height: 50px;
-    position: relative;
-  }
-  li.c-career--accolades-items {
-    height: 100%;
-  }
-
-  .c-career--accolades-desc, .c-career--accolades-image {
-    text-align: center;
-    margin-top: 24px;
   }
 
   li.c-career--link-items a, .c-career--search a {
