@@ -19,7 +19,11 @@
 
 .career-page .globalWidth {
   width: 100%;
-  padding: 0 5%;
+  padding: 0;
+}
+.career-page .internal-fullWidthPromo-contentWrapper {
+  padding: 0;
+  margin: 0 5%;
 }
 
 .internal-mainBody-container.career {
@@ -48,7 +52,7 @@
 
 .career-hero--image {
   background: #818181;
-  height: 180px;
+  height: 100%;
   left: 0;
   padding: 0!important;
   /*position: fixed;*/
@@ -94,7 +98,7 @@
 /* CAREER PARAGRAPH BUNDLES */
 
 /* PARAGRAPH CONTAINERS MOBILE */
-.c-career--cta, .c-career--categories, .c-career--accolades, .c-career--text-block {
+.c-career--cta, .c-career--categories, .c-career--accolades, .c-career--text-block, .a11y-paragraphs-tabs__wrapper {
   margin: 0;
   padding: 6px 5% 36px;
   text-align: left;
@@ -441,7 +445,7 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
 }
 
 .a11y-paragraphs-tabs__wrapper .c-career--container-inner {
-  padding: 0 5%;
+  /*padding: 0 5%;*/
   margin-bottom: 24px;
 }
 
@@ -455,7 +459,7 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
     text-align: center;
     position: relative;
     width: 100%;
-    height: 300px;
+    height: 280px;
   }
   .career-hero--image {
     position: absolute;
@@ -490,7 +494,7 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
   }
 
   .career-page .internal-fullWidthPromo-contentWrapper {
-    padding: 0;
+    padding: 0 5%;
     margin: 0;
   }
   .career-page h1.internal-fullWidthPromo-title {
@@ -545,7 +549,7 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
     margin: 9px 0;
   }
   .a11y-paragraphs-tabs__wrapper .c-career--container-inner {
-    padding: 0 3%;
+    /*padding: 0 3%;*/
   }
   .c-career--tab-content .c-career-panel {
     padding: 0;
@@ -557,18 +561,17 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
 
 @media all and (min-width: 768px) {
   .career-hero {
-    margin-top: 64px;
+    margin-top: 0;
   }
   .career-hero--image {
-    top: 100px;
+    top: 0;
   }
 
   .career-hero--image::after {
     height: 300px;
   }
-
   .career-page .internal-fullWidthPromo-contentWrapper {
-    padding: 10%;
+    padding: 0 5%;
     margin: 0;
   }
   .c-career--section-title {
@@ -634,7 +637,7 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
     height: 300px;
   }
   .career-page .internal-fullWidthPromo-contentWrapper {
-    padding: 3% 0;
+    padding: 0 5%;
     margin: 0;
   }
 }
@@ -650,18 +653,23 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
   }
 
   .career-hero--image::after {
-    height: 640px;
+    height: 680px;
   }
 
-  .c-career--cta, .c-career--categories, .c-career--text-block, .c-career--accolades, .a11y-paragraphs-tabs__wrapper  {
-    padding: 48px 0;
+  .career-page .internal-fullWidthPromo-contentWrapper {
+    padding: 10% 10%;
+    margin: 0;
+  }
+
+  .c-career--cta, .c-career-panel, .c-career--categories, .c-career--text-block, .c-career--accolades, .a11y-paragraphs-tabs__wrapper  {
+    padding: 48px 10%;
 
   }
   .c-career--text-block {
-    padding: 0 10%
+    /*padding: 0 10%*/
   }
   .c-career--container-inner {
-    padding: 0 10%;
+    /*padding: 0 10%;*/
   }
   .c-career-panel--inner {
     padding-bottom: 24px;
@@ -671,7 +679,7 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
     padding: 12px 0;
   }
   .a11y-paragraphs-tabs__wrapper .c-career--container-inner {
-    padding: 0 10%;
+    /*padding: 0 10%;*/
   }
   .c-career--tab-content .c-career-panel {
     padding: 0;
@@ -705,23 +713,38 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
 }
 
 @media (min-width: 1600px) {
-  .c-career--cta, .c-career--categories, .c-career--text-block, .c-career-panel, .c-career--accolades, .a11y-paragraphs-tabs__wrapper  {
-    /*padding: 48px 15%;*/
+  .career-hero {
+    margin-top: 140px;
+    height: 600px;
   }
-  .c-career--container-inner {
-    padding: 0 15%;
+  .career-hero--image {
+    position: fixed;
+    top: 64px;
+  }
+
+  .career-hero--image::after {
+    height: 680px;
+  }
+
+  .career-page .internal-fullWidthPromo-contentWrapper {
+    padding: 10% 15%;
+    margin: 0;
+  }
+  .c-career--cta, .c-career--categories, .c-career--text-block, .c-career-panel, .c-career--accolades, .a11y-paragraphs-tabs__wrapper  {
+    padding: 48px 15%;
   }
   .c-career-panel {
     padding: 0 15%;
   }
+  /*.c-career--container-inner {
+    padding: 0 15%;
+  }
+
   .a11y-paragraphs-tabs__wrapper .c-career--container-inner {
     padding: 0 15%;
-  }
+  }*/
   .c-career--tab-content .c-career-panel {
   padding: 0;
-  }
-  .career-page .internal-fullWidthPromo-contentWrapper {
-    padding: 0 15%;
   }
 }
 
