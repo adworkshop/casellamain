@@ -470,7 +470,8 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
     position: absolute;
     left: 0;
     width: 100%;
-    height: 300px;
+    /*height: 300px;*/
+    height: 100%;
     background-color: rgba(9, 37, 62, 0.25);
   }
 
@@ -568,7 +569,7 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
   }
 
   .career-hero--image::after {
-    height: 300px;
+    /*height: 300px;*/
   }
   .career-page .internal-fullWidthPromo-contentWrapper {
     padding: 0 5%;
@@ -634,7 +635,7 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
   }
 
   .career-hero--image::after {
-    height: 300px;
+    /*height: 300px;*/
   }
   .career-page .internal-fullWidthPromo-contentWrapper {
     padding: 0 5%;
@@ -642,10 +643,21 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
   }
 }
 
+@media all and (min-width: 1000px) {
+  .career-hero {
+    margin-top: 0;
+    height: 540px;
+  }
+  .career-page .internal-fullWidthPromo-contentWrapper {
+    padding: 60px 5%;
+    margin: 0;
+  }
+}
+
 @media all and (min-width: 1200px) {
   .career-hero {
     margin-top: 140px;
-    height: 640px;
+    height: 460px;
   }
   .career-hero--image {
     position: fixed;
@@ -653,11 +665,11 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
   }
 
   .career-hero--image::after {
-    height: 680px;
+    /*height: 680px;*/
   }
 
   .career-page .internal-fullWidthPromo-contentWrapper {
-    padding: 10% 10%;
+    padding: 5% 10%;
     margin: 0;
   }
 
@@ -712,6 +724,13 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
 
 }
 
+@media all and (min-width: 1400px) {
+  .career-hero {
+    margin-top: 140px;
+    height: 580px;
+  }
+}
+
 @media (min-width: 1600px) {
   .career-hero {
     margin-top: 140px;
@@ -723,7 +742,7 @@ li.c-career--link-items a:hover:after, .c-career--search a:hover:after {
   }
 
   .career-hero--image::after {
-    height: 680px;
+    /*height: 680px;*/
   }
 
   .career-page .internal-fullWidthPromo-contentWrapper {
