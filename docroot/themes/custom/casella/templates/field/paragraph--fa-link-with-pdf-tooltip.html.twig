@@ -6,10 +6,6 @@
   'featured-btnRow-IndBtn-container'
 ]
 %}
-
-
-<div class = "pg__container l_grid {{ content.field_pg_columns[0]['#markup'] }}">
-
 <div{{ attributes.addClass(classes) }}>
   <div class="featured-btnRow-IndBtn-innerContainer">
     <div class="featured-btnRow-IndBtn-wrapper">
@@ -20,12 +16,10 @@
           <section class="pdf-tooltip-{{ key + 1 }}">{{ item }}</section>
         {% endfor %}
       </div>
-      <div>
+      <a data-modal-open>
         <div class="featured-btnRow-IndBtn-icon"><span class="{{ link_class }}" aria-hidden="true"></span></div>
         <div class="featured-btnRow-IndBtn-title">{{ button_title }}</div>
-      </div>
+      </a>
     </div>
   </div>
 </div>
-</div>
-
