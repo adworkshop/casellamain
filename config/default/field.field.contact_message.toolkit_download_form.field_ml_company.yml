@@ -1,0 +1,19 @@
+uuid: 7a3545c3-872c-4210-927d-ff7d774c0bef
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.toolkit_download_form
+    - field.storage.contact_message.field_ml_company
+id: contact_message.toolkit_download_form.field_ml_company
+field_name: field_ml_company
+entity_type: contact_message
+bundle: toolkit_download_form
+label: 'Company/Organization:'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

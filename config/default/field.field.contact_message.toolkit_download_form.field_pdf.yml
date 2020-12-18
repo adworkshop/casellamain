@@ -1,0 +1,19 @@
+uuid: 94607f4a-17fa-4200-af1b-f3b2ef3804a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.toolkit_download_form
+    - field.storage.contact_message.field_pdf
+id: contact_message.toolkit_download_form.field_pdf
+field_name: field_pdf
+entity_type: contact_message
+bundle: toolkit_download_form
+label: PDF
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
