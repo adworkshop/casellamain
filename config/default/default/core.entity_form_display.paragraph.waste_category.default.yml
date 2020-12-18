@@ -1,0 +1,31 @@
+uuid: c77236ef-a438-4e0d-b8a3-372041ec5156
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.waste_category.field_waste_category
+    - field.field.paragraph.waste_category.field_waste_description
+    - paragraphs.paragraphs_type.waste_category
+id: paragraph.waste_category.default
+targetEntityType: paragraph
+bundle: waste_category
+mode: default
+content:
+  field_waste_category:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_waste_description:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

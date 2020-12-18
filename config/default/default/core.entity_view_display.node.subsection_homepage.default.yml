@@ -1,0 +1,207 @@
+uuid: d2b57457-abae-40cc-bc67-0ad25957e6c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.subsection_homepage.body
+    - field.field.node.subsection_homepage.field_breadcrumb_override
+    - field.field.node.subsection_homepage.field_description
+    - field.field.node.subsection_homepage.field_earthlife_description
+    - field.field.node.subsection_homepage.field_earthlife_image
+    - field.field.node.subsection_homepage.field_earthlife_link
+    - field.field.node.subsection_homepage.field_earthlife_links
+    - field.field.node.subsection_homepage.field_earthlife_title
+    - field.field.node.subsection_homepage.field_full_width_promotion
+    - field.field.node.subsection_homepage.field_h1_override
+    - field.field.node.subsection_homepage.field_icon
+    - field.field.node.subsection_homepage.field_link
+    - field.field.node.subsection_homepage.field_meta_tag
+    - field.field.node.subsection_homepage.field_promotion_description
+    - field.field.node.subsection_homepage.field_promotion_image
+    - field.field.node.subsection_homepage.field_promotion_link
+    - field.field.node.subsection_homepage.field_subsection
+    - field.field.node.subsection_homepage.field_subtitle
+    - field.field.node.subsection_homepage.field_title
+    - node.type.subsection_homepage
+  module:
+    - entity_reference_revisions
+    - image
+    - link
+    - metatag
+    - options
+    - text
+    - user
+id: node.subsection_homepage.default
+targetEntityType: node
+bundle: subsection_homepage
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_breadcrumb_override:
+    weight: 115
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_description:
+    weight: 105
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_earthlife_description:
+    weight: 113
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_earthlife_image:
+    weight: 118
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_earthlife_link:
+    weight: 111
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_earthlife_links:
+    type: entity_reference_revisions_entity_view
+    weight: 114
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_earthlife_title:
+    weight: 112
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_full_width_promotion:
+    weight: 116
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_h1_override:
+    weight: 102
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_icon:
+    weight: 117
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_link:
+    weight: 106
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_meta_tag:
+    weight: 119
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
+  field_promotion_description:
+    weight: 110
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_promotion_image:
+    weight: 108
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_promotion_link:
+    weight: 109
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_subsection:
+    weight: 103
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_subtitle:
+    weight: 107
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_title:
+    weight: 104
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

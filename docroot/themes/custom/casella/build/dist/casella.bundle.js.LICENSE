@@ -1,0 +1,557 @@
+/******/
+
+// webpackBootstrap
+
+// The module cache
+
+// The require function
+
+// Check if module is in cache
+
+// Create a new module (and put it into the cache)
+
+// Execute the module function
+
+// Return the exports of the module
+
+// Flag the module as loaded
+
+// expose the modules object (__webpack_modules__)
+
+// Load entry module and return exports
+
+// expose the module cache
+
+// define getter function for harmony exports
+
+// define __esModule on exports
+
+// create a fake namespace object
+
+// mode & 1: value is a module id, require it
+
+// mode & 2: merge all properties of value into the ns
+
+// mode & 4: return value when already ns object
+
+// mode & 8|1: behave like require
+
+// getDefaultExport function for compatibility with non-harmony modules
+
+// Object.prototype.hasOwnProperty.call
+
+// __webpack_public_path__
+
+/************************************************************************/
+
+/* 0 */
+
+/***/
+
+/* WEBPACK VAR INJECTION */
+
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+
+// eslint-disable-next-line no-undef
+
+// eslint-disable-next-line no-new-func
+
+/* 1 */
+
+/* 2 */
+
+/* 3 */
+
+/* 4 */
+
+/* 5 */
+
+/* 6 */
+
+// Thank's IE8 for his funny defineProperty
+
+/* 7 */
+
+/* 8 */
+
+// `Object.defineProperty` method
+
+// https://tc39.github.io/ecma262/#sec-object.defineproperty
+
+/* empty */
+
+/* 9 */
+
+/* 10 */
+
+/* 11 */
+
+// `ToInteger` abstract operation
+
+// https://tc39.github.io/ecma262/#sec-tointeger
+
+/* 12 */
+
+// `RequireObjectCoercible` abstract operation
+
+// https://tc39.github.io/ecma262/#sec-requireobjectcoercible
+
+/* 13 */
+
+/* 14 */
+
+// `ToPrimitive` abstract operation
+
+// https://tc39.github.io/ecma262/#sec-toprimitive
+
+// instead of the ES6 spec version, we didn't implement @@toPrimitive case
+
+// and the second argument - flag - preferred type is a string
+
+/* 15 */
+
+/* 16 */
+
+/* 17 */
+
+/* 18 */
+
+// toObject with fallback for non-array-like ES3 strings
+
+/* 19 */
+
+// IE8- don't enum bug keys
+
+/* 20 */
+
+/*
+  options.target      - name of the target object
+  options.global      - target is the global object
+  options.stat        - export as static methods of target
+  options.proto       - export as prototype methods of target
+  options.real        - real prototype method for the `pure` version
+  options.forced      - export even if the native feature is available
+  options.bind        - bind methods to the target, required for the `pure` version
+  options.wrap        - wrap constructors to preventing global pollution, required for the `pure` version
+  options.unsafe      - use the simple assignment of property instead of delete + defineProperty
+  options.sham        - add a flag to not completely full polyfills
+  options.enumerable  - export as enumerable property
+  options.noTargetGet - prevent calling a getter on target
+*/
+
+// contained in target
+
+// add a flag to not completely full polyfills
+
+// extend global
+
+/* 21 */
+
+/* 22 */
+
+// `ToLength` abstract operation
+
+// https://tc39.github.io/ecma262/#sec-tolength
+
+// 2 ** 53 - 1 == 9007199254740991
+
+/* 23 */
+
+// `ToObject` abstract operation
+
+// https://tc39.github.io/ecma262/#sec-toobject
+
+/* 24 */
+
+/* 25 */
+
+// this helper broken in `3.4.1-3.4.4`, so we can't use `shared` helper
+
+/* 26 */
+
+/* 27 */
+
+/* 28 */
+
+/* 29 */
+
+/* 30 */
+
+/* 31 */
+
+// `Object.getOwnPropertyDescriptor` method
+
+// https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptor
+
+/* 32 */
+
+/* 33 */
+
+/* 34 */
+
+/* 35 */
+
+// Don't enum bug & hidden keys
+
+/* 36 */
+
+// Safari 8 has buggy iterators w/o `next`
+
+// 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
+
+/* 37 */
+
+// `Object.getPrototypeOf` method
+
+// https://tc39.github.io/ecma262/#sec-object.getprototypeof
+
+/* 38 */
+
+// Chrome 38 Symbol has incorrect toString conversion
+
+/* 39 */
+
+/* 40 */
+
+// optional / simple context binding
+
+/* 41 */
+
+/* 42 */
+
+// fallback for non-array-like ES3 and non-enumerable old V8 strings
+
+// throws an error in rhino, see https://github.com/mozilla/rhino/issues/346
+
+// eslint-disable-next-line no-prototype-builtins
+
+/* 43 */
+
+/* 44 */
+
+/* 45 */
+
+// `String.prototype[@@iterator]` method
+
+// https://tc39.github.io/ecma262/#sec-string.prototype-@@iterator
+
+// `%StringIteratorPrototype%.next` method
+
+// https://tc39.github.io/ecma262/#sec-%stringiteratorprototype%.next
+
+/* 46 */
+
+// `String.prototype.codePointAt` method
+
+// https://tc39.github.io/ecma262/#sec-string.prototype.codepointat
+
+// `String.prototype.at` method
+
+// https://github.com/mathiasbynens/String.prototype.at
+
+/* 47 */
+
+/* 48 */
+
+// This works in non-strict mode
+
+// This works if eval is allowed (see CSP)
+
+// This works if the window reference is available
+
+// g can still be undefined, but nothing to do about it...
+
+// We return undefined, instead of nothing here, so it's
+
+// easier to handle this case. if(!global) { ...}
+
+/* 49 */
+
+// export additional methods
+
+// fix native
+
+// Set @@toStringTag to native iterators
+
+// fix Array#{values, @@iterator}.name in V8 / FF
+
+// define iterator
+
+/* 50 */
+
+// `Object.prototype.propertyIsEnumerable` method implementation
+
+// https://tc39.github.io/ecma262/#sec-object.prototype.propertyisenumerable
+
+/* 51 */
+
+/* 52 */
+
+// all object keys, includes non-enumerable and symbols
+
+/* 53 */
+
+// `Object.getOwnPropertyNames` method
+
+// https://tc39.github.io/ecma262/#sec-object.getownpropertynames
+
+/* 54 */
+
+// Array#includes uses SameValueZero equality algorithm
+
+// eslint-disable-next-line no-self-compare
+
+// Array#indexOf ignores holes, Array#includes - not
+
+// `Array.prototype.includes` method
+
+// https://tc39.github.io/ecma262/#sec-array.prototype.includes
+
+// `Array.prototype.indexOf` method
+
+// https://tc39.github.io/ecma262/#sec-array.prototype.indexof
+
+/* 55 */
+
+// Helper for a popular repeating case of the spec:
+
+// Let integer be ? ToInteger(index).
+
+// If integer < 0, let result be max((length + integer), 0); else let result be min(integer, length).
+
+/* 56 */
+
+/* 57 */
+
+/* 58 */
+
+/* 59 */
+
+/* 60 */
+
+/* 61 */
+
+/* global ActiveXObject */
+
+/* ignore */
+
+// avoid memory leak
+
+// https://github.com/zloirock/core-js/issues/475
+
+// `Object.create` method
+
+// https://tc39.github.io/ecma262/#sec-object.create
+
+// add "__proto__" for Object.getPrototypeOf polyfill
+
+/* 62 */
+
+// `Object.defineProperties` method
+
+// https://tc39.github.io/ecma262/#sec-object.defineproperties
+
+/* 63 */
+
+// `Object.keys` method
+
+// https://tc39.github.io/ecma262/#sec-object.keys
+
+/* 64 */
+
+/* 65 */
+
+// `Object.setPrototypeOf` method
+
+// https://tc39.github.io/ecma262/#sec-object.setprototypeof
+
+// Works with __proto__ only. Old v8 can't work with null proto objects.
+
+/* eslint-disable no-proto */
+
+/* 66 */
+
+/* 67 */
+
+// `Array.from` method
+
+// https://tc39.github.io/ecma262/#sec-array.from
+
+/* 68 */
+
+// `Array.from` method implementation
+
+/* , mapfn = undefined, thisArg = undefined */
+
+// if the target is not iterable or it's an array with the default iterator - use a simple case
+
+/* 69 */
+
+/* 70 */
+
+// call something on iterator step with safe closing on error
+
+// 7.4.6 IteratorClose(iterator, completion)
+
+/* 71 */
+
+// check on default Array iterator
+
+/* 72 */
+
+/* 73 */
+
+/* 74 */
+
+// getting tag from ES6+ `Object.prototype.toString`
+
+/* 75 */
+
+/* 76 */
+
+// eslint-disable-next-line no-throw-literal
+
+/* 77 */
+
+/*
+    JavaScript autoComplete v1.0.4
+    Copyright (c) 2014 Simon Steinberger / Pixabay
+    GitHub: https://github.com/Pixabay/JavaScript-autoComplete
+    License: http://www.opensource.org/licenses/mit-license.php
+*/
+
+// "use strict";
+
+// escape special characters
+
+// init
+
+// create suggestions container "sc"
+
+// outerWidth
+
+// down (40), up (38)
+
+// first : last
+
+// no requests if previous suggestions were empty
+
+// public destroy method
+
+// helpers
+
+// if (el.removeEventListener) not working in IE11
+
+/* 78 */
+
+/* 79 */
+
+/* 80 */
+
+/* 81 */
+
+/* 82 */
+
+/* 83 */
+
+/* 84 */
+
+// `Array.prototype.some` method
+
+// https://tc39.github.io/ecma262/#sec-array.prototype.some
+
+/* , thisArg */
+
+/* 85 */
+
+// map
+
+// some
+
+// find
+
+// findIndex
+
+// filter
+
+// every
+
+// `Array.prototype.forEach` method
+
+// https://tc39.github.io/ecma262/#sec-array.prototype.foreach
+
+// `Array.prototype.map` method
+
+// https://tc39.github.io/ecma262/#sec-array.prototype.map
+
+// `Array.prototype.filter` method
+
+// https://tc39.github.io/ecma262/#sec-array.prototype.filter
+
+// `Array.prototype.every` method
+
+// https://tc39.github.io/ecma262/#sec-array.prototype.every
+
+// `Array.prototype.find` method
+
+// https://tc39.github.io/ecma262/#sec-array.prototype.find
+
+// `Array.prototype.findIndex` method
+
+// https://tc39.github.io/ecma262/#sec-array.prototype.findIndex
+
+/* 86 */
+
+// `ArraySpeciesCreate` abstract operation
+
+// https://tc39.github.io/ecma262/#sec-arrayspeciescreate
+
+// cross-realm fallback
+
+/* 87 */
+
+// `IsArray` abstract operation
+
+// https://tc39.github.io/ecma262/#sec-isarray
+
+/* 88 */
+
+// eslint-disable-next-line no-useless-call,no-throw-literal
+
+/* 89 */
+
+/* 90 */
+
+/* 91 */
+
+// extracted by mini-css-extract-plugin
+
+/* 92 */
+
+// ESM COMPAT FLAG
+
+// EXTERNAL MODULE: ./node_modules/core-js/features/array/some.js
+
+// EXTERNAL MODULE: ./node_modules/core-js/features/array/from.js
+
+/*#__PURE__*/
+
+/*jslint es6 */
+
+// CONCATENATED MODULE: ./src/components/calculator.ts
+
+/* harmony default export */
+
+// CONCATENATED MODULE: ./src/casella.ts
+
+// private selector: string = 'input[type="search"]';
+
+// this.matches = [];
+
+// let whichKey = event.keyCode;
+
+// let allowedKeysRange = range(65, 90);
+
+/* if ( !allowedKeysRange.includes(whichKey) ) {
+          return false;
+        } */

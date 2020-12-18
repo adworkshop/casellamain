@@ -1,0 +1,59 @@
+uuid: 1cf3be0f-a6f4-43df-8e34-f309761d1341
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.max_1024
+    - image.style.max_1100
+    - image.style.max_1200
+    - image.style.max_320
+    - image.style.max_400
+    - image.style.max_768
+    - image.style.max_960
+  theme:
+    - casella
+id: freeform_panel_header
+label: 'Freeform Panel Header'
+image_style_mappings:
+  -
+    breakpoint_id: casella.1800
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: max_1200
+  -
+    breakpoint_id: bartik.1400
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: max_1100
+  -
+    breakpoint_id: casella.1200
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: max_768
+  -
+    breakpoint_id: bartik.1024
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: max_1100
+  -
+    breakpoint_id: casella.960
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: max_1024
+  -
+    breakpoint_id: bartik.768
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: max_960
+  -
+    breakpoint_id: casella.480
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: max_768
+  -
+    breakpoint_id: casella.mobile
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: max_400
+breakpoint_group: casella
+fallback_image_style: max_320

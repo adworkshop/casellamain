@@ -1,0 +1,18 @@
+uuid: 15160718-358b-42bc-a237-18b7e9bfc458
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.towns_cities
+id: taxonomy_term.towns_cities.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: towns_cities
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

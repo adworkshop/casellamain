@@ -1,0 +1,11 @@
+uuid: eabf69c1-16b0-4be3-9085-4c560f0a0127
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.fa_icon_links
+id: block_content.fa_icon_links
+target_entity_type_id: block_content
+target_bundle: fa_icon_links
+default_langcode: site_default
+language_alterable: false

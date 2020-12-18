@@ -1,0 +1,60 @@
+uuid: 7ce37dea-474c-4cc0-a74f-6d2eb68fe1a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_solution_resources
+    - node.type.solution
+    - paragraphs.paragraphs_type.solution_resource
+  module:
+    - entity_reference_revisions
+id: node.solution.field_solution_resources
+field_name: field_solution_resources
+entity_type: node
+bundle: solution
+label: 'Solution Resources'
+description: 'Only the top 4 solution resources will be displayed.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      solution_resource: solution_resource
+    target_bundles_drag_drop:
+      case_studies:
+        weight: 12
+        enabled: false
+      free_form:
+        weight: 13
+        enabled: false
+      image_gallery:
+        weight: 14
+        enabled: false
+      image_with_caption:
+        weight: 15
+        enabled: false
+      large_promotion:
+        weight: 16
+        enabled: false
+      products:
+        weight: 17
+        enabled: false
+      slider_image:
+        weight: 18
+        enabled: false
+      solution_resource:
+        enabled: true
+        weight: 19
+      testimonials:
+        weight: 20
+        enabled: false
+      vertical:
+        weight: 21
+        enabled: false
+      video:
+        weight: 22
+        enabled: false
+field_type: entity_reference_revisions

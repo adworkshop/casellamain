@@ -1,0 +1,41 @@
+uuid: b794f508-618f-44c0-a174-00f1ee513722
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.vertical.field_image
+    - field.field.paragraph.vertical.field_link
+    - paragraphs.paragraphs_type.vertical
+    - responsive_image.styles.homepage_vertical
+  module:
+    - link
+    - responsive_image
+id: paragraph.vertical.default
+targetEntityType: paragraph
+bundle: vertical
+mode: default
+content:
+  field_image:
+    weight: 0
+    label: hidden
+    settings:
+      responsive_image_style: homepage_vertical
+      image_link: ''
+    third_party_settings: {  }
+    type: responsive_image
+    region: content
+  field_link:
+    weight: 1
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+hidden:
+  created: true
+  uid: true

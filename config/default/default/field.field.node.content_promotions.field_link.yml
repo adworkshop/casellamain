@@ -1,0 +1,23 @@
+uuid: 02ff264d-8efe-40d5-9cee-a5085eee0ebf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_link
+    - node.type.content_promotions
+  module:
+    - link
+id: node.content_promotions.field_link
+field_name: field_link
+entity_type: node
+bundle: content_promotions
+label: Link
+description: 'Optional URL, if entered will output as button below content'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

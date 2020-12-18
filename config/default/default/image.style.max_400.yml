@@ -1,0 +1,15 @@
+uuid: 7badb4ba-bc82-4f40-b4bc-5fcc34852f03
+langcode: en
+status: true
+dependencies: {  }
+name: max_400
+label: 'max 400'
+effects:
+  8ef0b0ca-6f9a-4305-ba4d-852e686d56de:
+    uuid: 8ef0b0ca-6f9a-4305-ba4d-852e686d56de
+    id: image_scale
+    weight: 1
+    data:
+      width: 400
+      height: null
+      upscale: false

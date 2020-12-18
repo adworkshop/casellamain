@@ -1,0 +1,66 @@
+uuid: 41730ac2-2c27-4bb8-9a4c-cf21b23b5f51
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_upper_buttons
+    - node.type.faq_landing_page
+    - paragraphs.paragraphs_type.upper_button
+  module:
+    - entity_reference_revisions
+id: node.faq_landing_page.field_upper_buttons
+field_name: field_upper_buttons
+entity_type: node
+bundle: faq_landing_page
+label: 'Upper Buttons'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      upper_button: upper_button
+    target_bundles_drag_drop:
+      case_studies:
+        weight: 14
+        enabled: false
+      free_form:
+        weight: 15
+        enabled: false
+      image_gallery:
+        weight: 16
+        enabled: false
+      image_with_caption:
+        weight: 17
+        enabled: false
+      large_promotion:
+        weight: 18
+        enabled: false
+      products:
+        weight: 19
+        enabled: false
+      recommendation:
+        weight: 20
+        enabled: false
+      slider_image:
+        weight: 21
+        enabled: false
+      solution_resource:
+        weight: 22
+        enabled: false
+      testimonials:
+        weight: 23
+        enabled: false
+      upper_button:
+        enabled: true
+        weight: 24
+      vertical:
+        weight: 25
+        enabled: false
+      video:
+        weight: 26
+        enabled: false
+field_type: entity_reference_revisions

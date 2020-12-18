@@ -1,0 +1,23 @@
+uuid: 9fb6d519-4b9a-4fc3-b9cb-21310c024e0b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_feature_the_image
+    - node.type.product
+id: node.product.field_feature_the_image
+field_name: field_feature_the_image
+entity_type: node
+bundle: product
+label: 'Feature the Image'
+description: 'Check this box to feature the Image, otherwise it will be shown in the sidebar.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Feature the Image'
+  off_label: 'Off'
+field_type: boolean

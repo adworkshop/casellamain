@@ -1,0 +1,23 @@
+uuid: 2bfb8e91-5733-4d82-94ce-50ccc48f5e97
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_earthlife_link
+    - node.type.subsection_homepage
+  module:
+    - link
+id: node.subsection_homepage.field_earthlife_link
+field_name: field_earthlife_link
+entity_type: node
+bundle: subsection_homepage
+label: 'Earthlife Link'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

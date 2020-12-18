@@ -1,0 +1,90 @@
+uuid: 1cae35d1-3a20-4ab7-9549-23c8fa3357f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_social_icon_links
+    - node.type.casella_globals
+    - paragraphs.paragraphs_type.social_link
+  module:
+    - entity_reference_revisions
+id: node.casella_globals.field_social_icon_links
+field_name: field_social_icon_links
+entity_type: node
+bundle: casella_globals
+label: 'Social Icon Links'
+description: 'Link anchor text will be ignored. Only the URL and icon will be used.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      social_link: social_link
+    target_bundles_drag_drop:
+      case_studies:
+        weight: 21
+        enabled: false
+      earthlink_link:
+        weight: 22
+        enabled: false
+      faq_category:
+        weight: 23
+        enabled: false
+      faq_question:
+        weight: 24
+        enabled: false
+      free_form:
+        weight: 25
+        enabled: false
+      holiday:
+        weight: 26
+        enabled: false
+      image_gallery:
+        weight: 27
+        enabled: false
+      image_with_caption:
+        weight: 28
+        enabled: false
+      large_promotion:
+        weight: 29
+        enabled: false
+      link_with_icon:
+        weight: 30
+        enabled: false
+      organics_updates:
+        weight: 31
+        enabled: false
+      products:
+        weight: 32
+        enabled: false
+      recommendation:
+        weight: 33
+        enabled: false
+      services:
+        weight: 34
+        enabled: false
+      slider_image:
+        weight: 35
+        enabled: false
+      solution_resource:
+        weight: 36
+        enabled: false
+      testimonials:
+        weight: 37
+        enabled: false
+      social_link:
+        enabled: true
+        weight: 37
+      upper_button:
+        weight: 38
+        enabled: false
+      vertical:
+        weight: 39
+        enabled: false
+      video:
+        weight: 40
+        enabled: false
+field_type: entity_reference_revisions

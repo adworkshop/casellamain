@@ -1,0 +1,6 @@
+uuid: 1c5afbf5-a474-4996-8882-3fcd378351eb
+langcode: en
+status: true
+dependencies: {  }
+id: image_with_caption
+label: 'Image with Caption'

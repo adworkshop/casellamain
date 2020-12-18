@@ -1,0 +1,57 @@
+uuid: 3359e356-f69a-4f90-ba32-9ad49300f52a
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.1000x625
+    - image.style.1200x750
+    - image.style.400x250
+    - image.style.800x500
+    - image.style.920x575
+  theme:
+    - casella
+id: organics_service_tabs
+label: 'Organics Service Tabs'
+image_style_mappings:
+  -
+    breakpoint_id: casella.1800
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 1200x750
+  -
+    breakpoint_id: bartik.1400
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 1000x625
+  -
+    breakpoint_id: casella.1200
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 920x575
+  -
+    breakpoint_id: bartik.1024
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 800x500
+  -
+    breakpoint_id: casella.960
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 1000x625
+  -
+    breakpoint_id: bartik.768
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 1000x625
+  -
+    breakpoint_id: casella.480
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 800x500
+  -
+    breakpoint_id: casella.mobile
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 400x250
+breakpoint_group: casella
+fallback_image_style: 400x250

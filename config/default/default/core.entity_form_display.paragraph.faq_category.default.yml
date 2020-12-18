@@ -1,0 +1,56 @@
+uuid: 1000d130-692e-485d-9ace-d958883e8fef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.faq_category.field_category
+    - field.field.paragraph.faq_category.field_questions
+    - paragraphs.paragraphs_type.faq_category
+  module:
+    - field_group
+    - paragraphs
+third_party_settings:
+  field_group:
+    group_content:
+      children:
+        - field_questions
+      parent_name: ''
+      weight: 1
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: Content
+id: paragraph.faq_category.default
+targetEntityType: paragraph
+bundle: faq_category
+mode: default
+content:
+  field_category:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_questions:
+    type: entity_reference_paragraphs
+    weight: 2
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+    region: content
+  translation:
+    weight: 10
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -1,0 +1,47 @@
+uuid: ae1b745c-8d27-415d-a4e3-5c702a2b92b1
+langcode: en
+status: true
+dependencies: {  }
+label: 'Earthlife Products'
+id: earthlife_products
+description: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'public://feeds'
+parser: syndication
+parser_configuration: {  }
+processor: 'entity:node'
+processor_configuration:
+  update_existing: 1
+  expire: -1
+  owner_id: 1
+  authorize: true
+  skip_hash_check: false
+  values:
+    type: product
+mappings:
+  -
+    target: title
+    map:
+      value: title
+    unique: {  }
+  -
+    target: body
+    map:
+      value: description
+      summary: ''
+    settings:
+      format: basic_html
+  -
+    target: field_teaser
+    map:
+      value: description
+  -
+    target: field_product_category
+    map:
+      target_id: tags
+    settings:
+      reference_by: title
+      autocreate: false

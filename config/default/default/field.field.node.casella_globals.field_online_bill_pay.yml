@@ -1,0 +1,23 @@
+uuid: 43c8e64c-dec5-48cd-98c4-528d9e3f1e14
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_online_bill_pay
+    - node.type.casella_globals
+  module:
+    - link
+id: node.casella_globals.field_online_bill_pay
+field_name: field_online_bill_pay
+entity_type: node
+bundle: casella_globals
+label: 'Online Bill Pay'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

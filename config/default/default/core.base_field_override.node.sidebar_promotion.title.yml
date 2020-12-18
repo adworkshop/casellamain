@@ -1,0 +1,18 @@
+uuid: 7e4a2123-861c-44f0-96f1-8f505a148389
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.sidebar_promotion
+id: node.sidebar_promotion.title
+field_name: title
+entity_type: node
+bundle: sidebar_promotion
+label: 'Admin Title'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

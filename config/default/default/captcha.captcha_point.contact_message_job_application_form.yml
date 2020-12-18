@@ -1,0 +1,7 @@
+uuid: 80295475-38dd-4a6a-abf3-664b7d6b8c31
+langcode: en
+status: true
+dependencies: {  }
+formId: contact_message_job_application_form
+captchaType: recaptcha/reCAPTCHA
+label: contact_message_job_application_form

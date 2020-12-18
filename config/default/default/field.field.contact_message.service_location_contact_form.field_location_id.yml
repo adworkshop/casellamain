@@ -1,0 +1,19 @@
+uuid: 70626400-0981-4581-a36b-2d89a0916ee5
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.service_location_contact_form
+    - field.storage.contact_message.field_location_id
+id: contact_message.service_location_contact_form.field_location_id
+field_name: field_location_id
+entity_type: contact_message
+bundle: service_location_contact_form
+label: 'Location ID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,9 @@
+uuid: ed1401df-b19a-4e76-87aa-e5d11e0fc696
+langcode: en
+status: true
+dependencies: {  }
+name: 'Job Status'
+vid: job_status
+description: ''
+hierarchy: 0
+weight: 0

@@ -1,0 +1,49 @@
+uuid: 573460af-5eee-4701-956f-b79fc12fd504
+langcode: en
+status: true
+dependencies: {  }
+label: Testimonials
+id: testimonials
+description: 'import from casellaorganics.com'
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'public://feeds'
+parser: syndication
+parser_configuration: {  }
+processor: 'entity:node'
+processor_configuration:
+  update_existing: 1
+  expire: -1
+  owner_id: 121
+  authorize: true
+  skip_hash_check: false
+  values:
+    type: testimonial
+mappings:
+  -
+    target: title
+    map:
+      value: title
+    unique: {  }
+  -
+    target: field_attribution
+    map:
+      value: title
+    unique: {  }
+  -
+    target: field_quotation
+    map:
+      value: description
+  -
+    target: created
+    map:
+      value: timestamp
+  -
+    target: feeds_item
+    map:
+      url: ''
+      guid: guid
+    unique:
+      guid: '1'

@@ -1,0 +1,18 @@
+uuid: d705815f-854d-4332-94a7-d04897f1b65e
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.post_categories
+id: taxonomy_term.post_categories.name
+field_name: name
+entity_type: taxonomy_term
+bundle: post_categories
+label: Name
+description: 'The term name.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

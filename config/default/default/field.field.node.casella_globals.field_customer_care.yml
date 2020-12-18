@@ -1,0 +1,23 @@
+uuid: 0d5ccd9a-ed63-4066-ac6a-a336e0372b4d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_customer_care
+    - node.type.casella_globals
+  module:
+    - link
+id: node.casella_globals.field_customer_care
+field_name: field_customer_care
+entity_type: node
+bundle: casella_globals
+label: 'Customer Care'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

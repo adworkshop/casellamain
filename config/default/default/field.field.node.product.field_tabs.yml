@@ -1,0 +1,98 @@
+uuid: b17795c3-c1f4-4943-83fb-972b508bb3ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tabs
+    - node.type.product
+    - paragraphs.paragraphs_type.case_studies
+    - paragraphs.paragraphs_type.free_form
+    - paragraphs.paragraphs_type.image_gallery
+    - paragraphs.paragraphs_type.organics_updates
+    - paragraphs.paragraphs_type.products
+    - paragraphs.paragraphs_type.services
+    - paragraphs.paragraphs_type.testimonials
+    - paragraphs.paragraphs_type.video
+  module:
+    - entity_reference_revisions
+id: node.product.field_tabs
+field_name: field_tabs
+entity_type: node
+bundle: product
+label: Tabs
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      case_studies: case_studies
+      free_form: free_form
+      image_gallery: image_gallery
+      products: products
+      testimonials: testimonials
+      video: video
+      organics_updates: organics_updates
+      services: services
+    target_bundles_drag_drop:
+      case_studies:
+        enabled: true
+        weight: 12
+      free_form:
+        enabled: true
+        weight: 13
+      image_gallery:
+        enabled: true
+        weight: 14
+      image_with_caption:
+        weight: 15
+        enabled: false
+      large_promotion:
+        weight: 16
+        enabled: false
+      products:
+        enabled: true
+        weight: 17
+      slider_image:
+        weight: 18
+        enabled: false
+      solution_resource:
+        weight: 19
+        enabled: false
+      testimonials:
+        enabled: true
+        weight: 20
+      vertical:
+        weight: 21
+        enabled: false
+      earthlink_link:
+        weight: 21
+        enabled: false
+      video:
+        enabled: true
+        weight: 22
+      faq_category:
+        weight: 22
+        enabled: false
+      faq_question:
+        weight: 23
+        enabled: false
+      holiday:
+        weight: 25
+        enabled: false
+      organics_updates:
+        enabled: true
+        weight: 29
+      recommendation:
+        weight: 31
+        enabled: false
+      services:
+        enabled: true
+        weight: 32
+      upper_button:
+        weight: 36
+        enabled: false
+field_type: entity_reference_revisions

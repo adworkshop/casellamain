@@ -1,0 +1,27 @@
+uuid: 4432ffa2-02d4-4047-91d5-52224d258917
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.full_width_promotion.field_description
+    - field.field.node.full_width_promotion.field_image
+    - field.field.node.full_width_promotion.field_link
+    - field.field.node.full_width_promotion.field_subtitle
+    - node.type.full_width_promotion
+  module:
+    - user
+id: node.full_width_promotion.teaser
+targetEntityType: node
+bundle: full_width_promotion
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_description: true
+  field_image: true
+  field_link: true
+  field_subtitle: true
+  langcode: true

@@ -1,0 +1,20 @@
+uuid: 3ed3cb82-2aa3-42f9-baac-e2a86928b49c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - paragraphs
+id: paragraph.field_testimonials
+field_name: field_testimonials
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

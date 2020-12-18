@@ -37,6 +37,7 @@ Author URI: http://www.adworkshop.com
 /*Featured Content*/
 .internal-mainBody-featuredContent-container {font-size:16px; line-height:1.7; font-family: 'Droid Serif', serif; margin:0 0 35px;}
 .internal-mainBody-featuredContent-container p:last-of-type {margin:0;}
+.internal-mainBody-featuredContent-container p {font-size: 1rem;}
 
 /*General Content*/
 .internal-mainBody-generalTxt-container {font-size:13px; line-height:1.7; font-family: 'Droid Serif', serif;}

@@ -1,0 +1,20 @@
+uuid: 766b7e36-a66c-4995-969c-4cb2e2fc63c1
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - earthlife
+      - main
+      - organics
+    parent: 'main:'
+name: Location
+type: location
+description: 'A service provider location that associates with a google place. Contains contact info and associated towns and can be found in the provider or location searches.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

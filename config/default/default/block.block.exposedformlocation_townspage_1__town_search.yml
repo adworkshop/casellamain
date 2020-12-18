@@ -1,0 +1,29 @@
+uuid: 140e5e08-8b13-4004-b43a-2fefd79a6ee4
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.location_towns
+  module:
+    - system
+    - views
+  theme:
+    - casella
+id: exposedformlocation_townspage_1__town_search
+theme: casella
+region: node_content
+weight: -4
+provider: null
+plugin: 'views_exposed_filter_block:location_towns-page_1'
+settings:
+  id: 'views_exposed_filter_block:location_towns-page_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/2051
+    negate: false
+    context_mapping: {  }

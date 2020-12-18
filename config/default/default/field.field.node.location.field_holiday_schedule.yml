@@ -1,0 +1,81 @@
+uuid: 31891813-0482-4a64-ae65-05ac73946740
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_holiday_schedule
+    - node.type.location
+    - paragraphs.paragraphs_type.holiday
+  module:
+    - entity_reference_revisions
+id: node.location.field_holiday_schedule
+field_name: field_holiday_schedule
+entity_type: node
+bundle: location
+label: 'Holiday Schedule'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      holiday: holiday
+    target_bundles_drag_drop:
+      case_studies:
+        weight: 19
+        enabled: false
+      earthlink_link:
+        weight: 20
+        enabled: false
+      faq_category:
+        weight: 21
+        enabled: false
+      faq_question:
+        weight: 22
+        enabled: false
+      free_form:
+        weight: 23
+        enabled: false
+      holiday:
+        enabled: true
+        weight: 24
+      image_gallery:
+        weight: 25
+        enabled: false
+      image_with_caption:
+        weight: 26
+        enabled: false
+      large_promotion:
+        weight: 27
+        enabled: false
+      products:
+        weight: 28
+        enabled: false
+      recommendation:
+        weight: 29
+        enabled: false
+      services:
+        weight: 30
+        enabled: false
+      slider_image:
+        weight: 31
+        enabled: false
+      solution_resource:
+        weight: 32
+        enabled: false
+      testimonials:
+        weight: 33
+        enabled: false
+      upper_button:
+        weight: 34
+        enabled: false
+      vertical:
+        weight: 35
+        enabled: false
+      video:
+        weight: 36
+        enabled: false
+field_type: entity_reference_revisions

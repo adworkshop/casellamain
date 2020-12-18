@@ -1,0 +1,22 @@
+uuid: cd3bd9ce-e898-47eb-9ee5-70bf3de6a354
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.free_form
+id: paragraph.free_form.status
+field_name: status
+entity_type: paragraph
+bundle: free_form
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,44 @@
+uuid: 1f218349-9d89-4bc7-b8f0-d25e3300fab8
+langcode: en
+status: true
+dependencies: {  }
+label: 'Organics Updates'
+id: organics_updates
+description: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'public://feeds'
+parser: syndication
+parser_configuration: {  }
+processor: 'entity:node'
+processor_configuration:
+  update_existing: 1
+  expire: -1
+  owner_id: 1
+  authorize: true
+  skip_hash_check: false
+  values:
+    type: information_post
+mappings:
+  -
+    target: title
+    map:
+      value: title
+    unique: {  }
+  -
+    target: body
+    map:
+      value: description
+      summary: ''
+    settings:
+      format: basic_html
+  -
+    target: created
+    map:
+      value: timestamp
+  -
+    target: field_date
+    map:
+      value: timestamp

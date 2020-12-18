@@ -1,0 +1,18 @@
+uuid: 5a3a0518-da5c-4bdc-b1a7-7fc6163de50c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.sidebar_promotion
+id: node.sidebar_promotion.created
+field_name: created
+entity_type: node
+bundle: sidebar_promotion
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

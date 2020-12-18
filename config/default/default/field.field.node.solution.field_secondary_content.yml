@@ -1,0 +1,21 @@
+uuid: e0727c0c-e8c5-4dbd-91bf-788c9595732e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_secondary_content
+    - node.type.solution
+  module:
+    - text
+id: node.solution.field_secondary_content
+field_name: field_secondary_content
+entity_type: node
+bundle: solution
+label: 'Secondary Content'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

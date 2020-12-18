@@ -1,0 +1,6 @@
+uuid: d5ec7188-f44c-46bd-84ab-35b9c8b104a7
+langcode: en
+status: true
+dependencies: {  }
+id: waste_category
+label: 'Waste Category'

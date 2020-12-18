@@ -1,0 +1,26 @@
+uuid: 05c4d56b-a611-41da-9f8d-5fed7af40791
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.testimonials.field_tab_anchor
+    - field.field.paragraph.testimonials.field_testimonials
+    - paragraphs.paragraphs_type.testimonials
+id: paragraph.testimonials.default
+targetEntityType: paragraph
+bundle: testimonials
+mode: default
+content:
+  field_testimonials:
+    weight: 0
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+hidden:
+  created: true
+  field_tab_anchor: true
+  uid: true

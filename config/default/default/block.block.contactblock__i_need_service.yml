@@ -1,0 +1,29 @@
+uuid: 6aba8a55-5b62-447d-a9a4-0ff82c74f9cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.service_request
+  module:
+    - contact_block
+    - system
+  theme:
+    - casella
+id: contactblock__i_need_service
+theme: casella
+region: node_lower_content
+weight: -2
+provider: null
+plugin: contact_block
+settings:
+  id: contact_block
+  label: 'I need Service Contact block'
+  provider: contact_block
+  label_display: '0'
+  contact_form: service_request
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/1946
+    negate: false
+    context_mapping: {  }

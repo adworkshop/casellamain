@@ -1,0 +1,6 @@
+uuid: f248f264-d7cc-4449-a118-495b8ae44488
+langcode: en
+status: true
+dependencies: {  }
+id: block_link_with_icon
+label: 'Custom Link With Icon'

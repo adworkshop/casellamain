@@ -1,0 +1,59 @@
+uuid: 71099d4b-88c0-4ed3-b049-ab9ba4bcffd2
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.1024x461
+    - image.style.1200x540
+    - image.style.1400x630
+    - image.style.1800x810
+    - image.style.1x1
+    - image.style.480x216
+    - image.style.768x346
+  theme:
+    - casella
+id: product_image
+label: 'Product Image'
+image_style_mappings:
+  -
+    breakpoint_id: casella.1800
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 1800x810
+  -
+    breakpoint_id: bartik.1400
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 1800x810
+  -
+    breakpoint_id: casella.1200
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 1400x630
+  -
+    breakpoint_id: bartik.1024
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 1200x540
+  -
+    breakpoint_id: casella.960
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 1024x461
+  -
+    breakpoint_id: bartik.768
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 1024x461
+  -
+    breakpoint_id: casella.480
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 768x346
+  -
+    breakpoint_id: casella.mobile
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 480x216
+breakpoint_group: casella
+fallback_image_style: 1x1

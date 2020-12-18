@@ -1,0 +1,45 @@
+uuid: 8110287f-3a0b-4fc8-982d-40d77966915a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_promotion_image
+    - node.type.content_promotions
+  module:
+    - content_translation
+    - image
+third_party_settings:
+  content_translation:
+    translation_sync:
+      alt: alt
+      title: title
+      file: '0'
+id: node.content_promotions.field_promotion_image
+field_name: field_promotion_image
+entity_type: node
+bundle: content_promotions
+label: 'Promotion Image'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: 216x216
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

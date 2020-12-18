@@ -1,0 +1,23 @@
+uuid: f89921f6-7238-4c6e-bf01-dc9bea75e9f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_add_this
+    - node.type.job
+id: node.job.field_add_this
+field_name: field_add_this
+entity_type: node
+bundle: job
+label: 'Add This'
+description: 'Uncheck this box to remove the Add This sharing widget.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'Include Add This'
+  off_label: 'Off'
+field_type: boolean

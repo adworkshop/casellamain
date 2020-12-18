@@ -1,0 +1,23 @@
+uuid: 04896c1d-1d13-43b6-8565-3ab959417ca9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_published
+    - paragraphs.paragraphs_type.holiday
+id: paragraph.holiday.field_published
+field_name: field_published
+entity_type: paragraph
+bundle: holiday
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

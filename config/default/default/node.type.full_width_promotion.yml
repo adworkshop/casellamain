@@ -1,0 +1,17 @@
+uuid: ebe1f066-9c97-4793-bbb4-15509483c71b
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Full Width Promotion'
+type: full_width_promotion
+description: 'Full width output assignable to page level content. The overlay color may change depending on the subsection.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

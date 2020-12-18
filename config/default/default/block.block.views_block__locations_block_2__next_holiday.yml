@@ -1,0 +1,32 @@
+uuid: 1ae8f95d-df1a-452f-bd2e-42c65e7b419a
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.locations
+  module:
+    - node
+    - views
+  theme:
+    - casella
+id: views_block__locations_block_2__next_holiday
+theme: casella
+region: node_content
+weight: -16
+provider: null
+plugin: 'views_block:locations-block_2'
+settings:
+  id: 'views_block:locations-block_2'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      location: location
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

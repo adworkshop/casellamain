@@ -1,0 +1,28 @@
+uuid: 98648b20-ef15-402a-a0c7-6e0c756913ec
+langcode: en
+status: true
+dependencies:
+  module:
+    - casella_feeds
+label: Holidays
+id: holidays
+description: ''
+import_period: 21600
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: casella_holidays
+parser_configuration: {  }
+processor: 'entity:node'
+processor_configuration:
+  update_existing: 2
+  expire: -1
+  owner_id: 1
+  authorize: false
+  skip_hash_check: false
+  values:
+    type: location
+mappings: {  }

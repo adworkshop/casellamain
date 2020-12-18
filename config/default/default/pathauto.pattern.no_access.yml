@@ -1,0 +1,25 @@
+uuid: 8b431751-ed33-4a45-b5bc-d1d49acb6ad2
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: no_access
+label: 'No Access'
+type: 'canonical_entities:node'
+pattern: 'no-access/[node:title]'
+selection_criteria:
+  9cd32819-dad3-4c21-a345-29ea15066953:
+    id: node_type
+    bundles:
+      casella_globals: casella_globals
+      content_promotions: content_promotions
+      full_width_promotion: full_width_promotion
+      sidebar_promotion: sidebar_promotion
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 9cd32819-dad3-4c21-a345-29ea15066953
+selection_logic: and
+weight: -7
+relationships: {  }

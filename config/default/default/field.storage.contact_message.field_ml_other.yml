@@ -1,0 +1,21 @@
+uuid: daa45686-810a-4e66-9076-ecf6b1f55aed
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+id: contact_message.field_ml_other
+field_name: field_ml_other
+entity_type: contact_message
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,82 @@
+uuid: 32f8b327-d889-46f6-943c-9592aafdecfd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.towns_cities.feeds_item
+    - field.field.taxonomy_term.towns_cities.field_city
+    - field.field.taxonomy_term.towns_cities.field_latitude
+    - field.field.taxonomy_term.towns_cities.field_longitude
+    - field.field.taxonomy_term.towns_cities.field_published
+    - field.field.taxonomy_term.towns_cities.field_service_location
+    - field.field.taxonomy_term.towns_cities.field_state
+    - field.field.taxonomy_term.towns_cities.field_zip_code
+    - taxonomy.vocabulary.towns_cities
+  module:
+    - options
+    - text
+id: taxonomy_term.towns_cities.default
+targetEntityType: taxonomy_term
+bundle: towns_cities
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_city:
+    weight: 4
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_latitude:
+    weight: 5
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_longitude:
+    weight: 6
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_published:
+    weight: 7
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_service_location:
+    weight: 3
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_state:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+hidden:
+  feeds_item: true
+  field_zip_code: true
+  langcode: true

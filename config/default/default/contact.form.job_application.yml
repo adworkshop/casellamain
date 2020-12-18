@@ -1,0 +1,21 @@
+uuid: 29622398-daa2-4c14-86f5-a90eb05f76ff
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact_storage
+third_party_settings:
+  contact_storage:
+    redirect_uri: ''
+    submit_text: 'Submit your Application'
+    show_preview: false
+    disabled_form_message: 'This contact form has been disabled.'
+    maximum_submissions_user: 0
+id: job_application
+label: 'Job Application'
+recipients:
+  - Devin.Siva@casella.com
+reply: ''
+weight: 0
+message: 'Your message has been sent.'
+redirect: ''

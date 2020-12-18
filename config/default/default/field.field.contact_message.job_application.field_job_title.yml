@@ -1,0 +1,19 @@
+uuid: ef3edb9a-3d34-4834-9e42-a170d6122c46
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.job_application
+    - field.storage.contact_message.field_job_title
+id: contact_message.job_application.field_job_title
+field_name: field_job_title
+entity_type: contact_message
+bundle: job_application
+label: 'Job Title:'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

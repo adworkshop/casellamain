@@ -1,0 +1,19 @@
+uuid: b54d7f88-08db-488c-a2ac-15bacf04093c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hero_text
+    - node.type.product_category
+id: node.product_category.field_hero_text
+field_name: field_hero_text
+entity_type: node
+bundle: product_category
+label: 'Hero Text'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

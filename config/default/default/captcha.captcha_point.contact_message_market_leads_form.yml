@@ -1,0 +1,7 @@
+uuid: 85bc927b-3592-4dd0-873d-10360082d4ea
+langcode: en
+status: true
+dependencies: {  }
+formId: contact_message_market_leads_form
+captchaType: recaptcha/reCAPTCHA
+label: contact_message_market_leads_form

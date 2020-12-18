@@ -1,0 +1,27 @@
+uuid: b82751cb-855e-4132-8acf-c690ee1c5c6d
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - menu_block
+  theme:
+    - casella
+id: mainnavigation
+theme: casella
+region: sidebar_nav
+weight: -7
+provider: null
+plugin: 'menu_block:main'
+settings:
+  id: 'menu_block:main'
+  label: 'Main navigation - sidebar'
+  provider: menu_block
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand: 1
+  parent: 'main:'
+  suggestion: main_sidebar
+visibility: {  }

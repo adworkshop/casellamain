@@ -1,0 +1,16 @@
+uuid: da8cf8ad-f6c8-4570-9982-a8fd19357972
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.recommendation
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: paragraph.recommendation
+target_entity_type_id: paragraph
+target_bundle: recommendation
+default_langcode: site_default
+language_alterable: false

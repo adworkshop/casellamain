@@ -1,0 +1,21 @@
+uuid: 1dbca701-6aaf-4a3b-86ea-f78182295ecb
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.service_request
+    - field.storage.contact_message.field_service_state
+  module:
+    - options
+id: contact_message.service_request.field_service_state
+field_name: field_service_state
+entity_type: contact_message
+bundle: service_request
+label: 'State: *'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,16 @@
+uuid: 423fb686-f4d6-42aa-bc84-26354a32cd3e
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: 800x500
+label: 800x500
+effects:
+  c4ff353c-f189-4dec-810c-f064d589194d:
+    uuid: c4ff353c-f189-4dec-810c-f064d589194d
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 800
+      height: 500

@@ -1,0 +1,21 @@
+uuid: bf8966ff-2aa7-4164-90a8-8c04ba5d9323
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_unacceptable_waste_intro
+field_name: field_unacceptable_waste_intro
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,23 @@
+uuid: fb97a87d-cfda-49ec-a9ee-010fafc98daf
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.post_categories
+id: taxonomy_term.post_categories.default
+targetEntityType: taxonomy_term
+bundle: post_categories
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  description: true
+  langcode: true
+  path: true

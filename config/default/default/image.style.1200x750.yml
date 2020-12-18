@@ -1,0 +1,16 @@
+uuid: b208751e-cf1b-4fd7-92d0-6398fa7fd962
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: 1200x750
+label: 1200x750
+effects:
+  d63f32b8-79cf-4586-8c68-529097d3b38f:
+    uuid: d63f32b8-79cf-4586-8c68-529097d3b38f
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1200
+      height: 750

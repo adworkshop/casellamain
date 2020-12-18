@@ -1,0 +1,32 @@
+uuid: c951e2d1-514d-4144-9633-3888dbcfb1ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.locations
+  module:
+    - node
+    - views
+  theme:
+    - casella
+id: views_block__locations_block_3__towns_on_location
+theme: casella
+region: node_content
+weight: 1
+provider: null
+plugin: 'views_block:locations-block_3'
+settings:
+  id: 'views_block:locations-block_3'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      location: location
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

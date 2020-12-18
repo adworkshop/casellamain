@@ -1,0 +1,20 @@
+uuid: c9e0c1f1-5688-47c1-a6fe-969987b4f5fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.post_categories
+  module:
+    - text
+id: taxonomy_term.post_categories.description
+field_name: description
+entity_type: taxonomy_term
+bundle: post_categories
+label: Description
+description: 'A description of the term.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

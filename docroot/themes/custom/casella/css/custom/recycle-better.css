@@ -360,6 +360,13 @@ Author URI: http://www.adworkshop.com
   height: auto;
 }
 
+
+.download-form-modal {
+  display: none;
+}
+
+
+
 /* ======================================================= */
 /*    MEDIA QUERIES                                        */
 /* ======================================================= */
@@ -518,7 +525,7 @@ Author URI: http://www.adworkshop.com
 /* TOOLKIT */
 /* JCJCJC  -------------  */
 .tingle-modal .link--pdf { color: #0a253e; font-family: 'Gotham-Bold';}
-.tingle-modal .link--pdf a { display: flex; align-items: center; margin: 1rem 0 0 0; color: #0a253e; font-family: 'Gotham-Bold';}
+.tingle-modal .link--pdf a { display: flex; align-items: center; margin: 1rem 0 0 0; color: #0a253e; font-family: 'Gotham-Bold'; cursor: pointer;}
 .tingle-modal .link--pdf a:hover { color: #4c9d2a;}
 .tingle-modal .link--pdf i { margin: 0;}
 .tingle-modal .link--pdf span { padding: 0 0 0 .65rem;}

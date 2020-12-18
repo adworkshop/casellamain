@@ -1,0 +1,19 @@
+uuid: b03b27a3-ae3a-4430-b158-2e6bba8bd4af
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_city
+    - taxonomy.vocabulary.towns_cities
+id: taxonomy_term.towns_cities.field_city
+field_name: field_city
+entity_type: taxonomy_term
+bundle: towns_cities
+label: City
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

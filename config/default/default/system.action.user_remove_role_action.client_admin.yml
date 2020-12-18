@@ -1,0 +1,14 @@
+uuid: ed4c7374-3676-4e40-a638-5e8ed19562f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.client_admin
+  module:
+    - user
+id: user_remove_role_action.client_admin
+label: 'Remove the Client Admin role from the selected users'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: client_admin

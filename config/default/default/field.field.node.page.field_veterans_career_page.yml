@@ -1,0 +1,23 @@
+uuid: 60cf84f1-1464-4763-a195-51ef72eee5c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_veterans_career_page
+    - node.type.page
+id: node.page.field_veterans_career_page
+field_name: field_veterans_career_page
+entity_type: node
+bundle: page
+label: 'Veterans Career Page'
+description: 'Check this box if this is the veteran''s career landing page, it will set the cookie that drives the email.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

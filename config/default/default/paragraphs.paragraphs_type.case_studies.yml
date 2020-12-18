@@ -1,0 +1,6 @@
+uuid: 4c6ebd00-57ca-42ab-8bf1-566dd3c987cb
+langcode: en
+status: true
+dependencies: {  }
+id: case_studies
+label: 'Case Studies'

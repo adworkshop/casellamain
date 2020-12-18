@@ -122,6 +122,29 @@ AddEncoding gzip svgz
   # uncomment the following line:
   # RewriteBase /
 
+  # custom domain specific redirects.
+  RewriteCond %{HTTP_HOST} ^epay.casella.com [NC,OR]
+  RewriteCond %{HTTP_HOST} ^www.epay.casella.com [NC]
+  RewriteRule ^ https://secure3.i-doxs.net/casella/default.asp [L,QSA,R=301]
+
+  RewriteCond %{HTTP_HOST} ^www.casellaorganics.com [NC]
+  RewriteRule ^/?$ https://www.casella.com/casella-organics [L,QSA,R=301]
+
+  RewriteCond %{HTTP_HOST} ^casellaorganics.com [NC]
+  RewriteRule ^/?$ https://www.casella.com/casella-organics [L,QSA,R=301]
+
+  RewriteCond %{HTTP_HOST} ^m.casellaorganics.com [NC]
+  RewriteRule ^/?$ https://www.casella.com/casella-organics [L,QSA,R=301]
+
+  RewriteCond %{HTTP_HOST} ^evergreenwaste\.com [NC]
+  RewriteRule ^/?$ https://www.casella.com/welcome-evergreen-waste-customers [L,QSA,R=301]
+
+  RewriteCond %{HTTP_HOST} ^www\.evergreenwaste\.com [NC]
+  RewriteRule ^/?$ https://www.casella.com/welcome-evergreen-waste-customers [L,QSA,R=301]
+
+  RewriteCond %{HTTP_HOST} !^www\.casellaorganics\.com [NC]
+  RewriteCond %{HTTP_HOST} !^casellaorganics\.com [NC]
+
   # Redirect common PHP files to their new locations.
   RewriteCond %{REQUEST_URI} ^(.*)?/(install.php) [OR]
   RewriteCond %{REQUEST_URI} ^(.*)?/(rebuild.php)

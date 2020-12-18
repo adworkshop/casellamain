@@ -1,0 +1,23 @@
+uuid: 614f4a8e-abd4-46cb-8179-a11bab928947
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.service_location_contact_form
+  module:
+    - contact_block
+  theme:
+    - casella
+id: location_contact_contactblock
+theme: casella
+region: node_content
+weight: 2
+provider: null
+plugin: contact_block
+settings:
+  id: contact_block
+  label: 'Service Location Contact block'
+  provider: contact_block
+  label_display: '0'
+  contact_form: service_location_contact_form
+visibility: {  }

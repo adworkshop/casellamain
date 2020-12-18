@@ -1,0 +1,19 @@
+uuid: c3d786d5-40c2-48bd-9163-baaa778e6a50
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_breadcrumb_override
+    - node.type.product_category
+id: node.product_category.field_breadcrumb_override
+field_name: field_breadcrumb_override
+entity_type: node
+bundle: product_category
+label: 'Breadcrumb Override'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

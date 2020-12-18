@@ -1,0 +1,22 @@
+uuid: ac7d431d-d1f4-4ec5-82bf-ed8e4eb46a98
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - casella
+_core:
+  default_config_hash: KHQIJ7Vfl25lTjzIc7qIvnuistt-Mw2O0kG4jCofmkI
+id: casella_messages
+theme: casella
+region: highlighted
+weight: -11
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

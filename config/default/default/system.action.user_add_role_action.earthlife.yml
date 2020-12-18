@@ -1,0 +1,14 @@
+uuid: 278b5e5f-37d8-4a79-a6a7-677e3b3db129
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.earthlife
+  module:
+    - user
+id: user_add_role_action.earthlife
+label: 'Add the Earthlife role to the selected users'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: earthlife

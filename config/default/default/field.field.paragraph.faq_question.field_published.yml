@@ -1,0 +1,23 @@
+uuid: 1d63e1c8-2880-4511-a41c-7cca5624c09a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_published
+    - paragraphs.paragraphs_type.faq_question
+id: paragraph.faq_question.field_published
+field_name: field_published
+entity_type: paragraph
+bundle: faq_question
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

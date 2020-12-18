@@ -1,0 +1,37 @@
+uuid: e27bcb53-3c79-44e2-9d8f-e8b141e7ab50
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.organics_contact_us
+  module:
+    - contact_block
+    - node
+    - system
+  theme:
+    - casella
+id: contactblock_2__organics_contact
+theme: casella
+region: node_lower_content
+weight: 0
+provider: null
+plugin: contact_block
+settings:
+  id: contact_block
+  label: 'Contact block'
+  provider: contact_block
+  label_display: '0'
+  contact_form: organics_contact_us
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      page: page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+  request_path:
+    id: request_path
+    pages: /node/4021
+    negate: false
+    context_mapping: {  }

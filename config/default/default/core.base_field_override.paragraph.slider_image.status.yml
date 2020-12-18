@@ -1,0 +1,22 @@
+uuid: 8bb16616-92f9-47c9-bb7f-bf0ff837e03c
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.slider_image
+id: paragraph.slider_image.status
+field_name: status
+entity_type: paragraph
+bundle: slider_image
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

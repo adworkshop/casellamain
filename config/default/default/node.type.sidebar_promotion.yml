@@ -1,0 +1,17 @@
+uuid: 06764090-7fe0-45de-8472-b6662fcfa797
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Sidebar Promotion'
+type: sidebar_promotion
+description: 'Assignable to pages or tabs.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

@@ -1,0 +1,23 @@
+uuid: 5a1d56f0-3f95-4a59-bef2-043b2a1f18b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.feeds_item
+    - node.type.casella_globals
+  module:
+    - feeds
+id: node.casella_globals.feeds_item
+field_name: feeds_item
+entity_type: node
+bundle: casella_globals
+label: 'Feeds item'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:feeds_feed'
+  handler_settings: {  }
+field_type: feeds_item

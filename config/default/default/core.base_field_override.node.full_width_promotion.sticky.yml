@@ -1,0 +1,22 @@
+uuid: 696de7a3-58e2-4f3e-893d-83c5e6280e8e
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.full_width_promotion
+id: node.full_width_promotion.sticky
+field_name: sticky
+entity_type: node
+bundle: full_width_promotion
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

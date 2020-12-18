@@ -1,0 +1,23 @@
+uuid: 1947cf69-420d-4afe-b691-5c11f255a3d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.job_status
+id: taxonomy_term.job_status.default
+targetEntityType: taxonomy_term
+bundle: job_status
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  description: true
+  langcode: true
+  path: true

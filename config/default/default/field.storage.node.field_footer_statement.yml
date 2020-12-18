@@ -1,0 +1,19 @@
+uuid: 4fc1bc9c-69da-42b1-86b9-285cf37ea345
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_footer_statement
+field_name: field_footer_statement
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

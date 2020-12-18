@@ -1,0 +1,65 @@
+uuid: 10751301-e60e-4cab-b7f8-49f68680d2c3
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.page.body
+    - field.field.node.page.feeds_item
+    - field.field.node.page.field_2_column
+    - field.field.node.page.field_add_this
+    - field.field.node.page.field_breadcrumb_override
+    - field.field.node.page.field_full_width
+    - field.field.node.page.field_full_width_promotion
+    - field.field.node.page.field_h1_override
+    - field.field.node.page.field_hero_text
+    - field.field.node.page.field_location_category
+    - field.field.node.page.field_logo
+    - field.field.node.page.field_meta_tags
+    - field.field.node.page.field_post_category
+    - field.field.node.page.field_sidebar_promotions
+    - field.field.node.page.field_slider_images
+    - field.field.node.page.field_subsection
+    - field.field.node.page.field_tabs
+    - field.field.node.page.field_upper_content
+    - node.type.page
+  module:
+    - text
+    - user
+_core:
+  default_config_hash: rN2zrScZAJ9xB16hm_Deb9QJKy6JXnn0PdI2n5Z3KRs
+id: node.page.teaser
+targetEntityType: node
+bundle: page
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 100
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 101
+    region: content
+hidden:
+  feeds_item: true
+  field_2_column: true
+  field_add_this: true
+  field_breadcrumb_override: true
+  field_full_width: true
+  field_full_width_promotion: true
+  field_h1_override: true
+  field_hero_text: true
+  field_location_category: true
+  field_logo: true
+  field_meta_tags: true
+  field_post_category: true
+  field_sidebar_promotions: true
+  field_slider_images: true
+  field_subsection: true
+  field_tabs: true
+  field_upper_content: true
+  langcode: true

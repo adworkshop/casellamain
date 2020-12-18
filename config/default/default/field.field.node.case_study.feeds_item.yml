@@ -1,0 +1,23 @@
+uuid: 4e1a4224-c7cc-48c4-9336-bdb26e3f4d22
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.feeds_item
+    - node.type.case_study
+  module:
+    - feeds
+id: node.case_study.feeds_item
+field_name: feeds_item
+entity_type: node
+bundle: case_study
+label: 'Feeds item'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:feeds_feed'
+  handler_settings: {  }
+field_type: feeds_item
