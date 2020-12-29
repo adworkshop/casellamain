@@ -1,2 +1,5 @@
+RewriteCond %{HTTP_HOST} . [NC]
+RewriteRule ^ https://www.casella.com/about-us/casella-sustainability [L,QSA,R=301]
+
 # Set the default handler.
-DirectoryIndex home.php
+# DirectoryIndex home.php
