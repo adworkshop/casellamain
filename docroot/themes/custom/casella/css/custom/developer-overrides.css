@@ -447,3 +447,25 @@ table#holidaySchedule > tbody > tr > th {
 .locationMapHolidaySchedule-container .locationMap-listView-container {
   padding: 0 0 50px 0;
 }
+
+.user-login-notice {
+  margin: 0 0 2rem 0;
+  padding: 1rem;
+  background: #fff;
+  border: 2px solid #004a87;
+  border-radius: 8px;
+}
+
+.user-login-notice .fa-info-circle:before {
+  color: darkgoldenrod;
+}
+
+.user-login-notice h2 {
+  font-size: 36px;
+}
+
+.user-login-notice p {
+  margin-bottom: 0;
+  font-size: 18px;
+  color: #333;
+}
