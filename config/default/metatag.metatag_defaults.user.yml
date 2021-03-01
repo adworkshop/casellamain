@@ -8,4 +8,5 @@ id: user
 label: User
 tags:
   title: '[user:name] | [site:name]'
+  robots: 'noindex, nofollow, noarchive, nosnippet, noodp, noydir, noimageindex, notranslate'
   description: '[site:name]'
