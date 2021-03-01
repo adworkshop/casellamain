@@ -1,0 +1,19 @@
+uuid: d7f5f39c-7656-47e9-a393-092d5f57cd30
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.sign_up_for_food_waste_service
+    - field.storage.contact_message.field_ml_phone
+id: contact_message.sign_up_for_food_waste_service.field_ml_phone
+field_name: field_ml_phone
+entity_type: contact_message
+bundle: sign_up_for_food_waste_service
+label: 'Phone:'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

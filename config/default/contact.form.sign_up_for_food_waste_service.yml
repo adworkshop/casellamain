@@ -1,0 +1,21 @@
+uuid: 4aa7c988-2128-4886-80fe-e7c4f6d4b3f9
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact_storage
+third_party_settings:
+  contact_storage:
+    submit_text: 'Sign Up!'
+    show_preview: false
+    disabled_form_message: 'This contact form has been disabled.'
+    maximum_submissions_user: 0
+    page_autoreply_format: plain_text
+id: sign_up_for_food_waste_service
+label: 'Sign Up for Food Waste Service'
+recipients:
+  - jeff.weld@casella.com
+reply: ''
+weight: 0
+message: 'Thank you for adding food waste collection to your services!'
+redirect: /food-waste-solutions

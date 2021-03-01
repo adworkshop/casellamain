@@ -1,0 +1,117 @@
+uuid: 9f363a46-a25b-40d3-910b-9042aed03ccf
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.sign_up_for_food_waste_service
+    - field.field.contact_message.sign_up_for_food_waste_service.field_ml_address
+    - field.field.contact_message.sign_up_for_food_waste_service.field_ml_city
+    - field.field.contact_message.sign_up_for_food_waste_service.field_ml_email
+    - field.field.contact_message.sign_up_for_food_waste_service.field_ml_first_name
+    - field.field.contact_message.sign_up_for_food_waste_service.field_ml_last_name
+    - field.field.contact_message.sign_up_for_food_waste_service.field_ml_phone
+    - field.field.contact_message.sign_up_for_food_waste_service.field_ml_state
+    - field.field.contact_message.sign_up_for_food_waste_service.field_ml_zip
+  module:
+    - options
+id: contact_message.sign_up_for_food_waste_service.default
+targetEntityType: contact_message
+bundle: sign_up_for_food_waste_service
+mode: default
+content:
+  field_ml_address:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_ml_city:
+    weight: 5
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_ml_email:
+    weight: 9
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_ml_first_name:
+    weight: 7
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_ml_last_name:
+    weight: 8
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_ml_phone:
+    weight: 6
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_ml_state:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_ml_zip:
+    weight: 4
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  mail:
+    weight: -2
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  message:
+    type: string
+    weight: 0
+    label: above
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  name:
+    weight: -3
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  subject:
+    weight: -1
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  langcode: true
+  search_api_excerpt: true

@@ -1,0 +1,19 @@
+uuid: e0ea065e-1f8a-4da6-a551-90fa4c7e9084
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.hb177
+    - field.storage.contact_message.field_ml_address
+id: contact_message.hb177.field_ml_address
+field_name: field_ml_address
+entity_type: contact_message
+bundle: hb177
+label: 'Address:*'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

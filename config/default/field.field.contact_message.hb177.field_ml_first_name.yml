@@ -1,0 +1,19 @@
+uuid: ed73b25b-a2ca-439e-b39a-1cc1a4c3d82f
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.hb177
+    - field.storage.contact_message.field_ml_first_name
+id: contact_message.hb177.field_ml_first_name
+field_name: field_ml_first_name
+entity_type: contact_message
+bundle: hb177
+label: 'First Name:*'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,125 @@
+uuid: 83a1e61d-6c05-4d1f-97a0-fab8cf8aca41
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.hb177
+    - field.field.contact_message.hb177.field_ml_address
+    - field.field.contact_message.hb177.field_ml_city
+    - field.field.contact_message.hb177.field_ml_email
+    - field.field.contact_message.hb177.field_ml_first_name
+    - field.field.contact_message.hb177.field_ml_last_name
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_personal_information:
+      children:
+        - field_ml_first_name
+        - field_ml_last_name
+        - field_ml_email
+      parent_name: ''
+      weight: 0
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        required_fields: true
+        description: ''
+      label: 'Personal Information'
+      region: content
+    group_contact_information:
+      children:
+        - field_ml_address
+        - field_ml_city
+      parent_name: ''
+      weight: 1
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        required_fields: true
+        description: ''
+      label: 'Contact Information'
+      region: content
+    group_message_to_committee:
+      children:
+        - subject
+        - message
+      parent_name: ''
+      weight: 2
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Message to Committee'
+id: contact_message.hb177.default
+targetEntityType: contact_message
+bundle: hb177
+mode: default
+content:
+  field_ml_address:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_ml_city:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_ml_email:
+    weight: 11
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  field_ml_first_name:
+    weight: 8
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_ml_last_name:
+    weight: 9
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  message:
+    type: string_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 25
+      placeholder: ''
+    third_party_settings: {  }
+  subject:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  copy: true
+  langcode: true
+  mail: true
+  name: true
+  preview: true

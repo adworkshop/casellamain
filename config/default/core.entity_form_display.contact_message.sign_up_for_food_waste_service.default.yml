@@ -1,0 +1,89 @@
+uuid: 7e38380e-81c2-4175-acb2-bc9f4b63b4e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.sign_up_for_food_waste_service
+    - field.field.contact_message.sign_up_for_food_waste_service.field_ml_address
+    - field.field.contact_message.sign_up_for_food_waste_service.field_ml_city
+    - field.field.contact_message.sign_up_for_food_waste_service.field_ml_email
+    - field.field.contact_message.sign_up_for_food_waste_service.field_ml_first_name
+    - field.field.contact_message.sign_up_for_food_waste_service.field_ml_last_name
+    - field.field.contact_message.sign_up_for_food_waste_service.field_ml_phone
+    - field.field.contact_message.sign_up_for_food_waste_service.field_ml_state
+    - field.field.contact_message.sign_up_for_food_waste_service.field_ml_zip
+id: contact_message.sign_up_for_food_waste_service.default
+targetEntityType: contact_message
+bundle: sign_up_for_food_waste_service
+mode: default
+content:
+  field_ml_address:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_ml_city:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_ml_email:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  field_ml_first_name:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_ml_last_name:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_ml_phone:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_ml_state:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_ml_zip:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  copy: true
+  langcode: true
+  mail: true
+  message: true
+  name: true
+  preview: true
+  subject: true

@@ -1,0 +1,19 @@
+uuid: 1eadf3b4-97ab-4b6d-9ece-9a7639b10ceb
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.hb177
+    - field.storage.contact_message.field_ml_email
+id: contact_message.hb177.field_ml_email
+field_name: field_ml_email
+entity_type: contact_message
+bundle: hb177
+label: 'Email:*'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

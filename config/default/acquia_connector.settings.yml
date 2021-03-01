@@ -39,9 +39,9 @@ spi:
     time: 0
   cron_interval: 28800
   site_name: 'Casella: prod'
-  site_machine_name: b1cf2220_a4c7_48b1_81d4_c846c26189dd__casella
+  site_machine_name: b1cf2220_a4c7_48b1_81d4_c846c26189dd__casellastg__603b1fc1f09e9
   site_uuid: df86b380-66ac-4bd8-9e69-e083b8bf8365
-  site_environment: null
+  site_environment: test
   env_detection_enabled: true
   def_timestamp: 1374783288
   def_vars:

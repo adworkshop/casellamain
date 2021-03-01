@@ -1,0 +1,19 @@
+uuid: ddede0a6-c1d3-487a-88e8-497c13d08d0d
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.sign_up_for_food_waste_service
+    - field.storage.contact_message.field_ml_email
+id: contact_message.sign_up_for_food_waste_service.field_ml_email
+field_name: field_ml_email
+entity_type: contact_message
+bundle: sign_up_for_food_waste_service
+label: 'Email:*'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

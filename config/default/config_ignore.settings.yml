@@ -1,9 +1,0 @@
-ignored_config_entities:
-  - stage_file_proxy.settings
-  - 'core.entity_view_display.contact_message.*'
-  - 'core.entity_form_display.contact_message.*'
-  - 'field.field.contact_message.*'
-  - contact.form.hb177
-  - contact.form.sign_up_for_food_waste_service
-_core:
-  default_config_hash: UVH1aJ4b44UM-VdPVN7hNNuuVqfReJxwfVeDQH1Hvsk
