@@ -44,7 +44,7 @@ function readmore_truncate_string($text, $format = NULL, $size = NULL, $wordsafe
 
   if ($use_break) {
     // Find where the delimiter is in the body.
-    $delimiter = Unicode::strpos($text, '<!--break-->');
+    $delimiter = mb_strpos($text, '<!--break-->');
 
     if ($delimiter) {
       // Set new size.
@@ -74,7 +74,7 @@ function readmore_truncate_string($text, $format = NULL, $size = NULL, $wordsafe
 
   if ($wordsafe) {
     // Store the actual length of the truncated string.
-    $max_rpos = Unicode::strlen($summary);
+    $max_rpos = mb_strlen($summary);
 
     // How much to cut off the end of the summary so that it doesn't end in the
     // middle of a paragraph, sentence, or word.
@@ -120,7 +120,7 @@ function readmore_truncate_string($text, $format = NULL, $size = NULL, $wordsafe
       // Look for each break point, starting at the end of the summary.
       foreach ($points as $point => $offset) {
         // The summary is already reversed, but the break point isn't.
-        $rpos = Unicode::strpos($reversed, strrev($point));
+        $rpos =  mb_strpos($reversed, strrev($point));
 
         if ($rpos !== FALSE) {
           $min_rpos = min($rpos + $offset, $min_rpos);
@@ -130,7 +130,7 @@ function readmore_truncate_string($text, $format = NULL, $size = NULL, $wordsafe
       // If a break point was found in this group, slice and stop searching.
       if ($min_rpos !== $max_rpos) {
         // Don't slice with length 0. Length must be <0 to slice from RHS.
-        $summary = ($min_rpos === 0) ? $summary : Unicode::substr($summary, 0, 0 - $min_rpos);
+        $summary = ($min_rpos === 0) ? $summary : mb_substr($summary, 0, 0 - $min_rpos);
         break;
       }
     }

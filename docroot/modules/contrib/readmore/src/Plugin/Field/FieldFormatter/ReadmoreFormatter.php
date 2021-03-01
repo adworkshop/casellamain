@@ -8,7 +8,6 @@
 namespace Drupal\readmore\Plugin\Field\FieldFormatter;
 
 use Drupal\Component\Utility\Html;
-use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -155,13 +154,9 @@ class ReadmoreFormatter extends FormatterBase {
 
     $current_path = \Drupal::service('path.current')->getPath();
     $url_object = \Drupal::service('path.validator')->getUrlIfValid($current_path);
-    if($url_object) {
-      $route_name = $url_object->getRouteName();
-
-      $route_parameters = $url_object->getRouteParameters();
-    }
-      $current_url = Url::fromRoute($route_name, $route_parameters, ['absolute' => TRUE]);
-
+    $route_name = $url_object->getRouteName();
+    $route_parameters = $url_object->getRouteParameters();
+    $current_url = Url::fromRoute($route_name, $route_parameters, ['absolute' => TRUE]);
 
     $read_less = $this->t('Read less');
     $read_more = $this->t('Read more');
@@ -178,7 +173,7 @@ class ReadmoreFormatter extends FormatterBase {
 
     foreach ($items as $delta => $item) {
       $text = $item->value;
-      $text_length = Unicode::strlen($text);
+      $text_length = mb_strlen($text);
       $trim_length = $settings['trim_length'];
 
       // Don't do anything if text length less than defined.
