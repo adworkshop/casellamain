@@ -13,7 +13,7 @@
  */
 #}
 
-{% include "/" ~ theme_path ~ "/templates/includes/search-panel.html.twig" %}
+{% include "@casella/includes/search-panel.html.twig" %}
 
 {% if subsectionName != '' %}
   <!--Larger Nav Reveal-->
@@ -21,7 +21,7 @@
     <div class="globalWidth">
       <div class="collapsed-headerLogo">
         {% if not is_front %}<a href="{{ base_url }}" title="home">{% endif %}
-          {% embed '/' ~ theme_path ~ "/templates/includes/casella-logo.html.twig" %}{% endembed %}
+          {% embed "@casella/includes/casella-logo.html.twig" %}{% endembed %}
         {% if not is_front %}</a>{% endif %}
       </div>
       <div class="collapsed-headerTrigger-wrapper"><a class="collapsed-headerTrigger mainMenuToggle"></a></div>
@@ -86,7 +86,7 @@
         {% if not is_front %}
           <a href="{{ base_url }}" title="home">
         {% endif %}
-        {% embed '/' ~ theme_path ~ "/templates/includes/casella-logo.html.twig" %}{% endembed %}
+        {% embed "@casella/includes/casella-logo.html.twig" %}{% endembed %}
         {% if not is_front %}
           </a>
         {% endif %}
