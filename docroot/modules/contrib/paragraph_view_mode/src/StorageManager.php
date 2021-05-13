@@ -128,6 +128,17 @@ class StorageManager implements StorageManagerInterface {
   /**
    * {@inheritdoc}
    */
+  public function setFieldLabel(string $bundle, string $label): void {
+    $field = $this->getField($bundle);
+    if ($field) {
+      $field->set('label', $label);
+      $field->save();
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function addToFormDisplay(string $bundle, string $form_mode = 'default'): void {
     $form_display_id = implode('.', [
       StorageManagerInterface::ENTITY_TYPE,

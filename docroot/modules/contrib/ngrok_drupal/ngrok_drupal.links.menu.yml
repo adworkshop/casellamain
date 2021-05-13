@@ -1,0 +1,5 @@
+system.ngrok:
+  title: Ngrok
+  route_name: ngrok_drupal.settings
+  description: 'Configure ngrok domain so cookies can be set.'
+  parent: system.admin_config_system

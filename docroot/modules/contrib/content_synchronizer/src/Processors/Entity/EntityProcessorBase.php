@@ -341,8 +341,10 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
 
     }
 
-    $bundle = $storage->create($data);
-    $bundle->save();
+    if ($data){
+      $bundle = $storage->create($data);
+      $bundle->save();
+    }
   }
 
   /**

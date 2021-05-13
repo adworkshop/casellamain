@@ -2,10 +2,12 @@
 
 namespace Drupal\contact_emails\Form;
 
+use Drupal\Component\Datetime\TimeInterface;
 use Drupal\contact\Entity\ContactForm;
 use Drupal\contact_emails\ContactEmails;
 use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Entity\EntityRepositoryInterface;
+use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -22,12 +24,22 @@ class ContactEmailForm extends ContentEntityForm {
   protected $contactEmails;
 
   /**
-   * {@inheritdoc}
+   * Constructs a ContentEntityForm object.
+   *
+   * @param \Drupal\Core\Entity\EntityRepositoryInterface $entity_repository
+   *   The entity repository service.
+   * @param \Drupal\Core\Entity\EntityTypeBundleInfoInterface $entity_type_bundle_info
+   *   The entity type bundle service.
+   * @param \Drupal\Component\Datetime\TimeInterface $time
+   *   The time service.
+   * @param \Drupal\contact_emails\ContactEmails $contact_emails
+   *   The contact emails service.
    */
-  public function __construct(EntityRepositoryInterface $entity_manager, ContactEmails $contactEmails) {
-    parent::__construct($entity_manager);
-
-    $this->contactEmails = $contactEmails;
+  public function __construct(EntityRepositoryInterface $entity_repository, EntityTypeBundleInfoInterface $entity_type_bundle_info, TimeInterface $time, ContactEmails $contact_emails) {
+    $this->entityRepository = $entity_repository;
+    $this->entityTypeBundleInfo = $entity_type_bundle_info;
+    $this->time = $time;
+    $this->contactEmails = $contact_emails;
   }
 
   /**
@@ -36,6 +48,8 @@ class ContactEmailForm extends ContentEntityForm {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('entity.repository'),
+      $container->get('entity_type.bundle.info'),
+      $container->get('datetime.time'),
       $container->get('contact_emails.helper')
     );
   }

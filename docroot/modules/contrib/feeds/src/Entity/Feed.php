@@ -7,6 +7,7 @@ use Drupal\Core\Cache\Cache;
 use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityStorageException;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
@@ -186,7 +187,21 @@ class Feed extends ContentEntityBase implements FeedInterface {
    * {@inheritdoc}
    */
   public function getType() {
-    return $this->get('type')->entity;
+    $type = $this->get('type')->entity;
+    if (empty($type)) {
+      if ($this->id()) {
+        throw new EntityStorageException(strtr('The feed type "@type" for feed @id no longer exists.', [
+          '@type' => $this->bundle(),
+          '@id' => $this->id(),
+        ]));
+      }
+      else {
+        throw new EntityStorageException(strtr('The feed type "@type" no longer exists.', [
+          '@type' => $this->bundle(),
+        ]));
+      }
+    }
+    return $type;
   }
 
   /**
@@ -356,7 +371,7 @@ class Feed extends ContentEntityBase implements FeedInterface {
         // @todo move this logic to a factory or alike.
         switch ($stage) {
           case StateInterface::CLEAN:
-            $state = new CleanState();
+            $state = new CleanState($this->id());
             break;
 
           default:
@@ -383,6 +398,11 @@ class Feed extends ContentEntityBase implements FeedInterface {
   public function clearStates() {
     $this->states = [];
     \Drupal::keyValue('feeds_feed.' . $this->id())->deleteAll();
+
+    // Clean up references in feeds_clean_list table for this feed.
+    \Drupal::database()->delete(CleanState::TABLE_NAME)
+      ->condition('feed_id', $this->id())
+      ->execute();
   }
 
   /**
@@ -544,6 +564,11 @@ class Feed extends ContentEntityBase implements FeedInterface {
         $plugin->onFeedDeleteMultiple($group);
       }
     }
+
+    // Clean up references in feeds_clean_list table for each feed.
+    \Drupal::database()->delete(CleanState::TABLE_NAME)
+      ->condition('feed_id', $ids, 'IN')
+      ->execute();
 
     \Drupal::service('event_dispatcher')->dispatch(FeedsEvents::FEEDS_DELETE, new DeleteFeedsEvent($feeds));
   }

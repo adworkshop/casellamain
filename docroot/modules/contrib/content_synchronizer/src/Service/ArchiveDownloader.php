@@ -54,6 +54,8 @@ class ArchiveDownloader {
   public function donwloadArchive(array &$vars) {
     if ($this->canDownload()) {
       $vars['#attached']['library'][] = 'content_synchronizer/download_archive';
+      $vars['#attached']['drupalSettings']['content_synchronizer']['download_archive_path'] =
+        \Drupal\Core\Url::fromRoute('content_synchronizer.download_archive')->getInternalPath();
     }
   }
 

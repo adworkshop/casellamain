@@ -41,6 +41,9 @@ class FieldItemListProcessor extends TypeProcessorBase {
   protected function exportIncludedImages(array &$data) {
     foreach ($data as &$item) {
       foreach ($item as $key => $value) {
+        if (empty($value) || !is_string($value)) {
+            continue;
+        }
         preg_match_all('@src="([^"]+)"@', $value, $match);
 
         $src = array_pop($match);

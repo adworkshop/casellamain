@@ -2,10 +2,7 @@
 
 namespace Drupal\feeds;
 
-use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\Entity\ContentEntityForm;
-use Drupal\Core\Entity\EntityRepositoryInterface;
-use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
 use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\feeds\Plugin\PluginFormFactory;
@@ -25,32 +22,23 @@ class FeedForm extends ContentEntityForm {
   protected $formFactory;
 
   /**
-   * Constructs a new FeedForm object.
-   *
-   * @param \Drupal\Core\Entity\EntityRepositoryInterface $entity_repository
-   *   The entity repository service.
-   * @param \Drupal\feeds\Plugin\PluginFormFactory $factory
-   *   The form factory.
-   * @param \Drupal\Core\Entity\EntityTypeBundleInfoInterface $entity_type_bundle_info
-   *   The entity type bundle service.
-   * @param \Drupal\Component\Datetime\TimeInterface $time
-   *   The time service.
-   */
-  public function __construct(EntityRepositoryInterface $entity_repository, PluginFormFactory $factory, EntityTypeBundleInfoInterface $entity_type_bundle_info = NULL, TimeInterface $time = NULL) {
-    parent::__construct($entity_repository, $entity_type_bundle_info, $time);
-    $this->formFactory = $factory;
-  }
-
-  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('entity.repository'),
-      $container->get('feeds_plugin_form_factory'),
-      $container->get('entity_type.bundle.info'),
-      $container->get('datetime.time')
-    );
+    $instance = parent::create($container);
+    $instance->setPluginFormFactory($container->get('feeds_plugin_form_factory'));
+
+    return $instance;
+  }
+
+  /**
+   * Sets the form factory, used to generate forms for Feeds plugins.
+   *
+   * @param \Drupal\feeds\Plugin\PluginFormFactory $factory
+   *   The Feeds form factory.
+   */
+  protected function setPluginFormFactory(PluginFormFactory $factory) {
+    $this->formFactory = $factory;
   }
 
   /**
@@ -110,6 +98,7 @@ class FeedForm extends ContentEntityForm {
       '#type' => 'checkbox',
       '#title' => $this->t('Active'),
       '#default_value' => $feed->isActive(),
+      '#description' => $this->t('Uncheck the above checkbox to disable periodic import for this feed.'),
     ];
 
     return $form;

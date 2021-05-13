@@ -3,18 +3,20 @@
 namespace Drupal\go_back\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Messenger\Messenger;
 use Drupal\Core\PageCache\ResponsePolicy\KillSwitch;
 use Drupal\Core\Path\CurrentPathStack;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\go_back\Traits\GoBackEntityTypesTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Url;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\node\NodeInterface;
 
 /**
  * Provides a Go Back Block.
@@ -26,6 +28,7 @@ use Drupal\node\NodeInterface;
  * )
  */
 class GoBack extends BlockBase implements ContainerFactoryPluginInterface {
+  use GoBackEntityTypesTrait;
 
   /**
    * The route match service.
@@ -78,7 +81,6 @@ class GoBack extends BlockBase implements ContainerFactoryPluginInterface {
       $container->get('messenger'),
       $container->get('path.current'),
       $container->get('page_cache_kill_switch')
-
     );
   }
 
@@ -120,6 +122,27 @@ class GoBack extends BlockBase implements ContainerFactoryPluginInterface {
   /**
    * {@inheritdoc}
    */
+  public function defaultConfiguration() {
+    $config = ['custom_url' => '', 'particular_path' => []];
+    // Populate the default configuration with the available entity types and
+    // bundles.
+    $entityTypes = $this->getContentEntityTypes();
+    foreach ($entityTypes as $type => $label) {
+      $bundles = $this->getContentEntityTypeBundles($type);
+      foreach ($bundles as $bundle => $bundleLabel) {
+        $config[$type][$bundle] = [
+          'quick_display' => 0,
+          'smart_mode' => 0,
+          'go_back' => '',
+        ];
+      }
+    }
+    return $config + parent::defaultConfiguration();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function blockForm($form, FormStateInterface $form_state) {
     $form = parent::blockForm($form, $form_state);
     $config = $this->getConfiguration();
@@ -148,13 +171,32 @@ class GoBack extends BlockBase implements ContainerFactoryPluginInterface {
       '#title' => $this->t("Particular path"),
       '#description' => $this->t('Separate the paths by comma. Example: /home, /contact'),
       '#default_value' => $config['custom_url'],
+      '#attributes' => ['data-disable-refocus' => 'true'],
+      '#ajax' => [
+        'callback' => [$this, 'updateParticularPath'],
+        'wrapper' => 'go-back-particular-path',
+      ],
+      '#element_validate' => [[get_class($this), 'elementValidateDrupalPaths']],
     ];
-    $custom_url_array = explode(', ', $config['custom_url']);
-    if (!empty($config['custom_url'])) {
-      $form['particular_path'] = [
-        '#type' => 'details',
-        '#title' => $this->t("Particular path (Config)"),
-      ];
+
+    // Method ->getCompleteFormState() call should be removed after
+    // https://www.drupal.org/project/drupal/issues/2798261 fix.
+    $custom_url_value = $form_state->getCompleteFormState()->getValue(
+      ['settings', 'custom_url']
+    );
+    $custom_url_value = $custom_url_value ? $custom_url_value : $config['custom_url'];
+
+    $form['particular_path'] = [
+      '#type' => 'details',
+      '#open' => (bool) $custom_url_value,
+      '#title' => $this->t("Particular path (Config)"),
+      '#prefix' => '<div id="go-back-particular-path">',
+      '#suffix' => '</div>',
+    ];
+
+    if ($custom_url_value) {
+      $custom_url_array = explode(', ', $custom_url_value);
+
       foreach ($custom_url_array as $custom_url) {
         $form['particular_path'][$custom_url] = [
           '#type' => 'fieldset',
@@ -193,6 +235,9 @@ class GoBack extends BlockBase implements ContainerFactoryPluginInterface {
             '%content_type' => $custom_url,
           ]),
           '#default_value' => $config['particular_path'][$custom_url]['custom_url'],
+          '#element_validate' => [
+            [get_class($this), 'elementValidateDrupalPaths'],
+          ],
           '#states' => [
             'visible' => [
               ':input[name$="[particular_path][' . $custom_url . '][quick_display]"]' => [
@@ -208,59 +253,110 @@ class GoBack extends BlockBase implements ContainerFactoryPluginInterface {
         ];
       }
     }
-    foreach ($this->getQuickDisplays() as $content_type) {
-      $form[$content_type] = [
-        '#type' => 'fieldset',
-        '#title' => $content_type,
+
+    $form['content_entities'] = [
+      '#type' => 'vertical_tabs',
+      '#title' => $this->t('Go Back settings by entity type'),
+      '#parents' => ['content_entities'],
+    ];
+    $contentEntityTypes = $this->getContentEntityTypes();
+    foreach ($contentEntityTypes as $type => $label) {
+      $form[$type] = [
+        '#type' => 'details',
+        '#title' => $label,
+        '#group' => 'content_entities',
       ];
-      $form[$content_type]['quick_display'] = [
-        '#type' => 'checkbox',
-        '#title' => $this->t("Active button in %content_type", [
-          '%content_type' => $content_type,
-        ]),
-        '#options' => $content_type,
-        '#default_value' => $config[$content_type]['quick_display'],
-        '#attributes' => [
-          'placeholder' => $this->t("Active button in %content_type", [
-            '%content_type' => $content_type,
+      $bundles = $this->getContentEntityTypeBundles($type);
+      foreach ($bundles as $bundle => $bundleLabel) {
+        $form[$type][$bundle] = [
+          '#type' => 'fieldset',
+          '#title' => $bundleLabel,
+        ];
+        $form[$type][$bundle]['quick_display'] = [
+          '#type' => 'checkbox',
+          '#title' => $this->t("Active button in %content_type", [
+            '%content_type' => $bundleLabel,
           ]),
-        ],
-      ];
-      $form[$content_type]['smart_mode'] = [
-        '#type' => 'checkbox',
-        '#title' => $this->t("Active smart mode in %content_type", [
-          '%content_type' => $content_type,
-        ]),
-        '#default_value' => $config[$content_type]['smart_mode'],
-        '#states' => [
-          'visible' => [
-            ':input[name$="[' . $content_type . '][quick_display]"]' => [
-              'checked' => TRUE,
+          '#default_value' => $config[$type][$bundle]['quick_display'],
+          '#attributes' => [
+            'placeholder' => $this->t("Active button in %content_type", [
+              '%content_type' => $bundle,
+            ]),
+          ],
+        ];
+        $form[$type][$bundle]['smart_mode'] = [
+          '#type' => 'checkbox',
+          '#title' => $this->t("Active smart mode in %content_type", [
+            '%content_type' => $bundleLabel,
+          ]),
+          '#default_value' => $config[$type][$bundle]['smart_mode'],
+          '#states' => [
+            'visible' => [
+              ':input[name$="[' . $bundle . '][quick_display]"]' => [
+                'checked' => TRUE,
+              ],
             ],
           ],
-        ],
-      ];
-      $form[$content_type]['go_back'] = [
-        '#type' => 'textfield',
-        '#title' => $this->t("URL Back - %content_type", [
-          '%content_type' => $content_type,
-        ]),
-        '#default_value' => $config[$content_type]['go_back'],
-        '#states' => [
-          'visible' => [
-            ':input[name$="[' . $content_type . '][quick_display]"]' => [
-              'checked' => TRUE,
+        ];
+        $form[$type][$bundle]['go_back'] = [
+          '#type' => 'textfield',
+          '#title' => $this->t("URL Back - %content_type", [
+            '%content_type' => $bundleLabel,
+          ]),
+          '#default_value' => $config[$type][$bundle]['go_back'],
+          '#element_validate' => [
+            [get_class($this), 'elementValidateDrupalPaths'],
+          ],
+          '#states' => [
+            'visible' => [
+              ':input[name$="[' . $bundle . '][quick_display]"]' => [
+                'checked' => TRUE,
+              ],
+            ],
+            'required' => [
+              ':input[name$="[' . $bundle . '][quick_display]"]' => [
+                'checked' => TRUE,
+              ],
             ],
           ],
-          'required' => [
-            ':input[name$="[' . $content_type . '][quick_display]"]' => [
-              'checked' => TRUE,
-            ],
-          ],
-        ],
-      ];
+        ];
+      }
     }
     return $form;
+  }
+
+  /**
+   * Validation handler to validate internal paths.
+   */
+  public static function elementValidateDrupalPaths(&$element, FormStateInterface $form_state) {
+    // Get the path(s).
+    $value = str_replace(' ', '', $element['#value']);
+    if (!empty($value)) {
+      $paths = explode(',', $value);
+      $invalidPaths = [];
+      foreach ($paths as $path) {
+        // Loop through the path(s) and if the path is not considered valid by
+        // Drupal path validator or the path doesn't start with a slash, then we
+        // throw an error.
+        if (!\Drupal::pathValidator()->isValid($path) || strpos($path, '/', 0) === FALSE) {
+          $invalidPaths[] = $path;
+        }
+      }
+      if (!empty($invalidPaths)) {
+        // Build the error message formatted to plural.
+        $message = \Drupal::translation()->formatPlural(count($invalidPaths), 'The %path path is not valid.', 'The %path paths are not valid.', [
+          '%path' => implode(', ', $invalidPaths),
+        ]);
+        $form_state->setError($element, $message);
+      }
+    }
+  }
+
+  /**
+   * Handles Particular path configuration display.
+   */
+  public function updateParticularPath($form, FormStateInterface $form_state) {
+    return $form['settings']['particular_path'];
   }
 
   /**
@@ -269,180 +365,117 @@ class GoBack extends BlockBase implements ContainerFactoryPluginInterface {
   public function blockSubmit($form, FormStateInterface $form_state) {
     parent::blockSubmit($form, $form_state);
     $values = $form_state->getValues();
-    foreach ($this->getQuickDisplays() as $content_type) {
-      $this->configuration[$content_type]['go_back'] = $values[$content_type]['go_back'];
-      $this->configuration[$content_type]['quick_display'] = $values[$content_type]['quick_display'];
-      $this->configuration[$content_type]['smart_mode'] = $values[$content_type]['smart_mode'];
-    }
-    $custom_url_array = explode(',', str_replace(' ', '', $values['custom_url']));
-    if (!empty($custom_url_array)) {
-      foreach ($custom_url_array as $custom_url) {
-        if (isset($values['particular_path'])) {
-          if (array_key_exists($custom_url, $values['particular_path'])) {
-            $this->configuration['particular_path'][$custom_url]['custom_url'] = $values['particular_path'][$custom_url]['custom_url'];
-            $this->configuration['particular_path'][$custom_url]['quick_display'] = $values['particular_path'][$custom_url]['quick_display'];
-            $this->configuration['particular_path'][$custom_url]['smart_mode'] = $values['particular_path'][$custom_url]['smart_mode'];
-          }
-          else {
-            $this->messenger->addWarning($this->t('Go back: Please return to the block configuration form to finish settings for your custom url.'));
-          }
-        }
-        else {
-          $this->messenger->addWarning($this->t('Go back: Please return to the block configuration form to finish settings for your custom url.'));
+
+    // Store the entity types configuration, by entity type and bundle.
+    $contentEntityTypes = $this->getContentEntityTypes();
+    foreach ($contentEntityTypes as $type => $label) {
+      if (isset($values[$type])) {
+        foreach ($values[$type] as $bundle => $settings) {
+          $this->configuration[$type][$bundle] = $settings;
         }
       }
     }
-    $this->configuration['custom_url'] = $values['custom_url'];
 
+    // Reset the old stored values. Good for removal.
+    $this->configuration['particular_path'] = [];
+    // Get the custom urls (paths), but only continue if we have at least one.
+    $customUrls = str_replace(' ', '', $values['custom_url']);
+    $customUrls = !empty($customUrls) ? explode(',', $customUrls) : [];
+    foreach ($customUrls as $customUrl) {
+      $this->configuration['particular_path'][$customUrl] = $values['particular_path'][$customUrl];
+    }
+    $this->configuration['custom_url'] = $values['custom_url'];
   }
 
   /**
    * {@inheritdoc}
    */
   public function build() {
-    $urlb = '';
+    $result = [];
     $config = $this->getConfiguration();
-    /*
-    Particular Path Mode
-    You can add a Go Back Block in anywhere.
-     */
+
+    // Manage particular paths.
     $current_path = $this->pathStack->getPath();
     // The block appears in the url indicated in the configuration.
     if (strpos($config['custom_url'], $current_path) !== FALSE) {
-      if ($config['particular_path'][$current_path]['quick_display'] == '1') {
-        // We activate smart mode in a custom url.
-        if ($config['particular_path'][$current_path]['smart_mode'] == '1') {
-          // Take the URL of our site where it comes from.
-          $urlb = array_key_exists('HTTP_REFERER', $_SERVER) ? $_SERVER['HTTP_REFERER'] : NULL;
-          if (strcmp($urlb, '') === 0) {
-            // If the url is not from our site, take the url by default.
-            if (substr($config['particular_path'][$current_path]['custom_url'], 0, 1) == '/') {
-              /*
-              Transforms the url into a readable URL for Drupal
-              and add the interface language.
-               */
-              $langcode = $this->languageInt->getCurrentLanguage()->getId();
-              $url = Url::fromUri('base:' . $config['particular_path'][$current_path]['custom_url'], [
-                'language' => $this->languageInt->getLanguage($langcode),
-              ]);
-              $path = $url->toString();
-              $urlb = $path;
-            }
-          }
-        }
-        else {
-          /*
-           * When smart mode is not activated.
-           * Transforms the url into a readable URL for Drupal
-           * and add the interface language.
-           */
-          if (substr($config['particular_path'][$current_path]['custom_url'], 0, 1) == '/') {
-            $langcode = $this->languageInt->getCurrentLanguage()->getId();
-            $url = Url::fromUri('base:' . $config['particular_path'][$current_path]['custom_url'], [
-              'language' => $this->languageInt->getLanguage($langcode),
-            ]);
-            $path = $url->toString();
-            $urlb = $path;
-          }
-        }
-        $result = [
-          '#theme' => 'block__goback',
-          '#link' => $urlb,
-          '#attached' => [
-            'library' => [
-              'go_back/go_back',
-            ],
-          ],
-        ];
+      $result = $this->getQuickDisplayBuild('particular_path', $current_path);
+    }
+
+    // Manage entities.
+    $currentEntity = $this->getCurrentEntity();
+    if (!empty($currentEntity)) {
+      $type = function_exists('array_key_first') ? array_key_first($currentEntity) : key($currentEntity);
+      $entity = reset($currentEntity);
+      if ($entity instanceof ContentEntityInterface) {
+        // Some entities do not have a bundle, so we are using the entity type
+        // instead.
+        $bundle = !empty($entity->bundle()) ? $entity->bundle() : $type;
+        $result = $this->getQuickDisplayBuild($type, $bundle);
       }
     }
 
-    $node = $this->routeMatch->getParameter('node');
-    if ($node instanceof NodeInterface) {
-      /*
-      $bundle: Get a content type name.
-      $langcode: Get the language currently used.
-       */
-      $bundle = $node->type->entity->label();
-      $langcode = $this->languageInt->getCurrentLanguage()->getId();
-      // We activate go back block in a content type.
-      if ($config[$bundle]['quick_display'] == '1') {
-        // We activate smart mode in a content type.
-        if ($config[$bundle]['smart_mode'] == '1') {
-          // Take the URL of our site where it comes from.
-          $urlb = array_key_exists('HTTP_REFERER', $_SERVER) ? $_SERVER['HTTP_REFERER'] : NULL;
-          if (strcmp($urlb, '') === 0) {
-            // If the url is not from our site, take the url by default.
-            if (substr($config[$bundle]['go_back'], 0, 1) == '/') {
-              /*
-              Transforms the url into a readable URL for Drupal
-              and add the interface language.
-               */
-              $url = Url::fromUri('base:' . $config[$bundle]['go_back'], [
-                'language' => $this->languageInt->getLanguage($langcode),
-              ]);
-              $path = $url->toString();
-              $urlb = $path;
-            }
-          }
-        }
-        // When smart mode is not activated.
-        else {
-          /*
-          Transforms the url into a readable URL for Drupal
-          and add the interface language.
-           */
-          if (substr($config[$bundle]['go_back'], 0, 1) == '/') {
-            $url = Url::fromUri('base:' . $config[$bundle]['go_back'], [
-              'language' => $this->languageInt->getLanguage($langcode),
-            ]);
-            $path = $url->toString();
-            $urlb = $path;
-          }
-        }
-        $result = [
-          '#theme' => 'block__goback',
-          '#link' => $urlb,
-          '#attached' => [
-            'library' => [
-              'go_back/go_back',
-            ],
-          ],
-        ];
-      }
-    }
-    if (empty($result)) {
-      $result = [];
-    }
     // Trigger cache kill switch, see: https://drupal.stackexchange.com/a/151289
     $this->killSwitch->trigger();
     return $result;
   }
 
   /**
-   * Show all display modes of content.
+   * Builds the output for the quick display and smart mode settings.
+   *
+   * @param string $parent
+   *   The parent config name. E.g. the entity type machine name for entities.
+   * @param string $child
+   *   The child config name. E.g. the bundle of the entity type for entities.
+   *
+   * @return array
+   *   Returns a renderable array with the output.
    */
-  protected function getQuickDisplays() {
-    // Show content types list.
-    $contentTypes = $this->entityTypeManager->getStorage('node_type')->loadMultiple();
-    $contentTypesList = [];
-    foreach ($contentTypes as $contentType) {
-      $contentTypesList[$contentType->id()] = $contentType->label();
+  protected function getQuickDisplayBuild($parent, $child) {
+    $result = [];
+    $config = $this->getConfiguration();
+    if (!empty($config[$parent][$child]['quick_display'])) {
+      // We need to prepare the url setting name because the one from entities
+      // is different than that one from particular url.
+      $setting = isset($config[$parent][$child]['go_back']) ? 'go_back' : 'custom_url';
+      if (!empty($config[$parent][$child]['smart_mode']) && !empty($_SERVER['HTTP_REFERER'])) {
+        // If smart mode is active and we have a previous page accessed from our
+        // site, we set the previous url.
+        // @todo: I didn't see where in the original code they where checking if the previous url belongs to current site, so I left it as it is.
+        $url = $_SERVER['HTTP_REFERER'];
+      }
+      elseif (isset($config[$parent][$child][$setting]) && substr($config[$parent][$child][$setting], 0, 1) == '/') {
+        // When smart mode is not active, we use the url defined in the
+        // settings.
+        $url = Url::fromUri('base:' . $config[$parent][$child][$setting])->toString();
+      }
+      if (!empty($url)) {
+        $result = [
+          '#theme' => 'block__goback',
+          '#link' => $url,
+          '#attached' => [
+            'library' => [
+              'go_back/go_back',
+            ],
+          ],
+        ];
+      }
     }
-    return $contentTypesList;
-
+    return $result;
   }
 
   /**
    * {@inheritdoc}
    */
   public function getCacheTags() {
-    if ($node = $this->routeMatch->getParameter('node')) {
-      return Cache::mergeTags(parent::getCacheTags(), ['node:' . $node->id()]);
+    $currentEntity = $this->getCurrentEntity();
+    if (!empty($currentEntity)) {
+      $type = function_exists('array_key_first') ? array_key_first($currentEntity) : key($currentEntity);
+      $entity = reset($currentEntity);
+      if ($entity instanceof EntityInterface) {
+        return Cache::mergeTags(parent::getCacheTags(), ["$type:" . $entity->id()]);
+      }
     }
-    else {
-      return parent::getCacheTags();
-    }
+    return parent::getCacheTags();
   }
 
   /**

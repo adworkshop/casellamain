@@ -10,7 +10,7 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Session\AccountProxy;
 
 /**
- * Class ContactEmailerServiceProvider.
+ * Class ContactEmailer.
  *
  * @package Drupal\contact_emails
  */
@@ -136,6 +136,7 @@ class ContactEmailer {
         $params['format'] = $email->getFormat($this->contactMessage);
         $params['message'] = $email->getBody($this->contactMessage);
         $params['contact_message'] = $this->contactMessage;
+        $params['contact_email'] = $email;
 
         // Final prep and send.
         $language_code = $this->currentUser->getPreferredLangcode();

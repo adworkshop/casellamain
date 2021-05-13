@@ -2,6 +2,8 @@
 
 namespace Drupal\Tests\feeds\Unit\Plugin\QueueWorker;
 
+use Drupal\Core\Database\Connection;
+use Drupal\Core\Database\StatementInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Queue\QueueFactory;
@@ -17,6 +19,7 @@ use Drupal\feeds\Result\FetcherResult;
 use Drupal\feeds\Result\ParserResult;
 use Drupal\feeds\StateInterface;
 use Drupal\Tests\feeds\Unit\FeedsUnitTestCase;
+use Prophecy\Argument;
 use RuntimeException;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
@@ -84,11 +87,14 @@ class FeedRefreshTest extends FeedsUnitTestCase {
       ->method('getExecutable')
       ->will($this->returnValue($executable));
 
+    $connection = $this->prophesize(Connection::class);
+    $connection->query(Argument::type('string'), Argument::type('array'))->willReturn($this->createMock(StatementInterface::class));
+
     $this->feed = $this->getMockFeed();
     $this->feed->expects($this->any())
       ->method('getState')
       ->with(StateInterface::CLEAN)
-      ->will($this->returnValue(new CleanState()));
+      ->will($this->returnValue(new CleanState(1, $connection->reveal())));
   }
 
   /**
@@ -125,7 +131,7 @@ class FeedRefreshTest extends FeedsUnitTestCase {
       throw new RuntimeException();
     });
 
-    $this->setExpectedException(RuntimeException::class);
+    $this->expectException(RuntimeException::class);
     $this->plugin->processItem([
       $this->feed,
       FeedsExecutableInterface::FETCH,
@@ -164,7 +170,7 @@ class FeedRefreshTest extends FeedsUnitTestCase {
       throw new RuntimeException();
     });
 
-    $this->setExpectedException(RuntimeException::class);
+    $this->expectException(RuntimeException::class);
     $this->plugin->processItem([
       $this->feed,
       FeedsExecutableInterface::PARSE, [
@@ -196,7 +202,7 @@ class FeedRefreshTest extends FeedsUnitTestCase {
       throw new RuntimeException();
     });
 
-    $this->setExpectedException(RuntimeException::class);
+    $this->expectException(RuntimeException::class);
     $this->plugin->processItem([
       $this->feed,
       FeedsExecutableInterface::PROCESS, [

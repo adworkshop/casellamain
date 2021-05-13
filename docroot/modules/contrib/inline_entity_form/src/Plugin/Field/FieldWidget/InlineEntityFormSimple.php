@@ -18,7 +18,8 @@ use Drupal\inline_entity_form\TranslationHelper;
  *   id = "inline_entity_form_simple",
  *   label = @Translation("Inline entity form - Simple"),
  *   field_types = {
- *     "entity_reference"
+ *     "entity_reference",
+ *     "entity_reference_revisions",
  *   },
  *   multiple_values = false
  * )
@@ -32,7 +33,7 @@ class InlineEntityFormSimple extends InlineEntityFormBase {
     // Trick inline_entity_form_form_alter() into attaching the handlers,
     // WidgetSubmit will be needed once extractFormValues fills the $form_state.
     $parents = array_merge($element['#field_parents'], [$items->getName()]);
-    $ief_id = sha1(implode('-', $parents));
+    $ief_id = $this->makeIefId($parents);
     $form_state->set(['inline_entity_form', $ief_id], []);
 
     $element = [
@@ -43,7 +44,8 @@ class InlineEntityFormSimple extends InlineEntityFormBase {
       ],
     ] + $element;
     if ($element['#type'] == 'details') {
-      $element['#open'] = !$this->getSetting('collapsed');
+      // If there's user input, keep the details open. Otherwise, use settings.
+      $element['#open'] = $form_state->getUserInput() ?: !$this->getSetting('collapsed');
     }
 
     $item = $items->get($delta);
@@ -152,7 +154,7 @@ class InlineEntityFormSimple extends InlineEntityFormBase {
 
     // Populate the IEF form state with $items so that WidgetSubmit can
     // perform the necessary saves.
-    $ief_id = sha1(implode('-', $parents));
+    $ief_id = $this->makeIefId($parents);
     $widget_state = [
       'instance' => $this->fieldDefinition,
       'delete' => [],

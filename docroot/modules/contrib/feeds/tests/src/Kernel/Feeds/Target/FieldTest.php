@@ -93,7 +93,7 @@ class FieldTest extends FeedsKernelTestBase {
     $formats['medium']->setPattern('j. F Y - G:i')->save();
     $formats['short']->setPattern('Y M j - g:ia')->save();
 
-    entity_get_display('node', 'article', 'default')
+    $this->container->get('entity_display.repository')->getViewDisplay('node', 'article', 'default')
       ->setComponent('field_alpha', [
         'type' => 'text_default',
         'label' => 'above',
@@ -231,13 +231,13 @@ class FieldTest extends FeedsKernelTestBase {
     // Check for node 1 if labels are no longer shown.
     $rendered_content = $this->renderNode(Node::load(1));
     foreach ($field_labels as $label) {
-      $this->assertNotContains($label, $rendered_content);
+      $this->assertStringNotContainsString($label, $rendered_content);
     }
 
     // Check for node 2 if labels are still shown.
     $rendered_content = $this->renderNode(Node::load(2));
     foreach ($field_labels as $label) {
-      $this->assertContains($label, $rendered_content);
+      $this->assertStringContainsString($label, $rendered_content);
     }
 
     // Re-import the first file again.
@@ -269,8 +269,117 @@ class FieldTest extends FeedsKernelTestBase {
     // Check if labels for fields that should be cleared out are not shown.
     $rendered_content = $this->renderNode(Node::load(1));
     foreach ($field_labels as $label) {
-      $this->assertNotContains($label, $rendered_content);
+      $this->assertStringNotContainsString($label, $rendered_content);
     }
+  }
+
+  /**
+   * Tests if text and numeric fields can be used as unique target.
+   *
+   * @param string $field
+   *   The name of the field to set as unique.
+   * @param string $subfield
+   *   The subfield of the field.
+   * @param int $delta
+   *   The index of the target in the mapping configuration.
+   * @param array $values
+   *   (optional) The list of initial values the node to create should get.
+   *
+   * @dataProvider dataProviderTargetUnique
+   */
+  public function testTargetUnique($field, $subfield, $delta, array $values = []) {
+    $expected_values = [
+      'body' => 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.',
+      'field_alpha' => 'Lorem',
+      'field_beta' => '42',
+      'field_gamma' => '4.20',
+      'field_delta' => '3.14159',
+    ];
+
+    // Set mapper as unique.
+    $mappings = $this->feedType->getMappings();
+    $mappings[$delta]['unique'] = [$subfield => TRUE];
+    $this->feedType->setMappings($mappings);
+
+    // Configure feed type to update existing values.
+    $this->feedType->getProcessor()->setConfiguration([
+      'update_existing' => ProcessorInterface::UPDATE_EXISTING,
+    ] + $this->feedType->getProcessor()->getConfiguration());
+
+    // And save feed type.
+    $this->feedType->save();
+
+    // Create an entity to update.
+    $values += [
+      'title'  => $this->randomMachineName(8),
+      'type'  => 'article',
+      'uid'  => 0,
+      $field => isset($expected_values[$field]) ? $expected_values[$field] : NULL,
+    ];
+    $node = Node::create($values);
+    $node->save();
+
+    // Run import.
+    $feed = $this->createFeed($this->feedType->id(), [
+      'source' => $this->resourcesPath() . '/csv/content.csv',
+    ]);
+    $feed->import();
+    $this->assertNodeCount(2);
+
+    // Check if the first node has the expected values.
+    $node = $this->reloadEntity($node);
+    foreach ($expected_values as $field_name => $value) {
+      $this->assertEquals($value, $node->{$field_name}->value);
+    }
+  }
+
+  /**
+   * Data provider for ::testTargetUnique().
+   *
+   * Check if text fields, integer fields and decimal fields can be used as
+   * unique target.
+   */
+  public function dataProviderTargetUnique() {
+    return [
+      ['field_alpha', 'value', 2],
+      ['field_beta', 'value', 3],
+      ['field_gamma', 'value', 4],
+    ];
+  }
+
+  /**
+   * Tests if list integer fields can be used as unique target.
+   */
+  public function testListIntegerTargetUnique() {
+    // Add a list integer field.
+    $this->createFieldWithStorage('field_jota', [
+      'type' => 'list_integer',
+      'storage' => [
+        'settings' => [
+          'allowed_values' => [
+            1 => 'One',
+            2 => 'Two',
+          ],
+        ],
+      ],
+    ]);
+
+    // Reload feed type to reset target plugin cache.
+    $this->feedType = $this->reloadEntity($this->feedType);
+
+    // Add custom source and add mapping for this field.
+    $this->feedType->addCustomSource('guid', [
+      'label' => 'GUID',
+      'value' => 'guid',
+    ]);
+    $this->feedType->addMapping([
+      'target' => 'field_jota',
+      'map' => ['value' => 'guid'],
+      'unique' => ['value' => TRUE],
+    ]);
+
+    // And test!
+    $this->testTargetUnique('field_jota', 'value', 6, ['field_jota' => 1]);
   }
 
   /**
@@ -298,7 +407,7 @@ class FieldTest extends FeedsKernelTestBase {
    *   The rendered content.
    */
   protected function renderNode(Node $node) {
-    $display = entity_get_display($node->getEntityTypeId(), $node->bundle(), 'default');
+    $display = \Drupal::service('entity_display.repository')->getViewDisplay($node->getEntityTypeId(), $node->bundle(), 'default');
     $content = $display->build($node);
     return (string) $this->container->get('renderer')->renderRoot($content);
   }

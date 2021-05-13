@@ -3,6 +3,7 @@
 namespace Drupal\feeds\Feeds\Target;
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Entity\EntityFieldManagerInterface;
@@ -19,6 +20,7 @@ use Drupal\feeds\FeedInterface;
 use Drupal\feeds\FieldTargetDefinition;
 use Drupal\feeds\Plugin\Type\Target\ConfigurableTargetInterface;
 use Drupal\feeds\Plugin\Type\Target\FieldTargetBase;
+use Drupal\feeds\StateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -96,7 +98,7 @@ class EntityReference extends FieldTargetBase implements ConfigurableTargetInter
     // Only reference content entities. Configuration entities will need custom
     // targets.
     $type = $field_definition->getSetting('target_type');
-    if (!\Drupal::entityTypeManager()->getDefinition($type)->entityClassImplements('\Drupal\Core\Entity\ContentEntityInterface')) {
+    if (!\Drupal::entityTypeManager()->getDefinition($type)->entityClassImplements(ContentEntityInterface::class)) {
       return;
     }
 
@@ -122,6 +124,7 @@ class EntityReference extends FieldTargetBase implements ConfigurableTargetInter
         // In this case we need to destroy the hash in order to be able to
         // import the reference on a next import.
         $entity->get('feeds_item')->hash = NULL;
+        $feed->getState(StateInterface::PROCESS)->setMessage($e->getFormattedMessage(), 'warning', TRUE);
       }
       catch (EmptyFeedException $e) {
         // Nothing wrong here.
@@ -133,12 +136,15 @@ class EntityReference extends FieldTargetBase implements ConfigurableTargetInter
     }
 
     if (!empty($values)) {
-      $item_list = $entity->get($field_name);
+      $entity_target = $this->getEntityTarget($feed, $entity);
+      if ($entity_target) {
+        $item_list = $entity_target->get($field_name);
 
-      // Append these values to the existing values.
-      $values = array_merge($item_list->getValue(), $values);
+        // Append these values to the existing values.
+        $values = array_merge($item_list->getValue(), $values);
 
-      $item_list->setValue($values);
+        $item_list->setValue($values);
+      }
     }
   }
 
@@ -238,6 +244,19 @@ class EntityReference extends FieldTargetBase implements ConfigurableTargetInter
   }
 
   /**
+   * Returns the entity type's langcode key, if it has one.
+   *
+   * @return string|null
+   *   The langcode key of the entity type.
+   */
+  protected function getLangcodeKey() {
+    $entity_type = $this->entityTypeManager->getDefinition($this->getEntityType());
+    if ($entity_type->hasKey('langcode')) {
+      return $entity_type->getKey('langcode');
+    }
+  }
+
+  /**
    * {@inheritdoc}
    */
   protected function prepareValue($delta, array &$values) {
@@ -264,7 +283,10 @@ class EntityReference extends FieldTargetBase implements ConfigurableTargetInter
       }
     }
 
-    throw new ReferenceNotFoundException();
+    throw new ReferenceNotFoundException($this->t('Referenced entity not found for field %field with value %target_id.', [
+      '%target_id' => $values['target_id'],
+      '%field' => $this->configuration['reference_by'],
+    ]));
   }
 
   /**
@@ -352,10 +374,18 @@ class EntityReference extends FieldTargetBase implements ConfigurableTargetInter
 
     $bundles = $this->getBundles();
 
-    $entity = $this->entityTypeManager->getStorage($this->getEntityType())->create([
+    // Create values for the new entity.
+    $values = [
       $this->getLabelKey() => $label,
       $this->getBundleKey() => reset($bundles),
-    ]);
+    ];
+    // Set language if the entity type supports it.
+    if ($langcode = $this->getLangcodeKey()) {
+      $values[$langcode] = $this->getLangcode();
+    }
+
+    $entity = $this->entityTypeManager->getStorage($this->getEntityType())->create($values);
+
     $entity->save();
 
     return $entity->id();
@@ -365,7 +395,7 @@ class EntityReference extends FieldTargetBase implements ConfigurableTargetInter
    * {@inheritdoc}
    */
   public function defaultConfiguration() {
-    $config = [
+    $config = parent::defaultConfiguration() + [
       'reference_by' => $this->getLabelKey(),
       'autocreate' => FALSE,
     ];
@@ -388,9 +418,11 @@ class EntityReference extends FieldTargetBase implements ConfigurableTargetInter
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+    $form = parent::buildConfigurationForm($form, $form_state);
     $options = $this->getPotentialFields();
 
     // Hack to find out the target delta.
+    $delta = 0;
     foreach ($form_state->getValues() as $key => $value) {
       if (strpos($key, 'target-settings-') === 0) {
         list(, , $delta) = explode('-', $key);
@@ -443,7 +475,7 @@ class EntityReference extends FieldTargetBase implements ConfigurableTargetInter
   public function getSummary() {
     $options = $this->getPotentialFields();
 
-    $summary = [];
+    $summary = parent::getSummary();
 
     if ($this->configuration['reference_by'] && isset($options[$this->configuration['reference_by']])) {
       $summary[] = $this->t('Reference by: %message', ['%message' => $options[$this->configuration['reference_by']]]);
@@ -461,7 +493,7 @@ class EntityReference extends FieldTargetBase implements ConfigurableTargetInter
       $summary[] = $this->t('Autocreate terms: %create', ['%create' => $create]);
     }
 
-    return implode('<br>', $summary);
+    return $summary;
   }
 
 }

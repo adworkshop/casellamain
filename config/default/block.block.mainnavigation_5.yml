@@ -19,9 +19,13 @@ settings:
   label: 'Main navigation - Earthlife Sidebar'
   provider: menu_block
   label_display: visible
+  follow: false
+  follow_parent: child
   level: 1
   depth: 0
-  expand: 0
+  expand_all_items: false
   parent: 'main:menu_link_content:38b0cc25-e1b3-46d8-a5a2-aa18458cfca4'
   suggestion: earthlife_subsection_sidebar
+  label_type: block
+  label_link: false
 visibility: {  }

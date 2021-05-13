@@ -7,3 +7,5 @@ docroot/sites/default/settings.local.php
 .idea
 #ignore npm stuff
 node_modules
+# Ignore local dev
+.docksal/

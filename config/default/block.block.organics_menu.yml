@@ -19,9 +19,13 @@ settings:
   label: 'Organics Menu Block'
   provider: menu_block
   label_display: '0'
+  follow: false
+  follow_parent: child
   level: 1
   depth: 0
-  expand: 0
+  expand_all_items: false
   parent: 'organics:'
   suggestion: main
+  label_type: block
+  label_link: false
 visibility: {  }

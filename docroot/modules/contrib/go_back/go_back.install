@@ -1,0 +1,75 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the go_back module.
+ */
+
+/**
+ * Update existing go_back blocks with the new content type settings.
+ */
+function go_back_update_8101() {
+  $config_factory = \Drupal::configFactory();
+  // Get all existing blocks and content types.
+  $existing_blocks = $config_factory->listAll('block.block');
+  $content_types = \Drupal::entityTypeManager()->getStorage('node_type')->loadMultiple();
+
+  foreach ($existing_blocks as $id) {
+    // Load each block config and go further only if the block config uses the
+    // go_back plugin.
+    $block_config = $config_factory->getEditable($id);
+    if ($block_config->get('plugin') == 'go_back') {
+      // Get the settings.
+      $block_settings = $block_config->get('settings');
+      foreach ($content_types as $machine_name => $content_type) {
+        // Verify if the label is used and if so, replace it with the machine
+        // name of the content type.
+        if (isset($block_settings[$content_type->label()])) {
+          $block_settings[$machine_name] = $block_settings[$content_type->label()];
+          unset($block_settings[$content_type->label()]);
+        }
+        else {
+          // We cannot cover the old name of the content type after it's
+          // changed, but what we can do is to try at least to check if it was
+          // the same as the machine name.
+          $potential_name = ucfirst(str_replace('_', ' ', trim($machine_name)));
+          if (isset($block_settings[$potential_name])) {
+            $block_settings[$machine_name] = $block_settings[$potential_name];
+            unset($block_settings[$potential_name]);
+          }
+        }
+      }
+      $block_config->set('settings', $block_settings);
+      $block_config->save();
+    }
+  }
+}
+
+/**
+ * Update the old content types config to match the new entity types setup.
+ */
+function go_back_update_8102() {
+  $config_factory = \Drupal::configFactory();
+  // Get all existing blocks and content types.
+  $existing_blocks = $config_factory->listAll('block.block');
+  $content_types = \Drupal::entityTypeManager()->getStorage('node_type')->loadMultiple();
+
+  foreach ($existing_blocks as $id) {
+    // Load each block config and go further only if the block config uses the
+    // go_back plugin.
+    $block_config = $config_factory->getEditable($id);
+    if ($block_config->get('plugin') == 'go_back') {
+      // Get the settings.
+      $block_settings = $block_config->get('settings');
+      foreach ($content_types as $machine_name => $content_type) {
+        // Add the node bundle settings under a 'node' key as children.
+        if (isset($block_settings[$machine_name])) {
+          $block_settings['node'][$machine_name] = $block_settings[$machine_name];
+          unset($block_settings[$machine_name]);
+        }
+      }
+      $block_config->set('settings', $block_settings);
+      $block_config->save();
+    }
+  }
+}

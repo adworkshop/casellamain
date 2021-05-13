@@ -4,6 +4,7 @@ namespace Drupal\ngrok_drupal;
 
 use Drupal\Core\DependencyInjection\ServiceProviderBase;
 use Drupal\Core\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Reference;
 
 /**
  * Class NgrokServiceProvider.
@@ -21,6 +22,7 @@ class NgrokDrupalServiceProvider extends ServiceProviderBase {
     if ($container->hasDefinition('session_configuration')) {
       // Load the definition of the session_configuration servie.
       $definition = $container->getDefinition('session_configuration');
+      $definition->addArgument(new Reference('config.factory'));
       // Override the default class, by our own.
       $definition->setClass(
         '\Drupal\ngrok_drupal\NgrokSessionConfiguration'

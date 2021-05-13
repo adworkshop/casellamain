@@ -7,11 +7,10 @@ dependencies:
     - node.type.casella_globals
     - node.type.job
   module:
-    - node
-    - user
-    - view_unpublished
-    - views_autocomplete_filters
-    - views_bulk_operations
+    0: node
+    1: user
+    3: views_autocomplete_filters
+    4: views_bulk_operations
 _core:
   default_config_hash: YIwhIF9MSP1E_HMam6MrYeti_UqMXQiLDMjDsPFKK8s
 id: content

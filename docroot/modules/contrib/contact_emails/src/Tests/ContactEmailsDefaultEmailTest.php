@@ -37,14 +37,14 @@ class ContactEmailsDefaultEmailTest extends ContactEmailsTestBase {
       'reply_to_type[0][value]' => 'default',
       'status[value]' => TRUE,
     ];
-    $this->drupalPostForm('admin/structure/contact/manage/contact_emails_test_form/emails/add', $params, t('Save'));
+    $this->drupalPostForm('/admin/structure/contact/manage/contact_emails_test_form/emails/add', $params, t('Save'));
 
     // Submit the contact form on the front-end of the website.
     $params = [
       'subject[0][value]' => 'Submission Test Form Subject',
       'message[0][value]' => 'Submission Test Form Body',
     ];
-    $this->drupalPostForm('contact/contact_emails_test_form', $params, t('Send message'));
+    $this->drupalPostForm('/contact/contact_emails_test_form', $params, t('Send message'));
 
     // Assert that it says message has been sent.
     $this->assertText('Your message has been sent.', 'Message sent successfully.');

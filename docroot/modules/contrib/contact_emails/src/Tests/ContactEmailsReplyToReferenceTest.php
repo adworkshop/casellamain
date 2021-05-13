@@ -42,21 +42,21 @@ class ContactEmailsReplyToReferenceTest extends ContactEmailsTestBase {
       'reply_to_reference[0][value]' => 'field_reference.contact_message.contact_reference_test_form.field_email_reference',
       'status[value]' => TRUE,
     ];
-    $this->drupalPostForm('admin/structure/contact/manage/contact_emails_test_form/emails/add', $params, t('Save'));
+    $this->drupalPostForm('/admin/structure/contact/manage/contact_emails_test_form/emails/add', $params, t('Save'));
 
     // Open the contact form on the front-end.
-    $this->drupalGet('contact/contact_emails_test_form');
+    $this->drupalGet('/contact/contact_emails_test_form');
 
     // Get the reference options.
     $elements = $this->xpath('//select[@name="field_reference"]');
-    $options = $this->getAllOptions($elements[0]);
+    $options = $elements[0]->findAll('xpath', '//option');
     $last_option = end($options);
 
     // Submit the contact form on the front-end of the website.
     $params = [
       'subject[0][value]' => 'Submission Test Form Subject',
       'message[0][value]' => 'Submission Test Form Body',
-      'field_reference' => $last_option->attributes()->value,
+      'field_reference' => $last_option->getValue(),
     ];
     $this->drupalPostForm(NULL, $params, t('Send message'));
 

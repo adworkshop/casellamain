@@ -40,14 +40,14 @@ class ContactEmailsReplyToTest extends ContactEmailsTestBase {
       'reply_to_type[0][value]' => 'default',
       'status[value]' => TRUE,
     ];
-    $this->drupalPostForm('admin/structure/contact/manage/contact_emails_test_form/emails/add', $params, t('Save'));
+    $this->drupalPostForm('/admin/structure/contact/manage/contact_emails_test_form/emails/add', $params, t('Save'));
 
     // Submit the contact form on the front-end of the website.
     $params = [
       'subject[0][value]' => 'Submission Test Form Subject',
       'message[0][value]' => 'Submission Test Form Body',
     ];
-    $this->drupalPostForm('contact/contact_emails_test_form', $params, t('Send message'));
+    $this->drupalPostForm('/contact/contact_emails_test_form', $params, t('Send message'));
 
     // Assert that the reply-to is the default site email.
     $this->assertText('Message-reply-to:site-default-mail@test.com', 'Message to set to default successfully.');
@@ -70,7 +70,7 @@ class ContactEmailsReplyToTest extends ContactEmailsTestBase {
       'reply_to_field[0][value]' => 'field_email_address',
       'status[value]' => TRUE,
     ];
-    $this->drupalPostForm('admin/structure/contact/manage/contact_emails_test_form/emails/add', $params, t('Save'));
+    $this->drupalPostForm('/admin/structure/contact/manage/contact_emails_test_form/emails/add', $params, t('Save'));
 
     // Submit the contact form on the front-end of the website.
     $params = [
@@ -78,7 +78,7 @@ class ContactEmailsReplyToTest extends ContactEmailsTestBase {
       'message[0][value]' => 'Submission Test Form Body',
       'field_email_address[0][value]' => 'email.in.field@test.com',
     ];
-    $this->drupalPostForm('contact/contact_emails_test_form', $params, t('Send message'));
+    $this->drupalPostForm('/contact/contact_emails_test_form', $params, t('Send message'));
 
     // Assert that it says message has been sent.
     $this->assertText('Message-reply-to:email.in.field@test.com', 'Message reply-to set successfully.');
@@ -98,14 +98,14 @@ class ContactEmailsReplyToTest extends ContactEmailsTestBase {
       'reply_to_type[0][value]' => 'submitter',
       'status[value]' => TRUE,
     ];
-    $this->drupalPostForm('admin/structure/contact/manage/contact_emails_test_form/emails/add', $params, t('Save'));
+    $this->drupalPostForm('/admin/structure/contact/manage/contact_emails_test_form/emails/add', $params, t('Save'));
 
     // Submit the contact form on the front-end of the website.
     $params = [
       'subject[0][value]' => 'Submission Test Form Subject',
       'message[0][value]' => 'Submission Test Form Body',
     ];
-    $this->drupalPostForm('contact/contact_emails_test_form', $params, t('Send message'));
+    $this->drupalPostForm('/contact/contact_emails_test_form', $params, t('Send message'));
 
     // Assert that the message to is the email of the currently logged in user.
     $this->assertText('Message-reply-to:' . \Drupal::currentUser()->getEmail(), 'Message to set successfully.');
@@ -126,14 +126,14 @@ class ContactEmailsReplyToTest extends ContactEmailsTestBase {
       'reply_to_email[0][value]' => 'manual-email-1@test.com',
       'status[value]' => TRUE,
     ];
-    $this->drupalPostForm('admin/structure/contact/manage/contact_emails_test_form/emails/add', $params, t('Save'));
+    $this->drupalPostForm('/admin/structure/contact/manage/contact_emails_test_form/emails/add', $params, t('Save'));
 
     // Submit the contact form on the front-end of the website.
     $params = [
       'subject[0][value]' => 'Submission Test Form Subject',
       'message[0][value]' => 'Submission Test Form Body',
     ];
-    $this->drupalPostForm('contact/contact_emails_test_form', $params, t('Send message'));
+    $this->drupalPostForm('/contact/contact_emails_test_form', $params, t('Send message'));
 
     // Assert that the message to is the email of the currently logged in user.
     $this->assertText('Message-reply-to:manual-email-1@test.com', 'Message reply-to set successfully.');

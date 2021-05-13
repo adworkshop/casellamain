@@ -1,0 +1,7 @@
+ngrok_drupal.settings:
+  path: '/admin/config/system/ngrok'
+  defaults:
+    _form: Drupal\ngrok_drupal\Form\NgrokDrupalSettingsForm
+    _title: 'Ngrok Drupal Settings'
+  requirements:
+    _permission: 'administer site configuration'

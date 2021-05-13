@@ -19,9 +19,13 @@ settings:
   label: 'Main navigation - Organics Sidebar'
   provider: menu_block
   label_display: '0'
+  follow: false
+  follow_parent: child
   level: 1
   depth: 0
-  expand: 0
+  expand_all_items: false
   parent: 'main:menu_link_content:62b19aa5-c08c-432f-87ff-363ccd83c62a'
   suggestion: subsection_sidebar
+  label_type: block
+  label_link: false
 visibility: {  }

@@ -3,9 +3,11 @@
 namespace Drupal\paragraph_view_mode\Plugin\Field\FieldWidget;
 
 use Drupal\Component\Utility\NestedArray;
+use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\Plugin\Field\FieldWidget\StringTextfieldWidget;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Url;
 use Drupal\paragraph_view_mode\StorageManagerInterface;
@@ -13,6 +15,7 @@ use Drupal\paragraph_view_mode\ViewModeInterface;
 use Drupal\paragraphs\Entity\ParagraphsType;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Plugin implementation of the 'paragraph_view_mode' widget.
@@ -25,7 +28,7 @@ use Symfony\Component\HttpFoundation\Request;
  *   }
  * )
  */
-class ParagraphViewModeWidget extends StringTextfieldWidget {
+class ParagraphViewModeWidget extends StringTextfieldWidget implements ContainerFactoryPluginInterface {
 
   /**
    * Current request.
@@ -37,11 +40,23 @@ class ParagraphViewModeWidget extends StringTextfieldWidget {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
-    $instance->request = $container->get('request_stack')->getCurrentRequest();
+  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, array $third_party_settings, RequestStack $request) {
+    parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $third_party_settings);
+    $this->request = $request->getCurrentRequest();
+  }
 
-    return $instance;
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $plugin_id,
+      $plugin_definition,
+      $configuration['field_definition'],
+      $configuration['settings'],
+      $configuration['third_party_settings'],
+      $container->get('request_stack')
+    );
   }
 
   /**
@@ -67,7 +82,7 @@ class ParagraphViewModeWidget extends StringTextfieldWidget {
       '#default_value' => array_keys($this->getEnabledViewModes()),
       '#required' => FALSE,
       '#ajax' => [
-        'callback' => [get_called_class(), 'defaultViewModes'],
+        'callback' => [__CLASS__, 'defaultViewModes'],
         'event' => 'change',
         'wrapper' => 'paragraph-view-mode-default',
       ],
@@ -101,7 +116,7 @@ class ParagraphViewModeWidget extends StringTextfieldWidget {
    * @return array
    *   Default view mode form element.
    */
-  public function defaultViewModes(array $form, FormStateInterface $form_state) {
+  public static function defaultViewModes(array $form, FormStateInterface $form_state) {
     $checkboxes = $form_state->getTriggeringElement();
     $element = NestedArray::getValue($form, array_slice($checkboxes['#array_parents'], 0, count($checkboxes['#array_parents']) - 2));
 
@@ -139,7 +154,7 @@ class ParagraphViewModeWidget extends StringTextfieldWidget {
     $element = parent::formElement($items, $delta, $element, $form, $form_state);
 
     $element['value'] = [
-      '#title' => $this->t('View mode'),
+      '#title' => $items->getFieldDefinition()->getLabel(),
       '#type' => 'select',
       '#default_value' => isset($items[$delta]->value) ? $items[$delta]->value : $this->getSetting('default_view_mode'),
       '#options' => $this->getEnabledViewModes() ?: $this->getDefaultOption(),

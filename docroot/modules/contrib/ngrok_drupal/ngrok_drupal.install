@@ -1,0 +1,14 @@
+<?php
+/**
+ * @file
+ * Ngrok for Drupal install code.
+ */
+
+/**
+ * Set default domain.
+ */
+function ngrok_drupal_update_8001() {
+  \Drupal::configFactory()->getEditable('ngrok_drupal.settings')
+    ->set('domain', 'ngrok.io')
+    ->save();
+}

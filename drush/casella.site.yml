@@ -1,0 +1,64 @@
+# Application 'casella', environment 'dev'.
+dev:
+  root: /var/www/html/casella.dev/docroot
+  ac-site: casella
+  ac-env: dev
+  ac-realm: prod
+  uri: caselladev.prod.acquia-sites.com
+  dev.livedev:
+    parent: '@casella.dev'
+    root: /mnt/gfs/casella.dev/livedev/docroot
+  host: caselladev.ssh.prod.acquia-sites.com
+  user: casella.dev
+  paths:
+    drush-script: drush9
+
+
+# Application 'casella', environment 'prod'.
+prod:
+  root: /var/www/html/casella.prod/docroot
+  ac-site: casella
+  ac-env: prod
+  ac-realm: prod
+  uri: casella.prod.acquia-sites.com
+  prod.livedev:
+    parent: '@casella.prod'
+    root: /mnt/gfs/casella.prod/livedev/docroot
+  host: casella.ssh.prod.acquia-sites.com
+  user: casella.prod
+  paths:
+    drush-script: drush9
+
+
+# Application 'casella', environment 'ra'.
+ra:
+  root: /var/www/html/casella.ra/docroot
+  ac-site: casella
+  ac-env: ra
+  ac-realm: prod
+  uri: casellara.prod.acquia-sites.com
+  ra.livedev:
+    parent: '@casella.ra'
+    root: /mnt/gfs/casella.ra/livedev/docroot
+  host: casellara.ssh.prod.acquia-sites.com
+  user: casella.ra
+  paths:
+    drush-script: drush9
+
+
+# Application 'casella', environment 'test'.
+test:
+  root: /var/www/html/casella.test/docroot
+  ac-site: casella
+  ac-env: test
+  ac-realm: prod
+  uri: casellastg.prod.acquia-sites.com
+  test.livedev:
+    parent: '@casella.test'
+    root: /mnt/gfs/casella.test/livedev/docroot
+  host: casellastg.ssh.prod.acquia-sites.com
+  user: casella.test
+  paths:
+    drush-script: drush9
+
+

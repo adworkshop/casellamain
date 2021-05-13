@@ -2,13 +2,18 @@
 
 namespace Drupal\contact_emails;
 
-use Drupal\simpletest\WebTestBase;
+use Drupal\Tests\BrowserTestBase;
 use Drupal\user\UserInterface;
 
 /**
  * Base class for contact emails tests.
  */
-class ContactEmailsTestBase extends WebTestBase {
+class ContactEmailsTestBase extends BrowserTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  protected $defaultTheme = 'stark';
 
   /**
    * The admin user.
