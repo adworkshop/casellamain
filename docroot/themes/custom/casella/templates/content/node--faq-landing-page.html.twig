@@ -1,4 +1,4 @@
-{% extends theme_path ~ "/templates/content/node--page-default.html.twig" %}
+{% extends "@casella/content/node--page-default.html.twig" %}
 
 {% block contentGrid %}
   <div class="cutomerCare-btnRow-container">
@@ -36,7 +36,7 @@
 
       {# drop a notification if this item is unpublished #}
       {% if logged_in and not node.isPublished() %}
-        {% include theme_path ~ "/templates/includes/unpublished-notice.html.twig" %}
+        {% include "@casella/includes/unpublished-notice.html.twig" %}
       {% endif %}
 
       {{ help }}

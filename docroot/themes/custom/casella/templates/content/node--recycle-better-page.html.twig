@@ -136,7 +136,7 @@
 
         {# drop a notification if this item is unpublished #}
         {% if logged_in and not node.isPublished() %}
-          {% include theme_path ~ "/templates/includes/unpublished-notice.html.twig" %}
+          {% include "@casella/includes/unpublished-notice.html.twig" %}
         {% endif %}
 
         {{ help }}
@@ -162,7 +162,7 @@
           </div>
 
           {% if addThis %}
-            {% include "/" ~ theme_path ~ "/templates/includes/add-this.html.twig" %}
+            {% include "@casella/includes/add-this.html.twig" %}
           {% endif %}
 
           {{ node_lower_content }}
@@ -187,7 +187,7 @@
 {{ content.tabs }}
 
 {% if tab_anchors|length %}
-  {% include "/" ~ theme_path ~ "/templates/includes/tab-panels.html.twig" with {'faqs': content.field_faqs} %}
+  {% include "@casella/includes/tab-panels.html.twig" with {'faqs': content.field_faqs} %}
 {% endif %}
 
 {% block resourceSolutions %}{% endblock %}

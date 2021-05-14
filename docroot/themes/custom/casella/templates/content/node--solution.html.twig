@@ -1,4 +1,4 @@
-{% extends theme_path ~ "/templates/content/node--page-default.html.twig" %}
+{% extends "@casella/content/node--page-default.html.twig" %}
 
 {% block bodyContent %}
   <div class="internal-mainBody-generalTxt-container{% if twoCol == 'true' %} twoCol{% endif %}">
@@ -10,7 +10,7 @@
           {{ content.body }}
 
           {% if addThis %}
-            {% include "/" ~ theme_path ~ "/templates/includes/add-this.html.twig" %}
+            {% include "@casella/includes/add-this.html.twig" %}
           {% endif %}
         </div>
         <!--END Left Column-->

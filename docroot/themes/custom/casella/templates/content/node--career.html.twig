@@ -136,7 +136,7 @@
             {{ highlighted }}
             {# drop a notification if this item is unpublished #}
             {% if logged_in and not node.isPublished() %}
-              {% include theme_path ~ "/templates/includes/unpublished-notice.html.twig" %}
+              {% include "@casella/includes/unpublished-notice.html.twig" %}
             {% endif %}
             {{ help }}
 

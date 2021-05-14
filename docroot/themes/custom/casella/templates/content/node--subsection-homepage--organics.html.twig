@@ -1,4 +1,4 @@
-{% embed theme_path ~ "/templates/includes/subsection-organics-header.html.twig" %}{% endembed %}
+{% embed "@casella/includes/subsection-organics-header.html.twig" %}{% endembed %}
 
 {% block preTitleSection %}
   <div class="mainOrganics-upperContentRegion-container">
@@ -30,7 +30,7 @@
 
         {# drop a notification if this item is unpublished #}
         {% if logged_in and not node.isPublished() %}
-          {% include theme_path ~ "/templates/includes/unpublished-notice.html.twig" %}
+          {% include "@casella/includes/unpublished-notice.html.twig" %}
         {% endif %}
 
         {{ help }}

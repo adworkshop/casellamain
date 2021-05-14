@@ -18,7 +18,7 @@
 
       {# drop a notification if this item is unpublished #}
       {% if logged_in and not node.isPublished() %}
-        {% include theme_path ~ "/templates/includes/unpublished-notice.html.twig" %}
+        {% include "@casella/includes/unpublished-notice.html.twig" %}
       {% endif %}
 
       {{ help }}
@@ -61,7 +61,7 @@
             {{ content.field_upper_content }}
 
             {% if addThis %}
-              {% include "/" ~ theme_path ~ "/templates/includes/add-this.html.twig" %}
+              {% include "@casella/includes/add-this.html.twig" %}
             {% endif %}
           </div>
           <!--Page Copy-->

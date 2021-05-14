@@ -1,6 +1,6 @@
 {{ attach_library('casella/jquery.fancybox') }}
 
-{% embed "/" ~ theme_path ~ "/templates/includes/paragraph--zozo-tab.html.twig" %}
+{% embed "@casella/includes/paragraph--zozo-tab.html.twig" %}
   {% block tabContent %}
     {{ content.field_images }}
   {% endblock %}

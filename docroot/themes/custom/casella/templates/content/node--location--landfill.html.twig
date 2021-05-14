@@ -17,7 +17,7 @@
 {% block bodySection %}
   {% if not alertEnd or date(alertEnd) > date() %}
     {% if content.field_alert_title|render|adw_strip_comments|trim or content.field_alert_content|render|adw_strip_comments|trim %}
-      {% include "/" ~ theme_path ~ "/templates/includes/location-alert.html.twig" %}
+      {% include "@casella/includes/location-alert.html.twig" %}
     {% endif %}
   {% endif %}
 
@@ -58,7 +58,7 @@
 
       {# drop a notification if this item is unpublished #}
       {% if logged_in and not node.isPublished() %}
-        {% include theme_path ~ "/templates/includes/unpublished-notice.html.twig" %}
+        {% include "@casella/includes/unpublished-notice.html.twig" %}
       {% endif %}
 
       {{ help }}
@@ -208,7 +208,7 @@
 <!--// FUNCTIONAL BREAK //////////////////////////////////////////////////////////////////////////////////////////////-->
 <!-- NEW: tab options extended to locations -->
 {% if tab_anchors|length %}
-  {% include "/" ~ theme_path ~ "/templates/includes/tab-panels.html.twig" %}
+  {% include "@casella/includes/tab-panels.html.twig" %}
 {% endif %}
 
 
