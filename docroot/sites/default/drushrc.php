@@ -1,2 +1,2 @@
 <?php
-$options['uri'] = "http://casella.docksal";
+$options['uri'] = "https://casella.lndo.site";
