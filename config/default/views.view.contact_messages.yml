@@ -2,6 +2,11 @@ uuid: 635b0acf-afd4-4ecf-a757-0fd4f10fe2f0
 langcode: en
 status: true
 dependencies:
+  config:
+    - field.storage.contact_message.field_email
+    - field.storage.contact_message.field_job_email
+    - field.storage.contact_message.field_ml_email
+    - field.storage.contact_message.field_service_email
   module:
     - contact
     - contact_storage
@@ -424,6 +429,31 @@ display:
           destination: true
           entity_type: contact_message
           plugin_id: entity_operations
+        field_email:
+          id: field_email
+          table: contact_message__field_email
+          field: field_email
+          plugin_id: field
+        field_service_email:
+          id: field_service_email
+          table: contact_message__field_service_email
+          field: field_service_email
+          plugin_id: field
+        field_ml_email:
+          id: field_ml_email
+          table: contact_message__field_ml_email
+          field: field_ml_email
+          plugin_id: field
+        field_ml_email_1:
+          id: field_ml_email_1
+          table: contact_message__field_ml_email
+          field: field_ml_email
+          plugin_id: field
+        field_job_email:
+          id: field_job_email
+          table: contact_message__field_job_email
+          field: field_job_email
+          plugin_id: field
       filters:
         contact_form:
           id: contact_form
@@ -509,7 +539,11 @@ display:
         - user.permissions
       cacheable: false
       max-age: 0
-      tags: {  }
+      tags:
+        - 'config:field.storage.contact_message.field_email'
+        - 'config:field.storage.contact_message.field_job_email'
+        - 'config:field.storage.contact_message.field_ml_email'
+        - 'config:field.storage.contact_message.field_service_email'
   page_1:
     display_plugin: page
     id: page_1
@@ -535,4 +569,8 @@ display:
         - user.permissions
       cacheable: false
       max-age: 0
-      tags: {  }
+      tags:
+        - 'config:field.storage.contact_message.field_email'
+        - 'config:field.storage.contact_message.field_job_email'
+        - 'config:field.storage.contact_message.field_ml_email'
+        - 'config:field.storage.contact_message.field_service_email'

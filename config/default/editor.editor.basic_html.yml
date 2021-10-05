@@ -13,6 +13,7 @@ third_party_settings:
     scheme: public
     directory: inline-files
     extensions: txt
+    max_size: ''
 _core:
   default_config_hash: AqlPmO16LvJI4D0Ih6u4GFQIzqr5OnLgAUSjcUGWk2g
 format: basic_html
@@ -51,6 +52,7 @@ settings:
           items:
             - Styles
             - Format
+            - Source
   plugins:
     language:
       language_list: un

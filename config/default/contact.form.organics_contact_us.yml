@@ -10,11 +10,11 @@ third_party_settings:
     show_preview: true
     disabled_form_message: 'This contact form has been disabled.'
     maximum_submissions_user: 0
+    page_autoreply_format: plain_text
 id: organics_contact_us
 label: 'Contact Us'
 recipients:
   - John.Kelly@casella.com
-  - andrew.mockler@casella.com
 reply: ''
 weight: 0
 message: ''

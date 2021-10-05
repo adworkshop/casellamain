@@ -1,0 +1,14 @@
+uuid: daa834c7-1adc-44da-b8ce-cfa13c9ebda5
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.careers
+  module:
+    - user
+id: user_add_role_action.careers
+label: 'Add the Careers role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: careers
