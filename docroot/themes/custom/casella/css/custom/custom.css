@@ -283,7 +283,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   .headerLogo a:hover {opacity:.5;}
   #generalNav #casella_logo {width: 120px; height:32px; fill: #606060;}
 
-  a.navigationSearchAction {display: none; font-size: 13px; color: #bbb;}
+  a.navigationSearchAction {display: none; font-size: 13px; color: #767676;}
   a.navigationSearchAction span {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 15px;
