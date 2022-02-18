@@ -121,11 +121,11 @@
   }
 
   nav#mainMenu ul.adwMenu li.over > .openChild .openChildInner:before {
-  color: #7abf23;
+  color: #418600;
   }
 
   nav#sectionMenu ul.adwMenu li.over > .openChild .openChildInner:before {
-  color: #7abf23;
+  color: #418600;
   }
 
   /* -- 2nd Tier and Lower Overrides */
