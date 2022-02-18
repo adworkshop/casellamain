@@ -9,10 +9,10 @@
   right: 30px;
   line-height: 0;
   }
-  
+
   a.mainMenuToggle {
   position: relative;
-  font-family: 'FontAwesome';	  
+  font-family: 'FontAwesome';
   font-size: 24px;
   line-height: 1;
   font-weight: normal;
@@ -26,56 +26,56 @@
   content: "\f0c9";
 	cursor: pointer;
   }
-  
+
   a.mainMenuToggle:before {content: "\f0c9";}
-  
+
   a.mainMenuToggle.active {color: #7abf23;}
-  
+
   a.mainMenuToggle.active:before {content: "\f00d";}
-  
+
   a.mainMenuToggle:hover {
   color: #0a253e;
-  }  
-  
+  }
+
   /* ADW Navigation */
-  nav#mainMenu { 
+  nav#mainMenu {
   display: none; /* Hide Initially */
   padding: 0;
-  text-align: left; 
+  text-align: left;
   width:100%;
   }
-  
-  nav#sectionMenu { 
+
+  nav#sectionMenu {
   display: none; /* Hide Initially */
   padding: 0;
-  text-align: left; 
+  text-align: left;
   width:100%;
   }
-  
+
   ul.adwMenu {
-  display: block;	 
-  font-size: 0; 
+  display: block;
+  font-size: 0;
   text-align: left;
   }
-  
+
   nav#mainMenu ul.adwMenu {
   padding: 10px 30px 30px;
   }
-  
+
   nav#sectionMenu ul.adwMenu {
   padding: 10px 0 30px;
   }
-  
-  
+
+
   ul.adwMenu ul {
   padding: 0;
   }
-  
+
   ul.adwMenu li {
-  display: block;	  
+  display: block;
   position: relative;
   }
-  
+
   /* -- Navigation Toggles*/
   ul.adwMenu li .openChild {
   display: block;
@@ -93,77 +93,77 @@
   vertical-align: top;
   cursor: pointer;
   }
-  
+
   ul.adwMenu li .openChildInner:before {
-  display: block;	  
+  display: block;
   position: relative;
   content: "\f103";
   top: 16px;
   color: #6490af;
   font-size:17px;
   }
-  
+
   ul.adwMenu li .openChild:hover {
   color: #FFF;
   }
-  
+
   ul.adwMenu li.over > .openChild {
   background: #f4f4f4;
   }
-  
+
   nav#mainMenu ul.adwMenu li.over > .openChild {
   background: none;
   }
-    
-  ul.adwMenu li.over > .openChild .openChildInner:before { 
-  content: "\f102"; 
+
+  ul.adwMenu li.over > .openChild .openChildInner:before {
+  content: "\f102";
   color: #AAA;
   }
-  
+
   nav#mainMenu ul.adwMenu li.over > .openChild .openChildInner:before {
   color: #7abf23;
   }
-  
+
   nav#sectionMenu ul.adwMenu li.over > .openChild .openChildInner:before {
   color: #7abf23;
   }
-  
+
   /* -- 2nd Tier and Lower Overrides */
   ul.adwMenu li ul li .openChild {
   color: #aaa;
   top:1px;
   }
-  
+
   ul.adwMenu li ul li .openChildInner:before {
-  top: 13px; 
+  top: 13px;
   /*color: #555;*/
   color: #AAA;
   }
-  
+
   ul.adwMenu li ul li .openChild:hover {
   background: #aaa;
   }
-  
+
   ul.adwMenu li ul li.over > .openChild {
   background: #aaa;
   }
-  
+
   nav#sectionMenu ul.adwMenu li ul li .openChild:hover {
   background: #013c6c;
   }
-  
+
   nav#sectionMenu ul.adwMenu li ul li.over > .openChild {
   background: #013c6c;
   }
-  
+
   ul.adwMenu li ul li .openChild:hover .openChildInner:before {
   color: #fff;
   }
-  
+
   ul.adwMenu li ul li.over > .openChild .openChildInner:before {
-  color: #fff; 
+  color: #fff;
   }
-  
+
   /* -- Navigation Styles*/
   ul.adwMenu li > a {
   display: block;
@@ -182,37 +182,37 @@
   font-weight:normal;
   color:#777;
   }
-  
+
   nav#sidebarMenu ul li > a {padding: 14px 45px 14px 0; font-size: 13px;}
   nav#sidebarMenu ul li > a:hover {color:#004a87;}
   nav#sidebarMenu ul li > a.subNav-active {color: #4c9d2a; font-size: 15px;}
   nav#sidebarMenu ul li > a.subNav-active:before {display:none;}
   nav#sidebarMenu ul li ul li > a {padding: 14px 45px 14px 15px;}
-  
+
   nav#sidebarMenu ul li a {background:none;}
   nav#sidebarMenu ul li a:hover {background:none;}
   nav#sidebarMenu ul li.over > .openChild {background: #004a87;}
   nav#sidebarMenu ul li .openChild:hover {background: #004a87;}
   nav#sidebarMenu ul li .openChild .openChildInner:before {color: #aaa; top: 16px;}
   nav#sidebarMenu ul li .openChild:hover .openChildInner:before {color: #FFF;}
-  
+
   nav#sidebarMenu ul li ul li a {background:#004a87; color:#fff; border-top: 1px solid #0a599a; font-family: 'Gotham-Bold'; font-weight: normal; font-size:12px;}
   nav#sidebarMenu ul li ul li a:hover {background: #0a253e; color:#FFF;}
   nav#sidebarMenu ul li ul li.over > .openChild {background: #0a253e;}
   nav#sidebarMenu ul li ul li .openChild:hover {background: #0a253e;}
   nav#sidebarMenu ul li ul li .openChild .openChildInner:before {color: #FFF; top: 14px;}
   nav#sidebarMenu ul li ul li .openChild:hover .openChildInner:before {color: #fff;}
-  
+
   nav#sidebarMenu ul li ul li ul li a {background: #0a253e; color: #fff; border-top: 1px solid #11426f;}
   nav#sidebarMenu ul li ul li ul li a:hover {background:#000;}
   nav#sidebarMenu ul li ul li ul li.over > .openChild {background: #CCC;}
   nav#sidebarMenu ul li ul li ul li .openChild:hover {background: #AAA;}
   nav#sidebarMenu ul li ul li ul li .openChild .openChildInner:before {color: #FFF;}
   nav#sidebarMenu ul li ul li ul li .openChild:hover .openChildInner:before {color: #c2dee7;}
-  
+
   nav#sidebarMenu ul li ul li ul li ul li a {background:#CCC; color: #0a253e; border-top: 1px solid #AAA;}
   nav#sidebarMenu ul li ul li ul li ul li a:hover {background:#BBB; color: #0a253e}
-  
+
   ul.adwMenu li > a:before {
   content: "\203A";
   padding: 0 5px 0 0;
@@ -224,135 +224,135 @@
   content: none;
   padding: 0;
   }
-  
+
   nav#sectionMenu li > a:before {
   content: none;
   padding: 0;
   }
-  
+
   ul.adwMenu li.first > a {
-  border-top:none; 
+  border-top:none;
   }
-  
+
   nav#mainMenu ul.adwMenu li > a {
   font-size: 13px;
   color: #777;
   border-top: 1px solid #e4e4e4;
   }
-  
+
   nav#mainMenu ul.adwMenu li > a:hover {
   color: #004a87;
   }
-  
+
   nav#sectionMenu ul.adwMenu li > a {
   font-size: 13px;
   color: #FFF;
   border-top: 1px solid #014d7b;
   }
-  
+
   nav#sectionMenu ul.adwMenu li > a:hover {
   color: #004a87;
   }
-  
+
   ul.adwMenu li > a:hover {
   text-decoration: none;
   color: #454545;
   }
-  
+
   /*ul.adwMenu > li > ul {
   border-top: 0 !important;
   }*/
-  
+
   ul.adwMenu > li ul {
   display: none;
   background: #0a253e;
   }
-  
+
   ul.adwMenu > li > ul li {
-  display: block; 
+  display: block;
   position: relative;
   width: 100%;
   }
-  
-  ul.adwMenu > li > ul li a:before {	  
-  content: "\203A"; 
-  padding: 0 5px 0 0; 
+
+  ul.adwMenu > li > ul li a:before {
+  content: "\203A";
+  padding: 0 5px 0 0;
   font-size: 13px;
-  color: #999; 
+  color: #999;
   }
-  
+
   nav#mainMenu ul.adwMenu > li > ul > li a {
-  display: block;	  
+  display: block;
   padding: 13px 45px 12px 10px;
   color: #FFF;
   border-top: 1px solid #184f81;
 	font-size: 12px;
   }
-  
+
   nav#mainMenu ul.adwMenu > li > ul > li a:hover {
   background: #004a87;
   color: #FFF;
   }
-  
+
   nav#mainMenu ul.adwMenu > li > ul > li > ul > li a {
   background: #013c6c;
   color: #FFF;
   border-top: 1px solid #134e7f;
   }
-  
+
   nav#mainMenu ul.adwMenu > li > ul > li > ul > li a:hover {
   background: #004a87;
   color: #FFF;
   border-top: 1px solid #1c6199;
   }
-  
+
   nav#sectionMenu ul.adwMenu > li > ul > li a {
-  display: block;	  
+  display: block;
   padding: 13px 45px 12px 10px;
   color: #00263d;
   border-top: 1px solid #76be43;
   background: #fff;
   }
-  
+
   nav#sectionMenu ul.adwMenu > li > ul > li a:hover {
   background: #004a87;
   color: #FFF;
   }
-  
+
   nav#sectionMenu ul.adwMenu > li > ul > li > ul > li a {
   background: #013c6c;
   color: #FFF;
   border-top: 1px solid #134e7f;
   }
-  
+
   nav#sectionMenu ul.adwMenu > li > ul > li > ul > li a:hover {
   background: #004a87;
   color: #FFF;
   border-top: 1px solid #1c6199;
   }
-  
+
   ul.adwMenu > li > ul > li li a {
   /*border-top: 1px solid #bbb;*/
   border-top: 1px solid #BDBDBD;
   background:#990000;
   }
-  
+
   ul.adwMenu > li > ul > li li li a {
   padding-left: 20px;
   }
-  
+
   ul.adwMenu > li > ul > li > ul > li a {
-  /*background: #aaa; 
+  /*background: #aaa;
   color: #fff;*/
   background: #DBDBDB;
   color: #505050;
   }
-  
+
   ul.adwMenu > li > ul > li > ul > li a:hover {
   color: #fff;
-  background: #999; 
+  background: #999;
   }
-  
+
   ul.adwMenu > li > ul > li > ul > li a:before {
   color: #fff;
   }
@@ -360,67 +360,67 @@
 /* ======================================================= */
 /*                        MEDIA QUERIES                    */
 /* ======================================================= */
-  
+
   @media only screen and (min-width: 600px) {
   /* Mobile Navigation Toggle */
   .mobileBtnWrapper {right: 40px;}
   nav#mainMenu {padding: 0;}
   nav#mainMenu ul.adwMenu {padding: 10px 40px 30px;}
-  
+
   nav#sectionMenu {padding: 0;}
   nav#sectionMenu ul.adwMenu {padding: 10px 0 30px;}
   }
-  
+
   @media only screen and (min-width: 700px) {}
-  
+
   @media only screen and (min-width: 820px) {}
-  
+
   @media only screen and (min-width: 1200px) {
-	  
+
     /**************************************
 	*
 	* ADWORKSHOP MENU
 	* Our mobile to desktop navigation flip is being done at 1100px, but this can be altered to whatever breakpoint best matches the site's design, header elements, length of main navigation items, etc.
 	*
-	**************************************/	
+	**************************************/
 	/* Mobile Navigation Toggle */
 	.mobileBtnWrapper {
 	display: none;
-	}	
+	}
 	/* ADW Navigation */
-	nav#mainMenu { 
+	nav#mainMenu {
 	display: block !important; /* Show even if expanded and then hidden by .mainMenuToggle */
 	position: absolute;
-	padding:0; 
-	right: 0; 
+	padding:0;
+	right: 0;
 	bottom: 20px;
 	margin: 0;
 	border:none;
 	overflow: visible !important; /* Show overflow even if expanded and then hidden by .mainMenuToggle */
-	-webkit-transition: all .5s ease-in-out;	
+	-webkit-transition: all .5s ease-in-out;
 	-moz-transition: all .5s ease-in-out;
 	-o-transition: all .5s ease-in-out;
 	-ms-transition: all .5s ease-in-out;
 	transition: all .5s ease-in-out;
 	}
-	
-	nav#sectionMenu { 
+
+	nav#sectionMenu {
 	display: block !important; /* Show even if expanded and then hidden by .mainMenuToggle */
 	position: absolute;
-	padding:0; 
-	right: 0; 
+	padding:0;
+	right: 0;
 	bottom: 25px;
 	margin: 0;
 	border:none;
 	overflow: visible !important; /* Show overflow even if expanded and then hidden by .mainMenuToggle */
-	-webkit-transition: all .5s ease-in-out;	
+	-webkit-transition: all .5s ease-in-out;
 	-moz-transition: all .5s ease-in-out;
 	-o-transition: all .5s ease-in-out;
 	-ms-transition: all .5s ease-in-out;
 	transition: all .5s ease-in-out;
 	}
-	
-	
+
+
 	/* -- Navigation Styles*/
 	nav#mainMenu ul.adwMenu {
 	text-align: right;
@@ -430,20 +430,20 @@
 	nav#mainMenu ul.adwMenu li {
 	display: inline-block;
 	}
-	
+
 	nav#mainMenu ul.adwMenu li > a {
-	margin: 0;	
+	margin: 0;
 	border-top: none;
 	color: #0a253e;
 	}
-	
+
 	nav#mainMenu ul.adwMenu li > a:hover {
 	background-color: none;
-	color: #888;
+	color: #767676;
 	}
-	
+
 	nav#mainMenu ul.adwMenu li.empty.last > a {padding:15px 0;}
-	
+
 	nav#mainMenu ul.adwMenu > li ul {
 	position: absolute;
 	text-align: left;
@@ -470,7 +470,7 @@
 	font-weight: normal;
 	}
 	nav#mainMenu ul.adwMenu > li > ul > li a:hover {
-	background:  #f4f4f4; 
+	background:  #f4f4f4;
 	color: #004a87;
 	}
 	nav#mainMenu ul.adwMenu li .openChild:active {
@@ -481,15 +481,15 @@
 	padding: 15px 30px 15px 0;
 	font-size: 15px;
 	}
-	
+
 	nav#mainMenu ul.adwMenu li.tierMenu.empty > a {
 	margin: 0 -20px 0 20px;
 	}
-	
+
 	nav#mainMenu ul.adwMenu li.tierMenu.empty.last > a {margin: 0 0 0 20px;}
-	
-	
-	
+
+
+
 	nav#sectionMenu ul.adwMenu {
 	text-align: right;
 	display: block;
@@ -498,21 +498,21 @@
 	nav#sectionMenu ul.adwMenu li {
 	display: inline-block;
 	}
-	
+
 	nav#sectionMenu ul.adwMenu li > a {
-	margin: 0;	
+	margin: 0;
 	border-top: none;
 	color: #FFF;
 	text-transform:uppercase;
 	}
-	
+
 	nav#sectionMenu ul.adwMenu li > a:hover {
 	background-color: none;
-	color: #888;
+	color: #767676;
 	}
-	
+
 	nav#sectionMenu ul.adwMenu li.empty.last > a {padding:15px 0;}
-	
+
 	nav#sectionMenu ul.adwMenu > li ul {
 	position: absolute;
 	text-align: left;
@@ -539,7 +539,7 @@
 	font-weight: 700;
 	}
 	nav#sectionMenu ul.adwMenu > li > ul > li a:hover {
-	background:  #f4f4f4; 
+	background:  #f4f4f4;
 	color: #004a87;
 	}
 	nav#sectionMenu ul.adwMenu li .openChild:active {
@@ -550,20 +550,20 @@
 	padding: 15px 30px 15px 0;
 	font-size: 14px;
 	}
-	
+
 	nav#sectionMenu ul.adwMenu li.tierMenu.empty > a {
 	margin: 0 -20px 0 20px;
 	}
-	
+
 	nav#sectionMenu ul.adwMenu li.tierMenu.empty.last > a {margin: 0 0 0 20px;}
-	
-	
+
+
 	/* -- Navigation: If Tier 3 exposed on Desktop*/
 	nav#mainMenu ul.adwMenu > li ul li ul {
-	position: relative; 
+	position: relative;
 	text-align: left;
-	border: none; 
-	background: #4c9d2a; 
+	border: none;
+	background: #4c9d2a;
 	top: 0;
 	}
 	nav#mainMenu ul.adwMenu > li.tierMenu> ul > li a {
@@ -571,7 +571,7 @@
 	}
 	nav#mainMenu ul.adwMenu > li.tierMenu.withSubs > ul.subMenu > li a {
 	padding: 10px 55px 10px 15px;
-	}	
+	}
 	nav#mainMenu ul.adwMenu > li > ul > li > ul > li a {
 	background: #4c9d2a;
 	border-top: 1px solid #6ac742;
@@ -580,61 +580,61 @@
 	border-left: 1px solid #6ac742;
 	}
 	nav#mainMenu ul.adwMenu > li > ul > li > ul > li a:hover {
-	color: #fff;	
+	color: #fff;
 	background: #0a253e;
 	border-top: 1px solid #6ac742;
 	}
 	nav#mainMenu ul.adwMenu > li > ul > li > ul > li a:before {
 	color: #999;
 	}
-	
+
 	nav#sectionMenu ul.adwMenu > li ul li ul {
-	position: relative; 
+	position: relative;
 	text-align: left;
-	border: none; 
-	background: #f3f3f3; 
+	border: none;
+	background: #f3f3f3;
 	}
 	nav#sectionMenu ul.adwMenu > li.tierMenu> ul > li a {
 	padding: 10px 20px 10px 15px;
 	}
 	nav#sectionMenu ul.adwMenu > li.tierMenu.withSubs > ul.subMenu > li a {
 	padding: 10px 55px 10px 15px;
-	}	
+	}
 	nav#sectionMenu ul.adwMenu > li > ul > li > ul > li a {
-	background: #f3f3f3;	
+	background: #f3f3f3;
 	}
 	nav#sectionMenu ul.adwMenu > li > ul > li > ul > li a:hover {
-	color: #fff;	
-	background: #ccc;	
+	color: #fff;
+	background: #ccc;
 	}
 	nav#sectionMenu ul.adwMenu > li > ul > li > ul > li a:before {
 	color: #999;
 	}
-	
+
 	/* -- Navigation: Last Element Flip*/
 	nav#mainMenu ul.adwMenu > li.tierMenu.last ul {
 	right: 0;
 	/* text-align:right; */
 	}
-	
+
 	nav#sectionMenu ul.adwMenu > li.tierMenu.last ul {
 	right: 0;
 	text-align:right;
 	}
-	
+
 	ul.adwMenu li .openChildInner:before {
 	top: 17px;
 	color: #6490af;
 	}
-	
+
 	ul.adwMenu li .openChild:hover {
 	/*background:#F5F5F5;*/
 	}
-	
+
 	nav#mainMenu ul.adwMenu li.over > .openChild {
 	/*background:#F5F5F5;*/
 	}
-	
+
 	nav#sectionMenu ul.adwMenu li.over > .openChild {
 	background:none;
 	}
@@ -642,9 +642,9 @@
 	top: 15px;
 	color: #76be43;
 	}
-	
+
 	ul.adwMenu li .openChild {
 	width: 30px;
 	}
-	
+
   }
