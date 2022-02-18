@@ -310,7 +310,6 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   .navGlobal-indCTABtn-Container.billPay,
 	.navGlobal-indCTABtn-Container.customerCare,
   .navGlobal-indCTABtn-Container.investorRelations {border-right:1px solid #fff; border-right:1px solid rgba(255,255,255,.2); padding:0 15px 0 0; margin:0 15px 0 0;}
-{border-right:1px solid #fff; border-right:1px solid rgba(255,255,255,.2); padding:0 15px 0 0; margin:0 15px 0 0;}
   a.navGlobal-indCTABtn {
   display:inline-block; font-size:9.75px; font-family: 'Gotham-Bold'; text-transform:uppercase; color:#FFF; cursor:pointer;
   -webkit-transition: all .3s ease-in-out;
