@@ -1571,7 +1571,7 @@ a.indLocation-holidayPanelOpen-close:hover {background: #FFF; border:2px solid #
   font-weight: normal;
   content:'\f103';
   display:inline-block;
-  color:#6490af;
+  color:#4f7b9a;
   position: absolute;
   top: 0;
   right: 0;
@@ -1604,7 +1604,7 @@ a.indLocation-holidayPanelOpen-close:hover {background: #FFF; border:2px solid #
 }
 
 #block-casellablogarchive ul.archive-links > li > ul.archive-links__inner li.init:hover {
-  color:#6490af;
+  color:#4f7b9a;
 }
 
 #block-casellablogarchive ul.archive-links > li > ul.archive-links__inner a {

@@ -99,7 +99,7 @@
   position: relative;
   content: "\f103";
   top: 16px;
-  color: #6490af;
+  color: #4f7b9a;
   font-size:17px;
   }
 
@@ -624,7 +624,7 @@
 
 	ul.adwMenu li .openChildInner:before {
 	top: 17px;
-	color: #6490af;
+	color: #4f7b9a;
 	}
 
 	ul.adwMenu li .openChild:hover {
