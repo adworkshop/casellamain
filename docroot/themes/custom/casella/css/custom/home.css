@@ -216,7 +216,7 @@ Author URI: http://www.adworkshop.com
   .home-gridDisplay-leftCol-indContainer.customerCare .home-gridDisplay-leftCol-indWrapper {padding:50px 0 46px;}
   .home-gridDisplay-leftCol-indContainer.customerCare h2 {color:#FFF;}
   .home-gridDisplay-leftCol-indContainer.customerCare .home-gridDisplay-leftCol-subTitle-upper,
-  .home-gridDisplay-leftCol-indContainer.customerCare .home-gridDisplay-leftCol-subTitle-lower {color:#bbf2a3;}
+  .home-gridDisplay-leftCol-indContainer.customerCare .home-gridDisplay-leftCol-subTitle-lower {color:#FFFFFF /*#bbf2a3*/;}
   .home-gridDisplay-leftCol-indContainer.customerCare .home-gridDisplay-leftCol-content-primaryText,
   .home-gridDisplay-leftCol-indContainer.customerCare .home-gridDisplay-leftCol-content-secondaryText {color:#FFF;}
   .home-gridDisplay-leftCol-indContainer.customerCare .home-gridDisplay-leftCol-content-ctaBtnContainer a {border: 2px solid #001a2a; color:#FFF; background:#001a2a;}
