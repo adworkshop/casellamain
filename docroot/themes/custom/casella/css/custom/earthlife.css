@@ -94,8 +94,8 @@ Author URI: http://www.adworkshop.com
   .mainEarthlife-featuredProducts-wrapper:nth-child(odd) .mainEarthlife-featuredProducts-listContainer li a:hover {color:#76be43;}
   .mainEarthlife-featuredProducts-wrapper:nth-child(even) .mainEarthlife-featuredProducts-txtWrapper {border-top: 2px solid #00263d;}
   .mainEarthlife-featuredProducts-wrapper:nth-child(even) .mainEarthlife-featuredProducts-listContainer-title {background: #00263d;}
-  .mainEarthlife-featuredProducts-wrapper:nth-child(even) .mainEarthlife-featuredProducts-txtContainer h2 a:hover {color: #0c5ca7;}
-  .mainEarthlife-featuredProducts-wrapper:nth-child(even) .mainEarthlife-featuredProducts-listContainer li a:hover {color:#0c5ca7;}
+  .mainEarthlife-featuredProducts-wrapper:nth-child(even) .mainEarthlife-featuredProducts-txtContainer h2 a:hover {color: #3e8ed9 /* 0c5ca7*/;}
+  .mainEarthlife-featuredProducts-wrapper:nth-child(even) .mainEarthlife-featuredProducts-listContainer li a:hover {color:#3e8ed9 /* 0c5ca7*/;}
 
   .mainEarthlife-featuredProducts-viewAll-container {
   width:100%; padding:35px 0 30px; background:#76be43; text-align:center; position:relative;

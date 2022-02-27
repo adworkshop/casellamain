@@ -18,11 +18,11 @@ Author URI: http://www.adworkshop.com
 /*BreadCrumbs*/
 .internal-headerPanel-breadcrumbs {display:none;}
 .internal-headerPanel-breadcrumbs:before {content:''; display:block; margin:25px 0 0; padding:30px 0 0; height:1px; width:225px; border-top:1px solid #45596c;}
-.internal-headerPanel-breadcrumbs ul li {display:inline-block; font-size:12px; font-family: 'Gotham-Bold'; color: #0c5ca7;}
-.internal-headerPanel-breadcrumbs ul li:after {content:'/'; display:inline-block; margin:0 7px 0 10px; color:#0c5ca7;}
+.internal-headerPanel-breadcrumbs ul li {display:inline-block; font-size:12px; font-family: 'Gotham-Bold'; color: #3e8ed9 /* 0c5ca7*/;}
+.internal-headerPanel-breadcrumbs ul li:after {content:'/'; display:inline-block; margin:0 7px 0 10px; color:#3e8ed9 /* 0c5ca7*/;}
 .internal-headerPanel-breadcrumbs ul li:last-of-type:after {display:none;}
 .internal-headerPanel-breadcrumbs ul li a {font-size:12px; font-weight:normal; color:#fff;}
-.internal-headerPanel-breadcrumbs ul li a:hover {color:#0c5ca7;}
+.internal-headerPanel-breadcrumbs ul li a:hover {color:#3e8ed9 /* 0c5ca7*/;}
 
 /* ======================================================= */
 /*    MAIN BODY REGION                                     */
@@ -638,7 +638,7 @@ a.job-applyInfoBtn:hover {background: #FFF; color:#368714 /*#4c9d2a*/; border: 2
 .job-indListing-framework-referenceContainer {display:block; font-size: 13px;}
 .job-indListing-framework-contentContainer {display:block;}
 .job-indListing-framework-referenceWrapper {margin:0 0 30px; padding:0 0 30px; border-bottom:1px solid #e2e2e2;}
-.job-indListing-framework-reference-title {font-family: 'Gotham-Bold'; color: #0c5ca7;}
+.job-indListing-framework-reference-title {font-family: 'Gotham-Bold'; color: #3e8ed9 /* 0c5ca7*/;}
 .internal-mainBody-generalTxt-container .job-indListing-framework-referenceContainer a:after {display:none;}
 
 /*Apply Button Toggle Form*/

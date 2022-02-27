@@ -38,7 +38,7 @@ Author URI: http://www.adworkshop.com
   .locationMap-searchForm-container input[type="search"]:hover,
   .locationMap-searchForm-container input[type="search"]:focus,
   .locationMap-searchForm-container input[type="search"]:active {outline:none; background: #ffffff;}
-  .locationMap-searchForm-container input[type="search"]:focus {border: 2px solid #0c5ca7;}
+  .locationMap-searchForm-container input[type="search"]:focus {border: 2px solid #3e8ed9 /* 0c5ca7*/;}
 	.locationMap-searchForm-container input[type="submit"] {
 	height: 45px;
 	line-height: 44px;
