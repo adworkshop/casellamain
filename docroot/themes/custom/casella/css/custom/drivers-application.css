@@ -45,7 +45,7 @@
 #contact-message-job-application-drivers-form > .field-group > .fieldset-wrapper > .form-item > .fieldset-wrapper > .form-wrapper > h4 {
   border-bottom: none;
   padding-bottom: 0;
-  color: #4c9d2a;
+  color: #368714 /*#4c9d2a*/;
 }
 
 .field--name-field-type-of-equipment-operated {

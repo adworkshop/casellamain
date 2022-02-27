@@ -10,9 +10,9 @@ Author URI: http://www.adworkshop.com
 
 /* ======================================================= */
 /*    SECTION NAVIGATION                                   */
-/* ======================================================= */ 
+/* ======================================================= */
   #sectionNav {position:relative; padding:0; background: #00263d; z-index:2000; border-bottom: 1px solid #76be43;}
-  
+
   #sectionNav .sectionNav-logoContainer {position: relative; z-index: 2;display:inline-block; padding:20px 0; line-height:0;}
   #sectionNav .sectionNav-logoContainer a {
   display:inline-block; width:250px; height:auto;
@@ -25,7 +25,7 @@ Author URI: http://www.adworkshop.com
   #sectionNav nav#sectionMenu {bottom:25px;}
   #sectionNav.is_stuck nav#sectionMenu {bottom:12px;}
   .sticky-spacer {background:#76be43; width:100% !important;}
-  
+
   .sectionMenu-breadCrumb-container {background:#76be43; padding:25px 0; display:none;}
   .sectionMenu-breadCrumb-wrapper {float:left; font-family: 'Gotham-Bold'; color: #FFF;}
   .sectionMenu-breadCrumb-wrapper span.italicEarthLife {font-family: 'Gotham-BlackItalic';}
@@ -36,18 +36,18 @@ Author URI: http://www.adworkshop.com
   .sectionMenu-search-wrapper {float:right;}
   .sectionMenu-search-wrapper a {color:#fff; font-size: 13px;}
   .sectionMenu-search-wrapper a:hover {color:#cef4b4;}
-  
+
   #collapsedNav {position:relative; z-index:20; width:100%; padding:20px 0;}
   .collapsed-headerLogo {float:left; line-height: 0;}
   .collapsed-headerLogo a svg {width: 120px; height: 32px;}
   .collapsed-headerTrigger-wrapper {float:right; margin: 3px 0 0;}
   .collapsed-headerTrigger-wrapper a {color:#76be43;}
   .collapsed-headerTrigger-wrapper a:hover {color:#00263d;}
-  
+
   #sectionNav .mobileBtnWrapper {top: 35px;}
   #sectionNav a.mainMenuToggle {color: #76be43;}
   #sectionNav a.mainMenuToggle.active {color: #FFF;}
-  
+
   .earthlife .searchFormPanelFormContainer form {border-top: 1px solid #5e9c0f; background:none; padding:30px 0 0;}
   .sectionNav-mobileRuturn-container {text-align:left; margin:30px 0; display:block;}
   .sectionNav-mobileRuturn-container a {display:inline-block;}
@@ -57,17 +57,17 @@ Author URI: http://www.adworkshop.com
 
 /* ======================================================= */
 /*    MAIN/HOME                                            */
-/* ======================================================= */ 
+/* ======================================================= */
   .mainEarthlife-upperContentRegion-container {padding:60px 0 0;}
   .mainEarthlife-upperContentRegion-container h1 {color:#00263d; font-size:34px;}
   .mainEarthlife-upperContentRegion-hero {font-family: 'Gotham-Bold'; font-size:15px; line-height:1.5; margin:30px 0 0;}
-  
+
   /*Break Sep*/
   .mainEarthlife-breakSep-container {width:100%; text-align:left; position:relative; margin:40px 0;}
   .mainEarthlife-breakSep-icon {display:inline-block; position:relative; line-height:0; padding:0 15px 0 0; background:#fff; width:40px; z-index: 2;}
   .mainEarthlife-breakSep-icon img {width:100%; max-width:100%; height:auto;}
   .mainEarthlife-breakSep-border {position:absolute; width:100%; top:50%; height:1px; border-top:1px solid #76be43;}
-  
+
   /*Lower Grid*/
   .mainEarthlife-lowerContentRegion-container {}
   .mainEarthlife-featuredProducts-container {padding:0 0 60px;}
@@ -96,7 +96,7 @@ Author URI: http://www.adworkshop.com
   .mainEarthlife-featuredProducts-wrapper:nth-child(even) .mainEarthlife-featuredProducts-listContainer-title {background: #00263d;}
   .mainEarthlife-featuredProducts-wrapper:nth-child(even) .mainEarthlife-featuredProducts-txtContainer h2 a:hover {color: #0c5ca7;}
   .mainEarthlife-featuredProducts-wrapper:nth-child(even) .mainEarthlife-featuredProducts-listContainer li a:hover {color:#0c5ca7;}
-  
+
   .mainEarthlife-featuredProducts-viewAll-container {
   width:100%; padding:35px 0 30px; background:#76be43; text-align:center; position:relative;
   -webkit-box-shadow: inset 0 10px 10px -10px #39790b; -moz-box-shadow: inset 0 10px 10px -10px #39790b; box-shadow: inset 0 10px 10px -10px #39790b;
@@ -110,10 +110,10 @@ Author URI: http://www.adworkshop.com
   position: absolute; top: -25px; left: 50%; font-size: 60px; color: #fff;
   -webkit-transform: translateX(-50%); -moz-transform: translateX(-50%); -o-transform: translateX(-50%); -ms-transform: translateX(-50%); transform: translateX(-50%);
   }
-  
+
 /* ======================================================= */
 /*    INTERNAL                                             */
-/* ======================================================= */	
+/* ======================================================= */
   .earthlife .internal-headerPanel-container {background: #FFF; padding:60px 0 0;}
   .earthlife .internal-headerPanel-wrapper {border-bottom: 1px solid #d6d6d6; padding: 0 0 60px;}
   .earthlife .internal-headerPanel-container h1 {color: #00263d; text-transform:none;}
@@ -128,9 +128,9 @@ Author URI: http://www.adworkshop.com
   .earthlife .internal-interActiveContent-container .z-tabs.flat.flat-nephritis > ul.z-tabs-mobile.z-state-closed > li a,
   .earthlife .internal-interActiveContent-container .z-tabs.flat.flat-nephritis > ul.z-tabs-mobile > li a {background: #00263d;}
   .earthlife .internal-interActiveContent-container .nestedTabs-container .z-tabs.flat.flat-nephritis > ul.z-tabs-mobile.z-state-closed > li a,
-  .earthlife .internal-interActiveContent-container .nestedTabs-container .z-tabs.flat.flat-nephritis > ul.z-tabs-mobile > li a {background: #4c9d2a;}
+  .earthlife .internal-interActiveContent-container .nestedTabs-container .z-tabs.flat.flat-nephritis > ul.z-tabs-mobile > li a {background: #368714 /*#4c9d2a*/;}
   .earthlife .internal-interActiveContent-container h2 {color: #00263d;}
-  
+
   /*Sidebar*/
   .sidebarProduct-message {color: #00263d; font-weight: 700;line-height: 1.7; font-size: 14px; margin:0 0 -30px; display:none;}
 
@@ -143,17 +143,17 @@ Author URI: http://www.adworkshop.com
   .indProduct-featuredContent-container {font-family: 'Droid Serif', serif; line-height: 1.8; font-size:14px;}
   .indProduct-featuredContent-container p:last-of-type {margin:0;}
   .indProduct-featuredImg-container img {width:100%; max-width:100%; height:auto;}
-  
+
   /*Lower Content*/
   .indProduct-lowerContent-container {display:block; width:100%; margin:50px 0 0;}
   .indProduct-lowerContent-leftCol-container {display:block;}
   .indProduct-lowerContent-rightCol-container {display:block; margin:50px 0 0;}
-  
-  .indProduct-lowerContent-leftCol-container h2 {font-family: 'Gotham-Black'; font-weight:normal; color:#4c9d2a; font-size:18px; margin:0 0 15px;}
+
+  .indProduct-lowerContent-leftCol-container h2 {font-family: 'Gotham-Black'; font-weight:normal; color:#368714 /*#4c9d2a*/; font-size:18px; margin:0 0 15px;}
   .indProduct-lowerContent-leftCol-spacer {margin:0 0 50px; line-height: 1.4;}
   .indProduct-lowerContent-leftCol-spacer:last-of-type {margin:0;}
   .indProduct-nestedSidebar-controller {display:block;}
-  
+
   /**General Content*/
   .indProduct-generalContent-container {line-height: 1.7;}
   .indProduct-generalContent-container p:last-of-type {margin:0;}
@@ -164,7 +164,7 @@ Author URI: http://www.adworkshop.com
   .indProduct-generalContent-container strong {color:#00263d;}
   .indProduct-generalContent-container a {color:#76be43; font-weight:700;}
   .indProduct-generalContent-container a:hover {color:#00263d;}
-  
+
   /**Benefits*/
   .indProduct-lowerContent-leftCol-benefits-container {}
   .indProduct-lowerContent-leftCol-benefits-container ul {font-family: 'Source Sans Pro', sans-serif; font-size:14px; line-height: 1.6; margin: 0; border-left: 10px solid #f4f4f4; padding: 0 0 0 35px;}
@@ -172,7 +172,7 @@ Author URI: http://www.adworkshop.com
   .indProduct-lowerContent-leftCol-benefits-container li:before {content:'\f101'; font-family:'FontAwesome'; display:inline-block; position:absolute; top: 3px; left: -15px; font-size: 11px; color: #004a87;}
   .indProduct-lowerContent-leftCol-benefits-container li:after {content:''; display:block; width:30px; height:1px; border-top:1px solid #e2e2e2; margin:13px 0 10px;}
   .indProduct-lowerContent-leftCol-benefits-container li:last-of-type:after {display:none;}
-  
+
   /**Recommendations*/
   .indProduct-lowerContent-indRecommendations-title {font-family: 'Gotham-Bold'; font-size:16px; color:#00263d;}
   .indProduct-lowerContent-indRecommendations p {margin:0 0 15px;}
@@ -182,7 +182,7 @@ Author URI: http://www.adworkshop.com
   .indProduct-lowerContent-leftCol-recommendations-container li:before {content:'\f101'; font-family:'FontAwesome'; display:inline-block; position:absolute; top: 3px; left: -15px; font-size: 11px; color: #004a87;}
   .indProduct-lowerContent-leftCol-recommendations-container li:after {content:''; display:block; width:30px; height:1px; border-top:1px solid #e2e2e2; margin:13px 0 10px;}
   .indProduct-lowerContent-leftCol-recommendations-container li:last-of-type:after {display:none;}
-  
+
   /**Best Practices*/
   .indProduct-lowerContent-leftCol-bestPractices-container {}
   .indProduct-lowerContent-leftCol-bestPractices-wrapper {border-left: 10px solid #f4f4f4; padding: 0 0 0 35px; line-height: 1.7;}
@@ -195,17 +195,17 @@ Author URI: http://www.adworkshop.com
   .indProduct-lowerContent-leftCol-bestPractices-wrapper strong {color:#00263d;}
   .indProduct-lowerContent-leftCol-bestPractices-wrapper a {color:#76be43; font-weight:700;}
   .indProduct-lowerContent-leftCol-bestPractices-wrapper a:hover {color:#00263d;}
-  
+
   /**Video*/
   .indProduct-lowerContent-leftCol-video-container {}
-  
+
   /**Gallery*/
   .indProduct-lowerContent-leftCol-gallery-container {}
-  
+
   /**Product Image Promo*/
   .indProduct-lowerContent-rightCol-imagePromo-container {line-height:0;}
   .indProduct-lowerContent-rightCol-imagePromo-container img {width:100%; max-width:100%; height:auto;}
-  
+
   /**Downloads*/
   .indProduct-lowerContent-rightCol-downloads-container {}
   .indProduct-lowerContent-rightCol-downloads-innerContainer {background:#76be43; padding:30px;}
@@ -221,7 +221,7 @@ Author URI: http://www.adworkshop.com
   .indProduct-lowerContent-rightCol-indDownload-txt a:hover {color:#00263d;}
   .indProduct-lowerContent-rightCol-indDownload-fileName {font-weight:700; font-size:18px;}
   .indProduct-lowerContent-rightCol-indDownload-fileSize {font-weight:normal; font-size:14px; margin:3px 0 0;}
-  
+
   /**Product Image*/
   .indProduct-lowerContent-rightCol-image-container {line-height:0;}
   .indProduct-lowerContent-rightCol-image-container img {width:100%; max-width:100%; height:auto;}
@@ -229,9 +229,9 @@ Author URI: http://www.adworkshop.com
 
 /* ======================================================= */
 /*    MEDIA QUERIES                                        */
-/* ======================================================= */	
+/* ======================================================= */
   @media all and (min-width: 480px) {}
-  
+
   @media all and (min-width: 600px) {
   /*Main/Home*/
   .mainEarthlife-upperContentRegion-container h1 {font-size:40px;}
@@ -240,7 +240,7 @@ Author URI: http://www.adworkshop.com
   .mainEarthlife-featuredProducts-wrapper:nth-child(1),
   .mainEarthlife-featuredProducts-wrapper:nth-child(2) {margin: 0; padding: 0 0 0 50px; border-top: none;}
   .mainEarthlife-featuredProducts-txtContainer h2 {font-size: 18px;}
-  
+
   /*Ind Product*/
   .indProduct-lowerContent-rightCol-container {width:100%;}
   .indProduct-featuredContent-container {font-size:15px;}
@@ -249,9 +249,9 @@ Author URI: http://www.adworkshop.com
   .indProduct-nestedSidebar-controller:nth-child(even) {padding:0 0 0 6px;}
   .indProduct-lowerContent-leftCol-container h2 {font-size:24px;}
   }
-  
+
   @media all and (min-width: 840px) {}
-  
+
   @media all and (min-width: 960px) {
   /*Main/Home*/
   .mainEarthlife-upperContentRegion-container {text-align:center; padding:80px 0 0;}
@@ -260,7 +260,7 @@ Author URI: http://www.adworkshop.com
   .mainEarthlife-breakSep-container {text-align:center; margin:60px 0;}
   .mainEarthlife-breakSep-icon {padding:0 15px; width:60px;}
   }
-  
+
   @media all and (min-width: 1024px) {
   /*Ind Product*/
   .indProduct-lowerContent-rightCol-container {margin:0;}
@@ -268,9 +268,9 @@ Author URI: http://www.adworkshop.com
   .indProduct-nestedSidebar-controller:nth-child(odd), .indProduct-nestedSidebar-controller:nth-child(even) {padding:0;}
   .indProduct-lowerContent-container {display:table; table-layout:fixed;}
   .indProduct-lowerContent-leftCol-container {display:table-cell; vertical-align:top;}
-  .indProduct-lowerContent-rightCol-container {display:table-cell; width:350px; padding:0 0 0 50px; vertical-align:top;}  
+  .indProduct-lowerContent-rightCol-container {display:table-cell; width:350px; padding:0 0 0 50px; vertical-align:top;}
   }
-  
+
   @media all and (min-width: 1200px) {
   /*Base Navigation*/
   .earthlife #generalNav {position: relative;}
@@ -282,40 +282,40 @@ Author URI: http://www.adworkshop.com
   .earthlife .searchFormPanelFormContainer form {border-top: none; padding: 0;}
   nav#sectionMenu ul.adwMenu > li ul li ul {display: none !important;}
   nav#sectionMenu ul.adwMenu > li ul li span.openChild {display: none !important;}
-  
+
   /*Section Navigation*/
   .sectionMenu-breadCrumb-container {display:block;}
   .sectionNav-mobileRuturn-container {display:none;}
-  
+
   /*Main/Home*/
   .mainEarthlife-upperContentRegion-container h1 {font-size:55px;}
   .mainEarthlife-featuredProducts-wrapper {width:25%; margin: 0; padding:0 0 0 50px; border-top: none;}
   .mainEarthlife-featuredProducts-txtContainer h2 {font-size: 16px;}
   .mainEarthlife-upperContentRegion-hero {font-size:18px;}
-  
+
   /*Internal*/
   .earthlife .internal-headerPanel-container {padding: 80px 0 0;}
   .mainEarthlife-featuredProducts-container {padding:0 0 80px;}
   .sidebarProduct-message {display:block;}
-  
+
   /*Ind Product*/
   .indProduct-featuredContent-container {font-size:17px;}
   }
-  
+
   @media all and (min-width: 1300px) {}
-  
+
   @media all and (min-width: 1400px) {}
-  
+
   @media all and (min-width: 1600px) {
   /*Main/Home*/
   .mainEarthlife-upperContentRegion-container h1 {font-size:64px;}
   .mainEarthlife-featuredProducts-txtContainer h2 {font-size: 20px;}
   }
-      
+
   @media only screen and (max-width: 1199px)  {
   /*Navigation*/
   .headerLogo img { width: 75px !important;}
-  
+
   /*Home*/
   #sectionNav .sectionNav-logoContainer a,
   #sectionNav.is_stuck .sectionNav-logoContainer a {width: 100px !important; height: auto !important;}

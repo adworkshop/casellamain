@@ -185,7 +185,7 @@
 
   nav#sidebarMenu ul li > a {padding: 14px 45px 14px 0; font-size: 13px;}
   nav#sidebarMenu ul li > a:hover {color:#004a87;}
-  nav#sidebarMenu ul li > a.subNav-active {color: #4c9d2a; font-size: 15px;}
+  nav#sidebarMenu ul li > a.subNav-active {color: #368714 /*#4c9d2a*/; font-size: 15px;}
   nav#sidebarMenu ul li > a.subNav-active:before {display:none;}
   nav#sidebarMenu ul li ul li > a {padding: 14px 45px 14px 15px;}
 
@@ -563,7 +563,7 @@
 	position: relative;
 	text-align: left;
 	border: none;
-	background: #4c9d2a;
+	background: #368714 /*#4c9d2a*/;
 	top: 0;
 	}
 	nav#mainMenu ul.adwMenu > li.tierMenu> ul > li a {
@@ -573,7 +573,7 @@
 	padding: 10px 55px 10px 15px;
 	}
 	nav#mainMenu ul.adwMenu > li > ul > li > ul > li a {
-	background: #4c9d2a;
+	background: #368714 /*#4c9d2a*/;
 	border-top: 1px solid #6ac742;
 	border-bottom: none;
 	border-right: 1px solid #6ac742;

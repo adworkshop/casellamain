@@ -176,16 +176,16 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	font-size: 13px;
 	color: #FFF;
 	display: inline-block;
-	background: #4c9d2a;
+	background: #368714 /*#4c9d2a*/;
 	padding: 12px 12px 10px;
 	line-height: 1.2;
-	border: 2px solid #4c9d2a;
+	border: 2px solid #368714 /*#4c9d2a*/;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 	}
 	a.inline-btn__green:hover,
-	.internal-mainBody-generalTxt-container a.inline-btn__green:hover {color: #4c9d2a; background: #FFF; border: 2px solid #4c9d2a;}
+	.internal-mainBody-generalTxt-container a.inline-btn__green:hover {color: #368714 /*#4c9d2a*/; background: #FFF; border: 2px solid #368714 /*#4c9d2a*/;}
 
 	a.inline-btn__blue,
 	.internal-mainBody-generalTxt-container a.inline-btn__blue{
@@ -242,7 +242,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
 	a.inline-btn__arrow:hover,
 	.internal-mainBody-generalTxt-container a.inline-btn__arrow:hover {
-	color: #4c9d2a;
+	color: #368714 /*#4c9d2a*/;
 	}
 
 
@@ -362,7 +362,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   .searchFormPanelTitle span.highlightName {color:#fff;}
   .searchFormPanelTeaser {font-size: 13px; line-height: 1.5; margin:15px 0 0; font-style: italic; color:#fff;}
   .searchFormPanelFormContainer {}
-  .searchFormPanelFormContainer form {display:table; table-layout:fixed; width:100%; padding:30px 30px 27px; border-top: none; background: #4c9d2a;}
+  .searchFormPanelFormContainer form {display:table; table-layout:fixed; width:100%; padding:30px 30px 27px; border-top: none; background: #368714 /*#4c9d2a*/;}
   .searchFormPanelSearchField {display:table-cell; vertical-align:middle;}
   .searchFormPanelSearchField input[type="text"] {border: 1px solid #aacdaa !important; height: 55px; padding: 0 20px; line-height: 55px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;}
   .searchFormPanelButtonWrappers {display:table-cell; vertical-align:middle; width: 110px; text-align: right;}
@@ -391,7 +391,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   .footer-lowerNav-container ul li:after {content:'/'; display:inline-block; margin:0 5px 0 8px; color:#004a87;}
   .footer-lowerNav-container ul li:last-of-type:after {display:none;}
   .footer-lowerNav-container ul li a { text-transform:uppercase; color:#FFF; font-size: 11px; font-weight: 700;}
-  .footer-lowerNav-container ul li a:hover {color: #4c9d2a;}
+  .footer-lowerNav-container ul li a:hover {color: #368714 /*#4c9d2a*/;}
   div.footer-lowerNav-container ul {display: none;}
   div.footer-lowerNav-container select {display: inline-block;}
 
@@ -446,7 +446,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   font-family: 'Gotham-Black';
   font-weight: normal;
   }
-  label {display: inline-block; margin-bottom: .5rem; font-weight: normal; font-family: 'Gotham-Bold'; color: #4c9d2a; font-size: 14px;}
+  label {display: inline-block; margin-bottom: .5rem; font-weight: normal; font-family: 'Gotham-Bold'; color: #368714 /*#4c9d2a*/; font-size: 14px;}
   input[type="search"] {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -749,7 +749,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	margin-bottom: .5rem;
 	font-weight: normal;
 	font-family: 'Gotham-Bold';
-	color: #4c9d2a;
+	color: #368714 /*#4c9d2a*/;
 	font-size: 14px;
 	margin: 50px 0 0;
 	padding: 50px 0 0;
@@ -760,7 +760,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	.site-search ol li:first-of-type {border-top: none; padding: 0;}
 	.site-search h3 {margin:0 0 10px;}
 	.site-search h3 a {color: #004a87;}
-	.site-search h3 a:hover {color: #4c9d2a;}
+	.site-search h3 a:hover {color: #368714 /*#4c9d2a*/;}
 	.site-search p {font-style:italic;}
 	.site-search nav.pager {margin: 50px 0 0; padding: 50px 0 0; border-top: 3px solid #f4f4f4;}
 	.site-search nav.pager ul.pager__items li.pager__item a {color:#00263d;}
