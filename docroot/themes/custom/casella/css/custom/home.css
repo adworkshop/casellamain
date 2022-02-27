@@ -192,8 +192,8 @@ Author URI: http://www.adworkshop.com
   .home-gridDisplay-leftCol-indWrapper {display:block; padding:50px 0; width:100%;}
 
   .home-gridDisplay-leftCol-indContainer h2 {font-family: 'Gotham-Black'; font-size:24px; color:#368714 /*#4c9d2a*/;}
-  .home-gridDisplay-leftCol-subTitle-upper {font-family: 'Gotham-Bold'; font-size:14px; color:#8b8b8b; line-height: 1.2; margin:0 0 5px;}
-  .home-gridDisplay-leftCol-subTitle-lower {font-family: 'Gotham-Bold'; font-size:14px; color:#8b8b8b; line-height: 1.2; margin:5px 0 0; text-transform:uppercase;}
+  .home-gridDisplay-leftCol-subTitle-upper {font-family: 'Gotham-Bold'; font-size:14px; color:#767676 /*#8b8b8b*/; line-height: 1.2; margin:0 0 5px;}
+  .home-gridDisplay-leftCol-subTitle-lower {font-family: 'Gotham-Bold'; font-size:14px; color:#767676 /*#8b8b8b*/; line-height: 1.2; margin:5px 0 0; text-transform:uppercase;}
 
   .home-gridDisplay-leftCol-contentContainer {display:block; width:100%; table-layout:fixed; margin:20px 0 0;}
   .home-gridDisplay-leftCol-contentWrapper {display:block; vertical-align:top;}
