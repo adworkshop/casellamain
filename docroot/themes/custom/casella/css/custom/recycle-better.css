@@ -109,7 +109,7 @@ Author URI: http://www.adworkshop.com
 .bin-comparison-left,
 .bin-comparison-right {
   padding: 30px;
-  background: #368714 /*#4c9d2a*/;
+  background: #367F17 /*#4c9d2a*/;
 }
 
 /* ======================================================= */
@@ -263,7 +263,7 @@ Author URI: http://www.adworkshop.com
 .resource-listing-list ul li span.fa {
   font-size: 150%;
   margin: 0 5px 0 0;
-  color: #368714 /*#4c9d2a*/;
+  color: #367F17 /*#4c9d2a*/;
 }
 
 /* ======================================================= */
@@ -289,7 +289,7 @@ Author URI: http://www.adworkshop.com
 .sidebar-items-search {
   position: relative;
   padding: 15px 20px 20px 20px;
-  background: #368714 /*#4c9d2a*/;
+  background: #367F17 /*#4c9d2a*/;
 }
 
 .sidebar-items-search-title {
@@ -526,7 +526,7 @@ Author URI: http://www.adworkshop.com
 /* JCJCJC  -------------  */
 .tingle-modal .link--pdf { color: #0a253e; font-family: 'Gotham-Bold';}
 .tingle-modal .link--pdf a { display: flex; align-items: center; margin: 1rem 0 0 0; color: #0a253e; font-family: 'Gotham-Bold'; cursor: pointer;}
-.tingle-modal .link--pdf a:hover { color: #368714 /*#4c9d2a*/;}
+.tingle-modal .link--pdf a:hover { color: #367F17 /*#4c9d2a*/;}
 .tingle-modal .link--pdf i { margin: 0;}
 .tingle-modal .link--pdf span { padding: 0 0 0 .65rem;}
 

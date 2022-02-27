@@ -46,10 +46,10 @@ Author URI: http://www.adworkshop.com
 	font-family: 'Gotham-Bold';
 	font-weight: normal;
 	font-size: 15px;
-	background: #368714 /*#4c9d2a*/;
+	background: #367F17 /*#4c9d2a*/;
 	outline: none;
 	color: #FFF;
-	border: 2px solid #368714 /*#4c9d2a*/;
+	border: 2px solid #367F17 /*#4c9d2a*/;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -62,14 +62,14 @@ Author URI: http://www.adworkshop.com
 	}
 	.locationMap-searchForm-container input[type="submit"]:hover {
 	background: #FFF;
-	color: #368714 /*#4c9d2a*/;
-	border: 2px solid #368714 /*#4c9d2a*/;
+	color: #367F17 /*#4c9d2a*/;
+	border: 2px solid #367F17 /*#4c9d2a*/;
 	}
 
   /*Location Marker Toggles*/
   .locationMap-marker-accordion-container {width: 100%; clear: both; margin: 30px 0 0; border: 1px solid #eee; background: #f8f8f8;}
   .locationMap-marker-accordion-container.not-searched {display:none;}
-  .locationMap-marker-accordion-toggle {position: relative; display: block; text-decoration: none; font-family: 'Gotham-Bold'; line-height: 1; color: #368714 /*#4c9d2a*/; font-size: 16px; padding: 20px 30px;}
+  .locationMap-marker-accordion-toggle {position: relative; display: block; text-decoration: none; font-family: 'Gotham-Bold'; line-height: 1; color: #367F17 /*#4c9d2a*/; font-size: 16px; padding: 20px 30px;}
   .locationMap-marker-accordion-toggle.open {background: #7abf23; color: #fff; }
   .locationMap-marker-accordion-toggle:hover {background: #7abf23; color:#FFF;}
   .locationMap-marker-accordion-toggle-icon {position: absolute; top: 18px; right: 30px; font-size: 20px;}
@@ -293,8 +293,8 @@ Author URI: http://www.adworkshop.com
   @media all and (min-width: 1024px) {
   .locationMap-marker-accordion-container {margin: 50px 0 0;}
   .locationMap-marker-accordion-toggle {pointer-events: none; padding:30px;}
-  .locationMap-marker-accordion-toggle.open {background: none; color: #368714 /*#4c9d2a*/;}
-  .locationMap-marker-accordion-toggle:hover {background: none; color: #368714 /*#4c9d2a*/;}
+  .locationMap-marker-accordion-toggle.open {background: none; color: #367F17 /*#4c9d2a*/;}
+  .locationMap-marker-accordion-toggle:hover {background: none; color: #367F17 /*#4c9d2a*/;}
   .locationMap-marker-accordion-toggle-icon {display:none;}
   .locationMap-marker-accordion-content {display: block !important; padding: 0 30px 30px; border:none;}
 

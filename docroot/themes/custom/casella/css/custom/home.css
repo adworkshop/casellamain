@@ -43,9 +43,9 @@ Author URI: http://www.adworkshop.com
   text-align:center;
   padding:10px 20px;
   text-transform:uppercase;
-  -webkit-box-shadow: inset 0 0 108px 34px #368714 /*#4c9d2a*/;
-  -moz-box-shadow: inset 0 0 108px 34px #368714 /*#4c9d2a*/;
-  box-shadow: inset 0 0 108px 34px #368714 /*#4c9d2a*/;
+  -webkit-box-shadow: inset 0 0 108px 34px #367F17 /*#4c9d2a*/;
+  -moz-box-shadow: inset 0 0 108px 34px #367F17 /*#4c9d2a*/;
+  box-shadow: inset 0 0 108px 34px #367F17 /*#4c9d2a*/;
   }
   .home-resourceGrid .home-resourceGrid-indWrapper a:hover div.home-resourceGrid-indWrapper-innerContainer {color:#fff;}
   .home-resourceGrid-indWrapper-innerWrapper {display:table; width:100%; height:100%;}
@@ -64,7 +64,7 @@ Author URI: http://www.adworkshop.com
 
   /*Upper Border*/
   .home-verticalPanel-indVertical-upperBorder {position:absolute; top: -120px; height:1px; display:none;}
-  .home-verticalPanel-indVertical-container.resident .home-verticalPanel-indVertical-upperBorder {right:0; width:118%; border-top:8px solid #368714 /*#4c9d2a*/;}
+  .home-verticalPanel-indVertical-container.resident .home-verticalPanel-indVertical-upperBorder {right:0; width:118%; border-top:8px solid #367F17 /*#4c9d2a*/;}
   .home-verticalPanel-indVertical-container.smBusiness .home-verticalPanel-indVertical-upperBorder {width:100%; border-top:8px solid #00326f /*#004a87*/;}
   .home-verticalPanel-indVertical-container.organization .home-verticalPanel-indVertical-upperBorder {left:0; width:118%; border-top:8px solid #0a253e;}
 
@@ -74,7 +74,7 @@ Author URI: http://www.adworkshop.com
   .home-verticalPanel-contentWrapper {}
   .home-verticalPanel-contentWrapper h2 {font-family: 'Gotham-Black'; font-size:26px; line-height:1.1;}
   .home-verticalPanel-contentWrapper h2 span {font-size:60%;}
-  .home-verticalPanel-indVertical-container.resident .home-verticalPanel-contentWrapper h2 {color:#368714 /*#4c9d2a*/;}
+  .home-verticalPanel-indVertical-container.resident .home-verticalPanel-contentWrapper h2 {color:#367F17 /*#4c9d2a*/;}
   .home-verticalPanel-indVertical-container.smBusiness .home-verticalPanel-contentWrapper h2 {color: #00326f /*#004a87*/;}
   .home-verticalPanel-indVertical-container.organization .home-verticalPanel-contentWrapper h2 {color: #0a253e;}
   .home-verticalPanel-content {line-height:1.6; margin:10px 0 0;}
@@ -83,10 +83,10 @@ Author URI: http://www.adworkshop.com
   /*Icons*/
   .home-verticalPanel-iconWrapper {position:relative; width:100%; text-align: center; margin: 0 0 15px; display:none;}
   .home-verticalPanel-iconWrapper-iconElement {
-  display: inline-block; width: 80px; height: 80px; line-height: 75px; background: #368714 /*#4c9d2a*/; font-size: 30px; color: #FFF; text-align: center;
+  display: inline-block; width: 80px; height: 80px; line-height: 75px; background: #367F17 /*#4c9d2a*/; font-size: 30px; color: #FFF; text-align: center;
   -webkit-border-radius: 60px; -moz-border-radius: 60px; border-radius: 60px;
   }
-  .home-verticalPanel-indVertical-container.resident .home-verticalPanel-iconWrapper-iconElement {background: #368714 /*#4c9d2a*/;}
+  .home-verticalPanel-indVertical-container.resident .home-verticalPanel-iconWrapper-iconElement {background: #367F17 /*#4c9d2a*/;}
   .home-verticalPanel-indVertical-container.smBusiness .home-verticalPanel-iconWrapper-iconElement {background: #00326f /*#004a87*/;}
   .home-verticalPanel-indVertical-container.organization .home-verticalPanel-iconWrapper-iconElement {background: #0a253e;}
   .home-verticalPanel-iconWrapper-iconElement span {top: 5px; position: relative;}
@@ -119,14 +119,14 @@ Author URI: http://www.adworkshop.com
   }
 
   /*Resident Accordion*/
-  .resident .accordion-container {border: 2px solid #368714 /*#4c9d2a*/;}
-  .resident .accordion-container:hover, .resident .accordion-container.selected {border: 2px solid #368714 /*#4c9d2a*/;}
-  .resident .accordion-toggle {background: #368714 /*#4c9d2a*/; color: #FFF;}
-  .resident .accordion-toggle.open {background: #368714 /*#4c9d2a*/; color: #fff;}
-  .resident .accordion-toggle:hover {background:none; color: #368714 /*#4c9d2a*/;}
-  .resident .accordion-toggle.open:hover {background: #368714 /*#4c9d2a*/; color: #fff;}
+  .resident .accordion-container {border: 2px solid #367F17 /*#4c9d2a*/;}
+  .resident .accordion-container:hover, .resident .accordion-container.selected {border: 2px solid #367F17 /*#4c9d2a*/;}
+  .resident .accordion-toggle {background: #367F17 /*#4c9d2a*/; color: #FFF;}
+  .resident .accordion-toggle.open {background: #367F17 /*#4c9d2a*/; color: #fff;}
+  .resident .accordion-toggle:hover {background:none; color: #367F17 /*#4c9d2a*/;}
+  .resident .accordion-toggle.open:hover {background: #367F17 /*#4c9d2a*/; color: #fff;}
   .resident .accordion-toggle span.toggle-icon {border-left: 1px solid #94c47f;}
-  .resident .accordion-content-container a {color:#368714 /*#4c9d2a*/;}
+  .resident .accordion-content-container a {color:#367F17 /*#4c9d2a*/;}
   .resident .accordion-content-container a:hover {color:#c1c1c1;}
   .resident .accordion-content-container a:before {color:#c1c1c1;}
   .accordion-content-container a.service-curbside:before {content:'\e90b';}
@@ -135,7 +135,7 @@ Author URI: http://www.adworkshop.com
   .accordion-content-container a.service-contact:before {content:'\e90c';}
 
   .home-verticalPanel-locationSearch-container {
-  background:#368714 /*#4c9d2a*/; padding:30px; margin:30px 0 0; color:#FFF;
+  background:#367F17 /*#4c9d2a*/; padding:30px; margin:30px 0 0; color:#FFF;
   -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;
   }
 
@@ -187,11 +187,11 @@ Author URI: http://www.adworkshop.com
   .home-gridDisplay-leftCol-container {display:block; width:100%;}
   .home-gridDisplay-rightCol-container {display:block; width:100%; position: relative;}
 
-  .home-gridDisplay-leftCol-indContainer {display:block; width:100%; padding:0 30px; border-bottom: 4px solid #368714 /*#4c9d2a*/; background:#FFF;}
+  .home-gridDisplay-leftCol-indContainer {display:block; width:100%; padding:0 30px; border-bottom: 4px solid #367F17 /*#4c9d2a*/; background:#FFF;}
   .home-gridDisplay-leftCol-indContainer:last-of-type {border-bottom: none;}
   .home-gridDisplay-leftCol-indWrapper {display:block; padding:50px 0; width:100%;}
 
-  .home-gridDisplay-leftCol-indContainer h2 {font-family: 'Gotham-Black'; font-size:24px; color:#368714 /*#4c9d2a*/;}
+  .home-gridDisplay-leftCol-indContainer h2 {font-family: 'Gotham-Black'; font-size:24px; color:#367F17 /*#4c9d2a*/;}
   .home-gridDisplay-leftCol-subTitle-upper {font-family: 'Gotham-Bold'; font-size:14px; color:#767676 /*#8b8b8b*/; line-height: 1.2; margin:0 0 5px;}
   .home-gridDisplay-leftCol-subTitle-lower {font-family: 'Gotham-Bold'; font-size:14px; color:#767676 /*#8b8b8b*/; line-height: 1.2; margin:5px 0 0; text-transform:uppercase;}
 
@@ -206,13 +206,13 @@ Author URI: http://www.adworkshop.com
 
   .home-gridDisplay-leftCol-content-ctaBtnContainer {margin:20px 0 0;}
   .home-gridDisplay-leftCol-content-ctaBtnContainer a {
-  font-family: 'Gotham-Bold'; font-size:16px; color:#FFF; display:inline-block; background:#368714 /*#4c9d2a*/; padding: 30px 30px 28px; line-height:1.2;
-  border: 2px solid #368714 /*#4c9d2a*/; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;
+  font-family: 'Gotham-Bold'; font-size:16px; color:#FFF; display:inline-block; background:#367F17 /*#4c9d2a*/; padding: 30px 30px 28px; line-height:1.2;
+  border: 2px solid #367F17 /*#4c9d2a*/; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;
   }
-  .home-gridDisplay-leftCol-content-ctaBtnContainer a:hover {border: 2px solid #368714 /*#4c9d2a*/; background:#FFF; color:#368714 /*#4c9d2a*/;}
+  .home-gridDisplay-leftCol-content-ctaBtnContainer a:hover {border: 2px solid #367F17 /*#4c9d2a*/; background:#FFF; color:#367F17 /*#4c9d2a*/;}
 
   /*Customer Care Overrides*/
-  .home-gridDisplay-leftCol-indContainer.customerCare {background:#368714 /*#4c9d2a*/;}
+  .home-gridDisplay-leftCol-indContainer.customerCare {background:#367F17 /*#4c9d2a*/;}
   .home-gridDisplay-leftCol-indContainer.customerCare .home-gridDisplay-leftCol-indWrapper {padding:50px 0 46px;}
   .home-gridDisplay-leftCol-indContainer.customerCare h2 {color:#FFF;}
   .home-gridDisplay-leftCol-indContainer.customerCare .home-gridDisplay-leftCol-subTitle-upper,
@@ -220,7 +220,7 @@ Author URI: http://www.adworkshop.com
   .home-gridDisplay-leftCol-indContainer.customerCare .home-gridDisplay-leftCol-content-primaryText,
   .home-gridDisplay-leftCol-indContainer.customerCare .home-gridDisplay-leftCol-content-secondaryText {color:#FFF;}
   .home-gridDisplay-leftCol-indContainer.customerCare .home-gridDisplay-leftCol-content-ctaBtnContainer a {border: 2px solid #001a2a; color:#FFF; background:#001a2a;}
-  .home-gridDisplay-leftCol-indContainer.customerCare .home-gridDisplay-leftCol-content-ctaBtnContainer a:hover {border: 2px solid #FFF; background:#368714 /*#4c9d2a*/; color:#fff;}
+  .home-gridDisplay-leftCol-indContainer.customerCare .home-gridDisplay-leftCol-content-ctaBtnContainer a:hover {border: 2px solid #FFF; background:#367F17 /*#4c9d2a*/; color:#fff;}
 
   /*Slider*/
   .homeCarouselContainer {position:relative;}

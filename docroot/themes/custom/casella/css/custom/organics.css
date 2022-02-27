@@ -118,7 +118,7 @@ Author URI: http://www.adworkshop.com
   .mainOrganics-lowerContentRegion-indGrid-container a.colio-link:hover .mainOrganics-lowerContentRegion-indGrid-labelInnerWrapper {background:none; color: #FFF; font-size:120%;}
   .mainOrganics-lowerContentRegion-indGrid-container a.colio-link:hover .mainOrganics-lowerContentRegion-indGrid-imgWrapper {
   background: rgba(0,38,62,0.9); background: #428600 /*rgba(122, 191, 35,0.93)*/;
-  -webkit-box-shadow: inset 0 0 108px 34px #368714 /*#4c9d2a*/; -moz-box-shadow: inset 0 0 108px 34px #368714 /*#4c9d2a*/; box-shadow: inset 0 0 108px 34px #368714 /*#4c9d2a*/;
+  -webkit-box-shadow: inset 0 0 108px 34px #367F17 /*#4c9d2a*/; -moz-box-shadow: inset 0 0 108px 34px #367F17 /*#4c9d2a*/; box-shadow: inset 0 0 108px 34px #367F17 /*#4c9d2a*/;
   }
   .mainOrganics-lowerContentRegion-indGrid-container a.colio-link:hover .mainOrganics-lowerContentRegion-indGrid-imgWrapper img {opacity:0.05;}
 
@@ -176,7 +176,7 @@ Author URI: http://www.adworkshop.com
   .organics .internal-interActiveContent-container .z-tabs.flat.flat-nephritis > ul.z-tabs-mobile.z-state-closed > li a,
   .organics .internal-interActiveContent-container .z-tabs.flat.flat-nephritis > ul.z-tabs-mobile > li a {background: #00263d;}
   .organics .internal-interActiveContent-container .nestedTabs-container .z-tabs.flat.flat-nephritis > ul.z-tabs-mobile.z-state-closed > li a,
-  .organics .internal-interActiveContent-container .nestedTabs-container .z-tabs.flat.flat-nephritis > ul.z-tabs-mobile > li a {background: #368714 /*#4c9d2a*/;}
+  .organics .internal-interActiveContent-container .nestedTabs-container .z-tabs.flat.flat-nephritis > ul.z-tabs-mobile > li a {background: #367F17 /*#4c9d2a*/;}
   .organics .internal-interActiveContent-container h2 {color: #00263d;}
 
 /* ======================================================= */

@@ -47,7 +47,7 @@
 }
 
 form label.form-required {
-    color: #368714 /*#4c9d2a*/;
+    color: #367F17 /*#4c9d2a*/;
 }
 
 form.job-indListing-form .form-actions {
@@ -206,10 +206,10 @@ nav.footer-lowerNav-container ul {display: none;}
 .locationMap-link-accordion-container .views-field-field-location-category:last-of-type {padding: 0; margin: 0; border-bottom: none;}
 
 @media all and (min-width: 1024px) {
-    .locationMap-link-accordion-container {background: #FFF; color: #368714 /*#4c9d2a*/;}
+    .locationMap-link-accordion-container {background: #FFF; color: #367F17 /*#4c9d2a*/;}
     .locationMap-link-accordion-container:hover {cursor: pointer; background: #7abf23; color: #FFF;}
     .locationMap-link-accordion-container.open {background: #7abf23; color:#FFF;}
-    .locationMap-link-accordion-container.open .locationMap-marker-accordion-content {cursor: default; background: #FFF; color: #368714 /*#4c9d2a*/; overflow: hidden;}
+    .locationMap-link-accordion-container.open .locationMap-marker-accordion-content {cursor: default; background: #FFF; color: #367F17 /*#4c9d2a*/; overflow: hidden;}
 
     .locationMap-link-accordion-container .locationMap-marker-accordion-toggle {color: inherit;}
     .locationMap-link-accordion-container .locationMap-marker-accordion-toggle-icon {display: block; top: 28px;}
@@ -262,7 +262,7 @@ div.internal-mainBody-sidebarContainer div.indLocation-upperGrid-indElement-cont
   padding-bottom: 0;
   font-weight: normal;
   font-family: 'Gotham-Bold', sans-serif;
-  color: #368714 /*#4c9d2a*/;
+  color: #367F17 /*#4c9d2a*/;
   font-size: 14px;
   border-bottom: none;
 }
@@ -289,7 +289,7 @@ div.internal-mainBody-sidebarContainer div.indLocation-upperGrid-indElement-cont
   padding-bottom: 0;
   font-weight: normal;
   font-family: 'Gotham-Bold', sans-serif;
-  color: #368714 /*#4c9d2a*/;
+  color: #367F17 /*#4c9d2a*/;
   font-size: 14px;
   border-bottom: none;
 }
@@ -304,7 +304,7 @@ div.internal-mainBody-sidebarContainer div.indLocation-upperGrid-indElement-cont
   padding-bottom: 0;
   font-weight: normal;
   font-family: 'Gotham-Bold', sans-serif;
-  color: #368714 /*#4c9d2a*/;
+  color: #367F17 /*#4c9d2a*/;
   font-size: 14px;
   border-bottom: none;
 }
@@ -316,7 +316,7 @@ div.internal-mainBody-sidebarContainer div.indLocation-upperGrid-indElement-cont
   padding-bottom: 0;
   font-weight: normal;
   font-family: 'Gotham-Bold', sans-serif;
-  color: #368714 /*#4c9d2a*/;
+  color: #367F17 /*#4c9d2a*/;
   font-size: 14px;
   border-bottom: none;
 }
