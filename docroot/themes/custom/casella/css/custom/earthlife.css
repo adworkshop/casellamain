@@ -169,7 +169,7 @@ Author URI: http://www.adworkshop.com
   .indProduct-lowerContent-leftCol-benefits-container {}
   .indProduct-lowerContent-leftCol-benefits-container ul {font-family: 'Source Sans Pro', sans-serif; font-size:14px; line-height: 1.6; margin: 0; border-left: 10px solid #f4f4f4; padding: 0 0 0 35px;}
   .indProduct-lowerContent-leftCol-benefits-container li {margin:0 0 10px; position: relative;}
-  .indProduct-lowerContent-leftCol-benefits-container li:before {content:'\f101'; font-family:'FontAwesome'; display:inline-block; position:absolute; top: 3px; left: -15px; font-size: 11px; color: #004a87;}
+  .indProduct-lowerContent-leftCol-benefits-container li:before {content:'\f101'; font-family:'FontAwesome'; display:inline-block; position:absolute; top: 3px; left: -15px; font-size: 11px; color: #00326f /*#004a87*/;}
   .indProduct-lowerContent-leftCol-benefits-container li:after {content:''; display:block; width:30px; height:1px; border-top:1px solid #e2e2e2; margin:13px 0 10px;}
   .indProduct-lowerContent-leftCol-benefits-container li:last-of-type:after {display:none;}
 
@@ -179,7 +179,7 @@ Author URI: http://www.adworkshop.com
   .indProduct-lowerContent-indRecommendations p:last-of-type {margin:0;}
   .indProduct-lowerContent-leftCol-recommendations-container ul {font-family: 'Source Sans Pro', sans-serif; font-size:14px; line-height: 1.6; margin: 0; border-left: 10px solid #f4f4f4; padding: 0 0 0 35px;}
   .indProduct-lowerContent-leftCol-recommendations-container li {margin:0 0 10px; position: relative;}
-  .indProduct-lowerContent-leftCol-recommendations-container li:before {content:'\f101'; font-family:'FontAwesome'; display:inline-block; position:absolute; top: 3px; left: -15px; font-size: 11px; color: #004a87;}
+  .indProduct-lowerContent-leftCol-recommendations-container li:before {content:'\f101'; font-family:'FontAwesome'; display:inline-block; position:absolute; top: 3px; left: -15px; font-size: 11px; color: #00326f /*#004a87*/;}
   .indProduct-lowerContent-leftCol-recommendations-container li:after {content:''; display:block; width:30px; height:1px; border-top:1px solid #e2e2e2; margin:13px 0 10px;}
   .indProduct-lowerContent-leftCol-recommendations-container li:last-of-type:after {display:none;}
 

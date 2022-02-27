@@ -128,7 +128,7 @@ Main components
   }
   .no-touchevents .cd-faq-categories a:hover {
     background: #FFF;
-	color:#004a87;
+	color:#00326f /*#004a87*/;
   }
   .no-js .cd-faq-categories {
     width: 100%;

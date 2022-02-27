@@ -184,19 +184,19 @@
   }
 
   nav#sidebarMenu ul li > a {padding: 14px 45px 14px 0; font-size: 13px;}
-  nav#sidebarMenu ul li > a:hover {color:#004a87;}
+  nav#sidebarMenu ul li > a:hover {color:#00326f /*#004a87*/;}
   nav#sidebarMenu ul li > a.subNav-active {color: #368714 /*#4c9d2a*/; font-size: 15px;}
   nav#sidebarMenu ul li > a.subNav-active:before {display:none;}
   nav#sidebarMenu ul li ul li > a {padding: 14px 45px 14px 15px;}
 
   nav#sidebarMenu ul li a {background:none;}
   nav#sidebarMenu ul li a:hover {background:none;}
-  nav#sidebarMenu ul li.over > .openChild {background: #004a87;}
-  nav#sidebarMenu ul li .openChild:hover {background: #004a87;}
+  nav#sidebarMenu ul li.over > .openChild {background: #00326f /*#004a87*/;}
+  nav#sidebarMenu ul li .openChild:hover {background: #00326f /*#004a87*/;}
   nav#sidebarMenu ul li .openChild .openChildInner:before {color: #aaa; top: 16px;}
   nav#sidebarMenu ul li .openChild:hover .openChildInner:before {color: #FFF;}
 
-  nav#sidebarMenu ul li ul li a {background:#004a87; color:#fff; border-top: 1px solid #0a599a; font-family: 'Gotham-Bold'; font-weight: normal; font-size:12px;}
+  nav#sidebarMenu ul li ul li a {background:#00326f /*#004a87*/; color:#fff; border-top: 1px solid #0a599a; font-family: 'Gotham-Bold'; font-weight: normal; font-size:12px;}
   nav#sidebarMenu ul li ul li a:hover {background: #0a253e; color:#FFF;}
   nav#sidebarMenu ul li ul li.over > .openChild {background: #0a253e;}
   nav#sidebarMenu ul li ul li .openChild:hover {background: #0a253e;}
@@ -241,7 +241,7 @@
   }
 
   nav#mainMenu ul.adwMenu li > a:hover {
-  color: #004a87;
+  color: #00326f /*#004a87*/;
   }
 
   nav#sectionMenu ul.adwMenu li > a {
@@ -251,7 +251,7 @@
   }
 
   nav#sectionMenu ul.adwMenu li > a:hover {
-  color: #004a87;
+  color: #00326f /*#004a87*/;
   }
 
   ul.adwMenu li > a:hover {
@@ -290,7 +290,7 @@
   }
 
   nav#mainMenu ul.adwMenu > li > ul > li a:hover {
-  background: #004a87;
+  background: #00326f /*#004a87*/;
   color: #FFF;
   }
 
@@ -301,7 +301,7 @@
   }
 
   nav#mainMenu ul.adwMenu > li > ul > li > ul > li a:hover {
-  background: #004a87;
+  background: #00326f /*#004a87*/;
   color: #FFF;
   border-top: 1px solid #1c6199;
   }
@@ -315,7 +315,7 @@
   }
 
   nav#sectionMenu ul.adwMenu > li > ul > li a:hover {
-  background: #004a87;
+  background: #00326f /*#004a87*/;
   color: #FFF;
   }
 
@@ -326,7 +326,7 @@
   }
 
   nav#sectionMenu ul.adwMenu > li > ul > li > ul > li a:hover {
-  background: #004a87;
+  background: #00326f /*#004a87*/;
   color: #FFF;
   border-top: 1px solid #1c6199;
   }
@@ -471,7 +471,7 @@
 	}
 	nav#mainMenu ul.adwMenu > li > ul > li a:hover {
 	background:  #f4f4f4;
-	color: #004a87;
+	color: #00326f /*#004a87*/;
 	}
 	nav#mainMenu ul.adwMenu li .openChild:active {
 	background-color: #fff;
@@ -540,7 +540,7 @@
 	}
 	nav#sectionMenu ul.adwMenu > li > ul > li a:hover {
 	background:  #f4f4f4;
-	color: #004a87;
+	color: #00326f /*#004a87*/;
 	}
 	nav#sectionMenu ul.adwMenu li .openChild:active {
 	background-color: #fff;

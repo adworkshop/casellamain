@@ -452,7 +452,7 @@ table#holidaySchedule > tbody > tr > th {
   margin: 0 0 2rem 0;
   padding: 1rem;
   background: #fff;
-  border: 2px solid #004a87;
+  border: 2px solid #00326f /*#004a87*/;
   border-radius: 8px;
 }
 

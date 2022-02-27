@@ -302,7 +302,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
   /*Global Nav*/
   .navGlobal-container {
-  position:relative; background:#004a87; padding:20px 30px; z-index:1;
+  position:relative; background:#00326f /*#004a87*/; padding:20px 30px; z-index:1;
   -webkit-transition: all .5s ease-in-out; -moz-transition: all .5s ease-in-out; -o-transition: all .5s ease-in-out; -ms-transition: all .5s ease-in-out; transition: all .5s ease-in-out;
   }
   .navGlobal-wrapper {margin: 0; font-size:0;}
@@ -332,11 +332,11 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
 
 /*small business upper nav override*/
-	nav#mainMenu ul.adwMenu > li > ul > li a[data-drupal-link-system-path="node/286"] {background: #004a87; color: #fff;}
+	nav#mainMenu ul.adwMenu > li > ul > li a[data-drupal-link-system-path="node/286"] {background: #00326f /*#004a87*/; color: #fff;}
 	nav#mainMenu ul.adwMenu > li > ul > li a[data-drupal-link-system-path="node/286"]:hover {background: #0a253e; color: #7abf23;}
 
   /*mobile bill pay*/
-  .mobile__billpay {background: #004a87; text-align:left;}
+  .mobile__billpay {background: #00326f /*#004a87*/; text-align:left;}
   .mobile__billpay a {color:#fff; font-size:12px; font-weight:normal; font-family: 'Gotham-Bold'; display:inline-block; padding:15px 0;}
   .mobile__billpay a:hover {color: #70a1c9;}
   .mobile__billpay a span {color: #70a1c9;}
@@ -366,7 +366,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   .searchFormPanelSearchField {display:table-cell; vertical-align:middle;}
   .searchFormPanelSearchField input[type="text"] {border: 1px solid #aacdaa !important; height: 55px; padding: 0 20px; line-height: 55px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;}
   .searchFormPanelButtonWrappers {display:table-cell; vertical-align:middle; width: 110px; text-align: right;}
-  a.searchPanel_close {font-family: 'Gotham-Bold'; font-weight: normal; color:#3788cb; font-size: 15px; padding: 0 20px; background: #004a87; height: 56px; line-height: 56px; border:2px solid #004a87;-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; margin:0 0 0 10px; display:none;}
+  a.searchPanel_close {font-family: 'Gotham-Bold'; font-weight: normal; color:#3788cb; font-size: 15px; padding: 0 20px; background: #00326f /*#004a87*/; height: 56px; line-height: 56px; border:2px solid #00326f /*#004a87*/;-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; margin:0 0 0 10px; display:none;}
   a.searchPanel_close:hover {color: #FFF; background:none;}
 
 /* ======================================================= */
@@ -388,7 +388,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   /*Footer Nav*/
   .footer-lowerNav-container {text-align:center; padding:50px 0;}
   .footer-lowerNav-container ul li {display:inline-block;}
-  .footer-lowerNav-container ul li:after {content:'/'; display:inline-block; margin:0 5px 0 8px; color:#004a87;}
+  .footer-lowerNav-container ul li:after {content:'/'; display:inline-block; margin:0 5px 0 8px; color:#00326f /*#004a87*/;}
   .footer-lowerNav-container ul li:last-of-type:after {display:none;}
   .footer-lowerNav-container ul li a { text-transform:uppercase; color:#FFF; font-size: 11px; font-weight: 700;}
   .footer-lowerNav-container ul li a:hover {color: #368714 /*#4c9d2a*/;}
@@ -440,7 +440,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   margin-bottom: 10px;
   font-size: 18px;
   line-height: inherit;
-  color: #004a87;
+  color: #00326f /*#004a87*/;
   border: 0;
   border-bottom: 1px solid #e5e5e5;
   font-family: 'Gotham-Black';
@@ -485,7 +485,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   .file-download {font-size: 13px; line-height: 1.4; margin: 15px 0 15px 0; padding: 0 0 15px; position:relative; border-bottom:1px dotted #e4e4e4;}
 	.file-download:before {font-family: 'FontAwesome'; content: "\f1c1"; display:inline-block; position:absolute; left:0; top:0; font-size: 20px; color: #990000;}
 	.file-download span {display:inline-block; padding:0 0 0 30px;}
-  .form-required {color:#004a87;}
+  .form-required {color:#00326f /*#004a87*/;}
 
 	/*drupal additions*/
 	.form .form-item {margin:1rem 0;}
@@ -704,11 +704,11 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   input.locationSearchField {height:60px; line-height:60px;}
 
   input[type="submit"] {
-  font-family: 'Gotham-Bold'; font-size:16px; color:#FFF; display:inline-block; background:#004a87; padding: 20px 20px 18px;
-  border: 2px solid #004a87; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; outline:none;
+  font-family: 'Gotham-Bold'; font-size:16px; color:#FFF; display:inline-block; background:#00326f /*#004a87*/; padding: 20px 20px 18px;
+  border: 2px solid #00326f /*#004a87*/; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; outline:none;
   }
   input[type="submit"]:hover {
-  border: 2px solid #004a87; background:#FFF; color:#004a87;
+  border: 2px solid #00326f /*#004a87*/; background:#FFF; color:#00326f /*#004a87*/;
   }
 
 	.contact-form {line-height:1.5;}
@@ -759,7 +759,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	.site-search ol li {border-top: 1px dotted #ddd; margin-top: 30px; padding: 25px 0 0;}
 	.site-search ol li:first-of-type {border-top: none; padding: 0;}
 	.site-search h3 {margin:0 0 10px;}
-	.site-search h3 a {color: #004a87;}
+	.site-search h3 a {color: #00326f /*#004a87*/;}
 	.site-search h3 a:hover {color: #368714 /*#4c9d2a*/;}
 	.site-search p {font-style:italic;}
 	.site-search nav.pager {margin: 50px 0 0; padding: 50px 0 0; border-top: 3px solid #f4f4f4;}
@@ -773,12 +773,12 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
 	/*sitemap*/
 	.sitemap h2 {font-size: 30px; margin: 0 0 2rem;}
-	.sitemap a {font-size:16px; font-family: 'Gotham-Bold'; color:#004a87;}
+	.sitemap a {font-size:16px; font-family: 'Gotham-Bold'; color:#00326f /*#004a87*/;}
 	.sitemap a:hover {color:#7abf23;}
 
 	.sitemap ul.sitemap-menu li {margin-bottom: 25px; border-bottom: 1px solid #e4e4e4; padding-bottom: 25px; position: relative;}
 	.sitemap ul.sitemap-menu li:last-of-type {margin-bottom: 0; border-bottom: none; padding-bottom: 0;}
-	.sitemap ul.sitemap-menu li a {font-size:16px; font-family: 'Gotham-Bold'; color:#004a87;}
+	.sitemap ul.sitemap-menu li a {font-size:16px; font-family: 'Gotham-Bold'; color:#00326f /*#004a87*/;}
 	.sitemap ul.sitemap-menu li a:hover {color:#7abf23;}
 	.sitemap ul.sitemap-menu li:before {content: "\f178"; font-family: 'FontAwesome'; left: -1.5em; top: 0; position: absolute;}
 
@@ -790,7 +790,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
 	.sitemap ul.sitemap-menu li > ul > li > ul > li {margin-bottom: 5px; border-bottom: none; padding-bottom: 0;}
 	.sitemap ul.sitemap-menu li > ul > li > ul > li a {font-size:14px; color:#606060; font-weight:700;}
-	.sitemap ul.sitemap-menu li > ul > li > ul > li a:hover {color:#004a87;}
+	.sitemap ul.sitemap-menu li > ul > li > ul > li a:hover {color:#00326f /*#004a87*/;}
 	.sitemap ul.sitemap-menu li > ul > li > ul >li:before {content: "\f105"; font-family: 'FontAwesome'; left: -1.25em; top: .2em; position: absolute; color:#aaa; font-size:80%;}
 
 	.sitemap ul.sitemap-menu li > ul > li > ul > li > ul > li  a {font-weight:normal; font-style:italic;}
@@ -853,7 +853,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   #generalNav .headerLogo {bottom:35px; -webkit-transition: all .5s ease-in-out; -moz-transition: all .5s ease-in-out; -o-transition: all .5s ease-in-out; -ms-transition: all .5s ease-in-out; transition: all .5s ease-in-out;}
   #generalNav.scrollIn .headerLogo {bottom:13px;}
   #generalNav.scrollIn .navGlobal-container {top:-100px;}
-  .navGlobal-container {position:absolute; top:0; right:0; background:#004a87; padding:8px 7% 8px 10px;}
+  .navGlobal-container {position:absolute; top:0; right:0; background:#00326f /*#004a87*/; padding:8px 7% 8px 10px;}
   .navGlobal-wrapper {margin: 0 25px 0 0; font-size:0;}
   a.navigationSearchAction {width: auto; margin: 0 0 0 40px; display:inline-block;}
   a.navigationSearchAction span {display: none;}

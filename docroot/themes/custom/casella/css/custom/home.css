@@ -65,7 +65,7 @@ Author URI: http://www.adworkshop.com
   /*Upper Border*/
   .home-verticalPanel-indVertical-upperBorder {position:absolute; top: -120px; height:1px; display:none;}
   .home-verticalPanel-indVertical-container.resident .home-verticalPanel-indVertical-upperBorder {right:0; width:118%; border-top:8px solid #368714 /*#4c9d2a*/;}
-  .home-verticalPanel-indVertical-container.smBusiness .home-verticalPanel-indVertical-upperBorder {width:100%; border-top:8px solid #004a87;}
+  .home-verticalPanel-indVertical-container.smBusiness .home-verticalPanel-indVertical-upperBorder {width:100%; border-top:8px solid #00326f /*#004a87*/;}
   .home-verticalPanel-indVertical-container.organization .home-verticalPanel-indVertical-upperBorder {left:0; width:118%; border-top:8px solid #0a253e;}
 
   .home-verticalPanel-indVertical-wrapper {width:100%; margin:0 auto 30px; padding:0 0 30px; border-bottom:2px solid #e4e4e4; position:relative;}
@@ -75,7 +75,7 @@ Author URI: http://www.adworkshop.com
   .home-verticalPanel-contentWrapper h2 {font-family: 'Gotham-Black'; font-size:26px; line-height:1.1;}
   .home-verticalPanel-contentWrapper h2 span {font-size:60%;}
   .home-verticalPanel-indVertical-container.resident .home-verticalPanel-contentWrapper h2 {color:#368714 /*#4c9d2a*/;}
-  .home-verticalPanel-indVertical-container.smBusiness .home-verticalPanel-contentWrapper h2 {color: #004a87;}
+  .home-verticalPanel-indVertical-container.smBusiness .home-verticalPanel-contentWrapper h2 {color: #00326f /*#004a87*/;}
   .home-verticalPanel-indVertical-container.organization .home-verticalPanel-contentWrapper h2 {color: #0a253e;}
   .home-verticalPanel-content {line-height:1.6; margin:10px 0 0;}
   .home-verticalPanel-content p:last-of-type {margin:0;}
@@ -87,7 +87,7 @@ Author URI: http://www.adworkshop.com
   -webkit-border-radius: 60px; -moz-border-radius: 60px; border-radius: 60px;
   }
   .home-verticalPanel-indVertical-container.resident .home-verticalPanel-iconWrapper-iconElement {background: #368714 /*#4c9d2a*/;}
-  .home-verticalPanel-indVertical-container.smBusiness .home-verticalPanel-iconWrapper-iconElement {background: #004a87;}
+  .home-verticalPanel-indVertical-container.smBusiness .home-verticalPanel-iconWrapper-iconElement {background: #00326f /*#004a87*/;}
   .home-verticalPanel-indVertical-container.organization .home-verticalPanel-iconWrapper-iconElement {background: #0a253e;}
   .home-verticalPanel-iconWrapper-iconElement span {top: 5px; position: relative;}
 
@@ -164,11 +164,11 @@ Author URI: http://www.adworkshop.com
   span.smallBusiness-btn-upper {font-size:90%; color:#70a1c9; margin:0 2px 0 0;}
   span.smallBusiness-btn-upper, span.smallBusiness-btn-lower {padding: 5px 0 0; display: inline-block; white-space:nowrap;}
   .smallBusiness-btn-container a {
-  background: #004a87;
+  background: #00326f /*#004a87*/;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  border:2px solid #004a87;
+  border:2px solid #00326f /*#004a87*/;
   display: inline-block;
   width: 100%;
   font-size: 16px;
@@ -178,7 +178,7 @@ Author URI: http://www.adworkshop.com
   padding: 28px 30px 29px;
   -webkit-transition: all .3s ease-in-out; -moz-transition: all .3s ease-in-out; -o-transition: all .3s ease-in-out; -ms-transition: all .3s ease-in-out; transition: all .3s ease-in-out;
   }
-  .smallBusiness-btn-container a:hover {border:2px solid #004a87; background: none; color: #004a87;}
+  .smallBusiness-btn-container a:hover {border:2px solid #00326f /*#004a87*/; background: none; color: #00326f /*#004a87*/;}
 
 /* ======================================================= */
 /*    GRID                                              */
@@ -228,21 +228,21 @@ Author URI: http://www.adworkshop.com
   .home-grandGalleryCaption {padding:0 30px;}
   .home-grandGalleryCaption .rsGCaption {float: none; text-align: left;}
   .home-grandGalleryCaption .rsABlock {position:relative; border-bottom: 9px solid #f8f9f8; padding: 30px 0 40px; z-index:3000; font-size: 12px; line-height: 1.4;}
-  .home-grandGalleryCaption .homepage-slider-caption-title {font-family: 'Gotham-Black'; font-size: 13px; margin: 0 0 5px; color:#004a87; text-transform:uppercase;}
+  .home-grandGalleryCaption .homepage-slider-caption-title {font-family: 'Gotham-Black'; font-size: 13px; margin: 0 0 5px; color:#00326f /*#004a87*/; text-transform:uppercase;}
   .home-grandGalleryCaption .homepage-slider-caption-btn {margin:20px 0 0;}
   .home-grandGalleryCaption .homepage-slider-caption-btn a {
   font-family: 'Gotham-Bold';
   font-size: 14px;
   color: #FFF;
   display: inline-block;
-  background: #004a87;
+  background: #00326f /*#004a87*/;
   padding: 20px 20px 18px;
-  border: 2px solid #004a87;
+  border: 2px solid #00326f /*#004a87*/;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
   }
-  .home-grandGalleryCaption .homepage-slider-caption-btn a:hover {color: #004a87; background: none; border: 2px solid #004a87;}
+  .home-grandGalleryCaption .homepage-slider-caption-btn a:hover {color: #00326f /*#004a87*/; background: none; border: 2px solid #00326f /*#004a87*/;}
 
 /* ======================================================= */
 /*    MEDIA QUERIES                                        */
