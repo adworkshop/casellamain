@@ -362,7 +362,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   .searchFormPanelTitle span.highlightName {color:#fff;}
   .searchFormPanelTeaser {font-size: 13px; line-height: 1.5; margin:15px 0 0; font-style: italic; color:#fff;}
   .searchFormPanelFormContainer {}
-  .searchFormPanelFormContainer form {display:table; table-layout:fixed; width:100%; padding:30px 30px 27px; border-top: none; background: #367F17 /*#4c9d2a*/;}
+  .searchFormPanelFormContainer form {display:table; table-layout:fixed; width:100%; padding:30px 30px 27px; border-top: none; background: #418600 /*#367F17*/;}
   .searchFormPanelSearchField {display:table-cell; vertical-align:middle;}
   .searchFormPanelSearchField input[type="text"] {border: 1px solid #aacdaa !important; height: 55px; padding: 0 20px; line-height: 55px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;}
   .searchFormPanelButtonWrappers {display:table-cell; vertical-align:middle; width: 110px; text-align: right;}
@@ -667,7 +667,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   font-size: 15px;
   background: #fff;
   outline: none;
-  color:#7abf23;
+  color:#418600 /*#7abf23*/;
   border:2px solid #fff;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -868,7 +868,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   .searchFormPanelFormContainer form {display:block; margin:30px 0 0; padding:0; border-top:0; background: none;}
   .searchFormPanelSearchField {display:block;}
   .searchFormPanelButtonWrappers {display:block; width: auto; margin: 40px 0; text-align: left;}
-  button.searchSubmit:hover {color:#FFF; border:2px solid #7abf23;}
+  button.searchSubmit:hover {color:#FFF; border:2px solid #418600 /*#7abf23*/;}
   a.searchPanel_close {display: inline-block;}
   .searchFormPanelSearchField input[type="text"] {
   border: none !important; border-bottom: 1px solid #fff !important; border-bottom: 3px solid rgba(255,255,255,.2) !important; background: none; color:#FFF; font-size: 25px; padding: 0; height: auto; line-height: 1.8;
