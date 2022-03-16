@@ -2,13 +2,13 @@
 *	 Zozo Tabs: Underlined
 *
 *    1. Underlined Structure
-*    2. Underlined Vertical 
+*    2. Underlined Vertical
 *    3. Underlined Sizes
 *    4. Underlined Themes
-*    
+*
 *   Most of the time you shouldn't section 1 (structure).
 *   You can delete/edit vertical, sizes and themes section if you need.
-* 
+*
 **************************************************************************/
 
 
@@ -106,7 +106,7 @@
     }
 
 
- 
+
 
 
 
@@ -237,9 +237,9 @@
 .z-tabs.underlined.horizontal.xlarge > ul.z-tabs-nav > li > a.z-link{padding: 12px 14px;}
 .z-tabs.underlined.horizontal.xxlarge > ul.z-tabs-nav > li > a.z-link{padding: 14px 16px;}
 
-.z-tabs.underlined.horizontal.mini > ul.z-tabs-nav > li:hover, 
+.z-tabs.underlined.horizontal.mini > ul.z-tabs-nav > li:hover,
 .z-tabs.underlined.horizontal.mini > ul.z-tabs-nav > li.z-active,
-.z-tabs.underlined.horizontal.small > ul.z-tabs-nav > li:hover, 
+.z-tabs.underlined.horizontal.small > ul.z-tabs-nav > li:hover,
 .z-tabs.underlined.horizontal.small > ul.z-tabs-nav > li.z-active {border-bottom-width: 2px;}
 
 
@@ -279,7 +279,7 @@
 .z-tabs.underlined.crystal > ul.z-tabs-nav > li > a:hover{border-color:#999;}
 
 .z-tabs.underlined.silver > ul.z-tabs-nav > li.z-active > a,
-.z-tabs.underlined.silver > ul.z-tabs-nav > li > a:hover{border-color:#777;}
+.z-tabs.underlined.silver > ul.z-tabs-nav > li > a:hover{border-color:#767676 /* #777 */;}
 
 .z-tabs.underlined.gray > ul.z-tabs-nav > li.z-active > a,
 .z-tabs.underlined.gray > ul.z-tabs-nav > li > a:hover{border-color:#333;}
@@ -307,7 +307,7 @@
 .z-tabs.mobile.underlined> .z-container > .z-content > .z-content-inner {
 padding: 0;
 }
-     
+
 
 
 /*underlined tabs*/
@@ -392,10 +392,10 @@ padding: 0;
     border-width: 0 0 1px 0;
 }*/
 
-                              
+
 
 .z-tabs.underlined.mobile.hover > ul.z-tabs-desktop > li.z-active > a,
-.z-tabs.underlined.mobile.hover > ul.z-tabs-desktop > li:hover > a{background: #FAFAFA;color: #333;text-shadow: 1px 0px 1px rgba(175, 175, 175, 0.25);}        
+.z-tabs.underlined.mobile.hover > ul.z-tabs-desktop > li:hover > a{background: #FAFAFA;color: #333;text-shadow: 1px 0px 1px rgba(175, 175, 175, 0.25);}
 
 .z-tabs.underlined.mobile.m-red > ul.z-tabs-desktop > li.z-active > a,
 .z-tabs.underlined.mobile.hover.m-red > ul.z-tabs-desktop > li:hover > a{color: #DD4B39;}

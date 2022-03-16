@@ -121,7 +121,7 @@ Main components
     -webkit-transition: background 0.2s, padding 0.2s;
     -moz-transition: background 0.2s, padding 0.2s;
     transition: background 0.2s, padding 0.2s;
-	color: #777;
+	color: #767676 /* #777 */;
   }
   .cd-faq-categories a::before, .cd-faq-categories a::after {
     display: none; content: '';

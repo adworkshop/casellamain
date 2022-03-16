@@ -432,7 +432,7 @@
 .footable .pagination > .disabled > a,
 .footable .pagination > .disabled > a:hover,
 .footable .pagination > .disabled > a:focus {
-	color: #777;
+	color: #767676 /* #777 */;
 	cursor: not-allowed;
 	background-color: #fff;
 	border-color: #ddd;
@@ -451,7 +451,7 @@
 	border-radius: .25em;
 }
 .footable .label-default {
-	background-color: #777;
+	background-color: #767676 /* #777 */;
 }
 /* wells */
 .footable-loader.well {

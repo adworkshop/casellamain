@@ -43,7 +43,7 @@ Author URI: http://www.adworkshop.com
 .internal-mainBody-generalTxt-container {font-size:13px; line-height:1.7; font-family: 'Droid Serif', serif;}
 .internal-mainBody-generalTxt-container h2 {color:#0a253e; font-size:17px; margin:0 0 15px;}
 .internal-mainBody-generalTxt-container h3 {color: #367F17 /*#4c9d2a*/; font-size: 15px; margin: 0 0 15px; text-transform: uppercase;}
-.internal-mainBody-generalTxt-container h4 {color: #777; font-size: 13px; margin: 0 0 10px; border-bottom: 1px dotted #ccc; padding: 0 0 10px;}
+.internal-mainBody-generalTxt-container h4 {color: #767676 /* #777 */; font-size: 13px; margin: 0 0 10px; border-bottom: 1px dotted #ccc; padding: 0 0 10px;}
 .internal-mainBody-featuredLogo {width:100%; margin:0 0 40px; padding: 40px 0; border-bottom: 5px solid #e2e2e2; border-top: 5px solid #e2e2e2; line-height:0;}
 .internal-mainBody-featuredLogo img {width:100%; max-width:100%; height:auto;}
 .internal-mainBody-generalTxt-container hr {border:none; border-top:1px solid #ccc; margin:45px 0;}

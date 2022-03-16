@@ -179,7 +179,7 @@
 /*lightred2*/
 .z-tabs.flat.flat-red2.medium > ul > li > a { font-size: 14px; padding: 16px 24px; }
 .z-tabs.flat.flat-red2.horizontal.z-bordered > .z-container { border-width: 0 !important; }
-.z-tabs.flat.flat-red2 { color: #777; font: 16px/22px "Helvetica Neue",Helvetica,Arial,sans-serif; }
+.z-tabs.flat.flat-red2 { color: #767676 /* #777 */; font: 16px/22px "Helvetica Neue",Helvetica,Arial,sans-serif; }
 .z-tabs.flat.flat-red2 > ul.z-tabs-nav,
 .z-tabs.flat.flat-red2 > ul.z-tabs-nav > li,
 .z-tabs.flat.flat-red2 > .z-container { border-color: #e64c3c; }

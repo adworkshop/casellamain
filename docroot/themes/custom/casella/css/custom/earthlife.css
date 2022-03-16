@@ -78,7 +78,7 @@ Author URI: http://www.adworkshop.com
   .mainEarthlife-featuredProducts-txtContainer {}
   .mainEarthlife-featuredProducts-txtContainer h2 {font-family: 'Gotham-Bold'; font-size:16px; text-transform:uppercase; color:#272727;}
   .mainEarthlife-featuredProducts-txtContainer h2 a {color:#272727; font-weight:normal;}
-  .mainEarthlife-featuredProducts-txtContainer h2 a:hover {color:#777;}
+  .mainEarthlife-featuredProducts-txtContainer h2 a:hover {color:#767676 /* #777 */;}
   .mainEarthlife-featuredProducts-txtWrapper {line-height:1.4; border-top: 2px solid #ccc; padding: 15px 0 0; margin: 15px 0 0;}
   .mainEarthlife-featuredProducts-txtWrapper p:last-of-type {margin:0;}
   .mainEarthlife-featuredProducts-listContainer {margin:30px 0 0;}
@@ -87,7 +87,7 @@ Author URI: http://www.adworkshop.com
   .mainEarthlife-featuredProducts-listContainer li {margin:0 0 10px; position: relative;}
   .mainEarthlife-featuredProducts-listContainer li:before {content:'\f101'; font-family:'FontAwesome'; display:inline-block; position:absolute; top: 3px; left: -15px; font-size: 11px; color: #76be43;}
   .mainEarthlife-featuredProducts-listContainer li a {font-family: 'Gotham-Bold'; font-size:13px; color:#272727; font-weight:normal;}
-  .mainEarthlife-featuredProducts-listContainer li a:hover {color:#777;}
+  .mainEarthlife-featuredProducts-listContainer li a:hover {color:#767676 /* #777 */;}
   .mainEarthlife-featuredProducts-wrapper:nth-child(odd) .mainEarthlife-featuredProducts-txtWrapper {border-top: 2px solid #76be43;}
   .mainEarthlife-featuredProducts-wrapper:nth-child(odd) .mainEarthlife-featuredProducts-listContainer-title {background: #76be43;}
   .mainEarthlife-featuredProducts-wrapper:nth-child(odd) .mainEarthlife-featuredProducts-txtContainer h2 a:hover {color: #76be43;}
