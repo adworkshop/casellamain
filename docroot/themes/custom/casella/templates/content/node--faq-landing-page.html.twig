@@ -12,8 +12,9 @@
             <div class="cutomerCare-btnRow-IndBtn-form">
               <form method="get" action="{{ locationSearchPath }}" id="location-search">
                 <div class="locationSearchWrapper">
-                  <input name="city" type="text" size="40" class="locationSearchField" placeholder="town/city...">
-                  <button type="submit" class="locationSearchSubmit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                  <label for="city-search" class="visiually-hidden">Town/City</label>
+                  <input name="city" type="text" size="40" class="locationSearchField" placeholder="town/city..." id="city-search">
+                  <button type="submit" class="locationSearchSubmit"><i class="fa fa-search" aria-hidden="true"></i><span class="visually-hidden">Search</span></button>
                 </div>
               </form>
             </div>
