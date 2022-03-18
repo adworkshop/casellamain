@@ -18,7 +18,7 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 
       {% if link_title and link_url %}
         <div class="{{ class_target }}-slider-caption-btn">
-          <a href="{{ link_url }}" title="" class="{{ link_class }}">
+          <a href="{{ link_url }}" title="{{ content.field_title }}" class="{{ link_class }}">
             {% if link_icon %}<span class="fa {{ link_icon|e }} btnIconWrapper" aria-hidden="true"></span>{% endif %}
             {{ link_title|e }}
           </a>

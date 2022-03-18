@@ -61,9 +61,9 @@
     {% endif %}
 
     <div class="locationMap-listView-indListing-content-ctaContainer">
-      <a href="javascript:void(0);" title="" class="locationMap-listView-indListing-content-viewMap-btn panelControlBtn" data-guid="{{ fields.nid.content|striptags|trim }}"><span class="fa fa-map-pin btnIconWrapper" aria-hidden="true"></span> Find Location on Map</a>
+      <a href="javascript:void(0);" title="Find location using the map" class="locationMap-listView-indListing-content-viewMap-btn panelControlBtn" data-guid="{{ fields.nid.content|striptags|trim }}"><span class="fa fa-map-pin btnIconWrapper" aria-hidden="true"></span> Find Location on Map</a>
       {%  if addressLink %}
-        <a href="{{ addressLink }}" title="" class="locationMap-listView-indListing-content-driving-btn"><span class="fa fa-map btnIconWrapper" aria-hidden="true"></span> Get Driving Directions</a>
+        <a href="{{ addressLink }}" title="Get driving directions to location" class="locationMap-listView-indListing-content-driving-btn"><span class="fa fa-map btnIconWrapper" aria-hidden="true"></span> Get Driving Directions</a>
       {% endif %}
       <a href="{{ fields.path.content|render|striptags }}" title="" class="locationMap-listView-indListing-content-learnMore-btn"><span class="fa fa-tags btnIconWrapper" aria-hidden="true"></span> Learn More</a>
     </div>

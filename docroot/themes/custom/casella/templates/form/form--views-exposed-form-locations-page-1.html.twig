@@ -14,7 +14,7 @@
   <!--Search Meta-->
   <div class="providerSearch-postSearch-container">
     <h2>You are currently searching for: {% for param in searchMeta %}{% if loop.index != 1 %}, {% endif %}<span>{{ param|e }}</span>{% endfor %}</h2>
-    <div class="providerSearch-postSearch-toggleBtn-container"><a href="javascript:void(0)" onclick="jQuery('html, body').animate({ scrollTop: jQuery('.providerSearch-searchForm-container').offset().top - 50}, 1000);" title="">Update your search parameters</a></div>
+    <div class="providerSearch-postSearch-toggleBtn-container"><a href="javascript:void(0)" onclick="jQuery('html, body').animate({ scrollTop: jQuery('.providerSearch-searchForm-container').offset().top - 50}, 1000);" title="Change your search requirements">Update your search parameters</a></div>
   </div>
   <!--END Search Meta-->
 {% endif %}
