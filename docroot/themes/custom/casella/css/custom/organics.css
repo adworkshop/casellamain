@@ -44,7 +44,7 @@ Author URI: http://www.adworkshop.com
   .collapsed-headerTrigger-wrapper a:hover {color:#00263d;}
 
   #sectionNav .mobileBtnWrapper {top: 35px;}
-  #sectionNav a.mainMenuToggle {color: #76be43;}
+  #sectionNav a.mainMenuToggle {color: #3e860b /*#76be43*/;}
   #sectionNav a.mainMenuToggle.active {color: #FFF;}
 
   .organics .searchFormPanelFormContainer form {border-top: 1px solid #5e9c0f; background:none; padding:30px 0 0;}

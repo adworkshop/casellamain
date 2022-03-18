@@ -29,7 +29,7 @@
 
   a.mainMenuToggle:before {content: "\f0c9";}
 
-  a.mainMenuToggle.active {color: #7abf23;}
+  a.mainMenuToggle.active {color: #418600 /*#7abf23*/;}
 
   a.mainMenuToggle.active:before {content: "\f00d";}
 
