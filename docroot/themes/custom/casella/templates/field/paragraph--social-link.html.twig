@@ -43,4 +43,21 @@ set classes = [
 view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 ]
 %}
-<li><a href="{{ content.field_social_link|render|striptags }}" title=""><span class="fa {{ content.field_icon|render|striptags }}" aria-hidden="true"></span></a></li>
+
+{% set route_object = content.field_social_link['#items'].0.url %}
+{% set link_title = content.field_social_link['#items'].title %}
+
+{% if route_object.external %}
+    {% set link_url = route_object %}
+{% else %}
+  {% set link_url = path(route_object.routeName, route_object.routeParameters, route_object.options) %}
+{% endif %}
+
+{% if content.field_icon | render %}
+  {% set icon_class = content.field_icon['#items'].0.value %}
+{% endif %}
+<li>
+  <a href="{{ link_url }}" title="Visit social media page">
+    <span class="fa {{ icon_class }}" aria-hidden="true"></span>
+  </a>
+</li>

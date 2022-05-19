@@ -1413,7 +1413,7 @@ function casella_preprocess_form(&$variables) {
   if (isset($variables['element']['#id'])) {
     if ('views-exposed-form-locations-page-1' == $variables['element']['#id']) {
       $hasCity = isset($_GET['city']) && $_GET['city'] != '';
-      $hasZip = isset($_GET['zip_code']) && $_GET['zip_code'] != '';
+      // $hasZip = isset($_GET['zip_code']) && $_GET['zip_code'] != '';
       $hasZip = isset($_GET['zip_code']) && $_GET['zip_code'] != '';
 
       $variables['searchMeta'] = array();

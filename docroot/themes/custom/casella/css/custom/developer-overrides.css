@@ -469,3 +469,8 @@ table#holidaySchedule > tbody > tr > th {
   font-size: 18px;
   color: #333;
 }
+
+.visually-hidden {
+  color: #000;
+  background-color: #fff;
+}
