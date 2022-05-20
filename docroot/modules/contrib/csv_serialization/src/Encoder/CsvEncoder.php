@@ -264,7 +264,8 @@ class CsvEncoder implements EncoderInterface, DecoderInterface {
 
       $cell_value = "";
       foreach ($data as $item) {
-        $cell_value .= '|' . $this->flattenCell($item);
+        // $cell_value .= '|' . $this->flattenCell($item);
+        $cell_value .= '|' . (is_array($item) ? $this->flattenCell($item) : $item);
       }
 
       return trim($cell_value, '|');
