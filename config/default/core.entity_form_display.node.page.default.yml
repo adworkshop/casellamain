@@ -200,7 +200,8 @@ content:
     region: content
   field_meta_tags:
     weight: 16
-    settings: {  }
+    settings:
+      sidebar: true
     third_party_settings: {  }
     type: metatag_firehose
     region: content
@@ -229,7 +230,7 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
-      default_paragraph_type: ''
+      default_paragraph_type: _none
     third_party_settings: {  }
     region: content
   field_subsection:
@@ -310,9 +311,9 @@ content:
     region: content
   url_redirects:
     weight: 50
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   feeds_item: true
   promote: true

@@ -3,14 +3,24 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.contact_message.field_address
     - field.storage.contact_message.field_email
+    - field.storage.contact_message.field_first_name
     - field.storage.contact_message.field_job_email
+    - field.storage.contact_message.field_last_name
+    - field.storage.contact_message.field_ml_address
     - field.storage.contact_message.field_ml_email
+    - field.storage.contact_message.field_ml_first_name
+    - field.storage.contact_message.field_ml_last_name
+    - field.storage.contact_message.field_service_address
     - field.storage.contact_message.field_service_email
+    - field.storage.contact_message.field_service_first_name
+    - field.storage.contact_message.field_service_last_name
   module:
     - contact
     - contact_storage
     - user
+    - views_bulk_operations
 _core:
   default_config_hash: FWNZiDPzXA2-_eL-zQOztdT2HVFW5Pp41UQa2_870aM
 id: contact_messages
@@ -55,23 +65,23 @@ display:
       pager:
         type: full
         options:
-          items_per_page: 20
+          items_per_page: 25
           offset: 0
           id: 0
           total_pages: null
+          tags:
+            previous: '‹ previous'
+            next: 'next ›'
+            first: '« first'
+            last: 'last »'
           expose:
-            items_per_page: false
+            items_per_page: true
             items_per_page_label: 'Items per page'
             items_per_page_options: '5, 10, 25, 50'
             items_per_page_options_all: false
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          tags:
-            previous: '‹ previous'
-            next: 'next ›'
-            first: '« first'
-            last: 'last »'
           quantity: 9
       style:
         type: table
@@ -80,199 +90,186 @@ display:
           row_class: ''
           default_row_class: true
           override: true
-          sticky: false
+          sticky: true
           caption: ''
           summary: ''
           description: ''
-          columns: {  }
-          info: {  }
+          columns:
+            views_bulk_operations_bulk_form: views_bulk_operations_bulk_form
+            field_service_first_name: field_service_first_name
+            field_first_name: field_first_name
+            field_ml_first_name: field_ml_first_name
+            field_service_last_name: field_service_last_name
+            field_last_name: field_last_name
+            field_ml_last_name: field_ml_last_name
+            contact_form_label: contact_form_label
+            created: created
+            operations: operations
+            field_email: field_email
+            field_service_email: field_service_email
+            field_ml_email: field_ml_email
+            field_ml_email_1: field_ml_email_1
+            field_job_email: field_job_email
+            field_service_address: field_service_address
+            field_address: field_address
+            field_ml_address: field_ml_address
+          info:
+            views_bulk_operations_bulk_form:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_service_first_name:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_first_name:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_ml_first_name:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_service_last_name:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_last_name:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_ml_last_name:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            contact_form_label:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            created:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            operations:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_email:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_service_email:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_ml_email:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_ml_email_1:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_job_email:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_service_address:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_address:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_ml_address:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
           default: '-1'
           empty_table: true
       row:
         type: 'entity:contact_message'
       fields:
-        message_bulk_form:
-          id: message_bulk_form
-          table: contact_message
-          field: message_bulk_form
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          action_title: 'With selection'
-          include_exclude: exclude
-          selected_actions: {  }
-          entity_type: contact_message
-          plugin_id: message_bulk_form
-        subject:
-          id: subject
-          table: contact_message
-          field: subject
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: Subject
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          entity_type: contact_message
-          entity_field: subject
+        field_service_first_name:
+          id: field_service_first_name
+          table: contact_message__field_service_first_name
+          field: field_service_first_name
           plugin_id: field
-        name:
-          id: name
-          table: contact_message
-          field: name
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'Sender''s name'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          entity_type: contact_message
-          entity_field: name
+        field_first_name:
+          id: field_first_name
+          table: contact_message__field_first_name
+          field: field_first_name
+          plugin_id: field
+        field_ml_first_name:
+          id: field_ml_first_name
+          table: contact_message__field_ml_first_name
+          field: field_ml_first_name
+          plugin_id: field
+        field_service_last_name:
+          id: field_service_last_name
+          table: contact_message__field_service_last_name
+          field: field_service_last_name
+          plugin_id: field
+        field_last_name:
+          id: field_last_name
+          table: contact_message__field_last_name
+          field: field_last_name
+          plugin_id: field
+        field_ml_last_name:
+          id: field_ml_last_name
+          table: contact_message__field_ml_last_name
+          field: field_ml_last_name
           plugin_id: field
         contact_form_label:
           id: contact_form_label
@@ -454,6 +451,195 @@ display:
           table: contact_message__field_job_email
           field: field_job_email
           plugin_id: field
+        field_service_address:
+          id: field_service_address
+          table: contact_message__field_service_address
+          field: field_service_address
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Address: *'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_address:
+          id: field_address
+          table: contact_message__field_address
+          field: field_address
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Address: *'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_ml_address:
+          id: field_ml_address
+          table: contact_message__field_ml_address
+          field: field_ml_address
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Address:*'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
       filters:
         contact_form:
           id: contact_form
@@ -538,12 +724,21 @@ display:
         - url.query_args
         - user.permissions
       cacheable: false
-      max-age: 0
+      max-age: -1
       tags:
+        - 'config:field.storage.contact_message.field_address'
         - 'config:field.storage.contact_message.field_email'
+        - 'config:field.storage.contact_message.field_first_name'
         - 'config:field.storage.contact_message.field_job_email'
+        - 'config:field.storage.contact_message.field_last_name'
+        - 'config:field.storage.contact_message.field_ml_address'
         - 'config:field.storage.contact_message.field_ml_email'
+        - 'config:field.storage.contact_message.field_ml_first_name'
+        - 'config:field.storage.contact_message.field_ml_last_name'
+        - 'config:field.storage.contact_message.field_service_address'
         - 'config:field.storage.contact_message.field_service_email'
+        - 'config:field.storage.contact_message.field_service_first_name'
+        - 'config:field.storage.contact_message.field_service_last_name'
   page_1:
     display_plugin: page
     id: page_1
@@ -568,9 +763,524 @@ display:
         - url.query_args
         - user.permissions
       cacheable: false
+      max-age: -1
+      tags:
+        - 'config:field.storage.contact_message.field_address'
+        - 'config:field.storage.contact_message.field_email'
+        - 'config:field.storage.contact_message.field_first_name'
+        - 'config:field.storage.contact_message.field_job_email'
+        - 'config:field.storage.contact_message.field_last_name'
+        - 'config:field.storage.contact_message.field_ml_address'
+        - 'config:field.storage.contact_message.field_ml_email'
+        - 'config:field.storage.contact_message.field_ml_first_name'
+        - 'config:field.storage.contact_message.field_ml_last_name'
+        - 'config:field.storage.contact_message.field_service_address'
+        - 'config:field.storage.contact_message.field_service_email'
+        - 'config:field.storage.contact_message.field_service_first_name'
+        - 'config:field.storage.contact_message.field_service_last_name'
+  page_2:
+    display_plugin: page
+    id: page_2
+    display_title: Page
+    position: 1
+    display_options:
+      path: admin/structure/contact/manage-messages
+      menu:
+        type: tab
+        title: List
+        description: 'Contact messages'
+        parent: contact.form_list
+        weight: 0
+        context: '0'
+        menu_name: admin
+      display_extenders: {  }
+      title: 'Manage contact messages'
+      defaults:
+        title: false
+        fields: false
+        use_ajax: false
+      fields:
+        views_bulk_operations_bulk_form:
+          id: views_bulk_operations_bulk_form
+          table: views
+          field: views_bulk_operations_bulk_form
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Views bulk operations'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          batch: true
+          batch_size: 25
+          form_step: true
+          buttons: true
+          clear_on_exposed: true
+          action_title: Action
+          selected_actions:
+            -
+              action_id: views_bulk_operations_delete_entity
+              preconfiguration:
+                label_override: 'Delete messages'
+          force_selection_info: false
+          plugin_id: views_bulk_operations_bulk_form
+        field_service_first_name:
+          id: field_service_first_name
+          table: contact_message__field_service_first_name
+          field: field_service_first_name
+          plugin_id: field
+        field_first_name:
+          id: field_first_name
+          table: contact_message__field_first_name
+          field: field_first_name
+          plugin_id: field
+        field_ml_first_name:
+          id: field_ml_first_name
+          table: contact_message__field_ml_first_name
+          field: field_ml_first_name
+          plugin_id: field
+        field_service_last_name:
+          id: field_service_last_name
+          table: contact_message__field_service_last_name
+          field: field_service_last_name
+          plugin_id: field
+        field_last_name:
+          id: field_last_name
+          table: contact_message__field_last_name
+          field: field_last_name
+          plugin_id: field
+        field_ml_last_name:
+          id: field_ml_last_name
+          table: contact_message__field_ml_last_name
+          field: field_ml_last_name
+          plugin_id: field
+        contact_form_label:
+          id: contact_form_label
+          table: contact_message
+          field: contact_form_label
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Contact form'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          entity_type: contact_message
+          plugin_id: contact_form
+        created:
+          id: created
+          table: contact_message
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Created
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          date_format: fallback
+          custom_date_format: ''
+          timezone: ''
+          entity_type: contact_message
+          entity_field: created
+          plugin_id: date
+        operations:
+          id: operations
+          table: contact_message
+          field: operations
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Operations
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          destination: true
+          entity_type: contact_message
+          plugin_id: entity_operations
+        field_email:
+          id: field_email
+          table: contact_message__field_email
+          field: field_email
+          plugin_id: field
+        field_service_email:
+          id: field_service_email
+          table: contact_message__field_service_email
+          field: field_service_email
+          plugin_id: field
+        field_ml_email:
+          id: field_ml_email
+          table: contact_message__field_ml_email
+          field: field_ml_email
+          plugin_id: field
+        field_ml_email_1:
+          id: field_ml_email_1
+          table: contact_message__field_ml_email
+          field: field_ml_email
+          plugin_id: field
+        field_job_email:
+          id: field_job_email
+          table: contact_message__field_job_email
+          field: field_job_email
+          plugin_id: field
+        field_service_address:
+          id: field_service_address
+          table: contact_message__field_service_address
+          field: field_service_address
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Address: *'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_address:
+          id: field_address
+          table: contact_message__field_address
+          field: field_address
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Address: *'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_ml_address:
+          id: field_ml_address
+          table: contact_message__field_ml_address
+          field: field_ml_address
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Address:*'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+      use_ajax: true
+    cache_metadata:
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user.permissions
+      cacheable: false
       max-age: 0
       tags:
+        - 'config:field.storage.contact_message.field_address'
         - 'config:field.storage.contact_message.field_email'
+        - 'config:field.storage.contact_message.field_first_name'
         - 'config:field.storage.contact_message.field_job_email'
+        - 'config:field.storage.contact_message.field_last_name'
+        - 'config:field.storage.contact_message.field_ml_address'
         - 'config:field.storage.contact_message.field_ml_email'
+        - 'config:field.storage.contact_message.field_ml_first_name'
+        - 'config:field.storage.contact_message.field_ml_last_name'
+        - 'config:field.storage.contact_message.field_service_address'
         - 'config:field.storage.contact_message.field_service_email'
+        - 'config:field.storage.contact_message.field_service_first_name'
+        - 'config:field.storage.contact_message.field_service_last_name'

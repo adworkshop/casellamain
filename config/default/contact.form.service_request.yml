@@ -15,7 +15,7 @@ third_party_settings:
 id: service_request
 label: 'Contact Us'
 recipients:
-  - OnlineServiceRequest@casella.com
+  - onlineservicerequest@casella.com
 reply: ''
 weight: 0
 message: 'Your message has been sent.'

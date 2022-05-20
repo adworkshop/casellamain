@@ -1,0 +1,61 @@
+uuid: 80f48877-6aa5-4cd3-9f8a-861b480f2cfe
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.teaser
+    - field.field.paragraph.holiday.field_date
+    - field.field.paragraph.holiday.field_guid
+    - field.field.paragraph.holiday.field_published
+    - field.field.paragraph.holiday.field_service_schedule
+    - field.field.paragraph.holiday.field_service_status
+    - field.field.paragraph.holiday.field_title
+    - paragraphs.paragraphs_type.holiday
+  module:
+    - datetime
+id: paragraph.holiday.teaser
+targetEntityType: paragraph
+bundle: holiday
+mode: teaser
+content:
+  field_date:
+    weight: 1
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: post_date
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_service_schedule:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_service_status:
+    weight: 2
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_title:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  created: true
+  field_guid: true
+  field_published: true
+  search_api_excerpt: true
+  uid: true

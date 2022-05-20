@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_acceptable_waste
     - field.storage.node.field_city
     - field.storage.node.field_dropoff_hours
+    - field.storage.node.field_holiday_schedule
     - field.storage.node.field_latitude
     - field.storage.node.field_longitude
     - field.storage.node.field_open_to
@@ -25,6 +26,7 @@ dependencies:
     - text
     - user
     - views_data_export
+    - views_field_view
 id: locations_export
 label: 'Locations Export'
 module: views
@@ -97,6 +99,7 @@ display:
           summary: ''
           description: ''
           columns:
+            nid: nid
             title: title
             status: status
             field_street_address: field_street_address
@@ -108,10 +111,18 @@ display:
             field_longitude: field_longitude
             field_dropoff_hours: field_dropoff_hours
             field_open_to: field_open_to
-            field_schedule_title: field_schedule_title
             field_acceptable_waste: field_acceptable_waste
             field_unacceptable_waste: field_unacceptable_waste
+            view: view
+            field_holiday_schedule: field_holiday_schedule
           info:
+            nid:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
             title:
               sortable: true
               default_sort_order: asc
@@ -159,7 +170,7 @@ display:
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: false
+              empty_column: true
               responsive: ''
             field_latitude:
               sortable: true
@@ -180,31 +191,34 @@ display:
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: false
+              empty_column: true
               responsive: ''
             field_open_to:
               sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: false
-              responsive: ''
-            field_schedule_title:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
+              empty_column: true
               responsive: ''
             field_acceptable_waste:
               align: ''
               separator: ''
-              empty_column: false
+              empty_column: true
               responsive: ''
             field_unacceptable_waste:
               align: ''
               separator: ''
-              empty_column: false
+              empty_column: true
+              responsive: ''
+            view:
+              align: ''
+              separator: ''
+              empty_column: true
+              responsive: ''
+            field_holiday_schedule:
+              align: ''
+              separator: ''
+              empty_column: true
               responsive: ''
           default: '-1'
           empty_table: false
@@ -216,6 +230,72 @@ display:
           hide_empty: false
           default_field_elements: true
       fields:
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ID
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: node
+          entity_field: nid
+          plugin_id: field
         title:
           id: title
           table: node_field_data
@@ -959,7 +1039,7 @@ display:
           element_wrapper_class: ''
           element_default_classes: true
           empty: ''
-          hide_empty: false
+          hide_empty: true
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: target_id
@@ -1022,7 +1102,7 @@ display:
           element_wrapper_class: ''
           element_default_classes: true
           empty: ''
-          hide_empty: false
+          hide_empty: true
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: target_id
@@ -1040,20 +1120,122 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
+        view:
+          id: view
+          table: views
+          field: view
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Towns / Cities Serviced'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          view: towns_on_locations
+          display: default
+          arguments: '{{ raw_fields.nid }}'
+          plugin_id: view
+        field_holiday_schedule:
+          id: field_holiday_schedule
+          table: node__field_holiday_schedule
+          field: field_holiday_schedule
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Holiday Schedule'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_revisions_entity_view
+          settings:
+            view_mode: teaser
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
       filters:
-        status:
-          value: '1'
-          table: node_field_data
-          field: status
-          plugin_id: boolean
-          entity_type: node
-          entity_field: status
-          id: status
-          expose:
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-          group: 1
         type:
           id: type
           table: node_field_data
@@ -1100,6 +1282,7 @@ display:
         - 'config:field.storage.node.field_acceptable_waste'
         - 'config:field.storage.node.field_city'
         - 'config:field.storage.node.field_dropoff_hours'
+        - 'config:field.storage.node.field_holiday_schedule'
         - 'config:field.storage.node.field_latitude'
         - 'config:field.storage.node.field_longitude'
         - 'config:field.storage.node.field_open_to'
@@ -1153,6 +1336,7 @@ display:
         - 'config:field.storage.node.field_acceptable_waste'
         - 'config:field.storage.node.field_city'
         - 'config:field.storage.node.field_dropoff_hours'
+        - 'config:field.storage.node.field_holiday_schedule'
         - 'config:field.storage.node.field_latitude'
         - 'config:field.storage.node.field_longitude'
         - 'config:field.storage.node.field_open_to'
@@ -1190,6 +1374,7 @@ display:
         - 'config:field.storage.node.field_acceptable_waste'
         - 'config:field.storage.node.field_city'
         - 'config:field.storage.node.field_dropoff_hours'
+        - 'config:field.storage.node.field_holiday_schedule'
         - 'config:field.storage.node.field_latitude'
         - 'config:field.storage.node.field_longitude'
         - 'config:field.storage.node.field_open_to'
