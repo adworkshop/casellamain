@@ -11,6 +11,7 @@ third_party_settings:
     show_preview: true
     disabled_form_message: 'This contact form has been disabled.'
     maximum_submissions_user: 0
+    page_autoreply_format: plain_text
 id: market_leads
 label: 'Drive Toward Zero Waste'
 recipients:
