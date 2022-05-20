@@ -46,27 +46,30 @@ function cacheflush_drush_drush_command() {
  *   An optional argument.
  */
 function drush_cacheflush_drush_cacheflush($id = NULL) {
-
   if (isset($id)) {
     if (is_numeric($id)) {
       $cacheflush = cacheflush_load($id);
       if ($cacheflush && $cacheflush->getStatus() == 1) {
-        drush_print(CacheflushApi::create(\Drupal::getContainer())
-          ->clearPresetCache($cacheflush));
+        $msg = CacheflushApi::create(\Drupal::getContainer())->clearPresetCache($cacheflush);
+        fwrite(STDOUT, $msg . '\n');
       }
       else {
-        drush_print(t('No entity with this id: "@variable", or entity not published yet.', ['@variable' => $id]));
+        $msg = t('No entity with this id: "@variable", or entity not published yet.', ['@variable' => $id]);
       }
     }
     else {
-      drush_print(t('Please provide the ID of the preset (numeric value) ex: "drush cf 1".'));
+      $msg = t('Please provide the ID of the preset (numeric value) ex: "drush cf 1".');
+    }
+    if (isset($msg)) {
+      fwrite(STDOUT, $msg . '\n');;
     }
   }
   else {
-    drush_log(t('Preset list. Use "drush cf ID" to clear cache.'), 'ok');
-    drush_print('');
+    \Drupal::logger('cacheflush_drush')->info(t('Preset list. Use "drush cf ID" to clear cache.'));
     foreach (cacheflush_load_multiple_by_properties(['status' => 1]) as $id => $entity) {
-      drush_print('[' . $id . ']   :   ' . $entity->getTitle());
+      $msg = '[' . $id . ']   :   ' . $entity->getTitle();
+      fwrite(STDOUT, $msg . '\n');
     }
   }
+
 }

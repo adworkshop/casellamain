@@ -5,8 +5,10 @@ namespace Drupal\cacheflush_ui\Form;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\ConfirmFormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
-use Drupal\user\PrivateTempStoreFactory;
+use Drupal\Core\TempStore\PrivateTempStoreFactory;
+use Drupal\Core\Messenger\MessengerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -25,7 +27,7 @@ class CacheflushDeleteMultiple extends ConfirmFormBase {
   /**
    * The tempstore factory.
    *
-   * @var \Drupal\user\PrivateTempStoreFactory
+   * @var \Drupal\Core\TempStore\PrivateTempStoreFactory
    */
   protected $tempStoreFactory;
 
@@ -34,19 +36,39 @@ class CacheflushDeleteMultiple extends ConfirmFormBase {
    *
    * @var \Drupal\Core\Entity\EntityStorageInterface
    */
-  protected $manager;
+  protected $storage;
+
+  /**
+   * The Messenger service.
+   *
+   * @var \Drupal\Core\Messenger\MessengerInterface
+   */
+  protected $messenger;
+
+  /**
+   * The user account.
+   *
+   * @var \Drupal\Core\Session\AccountInterface
+   */
+  protected $currentUser;
 
   /**
    * Constructs a CacheflushDeleteMultiple form object.
    *
-   * @param \Drupal\user\PrivateTempStoreFactory $temp_store_factory
+   * @param \Drupal\Core\TempStore\PrivateTempStoreFactory $temp_store_factory
    *   The tempstore factory.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $manager
    *   The entity manager.
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+   *   The messenger service.
+   * @param \Drupal\Core\Session\AccountInterface $current_user
+   *   The current user account.
    */
-  public function __construct(PrivateTempStoreFactory $temp_store_factory, EntityTypeManagerInterface $manager) {
+  public function __construct(PrivateTempStoreFactory $temp_store_factory, EntityTypeManagerInterface $manager, MessengerInterface $messenger, AccountInterface $current_user) {
     $this->tempStoreFactory = $temp_store_factory;
     $this->storage = $manager->getStorage('cacheflush');
+    $this->messenger = $messenger;
+    $this->currentUser = $current_user;
   }
 
   /**
@@ -54,7 +76,10 @@ class CacheflushDeleteMultiple extends ConfirmFormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('user.private_tempstore'), $container->get('entity.manager')
+      $container->get('tempstore.private'),
+      $container->get('entity.manager'),
+      $container->get('messenger'),
+      $container->get('current_user')
     );
   }
 
@@ -92,7 +117,7 @@ class CacheflushDeleteMultiple extends ConfirmFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
 
     $this->cacheflushInfo = $this->tempStoreFactory->get('cacheflush_multiple_delete_confirm')
-      ->get(\Drupal::currentUser()->id());
+      ->get($this->currentUser->id());
 
     if (empty($this->cacheflushInfo)) {
       return new RedirectResponse(
@@ -195,11 +220,11 @@ class CacheflushDeleteMultiple extends ConfirmFormBase {
       }
 
       if ($total_count) {
-        drupal_set_message($this->formatPlural($total_count, 'Deleted 1 cacheflush entity.', 'Deleted @count cacheflush entities.'));
+        $this->messenger->addMessage($this->formatPlural($total_count, 'Deleted 1 cacheflush entity.', 'Deleted @count cacheflush entities.'));
       }
 
       $this->tempStoreFactory->get('cacheflush_multiple_delete_confirm')
-        ->delete(\Drupal::currentUser()->id());
+        ->delete($this->currentUser->id());
     }
 
     $form_state->setRedirect('entity.cacheflush.collection');

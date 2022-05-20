@@ -2,4 +2,4 @@ services:
   cacheflush.route_subscriber:
     class: 'Drupal\cacheflush_ui\Routing\CacheflushRouteSubscriber'
     tags:
-      - { name: event_subscriber }
+      - { name: route_subscriber }

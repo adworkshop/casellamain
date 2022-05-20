@@ -2,6 +2,8 @@
 
 namespace Drupal\cacheflush\Controller;
 
+use Drupal\Core\Messenger\MessengerInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Drupal\cacheflush_entity\Entity\CacheflushEntity;
@@ -21,10 +23,33 @@ class CacheflushApi extends ControllerBase {
   protected $container;
 
   /**
-   * CacheflushApi constructor.
+   * The Messenger service.
+   *
+   * @var \Drupal\Core\Messenger\MessengerInterface
    */
-  public function __construct() {
-    $this->container = \Drupal::getContainer();
+  protected $messenger;
+
+  /**
+   * CacheflushApi constructor.
+   *
+   * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
+   *   The Drupal container.
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+   *   The messenger service.
+   */
+  public function __construct(ContainerInterface $container, MessengerInterface $messenger) {
+    $this->container = $container;
+    $this->messenger = $messenger;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container,
+      $container->get('messenger')
+    );
   }
 
   /**
@@ -37,7 +62,7 @@ class CacheflushApi extends ControllerBase {
    */
   public function clearAll() {
     drupal_flush_all_caches();
-    drupal_set_message($this->t('Cache cleared.'));
+    $this->messenger->addMessage($this->t('Cache cleared.'));
     return $this->redirectUrl();
   }
 
@@ -82,7 +107,7 @@ class CacheflushApi extends ControllerBase {
       }
     }
 
-    drupal_set_message($this->t("All predefined cache options in @name was cleared.", ['@name' => $entity->getTitle()]));
+    $this->messenger->addMessage($this->t("All predefined cache options in @name was cleared.", ['@name' => $entity->getTitle()]));
     $this->moduleHandler()->invokeAll('cacheflush_after_clear', [$entity]);
   }
 
@@ -118,7 +143,7 @@ class CacheflushApi extends ControllerBase {
         ],
       ];
     }
-    return $options;
+    return isset($options) ? $options : [];
   }
 
   /**
@@ -227,11 +252,11 @@ class CacheflushApi extends ControllerBase {
    */
   private function checkError(CacheflushEntity $entity) {
     if (!$entity) {
-      drupal_set_message($this->t('Invalid entity ID.'), 'error');
+      $this->messenger->addMessage($this->t('Invalid entity ID.'), 'error');
       throw new HttpException('404');
     }
     if ($entity->getStatus() == 0) {
-      drupal_set_message($this->t('This entity is disabled.'), 'error');
+      $this->messenger->addMessage($this->t('This entity is disabled.'), 'error');
       throw new HttpException('403');
     }
   }

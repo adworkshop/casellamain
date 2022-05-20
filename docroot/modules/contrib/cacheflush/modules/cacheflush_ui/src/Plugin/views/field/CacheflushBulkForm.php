@@ -2,7 +2,7 @@
 
 namespace Drupal\cacheflush_ui\Plugin\views\field;
 
-use Drupal\system\Plugin\views\field\BulkForm;
+use Drupal\views\Plugin\views\field\BulkForm;
 
 /**
  * Defines a cacheflush operations bulk form element.

@@ -5,7 +5,6 @@ namespace Drupal\Core\Form;
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Url;
 use Symfony\Component\HttpFoundation\Response;
-use Drupal\Core\DependencyInjection\DependencySerializationTrait;
 
 /**
  * Stores information about the state of a form.
@@ -13,10 +12,6 @@ use Drupal\Core\DependencyInjection\DependencySerializationTrait;
 class FormState implements FormStateInterface {
 
   use FormStateValuesTrait;
-
-  use DependencySerializationTrait {
-    __sleep as defaultSleep;
-  }
 
   /**
    * Tracks if any errors have been set on any form.
@@ -453,19 +448,6 @@ class FormState implements FormStateInterface {
    * @var array
    */
   protected $submit_handlers = [];
-
-  public function __sleep() {
-    $obj_vars = get_object_vars($this);
-    $vars = $this->defaultSleep();
-    if ($obj_vars['build_info']['args'] && is_object($obj_vars['build_info']['args'][0])) {
-      $unserializable = [
-        'build_info'
-      ];
-      return array_diff($vars, $unserializable);
-    }
-
-    return $vars;
-  }
 
   /**
    * {@inheritdoc}

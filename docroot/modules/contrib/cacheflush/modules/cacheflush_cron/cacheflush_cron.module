@@ -49,10 +49,10 @@ function _cacheflush_cron_entity_form(&$form, FormStateInterface $form_state, $o
     ->getEntity();
   $cron_job = NULL;
   if ($op == 'edit') {
-    $cron_job = CronJob::load('cacheflush.preset_' . $entity->id());
+    $cron_job = CronJob::load('cacheflush_preset_' . $entity->id());
     if ($cron_job) {
       $url = Link::createFromRoute($cron_job, 'entity.ultimate_cron_job.edit_form', [
-        'ultimate_cron_job' => 'cacheflush.preset_' . $entity->id(),
+        'ultimate_cron_job' => 'cacheflush_preset_' . $entity->id(),
       ], ['attributes' => ['target' => '_blank']]);
       $url->setText('Edit');
       $renderable = $url->toRenderable();
@@ -65,7 +65,7 @@ function _cacheflush_cron_entity_form(&$form, FormStateInterface $form_state, $o
     '#title' => t('Cron'),
     '#weight' => 1,
     '#default_value' => $entity->cron->getValue()[0]['value'] ? 1 : 0,
-    '#description' => t('Enable cron job for this preset.') . (($cron_job) ? ' ' . $link : NULL),
+    '#description' => t('Enable cron job for this preset.') . (($cron_job && isset($link)) ? ' ' . $link : NULL),
   ];
 }
 
@@ -80,12 +80,12 @@ function cacheflush_cron_cacheflush_insert(EntityInterface $entity) {
  * Implements hook_ENTITY_TYPE_update().
  */
 function cacheflush_cron_cacheflush_update(EntityInterface $entity) {
-  $cron_job = CronJob::load('cacheflush.preset_' . $entity->id());
+  $cron_job = CronJob::load('cacheflush_preset_' . $entity->id());
   $has_cron_assigned = (boolean) $entity->cron->getValue()[0]['value'];
   if ($has_cron_assigned === TRUE) {
     if (!$cron_job) {
       $values = [
-        'id' => 'cacheflush.preset_' . $entity->id(),
+        'id' => 'cacheflush_preset_' . $entity->id(),
         'callback' => 'cacheflush_cron_clear_preset',
         'module' => 'cacheflush_cron',
         'status' => TRUE,
@@ -113,7 +113,7 @@ function cacheflush_cron_cacheflush_update(EntityInterface $entity) {
  * Implements hook_ENTITY_TYPE_delete().
  */
 function cacheflush_cron_cacheflush_delete(EntityInterface $entity) {
-  $cron_job = CronJob::load('cacheflush.preset_' . $entity->id());
+  $cron_job = CronJob::load('cacheflush_preset_' . $entity->id());
   if ($cron_job) {
     $cron_job->delete();
   }
@@ -128,6 +128,6 @@ function cacheflush_cron_cacheflush_delete(EntityInterface $entity) {
 function cacheflush_cron_clear_preset(CronJob $job) {
   $cacheflush = \Drupal::service('cacheflush.api');
   // @Todo: if Drupal\ultimate_cron\Entity\CronJob will let it in the future in any way to send data to callback get rid of this and make it better.
-  $entity = cacheflush_load(str_replace('cacheflush.preset_', '', $job->get('id')));
+  $entity = cacheflush_load(str_replace('cacheflush_preset_', '', $job->get('id')));
   $cacheflush->clearById($entity);
 }

@@ -7,9 +7,9 @@ use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\cacheflush\Controller\CacheflushApi;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Entity\EntityManagerInterface;
 use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
 use Drupal\Component\Datetime\TimeInterface;
+use Drupal\Core\Entity\EntityRepositoryInterface;
 
 /**
  * Form controller for Cacheflush entity edit forms.
@@ -28,8 +28,8 @@ class CacheflushEntityForm extends ContentEntityForm {
   /**
    * {@inheritdoc}
    */
-  public function __construct(EntityManagerInterface $entity_manager, EntityTypeBundleInfoInterface $entity_type_bundle_info = NULL, TimeInterface $time = NULL, CacheflushApi $cacheflush) {
-    parent::__construct($entity_manager, $entity_type_bundle_info, $time);
+  public function __construct(EntityRepositoryInterface $entity_repository, CacheflushApi $cacheflush, EntityTypeBundleInfoInterface $entity_type_bundle_info = NULL, TimeInterface $time = NULL) {
+    parent::__construct($entity_repository, $entity_type_bundle_info, $time);
     $this->cacheflush = $cacheflush;
   }
 
@@ -38,10 +38,10 @@ class CacheflushEntityForm extends ContentEntityForm {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('entity.manager'),
+      $container->get('entity.repository'),
+      $container->get('cacheflush.api'),
       $container->get('entity_type.bundle.info'),
-      $container->get('datetime.time'),
-      $container->get('cacheflush.api')
+      $container->get('datetime.time')
     );
   }
 
@@ -49,7 +49,6 @@ class CacheflushEntityForm extends ContentEntityForm {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-
     /* @var $entity \Drupal\cacheflush_entity\Entity\CacheflushEntity */
     $form = parent::buildForm($form, $form_state);
     $form['title'] = [
@@ -92,11 +91,9 @@ class CacheflushEntityForm extends ContentEntityForm {
   /**
    * {@inheritdoc}
    */
-  public function submit(array $form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state) {
     // Build the entity object from the submitted values.
-    $entity = parent::submit($form, $form_state);
-
-    return $entity;
+    parent::submitForm($form, $form_state);
   }
 
   /**
@@ -109,13 +106,13 @@ class CacheflushEntityForm extends ContentEntityForm {
 
     switch ($status) {
       case SAVED_NEW:
-        drupal_set_message($this->t('Created the %label Cacheflush entity.', [
+        $this->messenger->addMessage($this->t('Created the %label Cacheflush entity.', [
           '%label' => $entity->label(),
         ]));
         break;
 
       default:
-        drupal_set_message($this->t('Saved the %label Cacheflush entity.', [
+        $this->messenger->addMessage($this->t('Saved the %label Cacheflush entity.', [
           '%label' => $entity->label(),
         ]));
     }
