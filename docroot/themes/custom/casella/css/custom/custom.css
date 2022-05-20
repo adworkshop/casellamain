@@ -692,7 +692,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   color:#7abf23;
   border:1px solid transparent;
   position:absolute;
-  top:0;
+  top:auto;
   right:0;
   }
   button.locationSearchSubmit:hover {
