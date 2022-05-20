@@ -231,10 +231,7 @@ class ExportEntity extends ContentEntityBase implements ExportEntityInterface {
       ];
 
       \Drupal::database()->insert(self::TABLE_ITEMS)
-        ->fields(
-          array_keys($data),
-          $data
-        )->execute();
+        ->fields($data)->execute();
     }
   }
 

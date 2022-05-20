@@ -5,7 +5,7 @@ package: Development
 dependencies:
   - drupal:file
 
-# Information added by Drupal.org packaging script on 2021-05-01
-version: '3.0.6'
+# Information added by Drupal.org packaging script on 2021-12-31
+version: '3.1.1'
 project: 'content_synchronizer'
-datestamp: 1619875392
+datestamp: 1640958309

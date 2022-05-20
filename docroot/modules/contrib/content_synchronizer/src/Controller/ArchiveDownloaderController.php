@@ -5,11 +5,11 @@ namespace Drupal\content_synchronizer\Controller;
 use Drupal\content_synchronizer\Processors\ExportEntityWriter;
 use Drupal\content_synchronizer\Service\ArchiveDownloader;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\File\FileSystemInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
-use Drupal\Core\File\FileSystem;
 
 /**
  * Class ArchiveDownloaderController.
@@ -21,17 +21,17 @@ class ArchiveDownloaderController extends ControllerBase {
   /**
    * File System.
    *
-   * @var \Drupal\Core\File\FileSystem
+   * @var \Drupal\Core\File\FileSystemInterface
    */
   protected $fileSystem;
 
   /**
    * ArchiveDownloaderController constructor.
    *
-   * @param \Drupal\Core\File\FileSystem $fileSystem
+   * @param \Drupal\Core\File\FileSystemInterface $fileSystem
    *   The file system.
    */
-  public function __construct(FileSystem $fileSystem) {
+  public function __construct(FileSystemInterface $fileSystem) {
     $this->fileSystem = $fileSystem;
   }
 

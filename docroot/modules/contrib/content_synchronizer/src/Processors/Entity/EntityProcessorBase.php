@@ -9,6 +9,7 @@ use Drupal\content_synchronizer\Processors\ImportProcessor;
 use Drupal\content_synchronizer\Service\EntityPublisher;
 use Drupal\content_synchronizer\Service\GlobalReferenceManager;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\TranslatableInterface;
 use Drupal\Core\Plugin\PluginBase;
 use Drupal\Core\Entity\ContentEntityType;
 use Drupal\content_synchronizer\Processors\Type\TypeProcessorPluginManager;
@@ -21,6 +22,7 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
   const KEY_TRANSLATIONS = 'translations';
 
   const EXPORT_HOOK = 'content_synchronizer_export_data';
+
   const IMPORT_HOOK = 'content_synchronizer_import_entity';
 
   /**
@@ -85,8 +87,8 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
    *   The gid if exported, False either
    */
   final public function export(EntityInterface $entityToExport) {
-    // If entity is exportable (content entity)
-    if ($entityToExport->getEntityType() instanceof ContentEntityType) {
+    // If entity is exportable (content entity).
+    if ($this->canExportEntity($entityToExport)) {
       // Get the entity gid.
       $gid = $this->getEntityGlobalReference($entityToExport);
 
@@ -120,6 +122,7 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
           ExportProcessor::getCurrentExportProcessor()
             ->getWriter()
             ->write($entityToExport, $dataToExport);
+
           return $gid;
         }
       }
@@ -156,7 +159,8 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
       $bundle = $defaultData[$bundleKey];
 
       // Get field definitions.
-      $fieldDefinitions = \Drupal::service('entity_field.manager')->getFieldDefinitions($entityTypeId, $bundle);
+      $fieldDefinitions = \Drupal::service('entity_field.manager')
+        ->getFieldDefinitions($entityTypeId, $bundle);
 
       return array_intersect_key($defaultData, $fieldDefinitions);
     }
@@ -177,9 +181,16 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
    */
   protected function getEntityTranslations(EntityInterface $entity) {
     $translations = [];
-    foreach ($entity->getTranslationLanguages() as $languageId => $data) {
-      $translations[$languageId] = \Drupal::service('entity.repository')
-        ->getTranslationFromContext($entity, $languageId);
+    if ($entity instanceof TranslatableInterface) {
+      foreach ($entity->getTranslationLanguages() as $languageId => $data) {
+        $translations[$languageId] = \Drupal::service('entity.repository')
+          ->getTranslationFromContext($entity, $languageId);
+      }
+    }
+    else {
+      $defaultLangcode = $entity->language()->getId();
+      $translations[$defaultLangcode] = \Drupal::service('entity.repository')
+        ->getTranslationFromContext($entity, $defaultLangcode);
     }
 
     return array_filter($translations, function ($entity) {
@@ -205,9 +216,11 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
       else {
         $translation = $existingEntity->addTranslation($languageId);
         $translation->uuid = \Drupal::service('uuid')->generate();
+
         return $translation;
       }
     }
+
     return $existingEntity;
   }
 
@@ -341,7 +354,7 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
 
     }
 
-    if ($data){
+    if ($data) {
       $bundle = $storage->create($data);
       $bundle->save();
     }
@@ -469,6 +482,7 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
       catch (\Exception $e) {
         \Drupal::messenger()
           ->addError('Import Process : ' . $e->getMessage() . ' in "' . __METHOD__ . '()"');
+
         return NULL;
       }
     }
@@ -508,9 +522,7 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
       }
 
       // Save translation.
-      if ($entityToImport->language()->getId() != $entityToUpdate->language()
-        ->getId()
-      ) {
+      if ($entityToImport->language()->getId() != $entityToUpdate->language()->getId()) {
         $this->setChangedTime($entityToImport, $translationData);
         $this->getEntityPublisher()
           ->saveEntity($entityToUpdate, NULL, $backup, $translationData);
@@ -546,6 +558,7 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
       $gid = $this->getGlobalReferenceManager()
         ->createEntityGlobalId($entityToExport);
     }
+
     return $gid;
   }
 
@@ -559,6 +572,7 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
     if (!isset($this->globalReferenceManager)) {
       $this->globalReferenceManager = \Drupal::service(GlobalReferenceManager::SERVICE_NAME);
     }
+
     return $this->globalReferenceManager;
   }
 
@@ -572,6 +586,7 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
     if (!$this->typeProcessorManager) {
       $this->typeProcessorManager = \Drupal::service(TypeProcessorPluginManager::SERVICE_NAME);
     }
+
     return $this->typeProcessorManager;
   }
 
@@ -585,6 +600,7 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
     if (!$this->entityProcessorManager) {
       $this->entityProcessorManager = \Drupal::service(EntityProcessorPluginManager::SERVICE_NAME);
     }
+
     return $this->entityProcessorManager;
   }
 
@@ -612,7 +628,21 @@ class EntityProcessorBase extends PluginBase implements EntityProcessorInterface
     if (is_null($this->entityPublisher)) {
       $this->entityPublisher = \Drupal::service(EntityPublisher::SERVICE_NAME);
     }
+
     return $this->entityPublisher;
+  }
+
+  /**
+   * Return if the entity can be exported.
+   *
+   * @param \Drupal\Core\Entity\EntityInterface $entity
+   *   THe entity.
+   *
+   * @return bool
+   *   The status for export.
+   */
+  public function canExportEntity(EntityInterface $entity) {
+    return $entity->getEntityType() instanceof ContentEntityType;
   }
 
 }

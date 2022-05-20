@@ -37,7 +37,10 @@ class EntityReferenceFieldItemListProcessor extends TypeProcessorBase {
     // Listen import event.
     /** @var \Drupal\Component\EventDispatcher\ContainerAwareEventDispatcher $dispatcher */
     $dispatcher = \Drupal::service('event_dispatcher');
-    $dispatcher->addListener(ImportEvent::ON_ENTITY_IMPORTER, [$this, 'onImportedEntity']);
+    $dispatcher->addListener(ImportEvent::ON_ENTITY_IMPORTER, [
+      $this,
+      'onImportedEntity'
+    ]);
   }
 
   /**

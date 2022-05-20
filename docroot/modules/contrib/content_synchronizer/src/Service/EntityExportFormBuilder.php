@@ -8,8 +8,12 @@ use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Url;
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+use Drupal\system\Entity\Menu;
+use Drupal\system\MenuInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -20,7 +24,18 @@ class EntityExportFormBuilder {
   use StringTranslationTrait;
 
   const SERVICE_NAME = "content_synchronizer.entity_export_form_builder";
+
   const ARCHIVE_PARAMS = 'archive';
+
+  /**
+   * Retourne le singleton.
+   *
+   * @return static
+   *   Le singleton.
+   */
+  public static function me() {
+    return \Drupal::service(static::SERVICE_NAME);
+  }
 
   /**
    * Export Manager.
@@ -107,6 +122,11 @@ class EntityExportFormBuilder {
     $isBundle = $entity instanceof ConfigEntityBundleBase;
     if ($entity instanceof ContentEntityBase || $isBundle) {
       $this->initExportForm($entity, $form, $formState, $isBundle);
+    }
+
+    // Menu.
+    if ($entity instanceof MenuInterface) {
+      $this->addMenuExportForm($entity, $form, $formState);
     }
   }
 
@@ -228,7 +248,90 @@ class EntityExportFormBuilder {
         ->getStorage($entityType)
         ->loadMultiple($entitiesIds);
     }
+
     return NULL;
+  }
+
+  /**
+   * Add form for menu items export.
+   *
+   * @param \Drupal\system\MenuInterface $entity
+   *   The entity.
+   * @param array $form
+   *   The form.
+   * @param \Drupal\Core\Form\FormStateInterface $formState
+   *   THe formstate.
+   */
+  protected function addMenuExportForm(MenuInterface $entity, array &$form, FormStateInterface $formState) {
+    /** @var ExportManager $exportManager */
+    $exportManager = \Drupal::service(ExportManager::SERVICE_NAME);
+
+    $form['content_synchronizer'] = [
+      '#type'   => 'details',
+      '#title'  => $this->t('Export'),
+      '#group'  => 'advanced',
+      '#weight' => '100',
+    ];
+
+    // Init labels.
+    $quickExportButton = $this->t('Export entity');
+
+    $form['content_synchronizer']['add_to_export'] = [
+      '#type'   => 'submit',
+      '#value'  => $quickExportButton,
+      '#submit' => [get_called_class() . '::onAddMenuToExport'],
+    ];
+  }
+
+  /**
+   * Create an export and add Menu Items.
+   *
+   * @param array $form
+   *   The form.
+   * @param \Drupal\Core\Form\FormStateInterface $formState
+   *   The formstate.
+   *
+   * @throws \Drupal\Core\Entity\EntityStorageException
+   */
+  public static function onAddMenuToExport(array &$form, FormStateInterface $formState) {
+    $menu = $formState->getFormObject()->getEntity();
+
+    if ($menu instanceof Menu) {
+      // Create a menu export.
+      $exportEntity = ExportEntity::create([
+        'name' => $menu->label(),
+      ]);
+      $exportEntity->save();
+
+      // Add all menu items.
+      $menuLinkTree = \Drupal::service('menu.link_tree');
+      $tree = $menuLinkTree->load($menu->id(), new MenuTreeParameters());
+      static::me()->addMenuElementsToExportEntity($tree, $exportEntity);
+
+      $formState->setRedirectUrl(Url::fromRoute('entity.export_entity.canonical', ['export_entity' => $exportEntity->id()]));
+    }
+  }
+
+  /**
+   * Menu link content to export entity, recursively.
+   *
+   * @param array $tree
+   *   The tree.
+   * @param \Drupal\content_synchronizer\Entity\ExportEntity $exportEntity
+   *   The export entity.
+   */
+  protected function addMenuElementsToExportEntity(array $tree, ExportEntity $exportEntity) {
+    foreach ($tree as $item) {
+      if (isset($item->link->getPluginDefinition()['metadata']['entity_id'])) {
+        if ($menuItem = MenuLinkContent::load($item->link->getPluginDefinition()['metadata']['entity_id'])) {
+          $exportEntity->addEntity($menuItem);
+        }
+      }
+
+      if ($item->subtree && count($item->subtree)) {
+        $this->addMenuElementsToExportEntity($item->subtree, $exportEntity);
+      }
+    }
   }
 
 }

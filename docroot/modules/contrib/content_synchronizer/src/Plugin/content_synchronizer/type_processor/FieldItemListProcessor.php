@@ -42,7 +42,7 @@ class FieldItemListProcessor extends TypeProcessorBase {
     foreach ($data as &$item) {
       foreach ($item as $key => $value) {
         if (empty($value) || !is_string($value)) {
-            continue;
+          continue;
         }
         preg_match_all('@src="([^"]+)"@', $value, $match);
 

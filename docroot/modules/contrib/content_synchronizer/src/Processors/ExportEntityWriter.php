@@ -169,7 +169,7 @@ class ExportEntityWriter {
    * Zip the generated files.
    */
   public function archiveFiles() {
-    /** @var \Drupal\Core\File\FileSystem $fileSystem */
+    /** @var \Drupal\Core\File\FileSystemInterface $fileSystem */
     $fileSystem = \Drupal::service('file_system');
     $path = $fileSystem->realpath($this->getDirPath());
 

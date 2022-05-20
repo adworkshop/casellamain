@@ -13,6 +13,7 @@ use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\File\FileSystem;
+use Drupal\Core\File\FileSystemInterface;
 use Drupal\file\Entity\File;
 use Drupal\user\UserInterface;
 use Drupal\Core\Url;
@@ -492,7 +493,7 @@ class ImportEntity extends ContentEntityBase implements ImportEntityInterface {
     // Get file and zip file path.
     if ($file = $this->getArchive()) {
       if ($zipUrl = $file->getFileUri()) {
-        /** @var \Drupal\Core\File\FileSystem $fileSystem */
+        /** @var \Drupal\Core\File\FileSystemInterface $fileSystem */
         $fileSystem = \Drupal::service('file_system');
         $realPathUrl = $fileSystem->realpath($zipUrl);
 

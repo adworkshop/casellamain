@@ -4,6 +4,7 @@ namespace Drupal\content_synchronizer\Service;
 
 use Drupal\content_synchronizer\Processors\ExportEntityWriter;
 use Drupal\Core\Session\AccountProxyInterface;
+use Drupal\Core\Url;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\user\Entity\User;
 
@@ -54,8 +55,7 @@ class ArchiveDownloader {
   public function donwloadArchive(array &$vars) {
     if ($this->canDownload()) {
       $vars['#attached']['library'][] = 'content_synchronizer/download_archive';
-      $vars['#attached']['drupalSettings']['content_synchronizer']['download_archive_path'] =
-        \Drupal\Core\Url::fromRoute('content_synchronizer.download_archive')->getInternalPath();
+      $vars['#attached']['drupalSettings']['content_synchronizer']['download_archive_path'] = Url::fromRoute('content_synchronizer.download_archive')->getInternalPath();
     }
   }
 
