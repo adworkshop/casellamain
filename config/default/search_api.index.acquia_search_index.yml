@@ -35,14 +35,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.body
-  title:
-    label: Title
+  field_business_desc:
+    label: 'Business Description'
     datasource_id: 'entity:node'
-    property_path: title
+    property_path: field_business_desc
     type: text
     dependencies:
-      module:
-        - node
+      config:
+        - field.storage.node.field_business_desc
   field_h1_override:
     label: 'H1 Override'
     datasource_id: 'entity:node'
@@ -59,6 +59,38 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_hero_text
+  field_home_desc:
+    label: 'Home Description'
+    datasource_id: 'entity:node'
+    property_path: field_home_desc
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_home_desc
+  field_location_category:
+    label: 'Location Category'
+    datasource_id: 'entity:node'
+    property_path: field_location_category
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_location_category
+  field_org_desc:
+    label: 'Organization Description'
+    datasource_id: 'entity:node'
+    property_path: field_org_desc
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_org_desc
+  field_upper_content:
+    label: 'Upper Content'
+    datasource_id: 'entity:node'
+    property_path: field_upper_content
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_upper_content
   name:
     label: 'Job Categories » Taxonomy term » Name'
     datasource_id: 'entity:node'
@@ -79,66 +111,6 @@ field_settings:
         - field.storage.node.field_job_status
       module:
         - taxonomy
-  title_1:
-    label: 'Location/Company » Content » Title'
-    datasource_id: 'entity:node'
-    property_path: 'field_location:entity:title'
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.field_location
-      module:
-        - node
-  field_business_desc:
-    label: 'Business Description'
-    datasource_id: 'entity:node'
-    property_path: field_business_desc
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_business_desc
-  field_home_desc:
-    label: 'Home Description'
-    datasource_id: 'entity:node'
-    property_path: field_home_desc
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_home_desc
-  field_org_desc:
-    label: 'Organization Description'
-    datasource_id: 'entity:node'
-    property_path: field_org_desc
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_org_desc
-  field_location_category:
-    label: 'Location Category'
-    datasource_id: 'entity:node'
-    property_path: field_location_category
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.field_location_category
-  field_upper_content:
-    label: 'Upper Content'
-    datasource_id: 'entity:node'
-    property_path: field_upper_content
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_upper_content
-  title_2:
-    label: 'Product Category » Content » Title'
-    datasource_id: 'entity:node'
-    property_path: 'field_product_category:entity:title'
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.field_product_category
-      module:
-        - node
   name_2:
     label: 'Product Tags » Taxonomy term » Name'
     datasource_id: 'entity:node'
@@ -149,6 +121,13 @@ field_settings:
         - field.storage.node.field_product_tags
       module:
         - taxonomy
+  node_grants:
+    label: 'Node access information'
+    property_path: search_api_node_grants
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
   status:
     label: null
     datasource_id: 'entity:node'
@@ -157,6 +136,34 @@ field_settings:
     indexed_locked: true
     type_locked: true
     dependencies:
+      module:
+        - node
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    dependencies:
+      module:
+        - node
+  title_1:
+    label: 'Location/Company » Content » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_location:entity:title'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_location
+      module:
+        - node
+  title_2:
+    label: 'Product Category » Content » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_product_category:entity:title'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_product_category
       module:
         - node
   uid:
@@ -169,13 +176,6 @@ field_settings:
     dependencies:
       module:
         - node
-  node_grants:
-    label: 'Node access information'
-    property_path: search_api_node_grants
-    type: string
-    indexed_locked: true
-    type_locked: true
-    hidden: true
 datasource_settings:
   'entity:node':
     bundles:
@@ -191,20 +191,66 @@ datasource_settings:
       default: true
       selected: {  }
 processor_settings:
-  rendered_item: {  }
   add_url: {  }
   aggregated_field: {  }
+  content_access:
+    weights:
+      preprocess_query: -10
   entity_status: {  }
-  tokenizer:
+  html_filter:
     fields:
       - body
-      - title
-      - field_h1_override
-      - field_hero_text
       - field_business_desc
+      - field_hero_text
       - field_home_desc
       - field_org_desc
       - field_upper_content
+    title: false
+    alt: false
+    tags:
+      b: 2
+      em: 1
+      h1: 5
+      h2: 3
+      h3: 2
+      strong: 2
+      u: 1
+    weights:
+      preprocess_index: -10
+      preprocess_query: -10
+    all_fields: false
+  ignorecase:
+    fields:
+      - body
+      - field_business_desc
+      - field_h1_override
+      - field_hero_text
+      - field_home_desc
+      - field_location_category
+      - field_org_desc
+      - field_upper_content
+      - name
+      - name_1
+      - name_2
+      - title
+      - title_1
+      - title_2
+    weights:
+      preprocess_index: -10
+      preprocess_query: -10
+    all_fields: false
+  language_with_fallback: {  }
+  rendered_item: {  }
+  tokenizer:
+    fields:
+      - body
+      - field_business_desc
+      - field_h1_override
+      - field_hero_text
+      - field_home_desc
+      - field_org_desc
+      - field_upper_content
+      - title
     spaces: ''
     overlap_cjk: 1
     minimum_word_size: '3'
@@ -213,68 +259,22 @@ processor_settings:
       preprocess_query: -6
     all_fields: false
     ignored: ._-
-  ignorecase:
-    fields:
-      - body
-      - title
-      - field_h1_override
-      - field_hero_text
-      - name
-      - name_1
-      - title_1
-      - field_business_desc
-      - field_home_desc
-      - field_org_desc
-      - field_location_category
-      - field_upper_content
-      - title_2
-      - name_2
-    weights:
-      preprocess_index: -10
-      preprocess_query: -10
-    all_fields: false
   transliteration:
     fields:
       - body
-      - title
+      - field_business_desc
       - field_h1_override
       - field_hero_text
+      - field_home_desc
+      - field_location_category
+      - field_org_desc
+      - field_upper_content
       - name
       - name_1
-      - title_1
-      - field_business_desc
-      - field_home_desc
-      - field_org_desc
-      - field_location_category
-      - field_upper_content
-      - title_2
       - name_2
-    weights:
-      preprocess_index: -10
-      preprocess_query: -10
-    all_fields: false
-  language_with_fallback: {  }
-  content_access:
-    weights:
-      preprocess_query: -10
-  html_filter:
-    fields:
-      - body
-      - field_hero_text
-      - field_business_desc
-      - field_home_desc
-      - field_org_desc
-      - field_upper_content
-    title: false
-    alt: false
-    tags:
-      h1: 5
-      h2: 3
-      h3: 2
-      strong: 2
-      b: 2
-      em: 1
-      u: 1
+      - title
+      - title_1
+      - title_2
     weights:
       preprocess_index: -10
       preprocess_query: -10
