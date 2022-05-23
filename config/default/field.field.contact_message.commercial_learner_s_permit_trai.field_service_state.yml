@@ -1,0 +1,22 @@
+uuid: a2315e32-7402-423d-942d-6b3170854a74
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.commercial_learner_s_permit_trai
+    - field.storage.contact_message.field_service_state
+  module:
+    - options
+id: contact_message.commercial_learner_s_permit_trai.field_service_state
+field_name: field_service_state
+entity_type: contact_message
+bundle: commercial_learner_s_permit_trai
+label: 'State: *'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
+

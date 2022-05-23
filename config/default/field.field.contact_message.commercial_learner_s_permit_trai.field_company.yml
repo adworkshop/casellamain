@@ -1,0 +1,20 @@
+uuid: e8507f80-dc15-4d19-b424-21d87e515f75
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.commercial_learner_s_permit_trai
+    - field.storage.contact_message.field_company
+id: contact_message.commercial_learner_s_permit_trai.field_company
+field_name: field_company
+entity_type: contact_message
+bundle: commercial_learner_s_permit_trai
+label: 'Company:'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
+

@@ -1,0 +1,20 @@
+uuid: ef242a1e-7352-4b06-9484-70ee5e2041c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.commercial_learner_s_permit_trai
+    - field.storage.contact_message.field_service_last_name
+id: contact_message.commercial_learner_s_permit_trai.field_service_last_name
+field_name: field_service_last_name
+entity_type: contact_message
+bundle: commercial_learner_s_permit_trai
+label: 'Last Name: *'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
+

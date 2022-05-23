@@ -1,0 +1,24 @@
+uuid: d9531592-9777-428e-936f-eb1ef4783a1b
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.commercial_learner_s_permit_trai
+    - field.storage.contact_message.field_enews_optin
+id: contact_message.commercial_learner_s_permit_trai.field_enews_optin
+field_name: field_enews_optin
+entity_type: contact_message
+bundle: commercial_learner_s_permit_trai
+label: 'I would like to receive communications from Casella'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
+

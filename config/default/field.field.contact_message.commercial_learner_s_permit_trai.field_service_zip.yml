@@ -1,0 +1,20 @@
+uuid: 1fc7c3fc-39ce-497c-9545-3ac009af0f8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.commercial_learner_s_permit_trai
+    - field.storage.contact_message.field_service_zip
+id: contact_message.commercial_learner_s_permit_trai.field_service_zip
+field_name: field_service_zip
+entity_type: contact_message
+bundle: commercial_learner_s_permit_trai
+label: 'Zip: *'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
+

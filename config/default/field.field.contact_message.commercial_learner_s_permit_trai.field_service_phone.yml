@@ -1,0 +1,20 @@
+uuid: 3e0aa78f-aeef-4c10-8334-061af2354ea0
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.commercial_learner_s_permit_trai
+    - field.storage.contact_message.field_service_phone
+id: contact_message.commercial_learner_s_permit_trai.field_service_phone
+field_name: field_service_phone
+entity_type: contact_message
+bundle: commercial_learner_s_permit_trai
+label: 'Phone: *'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
+

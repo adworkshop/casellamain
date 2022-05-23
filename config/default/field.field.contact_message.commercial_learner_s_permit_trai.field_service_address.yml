@@ -1,0 +1,20 @@
+uuid: 46f1e4e6-7589-4509-a82c-11f5105c0168
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.commercial_learner_s_permit_trai
+    - field.storage.contact_message.field_service_address
+id: contact_message.commercial_learner_s_permit_trai.field_service_address
+field_name: field_service_address
+entity_type: contact_message
+bundle: commercial_learner_s_permit_trai
+label: 'Address: *'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
+

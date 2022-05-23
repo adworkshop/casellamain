@@ -1,0 +1,23 @@
+uuid: 327158de-76d4-442b-9adf-e63b8b099c85
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact_storage
+third_party_settings:
+  contact_storage:
+    redirect_uri: ''
+    submit_text: Submit
+    show_preview: false
+    disabled_form_message: 'This contact form has been disabled.'
+    maximum_submissions_user: 0
+    page_autoreply_format: plain_text
+id: commercial_learner_s_permit_trai
+label: 'Commercial Learner''s Permit Training Workshop'
+recipients:
+  - shaunna.parker@casella.com
+reply: ''
+weight: 0
+message: 'Your message has been sent.'
+redirect: /thank-you
+

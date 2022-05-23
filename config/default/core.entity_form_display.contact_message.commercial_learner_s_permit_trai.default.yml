@@ -1,0 +1,132 @@
+uuid: 4fd91f87-6126-4655-82de-deb0cf936946
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.commercial_learner_s_permit_trai
+    - field.field.contact_message.commercial_learner_s_permit_trai.field_company
+    - field.field.contact_message.commercial_learner_s_permit_trai.field_enews_optin
+    - field.field.contact_message.commercial_learner_s_permit_trai.field_service_address
+    - field.field.contact_message.commercial_learner_s_permit_trai.field_service_city
+    - field.field.contact_message.commercial_learner_s_permit_trai.field_service_email
+    - field.field.contact_message.commercial_learner_s_permit_trai.field_service_first_name
+    - field.field.contact_message.commercial_learner_s_permit_trai.field_service_last_name
+    - field.field.contact_message.commercial_learner_s_permit_trai.field_service_phone
+    - field.field.contact_message.commercial_learner_s_permit_trai.field_service_service_request
+    - field.field.contact_message.commercial_learner_s_permit_trai.field_service_state
+    - field.field.contact_message.commercial_learner_s_permit_trai.field_service_zip
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_personal_information:
+      children:
+        - field_service_first_name
+        - field_service_last_name
+        - field_service_email
+      parent_name: ''
+      weight: 0
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        required_fields: false
+        description: ''
+      label: 'Personal Information'
+      region: content
+    group_contact_information:
+      children:
+        - field_service_address
+        - field_service_city
+        - field_service_state
+        - field_service_zip
+        - field_service_phone
+      parent_name: ''
+      weight: 1
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        required_fields: false
+        description: ''
+      label: 'Contact Information'
+      region: content
+id: contact_message.commercial_learner_s_permit_trai.default
+targetEntityType: contact_message
+bundle: commercial_learner_s_permit_trai
+mode: default
+content:
+  field_service_address:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_service_city:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_service_email:
+    weight: 54
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  field_service_first_name:
+    weight: 51
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_service_last_name:
+    weight: 52
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_service_phone:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_service_state:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_service_zip:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  copy: true
+  field_company: true
+  field_enews_optin: true
+  field_service_service_request: true
+  langcode: true
+  mail: true
+  message: true
+  name: true
+  preview: true
+  subject: true
+

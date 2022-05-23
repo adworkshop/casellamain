@@ -1,0 +1,20 @@
+uuid: cf7902f8-0729-43ab-a45c-013e888da714
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.commercial_learner_s_permit_trai
+    - field.storage.contact_message.field_service_email
+id: contact_message.commercial_learner_s_permit_trai.field_service_email
+field_name: field_service_email
+entity_type: contact_message
+bundle: commercial_learner_s_permit_trai
+label: 'Email: *'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email
+
