@@ -120,6 +120,12 @@ locations:
     - core/jquery
     - casella/custom-internal
 
+staticmap:
+  version: 1.x
+  css:
+    theme:
+      build/map/map.bundle.css: {}
+
 faq:
   version: 1.x
   js:
