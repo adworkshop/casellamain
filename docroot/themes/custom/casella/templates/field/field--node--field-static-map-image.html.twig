@@ -1,0 +1,136 @@
+{#
+/**
+ * @file
+ * Theme override for a field.
+ *
+ * To override output, copy the "field.html.twig" from the templates directory
+ * to your theme's directory and customize it, just like customizing other
+ * Drupal templates such as page.html.twig or node.html.twig.
+ *
+ * Instead of overriding the theming for all fields, you can also just override
+ * theming for a subset of fields using
+ * @link themeable Theme hook suggestions. @endlink For example,
+ * here are some theme hook suggestions that can be used for a field_foo field
+ * on an article node type:
+ * - field--node--field-foo--article.html.twig
+ * - field--node--field-foo.html.twig
+ * - field--node--article.html.twig
+ * - field--field-foo.html.twig
+ * - field--text-with-summary.html.twig
+ * - field.html.twig
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the containing element.
+ * - label_hidden: Whether to show the field label or not.
+ * - title_attributes: HTML attributes for the title.
+ * - label: The label for the field.
+ * - multiple: TRUE if a field can contain multiple items.
+ * - items: List of all the field items. Each item contains:
+ *   - attributes: List of HTML attributes for each item.
+ *   - content: The field item's content.
+ * - entity_type: The entity type to which the field belongs.
+ * - field_name: The name of the field.
+ * - field_type: The type of the field.
+ * - label_display: The display settings for the label.
+ *
+ * @see template_preprocess_field()
+ */
+#}
+
+{% set classes = [
+
+  ]
+%}
+
+{% for item in items %}
+  <div class="locationMap-container">
+    <div class="locationMap-contentCol-container--staticmap">
+      <div class="mapImageContainer">
+        <div class="mapContentContainer">
+          <div class="globalWidth">
+            <div id="titleSpacer"></div>
+            <!--<div id="mapTitle" class="mapTitle">Our Operations</div>-->
+            <div id="mapKey" class="mapKey">
+              <form>
+                <div class="mapToggles">
+                  <div class="mapTogglesInnerWrapper"><label for="collection_facilities" class="mapLabel collectionLabel">Collection Facilities</label><a href="https://www.casella.com/our-locations/hauling" target="_blank" title=""><i class="fa fa-external-link-square"></i></a></div>
+                </div>
+
+                <div class="mapToggles">
+                  <div class="mapTogglesInnerWrapper"><label for="recycling_facilities" class="mapLabel recycleLabel">Recycling Facilities</label><a href="https://www.casella.com/our-locations/recycling" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
+                </div>
+
+                <div class="mapToggles">
+                  <div class="mapTogglesInnerWrapper"><label for="organic_facilities" class="mapLabel organicLabel">Organic Facilities</label><a href="https://www.casella.com/our-locations/organics" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
+                </div>
+
+                <div class="mapToggles last">
+                  <div class="mapTogglesInnerWrapper"><label for="landfills" class="mapLabel landfillLabel">Landfills</label><a href="https://www.casella.com/our-locations/landfills" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
+                </div>
+
+                <div class="mapToggles last2">
+                  <div class="mapTogglesInnerWrapper"><label for="landfill_gas" class="mapLabel landfillGasLabel">Landfill Gas-to-Energy</label><a href="#" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
+                </div>
+
+                <div class="mapToggles last3">
+                  <div class="mapTogglesInnerWrapper"><label for="transfer_stations" class="mapLabel transferLabel">Transfer Stations/Drop Off</label><a href="https://www.casella.com/our-locations/transfer-stations" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
+                </div>
+
+                <div style="margin:15px 0 0;"><a href="https://www.casella.com/our-locations" target="_blank" class="c-button--download" title="">Review All Locations</a></div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="mapCustomers" style="z-index: 4;">
+          <div class="c-map--headquarters">Headquarters</div>
+          <div class="c-map--customers">Our Customers</div>
+        </div>
+        <div class="mapCaption" style="z-index: 4;">
+          <p>The dots on this map represent the facilities we own and/or operate. The LFGTE plants shown in NY and VT are
+            owned/operated by partners and they receive gas from our operations. The shaded areas indicate our collection
+            service territory.
+          </p>
+        </div>
+        <div id="layerCollection" class="mapLayers">
+          <img alt="Static Map" src="{{ item.content }}" loading="lazy" />
+        </div>
+        <img src="/{{ active_theme_path() }}/i/map/Map-Background.png" alt="">
+      </div>
+      <div class="mapKeyContainer">
+        <div class="mapKeyInner">
+          <form class="mapKeyTogglesContainer">
+            <div class="mapToggles">
+              <div class="mapTogglesInnerWrapper"><label for="collection_facilities" class="mapLabel collectionLabel">Collection Facilities</label><a href="https://www.casella.com/our-locations/hauling" target="_blank" title=""><i class="fa fa-external-link-square"></i></a></div>
+            </div>
+            <div class="mapToggles">
+              <div class="mapTogglesInnerWrapper"><label for="recycling_facilities" class="mapLabel recycleLabel">Recycling Facilities</label><a href="https://www.casella.com/our-locations/recycling" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
+            </div>
+            <div class="mapToggles">
+              <div class="mapTogglesInnerWrapper"><label for="organic_facilities" class="mapLabel organicLabel">Organic Facilities</label><a href="https://www.casella.com/our-locations/organics" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
+            </div>
+            <div class="mapToggles last">
+              <div class="mapTogglesInnerWrapper"><label for="landfills" class="mapLabel landfillLabel">Landfills</label><a href="https://www.casella.com/our-locations/landfills" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
+            </div>
+            <div class="mapToggles last2">
+              <div class="mapTogglesInnerWrapper"><label for="landfill_gas" class="mapLabel landfillGasLabel">Landfill Gas-to-Energy</label><a href="#" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
+            </div>
+            <div class="mapToggles last3">
+              <div class="mapTogglesInnerWrapper"><label for="transfer_stations" class="mapLabel transferLabel">Transfer Stations/Drop Off</label><a href="https://www.casella.com/our-locations/transfer-stations" target="_blank" title=""><span class="fa fa-external-link-square"></span></a></div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="mapCaptionContainer">
+        <div class="mapCaptionInner">
+          <p>The dots on this map represent the facilities we own and/or operate. The LFGTE plants shown in NY and VT are
+            owned/operated by partners and they receive gas from our operations. The shaded areas indicate our collection
+            service territory.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+{% endfor %}
